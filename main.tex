@@ -1,0 +1,57 @@
+\documentclass[10pt,openany]{book}
+ 
+\usepackage{geometry, graphicx, floatflt, varioref, soul, verbatim, amsmath, calc, caption, wasysym, footmisc, makeidx, ifthen, subfigure, multicol, epstopdf, enumerate, wrapfig, textcomp, multirow, changepage, setspace, lscape, titlesec}
+%\usepackage[numbers]{natbib}
+\usepackage[usenames,dvipsnames]{color}  
+%\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
+\include{extraTeX/style/colorsV1}
+
+% _____ Online Version _____ %
+\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
+
+% _____ Print Version _____ %
+%\definecolor{oiB}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+
+\usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
+\bibliography{eoce.bib}
+%\usepackage{ifsym}
+%\usepackage{fancybox}
+
+\makeindex
+\include{extraTeX/style/style}
+\include{extraTeX/style/tablet}
+\include{extraTeX/preamble/title}
+\date{}
+%\setcounter{tocdepth}{1}
+
+\begin{document}
+\renewcommand{\thepage}{}
+\maketitle
+\include{extraTeX/preamble/copyright}
+\renewcommand{\thepage}{\roman{page}}
+\tableofcontents
+\include{extraTeX/preamble/preface}
+
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+\normalsize
+
+\setcounter{chapter}{0}\include{01/TeX/01V7}\include{01/TeX/01e}
+\setcounter{chapter}{1}\normalsize\include{02/TeX/02-V02}\include{02/TeX/02e}
+\setcounter{chapter}{2}\normalsize\include{03/TeX/03-V02}\include{03/TeX/03e}
+\setcounter{chapter}{3}\normalsize\include{04/TeX/04-V04}\include{04/TeX/04e}
+\setcounter{chapter}{4}\normalsize\include{05/TeX/05-V03}\include{05/TeX/05e}
+\setcounter{chapter}{5}\normalsize\include{06/TeX/06-V02}\include{06/TeX/06e}
+\setcounter{chapter}{6}\normalsize\include{07/TeX/07-V3}\include{07/TeX/07e}
+\setcounter{chapter}{7}\normalsize\include{08/TeX/08-V5}\include{08/TeX/08e}
+
+\appendix
+\include{extraTeX/eoceSolutions/eoceSolutions}
+\include{extraTeX/appendix/TeX/zTable}
+\include{extraTeX/appendix/TeX/tTable}
+\include{extraTeX/appendix/TeX/chiSquareTable}
+
+\include{extraTeX/index/index}
+\printindex
+
+\end{document}
