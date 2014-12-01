@@ -1,0 +1,1220 @@
+\chapter{Foundations for inference}
+\label{foundationsForInference}
+
+Statistical inference is concerned primarily with understanding the quality of parameter estimates. For example, a classic inferential question is, ``How sure are we that the estimated mean, $\bar{x}$, is near the true population mean, $\mu$?'' While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We introduce these common themes in Sections~\ref{variabilityInEstimates}-\ref{cltSection} by discussing inference about the population mean, $\mu$, and set the stage for other parameters and scenarios in Section~\ref{aFrameworkForInference}. Some advanced considerations are discussed in Section~\ref{sampleSizeAndPower}. Understanding this chapter will make the rest of this book, and indeed the rest of statistics, seem much more familiar.
+
+\index{data!run10|(}
+
+Throughout the next few sections we consider a data set called \data{run10}, which represents all 16,924 runners who finished the 2012 Cherry Blossom 10 mile run in Washington, DC.\footnote{\urlwofont{http://www.cherryblossom.org}} Part of this data set is shown in Table~\ref{run10DF}, and the variables are described in Table~\ref{run10Variables}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ID & time & age & gender & state \\ 
+  \hline
+1 & 92.25 & 38.00 & M & MD \\ 
+2 & 106.35 & 33.00 & M & DC \\ 
+3 & 89.33 & 55.00 & F & VA \\ 
+4 & 113.50 & 24.00 & F & VA \\ 
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+16923 & 122.87 & 37.00 & F & VA \\ 
+16924 & 93.30 & 27.00 & F & DC \\ 
+   \hline
+\end{tabular}
+\caption{Six observations from the \data{run10} data set.}
+\label{run10DF}
+\end{table}
+% library(openintro); library(xtable); data(run10); xtable(run10[c(1,2,3,4, nrow(run10)-1:0), c("time", "age", "gender", "state")])
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{l p{65mm}}
+\hline
+{\bf variable} & {\bf description} \\
+\hline
+\var{time} & Ten mile run time, in minutes \\
+\var{age} & Age, in years \\
+\var{gender} & Gender (\resp{M} for male, \resp{F} for female) \\
+\var{state} & Home state (or country if not from the US) \\
+\hline
+\end{tabular}
+\caption{Variables and their descriptions for the \data{run10} data set.}
+\label{run10Variables}
+\end{table}
+
+\index{data!run10Samp|(}
+
+These data are special because they include the results for the entire population of runners who finished the 2012 Cherry Blossom Run. We took a simple random sample of this population, which is represented in Table~\ref{run10SampDF}. We will use this sample, which we refer to as the \data{run10Samp} data set, to draw conclusions about the entire population. This is the practice of statistical inference in the broadest sense. Two histograms summarizing the time and age variables in the \data{run10Samp} data set are shown in Figure~\ref{run10SampHistograms}.
+
+\begin{table}
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ID & time & age & gender & state \\ 
+  \hline
+1983 & 88.31 & 59 & M & MD \\ 
+8192 & 100.67 & 32 & M & VA \\ 
+11020 & 109.52 & 33 & F & VA \\ 
+  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\ 
+1287 & 89.49 & 26 & M & DC \\ 
+   \hline
+\end{tabular}
+\caption{Four observations for the \data{run10Samp} data set, which represents a simple random sample of 100 runners from the 2012 Cherry Blossom Run.}
+\label{run10SampDF}
+%library(openintro); library(xtable); data(run10); data(run10Samp); xtable(run10Samp[c(1,2,3,100),])
+\end{table}
+
+% WARNING: This figure is referenced in Section 4.2
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_inference_foundations/figures/run10SampHistograms/run10SampHistograms} 
+\caption{Histograms of \var{time} and \var{age} for the sample Cherry Blossom Run data. The average time is in the mid-90s, and the average age is in the mid-30s. The age distribution is moderately skewed to the right.\index{skew!example: moderate}}
+\label{run10SampHistograms}
+\end{figure}
+
+
+%__________________
+\section{Variability in estimates}
+\label{variabilityInEstimates}
+
+\index{point estimate|(}
+
+We would like to estimate two features of the Cherry Blossom runners using the sample. 
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[(1)] How long does it take a runner, on average, to complete the 10 miles?
+\item[(2)] What is the average age of the runners?
+\end{itemize}
+These questions may be informative for planning the Cherry Blossom Run in future years.\footnote{While we focus on the mean in this chapter, questions regarding variation are often just as important in practice. For instance, we would plan an event very differently if the standard deviation of runner age was 2 versus if it was 20.} We will use $x_1, ..., x_{100}$ to represent the 10 mile time for each runner in our sample, and $y_1, ..., y_{100}$ will represent the age of each of these participants.
+
+\subsection{Point estimates}
+\label{pointEstimates}
+
+\index{point estimate!single mean|(}
+
+We want to estimate the \term{population mean} based on the sample. The most intuitive way to go about doing this is to simply take the \term{sample mean}. That is, to estimate the average 10 mile run time of all participants, take the average time for the sample:
+\begin{eqnarray*}
+\bar{x} = \frac{88.22 + 100.58 + \dots + 89.40}{100} = 95.61
+\end{eqnarray*}
+The sample mean $\bar{x} = 95.61$ minutes is called a \term{point estimate} of the population mean: if we can only choose one value to estimate the population mean, this is our best guess. Suppose we take a new sample of 100 people and recompute the mean; we will probably not get the exact same answer that we got using the \data{run10Samp} data set. Estimates generally vary from one sample to another, and this \term{sampling variation} suggests our estimate may be close, but it will not be exactly equal to the parameter.
+
+We can also estimate the average age of participants by examining the sample mean of \var{age}:
+\begin{eqnarray*}
+\bar{y} = \frac{59 + 32 + \dots + 26}{100} = 35.05
+\end{eqnarray*}
+%library(openintro); library(xtable); data(run10); data(run10Samp); run10Samp$age[c(1,2,100)]; mean(run10Samp$age); mean(run10$age, na.rm=TRUE)
+
+What about generating point estimates of other \term{population parameters}, such as the population median or population standard deviation? Once again we might estimate parameters based on sample statistics, as shown in Table~\ref{ptEstimatesNetTimeAge}. For example, we estimate the population standard deviation for the running time using the sample standard deviation, 15.78 minutes.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ l rr}
+\hline
+\resp{time}		& estimate & parameter  \\
+\hline
+mean		& 95.61 & 94.52 \\
+median	& 95.46 & 94.03 \\
+st. dev.		& 15.78 & 15.93 \\
+\hline
+\end{tabular}
+\caption{Point estimates and parameter values for the \var{time} variable.}
+\label{ptEstimatesNetTimeAge}
+\end{table}
+%library(openintro); library(xtable); data(run10); data(run10Samp); d <- run10Samp$time; mean(d); median(d); sd(d); d <- run10$time; mean(d); median(d); sd(d)
+
+
+\begin{exercise} \label{pointEstimateOfDifferentNetTimesBetweenGender}
+Suppose we want to estimate the difference in run times for men and women. If $\bar{x}_{men} = 87.65$ and $\bar{x}_{women} = 102.13$, then what would be a good point estimate for the population difference?\footnote{We could take the difference of the two sample means: $102.13 - 87.65 = 14.48$. Men ran about 14.48 minutes faster on average in the 2012 Cherry Blossom Run.}
+\end{exercise}
+%library(openintro); library(xtable); data(run10); data(run10Samp); (x <- by(run10Samp$time, run10Samp$gender, mean)); diff(x)
+
+\begin{exercise}
+If you had to provide a point estimate of the population IQR for the run time of participants, how might you make such an estimate using a sample?\footnote{To obtain a point estimate of the IQR for the population, we could take the IQR of the sample.}
+
+\index{point estimate!single mean|)}
+
+\end{exercise}
+
+\subsection{Point estimates are not exact}
+
+Estimates are usually not exactly equal to the truth, but they get better as more data become available. We can see this by plotting a running mean from our \data{run10Samp} sample. A \term{running mean} is a sequence of means, where each mean uses one more observation in its calculation than the mean directly before it in the sequence. For example, the second mean in the sequence is the average of the first two observations and the third in the sequence is the average of the first three. The running mean for the 10 mile run time in the \data{run10Samp} data set is shown in Figure~\ref{netTimeRunningMean}, and it approaches the true population average, 94.52 minutes, as more data become available.
+
+\begin{figure}
+   \centering
+   \includegraphics[width=0.7\textwidth]{ch_inference_foundations/figures/netTimeRunningMean/netTimeRunningMean}
+   \caption{The mean computed after adding each individual to the sample. The mean tends to approach the true population average as more data become available.}
+   \label{netTimeRunningMean}
+\end{figure}
+
+Sample point estimates only approximate the population parameter, and they vary from one sample to another. If we took another simple random sample of the Cherry Blossom runners, we would find that the sample mean for the run time would be a little different. It will be useful to quantify how variable
+an estimate is from one sample to another. If this variability is small (i.e. the sample mean doesn't change much from one sample to another) then that estimate is probably very accurate. If it varies widely from one sample to another, then we should not expect our estimate to be very good.
+
+
+\subsection{Standard error of the mean}
+\label{seOfTheMean}
+
+From the random sample represented in \data{run10Samp}, we guessed the average time it takes to run 10 miles is 95.61 minutes. Suppose we take another random sample of 100 individuals and take its mean: 95.30 minutes. Suppose we took another (93.43 minutes) and another (94.16 minutes), and so on. If we do this many many times -- which we can do only because we have the entire population data set -- we can build up a \term{sampling distribution} for the sample mean when the sample size is 100, shown in Figure~\ref{netTime1000SamplingDistribution}.
+
+\begin{figure}
+   \centering
+   \includegraphics[width=0.85\textwidth]{ch_inference_foundations/figures/netTime1000SamplingDistribution/netTime1000SamplingDistribution}
+   \caption{A histogram of 1000 sample means for run time, where the samples are of size $n=100$.}
+   \label{netTime1000SamplingDistribution}
+\end{figure}
+
+\begin{termBox}{\tBoxTitle{Sampling distribution}
+The sampling distribution represents the distribution of the point estimates based on samples of a fixed size from a certain population. It is useful to think of a particular point estimate as being drawn from such a distribution. Understanding the concept of a sampling distribution is central to understanding statistical inference.}
+\end{termBox}
+
+The sampling distribution shown in Figure~\ref{netTime1000SamplingDistribution} is unimodal and approximately symmetric. It is also centered exactly at the true population mean: $\mu=94.52$. Intuitively, this makes sense. The sample means should tend to ``fall around'' the population mean.
+
+We can see that the sample mean has some variability around the population mean, which can be quantified using the standard deviation of this distribution of sample means: $\sigma_{\bar{x}} = 1.59$. The standard deviation of the sample mean tells us how far the typical estimate is away from the actual population mean, 94.52 minutes. It also describes the typical \term{error} of the point estimate, and for this reason we usually call this standard deviation the \term{standard error (SE)}\index{SE}\marginpar[\raggedright\vspace{-4mm}
+
+$SE$\\\footnotesize standard\\error]{\raggedright\vspace{-4mm}
+
+$SE$\\\footnotesize standard\\error} of the estimate.
+
+\begin{termBox}{\tBoxTitle{Standard error of an estimate}
+The standard deviation associated with an estimate is called the \emph{standard error}. It describes the typical error or uncertainty associated with the estimate.}
+\end{termBox}
+
+When considering the case of the point estimate $\bar{x}$, there is one problem: there is no obvious way to estimate its standard error from a single sample. However, statistical theory provides a helpful tool to address this issue. 
+
+\begin{exercise}
+(a) Would you rather use a small sample or a large sample when estimating a parameter? Why? (b) Using your reasoning from (a), would you expect a point estimate based on a small sample to have smaller or larger standard error than a point estimate based on a larger sample?\footnote{(a) Consider two random samples: one of size 10 and one of size 1000. Individual observations in the small sample are highly influential on the estimate while in larger samples these individual observations would more often average each other out. The larger sample would tend to provide a more accurate estimate. (b) If we think an estimate is better, we probably mean it typically has less error. Based on (a), our intuition suggests that a larger sample size corresponds to a smaller standard error.}
+\end{exercise}
+
+In the sample of 100 runners, the standard error of the sample mean is equal to one-tenth of the population standard deviation: $1.59 = 15.93/10$. In other words, the standard error of the sample mean based on 100 observations is equal to
+\begin{eqnarray*}
+SE_{\bar{x}} = \sigma_{\bar{x}} = \frac{\sigma_{x}}{\sqrt{n}} = \frac{15.93}{\sqrt{100}} = 1.59
+\end{eqnarray*}
+where $\sigma_{x}$ is the standard deviation of the individual observations. This is no coincidence. We can show mathematically that this equation is correct when the observations are independent  using the probability tools of Section~\ref{randomVariablesSection}.
+
+\begin{termBox}{\tBoxTitle{Computing SE for the sample mean}
+Given $n$ independent observations from a population with standard deviation $\sigma$, the standard error of the sample mean is equal to \vspace{-1mm}
+\begin{eqnarray}
+SE = \frac{\sigma}{\sqrt{n}}
+\label{seOfXBar}
+\end{eqnarray}\vspace{-3mm}%
+
+A reliable method to ensure sample observations are independent is to conduct a simple random sample consisting of less than 10\% of the population.\index{standard error!single mean}
+}
+\end{termBox}
+
+There is one subtle issue of Equation~(\ref{seOfXBar}): the population standard deviation is typically unknown. You might have already guessed how to resolve this problem: we can use the point estimate of the standard deviation from the sample. This estimate tends to be sufficiently good when the sample size is at least 30 and the population distribution is not strongly skewed%\footnote{Some books suggest 30 is sufficient; we take a slightly more conservative approach.}
+% x <- c(); for(i in 1:10000){ x[i] <- mean(exp(rnorm(30, sd=0.5))) }; hist(x); (quantile(x, c(0.025, 0.975)) - mean(x)) / sd(x)
+% M <- mean(x); x <- rep(NA, 1000); for(i in 1:1000){ temp <- exp(rnorm(30, sd=0.5)); x[i] <- (max(temp) - M) / sd(temp) }; hist(x); quantile(x, 0.95)
+% for(i in 1:1000){ temp <- exp(rnorm(30, sd=0.5)); hist(temp, breaks=seq(0, 12, 0.5), main=round((max(temp) - mean(temp))/sd(temp), 1)); Sys.sleep(0.5) }
+. Thus, we often just use the sample standard deviation $s$ instead of~$\sigma$. When the sample size is smaller than 30, we will need to use a method to account for extra uncertainty in the standard error. If the skew condition is not met, a larger sample is needed to compensate for the extra skew. These topics are further discussed in Section~\ref{cltSection}.
+
+\begin{exercise}
+In the sample of 100 runners, the standard deviation of the runners' ages is $s_y = 8.97$. Because the sample is simple random and consists of less than 10\% of the population, the observations are independent. (a)~What is the standard error of the sample mean, $\bar{y}=35.05$ years? (b)~Would you be surprised if someone told you the average age of all the runners was actually 36~years?\footnote{(a) Use Equation~(\ref{seOfXBar}) with the sample standard deviation to compute the standard error: $SE_{\bar{y}} = 8.97/\sqrt{100} = 0.90$ years. (b) It would not be surprising. Our sample is about 1 standard error from 36 years. In other words, 36 years old does not seem to be implausible given that our sample was relatively close to it. (We use the standard error to identify what is close.)}
+\end{exercise}
+%library(openintro); library(xtable); data(run10); data(run10Samp); mean(run10Samp$age); sd(run10Samp$age); sd(run10$age, na.rm=TRUE)
+
+
+\begin{exercise}
+(a) Would you be more trusting of a sample that has 100 observations or 400 observations? (b) We want to show mathematically that our estimate tends to be better when the sample size is larger. If the standard deviation of the individual observations is 10, what is our estimate of the standard error when the sample size is 100? What about when it is 400? (c) Explain how your answer to (b) mathematically justifies your intuition in part~(a).\footnote{(a) Extra observations are usually helpful in understanding the population, so a point estimate with 400 observations seems more trustworthy. (b) The standard error when the sample size is 100 is given by $SE_{100} = 10/\sqrt{100} = 1$. For 400: $SE_{400} = 10/\sqrt{400} = 0.5$. The larger sample has a smaller standard error. (c) The standard error of the sample with 400 observations is lower than that of the sample with 100 observations. The standard error describes the typical error, and since it is lower for the larger sample, this mathematically shows the estimate from the larger sample tends to be better -- though it does not guarantee that every large sample will provide a better estimate than a particular small sample.}
+\end{exercise}
+
+\subsection{Basic properties of point estimates}
+
+We achieved three goals in this section. First, we determined that point estimates from a sample may be used to estimate population parameters. We also determined that these point estimates are not exact: they vary from one sample to another. Lastly, we quantified the uncertainty of the sample mean using what we call the standard error, mathematically represented in Equation~\eqref{seOfXBar}. While we could also quantify the standard error for other estimates -- such as the median, standard deviation, or any other number of statistics -- we will postpone these extensions until later chapters or courses.
+
+\index{point estimate|)}
+
+
+%__________________
+\section{Confidence intervals}
+\label{confidenceIntervals}
+
+\index{confidence interval|(}
+
+A point estimate provides a single plausible value for a parameter. However, a point estimate is rarely perfect; usually there is some error in the estimate. Instead of supplying just a point estimate of a parameter, a next logical step would be to provide a plausible \emph{range of values} for the parameter.
+
+In this section and in Section~\ref{hypothesisTesting}, we will emphasize the special case where the point estimate is a sample mean and the parameter is the population mean. In Section~\ref{aFrameworkForInference}, we generalize these methods for a variety of point estimates and population parameters that we will encounter in Chapter~\ref{inferenceForNumericalData} and beyond.
+
+\subsection{Capturing the population parameter}
+
+A plausible range of values for the population parameter is called a \term{confidence interval}.
+
+Using only a point estimate is like fishing in a murky lake with a spear, and using a confidence interval is like fishing with a net. We can throw a spear where we saw a fish, but we will probably miss. On the other hand, if we toss a net in that area, we have a good chance of catching the fish.
+
+If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values -- a confidence interval -- we have a good shot at capturing the parameter. 
+
+\begin{exercise}
+If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?\footnote{If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.}
+\end{exercise}
+
+\subsection{An approximate 95\% confidence interval}
+
+Our point estimate is the most plausible value of the parameter, so it makes sense to build the confidence interval around the point estimate. The standard error, which is a measure of the uncertainty associated with the point estimate, provides a guide for how large we should make the confidence interval.
+
+The standard error represents the standard deviation associated with the estimate, and roughly 95\% of the time the estimate will be within 2 standard errors of the parameter. If~the interval spreads out 2 standard errors from the point estimate, we can be roughly 95\% \term{confident} that we have captured the true parameter:
+\begin{eqnarray}
+\text{point estimate}\ \pm\ 2\times SE
+\label{95PercentConfidenceIntervalFormula}
+\end{eqnarray}
+But what does ``95\% confident'' mean? Suppose we took many samples and built a confidence interval from each sample using Equation~(\ref{95PercentConfidenceIntervalFormula}). Then about 95\% of those intervals would contain the actual mean, $\mu$. Figure~\ref{95PercentConfidenceInterval} shows this process with 25 samples, where 24 of the resulting confidence intervals contain the average time for all the runners, $\mu=94.52$ minutes, and one does not.
+
+\begin{figure}[hht]
+   \centering
+   \includegraphics[width=0.75\textwidth]{ch_inference_foundations/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
+   \caption{Twenty-five samples of size $n=100$ were taken from the \data{run10} data set. For each sample, a confidence interval was created to try to capture the average 10 mile time for the population. Only~1 of these~25 intervals did not capture the true mean, $\mu = 94.52$ minutes.}
+   \label{95PercentConfidenceInterval}
+\end{figure}
+
+\begin{exercise}
+In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain 94.52 minutes. Does this imply that the mean cannot be 94.52? \footnote{Just as some observations occur more than 2 standard deviations from the mean, some point estimates will be more than 2 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
+\end{exercise}
+
+The rule where about 95\% of observations are within 2 standard deviations of the mean is only approximately true. However, it holds very well for the normal distribution. As we will soon see, the mean tends to be normally distributed when the sample size is sufficiently large. 
+
+\begin{example}{If the sample mean of times from \data{run10Samp} is 95.61 minutes and the standard error, as estimated using the sample standard deviation, is 1.58 minutes, what would be an approximate 95\% confidence interval for the average 10 mile time of all runners in the race? Apply the standard error calculated using the sample standard deviation ($SE=\frac{15.78}{\sqrt{100}} = 1.58$), which is how we usually proceed since the population standard deviation is generally unknown.}
+We apply Equation~(\ref{95PercentConfidenceIntervalFormula}):
+\begin{eqnarray*}
+95.61\ \pm\ 2 \times  1.58 \quad \rightarrow \quad (92.45, 98.77)
+\end{eqnarray*}
+Based on these data, we are about 95\% confident that the average 10 mile time for all runners in the race was larger than 92.45 but less than 98.77 minutes. Our interval extends out 2 standard errors from the point estimate, $\bar{x}$.
+\end{example}
+% library(openintro); library(xtable); data(run10); data(run10Samp); mean(run10Samp$time); sd(run10Samp$time); sd(run10$time, na.rm=TRUE)
+
+\begin{exercise} \label{95CIExerciseForAgeOfRun10Samp1}
+The sample data suggest the average runner's age is about 35.05 years with a standard error of 0.90 years (estimated using the sample standard deviation, 8.97). What is an approximate 95\% confidence interval for the average age of all of the runners?\footnote{Again apply Equation~(\ref{95PercentConfidenceIntervalFormula}): $35.05 \ \pm \ 2\times 0.90 \rightarrow (33.25, 36.85)$. We interpret this interval as follows: We are about 95\% confident the average age of all participants in the 2012 Cherry Blossom Run was between 33.25 and 36.85 years.}
+\end{exercise}
+%library(openintro); data(run10Samp); mean(run10Samp$age); sd(run10Samp$age)
+
+\subsection{A sampling distribution for the mean}
+
+In Section~\ref{seOfTheMean}, we introduced a sampling distribution for $\bar{x}$, the average run time for samples of size 100. We examined this distribution earlier in Figure~\ref{netTime1000SamplingDistribution}. Now we'll take 100,000 samples, calculate the mean of each, and plot them in a histogram to get an especially accurate depiction of the sampling distribution. This histogram is shown in the left panel of Figure~\ref{netTimeBigSamplingDistribution}.
+
+\begin{figure}[hht]
+   \centering
+   \includegraphics[width=\textwidth]{ch_inference_foundations/figures/netTimeBigSamplingDistribution/netTimeBigSamplingDistribution}
+   \caption{The left panel shows a histogram of the sample means for 100,000 different random samples. The right panel shows a normal probability plot of those sample means.}
+   \label{netTimeBigSamplingDistribution}
+\end{figure}
+
+Does this distribution look familiar? Hopefully so! The distribution of sample means closely resembles the normal distribution (see Section~\ref{normalDist}). A normal probability plot of these sample means is shown in the right panel of Figure~\ref{netTimeBigSamplingDistribution}. Because all of the points closely fall around a straight line, we can conclude the distribution of sample means is nearly normal. This result can be explained by the Central Limit Theorem.
+
+\begin{termBox}{\tBoxTitle{Central Limit Theorem, informal description}
+If a sample consists of at least 30 independent observations and the data are not strongly skewed, then the distribution of the sample mean is well approximated by a~normal model.\index{Central Limit Theorem}}
+\end{termBox}
+
+We will apply this informal version of the Central Limit Theorem for now, and discuss its details further in Section~\ref{cltSection}.
+
+The choice of using 2 standard errors in Equation~(\ref{95PercentConfidenceIntervalFormula}) was based on our general guideline that roughly 95\% of the time, observations are within two standard deviations of the mean. Under the normal model, we can make this more accurate by using 1.96 in place~of~2.
+\begin{eqnarray}
+\text{point estimate}\ \pm\ 1.96\times SE
+\label{95PercentCIWhenUsingNormalModel}
+\end{eqnarray}
+If a point estimate, such as $\bar{x}$, is associated with a normal model and standard error $SE$, then we use this more precise 95\% confidence interval.
+
+
+\subsection{Changing the confidence level}
+\label{changingTheConfidenceLevelSection}
+
+\index{confidence interval!confidence level|(}
+
+Suppose we want to consider confidence intervals where the confidence level is somewhat higher than 95\%: perhaps we would like a confidence level of 99\%. Think back to the analogy about trying to catch a fish: if we want to be more sure that we will catch the fish, we should use a wider net. To create a 99\% confidence level, we must also widen our 95\% interval. On the other hand, if we want an interval with lower confidence, such as 90\%, we could make our original 95\% interval slightly slimmer.
+
+The 95\% confidence interval structure provides guidance in how to make intervals with new confidence levels. Below is a general 95\% confidence interval for a point estimate that comes from a nearly normal distribution:
+\begin{eqnarray}
+\text{point estimate}\ \pm\ 1.96\times SE
+\end{eqnarray}
+There are three components to this interval: the point estimate, ``1.96'', and the standard error. The choice of $1.96\times SE$ was based on capturing 95\% of the data since the estimate is within 1.96 standard deviations of the parameter about 95\% of the time. The choice of 1.96 corresponds to a 95\% confidence level. 
+
+\begin{exercise} \label{leadInForMakingA99PercentCIExercise}
+If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?\footnote{This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure~\ref{choosingZForCI}.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of $\mu$.}
+\end{exercise}
+
+To create a 99\% confidence interval, change 1.96 in the 95\% confidence interval formula to be $2.58$. Exercise~\ref{leadInForMakingA99PercentCIExercise} highlights that 99\% of the time a normal random variable will be within 2.58 standard deviations of the mean. This approach -- using the Z scores in the normal model to compute confidence levels -- is appropriate when $\bar{x}$ is associated with a normal distribution with mean $\mu$ and standard deviation $SE_{\bar{x}}$. Thus, the formula for a 99\% confidence interval is
+\begin{eqnarray}
+\bar{x}\ \pm\ 2.58\times SE_{\bar{x}}
+\label{99PercCIForMean}
+\end{eqnarray}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_inference_foundations/figures/choosingZForCI/choosingZForCI}
+\caption{The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99\%, we choose $z^{\star}$ such that 99\% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5\% in the lower tail and 0.5\% in the upper tail: $z^{\star}=2.58$.}
+\label{choosingZForCI}
+\index{confidence interval!confidence level|)}
+\end{figure}
+
+The normal approximation is crucial to the precision of these confidence intervals. Section~\ref{cltSection} provides a more detailed discussion about when the normal model can safely be applied. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution.
+
+\begin{termBox}{\tBoxTitle{Conditions for $\bar{x}$ being nearly normal and $SE$ being accurate\label{terBoxOfCondForXBarBeingNearlyNormalAndSEBeingAccurate}}
+Important conditions to help ensure the sampling distribution of $\bar{x}$ is nearly normal and the estimate of SE sufficiently accurate:
+\begin{itemize}
+\item The sample observations are independent.
+\item The sample size is large: $n\geq30$ is a good rule of thumb.
+\item The distribution of sample observations is not strongly skewed.
+\end{itemize}
+Additionally, the larger the sample size, the more lenient we can be with the sample's skew.}
+\end{termBox}
+
+Verifying independence is often the most difficult of the conditions to check, and the way to check for independence varies from one situation to another. However, we can provide simple rules for the most common scenarios. 
+
+\begin{tipBox}{\tipBoxTitle{How to verify sample observations are independent}
+Observations in a simple random sample consisting of less than 10\% of the population are independent.}
+\end{tipBox}
+
+\begin{caution}
+{Independence for random processes and experiments}
+{If a sample is from a random process or experiment, it is important to verify the observations from the process or subjects in the experiment are nearly independent and maintain their independence throughout the process or experiment. Usually subjects are considered independent if they undergo random assignment in an experiment.}
+\end{caution}
+
+
+% WARNING !!!!
+% EOCE 4.9 (as of 2nd Edition) references the results of this exercise
+\begin{exercise} \label{find99CIForRun10AgeExercise}
+Create a 99\% confidence interval for the average age of all runners in the 2012 Cherry Blossom Run. The point estimate is $\bar{y} = 35.05$ and the standard error is $SE_{\bar{y}} = 0.90$.\footnote{The observations are independent (simple random sample, $<10\%$ of the population), the sample size is at least 30 ($n=100$), and the distribution is only slightly skewed (Figure~\ref{run10SampHistograms}); the normal approximation and estimate of SE should be reasonable. Apply the 99\% confidence interval formula: $\bar{y}\ \pm\ 2.58 \times  SE_{\bar{y}} \rightarrow (32.7, 37.4)$. We are 99\% confident that the average age of all runners is between 32.7 and 37.4 years.}
+\end{exercise}
+%library(openintro); data(run10Samp); d <- run10Samp; mean(d$age); sd(d$age)/sqrt(100)
+
+\begin{termBox}{\tBoxTitle{Confidence interval for any confidence level}
+If the point estimate follows the normal model with standard error $SE$, then a confidence interval for the population parameter is
+\begin{eqnarray*}
+\text{point estimate}\ \pm\ z^{\star} SE
+\end{eqnarray*}
+where $z^{\star}$ corresponds to the confidence level selected.}
+\end{termBox}
+
+Figure~\ref{choosingZForCI} provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. 
+
+\begin{termBox}{\tBoxTitle{Margin of error}
+\label{marginOfErrorTermBox}In a confidence interval, $z^{\star}\times SE$ is called the \term{margin of error}.}
+\end{termBox}
+
+\begin{exercise} \label{find90CIForRun10AgeExercise}
+Use the data in Exercise~\ref{find99CIForRun10AgeExercise} to create a 90\% confidence interval for the average age of all runners in the 2012 Cherry Blossom Run.\footnote{We first find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5\% (the other 5\% is in the upper tail), thus $z^{\star}=1.65$. The 90\% confidence interval can then be computed as $\bar{y}\ \pm\ 1.65\times SE_{\bar{y}} \to (33.6, 36.5)$. (We had already verified conditions for normality and the standard error.) That is, we are 90\% confident the average age is larger than 33.6 but less than 36.5 years.}
+\end{exercise}
+
+\subsection{Interpreting confidence intervals}
+\label{interpretingCIs}
+
+\index{confidence interval!interpretation|(}
+
+A careful eye might have observed the somewhat awkward language used to describe confidence intervals. Correct interpretation:
+\begin{quote}
+We are XX\% confident that the population parameter is between...
+\end{quote}
+\emph{Incorrect} language might try to describe the confidence interval as capturing the population parameter with a certain probability. This is one of the most common errors: while it might be useful to think of it as a probability, the confidence level only quantifies how plausible it is that the parameter is in the interval.
+
+Another especially important consideration of confidence intervals is that they \emph{only try to capture the population parameter}. Our intervals say nothing about the confidence of capturing individual observations, a proportion of the observations, or about capturing point estimates. Confidence intervals only attempt to capture population parameters.
+
+\index{confidence interval!interpretation|)}
+\index{confidence interval|)}
+
+\subsection[Nearly normal population with known SD (special topic)]{Nearly normal population with known SD (special topic)}
+\label{nearlyNormalPopWithKnownSD}
+
+\index{Central Limit Theorem!normal data|(}
+
+In rare circumstances we know important characteristics of a population. For instance, we might know a population is nearly normal and we may also know its parameter values. Even so, we may still like to study characteristics of a random sample from the population. Consider the conditions required for modeling a sample mean using the normal distribution:
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item[(1)] The observations are independent.
+\item[(2)] The sample size $n$ is at least 30.
+\item[(3)] The data distribution is not strongly skewed.
+\end{enumerate}
+These conditions are required so we can adequately estimate the standard deviation and so we can ensure the distribution of sample means is nearly normal. However, if the population is known to be nearly normal, the sample mean is always nearly normal (this is a special case of the Central Limit Theorem). If the standard deviation is also known, then conditions (2) and (3) are not necessary for those data.
+
+\begin{example}{The heights of male seniors in high school closely follow a normal distribution $N(\mu=70.43, \sigma=2.73)$, where the units are inches.\footnote{These values were computed using the USDA Food Commodity Intake Database.} If we randomly sampled the heights of five male seniors, what distribution should the sample mean follow?}\label{simpleSampleOfFiveMaleSeniors}
+The population is nearly normal, the population standard deviation is known, and the heights represent a random sample from a much larger population, satisfying the independence condition. Therefore the sample mean of the heights will follow a nearly normal distribution with mean $\mu=70.43$ inches and standard error $SE=\sigma/\sqrt{n} = 2.73/\sqrt{5}=1.22$ inches.
+\end{example}
+
+\begin{termBox}{\tBoxTitle{Alternative conditions for applying the normal distribution to model the sample mean}
+If the population of cases is known to be nearly normal and the population standard deviation $\sigma$ is known, then the sample mean $\bar{x}$ will follow a nearly normal distribution $N(\mu, \sigma/\sqrt{n})$ if the sampled observations are also independent.}
+\end{termBox}
+
+Sometimes the mean changes over time but the standard deviation remains the same. In such cases, a sample mean of small but nearly normal observations paired with a known standard deviation can be used to produce a confidence interval for the current population mean using the normal distribution.
+
+\begin{example}{Is there a connection between height and popularity in high school? Many students may suspect as much, but what do the data say? Suppose the top 5 nominees for prom king at a high school have an average height of 71.8 inches. Does this provide strong evidence that these seniors' heights are not representative of all male seniors at their high school?}
+If these five seniors are height-representative, then their heights should be like a random sample from the distribution given in Example~\ref{simpleSampleOfFiveMaleSeniors}, $N\left(\mu=70.43, \sigma = 2.73\right)$, and the sample mean should follow $N\left(\mu=70.43, \sigma/\sqrt{n} = 1.22\right)$. Formally we are conducting what is called a \emph{hypothesis test}, which we will discuss in greater detail during the next section. We are weighing two possibilities:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] The prom king nominee heights are representative; $\bar{x}$ will follow a normal distribution with mean 70.43 inches and standard error 1.22 inches.
+\item[$H_A$:] The heights are not representative; we suspect the mean height is different from 70.43 inches.
+\end{itemize}
+If there is strong evidence that the sample mean is not from the normal distribution provided in $H_0$, then that suggests the heights of prom king nominees are not a simple random sample (i.e. $H_A$ is true). We can look at the Z score of the sample mean to tell us how unusual our sample is. If $H_0$ is true:
+\begin{align*}
+Z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}} = \frac{71.8 - 70.43}{1.22} = 1.12
+\end{align*}
+A Z score of just 1.12 is not very unusual (we typically use a threshold of $\pm2$ to decide what is unusual), so there is not strong evidence against the claim that the heights are representative. This does not mean the heights are actually representative, only that this very small sample does not necessarily show otherwise.
+\end{example}
+
+\begin{tipBox}{\tipBoxTitle{Relaxing the nearly normal condition}
+As the sample size becomes larger, it is reasonable to \emph{slowly} relax the nearly normal assumption on the data when dealing with small samples. By the time the sample size reaches 30, the data must show strong skew for us to be concerned about the normality of the sampling distribution.}
+\index{Central Limit Theorem!normal data|)}
+\end{tipBox}
+
+
+%__________________
+\section{Hypothesis testing}
+\label{hypothesisTesting}
+
+\index{hypothesis testing|(}
+
+Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Run, comparing runners in 2006 and 2012. Technological advances in shoes, training, and diet might suggest runners would be faster in 2012. An opposing viewpoint might say that with the average body mass index on the rise, people tend to run slower. In fact, all of these components might be influencing run time.
+
+In addition to considering run times in this section, we consider a topic near and dear to most students: sleep. A recent study found that college students average about 7 hours of sleep per night.\footnote{\urlwofont{http://theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
+
+\subsection{Hypothesis testing framework}
+
+The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine if the \data{run10Samp} data set provides strong evidence that the participants in 2012 were faster or slower than those runners in 2006, versus the other possibility that there has been no change.\footnote{While we could answer this question by examining the entire population data (\data{run10}), we only consider the sample data (\data{run10Samp}), which is more realistic since we rarely have access to population data.} We simplify these three options into two competing \termsub{hypotheses}{hypothesis}:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] The average 10 mile run time was the same for 2006 and 2012.
+\item[$H_A$:] The average 10 mile run time for 2012 was \emph{different} than that of 2006.
+\end{itemize}
+We call $H_0$\marginpar[\raggedright\vspace{6mm}
+
+$H_0$\\\footnotesize null hypothesis\vspace{3mm}\\\normalsize $H_A$\\\footnotesize alternative\\ hypothesis]{\raggedright\vspace{6mm}
+
+$H_0$\\\footnotesize null hypothesis\vspace{3mm}\\\normalsize $H_A$\\\footnotesize alternative\\ hypothesis} the null hypothesis and $H_A$ the alternative hypothesis.
+
+\begin{termBox}{\tBoxTitle{Null and alternative hypotheses}
+{\small The \term{null hypothesis ($H_0$)} often represents either a skeptical perspective or a claim to be tested. The \term{alternative hypothesis ($H_A$)} represents an alternative claim under consideration and is often represented by a range of possible parameter values.}}
+\end{termBox}
+
+The null hypothesis often represents a skeptical position or a perspective of no difference. The alternative hypothesis often represents a new perspective, such as the possibility that there has been a change. 
+
+\begin{tipBox}{\tipBoxTitle{Hypothesis testing framework}
+The skeptic will not reject the null hypothesis ($H_0$), unless the evidence in favor of the alternative hypothesis ($H_A$) is so strong that she rejects $H_0$ in favor of $H_A$.}
+\end{tipBox}
+
+The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if there is sufficient evidence that supports the claim, we set aside our skepticism and reject the null hypothesis in favor of the alternative. The hallmarks of hypothesis testing are also found in the US court system. 
+
+\begin{exercise} \label{hypTestCourtExample}
+A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?\footnote{The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt; in such a case, the jury rejects innocence (the null hypothesis) and concludes the defendant is guilty (alternative hypothesis).}
+\end{exercise}
+
+Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. Even if the jurors leave unconvinced of guilt beyond a reasonable doubt, this does not mean they believe the defendant is innocent. This is also the case with hypothesis testing: \emph{even if we fail to reject the null hypothesis, we typically do not accept the null hypothesis as true}. Failing to find strong evidence for the alternative hypothesis is not equivalent to accepting the null hypothesis.
+
+In the example with the Cherry Blossom Run, the null hypothesis represents no difference in the average time from 2006 to 2012. The alternative hypothesis represents something new or more interesting: there was a difference, either an increase or a decrease. These hypotheses can be described in mathematical notation using $\mu_{12}$ as the average run time for 2012:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] $\mu_{12} = 93.29$ %93.28864
+\item[$H_A$:] $\mu_{12} \neq 93.29$
+\end{itemize}
+where $93.29$ minutes (93 minutes and about 17 seconds) is the average 10 mile time for all runners in the 2006 Cherry Blossom Run. Using this mathematical notation, the hypotheses can now be evaluated using statistical tools. We call 93.29 the \term{null value} since it represents the value of the parameter if the null hypothesis is true. We will use the \data{run10Samp} data set to evaluate the hypothesis test.
+
+
+\subsection{Testing hypotheses using confidence intervals}
+\label{utilizingOurCI}
+
+We can start the evaluation of the hypothesis setup by comparing 2006 and 2012 run times using a point estimate from the 2012 sample: $\bar{x}_{12} = 95.61$ minutes. This estimate suggests the average time is actually longer than the 2006 time, 93.29 minutes. However, to evaluate whether this provides strong evidence that there has been a change, we must consider the uncertainty associated with $\bar{x}_{12}$.
+
+We learned in Section~\ref{variabilityInEstimates} that there is fluctuation from one sample to another, and it is very unlikely that the sample mean will be exactly equal to our parameter; we should not expect $\bar{x}_{12}$ to exactly equal $\mu_{12}$. Given that $\bar{x}_{12} = 95.61$, it might still be possible that the population average in 2012 has remained unchanged from 2006. The difference between $\bar{x}_{12}$ and 93.29 could be due to \emph{sampling variation}, i.e. the variability associated with the point estimate when we take a random sample.
+
+In Section~\ref{confidenceIntervals}, confidence intervals were introduced as a way to find a range of plausible values for the population mean. Based on \data{run10Samp}, a 95\% confidence interval for the 2012 population mean, $\mu_{12}$, was calculated as
+\begin{eqnarray*}
+(92.45, 98.77)
+\end{eqnarray*}
+Because the 2006 mean, 93.29, falls in the range of plausible values, we cannot say the null hypothesis is implausible. That is, we failed to reject the null hypothesis, $H_0$. 
+
+\begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
+In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
+\end{tipBox}
+
+\begin{example}{Next consider whether there is strong evidence that the average age of runners has changed from 2006 to 2012 in the Cherry Blossom Run. In 2006, the average age was 36.13 years, and in the 2012 \data{run10Samp} data set, the average was 35.05 years with a standard deviation of 8.97 years for 100 runners.}
+First, set up the hypotheses:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] The average age of runners has not changed from 2006 to 2012, $\mu_{age} = 36.13$.
+\item[$H_A$:] The average age of runners has changed from 2006 to 2012, $\mu_{age} \neq 36.13$.
+\end{itemize}
+We have previously verified conditions for this data set. The normal model may be applied to $\bar{y}$ and the estimate of $SE$ should be very accurate. Using the sample mean and standard error, we can construct a 95\% confidence interval for $\mu_{age}$ to determine if there is sufficient evidence to reject $H_0$:
+\begin{eqnarray*}
+\bar{y}\ \pm\ 1.96 \times  \frac{s}{\sqrt{100}} 
+	\quad\to\quad 35.05\ \pm\ 1.96\times 0.90 
+	\quad\to\quad (33.29, 36.81)
+\end{eqnarray*}
+This confidence interval contains the \emph{null value}, 36.13. Because 36.13 is not implausible, we cannot reject the null hypothesis. We have not found strong evidence that the average age is different than 36.13 years.
+\index{data!run10Samp|)}
+\index{data!run10|)}
+\end{example}
+
+\begin{exercise} \label{htForHousingExpenseForCommunityCollege650}
+Colleges frequently provide estimates of student expenses such as housing. A consultant hired by a community college claimed that the average student housing expense was \$650 per month. What are the null and alternative hypotheses to test whether this claim is accurate?\footnote{$H_0$: The average cost is \$650 per month, $\mu = \$650$.
+
+\hspace{3.4mm}$H_A$: The average cost is different than \$650 per month, $\mu \neq \$650$.}
+\end{exercise}
+
+\begin{exercise} \label{normalDistCondForHousingExpenseForCommunityCollege650}
+The community college decides to collect data to evaluate the \$650 per month claim. They take a random sample of 75 students at their school and obtain the data represented in Figure~\ref{communityCollegeClaimedHousingExpenseDistribution}. Can we apply the normal model to the sample mean?\footnote{Applying the normal model requires that certain conditions are met. Because the data are a simple random sample and the sample (presumably) represents no more than 10\% of all students at the college, the observations are independent. The sample size is also sufficiently large ($n=75$) and the data exhibit only moderate skew. Thus, the normal model may be applied to the sample mean.}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{ch_inference_foundations/figures/communityCollegeClaimedHousingExpenseDistribution/communityCollegeClaimedHousingExpenseDistribution}
+\caption{Sample distribution of student housing expense. These data are moderately skewed\index{skew!example: moderate}, roughly determined using the outliers on the~right.}
+\label{communityCollegeClaimedHousingExpenseDistribution}
+\end{figure}
+\end{exercise}
+
+
+
+\begin{example}{The sample mean for student housing is \$611.63 and the sample standard deviation is \$132.85. Construct a 95\% confidence interval for the population mean and evaluate the hypotheses of Exercise~\ref{htForHousingExpenseForCommunityCollege650}.}
+The standard error associated with the mean may be estimated using the sample standard deviation divided by the square root of the sample size. Recall that $n=75$ students were sampled.
+$$ SE = \frac{s}{\sqrt{n}} = \frac{132.85}{\sqrt{75}} = 15.34 $$
+You showed in Exercise~\ref{normalDistCondForHousingExpenseForCommunityCollege650} that the normal model may be applied to the sample mean. This ensures a 95\% confidence interval may be accurately constructed:
+$$\bar{x}\ \pm\ z^{\star} SE \quad\to\quad 611.63\ \pm\ 1.96 \times  15.34 \quad \to \quad (581.56, 641.70) $$
+Because the null value \$650 is not in the confidence interval, a true mean of \$650 is implausible and we reject the null hypothesis. The data provide statistically significant evidence that the actual average housing expense is less than \$650 per month.
+\end{example}
+
+\subsection{Decision errors}
+
+\index{hypothesis testing!decision errors|(}
+
+Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, we can make a wrong decision in statistical hypothesis tests. However, the difference is that we have the tools necessary to quantify how often we make such errors.
+
+There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized in Table~\ref{fourHTScenarios}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l l c c}
+& & \multicolumn{2}{c}{\textbf{Test conclusion}} \\
+  \cline{3-4}
+\vspace{-3.7mm} \\
+& & do not reject $H_0$ &  reject $H_0$ in favor of $H_A$ \\
+  \cline{2-4}
+\vspace{-3.7mm} \\
+& $H_0$ true & okay &  Type~1 Error \\
+\raisebox{1.5ex}{\textbf{Truth}} & $H_A$ true & Type 2 Error & okay \\
+  \cline{2-4}
+\end{tabular}
+\caption{Four different scenarios for hypothesis tests.}
+\label{fourHTScenarios}
+\end{table}
+
+A \term{Type~1 Error} is rejecting the null hypothesis when $H_0$ is actually true. A \term{Type~2 Error} is failing to reject the null hypothesis when the alternative is actually true.
+
+\begin{exercise} \label{whatAreTheErrorTypesInUSCourts}
+In a US court, the defendant is either innocent ($H_0$) or  guilty ($H_A$). What does a Type~1 Error represent in this context? What does a Type 2 Error represent? Table~\ref{fourHTScenarios} may be useful.\footnote{If the court makes a Type~1 Error, this means the defendant is innocent ($H_0$ true) but wrongly convicted. A Type 2 Error means the court failed to reject $H_0$ (i.e. failed to convict the person) when she was in fact guilty ($H_A$ true).}
+\end{exercise}
+
+\begin{exercise} \label{howToReduceType1ErrorsInUSCourts}
+How could we reduce the Type~1 Error rate in US courts? What influence would this have on the Type 2 Error rate?\footnote{To lower the Type~1 Error rate, we might raise our standard for conviction from ``beyond a reasonable doubt'' to ``beyond a conceivable doubt'' so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type~2 Errors.}
+\end{exercise}
+
+\begin{exercise} \label{howToReduceType2ErrorsInUSCourts}
+How could we reduce the Type~2 Error rate in US courts? What influence would this have on the Type~1 Error rate?\footnote{To lower the Type~2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from ``beyond a reasonable doubt'' to ``beyond a little doubt''. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type~1 Error rate.}
+\end{exercise}
+
+\index{hypothesis testing!decision errors|)}
+
+Exercises~\ref{whatAreTheErrorTypesInUSCourts}-\ref{howToReduceType2ErrorsInUSCourts} provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.
+
+Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless we have strong evidence. But what precisely does \emph{strong evidence} mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5\% of the time. This corresponds to a \term{significance level}\index{hypothesis testing!significance level} of 0.05. We often write the significance level using $\alpha$\marginpar[\raggedright\vspace{-4mm}
+
+$\alpha$\\\footnotesize significance\\level of a\\hypothesis test]{\raggedright\vspace{-4mm}
+
+$\alpha$\\\footnotesize significance\\level of a\\hypothesis test} (the Greek letter \emph{alpha}\index{Greek!alpha@alpha ($\alpha$)}): $\alpha = 0.05$. We discuss the appropriateness of different significance levels in Section~\ref{significanceLevel}.
+
+If we use a 95\% confidence interval to test a hypothesis where the null hypothesis is true, we will make an error whenever the point estimate is at least 1.96 standard errors away from the population parameter. This happens about 5\% of the time (2.5\% in each tail). Similarly, using a 99\% confidence interval to evaluate a hypothesis is equivalent to a significance level of $\alpha = 0.01$.
+
+A confidence interval is, in one sense, simplistic in the world of hypothesis tests. Consider the following two scenarios:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The null value (the parameter value under the null hypothesis) is in the 95\% confidence interval but just barely, so we would not reject $H_0$. However, we might like to somehow say, quantitatively, that it was a close decision.
+\item The null value is very far outside of the interval, so we reject $H_0$. However, we want to communicate that, not only did we reject the null hypothesis, but it wasn't even close. Such a case is depicted in Figure~\ref{whyWeWantPValue}.
+\end{itemize}
+In Section~\ref{pValue}, we introduce a tool called the \emph{p-value} that will be helpful in these cases. The p-value method also extends to hypothesis tests where confidence intervals cannot be easily constructed or applied.
+
+\begin{figure}[hht]
+\centering
+\includegraphics[width=0.75\textwidth]{ch_inference_foundations/figures/whyWeWantPValue/whyWeWantPValue}
+\caption{It would be helpful to quantify the strength of the evidence against the null hypothesis. In this case, the evidence is extremely strong.}
+\label{whyWeWantPValue}
+\end{figure}
+
+
+\subsection{Formal testing using p-values}
+\label{pValue}
+
+\index{hypothesis testing!p-value|(}
+
+The p-value is a way of quantifying the strength of the evidence against the null hypothesis and in favor of the alternative. Formally the \emph{p-value} is a conditional probability.
+
+\begin{termBox}{\tBoxTitle{p-value}
+The \term{p-value}\index{hypothesis testing!p-value|textbf} is the probability of observing data at least as favorable to the alternative hypothesis as our current data set, if the null hypothesis is true. We typically use a summary statistic of the data, in this chapter the sample mean, to help compute the p-value and evaluate the hypotheses.}
+\end{termBox}
+
+\index{data!school sleep|(}
+
+
+\begin{exercise} \label{skepticalPerspOfRuralSchoolSleepExercise}
+A poll by the National Sleep Foundation found that college students average about 7 hours of sleep per night. Researchers at a rural school are interested in showing that students at their school sleep longer than seven hours on average, and they would like to demonstrate this using a sample of students. What would be an appropriate skeptical position for this research?\footnote{A skeptic would have no reason to believe that sleep patterns at this school are different than the sleep patterns at another school.}
+\end{exercise}
+
+We can set up the null hypothesis for this test as a skeptical perspective: the students at this school average 7 hours of sleep per night. The alternative hypothesis takes a new form reflecting the interests of the research: the students average more than 7 hours of sleep. We can write these hypotheses as
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] $\mu = 7$.
+\item[$H_A$:] $\mu > 7$.
+\end{itemize}
+Using $\mu > 7$ as the alternative is an example of a \term{one-sided} hypothesis test. In this investigation, there is no apparent interest in learning whether the mean is less than 7~hours.\footnote{This is entirely based on the interests of the researchers. Had they been only interested in the opposite case -- showing that their students were actually averaging fewer than seven hours of sleep but not interested in showing more than 7 hours -- then our setup would have set the alternative as $\mu < 7$.} Earlier we encountered a \term{two-sided} hypothesis where we looked for any clear difference, greater than or less than the null value.
+
+Always use a two-sided test unless it was made clear prior to data collection that the test should be one-sided. Switching a two-sided test to a one-sided test after observing the data is dangerous because it can inflate the Type~1 Error rate. 
+
+\begin{tipBox}{\tipBoxTitle{One-sided and two-sided tests}
+If the researchers are only interested in showing an increase or a decrease, but not both, use a one-sided test. If the researchers would be interested in any difference from the null value -- an increase or decrease -- then the test should be two-sided.\vspace{0.5mm}}
+\end{tipBox}
+
+\begin{tipBox}{\tipBoxTitle{Always write the null hypothesis as an equality}
+We will find it most useful if we always list the null hypothesis as an equality (e.g. $\mu = 7$) while the alternative always uses an inequality (e.g. $\mu\neq7$, $\mu>7$, or $\mu<7$).}
+\end{tipBox}
+
+The researchers at the rural school conducted a simple random sample of $n=110$ students on campus. They found that these students averaged 7.42 hours of sleep and the standard deviation of the amount of sleep for the students was 1.75 hours. A histogram of the sample is shown in Figure~\ref{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}.
+
+\begin{figure}
+\centering
+\includegraphics[height=55mm]{ch_inference_foundations/figures/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
+\caption{Distribution of a night of sleep for 110 college students. These data are moderately skewed.\index{skew!example: moderate}}
+\label{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
+\end{figure}
+
+Before we can use a normal model for the sample mean or compute the standard error of the sample mean, we must verify conditions. (1)~Because this is a simple random sample from less than 10\% of the student body, the observations are independent. (2)~The sample size in the sleep study is sufficiently large since it is greater than 30. (3)~The data show moderate skew in Figure~\ref{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours} and the presence of a couple of outliers. This skew and the outliers (which are not too extreme) are acceptable for a sample size of $n=110$. With these conditions verified, the normal model can be safely applied to $\bar{x}$ and the estimated standard error will be very accurate.
+
+\begin{exercise} \label{findSEOfFirstSleepStudyCheckingGreaterThan7Hours}
+What is the standard deviation associated with $\bar{x}$? That is, estimate the standard error of $\bar{x}$.\footnote{The standard error can be estimated from the sample standard deviation and the sample size: $SE_{\bar{x}} = \frac{s_x}{\sqrt{n}} = \frac{1.75}{\sqrt{110}} = 0.17$.}
+\end{exercise}
+
+The hypothesis test will be evaluated using a significance level of $\alpha = 0.05$. We want to consider the data under the scenario that the null hypothesis is true. In this case, the sample mean is from a distribution that is nearly normal and has mean 7 and standard deviation of about 0.17. Such a distribution is shown in Figure~\ref{pValueOneSidedSleepStudy}.
+
+\begin{figure}[hht]
+   \centering
+   \includegraphics[width=0.73\textwidth]{ch_inference_foundations/figures/pValueOneSidedSleepStudy/pValueOneSidedSleepStudy}
+   \caption{If the null hypothesis is true, then the sample mean $\bar{x}$ came from this nearly normal distribution. The right tail describes the probability of observing such a large sample mean if the null hypothesis is true.}
+   \label{pValueOneSidedSleepStudy}
+\end{figure}
+
+The shaded tail in Figure~\ref{pValueOneSidedSleepStudy} represents the chance of observing such a large mean, conditional on the null hypothesis being true. That is, the shaded tail represents the p-value. We shade all means larger than our sample mean, $\bar{x} = 7.42$, because they are more favorable to the alternative hypothesis than the observed mean.
+
+We compute the p-value by finding the tail area of this normal distribution, which we learned to do in Section~\ref{normalDist}. First compute the Z score of the sample mean, $\bar{x} = 7.42$:
+\begin{eqnarray*}
+Z = \frac{\bar{x} - \text{null value}}{SE_{\bar{x}}} = \frac{7.42 - 7}{0.17} = 2.47
+\end{eqnarray*}
+Using the normal probability table, the lower unshaded area is found to be 0.993. Thus the shaded area is $1-0.993 = 0.007$. {\em If the null hypothesis is true, the probability of observing such a large sample mean for a sample of 110 students is only 0.007.}\index{p-value!interpretation example} That is, if the null hypothesis is true, we would not often see such a large mean.
+
+We evaluate the hypotheses by comparing the p-value to the significance level. Because the p-value is less than the significance level (p-value $=0.007 < 0.05=\alpha$), we reject the null hypothesis. What we observed is so unusual with respect to the null hypothesis that it casts serious doubt on $H_0$ and provides strong evidence favoring $H_A$.
+
+\begin{termBox}{\tBoxTitle{p-value as a tool in hypothesis testing}
+The p-value quantifies how strongly the data favor $H_A$ over $H_0$. A small p-value (usually $<0.05$) corresponds to sufficient evidence to reject $H_0$ in favor of $H_A$.}
+\index{hypothesis testing!p-value|)}
+\end{termBox}
+
+\begin{tipBox}{\tipBoxTitle{It is useful to first draw a picture to find the p-value}
+It is useful to draw a picture of the distribution of $\bar{x}$ as though $H_0$ was true (i.e. $\mu$ equals the null value), and shade the region (or regions) of sample means that are at least as favorable to the alternative hypothesis. These shaded regions represent the p-value.}
+\end{tipBox}
+
+The ideas below review the process of evaluating hypothesis tests with p-values:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The null hypothesis represents a skeptic's position or a position of no difference. We reject this position only if the evidence strongly favors $H_A$.
+\item A small p-value means that if the null hypothesis is true, there is a low probability of seeing a point estimate at least as extreme as the one we saw. We interpret this as strong evidence in favor of the alternative.
+\item We reject the null hypothesis if the p-value is smaller than the significance level, $\alpha$, which is usually 0.05. Otherwise, we fail to reject $H_0$.
+\item We should always state the conclusion of the hypothesis test in plain language so non-statisticians can also understand the results.
+\end{itemize}
+
+The p-value is constructed in such a way that we can directly compare it to the significance level ($\alpha$) to determine whether or not to reject $H_0$. This method ensures that the Type~1 Error rate does not exceed the significance level standard. 
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=0.9\textwidth]{ch_inference_foundations/figures/pValueOneSidedSleepStudyExplained/pValueOneSidedSleepStudyExplained}
+   \caption{To identify the p-value, the distribution of the sample mean is considered as if the null hypothesis was true. Then the p-value is defined and computed as the probability of the observed $\bar{x}$ or an $\bar{x}$ even more favorable to $H_A$ under this distribution.}
+   \label{pValueOneSidedSleepStudyExplained}
+\end{figure}
+
+\begin{exercise}
+If the null hypothesis is true, how often should the p-value be less than 0.05?\footnote{About 5\% of the time. If the null hypothesis is true, then the data only has a 5\% chance of being in the 5\% of data most favorable to $H_A$.}
+\index{data!school sleep|)}
+\end{exercise}
+
+\begin{exercise}
+Suppose we had used a significance level of 0.01 in the sleep study. Would the evidence have been strong enough to reject the null hypothesis? (The p-value was 0.007.) What if the significance level was $\alpha = 0.001$? \footnote{We reject the null hypothesis whenever $p$-$value < \alpha$. Thus, we would still reject the null hypothesis if $\alpha = 0.01$ but not if the significance level had been $\alpha = 0.001$.}
+\end{exercise}
+
+\begin{exercise} \label{ebayAmazonOneSidedTestExercise}
+\index{data!mario\_kart|(}
+Ebay might be interested in showing that buyers on its site tend to pay less than they would for the corresponding new item on Amazon. We'll research this topic for one particular product: a video game called \emph{Mario Kart} for the Nintendo Wii. During early October 2009, Amazon sold this game for \$46.99. Set up an appropriate (one-sided!) hypothesis test to check the claim that Ebay buyers pay less during auctions at this same time.\footnote{The skeptic would say the average is the same on Ebay, and we are interested in showing the average price is lower.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] The average auction price on Ebay is equal to (or more than) the price on Amazon. We write only the equality in the statistical notation: $\mu_{ebay} = 46.99$.
+\item[$H_A$:] The average price on Ebay is less than the price on Amazon, $\mu_{ebay} < 46.99$.
+\end{itemize}}
+\end{exercise}
+
+
+\begin{exercise} \label
+{exerciseFor52EbayAuctionsToExamineMarioKartLessExpensiveThanAmazonConditions}
+During early October, 2009, 52 Ebay auctions were recorded for \emph{Mario Kart}.\footnote{These data were collected by OpenIntro staff.} The total prices for the auctions are presented using a histogram in Figure~\ref{ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}, and we may like to apply the normal model to the sample mean. Check the three conditions required for applying the normal model: (1)~independence, (2)~at~least 30 observations, and (3)~the data are not strongly skewed.\footnote{(1) The independence condition is unclear. \emph{We will make the assumption that the observations are independent, which we should report with any final results.} (2) The sample size is sufficiently large: $n =52 \geq 30$. (3) The data distribution is not strongly skewed; it is approximately symmetric.}
+\end{exercise}
+
+\begin{figure}
+   \centering
+   \includegraphics[width=0.68\textwidth]{ch_inference_foundations/figures/ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise/ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}
+   \caption{A histogram of the total auction prices for 52 Ebay auctions.}
+   \label{ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}
+\end{figure}
+
+\begin{example}{The average sale price of the 52 Ebay auctions for \emph{Wii Mario Kart} was \$44.17 with a standard deviation of \$4.15. Does this provide sufficient evidence to reject the null hypothesis in Exercise~\ref{ebayAmazonOneSidedTestExercise}? Use a significance level of $\alpha = 0.01$.}
+The hypotheses were set up and the conditions were checked in Exercises~\ref{ebayAmazonOneSidedTestExercise} and~\ref{exerciseFor52EbayAuctionsToExamineMarioKartLessExpensiveThanAmazonConditions}. The next step is to find the standard error of the sample mean and produce a sketch to help find the p-value.
+\begin{eqnarray*}
+SE_{\bar{x}} = s/\sqrt{n} = 4.15/\sqrt{52} = 0.5755
+\end{eqnarray*}
+\begin{center}
+\includegraphics[height=35mm]{ch_inference_foundations/figures/pVForEbayAmazonComparison/pVForEbayAmazonComparison}
+\end{center}
+Because the alternative hypothesis says we are looking for a smaller mean, we shade the lower tail. We find this shaded area by using the Z score and normal probability table: $Z = \frac{44.17 - 46.99}{0.5755} = -4.90$, which has area less than 0.0002. The area is so small we cannot really see it on the picture. This lower tail area corresponds to the p-value.
+
+Because the p-value is so small -- specifically, smaller than $\alpha = 0.01$ -- this provides sufficiently strong evidence to reject the null hypothesis in favor of the alternative. The data provide statistically significant evidence that the average price on Ebay is lower than Amazon's asking price.
+\index{data!mario\_kart|)}
+\end{example}
+
+\subsection{Two-sided hypothesis testing with p-values}
+\label{twoSidedTestsWithPValues}
+
+\index{data!school sleep|(}
+
+We now consider how to compute a p-value for a two-sided test. In one-sided tests, we shade the single tail in the direction of the alternative hypothesis. For example, when the alternative had the form $\mu > 7$, then the p-value was represented by the upper tail (Figure~\ref{pValueOneSidedSleepStudyExplained}). When the alternative was $\mu < 46.99$, the p-value was the lower tail (Exercise~\ref{ebayAmazonOneSidedTestExercise}). In a two-sided test, \emph{we shade two tails} since evidence in either direction is favorable to $H_A$.
+
+\begin{exercise} \label{2ndSchSleepHypSetupExercise}
+Earlier we talked about a research group investigating whether the students at their school slept longer than 7 hours each night. Let's consider a second group of researchers who want to evaluate whether the students at their college differ from the norm of 7 hours. Write the null and alternative hypotheses for this investigation.\footnote{Because the researchers are interested in any difference, they should use a two-sided setup: $H_0: \mu = 7$, $H_A: \mu \neq 7$.}
+\end{exercise}
+
+\begin{example}{The second college randomly samples 72 students and finds a mean of $\bar{x} = 6.83$ hours and a standard deviation of $s=1.8$ hours. Does this provide strong evidence against $H_0$ in Exercise~\ref{2ndSchSleepHypSetupExercise}? Use a significance level of $\alpha=0.05$.}
+First, we must verify assumptions. (1) A simple random sample of less than 10\% of the student body means the observations are independent. (2) The sample size is 72, which is greater than 30. (3) Based on the earlier distribution and what we already know about college student sleep habits, the distribution is probably not strongly~skewed.
+
+Next we can compute the standard error ($SE_{\bar{x}} = \frac{s}{\sqrt{n}} = 0.21$) of the estimate and create a picture to represent the p-value, shown in Figure~\ref{2ndSchSleepHTExample}. Both tails are shaded. An estimate of 7.17 or more provides at least as strong of evidence against the null hypothesis and in favor of the alternative as the observed estimate, $\bar{x} = 6.83$.
+
+We can calculate the tail areas by first finding the lower tail corresponding to $\bar{x}$:
+\begin{eqnarray*}
+Z = \frac{6.83 - 7.00}{0.21} = -0.81 \quad\stackrel{table}{\rightarrow}\quad \text{left tail}=0.2090
+\end{eqnarray*}
+Because the normal model is symmetric, the right tail will have the same area as the left tail. The p-value is found as the sum of the two shaded tails:
+\begin{eqnarray*}
+\text{p-value} = \text{left tail} + \text{right tail} = 2\times(\text{left tail}) = 0.4180
+\end{eqnarray*}
+This p-value is relatively large (larger than $\alpha=0.05$), so we should not reject $H_0$. That is, if $H_0$ is true, it would not be very unusual to see a sample mean this far from 7 hours simply due to sampling variation. Thus, we do not have sufficient evidence to conclude that the mean is different than 7 hours.
+
+\index{data!school sleep|)}
+
+\begin{figure}
+   \centering
+   \includegraphics[width=0.9\textwidth]{ch_inference_foundations/figures/2ndSchSleepHTExample/2ndSchSleepHTExample}
+   \caption{$H_A$ is two-sided, so \emph{both} tails must be counted for the p-value.}
+   \label{2ndSchSleepHTExample}
+\end{figure}
+
+\end{example}
+
+\begin{example}{It is never okay to change two-sided tests to one-sided tests after observing the data. In this example we explore the consequences of ignoring this advice. Using $\alpha=0.05$, we show that freely switching from two-sided tests to one-sided tests will cause us to make twice as many Type~1 Errors as intended.} \label{swappingHypAfterDataDoublesType1ErrorRate}
+Suppose the sample mean was larger than the null value, $\mu_0$ (e.g. $\mu_0$ would represent~7 if $H_0$:~$\mu = 7$). Then if we can flip to a one-sided test, we would use $H_A$: $\mu > \mu_0$. Now if we obtain any observation with a Z score greater than 1.65, we would reject $H_0$. If the null hypothesis is true, we incorrectly reject the null hypothesis about 5\% of the time when the sample mean is above the null value, as shown in Figure~\ref{type1ErrorDoublingExampleFigure}.
+
+Suppose the sample mean was smaller than the null value. Then if we change to a one-sided test, we would use $H_A$: $\mu < \mu_0$. If $\bar{x}$ had a Z score smaller than -1.65, we would reject $H_0$. If the null hypothesis is true, then we would observe such a case about 5\% of the time.
+
+By examining these two scenarios, we can determine that we will make a Type~1 Error $5\%+5\%=10\%$ of the time if we are allowed to swap to the ``best'' one-sided test for the data. This is twice the error rate we prescribed with our significance level: $\alpha=0.05$ (!).
+
+\begin{figure}
+   \centering
+   \includegraphics[width=0.7\textwidth]{ch_inference_foundations/figures/type1ErrorDoublingExampleFigure/type1ErrorDoublingExampleFigure}
+   \caption{The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in Example~\ref{swappingHypAfterDataDoublesType1ErrorRate} when $\alpha = 0.05$.}
+   \label{type1ErrorDoublingExampleFigure}
+\end{figure}
+
+\end{example}
+
+\begin{caution}{One-sided hypotheses are allowed only \emph{before} seeing data}
+{After observing data, it is tempting to turn a two-sided test into a one-sided test. Avoid this temptation. Hypotheses must be set up \emph{before} observing the data. If~they are not, the test must be two-sided.}
+\end{caution}
+
+\subsection{Choosing a significance level}
+\label{significanceLevel}
+
+\index{hypothesis testing!significance level|(}
+\index{significance level|(}
+
+Choosing a significance level for a test is important in many contexts, and the traditional level is 0.05. However, it is often helpful to adjust the significance level based on the application. We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
+
+If making a Type~1 Error is dangerous or especially costly, we should choose a small significance level (e.g. 0.01). Under this scenario we want to be very cautious about rejecting the null hypothesis, so we demand very strong evidence favoring $H_A$ before we would reject $H_0$.
+
+If a Type 2 Error is relatively more dangerous or much more costly than a Type~1 Error, then we should choose a higher significance level (e.g. 0.10). Here we want to be cautious about failing to reject $H_0$ when the null is actually false.  We will discuss this particular case in greater detail in Section~\ref{sampleSizeAndPower}.
+
+\begin{tipBox}{\tipBoxTitle[]{Significance levels should reflect consequences of errors}
+The significance level selected for a test should reflect the consequences associated with Type~1 and Type 2 Errors.}
+\end{tipBox}
+
+\begin{example}{A car manufacturer is considering a higher quality but more expensive supplier for window parts in its vehicles. They sample a number of parts from their current supplier and also parts from the new supplier. They decide that if the high quality parts will last more than 12\% longer, it makes financial sense to switch to this more expensive supplier. Is there good reason to modify the significance level in such a hypothesis test?}
+The null hypothesis is that the more expensive parts last no more than 12\% longer while the alternative is that they do last more than 12\% longer. This decision is just one of the many regular factors that have a marginal impact on the car and company. A significance level of 0.05 seems reasonable since neither a Type~1 or Type 2 error should be dangerous or (relatively) much more expensive.
+\end{example}
+
+\begin{example}{The same car manufacturer is considering a slightly more expensive supplier for parts related to safety, not windows. If the durability of these safety components is shown to be better than the current supplier, they will switch manufacturers. Is there good reason to modify the significance level in such an evaluation?}
+The null hypothesis would be that the suppliers' parts are equally reliable. Because safety is involved, the car company should be eager to switch to the slightly more expensive manufacturer (reject $H_0$) even if the evidence of increased safety is only moderately strong. A slightly larger significance level, such as $\alpha=0.10$, might be appropriate.
+\end{example}
+
+\begin{exercise}
+A part inside of a machine is very expensive to replace. However, the machine usually functions properly even if this part is broken, so the part is replaced only if we are extremely certain it is broken based on a series of measurements. Identify appropriate hypotheses for this test (in plain language) and suggest an appropriate significance level.\footnote{Here the null hypothesis is that the part is not broken, and the alternative is that it is broken. If we don't have sufficient evidence to reject $H_0$, we would not replace the part. It sounds like failing to fix the part if it is broken ($H_0$ false, $H_A$ true) is not very problematic, and replacing the part is expensive. Thus, we should require very strong evidence against $H_0$ before we replace the part. Choose a small significance level, such as $\alpha=0.01$.}
+\end{exercise}
+
+\index{significance level|)}
+\index{hypothesis testing!significance level|)}
+\index{hypothesis testing|)}
+
+
+%__________________
+\section{Examining the Central Limit Theorem}
+\label{cltSection}
+
+\index{Central Limit Theorem|(}
+
+The normal model for the sample mean tends to be very good when the sample consists of at least 30 independent observations and the population data are not strongly skewed. The Central Limit Theorem provides the theory that allows us to make this assumption.
+
+\begin{termBox}{\tBoxTitle{Central Limit Theorem, informal definition}
+The distribution of $\bar{x}$ is approximately normal. The approximation can be poor if the sample size is small, but it improves with larger sample sizes.}
+\end{termBox}
+
+The Central Limit Theorem states that when the sample size is small, the normal approximation may not be very good. However, as the sample size becomes large, the normal approximation improves. We will investigate three cases to see roughly when the approximation is reasonable.
+
+We consider three data sets: one from a \emph{uniform} distribution, one from an \emph{exponential} distribution, and the other from a \emph{log-normal} distribution. These distributions are shown in the top panels of Figure~\ref{cltSimulations}. The uniform distribution is symmetric, the exponential distribution may be considered as having moderate skew since its right tail is relatively short (few outliers), and the log-normal distribution is strongly skewed and will tend to produce more apparent outliers.\index{skew!example: moderate}\index{skew!example: strong}
+
+\begin{figure}
+   \centering
+   \includegraphics[width=\textwidth]{ch_inference_foundations/figures/cltSimulations/cltSimulations}
+   \caption{Sampling distributions for the mean at different sample sizes and for three different distributions. The dashed red lines show normal distributions.}
+   \label{cltSimulations}
+\end{figure}
+
+The left panel in the $n=2$ row represents the sampling distribution of $\bar{x}$ if it is the sample mean of two observations from the uniform distribution shown. The dashed line represents the closest approximation of the normal distribution. Similarly, the center and right panels of the $n=2$ row represent the respective distributions of $\bar{x}$ for data from exponential and log-normal distributions.
+
+\begin{exercise}
+Examine the distributions in each row of Figure~\ref{cltSimulations}. What do you notice about the normal approximation for each sampling distribution as the sample size becomes larger?\footnote{The normal approximation becomes better as larger samples are used.}
+\end{exercise}
+
+\begin{example}{Would the normal approximation be good in all applications where the sample size is at least 30?}
+Not necessarily. For example, the normal approximation for the log-normal example is questionable for a sample size of 30. Generally, the more skewed a population distribution or the more common the frequency of outliers, the larger the sample required to guarantee the distribution of the sample mean is nearly normal.
+\end{example}
+
+\begin{tipBox}{\tipBoxTitle{With larger $n$, the sampling distribution of $\bar{x}$ becomes more normal}
+As the sample size increases, the normal model for $\bar{x}$ becomes more reasonable. We can also relax our condition on skew when the sample size is very large.}
+\end{tipBox}
+
+We discussed in Section~\ref{seOfTheMean} that the sample standard deviation, $s$, could be used as a substitute of the population standard deviation, $\sigma$, when computing the standard error. This estimate tends to be reasonable when $n\geq30$. We will encounter alternative distributions for smaller sample sizes in Chapters~\ref{inferenceForNumericalData} and~\ref{inferenceForCategoricalData}.
+
+\begin{example}{Figure~\ref{pokerProfitsCanApplyNormalToSampMean} shows a histogram of 50 observations. These represent winnings and losses from 50 consecutive days of a professional poker player. Can the normal approximation be applied to the sample mean, 90.69?}
+We should consider each of the required conditions.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[(1)] These are referred to as \term{time series data}, because the data arrived in a particular sequence. If the player wins on one day, it may influence how she plays the next. To make the assumption of independence we should perform careful checks on such data. While the supporting analysis is not shown, no evidence was found to indicate the observations are not independent.
+\item[(2)] The sample size is 50, satisfying the sample size condition.
+\item[(3)] There are two outliers, one very extreme, which suggests the data are very strongly skewed or very distant outliers may be common for this type of data. Outliers can play an important role and affect the distribution of the sample mean and the estimate of the standard error.
+\end{itemize}
+Since we should be skeptical of the independence of observations and the very extreme upper outlier poses a challenge, we should not use the normal model for the sample mean of these 50 observations. If we can obtain a much larger sample, perhaps several hundred observations, then the concerns about skew and outliers would no longer apply.
+\end{example}
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[height=58mm]{ch_inference_foundations/figures/pokerProfitsCanApplyNormalToSampMean/pokerProfitsCanApplyNormalToSampMean}
+   \caption{Sample distribution of poker winnings. These data include some very clear outliers. These are problematic when considering the normality of the sample mean. For example, outliers are often an indicator of very strong skew\index{skew!example: very strong}.}
+   \label{pokerProfitsCanApplyNormalToSampMean}
+\end{figure}
+
+\begin{caution}
+{Examine data structure when considering independence}
+{Some data sets are collected in such a way that they have a natural underlying structure between observations, e.g. when observations occur consecutively. Be especially cautious about independence assumptions regarding such data sets.}
+\end{caution}
+
+\begin{caution}
+{Watch out for strong skew and outliers}
+{Strong skew is often identified by the presence of clear outliers. If a data set has prominent outliers, or such observations are somewhat common for the type of data under study, then it is useful to collect a sample with many more than 30 observations if the normal model will be used for $\bar{x}$. There are no simple guidelines for what sample size is big enough for all situations, so proceed with caution when working in the presence of strong skew or more extreme outliers.}
+\index{skew!strongly skewed guideline}
+\index{Central Limit Theorem|)}
+\end{caution}
+
+
+%__________________
+\section{Inference for other estimators}
+\label{aFrameworkForInference}
+
+The sample mean is not the only point estimate for which the sampling distribution is nearly normal. For example, the sampling distribution of sample proportions closely resembles the normal distribution when the sample size is sufficiently large. In this section, we introduce a number of examples where the normal approximation is reasonable for the point estimate. Chapters~\ref{inferenceForNumericalData} and~\ref{inferenceForCategoricalData} will revisit each of the point estimates you see in this section along with some other new statistics.
+
+We make another important assumption about each point estimate encountered in this section: the estimate is unbiased. A point estimate is \term{unbiased} if the sampling distribution of the estimate is centered at the parameter it estimates. That is, an unbiased estimate does not naturally over or underestimate the parameter. Rather, it tends to provide a ``good'' estimate. The sample mean is an example of an unbiased point estimate, as are each of the examples we introduce in this section.
+
+Finally, we will discuss the general case where a point estimate may follow some distribution other than the normal distribution. We also provide guidance about how to handle scenarios where the statistical techniques you are familiar with are insufficient for the problem at hand.
+
+
+\subsection{Confidence intervals for nearly normal point estimates}
+
+\index{confidence interval!using normal model|(}
+
+In Section~\ref{confidenceIntervals}, we used the point estimate $\bar{x}$ with a standard error $SE_{\bar{x}}$ to create a 95\% confidence interval for the population mean:
+\begin{align}
+\bar{x}\ \pm\ 1.96 \times SE_{\bar{x}}
+\label{95PercCIForMeanInGeneralizingSection}
+\end{align}
+We constructed this interval by noting that the sample mean is within 1.96 standard errors of the actual mean about 95\% of the time. This same logic generalizes to any unbiased point estimate that is nearly normal. We may also generalize the confidence level by using a place-holder $z^{\star}$.
+
+\begin{termBox}{\tBoxTitle{General confidence interval for the normal sampling distribution case}\label{generalConfidenceIntervalTermBox}%
+A confidence interval based on an unbiased and nearly normal point estimate is
+\begin{eqnarray}
+\text{point estimate}\ \pm\ z^{\star}SE
+\label{95PercGeneralCIInGeneralizingSection}
+\end{eqnarray}
+where $z^{\star}$ is selected to correspond to the confidence level, and $SE$ represents the standard error. The value $z^{\star}SE$ is called the \emph{margin of error}\index{margin of error}.}
+\end{termBox}
+
+Generally the standard error for a point estimate is estimated from the data and computed using a formula. For example, the standard error for the sample mean is
+\begin{eqnarray*}
+SE_{\bar{x}} = \frac{s}{\sqrt{n}}
+\end{eqnarray*}
+In this section, we provide the computed standard error for each example and exercise without detailing where the values came from. In future chapters, you will learn to fill in these and other details for each situation.
+
+\begin{example}{In Exercise~\vref{pointEstimateOfDifferentNetTimesBetweenGender}, we computed a point estimate for the average difference in run times between men and women: $\bar{x}_{women}-\bar{x}_{men}=14.48$ minutes. This point estimate is associated with a nearly normal distribution with standard error $SE=2.78$ minutes. What is a reasonable 95\% confidence interval for the difference in average run times?}
+\label{confIntervalForDifferenceOfRunTimeBetweenGenders}
+The normal approximation is said to be valid, so we apply Equation~\eqref{95PercGeneralCIInGeneralizingSection}:
+\begin{eqnarray*}
+\text{point estimate}\ \pm\ z^{\star} SE
+	\quad\rightarrow\quad 14.48\ \pm\ 1.96\times 2.78
+	\quad\rightarrow\quad (9.03, 19.93)
+\end{eqnarray*}
+Thus, we are 95\% confident that the men were, on average, between 9.03 and 19.93 minutes faster than women in the 2012 Cherry Blossom Run. That is, the actual average difference is plausibly between 9.03 and 19.93 minutes with 95\% confidence.
+\end{example}
+%library(openintro); library(xtable); data(run10); data(run10Samp); (x <- by(run10Samp$time, run10Samp$gender, mean)); diff(x); s <- by(run10Samp$time, run10Samp$gender, sd); n <- by(run10Samp$time, run10Samp$gender, length); sqrt(sum(s^2/n))
+
+
+\begin{example}{Does Example~\ref{confIntervalForDifferenceOfRunTimeBetweenGenders} guarantee that if a husband and wife both ran in the race, the husband would run between 9.03 and 19.93 minutes faster than the wife?}
+Our confidence interval says absolutely nothing about individual observations. It {only} makes a statement about a plausible range of values for the \emph{average} difference between all men and women who participated in the run.
+\end{example}
+
+\begin{exercise} \label{findZFor99PercConfLevelInFrameworkForInf}
+What $z^{\star}$ would be appropriate for a 99\% confidence level? For help, see Figure~\vref{choosingZForCI}.\footnote{We seek $z^{\star}$ such that 99\% of the area under the normal curve will be between the Z scores -$z^{\star}$ and $z^{\star}$. Because the remaining 1\% is found in the tails, each tail has area 0.5\%, and we can identify -$z^{\star}$ by looking up 0.0050 in the normal probability table: $z^{\star} = 2.58$. See also Figure~\vref{choosingZForCI}.}
+\end{exercise}
+
+\begin{exercise}
+The proportion of men in the \data{run10Samp} sample is $\hat{p}=0.45$. This sample meets certain conditions that ensure $\hat{p}$ will be nearly normal, and the standard error of the estimate is $SE_{\hat{p}}=0.05$. Create a 90\% confidence interval for the proportion of participants in the 2012 Cherry Blossom Run who are men.\footnote{We use $z^{\star}=1.65$ (see Exercise~\vref{find90CIForRun10AgeExercise}), and apply the general confidence interval formula:
+\begin{eqnarray*}
+\hat{p}\ \pm\ z^{\star}SE_{\hat{p}}
+	\quad\to\quad 0.45\ \pm\ 1.65\times 0.05
+	\quad\to\quad (0.3675, 0.5325)
+\end{eqnarray*}
+Thus, we are 90\% confident that between 37\% and 53\% of the participants were men.}
+\index{confidence interval!using normal model|)}
+\end{exercise}
+
+
+\subsection{Hypothesis testing for nearly normal point estimates}
+\index{hypothesis testing!using normal model|(}
+
+Just as the confidence interval method works with many other point estimates, we can generalize our hypothesis testing methods to new point estimates. Here we only consider the p-value approach, introduced in Section~\ref{pValue}, since it is the most commonly used technique and also extends to non-normal cases.
+
+\begin{termBox}{\tBoxTitle[]{Hypothesis testing using the normal model}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item First write the hypotheses in plain language, then set them up in mathematical notation.
+\item Identify an appropriate point estimate of the parameter of interest.
+\item Verify conditions to ensure the standard error estimate is reasonable and the point estimate is nearly normal and unbiased.
+\item Compute the standard error. Draw a picture depicting the distribution of the estimate under the idea that $H_0$ is true. Shade areas representing the p-value.
+\item Using the picture and normal model, compute the \emph{test statistic} (Z score) and identify the p-value to evaluate the hypotheses. Write a conclusion in plain language.
+\end{enumerate}}
+\end{termBox}
+
+\begin{exercise} \label{fdaHypSetupForSulph}
+A drug called sulphinpyrazone was under consideration for use in reducing the death rate in heart attack patients. To determine whether the drug was effective, a set of 1,475 patients were recruited into an experiment and randomly split into two groups: a control group that received a placebo and a treatment group that received the new drug. What would be an appropriate null hypothesis? And the alternative?\footnote{The skeptic's perspective is that the drug does not work at reducing deaths in heart attack patients ($H_0$), while the alternative is that the drug does work ($H_A$).}
+\end{exercise}
+
+We can formalize the hypotheses from Exercise~\ref{fdaHypSetupForSulph} by letting $p_{control}$ and $p_{treatment}$ represent the proportion of patients who died in the control and treatment groups, respectively. Then the hypotheses can be written as
+\begin{eqnarray*}
+&&H_0: p_{control} = p_{treatment} \quad\text{(the drug doesn't work)} \quad \\
+&&H_A: p_{control} > p_{treatment} \quad\text{(the drug works)}
+\end{eqnarray*}
+or equivalently,
+\begin{eqnarray*}
+&&H_0: p_{control} - p_{treatment} = 0 \quad\text{(the drug doesn't work)} \quad \\
+&&H_A: p_{control} - p_{treatment} > 0 \quad\text{(the drug works)}
+\end{eqnarray*}
+Strong evidence against the null hypothesis and in favor of the alternative would correspond to an observed difference in death rates,
+\begin{eqnarray*}
+\text{point estimate} = \hat{p}_{control} - \hat{p}_{treatment}
+\end{eqnarray*}
+being larger than we would expect from chance alone. This difference in sample proportions represents a point estimate that is useful in evaluating the hypotheses. 
+
+\begin{example}{We want to evaluate the hypothesis setup from Exericse~\ref{fdaHypSetupForSulph} using data from the actual study.\footnote{Anturane Reinfarction Trial Research Group. 1980. Sulfinpyrazone in the prevention of sudden death after myocardial infarction. New England Journal of Medicine 302(5):250-256.} In the control group, 60 of 742 patients died. In the treatment group, 41 of 733 patients died. The sample difference in death rates can be summarized as
+\begin{eqnarray*}
+\text{point estimate} = \hat{p}_{control} - \hat{p}_{treatment} = \frac{60}{742} - \frac{41}{733} = 0.025
+\end{eqnarray*}
+This point estimate is nearly normal and is an unbiased estimate of the actual difference in death rates. The standard error of this sample difference is $SE = 0.013$. Evaluate the hypothesis test at a 5\% significance level: $\alpha=0.05$.}
+We would like to identify the p-value to evaluate the hypotheses. If the null hypothesis is true, then the point estimate would have come from a nearly normal distribution, like the one shown in Figure~\ref{sulphStudyFindPValueUsingNormalApprox}. The distribution is centered at zero since $p_{control}-p_{treatment}=0$ under the null hypothesis. Because a large positive difference provides evidence against the null hypothesis and in favor of the alternative, the upper tail has been shaded to represent the p-value. We need not shade the lower tail since this is a one-sided test: an observation in the lower tail does not support the alternative hypothesis.
+
+\begin{figure}[bt]
+   \centering
+   \includegraphics[height=37mm]{ch_inference_foundations/figures/sulphStudyFindPValueUsingNormalApprox/sulphStudyFindPValueUsingNormalApprox}
+   \caption{The distribution of the sample difference if the null hypothesis is true.}
+   \label{sulphStudyFindPValueUsingNormalApprox}
+\end{figure}
+
+The p-value can be computed by using the Z score of the point estimate and the normal probability table.
+\begin{eqnarray}
+Z = \frac{\text{point estimate} - \text{null value}}{SE_{\text{point estimate}}}
+	= \frac{0.025 - 0}{0.013} = 1.92
+\label{zScoreOfPointEstimateForSulphinpyrazoneThisIsFirstTestStatReference}
+\end{eqnarray}
+Examining $Z$ in the normal probability table, we find that the lower unshaded tail is about 0.973. Thus, the upper shaded tail representing the p-value is
+\begin{eqnarray*}
+\text{p-value} = 1-0.973 = 0.027
+\end{eqnarray*}
+Because the p-value is less than the significance level ($\alpha=0.05$), we say the null hypothesis is implausible. That is, we reject the null hypothesis in favor of the alternative and conclude that the drug is effective at reducing deaths in heart attack patients.
+\end{example}
+
+The Z score in Equation~(\ref{zScoreOfPointEstimateForSulphinpyrazoneThisIsFirstTestStatReference}) is called a \term{test statistic}. In most hypothesis tests, a test statistic is a particular data summary that is especially useful for computing the p-value and evaluating the hypothesis test. In the case of point estimates that are nearly normal, the test statistic is the Z score.
+
+\begin{termBox}{\tBoxTitle{Test statistic}
+A \emph{test statistic} is a special summary statistic that is particularly useful for evaluating a hypothesis test or identifying the p-value. When a point estimate is nearly normal, we use the Z score of the point estimate as the test statistic. In later chapters we encounter situations where other test statistics are helpful.}
+\index{hypothesis testing!using normal model|)}
+\end{termBox}
+
+
+\subsection{Non-normal point estimates}
+
+We may apply the ideas of confidence intervals and hypothesis testing to cases where the point estimate or test statistic is not necessarily normal. There are many reasons why such a situation may arise:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item the sample size is too small for the normal approximation to be valid;
+\item the standard error estimate may be poor; or
+\item the point estimate tends towards some distribution that is not the normal distribution.
+\end{itemize}
+For each case where the normal approximation is not valid, our first task is always to understand and characterize the sampling distribution of the point estimate or test statistic. Next, we can apply the general frameworks for confidence intervals and hypothesis testing to these alternative distributions.
+
+
+\subsection{When to retreat}
+\label{whenToRetreat}
+
+Statistical tools rely on conditions. When the conditions are not met, these tools are unreliable and drawing conclusions from them is treacherous. The conditions for these tools typically come in two forms.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item \textbf{The individual observations must be independent.} A random sample from less than 10\% of the population ensures the observations are independent. In experiments, we generally require that subjects are randomized into groups. If independence fails, then advanced techniques must be used, and in some such cases, inference may not be possible.
+\item \textbf{Other conditions focus on sample size and skew.} For example, if the sample size is too small, the skew too strong, or extreme outliers are present, then the normal model for the sample mean will fail.
+\end{itemize}
+Verification of conditions for statistical tools is always necessary. Whenever conditions are not satisfied for a statistical technique, there are three options. The first is to learn new methods that are appropriate for the data. The second route is to consult a statistician.\footnote{If you work at a university, then there may be campus consulting services to assist you. Alternatively, there are many private consulting firms that are also available for hire.} The third route is to ignore the failure of conditions. This last option effectively invalidates any analysis and may discredit novel and interesting findings.
+
+Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See Sections~\ref{overviewOfDataCollectionPrinciples}-\ref{experimentsSection} for basic principles of data collection.
+
+
+
+%__________________
+\section{Sample size and power (special topic)}
+\label{sampleSizeAndPower}
+
+The Type 2 Error rate and the magnitude of the error for a point estimate are controlled by the sample size. Real differences from the null value, even large ones, may be difficult to detect with small samples. If we take a very large sample, we might find a statistically significant difference but the magnitude might be so small that it is of no practical value. In this section we describe techniques for selecting an appropriate sample size based on these considerations.
+
+\subsection{Finding a sample size for a certain margin of error}
+\label{findingASampleSizeForACertainME}
+
+\index{margin of error|(}
+
+Many companies are concerned about rising healthcare costs. A company may estimate certain health characteristics of its employees, such as blood pressure, to project its future cost obligations. However, it might be too expensive to measure the blood pressure of every employee at a large company, and the company may choose to take a sample instead.
+
+\begin{example}{Blood pressure oscillates with the beating of the heart, and the systolic pressure is defined as the peak pressure when a person is at rest. The average systolic blood pressure for people in the U.S. is about 130 mmHg with a standard deviation of about 25 mmHg. How large of a sample is necessary to estimate the average systolic blood pressure with a margin of error of 4 mmHg using a 95\% confidence level?}
+\label{sampleSizeComputationForSystolicBloodPressure}
+First, we frame the problem carefully. Recall that the margin of error is the part we add and subtract from the point estimate when computing a confidence interval. The margin of error for a 95\% confidence interval estimating a mean can be written as
+\begin{align*}
+ME_{95\%} = 1.96\times SE = 1.96\times\frac{\sigma_{employee}}{\sqrt{n}}
+\end{align*}
+The challenge in this case is to find the sample size $n$ so that this margin of error is less than or equal to 4, which we write as an inequality:
+\begin{align*}
+1.96\times \frac{\sigma_{employee}}{\sqrt{n}} \leq 4
+\end{align*}
+In the above equation we wish to solve for the appropriate value of $n$, but we need a value for $\sigma_{employee}$ before we can proceed. However, we haven't yet collected any data, so we have no direct estimate! Instead, we use the best estimate available to~us: the approximate standard deviation for the U.S. population, 25. To proceed and solve for $n$, we substitute 25 for $\sigma_{employee}$:
+\begin{align*}
+1.96\times \frac{\sigma_{employee}}{\sqrt{n}} \approx 1.96\times\frac{25}{\sqrt{n}}
+	&\leq 4 \\
+1.96\times\frac{25}{4} &\leq \sqrt{n} \\
+\left(1.96\times\frac{25}{4}\right)^2 &\leq n \\
+150.06 &\leq n
+\end{align*}
+This suggests we should choose a sample size of at least 151 employees. We round up because the sample size must be \emph{greater than or equal to 150.06}.
+\end{example}
+
+A potentially controversial part of Example~\ref{sampleSizeComputationForSystolicBloodPressure} is the use of the U.S. standard deviation for the employee standard deviation. Usually the standard deviation is not known. In such cases, it is reasonable to review scientific literature or market research to make an educated guess about the standard deviation.
+
+\begin{termBox}{\tBoxTitle{Identify a sample size for a particular margin of error}
+To estimate the necessary sample size for a maximum margin of error $m$, we set up an equation to represent this relationship:
+\begin{align*}
+m \geq ME = z^{\star}\frac{\sigma}{\sqrt{n}}
+\end{align*}
+where $z^{\star}$ is chosen to correspond to the desired confidence level, and $\sigma$ is the standard deviation associated with the population. Solve for the sample size,~$n$.}
+\end{termBox}
+
+Sample size computations are helpful in planning data collection, and they require careful forethought. Next we consider another topic important in planning data collection and setting a sample size: the Type 2 Error rate.
+
+\index{margin of error|)}
+
+
+\subsection{Power and the Type 2 Error rate}
+
+Consider the following two hypotheses:
+\begin{itemize}
+\setlength{\itemsep}{0.5mm}
+\item[$H_0$:] The average blood pressure of employees is the same as the national average, $\mu = 130$.
+\item[$H_A$:] The average blood pressure of employees is different than the national average, $\mu \neq 130$.
+\end{itemize}
+Suppose the alternative hypothesis is actually true. Then we might like to know, what is the chance we make a Type 2 Error? That is, what is the chance we will fail to reject the null hypothesis even though we should reject it? The answer is not obvious! If the average blood pressure of the employees is 132 (just 2 mmHg from the null value), it might be very difficult to detect the difference unless we use a large sample size. On the other hand, it would be easier to detect a difference if the real average of employees was 140.
+
+\begin{example}{Suppose the actual employee average is 132 and we take a sample of 100 individuals. Then the true sampling distribution of $\bar{x}$ is approximately $N(132, 2.5)$ (since $SE = \frac{25}{\sqrt{100}} = 2.5$). What is the probability of successfully rejecting the null hypothesis?}
+\label{computePowerIfMuIs132AndMu0Is130}
+This problem can be divided into two normal probability questions. First, we identify what values of $\bar{x}$ would represent sufficiently strong evidence to reject $H_0$. Second, we use the hypothetical sampling distribution with center $\mu=132$ to find the probability of observing sample means in the areas we found in the first step.
+
+\textbf{Step 1.} The null distribution could be represented by $N(130, 2.5)$, the same standard deviation as the true distribution but with the null value as its center. Then we can find the two tail areas by identifying the $Z$ score corresponding to the 2.5\% tails ($\pm 1.96$), and solving for $x$ in the Z score equation:
+\begin{align*}
+-1.96 = Z_1 &= \frac{x_1 - 130}{2.5}
+	&+1.96 = Z_2 &= \frac{x_2 - 130}{2.5} \\
+x_1 &= 125.1
+	&x_2 &= 134.9
+\end{align*}
+(An equally valid approach is to recognize that $x_1$ is $1.96\times SE$ below the mean and $x_2$ is $1.96\times SE$ above the mean to compute the values.) Figure~\ref{power132And141} shows the null distribution on the left with these two dotted cutoffs.
+
+\textbf{Step 2.} Next, we compute the probability of rejecting $H_0$ if $\bar{x}$ actually came from $N(132, 2.5)$. This is the same as finding the two shaded tails for the second distribution in Figure~\ref{power132And141}. We use the Z score method:
+\begin{align*}
+&Z_{left} = \frac{125.1 - 132}{2.5} = -2.76
+	&&Z_{right} = \frac{134.9 - 132}{2.5} = 1.16 \\
+&area_{left} =0.003
+	&&area_{right} =0.123
+\end{align*}
+The probability of rejecting the null mean, if the true mean is 132, is the sum of these areas: $0.003 + 0.123 = 0.126$.
+\end{example}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{ch_inference_foundations/figures/power132And141/power132And141}
+\caption{The sampling distribution of $\bar{x}$ under two scenarios. Left: $N(130, 2.5)$. Right: $N(132, 2.5)$, and the shaded areas in this distribution represent the power of the test.}
+\label{power132And141}
+\end{figure}
+
+The probability of rejecting the null hypothesis is called the \term{power}. The power varies depending on what we suppose the truth might be. In Example~\ref{computePowerIfMuIs132AndMu0Is130}, the difference between the null value and the supposed true mean was relatively small, so the power was also small: only 0.126. However, when the truth is far from the null value, where we use the standard error as a measure of what is far, the power tends to increase.
+
+\begin{exercise}
+Suppose the true sampling distribution of $\bar{x}$ is centered at 140. That is, $\bar{x}$ comes from $N(140, 2.5)$. What would the power be under this scenario? It may be helpful to draw $N(140, 2.5)$ and shade the area representing power on Figure~\ref{power132And141}; use the same cutoff values identified in Example~\ref{computePowerIfMuIs132AndMu0Is130}.\footnote{Draw the distribution $N(140, 2.5)$, then find the area below 125.1 (about zero area) and above 134.9 (about 0.979). If the true mean is 140, the power is about 0.979.}
+\end{exercise}
+
+\begin{exercise}
+If the power of a test is 0.979 for a particular mean, what is the Type 2 Error rate for this mean?\footnote{The Type 2 Error rate represents the probability of failing to reject the null hypothesis. Since the power is the probability we do reject, the Type 2 Error rate will be $1-0.979 = 0.021$.}
+\end{exercise}
+
+\begin{exercise}
+Provide an intuitive explanation for why we are more likely to reject $H_0$ when the true mean is further from the null value.\footnote{Answers may vary a little. When the truth is far from the null value, the point estimate also tends to be far from the null value, making it easier to detect the difference and reject $H_0$.}
+\end{exercise}
+
+\subsection{Statistical significance versus practical significance}
+
+When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is \term{statistically significant}, it might not be \term{practically significant}.
+
+Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
+
+The role of a statistician in conducting a study often includes planning the size of the study. The statistician might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
+
+
+
+
+
