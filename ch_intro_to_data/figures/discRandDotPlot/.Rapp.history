@@ -1,0 +1,1079 @@
+library(UsingR)#
+library(BHH2)#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim    = 100#
+n       = length(gender)#
+group   = gender#
+var1    = outcome#
+success = "promoted"#
+sim     = matrix(NA, nrow = n, ncol = nsim)#
+n1      = 24#
+n2      = 24#
+#
+statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  return(sum(t1)/n1 - sum(t2)/n2)#
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+myPDF('discRandDotPlot.pdf', 1.1*6, 1.1*3.6, mar=c(3.6, 1, 1, 1))#
+BHH2::dotPlot(diffs, pch = 20, pch.size = 0.8, xlab = "Difference in promotion rates", axes = FALSE)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+dev.off()
+library(openintro)#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+DIFFS <- table(unique(diffs))#
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1))#
+plot(DIFFS, type="n", xlim=range(DIFFS)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(x in DIFFS){#
+	points(rep(as.numeric(names(x)), x), 1:x)#
+}#
+dev.off()
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1))#
+plot(diffs, type="n", xlim=range(DIFFS)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(x in DIFFS){#
+	points(rep(as.numeric(names(x)), x), 1:x)#
+}#
+dev.off()
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(DIFFS)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(x in DIFFS){#
+	points(rep(as.numeric(names(x)), x), 1:x)#
+}#
+dev.off()
+as.numeric(names(x))
+DIFFS
+names(x)
+x
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(DIFFS)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(DIFFS)){#
+	x <- DIFFS[i]#
+	val <- as.numeric(names(DIFFS))[i]#
+	points(rep(val, x), 1:x)#
+}#
+dev.off()
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(DIFFS)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(DIFFS)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(DIFFS)){#
+	x <- DIFFS[i]#
+	val <- as.numeric(names(DIFFS))[i]#
+	points(rep(val, x), 1:x)#
+}#
+dev.off()
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(DIFFS)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(DIFFS)){#
+	x <- DIFFS[i]#
+	val <- as.numeric(names(DIFFS))[i]#
+	points(rep(val, x), 1:x)#
+}#
+dev.off()
+c(0,max(DIFFS))
+unique(diffs)
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(DIFFS)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec)#
+}#
+dev.off()
+rec
+x
+library(openintro)#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(DIFFS)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec)#
+}#
+dev.off()
+rep(x, rec)
+library(openintro)#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(unique(sim_dist))#
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec)#
+}#
+dev.off()
+values
+sim_dist
+library(openintro)#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec)#
+}#
+dev.off()
+library(openintro)#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.6, 1, 1, 1), mgp=c(2.5,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=20, cex=0.8)#
+}#
+dev.off()
+library(openintro)#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=20, cex=0.8)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=20, cex=0.8, col=COL[1])#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=20, cex=0.8, col=COL[1])#
+}#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=19, cex=0.8, col=COL[1])#
+}#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=20, cex=1, col=COL[1])#
+}#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=20, col=COL[1])#
+}#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=19, cex=0.8, col=COL[1])#
+}#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=20, cex=0.8, col=COL[1])#
+}#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(diffs, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)))#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	points(rep(x, rec), 1:rec, pch=1, cex=0.8, col=COL[1])#
+}#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, type="n", xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', 4.5, 2.8, mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', 10, 6, mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', 10, 6, mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)), col=COL[1], cex=1.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(values)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,NA,-0.2,NA,0,NA,0.2,NA,0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 1, 1, 1), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender <- c(rep('male', 24), rep('female', 24))#
+outcome <- c(rep(c('promoted', 'not promoted'), c(21, 3)), rep(c('promoted', 'not promoted'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "promoted"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 24#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('discRandDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Difference in promotion rates", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+#
+dev.off()

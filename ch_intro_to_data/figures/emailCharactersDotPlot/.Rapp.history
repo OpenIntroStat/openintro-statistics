@@ -1,0 +1,4467 @@
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*15, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+at     <- c(0, 25000, 50000, 75000, 100000)#
+labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at, labels)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1000, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+at     <- c(0, 25000, 50000, 75000, 100000)#
+labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at, labels)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1300, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+mean(spam$num_char)
+sd(d)/7
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+at     <- c(0, 25000, 50000, 75000, 100000)#
+labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at, labels)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1800, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+email50
+email50$date
+email50$time
+sort(email50$time)
+dd <- spam[substr(spam$time, 17) %in% c("2012-01", "2012-02"),]
+dd <- spam[substr(spam$time, 1, 7) %in% c("2012-01", "2012-02"),]
+dim(dd)
+dim(spam)
+d  <- dd[sample(nrow(dd), 50),]
+set.seed(1)#
+dd <- spam[substr(spam$time, 1, 7) %in% c("2012-01", "2012-02"),]#
+d  <- dd[sample(nrow(dd), 50),]#
+plot(d$num_char, d$lines)
+set.seed(2)#
+dd <- spam[substr(spam$time, 1, 7) %in% c("2012-01", "2012-02"),]#
+d  <- dd[sample(nrow(dd), 50),]#
+plot(d$num_char, d$lines)
+save(email50, file="email50.rda")#
+prompt(email50)
+email50 <- d
+save(email50, file="email50.rda")
+prompt(email50)
+plot(d$num_char, d$lines)
+plot(email50$num_char, email50$lines)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+at     <- c(0, 25000, 50000, 75000, 100000)#
+labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at, labels)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1800, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+at     <- c(0, 25000, 50000, 75000, 100000)#
+labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at, labels)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+sum(county$income*county$pop2010)/sum(county$pop2010)
+mean(county$income)
+hist(email50$num_char)
+hist(email50$num_char, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+#hist(d, 12)
+hist(d, 12)
+cut(d, 12)
+M
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+M#
+sd(d)
+mean(email$num_char)
+14553.86/7
+stacks <- cut(d, seq(0,max(d)+5, length.out=50))
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=50)))
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=25)))
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+M#
+sd(d)#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=25)))#
+plot(0, type="n", xlab="Number of Characters")#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=25)))#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="")#
+for(i in 1:length(stacks){#
+  x <- stacks[i]#
+  strsplit(as.character(names(x)), ",")[[1]]#
+  points()#
+}
+for(i in 1:length(stacks)){#
+  x <- stacks[i]#
+  strsplit(as.character(names(x)), ",")[[1]]#
+  points()#
+}
+x
+strsplit(as.character(names(x)), ",")[[1]]
+length(stacks)
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=25)))#
+edges  <- seq(0,max(d)+5, length.out=25)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="")#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=25)))#
+edges  <- seq(0,max(d)+5, length.out=25)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+M#
+sd(d)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=25)))#
+edges  <- seq(0,max(d)+5, length.out=25)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=25)))#
+edges  <- seq(0,max(d)+5, length.out=25)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=25)))#
+edges  <- seq(0,max(d)+5, length.out=25)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+d[d > edges[i] & d < edges[i+1]]
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- d[d > edges[i] & d < edges[i+1]], stacks[i]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(1)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(2)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(3)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(4)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(5)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(6)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(7)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(8)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(9)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sample(d[d > edges[i] & d < edges[i+1]], stacks[i])#
+    x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 50#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 80#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:(length(stacks)-1)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+range(d)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 80#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 60#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 50#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 53#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i])#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 53#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=20)#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 53#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.8,0.4,0,0.5))#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 53#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 53#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 53#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i]-1, pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 53#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 53#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 55#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+?sort
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 55#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]], decreasing)#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 80#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]], decreasing)#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 7.5, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 55#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 55#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 30#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 40#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 36#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 37#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1)#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 37#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 37#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 60000, 10000), labels=rep("", 7), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 37#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 37#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=range(d), ylim=c(0.5,max(stacks)+3000))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 4, 2.25, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 37#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5))#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1)#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+M#
+sd(d)#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 37#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+#dev.off()#
+M#
+sd(d)#
+set.seed(10)#
+#myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+#dev.off()#
+M#
+sd(d)#
+set.seed(10)#
+#myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(0.5,max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+#dev.off()#
+M#
+sd(d)#
+set.seed(10)#
+#myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(0, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+dev.off()#
+#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(0, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(0.5, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*1500, c(0, 0, 0.5), border=COL[2], col=COL[2])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.3, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*1500, c(-0.5, -0.5, 0.4), border=COL[2], col=COL[2])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.3, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[2], col=COL[2])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.2, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[2], col=COL[2])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.1, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[2], col=COL[2])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=rgb(0.7,0.3,0,0.5), cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[2], col=COL[2])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558844','#33558899','#996633')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558844','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60000, 20000))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1500, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70, 10), tcl=-0.2)#
+axis(1, at=seq(0, 60, 20))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+axis(1, at=seq(0, 70, 10), tcl=-0.2)#
+axis(1, at=seq(0, 60, 20))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 60, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters", axes=FALSE, ylab="", xlim=c(0, 70000), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70000, 10000), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 60000, 20000))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 70), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2500, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 70), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#cut(d, seq(0,60000, 5000))#
+#hist(d, 12)
+email50$num_char
+mean(email50$num_char)
+cut(d, seq(0,60000, 5000))
+table(cut(d, seq(0,60000, 5000)))
+table(cut(d, seq(0,60, 5)))
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 70), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+sort(d)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+d
+mean(d)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(9)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+COL <- c('#33558855','#33558899','#CC9955')#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+#at     <- c(0, 25000, 50000, 75000, 100000)#
+#labels <- c(0, "25,000", "50,000", "75,000", "100,000")#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.2)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[3], col=COL[3])#
+#
+dev.off()#
+#
+set.seed(12)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 38#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 37#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+  #  x <- d[d > edges[i] & d < edges[i+1]]#
+    points(x, 1:stacks[i], pch=19, col=COL[2], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+#axis(1, at=seq(0, 70, 10), labels=rep("", 8), tcl=-0.15)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[3])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.5, -0.5, 0.4), border=COL[3], col=COL[4])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.6, -0.6, 0.4), border=COL[3], col=COL[4])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.65, -0.65, 0.4), border=COL[3], col=COL[4])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.6, -0.6, 0.4), border=COL[4], col=COL[4])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.58, -0.58, 0.4), border=COL[4], col=COL[4])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.55, -0.55, 0.4), border=COL[4], col=COL[4])#
+dev.off()#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.55, -0.55, 0.4), border=COL[4], col=COL[4])#
+dev.off()#
+#
+plot(1:20, 1:20/10)#
+#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.55, -0.55, 0.4), border=COL[4], col=COL[4])#
+#
+points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+sc <- 1#
+#points#
+#
+for(i in 1:length(stacks)){#
+  if(stacks[i] > 0){#
+    decreasing <- i %% 2 == 0#
+    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+  }#
+}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.55, -0.55, 0.4), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+circle <- function(center, radius=1){#
+}#
+#
+x <- sample(d)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.55, -0.55, 0.4), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, ...){#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius-5)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        points(x[i], s, ...)#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+edges  <- seq(0,max(d)+5, length.out=N)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-0.15, max(stacks)))#
+#
+dotPlotStack(x, radius=1)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.55, -0.55, 0.4), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius-5)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, addDots=FALSE)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0.5)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.55, -0.55, 0.4), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius-5)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, addDots=FALSE)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-0.55, -0.55, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius-5)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, addDots=FALSE)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+stacks
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius-5)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])
+set.seed(10)
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, addDots=FALSE)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, addDots=FALSE)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, addDots=FALSE)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, radius=2, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=2, pch=19, col=COL[1], cex=1.25)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, radius=2, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1.8, pch=19, col=COL[1], cex=1.25)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, radius=2, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1.5, pch=19, col=COL[1], cex=1.25)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(max(y)+radius)#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, radius=2, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1.4, pch=19, col=COL[1], cex=1.25)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+stacks  <- dotPlotStack(x, radius=2, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=1.4, pch=19, col=COL[1], cex=1.25)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.4#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks)))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=1.25)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.4#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=1.25)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/10)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.7#
+cex     <- 1.5#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/12)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.7#
+cex     <- 1.5#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.7#
+cex     <- 1.5#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.#
+cex     <- 1.5#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.65#
+cex     <- 1.5#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.65#
+cex     <- 1.5#
+seed    <- 2#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.65#
+cex     <- 1.5#
+seed    <- 3#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.7#
+cex     <- 1.5#
+seed    <- 3#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.8#
+cex     <- 1.5#
+seed    <- 3#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1, -1, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.8#
+cex     <- 1.5#
+seed    <- 3#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-2, -2, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+# Quick thought for improved version...#
+# Write an optimization algorithm that swaps the#
+# order of two observations in the vector when moving#
+# one would result in an improved "settling".#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.8#
+cex     <- 1.5#
+seed    <- 3#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-2, -2, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+# Quick thought for improved version...#
+# Write an optimization algorithm that swaps the#
+# order of two observations in the vector when moving#
+# one would result in an improved "settling".#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.8#
+cex     <- 1.5#
+seed    <- 3#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1.5, -1.5, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+# Quick thought for improved version...#
+# Write an optimization algorithm that swaps the#
+# order of two observations in the vector when moving#
+# one would result in an improved "settling".#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.8#
+cex     <- 1.5#
+seed    <- 3#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-2,2,0)*2.5, c(-1.7, -1.7, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x, center, radius=1, seed=1, addDots=TRUE, ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+# Quick thought for improved version...#
+# Write an optimization algorithm that swaps the#
+# order of two observations in the vector when moving#
+# one would result in an improved "settling".#
+myPDF("emailCharactersDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0), tcl=-0.4)#
+d <- email50$num_char#
+dotPlot(d, xlab='Number of Characters (in thousands)', ylab='', pch=20, col=COL[1,2], cex=1.5, ylim=c(0.95,1.05), axes=FALSE)#
+axis(1, at=seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1.5, c(0.95, 0.95, 0.98), border=COL[4], col=COL[4])#
+#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf", 5, 2.7, mar=c(3.6,1,0.5,1), las=1, mgp=c(2.5,0.7,0))#
+N      <- 35#
+#stacks <- table(cut(d, seq(0,max(d)+5, length.out=N)))#
+#edges  <- seq(0,max(d)+5, length.out=N)#
+radius  <- 1.8#
+cex     <- 1.5#
+seed    <- 3#
+stacks  <- dotPlotStack(x, radius=radius, addDots=FALSE, pch=19, col=COL[1], cex=1.25, seed=seed)#
+plot(0, type="n", xlab="Number of Characters (in thousands)", axes=FALSE, ylab="", xlim=c(0, 75), ylim=c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x, radius=radius, pch=19, col=COL[1], cex=cex, seed=seed)#
+#
+#for(i in 1:length(stacks)){#
+#  if(stacks[i] > 0){#
+#    decreasing <- i %% 2 == 0#
+#    x <- sort(d[d > edges[i] & d < edges[i+1]])#
+#    points(x, 1:stacks[i], pch=19, col=COL[1], cex=1.25)#
+#  }#
+#}#
+abline(h=0)#
+axis(1, at=seq(0, 70, 10))#
+polygon(M + c(-1.7,1.7,0)*2.5, c(-1.7, -1.7, -0.1), border=COL[4], col=COL[4])#
+#
+#points(1:20, 1:20/10)#
+#
+dev.off()#
+M#
+sd(d)#
+#table(cut(d, seq(0,60, 5)))#
+#hist(d, 12)
+library(openintro)#
+data(email50)#
+data(COL)#
+dotPlotStack <- function(x,#
+                         center,#
+                         radius = 1,#
+                         seed = 1,#
+                         addDots = TRUE,#
+                         ...){#
+  set.seed(seed)#
+  x <- sample(d)#
+  y <- rep(NA, length(x))#
+  y[1] <- 1#
+  for(i in 2:length(x)){#
+    add <- TRUE#
+    for(s in seq(radius, i*radius, radius/20)){#
+      these <- 1:(i-1)#
+      dx    <- (x[i] - x[these])^2#
+      dy    <- (s - y[these])^2#
+      if(any(dx+dy < radius^2) || !add){#
+        next#
+      } else {#
+        if(addDots){#
+          points(x[i], s, ...)#
+        }#
+        y[i] <- s#
+        add  <- FALSE#
+      }#
+    }#
+  }#
+  invisible(list(max(y)+radius, x))#
+}#
+# Quick thought for improved version...#
+# Write an optimization algorithm that swaps the#
+# order of two observations in the vector when moving#
+# one would result in an improved "settling".#
+myPDF("emailCharactersDotPlot.pdf",#
+      7.5,#
+      1.25,#
+      mar = c(3.6, 1, 0, 1),#
+      mgp = c(2.5, 0.7, 0),#
+      tcl = -0.4)#
+d <- email50$num_char#
+dotPlot(d,#
+        xlab = 'Number of Characters (in thousands)',#
+        ylab = '',#
+        pch = 20,#
+        col = COL[1,2],#
+        cex = 1.5,#
+        ylim = c(0.95, 1.05),#
+        axes = FALSE)#
+axis(1, at = seq(0, 70, 10))#
+M <- mean(d)#
+polygon(M + c(-2, 2, 0) * 1.5,#
+        c(0.95, 0.95, 0.98),#
+        border = COL[4],#
+        col = COL[4])#
+dev.off()#
+#
+set.seed(10)#
+myPDF("emailCharactersDotPlotStacked.pdf",#
+      5,#
+      2.7,#
+      mar = c(3.6, 1, 0.5, 1),#
+      mgp = c(2.5, 0.7, 0))#
+N      <- 35#
+radius <- 1.8#
+cex    <- 1.5#
+seed   <- 3#
+stacks <- dotPlotStack(x,#
+                       radius = radius,#
+                       addDots = FALSE,#
+                       pch = 19,#
+                       col = COL[1],#
+                       cex = 1.25,#
+                       seed = seed)#
+plot(0,#
+     type = "n",#
+     xlab = "Number of Characters (in thousands)",#
+     ylab = "",#
+     axes = FALSE,#
+     xlim = c(0, 75),#
+     ylim = c(-1, max(stacks[[1]])))#
+#
+dotPlotStack(x,#
+             radius = radius,#
+             pch = 19,#
+             col = COL[1],#
+             cex = cex,#
+             seed = seed)#
+abline(h = 0)#
+at <- seq(0, 70, 10)#
+axis(1, at)#
+polygon(M + c(-1.7, 1.7, 0) * 2.5,#
+        c(-1.7, -1.7, -0.1),#
+        border = COL[4],#
+        col = COL[4])#
+dev.off()#
+#
+M#
+sd(d)

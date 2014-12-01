@@ -1,0 +1,5 @@
+library(openintro)#
+#
+setwd("/Users/mine/Desktop/Open Intro/EOCE - Second Edition/01/figures/eoce/gpaStudy")#
+#
+load("/Users/mine/Desktop/Open Intro/EOCE - Second Edition/data/surveyS12.Rdata")

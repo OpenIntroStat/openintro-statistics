@@ -1,0 +1,83 @@
+library(openintr)#
+#setwd("/Users/mine/Desktop/Open Intro/EOCE - Second Edition/01/figures/eoce/tracheitis")#
+#
+conditions = c(rep("Prematurity", 33),#
+	rep("Neuromuscular", 10),#
+	rep("Cardiovascular", 16),#
+	rep("Genetic/metabolic", 6),#
+	rep("Respiratory", 13),#
+	rep("Trauma", 10),#
+	rep("Gastrointestinal", 2),#
+	rep("Immunocompromised", 2)#
+	)#
+#
+# barplot
+par(mar=c(4,11,0,0.5), las=1, mgp=c(2.5,0.7,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = oiB, horiz = TRUE, las = 1,  cex.names = 1.5, cex.axis = 1.5, cex.lab = 1.5)
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE, las = 1,  cex.names = 1.5, cex.axis = 1.5, cex.lab = 1.5)
+data(COL)
+library(openintro)#
+data(COL)
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE, las = 1,  cex.names = 1.5, cex.axis = 1.5, cex.lab = 1.5)
+myPDF("tracheitis_bar.pdf", height = 4, width = 8, mar=c(4,11,0,0.5), las=1, mgp=c(2.5,0.55,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE, las = 1,  cex.names = 1.5, cex.axis = 1.5, cex.lab = 1.5)#
+#
+dev.off()
+myPDF("tracheitis_bar.pdf", height = 4, width = 8, mar=c(4,11,0,0.5), las=1, mgp=c(2.5,0.55,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE)#
+#
+dev.off()
+myPDF("tracheitis_bar.pdf", height = 3, width = 6, mar=c(4,11,0,0.5), las=1, mgp=c(2.5,0.55,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE)#
+#
+dev.off()
+myPDF("tracheitis_bar.pdf", height = 3, width = 6, mar=c(4,11,0,0.5), las=1, mgp=c(2,0.55,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE)#
+#
+dev.off()
+myPDF("tracheitis_bar.pdf", height = 3, width = 6, mar=c(4,11,0,0.5), las=1, mgp=c(2,0.45,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE)#
+#
+dev.off()
+myPDF("tracheitis_bar.pdf", height = 3, width = 6, mar=c(3.2,11,0,0.5), las=1, mgp=c(2,0.45,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#setwd("/Users/mine/Desktop/Open Intro/EOCE - Second Edition/01/figures/eoce/tracheitis")#
+#
+conditions = c(rep("Prematurity", 33),#
+	rep("Neuromuscular", 10),#
+	rep("Cardiovascular", 16),#
+	rep("Genetic/metabolic", 6),#
+	rep("Respiratory", 13),#
+	rep("Trauma", 10),#
+	rep("Gastrointestinal", 2),#
+	rep("Immunocompromised", 2)#
+	)#
+#
+# barplot#
+#
+myPDF("tracheitis_bar.pdf", height = 3, width = 6, mar=c(3.2,11,0,0.5), las=1, mgp=c(2,0.45,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE)#
+#
+dev.off()
+myPDF("tracheitis_bar.pdf", height = 3, width = 6, mar=c(3.2,8,0,0.5), las=1, mgp=c(2,0.45,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE)#
+#
+dev.off()
+myPDF("tracheitis_bar.pdf", height = 3, width = 6, mar=c(3.2,9,0,0.5), las=1, mgp=c(2,0.45,0), mfrow = c(1,1))#
+#
+barplot(sort(table(conditions))/sum(table(conditions)), ylab = "", xlab = "Relative frequency", border = '#225588', col = COL[1], horiz = TRUE)#
+#
+dev.off()
