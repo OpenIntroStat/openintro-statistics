@@ -95,7 +95,12 @@
 \newlength{\exampleBelowBar}
 \setlength{\exampleAboveBar}{-3.15mm}
 \setlength{\exampleBelowBar}{-1.15mm}
-
+% 4.3 Chapter Declarations
+\newcommand\includechapter[2]{
+  \setcounter{chapter}{#1}
+  \addtocounter{chapter}{-1}
+  \include{#2/TeX/#2}
+  \include{#2/TeX/#2_ex}}
 
 
 
