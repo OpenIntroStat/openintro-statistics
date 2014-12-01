@@ -1,7 +1,6 @@
 \documentclass[10pt,openany]{book}
  
 \usepackage{geometry, graphicx, varioref, soul, verbatim, amsmath, calc, caption, wasysym, footmisc, makeidx, ifthen, subfigure, multicol, epstopdf, enumerate, wrapfig, textcomp, multirow, changepage, setspace, lscape, titlesec}
-%\usepackage[numbers]{natbib}
 \usepackage[usenames,dvipsnames]{color}  
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
 \include{extraTeX/style/colorsV1}
@@ -14,20 +13,18 @@
 
 \usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
 \bibliography{eoce.bib}
-%\usepackage{ifsym}
-%\usepackage{fancybox}
 
 \makeindex
 \include{extraTeX/style/style}
 %\include{extraTeX/style/tablet}
-\include{extraTeX/preamble/title}
+\include{extraTeX/preamble/title}%_derivative}
 \date{}
 %\setcounter{tocdepth}{1}
 
 \begin{document}
 \renewcommand{\thepage}{}
 \maketitle
-\include{extraTeX/preamble/copyright}
+\include{extraTeX/preamble/copyright}%_derivative}
 \renewcommand{\thepage}{\roman{page}}
 \tableofcontents
 \include{extraTeX/preamble/preface}
