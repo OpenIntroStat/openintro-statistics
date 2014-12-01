@@ -1,7 +1,7 @@
 
 File Structure
-- Each chapter's content is in one of the eight 01, 02, ..., 08 folders. Within each folder, there is a "figures" folder and a "TeX" folder. The TeX folder contains the text files that are used to typeset the chapters in the textbook.
-- In many cases, R code is supplied with figures to regenerate the figure. It will often be necessary to install the "openintro" R package that is available on CRAN if you would like to regenerate a figure.
+- Each chapter's content is in one of the eight chapter folders that start with "ch_". Within each folder, there is a "figures" folder and a "TeX" folder. The TeX folder contains the text files that are used to typeset the chapters in the textbook.
+- In many cases, R code is supplied with figures to regenerate the figure. It will often be necessary to install the "openintro" R package that is available on CRAN if you would like to regenerate a figure, and other packages may also occasionally be required.
 - The extraTeX folder contains files for the front and back matter of the textbook and also the style files. Note that use of any style files, like all other files here, is under the Creative Commons license cited in the LICENSE file.
 
 - - -
