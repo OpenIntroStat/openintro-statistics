@@ -1,44 +1,48 @@
 library(openintro)
 data(COL)
 
-pdf('subtractingArea.pdf', 6, 1.4)
+AddShadedPlot <- function(x, y, offset,
+                          shade.start = -8,
+                          shade.until = 8) {
+  lines(x + offset, y)
+  lines(x + offset, rep(0, length(x)))
+  these <- which(shade.start <= x & x <= shade.until)
+  polygon(c(x[these[1]], x[these], x[rev(these)[1]]) + offset,
+          c(0, y[these], 0),
+          col = COL[1])
+  lines(x + offset, y)
+}
+AddText <- function(x, text) {
+  text(x, 0.549283, text, cex = 2)
+}
 
-#===> plot <===#
-par(las=1, mar=c(0,0,0,0), mgp=c(3,-0.2,0), mfrow=c(1,1))
-X <- seq(-3.2,3.2,0.01)
+pdf('subtractingArea.pdf', 6, 1.4)
+par(las = 1,
+    mar = rep(0, 4),
+    mgp = c(3, 0, 0))
+X <- seq(-3.2, 3.2, 0.01)
 Y <- dnorm(X)
 
-plot(X, Y, type='l', axes=F, xlim=c(-3.4,16+3.4), ylim=c(0, 0.652))
-lines(X, rep(0,length(X)))
-these <- which(X <= 8)
-polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])
-lines(X, Y)
-#abline(h=0)
-lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3)
+plot(X, Y,
+     type = 'l',
+     axes = FALSE,
+     xlim = c(-3.4, 16 + 3.4),
+     ylim = c(0, 0.622))
 
-lines(c(3,8-3), c(0.2,0.2), lwd=3)
-text(0, 0.58, format(c(1, 0.0001), scientific=FALSE)[1], cex=2)
+AddShadedPlot(X, Y, 0)
+AddText(0, format(c(1, 0.0001), scientific = FALSE)[1])
 
+AddShadedPlot(X, Y, 8, -8, 0.43)
+AddText(8, format(0.6664, scientific = FALSE)[1])
 
-lines(X+8, Y, type='l', xlim=c(-3.4,3.4))
-lines(X+8, rep(0,length(X)))
-these <- which(X <= 0.43)
-polygon(c(X[these[1]], X[these],X[rev(these)[1]])+8, c(0,Y[these],0), col=COL[1])
-lines(X+8, Y)
-lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3)
+AddShadedPlot(X, Y, 16, 0.43, 8)
+AddText(16, format(0.3336, scientific = FALSE)[1])
 
-lines(8+c(3,8-3), c(0.23,0.23), lwd=3)
-lines(8+c(3,8-3), c(0.17,0.17), lwd=3)
-lines(c(3.72, 4.28), rep(0.58, 2), lwd=2)
-text(8, 0.58, format(0.6664, scientific=FALSE)[1], cex=2)
+lines(c(3.72, 4.28), rep(0.549283, 2), lwd = 2)
+lines(c(3, 8 - 3), c(0.2, 0.2), lwd = 3)
 
-lines(X+8+8, Y, type='l', xlim=c(-3.4,3.4))
-lines(X+8+8, rep(0,length(X)))
-these <- which(X > 0.43)
-polygon(c(X[these[1]], X[these],X[rev(these)[1]])+8+8, c(0,Y[these],0), col=COL[1])
-lines(X+8+8, Y)
-lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3)
-text(12, 0.58, '=', cex=2)
-text(16, 0.58, format(0.3336, scientific=FALSE)[1], cex=2)
-
+text(12, 0.549283,
+     ' = ',
+     cex = 2)
+segments(c(11, 11), c(0.17, 0.23), c(13, 13), lwd = 3)
 dev.off()

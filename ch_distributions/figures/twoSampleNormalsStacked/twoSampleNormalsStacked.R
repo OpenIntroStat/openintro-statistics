@@ -1,20 +1,23 @@
-set.seed(1)
+library(openintro)
+data(COL)
 
-x <- rnorm(100000)
-hold <- hist(x, breaks=50, prob=T)
-
-#===> plot <===#
-par(mfrow=c(1,1), las=1, mar=c(2.5,1,0.5,1))
+myPDF("twoSampleNormalsStacked.pdf", 4.65, 2.24,
+      mar = c(2,1,0.5,1))
 
 # curve 1
 X <- seq(-4,4,0.01)
 Y <- dnorm(X)
-plot(X, Y, type='l', axes=F, xlim=c(-5,35))
-axis(1, at=seq(-10, 40, 10))
+plot(X, Y,
+     type = 'l',
+     axes = FALSE,
+     xlim = c(-5, 35))
+axis(1, at = seq(-10, 40, 10))
 lines(X, Y)
-abline(h=0)
+abline(h = 0)
 
 # curve 2
-X <- seq(3,35,0.01)
+X <- seq(3,35, 0.01)
 Y <- dnorm(X, 19, 4)
 lines(X, Y)
+
+dev.off()
