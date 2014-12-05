@@ -2,25 +2,19 @@ library(openintro)
 data(nba.heights)
 data(COL)
 
-obs <- nba.heights[, 4]
-hold <- hist(obs, plot = FALSE)
+source("nbaNormal-helpers.R")
 
-myPDF("nbaNormal.pdf", 6, 2.5, mfrow = c(1, 2),
-      mgp = c(2, 0.5, 0), mar = c(3, 0.5, 0.5, 2), cex.axis = 0.8)
-histPlot(obs, xlab = "Height (inches)", ylab = "", axes=FALSE,
-         main = "", xlim = c(69, 90), ylim = c(0, 0.12),
-         col = COL[1], probability = TRUE)
-axis(1)
+obs <- nba.heights[, 4]
 M  <- mean(obs)
 SD <- sd(obs)
-x <- seq(min(obs) - 2, max(obs) + 2, 0.01)
-y <- dnorm(x, M, SD)
-lines(x, y, lwd = 1.5)
+hold <- hist(obs, plot = FALSE)
 
+myPDF("nbaNormal.pdf", 6, 2.5,
+      mfrow = c(1, 2),
+      mgp = c(2, 0.5, 0),
+      mar = c(3, 0.5, 0.5, 2),
+      cex.axis = 0.8)
+NormalHist(obs, hold, M, SD, COL[1])
 par(mar = c(3, 2, 0.5, 0.5))
-qqnorm(obs, cex = 0.5, main = "", axes = FALSE, ylab = "NBA heights",
-       xlab = "Theoretical quantiles", col = COL[1])
-axis(1)
-axis(2)
-abline(M, SD)
+QQNorm(obs, M, SD, COL[1])
 dev.off()
