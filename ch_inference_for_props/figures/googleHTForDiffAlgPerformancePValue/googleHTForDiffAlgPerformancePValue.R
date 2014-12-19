@@ -1,17 +1,10 @@
 library(openintro)
 data(COL)
 
-pdf('googleHTForDiffAlgPerformancePValue.pdf', 5, 2.25)
-par(mar=c(2, 1, 1, 1), mgp=c(2.1, 0.8, 0), las=1)
-x <- c(0, seq(0, 35, 0.05))
-y <- c(0, dchisq(x[-1], 2))
-plot(x, y, type='l', axes=FALSE, xlim=c(0, 16))
-abline(h=0)
-axis(1)
-
-these <- which(x > 6.12)
-X <- x[c(these[1], these, rev(these)[1])]
-Y <- c(0, y[these], 0)
-polygon(X, Y, col=COL[1])
-
+myPDF('googleHTForDiffAlgPerformancePValue.pdf', 5, 2.25,
+    mar = c(2, 1, 1, 1), mgp = c(2.1, 0.7, 0))
+ChiSquareTail(6.12,
+              2,
+              c(0, 16),
+              col = COL[1])
 dev.off()

@@ -1,16 +1,13 @@
 require(openintro)
 data(COL)
 
-myPDF('pValueForCampaignManagerClaimOfMoreThan50PercentSupport.pdf', 3.5, 1.7, mar=c(1.7,0,0.1,0), mgp=c(3,0.5,0))
-X <- seq(-4,4,0.01)
-Y <- dnorm(X)
-plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))
-axis(1, at=c(-5, 0, 0.89, 5), label=expression(0, 0.50, 0.52, 0), cex.axis=0.9)
-these <- which((X >= 0.89))
-polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1], border=COL[5])
-
-lines(X, Y)
-abline(h=0)
-
-
+fn <- paste0('pValueForCampaignManagerClaimOf',
+             'MoreThan50PercentSupport.pdf')
+myPDF(fn, 3.5, 1.7,
+      mar=c(1.7, 0, 0.1, 0),
+      mgp=c(3, 0.5, 0))
+normTail(U = 0.89, col = COL[1], axes = FALSE)
+at <- c(-5, 0, 0.89, 5)
+labels <- expression(0, 0.50, 0.52, 0)
+axis(1, at, labels, cex.axis=0.9)
 dev.off()
