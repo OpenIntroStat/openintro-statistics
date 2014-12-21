@@ -1,11 +1,12 @@
-
 library(openintro)
 data(COL)
+data(poker)
 
-d <- read.delim('poker.txt', FALSE)
-profit <- d$V1
-
-pdf('pokerProfitsCanApplyNormalToSampMean.pdf', 5, 3)
-par(mar=c(4,4,1,1), mgp=c(2.6, 0.7, 0), las=1)
-histPlot(profit, xlab='Poker winnings and losses (US$)', ylab='Frequency', col=COL[1])
+myPDF('pokerProfitsCanApplyNormalToSampMean.pdf', 5, 3,
+      mar = c(3.7, 3.7, 0.7, 0.7),
+      mgp = c(2.3, 0.6, 0))
+histPlot(poker$winnings,
+         xlab = 'Poker winnings and losses (US$)',
+         ylab = 'Frequency',
+         col = COL[1])
 dev.off()
