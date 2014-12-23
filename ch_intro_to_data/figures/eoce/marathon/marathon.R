@@ -7,7 +7,7 @@ oiG =  "#4C721D"
 
 # marathon_histBox
 
-pdf("marathon_HistBox.pdf", height = 3, width = 7)
+pdf("marathon_histBox.pdf", height = 3, width = 7)
 par(mar=c(3.6,2.2,0.5,1.5), las=1, mgp=c(2.5,0.7,0))
 layout(matrix(1:2,1), c(2,1.2))
 
