@@ -1,7 +1,7 @@
 library(openintro)
 
 myPDF("smallpoxTreeDiagram.pdf", 7, 3.5)
-treeDiag(c('Innoculated', 'Result'),
+treeDiag(c('Inoculated', 'Result'),
          c(0.0392, 0.9608),
          list(c(0.9754, 0.0246),
               c(0.8589, 0.1411)),

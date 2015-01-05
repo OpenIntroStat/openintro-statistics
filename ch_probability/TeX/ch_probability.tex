@@ -200,7 +200,7 @@ However, the three cards that are in both events were counted twice, once in eac
 \begin{eqnarray}
 P(A\text{ or } B) &=&P(\text{face card or }{\color{redcards}\diamondsuit})  \notag \\
  &=& P(\text{face card}) + P({\color{redcards}\diamondsuit}) - P(\text{face card and }{\color{redcards}\diamondsuit}) \label{diamondFace} \\
- &=& 12/52 + 13/52 - 3/52 \notag \\
+ &=& 13/52 + 12/52 - 3/52 \notag \\
  &=& 22/52 = 11/26 \notag
 \end{eqnarray}
 Equation~(\ref{diamondFace}) is an example of the \term{General Addition Rule}. 
@@ -839,7 +839,7 @@ With the tree diagram constructed, we may compute the required probabilities:
 &&P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}}) = 0.0611 \\
 &&P(\text{\underline{\color{black}\var{final} = \resp{A}}})  \\
 && \quad= P(\text{\var{midterm} = \resp{other} and \underline{\color{black}\var{final} = \resp{A}}}) + P(\text{\var{midterm} = \resp{A} and \underline{\color{black}\var{final} = \resp{A}}}) \\
-&& \quad= 0.0611 + 0.0957 = 0.1568
+&& \quad= 0.0957 + 0.0611  = 0.1568
 \end{eqnarray*}
 The marginal probability, $P($\var{final} = \resp{A}$)$, was calculated by adding up all the joint probabilities on the right side of the tree that correspond to \var{final} = \resp{A}. We may now finally take the ratio of the two probabilities:
 \begin{eqnarray*}
@@ -878,13 +878,13 @@ Tree diagrams can be used to find the second conditional probability when given 
 
 We first take a critical look at an example of inverting conditional probabilities where we still apply a tree diagram.
 
-\begin{example}{In Canada, about 0.35\% of women over 40 will be diagnosed with breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnote{The probabilities reported here were obtained using studies reported at \href{http://www.breastcancer.org/symptoms/testing/new_research/20090831b.jsp}{www.breastcancer.org} and \href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421/}{www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}.} If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?} 
+\begin{example}{In Canada, about 0.35\% of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnote{The probabilities reported here were obtained using studies reported at \href{http://www.breastcancer.org/symptoms/testing/new_research/20090831b.jsp}{www.breastcancer.org} and \href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421/}{www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}.} If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?} 
 
 \label{probabilityOfBreastCancerGivenPositiveTestExample}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{ch_probability/figures/BreastCancerTreeDiagram/BreastCancerTreeDiagram}
+\includegraphics[width=0.93\textwidth]{ch_probability/figures/BreastCancerTreeDiagram/BreastCancerTreeDiagram}
 \caption{Tree diagram for Example~\ref{probabilityOfBreastCancerGivenPositiveTestExample}, computing the probability a random patient who tests positive on a mammogram actually has breast cancer.}
 \label{BreastCancerTreeDiagram}
 \end{figure}

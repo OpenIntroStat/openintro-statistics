@@ -22,7 +22,7 @@ $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
 16924 & 93.30 & 27.00 & F & DC \\ 
    \hline
 \end{tabular}
-\caption{Six observations from the \data{run10} data set.}
+\caption{Six cases from the \data{run10} data set.}
 \label{run10DF}
 \end{table}
 % library(openintro); library(xtable); data(run10); xtable(run10[c(1,2,3,4, nrow(run10)-1:0), c("time", "age", "gender", "state")])
@@ -348,9 +348,10 @@ The normal approximation is crucial to the precision of these confidence interva
 \begin{termBox}{\tBoxTitle{Conditions for $\bar{x}$ being nearly normal and $SE$ being accurate\label{terBoxOfCondForXBarBeingNearlyNormalAndSEBeingAccurate}}
 Important conditions to help ensure the sampling distribution of $\bar{x}$ is nearly normal and the estimate of SE sufficiently accurate:
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item The sample observations are independent.
 \item The sample size is large: $n\geq30$ is a good rule of thumb.
-\item The distribution of sample observations is not strongly skewed.
+\item The population distribution is not strongly skewed. (We check this using the sample distribution as an estimate of the population distribution.)
 \end{itemize}
 Additionally, the larger the sample size, the more lenient we can be with the sample's skew.}
 \end{termBox}

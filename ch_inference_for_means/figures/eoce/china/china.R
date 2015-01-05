@@ -27,7 +27,7 @@ by(china$child_care, china$gender, length)
 
 pdf("china_edu_box.pdf", height = 4, width = 15)
 
-par(mar=c(2,8,1,5), las=1, mgp=c(2.7,0.7,0), mfrow = c(1,1), cex.lab = 1.45, cex.axis = 1.45)
+par(mar=c(2,8,1,2), las=1, mgp=c(2.7,0.7,0), mfrow = c(1,1), cex.lab = 1.45, cex.axis = 1.45)
 boxPlot(china$child_care, fact = china$edu, ylab = "Child care hours", col = fadeColor(COL[1], 66), xlim=c(0.6, 5.4))
 
 dev.off()
