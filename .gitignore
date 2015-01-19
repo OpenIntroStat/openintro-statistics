@@ -14,3 +14,4 @@ main.toc
 *.DS_Store
 *gitignore~
 *.Rapp.history
+*~
