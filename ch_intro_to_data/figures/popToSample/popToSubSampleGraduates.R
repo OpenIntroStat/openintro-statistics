@@ -29,7 +29,7 @@ for (i in 1:nrow(s)) {
     sub[j] <- TRUE
   }
 }
-points(S, col = COL[4, 4 - 2 * sub], pch = 20)
+points(S, col = COL[1, 4 - 2 * sub], pch = 20)
 text(0.5, 1, 'all graduates', pos = 3)
 lines((x - 0.5) * 2 * sqrt(0.07) + 0.55,
       (y - 0.5) * 2 * sqrt(0.07) + 0.68)
@@ -41,10 +41,10 @@ lines((x - 0.5) / 2 + 1.5,
       pch = 20)
 
 SS <- (S[N, ] - 0.5) / 2 + 0.5
-these <- c(2, 5, 7, 15)
+these <- c(2, 5, 7, 12, 15)
 points(SS[these, 1] + 1,
        SS[these, 2],
-       col = COL[1, 2],
+       col = COL[4, 2],
        pch = 20,
        cex = 1.5)
 text(1.5, 0.75, 'sample', pos = 3)

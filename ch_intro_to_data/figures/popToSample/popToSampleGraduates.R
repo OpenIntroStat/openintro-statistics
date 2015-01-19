@@ -25,7 +25,7 @@ for (i in 1:nrow(s)) {
     S[j, ] <- s[i, ]
   }
 }
-points(S, col = COL[4, 3], pch = 20)
+points(S, col = COL[1, 3], pch = 20)
 text(0.5, 1, 'all graduates', pos = 3)
 
 set.seed(50)
@@ -36,7 +36,7 @@ SS <- (S[N, ] - 0.5) / 2 + 0.5
 these <- c(2, 5, 11, 10, 12)
 points(SS[these, 1] + 1,
        SS[these, 2],
-       col = COL[1, 2],
+       col = COL[4, 2],
        pch = 20,
        cex = 1.5)
 text(1.5, 0.75, 'sample', pos = 3)

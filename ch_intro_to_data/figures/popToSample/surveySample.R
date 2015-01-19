@@ -5,7 +5,7 @@ set.seed(52)
 myPDF("surveySample.pdf",
       4,
       2.1,
-      mar=rep(0, 4))
+      mar = rep(0, 4))
 
 plot(c(0, 2),
      c(0, 1.1),
@@ -16,21 +16,21 @@ x <- 0.5 + 0.5 * cos(temp)
 y <- 0.5 + 0.5 * sin(temp)
 lines(x, y)
 
-s <- matrix(runif(700), ncol=2)
+s <- matrix(runif(700), ncol = 2)
 S <- matrix(NA, 350, 2)
 j <- 0
 sub <- rep(FALSE, 1000)
 for (i in 1:nrow(s)) {
-  if (sum((s[i,] - .5)^2) < .23) {
-    j <- j+1
-    S[j,] <- s[i,]
+  if (sum((s[i,] - 0.5)^2) < 0.23) {
+    j <- j + 1
+    S[j, ] <- s[i, ]
   }
-  if (sum((s[i,]-c(-0.15, 0.05)-.5)^2) < .115) {
+  if (sum((s[i, ] - c(-0.15, 0.05) - 0.5)^2) < 0.115) {
     sub[j] <- TRUE
   }
 }
-points(S, col=COL[4, 4 - 2 * sub], pch=20)
-text(0.5, 1, 'population of interest', pos=3)
+points(S, col = COL[1, 4 - 2 * sub], pch = 20)
+text(0.5, 1, 'population of interest', pos = 3)
 lines((x - 0.5) * 2 * sqrt(0.115) + 0.35,
       (y - 0.5) * 2 * sqrt(0.115) + 0.55)
 
@@ -41,12 +41,12 @@ lines((x - 0.5) / 2 + 1.5,
       pch=20)
 
 SS <- (S[N, ] - 0.5) / 2 + 0.5
-these <- c(2, 5, 7, 15)
+these <- c(2, 5, 6, 7, 15)
 points(SS[these, 1] + 1,
        SS[these, 2],
-       col=COL[1, 2],
-       pch=20,
-       cex=1.5)
+       col = COL[4, 2],
+       pch = 20,
+       cex = 1.5)
 text(1.5, 0.75, 'sample', pos=3)
 
 for(i in these){
