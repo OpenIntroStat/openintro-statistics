@@ -1,9 +1,8 @@
 library(openintro)
 data(email)
+email$spam <- ifelse(email$spam == 0, "not spam", "spam")
 tab <- table(email[,c('spam', 'number')])
-row.names(tab) <- c("not spam", "spam")
 tab  <- t(tab)
-ttab <- t(tab)
 
 rp <- prop.table(tab, 1)
 cp <- prop.table(tab, 2)
@@ -29,17 +28,17 @@ mosaicplot(tab,
            main = '',
            xlab = '',
            ylab = '',
-           col = COL[c(1,2)])
+           col = COL[c(1, 2)])
 dev.off()
 
 myPDF("emailSpamNumberMosaicRev.pdf",
       3,
       2.25,
       mar = rep(1, 4) / 4)
-mosaicplot(ttab,
+mosaicplot(t(tab),
            main = '',
            xlab = '',
            ylab = '',
-           col = COL[c(2,1,4)])
+           col = COL[c(2, 1, 4)])
 dev.off()
 
