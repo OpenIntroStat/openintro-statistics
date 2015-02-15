@@ -38,7 +38,7 @@ plot(d$family_income, d$gift_aid,
      ylab = '', axes=FALSE,
      xlim = c(0, 280), 
      ylim = c(0, 35))
-axis(1, at = (0:4) * 100)
+axis(1, at = (0:8) * 50)
 axis(2, at = (0:3) * 10)
 box()
 par(las = 0)
@@ -60,7 +60,7 @@ plot(d$family_income, d$gift_aid,
      axes = FALSE,
      xlim = c(0, 280), 
      ylim = c(0, 35))
-axis(1, at = (0:4) * 100)
+axis(1, at = (0:8) * 50)
 axis(2, at = (0:3) * 10)
 box()
 par(las = 0)

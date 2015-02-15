@@ -19,19 +19,15 @@
 %\include{extraTeX/style/tablet}
 \include{extraTeX/preamble/title}%_derivative}
 \date{}
-%\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{1}
 
 \begin{document}
 \renewcommand{\thepage}{}
 \maketitle
 \include{extraTeX/preamble/copyright}%_derivative}
-\renewcommand{\thepage}{\roman{page}}
+\renewcommand{\thepage}{\arabic{page}}
 \tableofcontents
 \include{extraTeX/preamble/preface}
-
-% Adjust for Third Edition the following two lines for the third edition.
-\setcounter{page}{1}
-\renewcommand{\thepage}{\arabic{page}}
 \normalsize
 
 \includechapter{1}{ch_intro_to_data}

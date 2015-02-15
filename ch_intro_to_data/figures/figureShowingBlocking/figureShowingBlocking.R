@@ -28,8 +28,8 @@ rect(0, 0.48, 1, 0.9, border = COL[5])
 rect(0, 0.00, 1, 0.42, border = COL[5])
 arrows(0.09, 1.16, y1 = 1, length = 0.1, lwd = 1.37)
 text(0.1, 1.08, "randomly\nsplit in half", cex = 0.7, pos = 4)
-arrows(0.12+0.55, 1.16, y1 = 1, length = 0.1, lwd = 1.37)
-text(0.13+0.55, 1.08, "randomly\nsplit in half", cex = 0.7, pos = 4)
+arrows(0.12 + 0.55, 1.16, y1 = 1, length = 0.1, lwd = 1.37)
+text(0.13 + 0.55, 1.08, "randomly\nsplit in half", cex = 0.7, pos = 4)
 
 # _____ Inner Box _____ #
 rect(0.02, 0.50, 0.41, 0.88, border = COL[5,3])
