@@ -20,15 +20,14 @@ mosaicplot(rowSums(tab),
 dev.off()
 colnames(tab)[1] <- "not\nspam"
 
+email$spam[email$spam == "not spam"] <- "not    \nspam"
 myPDF("emailSpamNumberMosaic.pdf",
       3,
       2.25,
-      mar = rep(1, 4) / 4)
-mosaicplot(tab,
-           main = '',
-           xlab = '',
-           ylab = '',
-           col = COL[c(1, 2)])
+      mar = c(0.25, 2, 1, 1))
+MosaicPlot(number ~ spam, email,
+           col = COL[c(2, 1, 4)],
+           off = 0.02)
 dev.off()
 
 myPDF("emailSpamNumberMosaicRev.pdf",
