@@ -162,8 +162,6 @@ What does $\beta_4$, the coefficient of variable $x_4$ (Wii wheels), represent? 
 Compute the residual of the first observation in Table~\vref{marioKartDataMatrix} using the equation identified in Exercise~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}. \footnote{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$, where 49.62 was computed using the variables values from the observation and the equation identified in Exercise~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.}
 \end{exercise}
 
-\textB{\pagebreak}
-
 \begin{example}{We estimated a coefficient for \var{cond\_\hspace{0.3mm}new} in Section~\ref{twoSingleVariableModelsForMarioKartData} of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?} \label{colinearityOfCondNewAndStockPhoto}
 If we examined the data carefully, we would see that some predictors are correlated. For instance, when we estimated the connection of the outcome \var{price} and predictor \var{cond\_\hspace{0.3mm}new} using simple linear regression, we were unable to control for other variables like the number of Wii wheels included in the auction. That model was biased by the confounding variable \var{wheels}. When we use both variables, this particular underlying and unintentional bias is reduced or eliminated (though bias from other confounding variables may still remain).
 \end{example}
@@ -446,8 +444,6 @@ generally depend on the following four assumptions:
 \end{enumerate}
 Simple and effective plots can be used to check each of these assumptions. We will consider the model for the auction data that uses the game condition and number of wheels as predictors.
 
-\textB{\pagebreak}
-
 \begin{description}
 \item[Normal probability plot.] A normal probability plot of the residuals is shown in Figure~\ref{mkDiagnosticNormalQuantilePlot}. While the plot exhibits some minor irregularities, there are no outliers that might be cause for concern. In a normal probability plot for residuals, we tend to be most worried about residuals that appear to be outliers, since these indicate long tails in the distribution of residuals.
 
@@ -586,8 +582,6 @@ In our spam example, there are 10 predictor variables, so $k = 10$. This model i
 \caption{Values of $p_i$ against values of $logit(p_i)$.}
 \label{logitTransformationFigureHoriz}
 \end{figure}
-
-\textB{\pagebreak}
 
 \begin{example}{Here we create a spam filter with a single predictor: \var{to\_\hspace{0.3mm}multiple}. This variable indicates whether more than one email address was listed in the \emph{To} field of the email. The following logistic regression model was fit using statistical software:
 \begin{align*}
