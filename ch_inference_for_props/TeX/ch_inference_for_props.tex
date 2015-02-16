@@ -276,7 +276,9 @@ Using the normal model for this test statistic, we identify the right tail area 
 \label{gearsTwoSampleHTPValueQC}
 \end{figure}
 
-\textB{\newpage}
+\Add{In the example above, the null difference was 0.03. However, in the vast majority of applications for differences in means or proportions, the null difference is~0. While the details for a difference of means does not change if the null difference is zero or non-zero, that is not the case for a difference in proportions. As we'll see next, a hypothesis test for a difference in proportions where the null value is 0 requires an additional~care.}
+
+
 
 \subsection{Hypothesis testing when $H_0: p_1=p_2$}
 \label{pooledHTForProportionsSection}
@@ -306,8 +308,6 @@ Is this study an experiment or an observational study?\footnote{The owners were 
 \begin{exercise} \label{htFor24DAndCancerInDogs}
 Set up hypotheses to test whether 2,4-D and the occurrence of cancer in dogs are related. Use a one-sided test and compare across the cancer and no cancer groups.\footnote{Using the proportions within the cancer and no cancer groups may seem odd. We intuitively may desire to compare the fraction of dogs with cancer in the 2,4-D and no 2,4-D groups, since the herbicide is an explanatory variable. However, the cancer rates in each group do not necessarily reflect the cancer rates in reality due to the way the data were collected. For this reason, computing cancer rates may greatly alarm dog owners. \\ $H_0$: the proportion of dogs with exposure to 2,4-D is the same in ``cancer'' and ``no cancer'' dogs, $p_c - p_n = 0$. \\ $H_A$: dogs with cancer are more likely to have been exposed to 2,4-D than dogs without cancer, $p_c - p_n > 0$.}
 \end{exercise}
-
-\textB{\newpage}
 
 \begin{example}{Are the conditions met to use the normal model and make inference on the results?}\label{condFor24DAndCancerInDogsNormalInference}
 (1) It is unclear whether this is a random sample. However, if we believe the dogs in both the cancer and no cancer groups are representative of each respective population and that the dogs in the study do not interact in any way, then we may find it reasonable to assume independence between observations. (2) The success-failure condition holds for each sample.
@@ -741,8 +741,6 @@ Counts &		& 5000 & 2500 & 2500 & & 10000 \\
 \label{googleSearchAlgorithmByAlgorithmOnly}
 \end{table}
 
-\textB{\pagebreak}
-
 \begin{example}{What is the ultimate goal of the Google experiment? What are the null and alternative hypotheses, in regular words?}
 The ultimate goal is to see whether there is a difference in the performance of the algorithms. The hypotheses can be described as the following:
 \begin{itemize}
@@ -971,8 +969,6 @@ Each client can be simulated using a deck of cards. Take one red card, nine blac
 
 An undergraduate student was paid \$2 to complete this simulation. There were 5 simulated cases with a complication and 57 simulated cases without a complication, i.e. $\hat{p}_{sim} = 5/62 = 0.081$.
 
-\textB{\pagebreak}
-
 \begin{example}{Is this one simulation enough to determine whether or not we should reject the null hypothesis from Exercise~\ref{hypForAssessingConsultantWorkInLiverTransplants}? Explain.}
 No. To assess the hypotheses, we need to see a distribution of many $\hat{p}_{sim}$, not just a \emph{single} draw from this sampling distribution.
 \end{example}
@@ -1019,8 +1015,6 @@ P(k\text{ successes}) = {n\choose k} p^{k}(1-p)^{n-k} = \frac{n!}{k!(n-k)!} p^{k
 where $p$ is the true probability of success. The expression ${n\choose k}$ is read as \emph{$n$ choose $k$}, and the exclamation points represent factorials. For instance, $3!$ is equal to $3\times 2\times 1=6$, $4!$ is equal to $4\times 3\times 2\times 1 = 24$, and so on (see Section~\ref{binomialModel}).
 
 The tail area of the null distribution is computed by adding up the probability in Equation~\eqref{binomialEquationShownForFindingNullDistributionInSmallSamplePropTest} for each $k$ that provides at least as strong of evidence favoring the alternative hypothesis as the data. If the hypothesis test is one-sided, then the p-value is represented by a single tail area. If the test is two-sided, compute the single tail area and double it to get the p-value, just as we have done in the past.
-
-\textB{\newpage}
 
 \begin{example}{Compute the exact p-value to check the consultant's claim that her clients' complication rate is below 10\%.}
 Exactly $k=3$ complications were observed in the $n=62$ cases cited by the consultant. Since we are testing against the 10\% national average, our null hypothesis is $p=0.10$. We can compute the p-value by adding up the cases where there are 3 or fewer complications:
@@ -1175,8 +1169,6 @@ We build up an approximation to the null distribution by repeatedly creating tab
 \begin{example}{Compare Figures~\ref{pValueCPRStudyLargeSampleAnalysisInSmallSampleSection} and~\ref{pValueCPRStudySmallSampleAnalysisInSmallSampleSection}. How are they similar? How are they different?}
 The shapes are similar, but the simulated results show that the continuous approximation of the normal distribution is not very good. We might wonder, how close are the p-values?
 \end{example}
-
-\textB{\pagebreak}
 
 \begin{exercise} \label{comparisonOfLargeSampleAndSmallSamplePValueInCPRStudy}
 The right tail area is about 0.13. (It is only a coincidence that we also have $\hat{p}_t - \hat{p}_c=0.13$.) The p-value is computed by doubling the right tail area: 0.26. How does this value compare with the large sample approximation for the p-value?\footnote{The approximation in this case is fairly poor (p-values: 0.174 vs. 0.26), though we come to the same conclusion. The data do not provide convincing evidence showing the blood thinner helps or hurts patients.}
