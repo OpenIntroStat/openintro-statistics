@@ -1,13 +1,12 @@
 library(openintro)
 data(COL)
 
-myPDF('cardsDiamondFaceVenn.pdf', 2.95, 1.75,
-      mar = c(0.2, 0.2, 0.6, 0.2))
-plot(c(0.2, 1.8),
-     c(0, 1),
+myPDF('cardsDiamondFaceVenn.pdf', 1.2 * 4.2, 1.2 * 1.7,
+      mar = c(0.2, 0.2, 0.2, 0.2))
+plot(c(0.2, 2.5),
+     c(-0.13, 1.15),
      type = 'n',
      axes = FALSE)
-box()
 
 z <- seq(0,2 * pi, len = 99)
 x1 <- cos(z) / 2 + 0.7
@@ -18,8 +17,6 @@ x2 <- cos(z) / 2 + 1.3
 y2 <- sin(z) / 3 + 0.5
 lines(c(x2, x2[1]), c(y2, y2[1]))
 
-text(0.7, 0.9, 'Diamonds')
-text(1.3, 0.9, 'Face cards')
 text(c(0.55, 1, 1.45),
      rep(0.57, 3),
      c(10, 3, 9),
@@ -29,6 +26,16 @@ text(c(0.55, 1, 1.45),
      c('0.1923', '0.0577', '0.1731'),
 	 cex = c(1, 0.9, 1),
 	 col = COL[1])
-text(1, 0.07, 'Other cards: 30')
-text(1.56, 0.06, '(0.5769)', col = COL[1])
+# text(0.5, -0.25, 'Other cards: 30', cex = 0.8)
+# text(0.98, -0.26, '(0.5769)', cex = 0.8, col = COL[1])
+text(2.25, 0.55, cex = 0.8,
+     paste("There are also", "30 cards that are",
+           "neither diamonds", "nor face cards", sep = "\n"))
+# text(2.25, 0.28, '(0.5769)', cex = 0.8, col = COL[1])
+Braces(0.7, 0.92, 3 * pi / 2, 0.98, 0.12)
+text(0.555, 1.09, 'Diamonds, ')
+text(0.845, 1.09, '0.25', col = COL[1])
+Braces(1.3, 0.08, pi / 2, 0.98, 0.12)
+text(1.16, -0.08, 'Face cards, ')
+text(1.515, -0.08, '0.2308', col = COL[1])
 dev.off()
