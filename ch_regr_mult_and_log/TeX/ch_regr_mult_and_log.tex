@@ -190,7 +190,7 @@ where $e_i$ represents the residuals of the model and $y_i$ the outcomes. This e
 The variance of the residuals for the model given in Exercise~\ref{computeMultipleRegressionResidualForMarioKart} is 23.34, and the variance of the total price in all the auctions is 83.06. Calculate $R^2$ for this model.\footnote{$R^2 = 1 - \frac{23.34}{83.06} = 0.719$.}
 \end{exercise}
 
-This strategy for estimating $R^2$ is acceptable when there is just a single variable. However, it becomes less helpful when there are many variables. The regular $R^2$ is actually a biased estimate of the amount of variability explained by the model. To get a better estimate, we use the adjusted $R^2$.
+This strategy for estimating $R^2$ is acceptable when there is just a single variable. However, it becomes less helpful when there are many variables. The regular $R^2$ is a less estimate of the amount of variability explained by the model. To get a better estimate, we use the adjusted $R^2$.
 
 \begin{termBox}{\tBoxTitle{Adjusted $\mathbf{R^2}$ as a tool for model assessment}
 The \termsub{adjusted $\mathbf{R^2}$}{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)} is computed as
@@ -211,6 +211,8 @@ There were $n=141$ auctions in the \data{mario\_\hspace{0.3mm}kart} data set and
 Suppose you added another predictor to the model, but the variance of the errors $Var(e_i)$ didn't go down. What would happen to the $R^2$? What would happen to the adjusted $R^2$?\hspace{0.7mm}\footnote{The unadjusted $R^2$ would stay the same and the adjusted $R^2$ would go down.}
 \end{exercise}
 
+\Add{Adjusted $R^2$ could have been used in Chapter~\ref{linRegrForTwoVar}. However, when there is only $k = 1$ predictors, adjusted $R^2$ is very close to regular $R^2$, so this nuance isn't typically important when considering only one predictor.}
+
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|)}
 
 
@@ -220,20 +222,19 @@ Suppose you added another predictor to the model, but the variance of the errors
 
 \index{model selection|(}
 
+\Comment{Section 8.3 will also need significant revisions.}
+
 The best model is not always the most complicated. Sometimes including variables that are not evidently important can actually reduce the accuracy of predictions. In this section we discuss model selection strategies, which will help us eliminate from the model variables that are less important.
 
-In this section, and in practice, the model that includes all available explanatory variables is often referred to as the \term{full model}. Our goal is to assess whether the full model is the best model. If it isn't, we want to identify a smaller model that is preferable.
+\Cut{In this section, and in} \Add{In} practice, the model that includes all available explanatory variables is often referred to as the \term{full model}. Our goal is to assess whether the full model is the best model. If it isn't, we want to identify a smaller model that is preferable.
+
 
 \subsection{Identifying variables in the model that may not be helpful}
 
-Table~\ref{outputForMultipleRegrOutputForAllPredictors2} provides a summary of the regression output for the full model for the auction data. The last column of the table lists p-values that can be used to assess hypotheses of the following form:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] $\beta_i = 0$ when the other explanatory variables are included in the model.
-\item[$H_A$:] $\beta_i \neq 0$ when the other explanatory variables are included in the model.
-\end{itemize}
+\Add{
+Adjusted $R^2$ describes the strength of a model fit, and it is a useful tool for evaluating which predictors are adding value to the model, where \emph{adding value} means they are (likely) improving the accuracy in predicting future outcomes.
 
-\textB{\newpage}
+Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrOutputForAllPredictors2} and~\ref{marioKartMultipleRegressionModelAllButDuration}. The first table summarizes the full model since it includes all predictors, while the second does not include the \var{duration} variable.
 
 \begin{table}[ht]
 \centering
@@ -256,46 +257,6 @@ Table~\ref{outputForMultipleRegrOutputForAllPredictors2} provides a summary of t
 \label{outputForMultipleRegrOutputForAllPredictors2}
 \end{table}
 
-\begin{example}{The coefficient of \var{cond\_\hspace{0.3mm}new} has a $t$ test statistic of $T=4.88$ and a p-value for its corresponding hypotheses ($H_0: \beta_1 = 0$, $H_A: \beta_1 \neq 0$) of about zero. How can this be interpreted?}
-If we keep all the other variables in the model and add no others, then there is strong evidence that a game's condition (new or used) has a real relationship with the total auction price.
-\end{example}
-
-\begin{example}{Is there strong evidence that using a stock photo is related to the total auction price?}
-The $t$ test statistic for \var{stock\_\hspace{0.3mm}photo} is $T=1.02$ and the p-value is about 0.31. After accounting for the other predictors, there is not strong evidence that using a stock photo in an auction is related to the total price of the auction. We might consider removing the \var{stock\_\hspace{0.3mm}photo} variable from the model.
-\end{example}
-
-\begin{exercise}
-Identify the p-values for both the \var{duration} and \var{wheels} variables in the model. Is there strong evidence supporting the connection of these variables with the total price in the model?\footnote{The p-value for the auction duration is 0.8882, which indicates that there is not statistically significant evidence that the duration is related to the total auction price when accounting for the other variables. The p-value for the Wii wheels variable is about zero, indicating that this variable is associated with the total auction price.}
-\end{exercise}
-
-There is not statistically significant evidence that either the stock photo or duration variables contribute meaningfully to the model. Next we consider common strategies for pruning such variables from a model.
-
-\begin{tipBox}{\tipBoxTitle{Using adjusted $R^2$ instead of p-values for model selection}
-The adjusted $R^2$ may be used as an alternative to p-values for model selection, where a higher adjusted $R^2$ represents a better model fit. For instance, we could compare two models using their adjusted $R^2$, and the model with the higher adjusted $R^2$ would be preferred. This approach tends to include more variables in the final model when compared to the p-value approach.}
-\end{tipBox}
-
-
-\subsection{Two model selection strategies}
-
-Two common strategies for adding or removing variables in a multiple regression model are called \emph{backward-selection} and \emph{forward-selection}. These techniques are often referred to as \term{stepwise} model selection strategies, because they add or delete one variable at a time as they ``step'' through the candidate predictors. We will discuss these strategies in the context of the p-value approach. Alternatively, we could have employed an $R_{adj}^2$ approach.
-
-The \term{backward-elimination} strategy starts with the model that includes all potential predictor variables. Variables are eliminated one-at-a-time from the model until only variables with statistically significant p-values remain. The strategy within each elimination step is to drop the variable with the largest p-value, refit the model, and reassess the inclusion of all variables.
-
-\begin{example}{Results corresponding to the \emph{full model} for the \data{mario\_\hspace{0.3mm}kart} data are shown in Table~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward-elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
-There are two variables with coefficients that are not statistically different from zero: \var{stock\_\hspace{0.3mm}photo} and \var{duration}. We first drop the \var{duration} variable since it has a larger corresponding p-value, \emph{then we refit the model}. A regression summary for the new model is shown in Table~\ref{outputForMultipleRegrOutputForAllPredictorsButDuration}.
-
-In the new model, there is not strong evidence that the coefficient for \var{stock\_\hspace{0.3mm}photo} is different from zero, even though the p-value decreased slightly, and the other p-values remain very small. Next, we again eliminate the variable with the largest non-significant p-value, \var{stock\_\hspace{0.3mm}photo}, and refit the model. The updated regression summary is shown in Table~\ref{outputForMultipleRegrOutputForAllPredictorsButDurationAndStockPhoto}.
-
-In the latest model, we see that the two remaining predictors have statistically significant coefficients with p-values of about zero. Since there are no variables remaining that could be eliminated from the model, we stop. The final model includes only the \var{cond\_\hspace{0.3mm}new} and \var{wheels} variables in predicting the total auction price:
-\begin{align*}
-\hat{y} \ &= \ b_0 + b_1x_1 + b_4x_4 \\
-	&= \ 36.78 + 5.58x_1 + 7.23x_4
-\end{align*}
-where $x_1$ represents \var{cond\_\hspace{0.3mm}new} and $x_4$ represents \var{wheels}.
-
-An alternative to using p-values in model selection is to use the adjusted $R^2$. At each elimination step, we refit the model without each of the variables up for potential elimination. For example, in the first step, we would fit four models, where each would be missing a different predictor. If one of these smaller models has a higher adjusted $R^2$ than our current model, we pick the smaller model with the largest adjusted $R^2$. We continue in this way until removing variables does not increase~$R_{adj}^2$. Had we used the adjusted $R^2$ criteria, we would have kept the \var{stock\_\hspace{0.3mm}photo} variable along with the \var{cond\_\hspace{0.3mm}new} and \var{wheels} variables.
-\end{example}
-
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrr}
@@ -310,58 +271,159 @@ An alternative to using p-values in model selection is to use the adjusted $R^2$
   wheels & 7.2984 & 0.5448 & 13.40 & 0.0000 \\ 
    \hline
   \vspace{-3.6mm} & & & & \\
-\multicolumn{3}{l}{$R_{adj}^2 = 0.7128$}&&\small$df=137$
+\multicolumn{3}{l}{$R_{adj}^2 = 0.7128$}&\multicolumn{2}{r}{$df=137$}
 \end{tabular}
-\caption{The output for the regression model where \var{price} is the outcome and the duration variable has been eliminated from the model.}
-\label{outputForMultipleRegrOutputForAllPredictorsButDuration}
+\caption{The fit for the regression model for predictors \var{cond\_new}, \var{stock\_photo}, and \var{wheels}.}
+\label{marioKartMultipleRegressionModelAllButDuration}
 \end{table}
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
-  \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-  \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.7849 & 0.7066 & 52.06 & 0.0000 \\ 
-  cond\_\hspace{0.3mm}new & 5.5848 & 0.9245 & 6.04 & 0.0000 \\ 
-  wheels & 7.2328 & 0.5419 & 13.35 & 0.0000 \\ 
-   \hline
-  \vspace{-3.6mm} & & & & \\
-\multicolumn{3}{l}{$R_{adj}^2 = 0.7124$}&&\small$df=138$
+\begin{example}{Which of the two models is better?}
+We compare the adjusted $R^2$ of each model to determine which to choose. Since the first model has an $R^2_{adj} = $ smaller than the $R^2_{adj}$ of the second model ($R^2_{adj} = $), we would prefer the second model to the first.
+\end{example}
+
+Will the model without \var{duration} be better than the model with \var{duration}? We~cannot know for sure, but based on the adjusted $R^2$, this is our best assessment.
+}
+
+\Add{
+\subsection{Two model selection strategies}
+
+Two common strategies for adding or removing variables in a multiple regression model are called \emph{backward-selection} and \emph{forward-selection}. These techniques are often referred to as \term{stepwise} model selection strategies, because they add or delete one variable at a time as they ``step'' through the candidate predictors.
+
+The \term{backward-elimination} strategy starts with the model that includes all potential predictor variables. Variables are eliminated one-at-a-time from the model until we cannot improve the adjusted $R^2$. The strategy within each elimination step is to eliminate the variable that leads to the largest improvement in adjusted $R^2$.
+
+\begin{example}{Results corresponding to the \emph{full model} for the \data{mario\_\hspace{0.3mm}kart} data are shown in Table~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward-elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
+Our baseline adjusted $R^2$ is from the full model: $R^2_{adj} = 0.7108$, and we need to determine whether dropping a predictor will improve the adjusted $R^2$. To check, we fit four models that each drop a different predictor, and we retrieve the adjusted $R^2$ from each:
+\begin{center}
+\begin{tabular}{lllll}
+Exclude ... &
+	\var{cond\_\hspace{0.3mm}new} &
+	\var{stock\_\hspace{0.3mm}photo} &
+	\var{duration} &
+	\var{wheels} \\
+&
+	$R^2_{adj} = 0.6626$ &
+	$R^2_{adj} = 0.7107$ &
+	$R^2_{adj} = 0.7128$ &
+	$R^2_{adj} = 0.3487$ \\
 \end{tabular}
-\caption{The output for the regression model where \var{price} is the outcome and the duration and stock photo variables have been eliminated from the model.}
-\label{outputForMultipleRegrOutputForAllPredictorsButDurationAndStockPhoto}
-\end{table}
+\end{center}
+The third model without \var{duration} has the highest adjusted $R^2$ of 0.7128, so we compare it to the adjusted $R^2$ for the full model. Because eliminating \var{duration} leads to a model with a higher adjusted $R^2$, we drop \var{duration} from the model.
 
-Notice that the p-value for \var{stock\_\hspace{0.3mm}photo} changed a little from the full model (0.309) to the model that did not include the \var{duration} variable (0.275). It is common for p-values of one variable to change, due to collinearity, after eliminating a different variable. This fluctuation emphasizes the importance of refitting a model after each variable elimination step. The p-values tend to change dramatically when the eliminated variable is highly correlated with another variable in the model.
+Since we eliminated a predictor from the model in the first step, we see whether we should eliminate any additional predictors. Our baseline adjusted $R^2$ is now $R^2_{adj} = 0.7128$. We now fit three new models, which each consider eliminating each of the three remaining predictors:
+\begin{center}
+\begin{tabular}{llll}
+Exclude \var{duration} and ... &
+	\var{cond\_\hspace{0.3mm}new} &
+	\var{stock\_\hspace{0.3mm}photo} &
+	\var{wheels} \\
+&
+	$R^2_{adj} = 0.6587$ &
+	$R^2_{adj} = 0.7124$ &
+	$R^2_{adj} = 0.3414$ \\
+\end{tabular}
+\end{center}
+None of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the predictors. That is, after backward-selection, we are left with the model that keeps \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photos}, and \var{wheels}, which we can summarize using the coefficients from Table~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}:
+\begin{align*}
+\hat{y} \ &= \ b_0 + b_1x_1 + b_2x_2 + b_4x_4 \\
+	&= \ 36.05 + 5.18x_1 + 1.12x_2 + 7.30x_4
+\end{align*}
+where $x_1$ represents \var{cond\_\hspace{0.3mm}new}, $x_2$ represents \var{stock\_\hspace{0.3mm}photo}, and $x_4$ represents \var{wheels}.
+\end{example}
 
-The \term{forward-selection} strategy is the reverse of the backward-elimination technique. Instead of eliminating variables one-at-a-time, we add variables one-at-a-time until we cannot find any variables that present strong evidence of their importance in the model.
+The \term{forward-selection} strategy is the reverse of the backward-elimination technique. Instead of eliminating variables one-at-a-time, we add variables one-at-a-time until we cannot find any variables that improve the model (as measured by adjusted $R^2$).
 
 \begin{example}{Construct a model for the \data{mario\_\hspace{0.3mm}kart} data set using the forward-selection strategy.}\label{forwardEliminationExampleWMarioKartData}
-We start with the model that includes no variables. Then we fit each of the possible models with just one variable. That is, we fit the model including just the \var{cond\_\hspace{0.3mm}new} predictor, then the model including just the \var{stock\_\hspace{0.3mm}photo} variable, then a model with just \var{duration}, and a model with just \var{wheels}. Each of the four models (yes, we fit four models!) provides a p-value for the coefficient of the predictor variable. Out of these four variables, the \var{wheels} variable had the smallest p-value. Since its p-value is less than 0.05 (the p-value was smaller than 2e-16), we add the Wii wheels variable to the model. Once a variable is added in forward-selection, it will be included in all models considered as well as the final model.
+We start with the model that includes no variables. Then we fit each of the possible models with just one variable. That is, we fit the model including just the \var{cond\_\hspace{0.3mm}new} predictor, then the model including just the \var{stock\_\hspace{0.3mm}photo} variable, then a model with just \var{duration}, and a model with just \var{wheels}. Each of the four models provides an adjusted $R^2$ value for the coefficient of the predictor variable:
+\begin{center}
+\begin{tabular}{lllll}
+Add ... &
+	\var{cond\_\hspace{0.3mm}new} &
+	\var{stock\_\hspace{0.3mm}photo} &
+	\var{duration} &
+	\var{wheels} \\
+&
+	$R^2_{adj} = 0.3459$ &
+	$R^2_{adj} = 0.0332$ &
+	$R^2_{adj} = 0.1338$ &
+	$R^2_{adj} = 0.6390$ \\
+\end{tabular}
+\end{center}
+In this case, we compare the adjusted $R^2$ against a baseline model that has no predictors: $R^2_{adj} = 0.0000$. The model with one predictor that has the largest adjusted $R^2$ is the model with the \var{wheels} predictor, and because this adjusted $R^2$ is larger than the baseline of 0.0000, we will add this variable to our model.
 
-Since we successfully found a first variable to add, we consider adding another. We fit three new models: (1) the model including just the \var{cond\_\hspace{0.3mm}new} and \var{wheels} variables (output in Table~\ref{outputForMultipleRegrOutputForAllPredictorsButDurationAndStockPhoto}), (2) the model including just the \var{stock\_\hspace{0.3mm}photo} and \var{wheels} variables, and (3) the model including only the \var{duration} and \var{wheels} variables. Of these models, the first had the lowest p-value for its new variable (the p-value corresponding to \var{cond\_\hspace{0.3mm}new} was 1.4e-08). Because this p-value is below 0.05, we add the \var{cond\_\hspace{0.3mm}new} variable to the model. Now the final model is guaranteed to include both the condition and wheels variables.
+We repeat the process again, this time considering 2-predictor models where one of the predictors is \var{wheels} and with a new baseline of $R^2_{adj} = 0.6390$:
+\begin{center}
+\begin{tabular}{llll}
+Add \var{wheels} and ... &
+	\var{cond\_\hspace{0.3mm}new} &
+	\var{stock\_\hspace{0.3mm}photo} &
+	\var{duration} \\
+&
+	$R^2_{adj} = 0.7124$ &
+	$R^2_{adj} = 0.6587$ &
+	$R^2_{adj} = 0.6528$ \\
+\end{tabular}
+\end{center}
+The best predictor in this stage, \var{cond\_\hspace{0.3mm}new}, has a higher adjusted $R^2$ (0.7124) than the baseline (0.6390), so we also add \var{cond\_\hspace{0.3mm}new} to the model.
 
-We must then repeat the process a third time, fitting two new models: (1) the model including the \var{stock\_\hspace{0.3mm}photo}, \var{cond\_\hspace{0.3mm}new}, and \var{wheels} variables (output in Table~\ref{outputForMultipleRegrOutputForAllPredictorsButDuration}) and (2) the model including the \var{duration}, \var{cond\_\hspace{0.3mm}new}, and \var{wheels} variables. The p-value corresponding to \var{stock\_\hspace{0.3mm}photo} in the first model (0.275) was smaller than the p-value corresponding to \var{duration} in the second model (0.682). However, since this smaller p-value was not below 0.05, there was not strong evidence that it should be included in the model. Therefore, neither variable is added and we are finished.
+Since we have again added a variable to the model, we continue and see whether it would be beneficial to add a third variable:
+\begin{center}
+\begin{tabular}{lll}
+Add \var{wheels}, \var{cond\_\hspace{0.3mm}new}, and ... &
+	\var{stock\_\hspace{0.3mm}photo} &
+	\var{duration} \\
+&
+	$R^2_{adj} = 0.7128$ &
+	$R^2_{adj} = 0.7107$ \\
+\end{tabular}
+\end{center}
+The model adding \var{stock\_\hspace{0.3mm}photo} improved adjusted $R^2$ (0.7124 to 0.7128), so we add \var{stock\_\hspace{0.3mm}photo} to the model.
 
-The final model is the same as that arrived at using the backward-selection strategy.
+Because we have again added a predictor, we check whether adding the last variable, \var{duration}, will improve adjusted $R^2$. We compare the adjusted $R^2$ for model that includes \var{duration} along with the other three predictors (0.7108) to the model that only considers \var{wheels}, \var{cond\_\hspace{0.3mm}new}, and \var{stock\_\hspace{0.3mm}photo} (0.7128). Adding \var{duration} does not improve the adjusted $R^2$, so we do not add it to the model, and we have arrived at the same model that we identified from backward-selection:
+
 \end{example}
 
-\begin{example}{As before, we could have used the $R_{adj}^2$ criteria instead of examining p-values in selecting variables for the model. Rather than look for variables with the smallest p-value, we look for the model with the largest $R_{adj}^2$. What would the result of forward-selection be using the adjusted $R^2$ approach?}
-Using the forward-selection strategy, we start with the model with no predictors. Next we look at each model with a single predictor. If one of these models has a larger $R_{adj}^2$ than the model with no variables, we use this new model. We repeat this procedure, adding one variable at a time, until we cannot find a model with a larger $R_{adj}^2$. If we had done the forward-selection strategy using $R_{adj}^2$, we would have arrived at the model including \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels}, which is a slightly larger model than we arrived at using the p-value approach and the same model we arrived at using the adjusted $R^2$ and backwards-elimination.
-\end{example}
+%\begin{example}{We could have used p-value instead of the adjusted $R^2$ criteria in selecting variables for the model. Rather than look for the model with the largest adjusted $R^2$, we could have used forward or backward selection with p-values:
+%added variables with the smallest p-value (forward-selection) or dropped variables with the largest p-values (backward-selection) until we were left with , we look for the model with the largest $R_{adj}^2$. What would the result of forward-selection be using the adjusted $R^2$ approach?}
+%Using the forward-selection strategy, we start with the model with no predictors. Next we look at each model with a single predictor. If one of these models has a larger $R_{adj}^2$ than the model with no variables, we use this new model. We repeat this procedure, adding one variable at a time, until we cannot find a model with a larger $R_{adj}^2$. If we had done the forward-selection strategy using $R_{adj}^2$, we would have arrived at the model including \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels}, which is a slightly larger model than we arrived at using the p-value approach and the same model we arrived at using the adjusted $R^2$ and backwards-elimination.
+%\end{example}
 
 \begin{termBox}{\tBoxTitle{Model selection strategies}
 The backward-elimination strategy begins with the largest model and eliminates variables one-by-one until we are satisfied that all remaining variables are important to the model. The forward-selection strategy starts with no variables included in the model, then it adds in variables according to their importance until no other important variables are found.}
 \end{termBox}
 
-There is no guarantee that the backward-elimination and forward-selection strategies will arrive at the same final model using the p-value or adjusted $R^2$ methods. If the backwards-elimination and forward-selection strategies are both tried and they arrive at different models, choose the model with the larger $R_{adj}^2$ as a tie-breaker; other tie-break options exist but are beyond the scope of this book.
+There is no guarantee that the backward-elimination and forward-selection strategies will arrive at the same final model. If the backwards-elimination and forward-selection strategies are both tried and they arrive at different models, choose the model with the larger $R_{adj}^2$; other tie-break options exist but are beyond the scope of this book.
+}
 
-It is generally acceptable to use just one strategy, usually backward-elimination with either the p-value or adjusted $R^2$ criteria. However, before reporting the model results, we must verify the model conditions are reasonable.
+
+
+\Add{
+\subsection{The p-value approach, an alternative to adjusted $R^2$}
+
+The p-value may be used as an alternative to adjusted $R^2$ for model selection.
+
+In backward-selection, we would identify the predictor corresponding to the largest p-value. If the p-value is above the significance level, usually $\alpha = 0.05$, then we would drop that variable, refit the model, and repeat the process. If the largest p-value is less than $\alpha = 0.05$, then we would not eliminate any predictors and the current model would be our best-fitting model.
+
+In forward-selection with p-values, we reverse the process. We begin with a model that has no predictors, then we fit a model for each possible predictor, identifying the model where the correspond predictor's coefficient is smallest. If that p-value is smaller than $\alpha = 0.05$, we add it to the model and repeat the process, considering whether to add more variables one-at-a-time. When none of the remaining predictors can be added to the model and have a p-value less than 0.05, then we stop adding variables and the current model would be our best-fitting model.
+
+\begin{exercise}
+Examine Table~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}, which considers the model including the \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward-selection and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnote{The \var{stock\_\hspace{0.3mm}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\_\hspace{0.3mm}photo} from the model.}
+\end{exercise}
+
+While the adjusted $R^2$ and p-value approaches are similar, they sometimes lead to different models, with the adjusted $R^2$ approach tending to include more predictors in the final model. For example, if we had used the p-value approach with the auction data, we would not have included the \var{stock\_\hspace{0.3mm}photo} predictor in the final model.
+
+\begin{tipBox}{\tBoxTitle{When to use the adjusted $R^2$ and when to use the p-value approach}
+When the sole goal is to improve prediction accuracy, use adjusted $R^2$. This is commonly the case in a machine learning applications.\\[-2mm]
+
+When there is interest in producing a simpler model, even if the final model's predictions are slightly less accurate, then the p-value approach is preferred. For example, this is common in business contexts where the model will be presented to non-statisticians.}
+\end{tipBox}
+
+Regardless of whether you use adjusted $R^2$ or the p-value approach, or if you use the backward-elimination of forward-selection strategy, our job is not done after variable selection. We must still verify the model conditions are reasonable.
+
+\Comment{Will we want some end-of-chapter exercises on when to use $R^2_{adj}$ or the p-value?}
+}
 
 \index{model selection|)}
+
 
 
 %%%%%

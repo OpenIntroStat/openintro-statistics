@@ -186,3 +186,80 @@ anova(fit1, fit2)
 fit1 <- lm(totalPr ~ condNew + stockPhoto, d)
 fit2 <- lm(totalPr ~ stockPhoto, d)
 anova(fit1, fit2)
+
+
+
+fit <- lm(totalPr ~
+          condNew + stockPhoto + duration + wheels,
+          d)
+xtable(fit)
+summary(fit)
+fit <- lm(totalPr ~
+          condNew + stockPhoto + wheels,
+          d)
+xtable(fit)
+summary(fit)
+
+# _____ Backward-Selection, Stage 1 _____ #
+fit <- lm(totalPr ~
+          stockPhoto + duration + wheels,
+          d)
+summary(fit)
+fit <- lm(totalPr ~
+          condNew + duration + wheels,
+          d)
+summary(fit)
+fit <- lm(totalPr ~
+          condNew + stockPhoto + wheels,
+          d)
+summary(fit)
+fit <- lm(totalPr ~
+          condNew + stockPhoto + duration,
+          d)
+summary(fit)
+
+# _____ Backward-Selection, Stage 2 _____ #
+fit <- lm(totalPr ~ stockPhoto + wheels, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ condNew + wheels, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ condNew + stockPhoto, d)
+summary(fit)$adj.r.squared
+
+
+# _____ Forward-Selection, Stage 1 _____ #
+fit <- lm(totalPr ~ 1, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ condNew, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ stockPhoto, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ duration, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ wheels, d)
+summary(fit)$adj.r.squared
+
+# _____ Forward-Selection, Stage 2 _____ #
+fit <- lm(totalPr ~ wheels, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ wheels + condNew, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ wheels + stockPhoto, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ wheels + duration, d)
+summary(fit)$adj.r.squared
+
+# _____ Forward-Selection, Stage 3 _____ #
+fit <- lm(totalPr ~ wheels + condNew, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ wheels + condNew + stockPhoto, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ wheels + condNew + duration, d)
+summary(fit)$adj.r.squared
+
+# _____ Forward-Selection, Stage 4 _____ #
+fit <- lm(totalPr ~ wheels + condNew + stockPhoto, d)
+summary(fit)$adj.r.squared
+fit <- lm(totalPr ~ wheels + condNew + stockPhoto + duration, d)
+summary(fit)$adj.r.squared
+
