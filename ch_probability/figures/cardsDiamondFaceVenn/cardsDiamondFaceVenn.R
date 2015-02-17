@@ -9,13 +9,13 @@ plot(c(0.2, 2.5),
      axes = FALSE)
 
 z <- seq(0,2 * pi, len = 99)
-x1 <- cos(z) / 2 + 0.7
-y1 <- sin(z) / 3 + 0.5
-lines(c(x1, x1[1]),c(y1, y1[1]))
-
 x2 <- cos(z) / 2 + 1.3
 y2 <- sin(z) / 3 + 0.5
-lines(c(x2, x2[1]), c(y2, y2[1]))
+polygon(c(x2, x2[1]), c(y2, y2[1]), col = COL[3,4])
+
+x1 <- cos(z) / 2 + 0.7
+y1 <- sin(z) / 3 + 0.5
+polygon(c(x1, x1[1]),c(y1, y1[1]), col = COL[2,4])
 
 text(c(0.55, 1, 1.45),
      rep(0.57, 3),

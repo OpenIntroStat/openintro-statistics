@@ -3,40 +3,6 @@ data(email50)
 data(COL)
 
 
-dotPlotStack <- function(x,
-                         center,
-                         radius = 1,
-                         seed = 1,
-                         addDots = TRUE,
-                         ...){
-  set.seed(seed)
-  x <- sample(d)
-  y <- rep(NA, length(x))
-  y[1] <- 1
-  for(i in 2:length(x)){
-    add <- TRUE
-    for(s in seq(radius, i*radius, radius/20)){
-      these <- 1:(i-1)
-      dx    <- (x[i] - x[these])^2
-      dy    <- (s - y[these])^2
-      if(any(dx+dy < radius^2) || !add){
-        next
-      } else {
-        if(addDots){
-          points(x[i], s, ...)
-        }
-        y[i] <- s
-        add  <- FALSE
-      }
-    }
-  }
-  invisible(list(max(y)+radius, x))
-}
-# Quick thought for improved version...
-# Write an optimization algorithm that swaps the
-# order of two observations in the vector when moving
-# one would result in an improved "settling".
-
 
 myPDF("emailCharactersDotPlot.pdf",
       7.5,
@@ -49,7 +15,7 @@ dotPlot(d,
         xlab = 'Number of Characters (in thousands)',
         ylab = '',
         pch = 20,
-        col = COL[1,2],
+        col = COL[1, 2],
         cex = 1.5,
         ylim = c(0.95, 1.05),
         axes = FALSE)
@@ -61,37 +27,33 @@ polygon(M + c(-2, 2, 0) * 1.5,
         col = COL[4])
 dev.off()
 
+
+
 set.seed(10)
 myPDF("emailCharactersDotPlotStacked.pdf",
       5,
-      2.7,
+      2,
       mar = c(3.6, 1, 0.5, 1),
       mgp = c(2.5, 0.7, 0))
-N      <- 35
-radius <- 1.8
-cex    <- 1.5
-seed   <- 3
-stacks <- dotPlotStack(x,
-                       radius = radius,
-                       addDots = FALSE,
-                       pch = 19,
-                       col = COL[1],
-                       cex = 1.25,
-                       seed = seed)
+round.to <- 2
+binned <- round.to * round(d / round.to)
+tab <- table(binned)
+cex    <- 1
 plot(0,
      type = "n",
-     xlab = "Number of Characters (in thousands)",
+     xlab = paste("Number of Characters",
+                  "(in thousands, with rounding)"),
      ylab = "",
      axes = FALSE,
      xlim = c(0, 75),
-     ylim = c(-1, max(stacks[[1]])))
-
-dotPlotStack(x,
-             radius = radius,
-             pch = 19,
-             col = COL[1],
-             cex = cex,
-             seed = seed)
+     ylim = c(-1, max(tab)))
+for (i in 1:length(binned)) {
+  points(rep(as.numeric(names(tab[i])), tab[i]),
+         1:tab[i] - 0.4,
+         pch = 19,
+         col = COL[1],
+         cex = cex)
+}
 abline(h = 0)
 at <- seq(0, 70, 10)
 axis(1, at)

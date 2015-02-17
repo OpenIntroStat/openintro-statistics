@@ -605,7 +605,7 @@ Describe two variables that would have a horseshoe shaped association in a scatt
 \subsection{Dot plots and the mean}
 \label{dotPlot}
 
-Sometimes two variables is one too many: only one variable may be of interest. In these cases, a dot plot provides the most basic of displays. A~\term{dot plot} is a one-variable scatterplot; an example using the number of characters from 50 emails is shown in Figure~\ref{emailCharactersDotPlot}. A stacked version of this dot plot is shown in Figure~\ref{emailCharactersDotPlotStacked}.
+Sometimes two variables is one too many: only one variable may be of interest. In these cases, a dot plot provides the most basic of displays. A~\term{dot plot} is a one-variable scatterplot; an example using the number of characters from 50 emails is shown in Figure~\ref{emailCharactersDotPlot}. A stacked version of this dot plot\Add{, where the number of characters for each email has been rounded to the nearest 2,000,} is shown in Figure~\ref{emailCharactersDotPlotStacked}.
 
 \begin{figure}[h]
    \centering
@@ -616,12 +616,14 @@ Sometimes two variables is one too many: only one variable may be of interest. I
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.7\textwidth]{ch_intro_to_data/figures/emailCharactersDotPlot/emailCharactersDotPlotStacked}
-   \caption{A stacked dot plot of \var{num\_\hspace{0.3mm}char} for the \data{email50} data set.}
+   \includegraphics[width=0.72\textwidth]{ch_intro_to_data/figures/emailCharactersDotPlot/emailCharactersDotPlotStacked}
+   \caption{A stacked dot plot of \var{num\_\hspace{0.3mm}char} for the \data{email50} data set. The~values have been rounded to the nearest 2,000 in this plot.}
    \label{emailCharactersDotPlotStacked}
 \end{figure}
 
-The \term{mean}, sometimes called the \indexthis{average}{mean!average}, is a common way to measure the center of a \term{distribution} of data. To find the mean number of characters in the 50 emails, we add up all the character counts and divide by the number of emails. For computational convenience, the number of characters is listed in the thousands and rounded to the first decimal.
+\Comment{Figure~\ref{emailCharactersDotPlotStacked} has an updated caption.}
+
+The \term{mean}, sometimes called the \indexthis{average}{mean!average}, is a common way to measure the center of a \term{distribution} of data. To find the mean number of characters in the 50 emails, we add up all the character counts and divide by the number of emails. For computational convenience, the number of characters is listed in the thousands and rounded to the first~decimal.
 \begin{eqnarray}
 \bar{x} = \frac{21.7 + 7.0 + \cdots + 15.8}{50} = 11.6
 \label{sampleMeanEquation}
