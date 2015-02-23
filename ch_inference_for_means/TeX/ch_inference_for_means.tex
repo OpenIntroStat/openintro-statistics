@@ -8,363 +8,26 @@ Chapter~\ref{foundationsForInference} introduced a framework for statistical inf
 \item Identify an appropriate distribution for the point estimate or test statistic.
 \item Apply the ideas from Chapter~\ref{foundationsForInference} using the distribution from step 2.
 \end{enumerate}
-Each section in Chapter~\ref{inferenceForNumericalData} explores a new situation: the difference of two means (\ref{pairedData},~\ref{differenceOfTwoMeans}); a~single mean or difference of means where we relax the minimum sample size condition (\ref{oneSampleMeansWithTDistribution},~\ref{theTDistributionForTheDifferenceOfTwoMeans}); and the comparison of means across multiple groups (\ref{anovaAndRegrWithCategoricalVariables}). Chapter~\ref{inferenceForCategoricalData} will introduce scenarios that highlight categorical data.
+\Cut{Each section in Chapter~\ref{inferenceForNumericalData} explores a new situation: the difference of two means (\ref{pairedData},~\ref{differenceOfTwoMeans}); a~single mean or difference of means where we relax the minimum sample size condition (\ref{oneSampleMeansWithTDistribution},~\ref{theTDistributionForTheDifferenceOfTwoMeans}); and the comparison of means across multiple groups (\ref{anovaAndRegrWithCategoricalVariables}). Chapter~\ref{inferenceForCategoricalData} will introduce scenarios that highlight categorical data.}
 
 
-%__________________
-\section{Paired data}
-\label{pairedData}
-
-\index{paired data|(}
-\index{data!textbooks|(}
-
-Are textbooks actually cheaper online? Here we compare the price of textbooks at UCLA's bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10\% of all UCLA courses.\footnote{When a class had multiple books, only the most expensive text was considered.} A portion of this data set is shown in Table~\ref{textbooksDF}.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{rllrrr}
-  \hline
- & dept & course & ucla & amazon & diff \\ 
-  \hline
-1 & Am Ind &  C170 & 27.67 & 27.95 & -0.28 \\ 
-  2 & Anthro & 9 & 40.59 & 31.14 & 9.45 \\ 
-  3 & Anthro & 135T & 31.68 & 32.00 & -0.32 \\ 
-  4 & Anthro & 191HB & 16.00 & 11.52 & 4.48 \\ 
-$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-  72 & Wom Std & M144 & 23.76 & 18.72 & 5.04 \\ 
-  73 & Wom Std & 285 & 27.70 & 18.22 & 9.48 \\ 
-   \hline
-\end{tabular}
-\caption{Six cases of the \data{textbooks} data set.}
-\label{textbooksDF}
-\end{table}
-%library(openintro); library(xtable); data(textbooks); xtable(textbooks[c(1:5, nrow(textbooks) - 1:0),])
-
-\subsection{Paired observations and samples}
-
-Each textbook has two corresponding prices in the data set: one for the UCLA bookstore and one for Amazon. Therefore, each textbook price from the UCLA bookstore has a natural correspondence with a textbook price from Amazon. When two sets of observations have this special correspondence, they are said to be \term{paired}.
-
-\begin{termBox}{\tBoxTitle{Paired data}
-Two sets of observations are \emph{paired} if each observation in one set has a special correspondence or connection with exactly one observation in the other data set.}
-\end{termBox}
-
-To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In the \data{textbook} data set, we look at the difference in prices, which is represented as the \var{diff} variable in the \data{textbooks} data. Here the differences are taken as
-\begin{eqnarray*}
-\text{UCLA price} - \text{Amazon price}
-\end{eqnarray*}
-for each book. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices. A histogram of these differences is shown in Figure~\ref{diffInTextbookPricesS10}. Using differences between paired observations is a common and useful way to analyze paired data.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.83\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
-\caption{Histogram of the difference in price for each book sampled. These data are strongly skewed.\index{skew!example: strong}}
-\label{diffInTextbookPricesS10}
-\end{figure}
-
-\begin{exercise}
-The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations 2 and 3.\footnote{Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.}
-\end{exercise}
-
-\subsection{Inference for paired data}
-
-To analyze a paired data set, we use the exact same tools that we developed in Chapter~\ref{foundationsForInference}. Now we apply them to the differences in the paired observations.
-
-\begin{table}[hh]
-\centering
-\begin{tabular}{ccccc}
-\hline
-$n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \vspace{1mm}\\
-73			&& 12.76				&& 14.26 \\
-\hline
-\end{tabular}
-\caption{Summary statistics for the price differences. There were 73 books, so there are 73 differences.}
-\label{textbooksSummaryStats}
-\end{table}
-
-\begin{example}{Set up and implement a hypothesis test to determine whether, on average, there is a difference between Amazon's price for a book and the UCLA bookstore's price.}
-\label{htForDiffInUCLAAndAmazonTextbookPrices}
-There are two scenarios: there is no difference or there is some difference in average prices. The \emph{no difference} scenario is always the null hypothesis:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] $\mu_{diff}=0$. There is no difference in the average textbook price.
-\item[$H_A$:] $\mu_{diff} \neq 0$. There is a difference in average prices.
-\end{itemize}
-Can the normal model be used to describe the sampling distribution of $\bar{x}_{diff}$? We must check that the differences meet the conditions established in Chapter~\ref{foundationsForInference}. The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable; there are more than 30 differences; and the distribution of differences, shown in Figure~\ref{diffInTextbookPricesS10}, is strongly skewed, but this amount of skew is reasonable for this sized data set ($n=73$). Because all three conditions are reasonably satisfied, we can conclude the sampling distribution of $\bar{x}_{diff}$ is nearly normal and our estimate of the standard error will be reasonable.
-
-We compute the standard error associated with $\bar{x}_{diff}$ using the standard deviation of the differences ($s_{_{diff}}=14.26$) and the number of differences ($n_{_{diff}}=73$):
-$$SE_{\bar{x}_{diff}} = \frac{s_{diff}}{\sqrt{n_{diff}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
-To visualize the p-value, the sampling distribution of $\bar{x}_{diff}$ is drawn as though $H_0$ is true, which is shown in Figure~\ref{textbooksS10HTTails}. The p-value is represented by the two (very) small tails.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/textbooksS10/textbooksS10HTTails}
-\caption{Sampling distribution for the mean difference in book prices, if the true average difference is zero.}
-\label{textbooksS10HTTails}
-\end{figure}
-
-To find the tail areas, we compute the test statistic, which is the Z score of $\bar{x}_{diff}$ under the null condition that the actual mean difference is 0:
-$$Z = \frac{\bar{x}_{diff} - 0}{SE_{x_{diff}}} = \frac{12.76 - 0}{1.67} = 7.59$$
-This Z score is so large it isn't even in the table, which ensures the single tail area will be 0.0002 or smaller. Since the p-value corresponds to both tails in this case and the normal distribution is symmetric, the p-value can be estimated as twice the one-tail area:
-$$\text{p-value} = 2\times (\text{one tail area}) \approx 2\times 0.0002 = 0.0004$$
-Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon is, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
-\end{example}
-
-\begin{exercise}
-Create a 95\% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon.\footnote{Conditions have already verified and the standard error computed in Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}. To find the interval, identify $z^{\star}$ (1.96 for 95\% confidence) and plug it, the point estimate, and the standard error into the confidence interval formula:
-$$\text{point estimate} \ \pm\ z^{\star}SE \quad\to\quad 12.76 \ \pm\ 1.96\times 1.67 \quad\to\quad (9.49, 16.03)$$
-We are 95\% confident that Amazon is, on average, between \$9.49 and \$16.03 cheaper than the UCLA bookstore for UCLA course books.}
-
-\index{data!textbooks|)}
-\index{paired data|)}
-
-\end{exercise}
-
-
-%__________________
-\section{Difference of two means}
-\label{differenceOfTwoMeans}
-
-In this section we consider a difference in two population means, $\mu_1 - \mu_2$, under the condition that the data are not paired. The methods are similar in theory but different in the details. Just as with a single sample, we identify conditions to ensure a point estimate of the difference $\bar{x}_1 - \bar{x}_2$ is nearly normal. Next we introduce a formula for the standard error, which allows us to apply our general tools from Section~\ref{aFrameworkForInference}.
-
-We apply these methods to two examples: participants in the 2012 Cherry Blossom Run and newborn infants. This section is motivated by questions like ``Is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke?''
-
-\subsection{Point estimates and standard errors for differences of means}
-
-\index{data!run10Samp|(}
-
-\index{point estimate!difference of means|(}
-
-We would like to estimate the average difference in run times for men and women using the \data{run10Samp} data set, which was a simple random sample of 45 men and 55 women from all runners in the 2012 Cherry Blossom Run. Table~\ref{cherryBlossomRun2009SampleOf180SummaryStats} presents relevant summary statistics, and box plots of each sample are shown in Figure~\ref{cbrRunTimesMenWomen}.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{l rr}
-\hline
-	&	men	&	women \\
-\hline
-$\bar{x}$	& 87.65	& 102.13 \\
-$s$	&	12.5		& 15.2 \\
-$n$	&	45		& 55    \\
-\hline
-\end{tabular}
-\caption{Summary statistics for the run time of 100 participants in the 2009 Cherry Blossom Run.}
-\label{cherryBlossomRun2009SampleOf180SummaryStats}
-\end{table}
-%library(openintro); data(run10Samp); d <- run10Samp; by(d$time, d$gender, mean); by(d$time, d$gender, sd); by(d$time, d$gender, length)
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{ch_inference_for_means/figures/cbrRunTimesMenWomen/cbrRunTimesMenWomen}
-\caption{Side-by-side box plots for the sample of 2009 Cherry Blossom Run participants.}
-\label{cbrRunTimesMenWomen}
-\end{figure}
-
-The two samples are independent of one-another, so the data are not paired. Instead a point estimate of the difference in average 10 mile times for men and women, $\mu_w - \mu_m$, can be found using the two sample means:
-\begin{eqnarray*}
-\bar{x}_{w} - \bar{x}_{m}\ =\ 102.13 - 87.65\ =\ 14.48
-\end{eqnarray*}
-Because we are examining two simple random samples from less than 10\% of the population, each sample contains at least 30 observations, and neither distribution is strongly skewed, we can safely conclude the sampling distribution of each sample mean is nearly normal. Finally, because each sample is independent of the other (e.g. the data are not paired), we can conclude that the difference in sample means can be modeled using a normal distribution.\footnote{Probability theory guarantees that the difference of two independent normal random variables is also normal. Because each sample mean is nearly normal and observations in the samples are independent, we are assured the difference is also nearly normal.}
-
-\begin{termBox}{\tBoxTitle{Conditions for normality of $\bar{x}_1 - \bar{x}_2$}
-If the sample means, $\bar{x}_1$ and $\bar{x}_2$, each meet the criteria for having nearly normal sampling distributions and the observations in the two samples are independent, then the difference in sample means, $\bar{x}_1 - \bar{x}_2$, will have a sampling distribution that is nearly normal.}
-\end{termBox}
-
-We can quantify the variability in the point estimate, $\bar{x}_{w} - \bar{x}_{m}$, using the following formula for its standard error:
-\index{standard error!difference in means}
-\begin{eqnarray*}
-SE_{\bar{x}_{w} - \bar{x}_{m}} = \sqrt{\frac{\sigma_{w}^2}{n_{w}} + \frac{\sigma_{m}^2}{n_{m}}}
-\end{eqnarray*}
-We usually estimate this standard error using standard deviation estimates  based on the samples:
-\begin{align*}
-SE_{\bar{x}_{w} - \bar{x}_{m}}
-	&= \sqrt{\frac{\sigma_{w}^2}{n_{w}} + \frac{\sigma_{m}^2}{n_{m}}} \\
-	&\approx \sqrt{\frac{s_{w}^2}{n_{w}} + \frac{s_{m}^2}{n_{m}}}
-	= \sqrt{\frac{15.2^2}{55} + \frac{12.5^2}{45}} = 2.77
-\end{align*}
-Because each sample has at least 30 observations ($n_{w} = 55$ and $n_{m} = 45$), this substitution using the sample standard deviation tends to be very good.
-
-\index{point estimate!difference of means|)}
-
-\begin{termBox}{\tBoxTitle{Distribution of a difference of sample means}
-The sample difference of two means, $\bar{x}_1 - \bar{x}_2$, is nearly normal with mean $\mu_{1}-\mu_{2}$ and estimated standard error
-\begin{eqnarray}
-\textstyle
-SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
-\label{seOfDifferenceInMeans}
-\end{eqnarray}
-when each sample mean is nearly normal and all observations are independent.}
-\end{termBox}
-
-\subsection{Confidence interval for the difference}
-
-When the data indicate that the point estimate $\bar{x}_{1} - \bar{x}_{2}$ comes from a nearly normal distribution, we can construct a confidence interval for the difference in two means from the framework built in Chapter~\ref{foundationsForInference}. Here a point estimate, $\bar{x}_{w} - \bar{x}_{m} = 14.48$, is associated with a normal model with standard error $SE=2.77$. Using this information, the general confidence interval formula may be applied in an attempt to capture the true difference in means, in this case using a 95\% confidence level:
-\begin{eqnarray*}
-\text{point estimate}\  \pm \ z^{\star}SE \quad\to\quad 14.48\  \pm \ 1.96\times 2.77 \quad\to\quad (9.05, 19.91)
-\end{eqnarray*}
-Based on the samples, we are 95\% confident that men ran, on average, between 9.05 and 19.91 minutes faster than women in the 2012 Cherry Blossom Run.
-
-\begin{exercise}
-What does 95\% confidence mean?\footnote{If we were to collect many such samples and create 95\% confidence intervals for each, then about 95\% of these intervals would contain the population difference, $\mu_w - \mu_m$.}
-\end{exercise}
-
-\begin{exercise}
-We may be interested in a different confidence level. Construct the 99\% confidence interval for the population difference in average run times based on the sample data.\footnote{The only thing that changes is $z^{\star}$: we use $z^{\star}=2.58$ for a 99\% confidence level. (If the selection of $z^{\star}$ is confusing, see Section~\ref{changingTheConfidenceLevelSection} for an explanation.) The 99\% confidence interval: $14.48\ \pm\ 2.58\times 2.77 \to(7.33, 21.63)$. We are 99\% confident that the true difference in the average run times between men and women is between 7.33 and 21.63 minutes.}
-
-\index{data!run10Samp|)}
-
-\end{exercise}
-
-\subsection{Hypothesis tests based on a difference in means}
-
-\index{data!baby\_smoke|(}
-
-A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Table~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
-
-\begin{table}
-\centering
-\begin{tabular}{rrrrrll}
-  \hline
- & fAge & mAge & weeks & weight & sexBaby & smoke \\ 
-  \hline
-1 & NA & 13 &  37 & 5.00 & female & nonsmoker \\ 
-  2 & NA & 14 &  36 & 5.88 & female & nonsmoker \\ 
-  3 & 19 & 15 &  41 & 8.13 & male & smoker \\ 
-  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\
-  150 & 45 & 50 &  36 & 9.25 & female & nonsmoker \\ 
-   \hline
-\end{tabular}
-\caption{Four cases from the \data{baby\_\hspace{0.3mm}smoke} data set. The value ``NA'', shown for the first two entries of the first variable, indicates that piece of data is missing.}
-\label{babySmokeDF}
-\end{table}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/babySmokePlotOfTwoGroupsToExamineSkew/babySmokePlotOfTwoGroupsToExamineSkew}
-\caption{The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke. Both distributions exhibit strong~skew.\index{skew!example: strong}}
-\label{babySmokePlotOfTwoGroupsToExamineSkew}
-\end{figure}
-
-\textB{\pagebreak}
-
-\begin{example}{Set up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.}\label{babySmokeHTForWeight}
-The null hypothesis represents the case of no difference between the groups.
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] There is no difference in average birth weight for newborns from mothers who did and did not smoke. In statistical notation: $\mu_{n} - \mu_{s} = 0$, where $\mu_{n}$ represents non-smoking mothers and $\mu_s$ represents mothers who smoked.
-\item[$H_A$:] There is some difference in average newborn weights from mothers who did and did not smoke ($\mu_{n} - \mu_{s} \neq 0$).
-\end{itemize}
-\end{example}
-
-Summary statistics are shown for each sample in Table~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}. Because the data come from a simple random sample and consist of less than 10\% of all such cases, the observations are independent. Additionally, each group's sample size is at least 30 and the skew in each sample distribution is strong (see Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}). The skew is reasonable for these sample sizes of 50 and 100. Therefore, each sample mean is associated with a nearly normal distribution.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lrr}
-	& \resp{smoker} & \resp{nonsmoker} \\
-\hline
-mean & 6.78 & 7.18 \\
-st. dev. & 1.43 & 1.60 \\
-samp. size & 50 & 100 \\
-\hline
-\end{tabular}
-\caption{Summary statistics for the \data{baby\_\hspace{0.3mm}smoke} data set.}
-\label{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}
-\end{table}
-
-\begin{exercise} \label{pointEstimateDistributionAndSEForBabySmokeData}
-(a)~What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b)~Can we use a normal distribution to model this difference? (c)~Compute the standard error of the point estimate from part (a).\footnote{(a)~The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b)~Because the samples are independent and each sample mean is nearly normal, their difference is also nearly normal. (c)~The standard error of the estimate can be estimated using Equation~(\ref{seOfDifferenceInMeans}):
-\begin{eqnarray*}
-SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
-	\approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
-	= \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
-	= 0.26
-\end{eqnarray*}
-The standard error estimate should be sufficiently accurate since the conditions were reasonably satisfied.}
-\end{exercise}
-
-\begin{example}{If the null hypothesis from Example~\ref{babySmokeHTForWeight} was true, what would be the expected value of the point estimate? And the standard deviation associated with this estimate? Draw a picture to represent the p-value.} \label{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}
-If the null hypothesis was true, then we expect to see a difference near 0. The standard error corresponds to the standard deviation of the point estimate: 0.26. To depict the p-value, we draw the distribution of the point estimate as though $H_0$ was true and shade areas representing at least as much evidence against $H_0$ as what was observed. Both tails are shaded because it is a two-sided test.
-\begin{center}
-\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData}
-\end{center}
-\end{example}
-
-\begin{example}{Compute the p-value of the hypothesis test using the figure in Example~\ref{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}, and evaluate the hypotheses using a significance level of $\alpha=0.05$.} \label{babySmokeHTForWeightComputePValueAndEvalHT}
-Since the point estimate is nearly normal, we can find the upper tail using the Z score and normal probability table:
-\begin{eqnarray*}
-Z = \frac{\ 0.40 - 0\ }{0.26} = 1.54 \quad \to \quad \text{upper tail } = 1 - 0.938 = 0.062
-\end{eqnarray*}
-Because this is a two-sided test and we want the area of both tails, we double this single tail to get the p-value: 0.124. This p-value is larger than the significance value, 0.05, so we fail to reject the null hypothesis. There is insufficient evidence to say there is a difference in average birth weight of newborns from North Carolina mothers who did smoke during pregnancy and newborns from North Carolina mothers who did not smoke during pregnancy.
-\end{example}
-
-\begin{exercise}
-Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} mean that smoking and average birth weight are unrelated?\footnote{Absolutely not. It is possible that there is some difference but we did not detect it. If this is the case, we made a Type 2 Error.}
-\end{exercise}
-
-\begin{exercise} \label{babySmokeHTIDingHowToDetectDifferences}
-If we made a Type 2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?\footnote{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
-
-\index{data!baby\_smoke|)}
-
-\end{exercise}
-
-\subsection{Summary for inference of the difference of two means}
-
-When considering the difference of two means, there are two common cases: the two samples are paired or they are independent. (There are instances where the data are neither paired nor independent.) The paired case was treated in Section~\ref{pairedData}, where the one-sample methods were applied to the differences from the paired observations. We examined the second and more complex scenario in this section.
-
-When applying the normal model to the point estimate $\bar{x}_1 - \bar{x}_2$ (corresponding to unpaired data), it is important to verify conditions before applying the inference framework using the normal model. First, each sample mean must meet the conditions for normality; these conditions are described in Chapter~\ref{foundationsForInference} on page~\pageref{terBoxOfCondForXBarBeingNearlyNormalAndSEBeingAccurate}. Secondly, the samples must be collected independently (e.g. not paired data). When these conditions are satisfied, the general inference tools of Chapter~\ref{foundationsForInference} may be applied.
-
-For example, a confidence interval may take the following form:
-\begin{eqnarray*}
-\text{point estimate}\ \pm\ z^{\star} SE
-\end{eqnarray*}
-When we compute the confidence interval for $\mu_1 - \mu_2$, the point estimate is the difference in sample means, the value $z^{\star}$ corresponds to the confidence level, and the standard error is computed from Equation~\eqref{seOfDifferenceInMeans} on page~\pageref{seOfDifferenceInMeans}. While the point estimate and standard error formulas change a little, the framework for a confidence interval stays the same. This is also true in hypothesis tests for differences of means.
-
-In a hypothesis test, we apply the standard framework and use the specific formulas for the point estimate and standard error of a difference in two means. The test statistic represented by the Z score may be computed as
-\begin{eqnarray*}
-Z = \frac{\ \text{point estimate} - \text{null value}\ }{SE}
-\end{eqnarray*}
-When assessing the difference in two means, the point estimate takes the form $\bar{x}_1 - \bar{x}_2$, and the standard error again takes the form of Equation~\eqref{seOfDifferenceInMeans} on page~\pageref{seOfDifferenceInMeans}. Finally, the null value is the difference in sample means under the null hypothesis. Just as in Chapter~\ref{foundationsForInference}, the test statistic $Z$ is used to identify the p-value.
-
-\subsection{Examining the standard error formula}
-
-The formula for the standard error of the difference in two means is similar to the formula for other standard errors. Recall that the standard error of a single mean, $\bar{x}_1$, can be approximated by
-\begin{eqnarray*}
-SE_{\bar{x}_1} = \frac{s_1}{\ \sqrt{n_1}\ }
-\end{eqnarray*}
-where $s_1$ and $n_1$ represent the sample standard deviation and sample size.
-
-The standard error of the difference of two sample means can be constructed from the standard errors of the separate sample means:
-\begin{eqnarray}
-SE_{\bar{x}_{1} - \bar{x}_{2}}
-	= \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
-	= \sqrt{\frac{s_1^2}{{n_1}} + \frac{s_2^2}{{n_2}}}
-\label{seOfDiffOfMeansInTermsOfSEOfIndividualMeans}
-\end{eqnarray}
-This special relationship follows from probability theory.
-
-\begin{exercise}\label{derivingSEForDiffOfTwoMeansExercise}
-Prerequisite: Section~\ref{randomVariablesSection}.
-We can rewrite Equation~(\ref{seOfDiffOfMeansInTermsOfSEOfIndividualMeans}) in a different way:
-\begin{eqnarray*}
-SE_{\bar{x}_{1} - \bar{x}_{2}}^2 = SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2
-\end{eqnarray*}
-Explain where this formula comes from using the ideas of probability theory.\footnote{The standard error squared represents the variance of the estimate. If $X$ and $Y$ are two random variables with variances $\sigma_x^2$ and $\sigma_y^2$, then the variance of $X-Y$ is $\sigma_x^2 + \sigma_y^2$. Likewise, the variance corresponding to $\bar{x}_1 - \bar{x}_2$ is $\sigma_{\bar{x}_1}^2 + \sigma_{\bar{x}_2}^2$. Because $\sigma_{\bar{x}_1}^2$ and $\sigma_{\bar{x}_2}^2$ are just another way of writing $SE_{\bar{x}_1}^2$ and  $SE_{\bar{x}_2}^2$, the variance associated with $\bar{x}_1 - \bar{x}_2$ may be written as $SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2$.}
-\end{exercise}
 
 
 %__________________
 \section{One-sample means with the $t$ distribution}
 \label{oneSampleMeansWithTDistribution}
 
-The motivation in Chapter~\ref{foundationsForInference} for requiring a large sample was two-fold. First, a large sample ensures that the sampling distribution of $\bar{x}$ is nearly normal. We will see in Section~\ref{normalityCond} that if the population data are nearly normal, then $\bar{x}$ is also nearly normal regardless of the sample size. The second motivation for a large sample was that we get a better estimate of the standard error when using a large sample. The standard error estimate will not generally be accurate for smaller sample sizes, and this motivates the introduction of the $t$ distribution, which we introduce in Section~\ref{introducingTheTDistribution}.
-
-We will see that the $t$ distribution is a helpful substitute for the normal distribution when we model a sample mean $\bar{x}$ that comes from a small sample. While we emphasize the use of the $t$ distribution for small samples, this distribution may also be used for means from large samples.
+\Comment{This section was moved up.} The motivation in Chapter~\ref{foundationsForInference} for requiring a large sample was two-fold:
+\begin{enumerate}
+\item Large sample ensures that the sampling distribution of $\bar{x}$ is nearly normal. We will see in Section~\ref{normalityCond} that if the population data are nearly normal, then $\bar{x}$ is also nearly normal regardless of the sample size.
+\item We get a better estimate of the standard error when using a large sample. The standard error estimate will not generally be accurate for smaller sample sizes, and this motivates the introduction of the $t$ distribution, which we introduce in Section~\ref{introducingTheTDistribution}.
+\end{enumerate}
+\Cut{We will see that the} \Add{The} $t$ distribution is a helpful substitute for the normal distribution when we model a sample mean $\bar{x}$ that comes from a small\Add{er} sample. While we emphasize the use of the $t$ distribution for small samples, \Cut{this distribution may also be} \Add{generally this distribution is also} used for means from large samples.
 
 \subsection{The normality condition}
 \label{normalityCond}
 
-We use a special case of the Central Limit Theorem to ensure the distribution of the sample means will be nearly normal, regardless of sample size, provided the data come from a nearly normal distribution.
+\Cut{We use a} \Add{A} special case of the Central Limit Theorem \Cut{to} ensure\Add{s} the distribution of the sample means will be nearly normal, regardless of sample size, provided the data come from a nearly normal distribution.
 
 \begin{termBox}{\tBoxTitle{Central Limit Theorem for normal data}
 The sampling distribution of the mean is nearly normal when the sample observations are independent and come from a nearly normal distribution. This is true for any sample size.
@@ -386,7 +49,7 @@ You may relax the normality condition as the sample size goes up. If the sample 
 
 \index{$t$ distribution|(}
 
-The second reason we previously required a large sample size was so that we could accurately estimate the standard error using the sample data. In the cases where we will use a small sample to calculate the standard error, it will be useful to rely on a new distribution for inference calculations: the $t$ distribution. A $t$ distribution, shown as a solid line in Figure~\ref{tDistCompareToNormalDist}, has a bell shape. However, its tails are thicker than the normal model's. This means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.\footnote{The standard deviation of the $t$ distribution is actually a little more than 1. However, it is useful to always think of the $t$ distribution as having a standard deviation of 1 in all of our applications.} These extra thick tails are exactly the correction we need to resolve the problem of a poorly estimated standard error.
+\Cut{The second reason we previously required a large sample size was so that we could accurately estimate the standard error using the sample data.} In the cases where we will use a small sample to calculate the standard error, it will be useful to rely on a new distribution for inference calculations: the $t$ distribution. A $t$ distribution, shown as a solid line in Figure~\ref{tDistCompareToNormalDist}, has a bell shape. However, its tails are thicker than the normal model's. This means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.\footnote{The standard deviation of the $t$ distribution is actually a little more than 1. However, it is useful to always think of the $t$ distribution as having a standard deviation of 1 in all of our applications.} \Add{While our estimate of the standard error will be a little less accurate when we are analyzing a small data set, these extra thick tails of the $t$ distribution} \Cut{The extra thick tails} are exactly the correction we need to resolve the problem of a poorly estimated standard error.
 
 \begin{figure}
 \centering
@@ -410,7 +73,7 @@ The degrees of freedom describe the shape of the $t$ distribution. The larger th
 
 When the degrees of freedom is about 30 or more, the $t$ distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we relate degrees of freedom to sample size.
 
-We will find it very useful to become familiar with the $t$ distribution, because it plays a very similar role to the normal distribution during inference for small samples of numerical data. We use a \term{t table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table for small sample numerical data. A larger table is presented in Appendix~\vref{tDistributionTable}.
+We will find it very useful to become familiar with the $t$ distribution, because it plays a very similar role to the normal distribution during inference for small samples of numerical data. We use a \term{t table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table for small sample numerical data. A larger table is presented in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. \Add{In~practice, it is also now standard to use statistical software instead of a table, and you can see some of these options at \href{https://openintro.org/stat/prob-tables}{openintro.org/stat/prob-tables}.} \Comment{Still need to create openintro.org/stat/prob-tables and tweak this link to have https:// etc. This type of note should also be added elsewhere in the textbook.}
 
 \begin{table}[hht]
 \centering
@@ -448,8 +111,6 @@ Just like a normal probability problem, we first draw the picture in Figure~\ref
 \label{tDistDF18LeftTail2Point10}
 \end{figure}
 
-\textB{\pagebreak}
-
 \begin{example}{A $t$ distribution with 20 degrees of freedom is shown in the left panel of Figure~\ref{tDistDF20RightTail1Point65}. Estimate the proportion of the distribution falling above 1.65.}
 We identify the row in the $t$ table using the degrees of freedom: $df=20$. Then we look for 1.65; it is not listed. It falls between the first and second columns. Since these values bound 1.65, their tail areas will bound the tail area corresponding to 1.65. We identify the one tail area of the first and second columns, 0.050 and 0.10, and we conclude that between 5\% and 10\% of the distribution is more than 1.65 standard deviations above the mean. If we like, we can identify the precise area using statistical software: 0.0573.
 \end{example}
@@ -474,28 +135,34 @@ What proportion of the $t$ distribution with 19 degrees of freedom falls above -
 
 
 
-\subsection{The $t$ distribution as a solution to the standard error problem}
+\subsection{Conditions for using the $t$ distribution for inference on a sample mean}
 \label{tDistSolutionToSEProblem}
 
-When estimating the mean and standard error from a small sample, the $t$ distribution is a more accurate tool than the normal model. This is true for both small and large samples.
+\Comment{Revised the title of this subsection. It was previously ``The $t$ distribution as a solution to the standard error problem''.}
 
-\begin{tipBox}{\tipBoxTitle{When to use the $t$ distribution}
-Use the $t$ distribution for inference of the sample mean when observations are independent and nearly normal. You may relax the nearly normal condition as the sample size increases. For example, the data distribution may be moderately skewed when the sample size is at least~30.
-}
-\end{tipBox}
+\Cut{When estimating the mean and standard error from a small sample, the $t$ distribution is a more accurate tool than the normal model. This is true for both small and large samples.}
 
-\index{data!dolphins and mercury|(}
+%\Add{The $t$ distribution is a more accurate tool than the normal model when working with sample means. Its slightly thicker tails account for some of the imprecision in the standard error calculation, and this is especially important when working with smaller samples.}
 
 To proceed with the $t$ distribution for inference about a single mean, we must check two conditions.
 \begin{description}
 \item[Independence of observations.] We verify this condition just as we did before. We collect a simple random sample from less than 10\% of the population, or if it was an experiment or random process, we carefully check to the best of our abilities that the observations were independent.
 \item[Observations come from a nearly normal distribution.] This second condition is difficult to verify with small data sets. We often (i) take a look at a plot of the data for obvious departures from the normal model, and (ii) consider whether any previous experiences alert us that the data may not be nearly normal.
 \end{description}
-When examining a sample mean and estimated standard error from a sample of $n$ independent and nearly normal observations, we use a $t$ distribution with $n-1$ degrees of freedom~($df$). For example, if the sample size was 19, then we would use the $t$ distribution with $df=19-1=18$ degrees of freedom and proceed exactly as we did in Chapter~\ref{foundationsForInference}, except that \emph{now we use the $t$ table}.
+When examining a sample mean and estimated standard error from a sample of $n$ independent and nearly normal observations, we use a $t$ distribution with $n-1$ degrees of freedom~($df$). For example, if the sample size was 19, then we would use the $t$ distribution with $df=19-1=18$ degrees of freedom and proceed exactly as we did in Chapter~\ref{foundationsForInference}, except that \emph{now we use the $t$ \Add{distribution.}} \Cut{\emph{table}.}
+
+\Comment{The tip box below was moved here from earlier in the subsection.}
+
+\begin{tipBox}{\tipBoxTitle{When to use the $t$ distribution}
+Use the $t$ distribution for inference of the sample mean when observations are independent and nearly normal. You may relax the nearly normal condition as the sample size increases. For example, the data distribution may be moderately skewed when the sample size is at least~30.
+}
+\end{tipBox}
 
 
 \subsection{One sample $t$ confidence intervals}
 \label{oneSampleTConfidenceIntervals}
+
+\index{data!dolphins and mercury|(}
 
 Dolphins are at the top of the oceanic food chain, which causes dangerous substances such as mercury to concentrate in their organs and muscles. This is an important problem for both dolphins and other animals, like humans, who occasionally eat them. For instance, this is particularly relevant in Japan where school meals have included dolphin at times.
 \setlength{\captionwidth}{71.5mm}
@@ -565,7 +232,7 @@ Finally, we can substitute all our values into the confidence interval equation 
 	\quad \to \quad
 (3.29, 5.51)
 \end{eqnarray*}
-We are 95\% confident the average mercury content of muscles in Risso's dolphins is between 3.29 and 5.51 $\mu$g/wet gram. This is above the Japanese regulation level of 0.4 $\mu$g/wet gram.
+We are 95\% confident the average mercury content of muscles in Risso's dolphins is between 3.29 and 5.51 $\mu$g/wet gram\Add{, which is considered extremely high}. \Cut{This is above the Japanese regulation level of 0.4 $\mu$g/wet gram.}
 
 \index{data!dolphins and mercury|)}
 
@@ -601,96 +268,383 @@ Using the results of Exercise~\ref{croakerWhiteFishPacificExerConditions} and Ex
 \subsection{One sample $t$ tests}
 \label{oneSampleTTests}
 
-\index{data!SAT prep company|(}
+\Comment{This section is from ISRS. This should either be rewritten to have a different application or the context of Chapter 4 should be changed (or both).}
 
-An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, and so we have a difference in scores for each student. We will examine these differences $x_1=57$, $x_2=133$, ..., $x_{30}=140$ as a sample to evaluate the company's claim. 
-(This is \emph{paired data}, so we analyze the score differences; for a review of the ideas of paired data, see Section~\ref{pairedData}.) 
-The distribution of the differences, shown in Figure~\ref{satImprovementHTDataHistogram}, has mean 135.9 and standard deviation 82.2. Do these data provide convincing evidence to back up the company's claim? 
+Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Run, comparing runners in 2006 and 2012. Technological advances in shoes, training, and diet might suggest runners would be faster in 2012. An opposing viewpoint might say that \Cut{with the average body mass index on the rise, people tend to run slower.} \Add{Americans (who make up most of the runners) have become less healthy, so the participants will tend to run slower.} In fact, all of these components might be influencing \Add{the average} run time.
+
+The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2012 Cherry Blossom Run whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
+
+\begin{exercise}
+What are appropriate hypotheses for this context?\footnote{$H_0$: The average 10 mile run time was the same for 2006 and 2012. $\mu = 93.29$ minutes. $H_A$: The average 10 mile run time for 2012 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.}
+\end{exercise}
+
+\begin{exercise}
+The data come from a simple random sample from less than 10\% of all participants, so the observations are independent. However, should we be worried about skew in the data? A histogram of the differences \Add{is shown in Figure~\ref{run10SampTimeHistogram}.} \Cut{was shown in the left panel of Figure~\vref{run10SampHistograms}.}~\footnote{With a sample of 100, we should only be concerned if there is extreme skew. The histogram of the data suggest, at worst, slight skew.} \Comment{The caption to the figure was revised.}
+\end{exercise}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.54\textwidth]{ch_inference_for_means/figures/satImprovementHTDataHistogram/satImprovementHTDataHistogram}
-\caption{Sample distribution of improvements in SAT scores after taking the SAT course. The distribution is approximately symmetric.}
-\label{satImprovementHTDataHistogram}
+\includegraphics[width=0.45\textwidth]{ch_inference_for_means/figures/run10SampTimeHistogram/run10SampTimeHistogram} 
+\caption{A histogram of \var{time} for the sample Cherry Blossom Run data.}
+\label{run10SampTimeHistogram}
 \end{figure}
 
-\begin{exercise}
-Set up hypotheses to evaluate the company's claim. Use $\mu_{_{diff}}$ to represent the true average difference in student scores.\footnote{This is a one-sided test. $H_0$: student scores do not improve by more than 100 after taking the company's course. $\mu_{_{diff}} = 100$ (we always write the null hypothesis with an equality). $H_A$: students scores improve by more than 100 points on average after taking the company's course. $\mu_{_{diff}} > 100$.}
-\end{exercise}
+With independence satisfied and \Add{slight} skew not a concern \Add{for this large of a sample}, we can proceed with performing a hypothesis test using the $t$ distribution.
 
 \begin{exercise}
-Are the conditions to use the $t$ distribution method satisfied?\footnote{This is a random sample from less than 10\% of the company's students (assuming they have more than 300 former students), so the independence condition is reasonable. The normality condition also seems reasonable based on Figure~\ref{satImprovementHTDataHistogram}. We can use the $t$ distribution method. Note that we could use the normal distribution. However, since the sample size ($n=30$) just meets the threshold for reasonably estimating the standard error, it is advisable to use the $t$ distribution.}
+The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?\footnote{With the conditions satisfied for the $t$ distribution, we can compute the standard error ($SE = 15.78 / \sqrt{100} = 1.58$ and the \emph{T score}: $T = \frac{95.61 - 93.29}{1.58} = 1.47$. (There is more on this after the guided practice, but a T score and Z score are basically the same thing.) For $df = 100 - 1 = 99$, we would find $T = 1.47$ to fall between the first and second column, which means the p-value is between 0.10 and 0.20 (use $df = 90$ and consider two tails since the test is two-sided). The p-value could also have been calculated more precisely with statistical software: 0.1447. Because the p-value is greater than 0.05, we do not reject the null hypothesis. That is, the data do not provide strong evidence that the average run time for the Cherry Blossom Run in 2012 is any different than the 2006 average.}
 \end{exercise}
 
-Just as we did for the normal case, we standardize the sample mean using the Z score to identify the test statistic. However, we will write $T$\index{T score ($T$)|textbf}\marginpar[\raggedright$T$\vspace{0.5mm}\\\footnotesize T score\\(like Z score)]{\raggedright$T$\vspace{0.5mm}\\\footnotesize T score\\(like Z score)} instead of $Z$, because we have a small sample and are basing our inference on the $t$ distribution:
-\begin{eqnarray*}
-T = \frac{\bar{x} - \text{null value}}{SE} = \frac{135.9 - 100}{82.2/\sqrt{30}} = 2.39
-\end{eqnarray*}
-If the null hypothesis was true, the test statistic $T$ would follow a $t$ distribution with $df = n-1 = 29$ degrees of freedom. We can draw a picture of this distribution and mark the observed $T$, as in Figure~\ref{pValueShownForSATHTOfOver100PtGain}. The shaded right tail represents the p-value: the probability of observing such strong evidence in favor of the SAT company's claim, if the average student improvement is really only 100.
+\begin{termBox}{\tBoxTitle{When using a $t$ distribution, we use a T score (same as Z score)}
+To help us remember to use the $t$ distribution, we use a $T$ to represent the test statistic, and we often call this a \term{T score}. The Z score and T score are computed in the exact same way and are conceptually identical: each represents how many standard errors the observed value is from the null value.}
+\end{termBox}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/pValueShownForSATHTOfOver100PtGain/pValueShownForSATHTOfOver100PtGain}
-\caption{The $t$ distribution with 29 degrees of freedom.}
-\label{pValueShownForSATHTOfOver100PtGain}
-\end{figure}
-
-\textB{\pagebreak}
-
-\begin{exercise}
-Use the $t$ table in Appendix~\vref{tDistributionTable} to identify the p-value. What do you conclude?\footnote{We use the row with 29 degrees of freedom. The value $T=2.39$ falls between the third and fourth columns. Because we are looking for a single tail, this corresponds to a p-value between 0.01 and 0.025. The p-value is guaranteed to be less than 0.05 (the default significance level), so we reject the null hypothesis. The data provide convincing evidence to support the company's claim that student scores improve by more than 100 points following the class.}
-\end{exercise}
-
-\begin{exercise}
-Because we rejected the null hypothesis, does this mean that taking the company's class improves student scores by more than 100 points on average?\footnote{This is an observational study, so we cannot make this causal conclusion. For instance, maybe SAT test takers tend to improve their score over time even if they don't take a special SAT class, or perhaps only the most motivated students take such SAT courses.}
-
-\index{data!SAT prep company|)}
-
-\end{exercise}
 
 
 %__________________
-\section{The $t$ distribution for the difference of two means}
-\label{theTDistributionForTheDifferenceOfTwoMeans}
+\section{Paired data}
+\label{pairedData}
 
-It is also useful to be able to compare two means for small samples. For instance, a teacher might like to test the notion that two versions of an exam were equally difficult. She could do so by randomly assigning each version to students. If she found that the average scores on the exams were so different that we cannot write it off as chance, then she may want to award extra points to students who took the more difficult exam.
+\Comment{This section was pulled from ISRS.}
 
-In a medical context, we might investigate whether embryonic stem cells can improve heart pumping capacity in individuals who have suffered a heart attack. We could look for evidence of greater heart health in the stem cell group against a control group.
+\index{paired data|(}
+\index{data!textbooks|(}
 
-In this section we use the $t$ distribution for the difference in sample means. We will again drop the minimum sample size condition and instead impose a strong condition on the distribution of the data.
+Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles' (UCLA's) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10\% of all UCLA courses.\footnote{When a class had multiple books, only the most expensive text was considered.} A portion of the data set is shown in Table~\ref{textbooksDF}.
 
+\begin{table}[h]
+\centering
+\begin{tabular}{rllrrr}
+  \hline
+ & dept & course & ucla & amazon & diff \\ 
+  \hline
+1 & Am Ind &  C170 & 27.67 & 27.95 & -0.28 \\ 
+  2 & Anthro & 9 & 40.59 & 31.14 & 9.45 \\ 
+  3 & Anthro & 135T & 31.68 & 32.00 & -0.32 \\ 
+  4 & Anthro & 191HB & 16.00 & 11.52 & 4.48 \\ 
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  72 & Wom Std & M144 & 23.76 & 18.72 & 5.04 \\ 
+  73 & Wom Std & 285 & 27.70 & 18.22 & 9.48 \\ 
+   \hline
+\end{tabular}
+\caption{Six cases of the \data{textbooks} data set.}
+\label{textbooksDF}
+\end{table}
+%library(openintro); library(xtable); data(textbooks); xtable(textbooks[c(1:5, nrow(textbooks) - 1:0),])
 
-\subsection{Sampling distributions for the difference in two means}
+\subsection{Paired observations}
 
-In the example of two exam versions, the teacher would like to evaluate whether there is convincing evidence that the difference in average scores between the two exams is not due to chance.
+Each textbook has two corresponding prices in the data set: one for the UCLA bookstore and one for Amazon. Therefore, each textbook price from the UCLA bookstore has a natural correspondence with a textbook price from Amazon. When two sets of observations have this special correspondence, they are said to be \term{paired}.
 
-It will be useful to extend the $t$ distribution method from Section~\ref{oneSampleMeansWithTDistribution} to apply to a difference of means:
-\begin{eqnarray*}
-\bar{x}_1 - \bar{x}_2
-	\qquad \text{as a point estimate for} \qquad
-	\mu_1 - \mu_2
-\end{eqnarray*}
-Our procedure for checking conditions mirrors what we did for large samples in Section~\ref{differenceOfTwoMeans}. First, we verify the small sample conditions (independence and nearly normal data) for each sample separately, then we verify that the samples are also independent. For instance, if the teacher believes students in her class are independent, the exam scores are nearly normal, and the students taking each version of the exam were independent, then we can use the $t$ distribution for inference on the point estimate $\bar{x}_{1} - \bar{x}_{2}$.
-
-The formula for the standard error of $\bar{x}_{1} - \bar{x}_{2}$, introduced in Section~\ref{differenceOfTwoMeans},
-also applies to small samples:
-\begin{eqnarray}
-SE_{\bar{x}_1 - \bar{x}_2}
-	= \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
-	 = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} \label{seOfDiffOfTwoMeansInTDistSection}
-\end{eqnarray}
-Because we will use the $t$ distribution, we will need to identify the appropriate degrees of freedom. This can be done using computer software. An alternative technique is to use the smaller of $n_1 - 1$ and $n_2 - 1$, which is the method we will apply in the examples and exercises.\footnote{This technique for degrees of freedom is conservative with respect to a Type 1 Error; it is more difficult to reject the null hypothesis using this $df$ method.}
-
-\begin{termBox}{\tBoxTitle{Using the $t$ distribution for a difference in means}
-The $t$ distribution can be used for inference when working with the standardized difference of two means if (1) each sample meets the conditions for using the $t$ distribution and (2) the samples are independent. We estimate the standard error of the difference of two means using Equation~(\ref{seOfDiffOfTwoMeansInTDistSection}).}
+\begin{termBox}{\tBoxTitle{Paired data}
+Two sets of observations are \emph{paired} if each observation in one set has a special correspondence or connection with exactly one observation in the other data set.}
 \end{termBox}
 
-\subsection{Two sample $t$ test}
-%Do not include the test with pooled standard deviations are grouped but mention it as one method that is discussed in other books. The reason: this is a poor test. If the sd's are remotely similar then the result will be basically the same as the sd's are not assumed to be the same. It is a big assumption that can cause problems with almost no benefits.
+To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In the \data{textbook} data set, we look at the difference in prices, which is represented as the \var{diff} variable in the \data{textbooks} data. Here the differences are taken as
+\begin{eqnarray*}
+\text{UCLA price} - \text{Amazon price}
+\end{eqnarray*}
+for each book. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices. A histogram of these differences is shown in Figure~\ref{diffInTextbookPricesS10}. Using differences between paired observations is a common and useful way to analyze paired data.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.87\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
+\caption{Histogram of the difference in price for each book sampled. These data are strongly skewed.\index{skew!example: strong}}
+\label{diffInTextbookPricesS10}
+\end{figure}
+
+\begin{exercise}
+The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations~2 and~3.\footnote{Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.}
+\end{exercise}
+
+
+\subsection{Inference for paired data}
+
+To analyze a paired data set, we simply analyze the differences. We can use the same $t$~distribution techniques we applied in the last section.
+
+\begin{table}[hh]
+\centering
+\begin{tabular}{ccccc}
+\hline
+$n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \vspace{1mm}\\
+73			&& 12.76				&& 14.26 \\
+\hline
+\end{tabular}
+\caption{Summary statistics for the price differences. There were 73 books, so there are 73 differences.}
+\label{textbooksSummaryStats}
+\end{table}
+
+\begin{example}{Set up and implement a hypothesis test to determine whether, on average, there is a difference between Amazon's price for a book and the UCLA bookstore's price.}
+\label{htForDiffInUCLAAndAmazonTextbookPrices}
+We are considering two scenarios: there is no difference or there is some difference in average prices.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] $\mu_{diff}=0$. There is no difference in the average textbook price.
+\item[$H_A$:] $\mu_{diff} \neq 0$. There is a difference in average prices.
+\end{itemize}
+
+Can the $t$ distribution be used for this application? The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable. While the distribution is strongly skewed, the sample is reasonably large ($n=73$), so we can proceed. Because the conditions are reasonably satisfied, we can apply the $t$ distribution to this setting.
+
+We compute the standard error associated with $\bar{x}_{diff}$ using the standard deviation of the differences ($s_{_{diff}}=14.26$) and the number of differences ($n_{_{diff}}=73$):
+$$SE_{\bar{x}_{diff}} = \frac{s_{diff}}{\sqrt{n_{diff}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
+To visualize the p-value, the sampling distribution of $\bar{x}_{diff}$ is drawn as though $H_0$ is true, which is shown in Figure~\ref{textbooksS10HTTails}. The p-value is represented by the two (very) small tails.
+
+To find the tail areas, we compute the test statistic, which is the T score of $\bar{x}_{diff}$ under the null condition that the actual mean difference is 0:
+$$T = \frac{\bar{x}_{diff} - 0}{SE_{x_{diff}}} = \frac{12.76 - 0}{1.67} = 7.59$$
+The degrees of freedom are $df = 73 - 1 = 72$. If we examined Appendix~\vref{tDistributionTable}, we would see that this value is larger than any in the 70 df row (we round down for $df$ when using the table), meaning the two-tailed p-value is less than 0.01. If we used statistical software, we would find the p-value is less than 1-in-10 billion! Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon \Cut{is} \Add{was}, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
+\end{example}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/textbooksS10/textbooksS10HTTails}
+\caption{Sampling distribution for the mean difference in book prices, if the true average difference is zero.}
+\label{textbooksS10HTTails}
+\end{figure}
+
+\begin{exercise}
+Create a 95\% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon.\footnote{Conditions have already verified and the standard error computed in Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}. To find the interval, identify $t^{\star}_{72}$ (use $df=70$ in the table, $t^{\star}_{70} = 1.99$) and plug it, the point estimate, and the standard error into the confidence interval formula:
+$$\text{point estimate} \ \pm\ z^{\star}SE \quad\to\quad 12.76 \ \pm\ 1.99\times 1.67 \quad\to\quad (9.44, 16.08)$$
+We are 95\% confident that Amazon is, on average, between \$9.44 and \$16.08 cheaper than the UCLA bookstore for UCLA course books.}
+
+\index{data!textbooks|)}
+\index{paired data|)}
+
+\end{exercise}
+
+\Cut{In the textbook price example, we applied the $t$ distribution. However, as we mentioned in the last section, the $t$ distribution looks a lot like the normal distribution when the degrees of freedom are larger than about 30. In such cases, including this one, it would be reasonable to use the normal distribution in place of the $t$ distribution.}
+
+
+
+%__________________
+\section{Difference of two means}
+\label{differenceOfTwoMeans}
+
+{
+In this section we consider a difference in two population means, $\mu_1 - \mu_2$, under the condition that the data are not paired. Just as with a single sample, we identify conditions to ensure we can use the $t$ distribution with a point estimate of the difference, $\bar{x}_1 - \bar{x}_2$.
+
+We apply these methods in three contexts: determining whether stem cells can improve heart function, exploring the impact of pregnant womens' smoking habits on birth weights of newborns, and exploring whether there is statistically significant evidence that one variations of an exam is harder than another variation. This section is motivated by questions like ``Is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke?''
+
+\subsection{Confidence interval for a differences of means}
+
+\index{data!stem cells, heart function|(}
+\index{point estimate!difference of means|(}
+
+Does treatment using embryonic stem cells (ESCs) help improve heart function following a heart attack? Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured in the study. A~positive value corresponds to increased pumping capacity, which generally suggests a stronger recovery. Our goal will be to identify a 95\% confidence interval for the effect of ESCs on the change in heart pumping capacity relative to the control group.
+
+A point estimate of the difference in the heart pumping variable can be found using the difference in the sample means:
+\begin{eqnarray*}
+\bar{x}_{esc} - \bar{x}_{control}\ =\ 3.50 - (-4.33)\ =\ 7.83
+\end{eqnarray*}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l rrrrr}
+\hline
+\hspace{10mm}	& $n$	& $\bar{x}$	& $s$  	 \\
+\hline
+ESCs		& 9		& 3.50		& 5.17  	\\
+control		& 9		& -4.33		& 2.76  	 \\
+\hline
+\end{tabular}
+\caption{Summary statistics of the embryonic stem cell study.}
+\label{summaryStatsForSheepHeartDataWhoReceivedMiceESCs}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/stemCellTherapyForHearts/stemCellTherapyForHearts}
+\caption{Histograms for both the embryonic stem cell group and the control group. Higher values are associated with greater improvement. We don't see any evidence of skew in these data; however, it is worth noting that skew would be difficult to detect with such a small sample.}
+\label{stemCellTherapyForHearts}
+\end{figure}
+
+%\begin{example}{Set up hypotheses that will be used to test whether there is convincing evidence that ESCs actually increase the amount of blood the heart pumps. Also, check conditions for using the $t$ distribution for inference with the point estimate $\bar{x}_1 - \bar{x}_2$. To assist in this assessment, the data are presented in Figure~\ref{stemCellTherapyForHearts}.}\label{exampleToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}
+%We first setup the hypotheses:
+%\begin{itemize}
+%\setlength{\itemsep}{0mm}
+%\item[$H_0$:] The stem cells do not improve heart pumping function. $\mu_{esc} - \mu_{control} = 0$.
+%\item[$H_A$:] The stem cells do improve heart pumping function. $\mu_{esc} - \mu_{control} > 0$.
+%\end{itemize}
+%\end{example}
+
+\begin{termBox}{\tBoxTitle{Using the $t$ distribution for a difference in means}
+\label{ConditionsForTwoSampleTDist}The $t$ distribution can be used for inference when working with the standardized difference of two means if (1) each sample meets the conditions for using the $t$ distribution and (2) the samples are independent.}
+\end{termBox}
+
+\begin{example}{Can the point estimate, $\bar{x}_{esc} - \bar{x}_{control} = 7.83$, be analyzed using the $t$ distribution?}
+We check the two required conditions: % the $t$ distribution can be used by (1) checking whether each sample mean could itself be modeled using the $t$ distribution and (2) determining whether the samples are independent.
+\begin{enumerate}
+\item In this study, the sheep were independent of each other. Additionally, the distributions in Figure~\ref{stemCellTherapyForHearts} don't show any clear deviations from normality, where we watch for prominent outliers in particular for such small samples. These findings imply each sample mean could itself be modeled using a $t$ distribution.
+\item The sheep in each group were also independent of each other.
+\end{enumerate}
+Because both conditions are met, we can use the $t$ distribution to model the difference of the two sample means.
+\end{example}
+
+%\begin{termBox}{\tBoxTitle{Conditions for applying the $t$ distribution to $\bar{x}_1 - \bar{x}_2$}
+%If the sample means, $\bar{x}_1$ and $\bar{x}_2$, each meet the criteria for using the $t$ distribution and the observations in the two samples are independent, then we can analyze the difference in sample means using the $t$ distribution.}
+%\end{termBox}
+
+\index{point estimate!difference of means|)}
+
+\index{standard error!difference in means}
+\Add{
+We can quantify the variability in the point estimate, $\bar{x}_{esc} - \bar{x}_{control}$, using the following formula for its standard error:
+\index{standard error!difference in means}
+\begin{eqnarray*}
+SE_{\bar{x}_{esc} - \bar{x}_{control}} = \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}}
+\end{eqnarray*}
+We usually estimate this standard error using standard deviation estimates  based on the samples:
+}
+
+\Cut{Before we construct a confidence interval, we must calculate the standard error of the point estimate of the difference. For this, we use the following formula, where just as before we substitute the sample standard deviations into the formula:}
+% We can quantify the variability in the point estimate, $\bar{x}_{esc} - \bar{x}_{control}$, using the following formula for its standard error:
+%\begin{eqnarray*}
+%SE_{\bar{x}_{esc} - \bar{x}_{control}} = \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}}
+%\end{eqnarray*}
+%We usually estimate this standard error using standard deviation estimates  based on the samples:
+\begin{align*}
+SE_{\bar{x}_{esc} - \bar{x}_{control}}
+	&= \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}} \\
+	&\approx \sqrt{\frac{s_{esc}^2}{n_{esc}} + \frac{s_{control}^2}{n_{control}}}
+	= \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
+\end{align*}
+Because we will use the $t$ distribution, we also must identify the appropriate degrees of freedom. This can be done using computer software. An alternative technique is to use the smaller of $n_1 - 1$ and $n_2 - 1$, which is the method we will typically apply in the examples and guided practice.\footnote{This technique for degrees of freedom is conservative with respect to a Type 1 Error; it is more difficult to reject the null hypothesis using this $df$ method. In this example, computer software would have provided us a more precise degrees of freedom of $df = 12.225$.}
+
+\begin{termBox}{\tBoxTitle{Distribution of a difference of sample means}
+The sample difference of two means, $\bar{x}_1 - \bar{x}_2$, can be modeled using the $t$ distribution and the standard error
+\begin{eqnarray}
+\textstyle
+SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+\label{seOfDifferenceInMeans}
+\end{eqnarray}
+when each sample mean can itself be modeled using a $t$ distribution and the samples are independent. To calculate the degrees of freedom, use statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.}
+\end{termBox}
+
+\begin{example}{Calculate a 95\% confidence interval for the effect of ESCs on the change in heart pumping capacity of sheep after they've suffered a heart attack.}
+We will use the sample difference and the standard error for that point estimate from our earlier calculations:
+\begin{align*}
+& \bar{x}_{esc} - \bar{x}_{control} = 7.83 \\
+& SE = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
+\end{align*}
+Using $df = 8$, we can identify the appropriate $t^{\star}_{df} = t^{\star}_{8}$ for a 95\% confidence interval as 2.31. Finally, we can enter the values into the confidence interval formula:
+\begin{align*}
+\text{point estimate} \ \pm\ z^{\star}SE \quad\rightarrow\quad
+7.83 \ \pm\ 2.31\times 1.95 \quad\rightarrow\quad (3.38, 12.38)
+\end{align*}
+We are 95\% confident that embryonic stem cells improve the heart's pumping function in sheep that have suffered a heart attack by 3.38\% to 12.38\%.
+\end{example}
+
+\index{data!stem cells, heart function|)}
+
+
+\subsection{Hypothesis tests based on a difference in means}
+
+\index{data!baby\_smoke|(}
+
+A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Table~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrrrrll}
+  \hline
+ & fAge & mAge & weeks & weight & sexBaby & smoke \\ 
+  \hline
+1 & NA & 13 &  37 & 5.00 & female & nonsmoker \\ 
+  2 & NA & 14 &  36 & 5.88 & female & nonsmoker \\ 
+  3 & 19 & 15 &  41 & 8.13 & male & smoker \\ 
+  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\
+  150 & 45 & 50 &  36 & 9.25 & female & nonsmoker \\ 
+   \hline
+\end{tabular}
+\caption{Four cases from the \data{baby\_\hspace{0.3mm}smoke} data set. The value ``NA'', shown for the first two entries of the first variable, indicates that piece of data is missing.}
+\label{babySmokeDF}
+\end{table}
+
+\begin{figure}[hhh]
+\centering
+\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/babySmokePlotOfTwoGroupsToExamineSkew/babySmokePlotOfTwoGroupsToExamineSkew}
+\caption{The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke. The distributions exhibit moderate-to-strong and strong~skew, respectively.\index{skew!example: strong}}
+\label{babySmokePlotOfTwoGroupsToExamineSkew}
+\end{figure}
+
+\begin{example}{Set up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.}\label{babySmokeHTForWeight}
+The null hypothesis represents the case of no difference between the groups.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] There is no difference in average birth weight for newborns from mothers who did and did not smoke. In statistical notation: $\mu_{n} - \mu_{s} = 0$, where $\mu_{n}$ represents non-smoking mothers and $\mu_s$ represents mothers who smoked.
+\item[$H_A$:] There is some difference in average newborn weights from mothers who did and did not smoke ($\mu_{n} - \mu_{s} \neq 0$).
+\end{itemize}
+\end{example}
+
+We check the two conditions necessary to apply the $t$ distribution to the difference in sample means. (1) Because the data come from a simple random sample and consist of less than 10\% of all such cases, the observations are independent. Additionally, while each distribution is strongly skewed, the sample sizes of 50 and 100 would make it reasonable to model each mean separately using a $t$ distribution. The skew is reasonable for these sample sizes of 50 and 100. (2) The independence reasoning applied in (1) also ensures the observations in each sample are independent. Since both conditions are satisfied, the difference in sample means may be modeled using a $t$ distribution.
+
+%Summary statistics are shown for each sample in Table~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}.
+
+\begin{table}[hhh]
+\centering
+\begin{tabular}{lrr}
+	& \resp{smoker} & \resp{nonsmoker} \\
+\hline
+mean & 6.78 & 7.18 \\
+st. dev. & 1.43 & 1.60 \\
+samp. size & 50 & 100 \\
+\hline
+\end{tabular}
+\caption{Summary statistics for the \data{baby\_\hspace{0.3mm}smoke} data set.}
+\label{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}
+\end{table}
+
+\begin{exercise}
+The summary statistics in Table~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers} may be useful for this exercise. (a)~What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b)~Compute the standard error of the point estimate from part (a).\footnote{(a)~The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b)~The standard error of the estimate can be estimated using Equation~(\ref{seOfDifferenceInMeans}):
+\begin{eqnarray*}
+SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
+	\approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
+	= \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
+	= 0.26
+\end{eqnarray*}}
+\end{exercise}
+
+\begin{example}{Draw a picture to represent the p-value for the hypothesis test from Example~\ref{babySmokeHTForWeight}.} \label{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}
+To depict the p-value, we draw the distribution of the point estimate as though $H_0$ were true and shade areas representing at least as much evidence against $H_0$ as what was observed. Both tails are shaded because it is a two-sided test.
+\begin{center}
+\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData}
+\end{center}
+\end{example}
+
+\begin{example}{Compute the p-value of the hypothesis test using the figure in Example~\ref{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}, and evaluate the hypotheses using a significance level of $\alpha=0.05$.} \label{babySmokeHTForWeightComputePValueAndEvalHT}
+We start by computing the T score:
+\begin{eqnarray*}
+T = \frac{\ 0.40 - 0\ }{0.26} = 1.54
+\end{eqnarray*}
+Next, we compare this value to values in the $t$ table in Appendix~\vref{tDistributionTable}, where we use the smaller of $n_n - 1 = 99$ and $n_s - 1 = 49$ as the degrees of freedom: $df = 49$. The T score falls between the first and second columns in the $df = 49$ row of the $t$ table, meaning the two-tailed p-value falls between 0.10 and 0.20 (reminder, find tail areas along the top of the table). This p-value is larger than the significance value, 0.05, so we fail to reject the null hypothesis. There is insufficient evidence to say there is a difference in average birth weight of newborns from North Carolina mothers who did smoke during pregnancy and newborns from North Carolina mothers who did not smoke during pregnancy.
+\end{example}
+
+\begin{exercise}
+Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} mean that smoking and average birth weight are unrelated?\footnote{Absolutely not. It is possible that there is some difference but we did not detect it. If there is a difference, we made a Type 2 Error. Notice: we also don't have enough information to, if there is an actual difference difference, confidently say which direction that difference would be in.}
+\end{exercise}
+
+\begin{exercise} \label{babySmokeHTIDingHowToDetectDifferences}
+If we made a Type 2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?\footnote{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
+
+\end{exercise}
+
+\Add{Public service announcement: while we have used this relatively small data set as an example, larger data sets show that women who smoke tend to have smaller newborns. In~fact, some in the tobacco industry actually had the audacity to tout that as a \emph{benefit} of~smoking:
+\begin{quotation}
+\noindent\emph{It's true. The babies born from women who smoke are smaller, but they're just as healthy as the babies born from women who do not smoke. And some women would prefer having smaller babies.} \\[2mm]
+\indent\indent\indent\indent\indent\indent- Joseph Cullman, Philip Morris' Chairman of the Board \\
+\indent\indent\indent\indent\indent\indent{\color{white}...}on CBS' \emph{Face the Nation}, Jan 3,~1971
+\end{quotation}
+Fact check: the babies from women who smoke are not actually as healthy as from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \href{http://youtube.com/watch?v=6UsHHOCH4q8}{youtube.com/watch?v=6UsHHOCH4q8}.} \Comment{The video in the footnote is unconventional for a textbook. Thoughts?}}
+% Resource on this topic:
+% http://archive.tobacco.org/Documents/documentquotes.html
+
+\index{data!baby\_smoke|)}
+
+
+\subsection{Case study: two versions of a course exam}
 
 \index{data!two exam comparison|(}
 
-Summary statistics for each exam version are shown in Table~\ref{summaryStatsForTwoVersionsOfExams}. The teacher would like to evaluate whether this difference is so large that it provides convincing evidence that Version B was more difficult (on average) than Version A. 
+An instructor decided to run two slight variations of the same exam. Prior to passing out the exams, she shuffled the exams together to ensure each student received a random version. Summary statistics for how students performed on these two exams are shown in Table~\ref{summaryStatsForTwoVersionsOfExams}. Anticipating complaints from students who took Version~B, she would like to evaluate whether the difference observed in the groups is so large that it provides convincing evidence that Version~B was more difficult (on average) than Version~A.
 
 \begin{table}[hht]
 \centering
@@ -707,14 +661,14 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 \end{table}
 
 \begin{exercise} \label{htSetupForEvaluatingTwoExamVersions}
-Construct a two-sided hypothesis test to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, might be due to chance.\footnote{Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
+Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.\footnote{Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
 \end{exercise}
 
 \begin{exercise} \label{conditionsForTDistForEvaluatingTwoExamVersions}
-To evaluate the hypotheses in Exercise~\ref{htSetupForEvaluatingTwoExamVersions} using the $t$ distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality condition for each group? (c) Do you think scores from the two groups would be independent of each other (i.e. the two samples are independent)?\footnote{(a) It is probably reasonable to conclude the scores are independent. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn't seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.}
+To evaluate the hypotheses in Guided Practice~\ref{htSetupForEvaluatingTwoExamVersions} using the $t$ distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?\footnote{(a) It is probably reasonable to conclude the scores are independent, provided there was no cheating. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn't seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.}
 \end{exercise}
 
-After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$ distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated using Equation~(\ref{seOfDiffOfTwoMeansInTDistSection}):
+After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$ distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated~as
 \begin{eqnarray*}
 SE = \sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}} = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}} = 4.62
 \end{eqnarray*}
@@ -724,96 +678,80 @@ T = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{(79.4-74.1) - 0
 \end{eqnarray*}
 If we have a computer handy, we can identify the degrees of freedom as 45.97. Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$. 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.75\textwidth]{ch_inference_for_means/figures/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
 \caption{The $t$ distribution with 26 degrees of freedom. The shaded right tail represents values with $T \geq 1.15$. Because it is a two-sided test, we also shade the corresponding lower tail.}
 \label{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
 \end{figure}
 
-\begin{exercise} \label{computeTwoTailAreaOfExamVersionsWhereDFIs26}
-Identify the p-value, shown in Figure~\ref{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}. Use $df=26$.\footnote{We examine row $df=26$ in the $t$ table. Because this value is smaller than the value in the left column, the p-value is larger than 0.200 (two tails!). Because the p-value is so large, we do not reject the null hypothesis. That is, the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.}
+\begin{example}{Identify the p-value using $df = 26$ and provide a conclusion in the context of the case study.}
+We examine row $df=26$ in the $t$ table. Because this value is smaller than the value in the left column, the p-value is larger than 0.200 (two tails!). Because the p-value is so large, we do not reject the null hypothesis. That is, the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.
 
 \index{data!two exam comparison|)}
-
-\end{exercise}
-
-In Exercise~\ref{computeTwoTailAreaOfExamVersionsWhereDFIs26}, we could have used $df=45.97$. However, this value is not listed in the table. In such cases, we use the next lower degrees of freedom (unless the computer also provides the p-value). For example, we could have used $df=45$ but not $df=46$. 
-
-\index{data!stem cells, heart function|(}
-
-\begin{exercise} \label{exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}
-Do embryonic stem cells (ESCs) help improve heart function following a heart attack? Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured. A positive value generally corresponds to increased pumping capacity, which suggests a stronger recovery. 
-
-(a) Set up hypotheses that will be used to test whether there is convincing evidence that ESCs actually increase the amount of blood the heart pumps. (b)~Check conditions for using the $t$ distribution for inference with the point estimate $\bar{x}_1 - \bar{x}_2$. To assist in this assessment, the data are presented in Figure~\ref{stemCellTherapyForHearts}.\footnote{(a) We first setup the hypotheses:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] The stem cells do not improve heart pumping function. $\mu_{esc} - \mu_{control} = 0$.
-\item[$H_A$:] The stem cells do improve heart pumping function. $\mu_{esc} - \mu_{control} > 0$.
-\end{itemize}
-(b) Because the sheep were randomly assigned their treatment and, presumably, were kept separate from one another, the independence assumption is reasonable for each sample as well as for between samples. The data are very limited, so we can only check for obvious outliers in the raw data in Figure~\ref{stemCellTherapyForHearts}. Since the distributions are (very) roughly symmetric, we will assume the normality condition is acceptable. Because the conditions are satisfied, we can apply the $t$ distribution.}
-\end{exercise}
-
-\begin{table}[h]
-\centering
-\begin{tabular}{l rrrrr}
-\hline
-\hspace{10mm}	& $n$	& $\bar{x}$	& $s$  	 \\
-\hline
-ESCs		& 9		& 3.50		& 5.17  	\\
-control		& 9		& -4.33		& 2.76  	 \\
-\hline
-\end{tabular}
-\caption{Summary statistics for the embryonic stem cell data set.}
-\label{summaryStatsForSheepHeartDataWhoReceivedMiceESCs}
-\end{table}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/stemCellTherapyForHearts/stemCellTherapyForHearts}
-\caption{Histograms for both the embryonic stem cell group and the control group. Higher values are associated with greater improvement. We don't see any evidence of skew in these data; however, it is worth noting that skew would be difficult to detect with such a small sample.}
-\label{stemCellTherapyForHearts}
-\end{figure}
-
-\begin{example}{Use the data from Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} and $df=8$ to evaluate the hypotheses for the ESC experiment described in Exercise~\ref{exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}.}
-First, we compute the sample difference and the standard error for that point estimate:
-\begin{align*}
-& \bar{x}_{esc} - \bar{x}_{control} = 7.83 \\
-& SE = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
-\end{align*}
-The p-value is depicted as the shaded slim right tail in Figure~\ref{stemCellTherapyForHeartsPValue}, and the test statistic is computed as follows:
-$$T = \frac{7.83 - 0}{1.95} = 4.02$$
-We use the smaller of $n_1-1$ and $n_2-1$ (each are the same) for the degrees of freedom: $df=8$. Finally, we look for $T=4.02$ in the $t$ table; it falls to the right of the last column, so the p-value is smaller than 0.005 (one tail!). Because the p-value is less than 0.005 and therefore also smaller than 0.05, we reject the null hypothesis. The data provide convincing evidence that embryonic stem cells improve the heart's pumping function in sheep that have suffered a heart attack.
 \end{example}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/stemCellTherapyForHeartsPValue/stemCellTherapyForHeartsPValue}
-\caption{Distribution of the sample difference of the test statistic if the null hypothesis was true. The shaded area, hardly visible in the right tail, represents the p-value.}
-\label{stemCellTherapyForHeartsPValue}
-\end{figure}
 
-\subsection{Two sample $t$ confidence interval}
 
-The results from the previous section provided evidence that ESCs actually help improve the pumping function of the heart. But how large is this improvement? To answer this question, we can use a confidence interval. 
+\subsection{Summary for inference using the $t$ distribution}
 
-\begin{exercise}
-In Exercise~\ref{exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}, you found that the point estimate, $\bar{x}_{esc} - \bar{x}_{control} = 7.83$, has a standard error of 1.95. Using $df=8$, create a 99\% confidence interval for the improvement due to ESCs.\footnote{We know the point estimate, 7.83, and the standard error, 1.95. We also verified the conditions for using the $t$ distribution in Exercise~\ref{exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}. Thus, we only need identify $t^{\star}_8$ to create a 99\% confidence interval: $t^{\star}_{8} = 3.36$. The 99\% confidence interval for the improvement from ESCs is given by
+%When considering the difference of two means, there are two common cases: the two samples are paired or they are independent. (There are instances where the data are neither paired nor independent, e.g. see blocking in Section~\ref{experimentalDesignPrinciples}.) The paired case was treated in Section~\ref{pairedData}, where the one-sample methods were applied to the differences from the paired observations. We examined the second and more complex scenario in this section.
+
+\textbf{Hypothesis tests.} When applying the $t$ distribution for a hypothesis test, we proceed as follows:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item Write appropriate hypotheses.
+\item Verify conditions for using the $t$ distribution.
+\begin{itemize}
+\item One-sample or differences from paired data: the observations (or differences) must be independent and nearly normal. For larger sample sizes, we can relax the nearly normal requirement, e.g. slight skew is okay for sample sizes of 15, moderate skew for sample sizes of 30, and strong skew for sample sizes of 60.
+\item For a difference of means when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the $t$ distribution, and the data in the groups must also be independent.
+\end{itemize}
+\item Compute the point estimate of interest, the standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.
+\item Compute the T score and p-value.
+\item Make a conclusion based on the p-value, and write a conclusion in context and in plain language so anyone can understand the result.
+\end{itemize}
+\noindent\textbf{Confidence intervals.} Similarly, the following is how we generally computed a confidence interval using a $t$ distribution:
+\begin{itemize}
+\item Verify conditions for using the $t$ distribution. (See above.)
+\item Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.
+\item Calculate the confidence interval using the general formula, point estimate $\pm\ t_{df}^{\star} SE$.
+\item Put the conclusions in context and in plain language so even non-statisticians can understand the results.
+\end{itemize}
+
+
+\subsection{Examining the standard error formula (special topic)}
+
+\Comment{Made this a special topic section.}
+
+The formula for the standard error of the difference in two means is similar to the formula for other standard errors. Recall that the standard error of a single mean, $\bar{x}_1$, can be approximated by
 \begin{eqnarray*}
-\text{point estimate}\ \pm\ t_{8}^{\star}SE
-	\quad\to\quad 7.83\ \pm\ 3.36\times 1.95
-	\quad\to\quad (1.33, 14.43)
+SE_{\bar{x}_1} = \frac{s_1}{\ \sqrt{n_1}\ }
 \end{eqnarray*}
-That is, we are 99\% confident that the true improvement in heart pumping function is somewhere between 1.33\% and 14.43\%.}
+where $s_1$ and $n_1$ represent the sample standard deviation and sample size.
 
-\index{data!stem cells, heart function|)}
+The standard error of the difference of two sample means can be constructed from the standard errors of the separate sample means:
+\begin{eqnarray}
+SE_{\bar{x}_{1} - \bar{x}_{2}}
+	= \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
+	= \sqrt{\frac{s_1^2}{{n_1}} + \frac{s_2^2}{{n_2}}}
+\label{seOfDiffOfMeansInTermsOfSEOfIndividualMeans}
+\end{eqnarray}
+This special relationship follows from probability theory.
 
+\begin{exercise}\label{derivingSEForDiffOfTwoMeansExercise}
+Prerequisite: Section~\ref{randomVariablesSection}.
+We can rewrite Equation~(\ref{seOfDiffOfMeansInTermsOfSEOfIndividualMeans}) in a different way:
+\begin{eqnarray*}
+SE_{\bar{x}_{1} - \bar{x}_{2}}^2 = SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2
+\end{eqnarray*}
+Explain where this formula comes from using the ideas of probability theory.\footnote{The standard error squared represents the variance of the estimate. If $X$ and $Y$ are two random variables with variances $\sigma_x^2$ and $\sigma_y^2$, then the variance of $X-Y$ is $\sigma_x^2 + \sigma_y^2$. Likewise, the variance corresponding to $\bar{x}_1 - \bar{x}_2$ is $\sigma_{\bar{x}_1}^2 + \sigma_{\bar{x}_2}^2$. Because $\sigma_{\bar{x}_1}^2$ and $\sigma_{\bar{x}_2}^2$ are just another way of writing $SE_{\bar{x}_1}^2$ and  $SE_{\bar{x}_2}^2$, the variance associated with $\bar{x}_1 - \bar{x}_2$ may be written as $SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2$.}
 \end{exercise}
+
 
 \subsection{Pooled standard deviation estimate (special topic)}
 \label{pooledStandardDeviations}
 
-Occasionally, two populations will have standard deviations that are so similar that they can be treated as identical. For example, historical data or a well-understood biological mechanism may justify this strong assumption. In such cases, we can make our $t$ distribution approach slightly more precise by using a pooled standard deviation.
+Occasionally, two populations will have standard deviations that are so similar that they can be treated as identical. For example, historical data or a well-understood biological mechanism may justify this strong assumption. In such cases, we can make the $t$ distribution approach slightly more precise by using a pooled standard deviation.
 
 The \term{pooled standard deviation} of two groups is a way to use data from both samples to better estimate the standard deviation and standard error. If $s_1^{}$ and $s_2^{}$ are the standard deviations of groups 1 and 2 and there are good reasons to believe that the population standard deviations are equal, then we can obtain an improved estimate of the group variances by pooling their data:
 \begin{align*}
@@ -824,15 +762,16 @@ where $n_1$ and $n_2$ are the sample sizes, as before. To use this new statistic
 df = n_1 + n_2 - 2
 \end{align*}
 
-The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the $t$ distribution. Both of these changes may permit a more accurate model of the sampling distribution of $\bar{x}_1 - \bar{x}_2$.
+The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the $t$ distribution. Both of these changes may permit a more accurate model of the sampling distribution of $\bar{x}_1 - \bar{x}_2$\Add{, if the standard deviations of the two groups are~equal}.
+
+\Comment{I've updated the title of the caution box below from \emph{Pooling standard deviations should be done only after careful research}.}
 
 \begin{caution}
-{Pooling standard deviations should be done only after careful research}
+{Pooling standard deviations only after careful consideration}
 {A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.}
 \end{caution}
+}
 
-
-\textB{\newpage}
 
 
 %__________________
@@ -932,8 +871,6 @@ We would like to discern whether there are real differences between the batting 
 The null hypothesis under consideration is the following: $\mu_{\resp{OF}} = \mu_{\resp{IF}} = \mu_{\resp{DH}} = \mu_{\resp{C}}$.
 Write the null and corresponding alternative hypotheses in plain language.\footnote{$H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups.}
 \end{exercise}
-
-\textB{\pagebreak}
 
 \begin{example}{The player positions have been divided into four groups: outfield (\resp{OF}), infield (\resp{IF}), designated hitter (\resp{DH}), and catcher (\resp{C}). What would be an appropriate point estimate of the on-base percentage by outfielders, $\mu_{\resp{OF}}$?}
 A good estimate of the on-base percentage by outfielders would be the sample average of \var{OBP} for just those players whose position is outfield: $\bar{x}_{OF} = 0.334$.
@@ -1088,8 +1025,6 @@ There are three conditions we must check for an ANOVA analysis: all observations
 \index{significance level!multiple comparisons|(}
 
 When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample $t$ test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Table~\ref{anovaSummaryTableForOBPAgainstPosition}.
-
-\textB{\newpage}
 
 \begin{example}{Example~\vref{firstExampleForThreeStatisticsClassesAndANOVA} discussed three statistics lectures, all taught during the same semester. Table~\ref{summaryStatisticsForClassTestData} shows summary statistics for these three courses, and a side-by-side box plot of the data is shown in Figure~\ref{classDataSBSBoxPlot}. We would like to conduct an ANOVA for these data. Do you see any deviations from the three conditions for ANOVA?}
 In this case (like many others) it is difficult to check independence in a rigorous way. Instead, the best we can do is use common sense to consider reasons the assumption of independence may not hold. For instance, the independence assumption may not be reasonable if there is a star teaching assistant that only half of the students may access; such a scenario would divide a class into two subgroups. No such situations were evident for these particular data, and we believe that independence is acceptable.
