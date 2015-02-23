@@ -226,7 +226,7 @@ First consider \var{fed\_\hspace{0.3mm}spend}, which is said to be a \term{numer
 
 The \var{pop2010} variable is also numerical, although it seems to be a little different than \var{fed\_\hspace{0.3mm}spend}. This variable of the population count can only take whole non-negative numbers (\resp{0}, \resp{1}, \resp{2}, ...). For this reason, the population variable is said to be \term{discrete} since it can only take numerical values with jumps. On the other hand, the federal spending variable is said to be \term{continuous}.
 
-The variable \var{state} can take up to 51 values after accounting for Washington, DC: \resp{AL}, ..., and \resp{WY}. Because the responses themselves are categories, \var{state} is called a \term{categorical} variable,\footnote{Sometimes also called a \term{nominal} variable.} and the possible values are called the variable's \term{levels}.
+The variable \var{state} can take up to 51 values after accounting for Washington, DC: \resp{AL}, ..., and \resp{WY}. Because the responses themselves are categories, \var{state} is called a \term{categorical} variable, and the possible values are called the variable's \term{levels}.
 
 \begin{figure}
 \centering
@@ -235,7 +235,7 @@ The variable \var{state} can take up to 51 values after accounting for Washingto
 \label{variables}
 \end{figure}
 
-Finally, consider the \var{smoking\_\hspace{0.3mm}ban} variable, which describes the type of county-wide smoking ban and takes values \resp{none}, \resp{partial}, or \resp{comprehensive} in each county. This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering. A variable with these properties is called an \term{ordinal} variable\Add{, while a regular categorical variable without this type of special ordering is called a \term{nominal} variable}. To simplify analyses, any ordinal variables in this book will be treated as categorical variables.
+Finally, consider the \var{smoking\_\hspace{0.3mm}ban} variable, which describes the type of county-wide smoking ban and takes values \resp{none}, \resp{partial}, or \resp{comprehensive} in each county. This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering. A variable with these properties is called an \term{ordinal} variable, while a regular categorical variable without this type of special ordering is called a \term{nominal} variable. To simplify analyses, any ordinal variables in this book will be treated as categorical variables.
 
 \begin{example}{Data were collected about students in a statistics course. Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course. Classify each of the variables as continuous numerical, discrete numerical, or categorical.}
 The number of siblings and student height represent numerical variables. Because the number of siblings is a count, it is discrete. Height varies continuously, so it is a continuous numerical variable. The last variable classifies students into two categories -- those who have and those who have not taken a statistics course -- which makes this variable categorical.
@@ -605,7 +605,7 @@ Describe two variables that would have a horseshoe shaped association in a scatt
 \subsection{Dot plots and the mean}
 \label{dotPlot}
 
-Sometimes two variables is one too many: only one variable may be of interest. In these cases, a dot plot provides the most basic of displays. A~\term{dot plot} is a one-variable scatterplot; an example using the number of characters from 50 emails is shown in Figure~\ref{emailCharactersDotPlot}. A stacked version of this dot plot\Add{, where the number of characters for each email has been rounded to the nearest 2,000,} is shown in Figure~\ref{emailCharactersDotPlotStacked}.
+Sometimes two variables is one too many: only one variable may be of interest. In these cases, a dot plot provides the most basic of displays. A~\term{dot plot} is a one-variable scatterplot; an example using the number of characters from 50 emails is shown in Figure~\ref{emailCharactersDotPlot}. A stacked version of this dot plot is shown in Figure~\ref{emailCharactersDotPlotStacked}.
 
 \begin{figure}[h]
    \centering
@@ -620,8 +620,6 @@ Sometimes two variables is one too many: only one variable may be of interest. I
    \caption{A stacked dot plot of \var{num\_\hspace{0.3mm}char} for the \data{email50} data set. The~values have been rounded to the nearest 2,000 in this plot.}
    \label{emailCharactersDotPlotStacked}
 \end{figure}
-
-\Comment{Figure~\ref{emailCharactersDotPlotStacked} has an updated caption.}
 
 The \term{mean}, sometimes called the \indexthis{average}{mean!average}, is a common way to measure the center of a \term{distribution} of data. To find the mean number of characters in the 50 emails, we add up all the character counts and divide by the number of emails. For computational convenience, the number of characters is listed in the thousands and rounded to the first~decimal.
 \begin{eqnarray}
