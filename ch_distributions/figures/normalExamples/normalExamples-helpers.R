@@ -8,7 +8,7 @@ QQNorm <- function(x, M, SD, col) {
          col = col)
   axis(1, cex.axis = 1.2)
   axis(2, cex.axis = 1.2)
-  abline(M, SD)
+  qqline(x)
 }
 
 NormalHist <- function(obs, hold, M, SD, col) {

@@ -336,13 +336,11 @@ SAT scores closely follow the normal model with mean $\mu = 1500$ and standard d
 
 Many processes can be well approximated by the normal distribution. We have already seen two good examples: SAT scores and the heights of US adult males. While using a normal model can be extremely convenient and helpful, it is important to remember normality is always an approximation. Testing the appropriateness of the normal assumption is a key step in many data analyses.
 
-\subsection{Normal probability plot}
-
 \index{normal probability plot|(}
 
 Example~\ref{normalExam40Perc} suggests the distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
 
-There are two visual methods for checking the assumption of normality, which can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot}.\footnote{Also commonly called a \term{quantile-quantile plot}.}, shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model. We outline the construction of the normal probability plot in Section~\ref{constructNormalProbabilityPlotSection}
+There are two visual methods for checking the assumption of normality, which can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot}.\footnote{Also commonly called a \term{quantile-quantile plot}.}, shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
 
 \begin{figure}
 \centering
@@ -360,11 +358,11 @@ There are two visual methods for checking the assumption of normality, which can
 \label{normalExamples}
 \end{figure}
 
-The left panels show the histogram (top) and normal probability plot (bottom) for the simulated data set with 40 observations. The data set is too small to really see clear structure in the histogram. The normal probability plot also reflects this, where there are some deviations from the line. However, these deviations are not strong.
+The left panels show the histogram (top) and normal probability plot (bottom) for the simulated data set with 40 observations. The data set is too small to really see clear structure in the histogram. The normal probability plot also reflects this, where there are some deviations from the line. We should expect deviations of this amount for such a small data set.
 
-The middle panels show diagnostic plots for the data set with 100 simulated observations. The histogram shows more normality and the normal probability plot shows a better fit. While there is one observation that deviates noticeably from the line, it is not particularly extreme.
+The middle panels show diagnostic plots for the data set with 100 simulated observations. The histogram shows more normality and the normal probability plot shows a better fit. While there are a few observations that deviate noticeably from the line, they are not particularly extreme.
 
-The data set with 400 observations has a histogram that greatly resembles the normal distribution, while the normal probability plot is nearly a perfect straight line. Again in the normal probability plot there is one observation (the largest) that deviates slightly from the line. If that observation had deviated 3 times further from the line, it would be of much greater concern in a real data set. Apparent outliers can occur in normally distributed data but they are rare.
+The data set with 400 observations has a histogram that greatly resembles the normal distribution, while the normal probability plot is nearly a perfect straight line. Again in the normal probability plot there is one observation (the largest) that deviates slightly from the line. If that observation had deviated 3 times further from the line, it would be of greater importance in a real data set. Apparent outliers can occur in normally distributed data but they are rare.
 
 Notice the histograms look more normal as the sample size increases, and the normal probability plot becomes straighter and more stable.
 \end{example}
@@ -380,8 +378,6 @@ We first create a histogram and normal probability plot of the NBA player height
 \label{nbaNormal}
 \end{figure}
 
-\textB{\pagebreak}
-
 \begin{example}{Can we approximate poker winnings by a normal distribution? We consider the poker winnings of an individual over 50 days. A histogram and normal probability plot of these data are shown in Figure~\ref{pokerNormal}.}
 The data are very strongly right skewed\index{skew!example: very strong} in the histogram, which corresponds to the very strong deviations on the upper right component of the normal probability plot. If we compare these results to the sample of 40 normal observations in Example~\ref{normalExamplesExample}, it is apparent that these data show very strong deviations from the normal model.
 \end{example}
@@ -392,8 +388,6 @@ The data are very strongly right skewed\index{skew!example: very strong} in the 
 \caption{A histogram of poker data with the best fitting normal plot and a normal probability plot.}
 \label{pokerNormal}
 \end{figure}
-
-\textB{\pagebreak}
 
 \begin{exercise}\label{normalQuantileExercise}
 Determine which data sets represented in Figure~\ref{normalQuantileExer} plausibly come from a nearly normal distribution. Are you confident in all of your conclusions? There are 100 (top left), 50 (top right), 500 (bottom left), and 15 points (bottom right) in the four plots.\footnote{Answers may vary a little. The top-left plot shows some deviations in the smallest values in the data set; specifically, the left tail of the data set has some outliers we should be wary of. The top-right and bottom-left plots do not show any obvious or extreme deviations from the lines for their respective sample sizes, so a normal model would be reasonable for these data sets. The bottom-right plot has a consistent curvature that suggests it is not from the normal distribution. If we examine just the vertical coordinates of these observations, we see that there is a lot of data between -20 and 0, and then about five observations scattered between 0 and 70. This describes a distribution that has a strong right skew.}
@@ -406,6 +400,8 @@ Determine which data sets represented in Figure~\ref{normalQuantileExer} plausib
 \label{normalQuantileExer}
 \end{figure}
 
+%When observations spike downwards on the left side of a normal probability plot, it means the data have more outliers in the left tail than we'd expect under a normal distribution. When observations spike upwards on the right side, it means the data have more outliers in the right tail than what we'd expect under the normal distribution.
+
 \begin{exercise} \label{normalQuantileExerciseAdditional}
 Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two distributions that are skewed. One distribution is skewed to the low end (left skewed) and the other to the high end (right skewed). Which is which?\footnote{Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is skewed to the high end. The second plot shows the opposite features, and this distribution is skewed to the low end.}
 \end{exercise}
@@ -417,42 +413,6 @@ Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two
 \label{normalQuantileExerAdditional}
 \end{figure}
 
-\textB{\pagebreak}
-
-
-\subsection{Constructing a normal probability plot (special topic)}
-\label{constructNormalProbabilityPlotSection}
-
-We construct a normal probability plot for the heights of a sample of 100 men as follows:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item[(1)] Order the observations.
-\item[(2)] Determine the percentile of each observation in the ordered data set.
-\item[(3)] Identify the Z score corresponding to each percentile.
-\item[(4)] Create a scatterplot of the observations (vertical) against the Z scores (horizontal).
-\end{enumerate}
-If the observations are normally distributed, then their Z scores will approximately correspond to their percentiles and thus to the $z_i$ in Table~\ref{normalQuantileConstructionTable}.
-
-\begin{table}[hh]
-\centering
-\begin{tabular}{l c r r r c r}
-   \hline
-   Observation $i$ & \hspace{2mm} & 1 & 2 & 3 & $\cdots$ & 100 \\
-   \hline
-   $x_i$ && 61 & 63 & 63 & $\cdots$ & 78 \\
-   Percentile && 0.99\% & 1.98\% & 2.97\% & $\cdots$ & 99.01\% \\
-   $z_i$ && $-2.33$ & $-2.06$ & $-1.89$ & $\cdots$ & $2.33$ \\
-   \hline
-\end{tabular}
-\caption{Construction details for a normal probability plot of 100 men's heights. The first observation is assumed to be at the $0.99^{th}$ percentile, and the $z_i$ corresponding to a lower tail of 0.0099 is $-2.33$. To create the plot based on this table, plot each pair of points, $(z_i, x_i)$.}
-\label{normalQuantileConstructionTable}
-\end{table}
-
-\begin{caution}{$z_i$ correspond to percentiles}{
-The $z_i$ in Table~\ref{normalQuantileConstructionTable} are \emph{not} the Z scores of the observations but only correspond to the percentiles of the observations.}
-\end{caution}
-
-Because of the complexity of these calculations, normal probability plots are generally created using statistical software.
 
 \index{normal probability plot|)}
 \index{distribution!normal|)}
@@ -491,7 +451,6 @@ Then the \term{sample proportion}, $\hat{p}$, is the sample mean of these observ
 \begin{eqnarray*}
 \hat{p} = \frac{\text{\# of successes}}{\text{\# of trials}} = \frac{0+1+1+1+1+0+1+1+0+0}{10} = 0.6
 \end{eqnarray*}%
-\textB{\newpage}%
 This mathematical inquiry of Bernoulli random variables can be extended even further. Because \resp{0} and \resp{1} are numerical outcomes, we can define the {mean} and {standard deviation} of a Bernoulli random variable.\footnote{If ${p}$ is the true probability of a success, then the mean of a Bernoulli random variable $X$ is given by
 \begin{align*}
 \mu = E[X] &= P(X=0)\times0 + P(X=1)\times1 \\
@@ -562,8 +521,6 @@ It is no accident that we use the symbol $\mu$ for both the mean and expected va
 
 The left side of Equation~(\ref{geomFormulas}) says that, on average, it takes $1/p$ trials to get a success. This mathematical result is consistent with what we would expect intuitively. If the probability of a success is high (e.g. 0.8), then we don't usually wait very long for a success: $1/0.8 = 1.25$ trials on average. If the probability of a success is low (e.g. 0.1), then we would expect to view many trials before we see a success: $1/0.1 = 10$ trials.
 
-\textB{\pagebreak}
-
 \begin{exercise}
 The probability that an individual would refuse to administer the worst shock is said to be about 0.35. If we were to examine individuals until we found one that did not administer the shock, how many people should we expect to check? The first expression in Equation~(\ref{geomFormulas}) may be useful.\footnote{We would expect to see about $1/0.35 = 2.86$ individuals to find the first success.}
 \end{exercise}
@@ -599,7 +556,6 @@ The independence assumption is crucial to the geometric distribution's accurate 
 \index{distribution!geometric|)}
 
 
-\textB{\pagebreak}
 
 \section{Binomial distribution (special topic)}
 \label{binomialModel}
@@ -636,8 +592,6 @@ Consider $P($single scenario$)$ under the general case of $k$ successes and $n-k
 p^k(1-p)^{n-k}
 \end{eqnarray*}
 This is our general formula for $P($single scenario$)$.
-
-\textB{\pagebreak}
 
 Secondly, we introduce a general formula for the number of ways to choose $k$ successes in $n$ trials, i.e. arrange $k$ successes and $n-k$ failures:
 \begin{eqnarray*}
@@ -683,8 +637,6 @@ Additionally, the mean, variance, and standard deviation of the number of observ
 (4) The probability of a success, $p$, is the same for each trial.}
 \end{tipBox}
 
-\textB{\pagebreak}
-
 \begin{example}{What is the probability that 3 of 8 randomly selected students will refuse to administer the worst shock, i.e. 5 of 8 will?}
 We would like to apply the binomial model, so we check our conditions. The number of trials is fixed ($n=8$) (condition 2) and each trial outcome can be classified as a success or failure (condition 3). Because the sample is random, the trials are independent (condition~1) and the probability of a success is the same for each trial (condition~4).
 
@@ -717,8 +669,6 @@ If you ran a study and randomly sampled 40 students, how many would you expect t
 The probability that a random smoker will develop a severe lung condition in his or her lifetime is about $0.3$. If you have 4 friends who smoke, are the conditions for the binomial model satisfied?\footnote{One possible answer: if the friends know each other, then the independence assumption is probably not satisfied. For example, acquaintances may have similar smoking habits.}
 \end{exercise}
 
-\textB{\pagebreak}
-
 \begin{exercise}
 \label{noMoreThanOneFriendWSevereLungCondition}%
 Suppose these four friends do not know each other and we can treat them as if they were a random sample from the population. Is the binomial model appropriate? What is the probability that (a) none of them will develop a severe lung condition? (b) One will develop a severe lung condition? (c) That no more than one will develop a severe lung condition?\footnote{To check if the binomial model is appropriate, we must verify the conditions. (i) Since we are supposing we can treat the friends as a random sample, they are independent. (ii) We have a fixed number of trials ($n=4$). (iii) Each outcome is a success or failure. (iv) The probability of a success is the same for each trials since the individuals are like a random sample ($p=0.3$ if we say a ``success'' is someone getting a lung condition, a morbid choice). Compute parts (a) and (b) from the binomial formula in Equation~\eqref{binomialFormula}: $P(0) =  {4 \choose 0} (0.3)^0 (0.7)^4 = 1\times1\times0.7^4 = 0.2401$, $P(1) = {4 \choose 1} (0.3)^1(0.7)^{3} = 0.4116$. Note: $0!=1$, as shown on page~\pageref{zeroFactorial}. Part (c) can be computed as the sum of parts (a) and (b): $P(0) + P(1) = 0.2401 + 0.4116 = 0.6517$. That is, there is about a 65\% chance that no more than one of your four smoking friends will develop a severe lung condition.}
@@ -745,8 +695,6 @@ How many ways can you arrange one success and $n-1$ failures in $n$ trials? How 
 \end{eqnarray*}}
 \end{exercise}
 
-
-\textB{\newpage}
 
 \subsection{Normal approximation to the binomial distribution}
 
@@ -808,8 +756,6 @@ Use the normal model $N(\mu=80, \sigma=8)$ to estimate the probability of observ
 \end{exercise}
 
 
-\textB{\pagebreak}
-
 \subsection{The normal approximation breaks down on small intervals}
 
 \begin{caution}
@@ -840,7 +786,6 @@ The tip to add extra area when applying the normal approximation is most often u
 \index{distribution!binomial!normal approximation|)}
 \index{distribution!binomial|)}
 
-\textB{\newpage}
 
 
 %_________________

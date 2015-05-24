@@ -13,5 +13,13 @@ myPDF("fcidMHeights.pdf", 6, 2.7,
 NormalHist(obs, hold, mean(obs), sd(obs), COL[1])
 
 par(mar = c(3,4,1,0))
-QQNorm(obs, mean(obs), sd(obs), COL[1])
+qqnorm(obs,
+       cex = 0.7,
+       main = '',
+       axes = FALSE,
+       ylab = 'Male Heights (inches)',
+       col = COL[1])
+axis(1)
+axis(2)
+qqline(obs)
 dev.off()
