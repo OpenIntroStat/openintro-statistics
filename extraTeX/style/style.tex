@@ -1,4 +1,3 @@
-
 % 1 Page Parameters
 % 2 Special Commands for Editions
 % 3 Content Modifications
@@ -9,7 +8,6 @@
 % 8 Figures and Captions
 % 9 Examples and Exercises
 % 10 Special Boxes
-
 
 
 
@@ -141,6 +139,9 @@
 \newenvironment{data}[1]{\texttt{#1}}{}
 \newenvironment{var}[1]{\texttt{#1}}{}
 \newenvironment{resp}[1]{\texttt{#1}}{}
+\newenvironment{calctext}[1]{{\color{oiB}\texttt{#1}}}{}
+\newenvironment{calctextmath}[1]{{\color{oiB}\mathtt{#1}}}{}
+\newenvironment{calcbutton}[1]{{\color{oiB}\texttt{#1}}}{}
 % 6.4 Highlighting
 \newenvironment{highlight}{\textbf}{}
 \newcommand{\highlightO}[1]{\textbf{\color{oiB}#1}}
@@ -149,6 +150,9 @@
 \setlength{\parindent}{0.3in}
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
+\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=ahss_pdf}{#2}}
+\newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
+\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
 
 
 
@@ -265,7 +269,8 @@
 %-------------------------------------------------------------
 % 10 Special Boxes
 % 10.1 Term Box
-\newenvironment{tBoxTitle}[2][\\]{\textbf{\color{oiB}#2} #1
+\newcommand\tBoxTitleBuffer{\\[1.5mm]}
+\newenvironment{tBoxTitle}[2][\tBoxTitleBuffer]{\textbf{\color{oiB}#2} #1
 }{}
 \newenvironment{termBox}[1]{
 \addvspace{4mm}
@@ -276,7 +281,11 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-10mm}
-			\color{black}#1
+			\color{black}\ 
+			
+			#1
+			
+			\vspace{1.5mm}
 		\end{minipage}
 	\end{minipage}}}}
 }{
@@ -294,7 +303,11 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-8mm}
-			\color{black}#1
+			\color{black}\ 
+			
+			#1
+			
+			\vspace{1.5mm}
 		\end{minipage}
 	\end{minipage}}}
 }{

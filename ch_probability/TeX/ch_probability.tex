@@ -469,44 +469,52 @@ Because the equation holds, the event that the card is a heart and the event tha
 \section{Conditional probability (special topic)}
 \label{conditionalProbabilitySection}
 
-\index{data!drug\_use|(}
+\Comment{This section needs to be carefully reviewed. The drug use data set was eliminated.}
 
-Are students more likely to use marijuana when their parents used drugs? The \data{drug\_\hspace{0.3mm}use} data set contains a sample of 445 cases with two variables, \var{student} and \var{parents}, and is summarized in Table~\ref{contTableOfParStDrugUse}.\footnote{Ellis GJ and Stone LH. 1979. Marijuana Use in College: An Evaluation of a Modeling Explanation. Youth and Society 10:323-334.} The \var{student} variable is either \resp{uses} or \resp{not}, where a student is labeled as \var{uses} if she has recently used marijuana. The \var{parents} variable takes the value \resp{used} if at least one of the parents used drugs, including alcohol.
+\index{data!family\_college|(}
+
+The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized in Table~\ref{contTableOfParStCollege}.\footnote{A simulated data set based on real population summaries at \oiRedirect{textbook-student_parent_college_2001}{nces.ed.gov/pubs2001/2001126.pdf}.} The \var{teen} variable is either \resp{college} or \resp{not}, where the teenager is labeled as \var{college} if she went to college immediately after high school. The \var{parents} variable takes the value \resp{degree} if at least one parent of the teenager competed a college degree.
 
 \begin{table}[ht]
 \centering
 \begin{tabular}{ll rr r rr}
   && \multicolumn{2}{c}{\var{parents}} & \hspace{1cm} &  \\
   \cline{3-4}
-	&& \resp{used} & \resp{not} & Total  \\
+	&& \resp{degree} & \resp{not} & Total  \\
   \cline{2-5}
-	& \resp{uses}     & 125 & 94 & 219 \\
-\raisebox{1.5ex}[0pt]{\var{student}}	& \resp{not} \hspace{0.5cm} & 85 & 141 & 226   \\
+	& \resp{college}     & 231 & 214 & 445 \\
+\raisebox{1.5ex}[0pt]{\var{teen}}	& \resp{not} \hspace{0.5cm} & 49 & 298 & 347   \\
   \cline{2-5}
-	& Total & 210 & 235 & 445 \\
+	& Total & 280 & 512 & 792 \\
 \end{tabular}
-\caption{Contingency table summarizing the \data{drug\_\hspace{0.3mm}use} data set.}
-\label{contTableOfParStDrugUse}
+\caption{Contingency table summarizing the \data{family\_\hspace{0.3mm}college} data set.}
+\label{contTableOfParStCollege}
 \end{table}
+%set.seed(5); n <- 792
+%parents <- sample(c("college", "not"), n, replace = TRUE, prob = c(0.35, 0.65))
+%p <- ifelse(parents == "college", 0.82, 0.45)
+%teen <- ifelse(runif(n) < p, "college", "not")
+%table(teen, parents)
+%table(teen, parents) / n
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_probability/figures/drugUseVenn/drugUseVenn}
-\caption{A Venn diagram using boxes for the \data{drug\_\hspace{0.3mm}use} data set.}
-\label{drugUseVenn}
+\includegraphics[width=0.65\textwidth]{ch_probability/figures/familyCollegeVenn/familyCollegeVenn}
+\caption{A Venn diagram using boxes for the \data{family\_\hspace{0.3mm}college} data set.}
+\label{familyCollegeVenn}
 \end{figure}
 
-\begin{example}{If at least one parent used drugs, what is the chance their child (\var{student}) {uses}?}
-We will estimate this probability using the data. Of the 210 cases in this data set where \var{parents} = \resp{used}, 125 represent cases where \var{student} = \resp{uses}:
+\begin{example}{If at least one parent completed a college degree, what is the chance their teenager attended college right after high school?}
+We can estimate this probability using the data. Of the 280 cases in this data set where \var{parents} takes value \resp{degree}, 231 represent cases where the \var{teen} variable takes value \resp{college}:
 \begin{eqnarray*}
-P(\text{\var{student} = \resp{uses} given \var{parents} = \resp{used}}) = \frac{125}{210} = 0.60
+P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
 \end{eqnarray*}
 \end{example}
 
-\begin{example}{A student is randomly selected from the study and she does not use drugs. What is the probability that at least one of her parents used?}\label{drugUseProbOfParentsGivenStudents}
-If the student does not use drugs, then she is one of the 226 students in the second row. Of these 226 students, 85 had at least one parent who used drugs:
+\begin{example}{A teenager is randomly selected from the sample and she did not attend college right after high school. What is the probability that at least one of her parents has a college degree?}\label{collegeProbOfParentsGivenStudentNot}
+If the teenager did not attend, then she is one of the 347 teens in the second row. Of~these 347 teens, 49 had at least one parent who got a college degree:
 \begin{eqnarray*}
-P(\text{\var{parents} = \resp{used} given \var{student} = \resp{not}}) = \frac{85}{226} = 0.376
+P(\text{\var{parents} $\to$ \resp{degree} given \var{teen} $\to$ \resp{not}}) = \frac{49}{347} = 0.141
 \end{eqnarray*}
 \end{example}
 
@@ -516,95 +524,91 @@ P(\text{\var{parents} = \resp{used} given \var{student} = \resp{not}}) = \frac{8
 \index{marginal probability|(}
 \index{joint probability|(}
 
-Table~\ref{drugUseProbTable} includes row and column totals for each variable separately in the \data{drug\_\hspace{0.3mm}use} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without conditioning on any other variables. For instance, a probability based solely on the \var{student} variable is a marginal probability:
-\begin{eqnarray*}
-P(\text{\var{student} = \resp{uses}}) = \frac{219}{445} = 0.492
-\end{eqnarray*}
-A probability of outcomes for two or more variables or processes is called a \term{joint probability}:
-\begin{eqnarray*}
-P(\text{\var{student} = \resp{uses} and \var{parents} = \resp{not}}) = \frac{94}{445} = 0.21
-\end{eqnarray*}
-It is common to substitute a comma for ``and'' in a joint probability, although either is acceptable. 
+Table~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without conditioning on any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
+\begin{align*}
+P(\text{\var{teen} $\to$ \resp{college}}) = \frac{445}{792} = 0.56
+\end{align*}
+A probability of outcomes for two or more variables or processes is called a \termsub{joint \mbox{probability}}{joint probability}:
+\begin{align*}
+P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{not}}) = \frac{214}{792} = 0.27
+\end{align*}
+It is common to substitute a comma for ``and'' in a joint probability, although either is acceptable. That is,
+\begin{center}
+$P(\text{\var{teen} $\to$ \resp{college}, \var{parents} $\to$ \resp{not}})$ \\[2mm]
+means the same thing as \\[2mm]
+$P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{not}})$
+\end{center}
 
-\begin{table}
+\begin{termBox}{\tBoxTitle{Marginal and joint probabilities}
+If a probability is based on a single variable, it is a \emph{\hiddenterm{marginal probability}}. The probability of outcomes for two or more variables or processes is called a \emph{\hiddenterm{joint probability}}.}
+\end{termBox}
+
+We use \term{table proportions} to summarize joint probabilities for the \data{family\_\hspace{0.3mm}college} sample. These proportions are computed by dividing each count in Table~\ref{contTableOfParStCollege} by the table's total, 792, to obtain the proportions in Table~\ref{familyCollegeProbTable}. The joint probability distribution of the \var{parents} and \var{teen} variables is shown in Table~\ref{familyCollegeDistribution}.
+
+\begin{table}[h]
 \centering
 \begin{tabular}{l rr r}
   \hline
-& \var{parents}: \resp{used} & \var{parents}: \resp{not} & Total  \\
+& \var{parents}: \resp{degree} & \var{parents}: \resp{not} & Total  \\
   \hline
-\var{student}: \resp{uses}     & 0.28 & 0.21 & 0.49 \\
-\var{student}: \resp{not} \hspace{0.5cm} & 0.19 & 0.32 & 0.51  \\
+\var{teen}: \resp{college}     & 0.29 & 0.27 & 0.56 \\
+\var{teen}: \resp{not} \hspace{0.5cm} & 0.06 & 0.38 & 0.44  \\
    \hline
-Total & 0.47 & 0.53 & 1.00 \\
+Total & 0.35 & 0.65 & 1.00 \\
 \hline
 \end{tabular}
-\caption{Probability table summarizing parental and student drug use.}
-\label{drugUseProbTable}
+\caption{Probability table summarizing whether at least one parent had a college degree and the teenager attended college.}
+\label{familyCollegeProbTable}
 \end{table}
 
-\begin{termBox}{\tBoxTitle{Marginal and joint probabilities}
-If a probability is based on a single variable, it is a \emph{marginal probability}. The probability of outcomes for two or more variables or processes is called a \emph{joint probability}.}
-\end{termBox}
-
-We use \term{table proportions} to summarize joint probabilities for the \data{drug\_\hspace{0.3mm}use} sample. These proportions are computed by dividing each count in Table~\ref{contTableOfParStDrugUse} by 445 to obtain the proportions in Table~\ref{drugUseProbTable}. The joint probability distribution of the \var{parents} and \var{student} variables is shown in Table~\ref{drugUseDistribution}. 
-
-\begin{table}
+\begin{table}[h]
 \centering
 \begin{tabular}{l c}
   \hline
 Joint outcome & Probability \\
   \hline
-\var{parents} = \resp{used}, \var{student} = \resp{uses} & 0.28 \\
-\var{parents} = \resp{used}, \var{student} = \resp{not} & 0.19 \\
-\var{parents} = \resp{not}, \var{student} = \resp{uses} & 0.21 \\
-\var{parents} = \resp{not}, \var{student} = \resp{not} & 0.32 \\
+\var{parents} $\to$ \resp{degree} and \var{teen} $\to$ \resp{college} & 0.29 \\
+\var{parents} $\to$ \resp{degree} and \var{teen} $\to$ \resp{not} & 0.06 \\
+\var{parents} $\to$ \resp{not} and \var{teen} $\to$ \resp{college} & 0.27 \\
+\var{parents} $\to$ \resp{not} and \var{teen} $\to$ \resp{not} & 0.38 \\
    \hline
 Total & 1.00 \\
 \hline
 \end{tabular}
-\caption{A joint probability distribution for the \data{drug\_\hspace{0.3mm}use} data set.}
-\label{drugUseDistribution}
+\caption{Joint probability distribution for the \data{family\_\hspace{0.3mm}college} data set.}
+\label{familyCollegeDistribution}
 \end{table}
 
 \begin{exercise}
-Verify Table~\ref{drugUseDistribution} represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to 1.\footnote{Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is $0.28 + 0.19 + 0.21 + 0.32 = 1.00$.}
+Verify Table~\ref{familyCollegeDistribution} represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to~1.\footnote{Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is $0.29 + 0.06 + 0.27 + 0.38 = 1.00$.}
 \end{exercise}
 
-We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random student from the study uses drugs is found by summing the outcomes from Table~\ref{drugUseDistribution} where \var{student} = \resp{uses}:\index{marginal probability|)}\index{joint probability|)}
-\begin{eqnarray*}
-&&P(\text{\underline{\color{black}\var{student} = \resp{uses}}}) \\
-&& \quad =  P(\text{\var{parents} = \resp{used}, \underline{\color{black}\var{student} = \resp{uses}}}) + \\
-&& \quad \quad \quad \quad P(\text{\var{parents} = \resp{not}, \underline{\color{black}\var{student} = \resp{uses}}}) \\
-&& \quad = 0.28 + 0.21 = 0.49
-\end{eqnarray*}
+We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes from Table~\ref{familyCollegeDistribution} where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
+\begin{align*}
+P(\text{\underline{\color{black}\var{teen} $\to$ \resp{college}}})
+&=  P(\text{\var{parents} $\to$ \resp{degree} and \underline{\color{black}\var{teen} $\to$ \resp{college}}}) \\
+& \quad \quad + P(\text{\var{parents} $\to$ \resp{not} and \underline{\color{black}\var{teen} $\to$ \resp{college}}}) \\
+&= 0.28 + 0.27 \\
+&= 0.56
+\end{align*}
 
-%\begin{exercise}
-%Compute the probability that neither parent used drugs: \vspace{-1.5mm}
-%\begin{align*}
-%P(\text{\underline{\var{parents} = \resp{not}} and \var{student} = \resp{uses}}) + P(\text{\underline{\var{parents} = \resp{not}} and \var{student} = \resp{not}})
-%\end{align*}
-%\end{exercise}
-
-%\begin{exercise}
-%Using Table~\ref{drugUseProbTable}, identify the probability at least one parent used drugs in a random case from the study?
-%\end{exercise}
 
 \subsection{Defining conditional probability}
 
 \index{conditional probability|(}
 
-There is some connection between drug use of parents and of the student: drug use of one is associated with drug use of the other.\footnote{This is an observational study and no causal conclusions may be reached.} In this section, we discuss how to use information about associations between two variables to improve probability estimation.
+There is some connection between education level of parents and of the teenager: a college degree by a parent is associated with college attendance of the teenager. In this section, we discuss how to use information about associations between two variables to improve probability estimation.
 
-The probability that a random student from the study uses drugs is 0.49. Could we update this probability if we knew that this student's parents used drugs? Absolutely. To do so, we limit our view to only those 210 cases where parents used drugs and look at the fraction where the student uses drugs:\vspaceB{-1mm}
+The probability that a random teenager from the study attended college is 0.56. Could we update this probability if we knew that one of the teen's parents has a college degree? Absolutely. To do so, we limit our view to only those 280 cases where a parent has a college degree and look at the fraction where the teenager attended college:
 \begin{eqnarray*}
-P(\text{\var{student} = \resp{uses} given \var{parents} = \resp{used}}) = \frac{125}{210} = 0.60
+P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
 \end{eqnarray*}
-We call this a \term{conditional probability} because we computed the probability under a condition: \var{parents} = \resp{used}. There are two parts to a conditional probability, \term{the outcome of interest} and the \term{condition}. It is useful to think of the condition as information we know to be true, and this information usually can be described as a known outcome or~event.
+We call this a \term{conditional probability} because we computed the probability under a condition: a parent has a college degree. There are two parts to a conditional probability, \term{the outcome of interest} and the \term{condition}. It is useful to think of the condition as information we know to be true, and this information usually can be described as a known outcome or~event.
 
-We separate the text inside our probability notation into the outcome of interest and the condition:\vspaceB{-2.5mm}
+We separate the text inside our probability notation into the outcome of interest and the condition:
 \begin{eqnarray}
-&& P(\text{\var{student} = \resp{uses} given \var{parents} = \resp{used}}) \notag \\
-&& = P(\text{\var{student} = \resp{uses} } | \text{ \var{parents} = \resp{used}}) = \frac{125}{210} = 0.60
+&& P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) \notag \\
+&& = P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
 \label{probStudentUsedIfParentsUsedInFormalNotation}
 \end{eqnarray}
 \marginpar[\raggedright\vspace{-10mm}
@@ -613,58 +617,62 @@ $P(A | B)$\vspace{1mm}\\\footnotesize Probability of\\outcome $A$\\given $B$]{\r
 
 $P(A | B)$\vspace{1mm}\\\footnotesize Probability of\\outcome $A$\\given $B$}The vertical bar ``$|$'' is read as \emph{given}.
 
-In Equation~(\ref{probStudentUsedIfParentsUsedInFormalNotation}), we computed the probability a student uses based on the condition that at least one parent used as a fraction:\vspaceB{-1mm}
+In Equation~\eqref{probStudentUsedIfParentsUsedInFormalNotation}, we computed the probability a teen attended college based on the condition that at least one parent has a college degree as a fraction:\vspaceB{-1mm}
 \begin{eqnarray}
-&& P(\text{\var{student} = \resp{uses} } | \text{ \var{parents} = \resp{used}}) \notag \\
-&&\quad = \frac{\text{\# times \var{student} = \resp{uses} and \var{parents} = \resp{used}}}{\text{\# times \var{parents} = \resp{used}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
-&&\quad = \frac{125}{210} = 0.60 \notag
+&& P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) \notag \\
+&&\quad = \frac{\text{\# cases where \var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree}}}{\text{\# cases where \var{parents} $\to$ \resp{degree}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
+&&\quad = \frac{231}{280} = 0.825 \notag
 \end{eqnarray}
-We considered only those cases that met the condition, \var{parents} = \resp{used}, and then we computed the ratio of those cases that satisfied our outcome of interest, the student~uses.
+We considered only those cases that met the condition, \var{parents} $\to$ \resp{degree}, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
 
-Counts are not always available for data, and instead only marginal and joint probabilities may be provided. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~(\ref{ratioOfBothToRatioOfConditionalForParentsAndStudent}) as an example demonstrating this technique.
+Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~(\ref{ratioOfBothToRatioOfConditionalForParentsAndStudent}) as an example demonstrating this technique.
 
-We considered only those cases that satisfied the condition, \var{parents} = \resp{used}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{student} = \resp{uses}. Suppose we were provided only the information in Table~\vref{drugUseProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 47\% or $0.47\times 1000 = 470$ would meet our information criterion. Similarly, we would expect about 28\% or $0.28\times 1000 = 280$ to meet both the information criterion and represent our outcome of interest. Thus, the conditional probability could be computed:\vspaceB{-1mm}
+We considered only those cases that satisfied the condition, \var{parents} $\to$ \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} $\to$ \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} $\to$ \resp{degree}). Similarly, we would expect about 6\% or $0.06\times 1000 = 60$ to meet both the information criterion and represent our outcome of interest. Thus, the conditional probability could be computed:
 \begin{align}
-P(\text{\var{student} = \resp{uses} } | \text{ \var{parents} = \resp{used}})
-	&= \frac{\text{\# (\var{student} = \resp{uses} and \var{parents} = \resp{used})}}{\text{\# (\var{parents} = \resp{used})}} \notag \\
-	&= \frac{280}{470} = \frac{0.28}{0.47} = 0.60
+&P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) \notag \\
+	&= \frac{\text{\# (\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree})}}{\text{\# (\var{parents} $\to$ \resp{degree})}} \notag \\
+	&= \frac{60}{350}
+		= \frac{0.06}{0.35}
+		= 0.171
 \label{stUserPUsedHypSampSize}
 \end{align}
-In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.28 and 0.47, which we can write as
+In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.06 and 0.35, which we can write as
 \begin{align*}
-P(\var{student} = \resp{uses}\ \text{and}\ \var{parents} = \resp{used})
+P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree}})
 	\quad\text{and}\quad
-	P(\var{parents} = \resp{used}).
+	P(\text{\var{parents} $\to$ \resp{degree}}).
 \end{align*}
-The fraction of these probabilities represents our general formula for conditional probability.
+The fraction of these probabilities is an example of the general formula for conditional probability.
 
-\begin{termBox}{\tBoxTitle{Conditional Probability}
-The conditional probability of the outcome of interest $A$ given condition $B$ is computed as the following: \vspace{-1.5mm}
-\begin{eqnarray}
+\begin{termBox}{\tBoxTitle{Conditional probability}
+The conditional probability of the outcome of interest $A$ given condition $B$ is computed as the following:
+\begin{align}
 P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
 \label{condProbEq}
-\end{eqnarray}}
+\end{align}}
 \end{termBox}
 
-\begin{exercise}\label{drugUseProbOfParentsEqualNotGivenStudents}
-(a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case has \var{parents} = \resp{not} if it is known that \var{student} = \resp{not}}''.  Notice that the condition is now based on the {student}, not the {parent}. (b)~Determine the probability from part (a). Table~\vref{drugUseProbTable} may be helpful.\footnote{(a) $P(\text{\var{parent} = \resp{not}} | \text{\var{student} = \resp{not}})$. (b) Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} = \resp{not} and \var{student} = \resp{not}})=0.32$ and $P(\text{\var{student} = \resp{not}})=0.51$. Then the ratio represents the conditional probability: $0.32/0.51 = 0.63$.}
+\begin{exercise}\label{familyCollegeProbOfParentsEqualNotGivenTeen}
+(a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case where neither parent has a college degree if it is known that the teenager didn't attend college right after high school}''. Notice that the condition is now based on the {teenager}, not the {parent}. \\[1mm]
+(b)~Determine the probability from part (a). Table~\vref{familyCollegeProbTable} may be helpful.\footnote{(a) $P(\text{\var{parents} $\to$ \resp{not}}\ |\ \text{\var{teen} $\to$ \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} $\to$ \resp{not} and \var{teen} $\to$ \resp{not}}) = 0.38$ and $P(\text{\var{teen} $\to$ \resp{not}}) = 0.44$. Then the ratio represents the conditional probability: $0.38 / 0.44 = 0.864$.}
 \end{exercise}
 
 \begin{exercise}\label{whyCondProbSumTo1}
-(a)~Determine the probability that one of the parents had used drugs if it is known the student does not use drugs.
-(b)~Using the answers from part (a) and Exercise~\ref{drugUseProbOfParentsEqualNotGivenStudents}(b), compute \vspace{-1.5mm}
-\begin{eqnarray*}
-P(\text{\var{parents} = \resp{used}}|\text{\var{student} = \resp{not}})
-	+ P(\text{\var{parents} = \resp{not}}|\text{\var{student} = \resp{not}})
-\end{eqnarray*}
-(c)~Provide an intuitive argument to explain why the sum in (b) is 1.\footnote{(a)~This probability is $\frac{P(\text{\var{parents} = \resp{used} and \var{student} = \resp{not}})}{P(\text{\var{student} = \resp{not}})} = \frac{0.19}{0.51} = 0.37$. (b)~The total equals~1. (c)~Under the condition the student does not use drugs, the parents must either use drugs or not. The complement still appears to work \emph{when conditioning on the same information}.}
+(a)~Determine the probability that one of the parents has a college degree if it is known the teenager did not attend college. \\[1mm]
+(b)~Using the answers from part~(a) and Guided Practice~\ref{familyCollegeProbOfParentsEqualNotGivenTeen}(b), compute
+\begin{align*}
+&P(\text{\var{parents} $\to$ \resp{degree}}\ |\ \text{\var{teen} $\to$ \resp{not}}) \\
+&+ P(\text{\var{parents} $\to$ \resp{not}}\ |\ \text{\var{teen} $\to$ \resp{not}})
+\end{align*}
+(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnote{(a)~This probability is $\frac{P(\text{\var{parents} $\to$ \resp{degree}, \var{teen} $\to$ \resp{not}})}{P(\text{\var{teen} $\to$ \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works, provided the probabilities condition on the same information.}
 \end{exercise}
 
 \begin{exercise}
-The data indicate that drug use of parents and children are associated. Does this mean the drug use of parents causes the drug use of the students?\footnote{No. This was an observational study. Two potential confounding variables include \var{income} and \var{region}. Can you think of others?}
+The data indicate there is an association between parents having a college degree and their teenager attending college. Does this mean the parents' college degree(s) \emph{caused} the teenager to go to college?\footnote{No. While there is an association, the data are observational. Two potential confounding variables include \var{income} and \var{region}. Can you think of others?}
 \index{conditional probability|)}
-\index{data!drug\_use|)}
+\index{data!family\_college|)}
 \end{exercise}
+
 
 \subsection{Smallpox in Boston, 1721}
 
@@ -674,7 +682,7 @@ The \data{smallpox} data set provides a sample of 6,224 individuals from the yea
 
 Each case represents one person with two variables: \var{inoculated} and \var{result}. The variable \var{inoculated} takes two levels: \resp{yes} or \resp{no}, indicating whether the person was inoculated or not. The variable \var{result} has outcomes \resp{lived} or \resp{died}. These data are summarized in Tables~\ref{smallpoxContingencyTable} and~\ref{smallpoxProbabilityTable}.
 
-\begin{table}
+\begin{table}[h]
 \centering
 \begin{tabular}{ll rr r}
 & & \multicolumn{2}{c}{inoculated} & \\
@@ -707,7 +715,7 @@ Each case represents one person with two variables: \var{inoculated} and \var{re
 \end{table}
 
 \begin{exercise} \label{probDiedIfNotInoculated}
-Write out, in formal notation, the probability a randomly selected person who was not inoculated died from smallpox, and find this probability.\footnote{$P($\var{result} = \resp{died} $|$ \var{inoculated} = \resp{no}$) = \frac{P(\text{\var{result} = \resp{died} and \var{inoculated} = \resp{no}})}{P(\text{\var{inoculated} = \resp{no}})} = \frac{0.1356}{0.9608} = 0.1411$.}
+Write out, in formal notation, the probability a randomly selected person who was not inoculated died from smallpox, and find this \mbox{probability.}\footnote{$P($\var{result} = \resp{died} $|$ \var{inoculated} = \resp{no}$) = \frac{P(\text{\var{result} = \resp{died} and \var{inoculated} = \resp{no}})}{P(\text{\var{inoculated} = \resp{no}})} = \frac{0.1356}{0.9608} = 0.1411$.}
 \end{exercise}
 
 \begin{exercise}
@@ -773,15 +781,21 @@ Based on the probabilities computed above, does it appear that inoculation is ef
 
 \subsection{Independence considerations in conditional probability}
 
-If two processes are independent, then knowing the outcome of one should provide no information about the other. We can show this is mathematically true using conditional probabilities.
+If two events are independent, then knowing the outcome of one should provide no information about the other. We can show this is mathematically true using conditional probabilities.
 
 \begin{exercise} \label{condProbOfRollingA1AfterOne1}
-Let $X$ and $Y$ represent the outcomes of rolling two dice. (a)~What is the probability that the first die, $X$, is \resp{1}? (b)~What is the probability that both $X$ and $Y$ are \resp{1}? (c)~Use the formula for conditional probability to compute $P(Y =$ \resp{1} $| X = $ \resp{1}$)$. (d)~What is $P(Y=1)$? Is this different from the answer from part (c)? Explain.\footnote{Brief solutions: (a) $1/6$. (b) $1/36$. (c)~$\frac{P(Y = \text{ \resp{1} and }X=\text{ \resp{1}})}{P(X=\text{ \resp{1}})} = \frac{1/36}{1/6} = 1/6$. (d)~The probability is the same as in part~(c): $P(Y=1)=1/6$. The probability that $Y=1$ was unchanged by knowledge about $X$, which makes sense as $X$ and $Y$ are independent.}
+Let $X$ and $Y$ represent the outcomes of rolling two dice.
+\begin{enumerate}[(a)]
+\item What is the probability that the first die, $X$, is \resp{1}?
+\item What is the probability that both $X$ and $Y$ are \resp{1}?
+\item Use the formula for conditional probability to compute $P(Y =$ \resp{1}$\ |\ X = $ \resp{1}$)$.
+\item What is $P(Y=1)$? Is this different from the answer from part (c)? Explain.\footnote{Brief solutions: (a) $1/6$. (b) $1/36$. (c)~$\frac{P(Y = \text{ \resp{1} and }X=\text{ \resp{1}})}{P(X=\text{ \resp{1}})} = \frac{1/36}{1/6} = 1/6$. (d)~The probability is the same as in part~(c): $P(Y=1)=1/6$. The probability that $Y=1$ was unchanged by knowledge about $X$, which makes sense as $X$ and $Y$ are independent.}
+\end{enumerate}
 \end{exercise}
 
 We can show in Exercise~\ref{condProbOfRollingA1AfterOne1}(c) that the conditioning information has no influence by using the Multiplication Rule for independence processes:
 \begin{eqnarray*}
-P(Y=\text{\resp{1}}|X=\text{\resp{1}})
+P(Y=\text{\resp{1}}\ |\ X=\text{\resp{1}})
 	&=& \frac{P(Y=\text{\resp{1} and }X=\text{\resp{1}})}{P(X=\text{\resp{1}})} \\
 	&=& \frac{P(Y=\text{\resp{1}})\times \color{oiGB}P(X=\text{\resp{1}})}{\color{oiGB}P(X=\text{\resp{1}})} \\
 	&=& P(Y=\text{\resp{1}}) \\
