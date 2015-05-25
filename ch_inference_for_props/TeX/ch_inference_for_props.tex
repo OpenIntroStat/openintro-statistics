@@ -19,16 +19,18 @@ We will find that the methods we learned in previous chapters are very useful in
 
 \Comment{Swap out data for an Ebola poll data set.}
 
-According to a New York Times / CBS News poll in June 2012, only about 44\% of the American public approves of the job the Supreme Court is doing.\footnote{\href{http://www.nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}{\scriptsize nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html}} This poll included responses of 976 adults.
+In New York City on October 23rd, 2014, a doctor who had recently been treating Ebola patients in Guinea went to the hospital with a slight fever and was subsequently diagnosed with Ebola. Soon thereafter, an NBC 4 New York/The Wall Street Journal/Marist Poll found that 82\% of New Yorkers favored a ``mandatory 21-day quarantine for anyone who has come in contact with an Ebola patient''.\footnote{\oiRedirect{textbook-maristpoll_ebola_201410}{maristpoll.marist.edu}} This poll included responses of 1,042 New York adults between October 26th and 28th.
 
 
 \subsection{Identifying when the sample proportion is nearly normal}
 
 A sample proportion can be described as a sample mean. If we represent each ``success'' as a 1 and each ``failure'' as a 0, then the sample proportion is the mean of these numerical outcomes:
 \begin{eqnarray*}
-\hat{p} = \frac{\ 0 + 1 + 1 + \cdots + 0\ }{976} = 0.44
+\hat{p} = \frac{\ 0 + 1 + 1 + \cdots + 0\ }{1042} = 0.82
 \end{eqnarray*}
 The distribution of $\hat{p}$ is nearly normal when the distribution of 0's and 1's is not too strongly skewed for the sample size. The most common guideline for sample size and skew when working with proportions is to ensure that we expect to observe a minimum number of successes and failures, typically at least 10 of each.
+
+\Add{The labels \emph{success} and \emph{failure} need not mean something positive or negative. The terms \term{success} and \term{failure} are just convenient words frequently used when discussing proportions.}
 
 \begin{termBox}{\tBoxTitle{Conditions for the sampling distribution of $\hat{p}$ being nearly normal}
 The sampling distribution for $\hat{p}$, taken from a sample of size $n$ from a population with a true proportion $p$, is nearly normal when
@@ -48,7 +50,7 @@ $\hat{p}$\vspace{0mm}\\\footnotesize sample\\proportion\vspace{3mm}\\\normalsize
 
 $\hat{p}$\vspace{0mm}\\\footnotesize sample\\proportion\vspace{3mm}\\\normalsize$p$\vspace{0mm}\\\footnotesize population\\proportion}
 
-Typically we do not know the true proportion, $p$, so we substitute some value to check conditions and to estimate the standard error. For confidence intervals, usually $\hat{p}$ is used to check the success-failure condition and compute the standard error. For hypothesis tests, typically the null value -- that is, the proportion claimed in the null hypothesis -- is used in place of $p$. Examples are presented for each of these cases in Sections~\ref{confIntForPropSection} and~\ref{htForPropSection}.
+Typically we don't know the true proportion, $p$, so we substitute some value to check conditions and to estimate the standard error. For confidence intervals, usually $\hat{p}$ is used to check the success-failure condition and compute the standard error. For hypothesis tests, typically the null value -- that is, the proportion claimed in the null hypothesis -- is used in place of $p$. Examples are presented for each of these cases in Sections~\ref{confIntForPropSection} and~\ref{htForPropSection}.
 
 \begin{tipBox}{\tipBoxTitle{Reminder on checking independence of observations}
 If data come from a simple random sample and consist of less than 10\% of the population, then the independence assumption is reasonable. Alternatively, if the data come from a random process, we must evaluate the independence condition more carefully.}
@@ -60,26 +62,29 @@ If data come from a simple random sample and consist of less than 10\% of the po
 
 \index{point estimate!single proportion}
 
-We may want a confidence interval for the proportion of Americans who approve of the job the Supreme Court is doing. Our point estimate, based on a sample of size $n = 976$ from the NYTimes/CBS poll, is $\hat{p} = 0.44$. To use the general confidence interval formula from Section~\ref{aFrameworkForInference}, we must check the conditions to ensure that the sampling distribution of $\hat{p}$ is nearly normal. We also must determine the standard error of the estimate.
-
-The data are based on a simple random sample and consist of far fewer than 10\% of the U.S. population, so independence is confirmed. The sample size must also be sufficiently large, which is checked via the success-failure condition: there were approximately $976\times \hat{p}=429$ ``successes'' and $976\times (1-\hat{p})=547$ ``failures'' in the sample, both easily greater than~10.
-
+We may want a confidence interval for the proportion of New York adults who favored a mandatory quarantine of anyone who had been in contact with an Ebola patient. Our point estimate, based on a sample of size $n = 1042$, is $\hat{p} = 0.82$. We would like to use the general confidence interval formula from Section~\ref{aFrameworkForInference}. However, first we must verify the sampling distribution of $\hat{p}$ is nearly normal and calculate the standard error of $\hat{p}$.
+\begin{description}
+\item[Observations are independent.] The poll is based on a simple random sample and consists of fewer than 10\% of the New York adult population, which verifies independence.
+\item[Success-failure condition.] The sample size must also be sufficiently large, which is checked using the \hiddenterm{success-failure condition}. There were approximately $1042 \times \hat{p} = 854$ ``successes'' and $1042 \times (1 - \hat{p}) = 188$ ``failures'' in the sample, both easily greater than~10.
+\end{description}
 With the conditions met, we are assured that the sampling distribution of $\hat{p}$ is nearly normal. Next, a standard error for $\hat{p}$ is needed, and then we can employ the usual method to construct a confidence interval.
 
 \begin{exercise} \label{seOfPropOfAmericansJobApprovalOfSupremeCourt}
-Estimate the standard error of $\hat{p}=0.44$ using Equation~\eqref{seOfPHat}. Because $p$ is unknown and the standard error is for a confidence interval, use $\hat{p}$ in place of $p$.\footnote{$SE = \sqrt{\frac{p(1-p)}{n}} \approx \sqrt{\frac{0.44(1-0.44)}{976}} = 0.016$}
+Estimate the standard error of $\hat{p}=0.44$ using Equation~\eqref{seOfPHat}. Because $p$ is unknown and the standard error is for a confidence interval, we use $\hat{p}$ in place of $p$.\footnote{$SE = \sqrt{\frac{p(1-p)}{n}} \approx \sqrt{\frac{0.82 (1 - 0.82)}{1042}} = 0.012$.}
 \end{exercise}
 
-\begin{example}{Construct a 95\% confidence interval for $p$, the proportion of Americans who approve of the job the Supreme Court is doing.}
-Using the standard error estimate from Exercise~\ref{seOfPropOfAmericansJobApprovalOfSupremeCourt}, the point estimate 0.44, and $z^{\star} = 1.96$ for a 95\% confidence interval, the confidence interval may be computed as
+\begin{example}{Construct a 95\% confidence interval for $p$, the proportion of New York adults who supported a quarantine for anyone who has come into contact with Ebola.}
+Using the standard error estimate from Exercise~\ref{seOfPropOfAmericansJobApprovalOfSupremeCourt}, the point estimate 0.82, and $z^{\star} = 1.96$ for a 95\% confidence interval, the confidence interval may be computed as
 \begin{eqnarray*}
-\text{point estimate } \ \pm\ z^{\star}SE \quad\to\quad 0.44 \ \pm\ 1.96\times 0.016 \quad\to\quad (0.409, 0.471)
+\text{point estimate } \ \pm\ z^{\star}SE \quad\to\quad 0.82 \ \pm\ 1.96\times 0.012 \quad\to\quad (0.796, 0.844)
 \end{eqnarray*}
-We are 95\% confident that the true proportion of Americans who approve of the job of the Supreme Court (in June 2012) is between 0.409 and 0.471. If the proportion has not changed since this poll, than we can say with high confidence that the job approval of the Supreme Court is below 50\%.
+We are 95\% confident that the true proportion of New York adults who supported a quarantine for anyone who has come into contact with an Ebola patient (in October 2014) is between 0.796 and 0.844.
 
 \index{data!Ebola poll|)}
 
 \end{example}
+
+\Add{Notice that since the poll was around the time where a doctor in New York had come down with Ebola, the results may not be as applicable today as they were at the time the poll was taken. This highlights an important detail about polls: they provide data about public opinion at a single point in time.}
 
 \begin{termBox}{\tBoxTitle[]{Constructing a confidence interval for a proportion}\vspace{-1mm}
 \begin{itemize}
@@ -1065,40 +1070,6 @@ Since the minimum bin count condition was satisfied, the chi-square distribution
 \label{smallSampleHTForTwoOrMoreProportion}
 
 \Comment{New title for this section.}
-
-%A systematic review is a study that summarizes the findings from many other studies to try to give a more holistic picture of existing research.\footnote{Want to learn more about systematic reviews? Watch this video: \oiRedirect{textbook-healthcare_triage_systematic_review_explained}{youtu.be/5Ezs1DPUKXA}} In this section, we're going to consider the conclusions from several systematic reviews on sugar-sweetened beverages as well as conflicts of interests in those studies. An example of a conflict of interest is the soda industry paying for part of the researchers' salaries through a research grant.
-%
-%Table~\ref{sweetFinancialConflictOfInterestTable} summarizes the conclusions from several studies on the connection between sugar-sweetened beverages and weight gain along with whether there was a reported conflict of interest.\footnote{\oiRedirect{textbook-sugar_sweetened_conflicts_of_interest}{Bes-Rastrollo M, et al. 2013. \emph{Financial Conflicts of Interest and Reporting Bias Regarding the Association between Sugar-Sweetened Beverages and Weight Gain: A Systematic Review of Systematic Reviews}. PLOS Medicine.}}
-%
-%\begin{table}[ht]
-%\centering
-%\begin{tabular}{ll  cc  rr}
-%& & \multicolumn{2}{c}{Conflict of Interest} & \\
-%  \cline{3-4}
-%					&       & Yes & No & Total \\ 
-%  \cline{2-5}
-%Conclude connection	& Yes &  1 & 10 & 11 \\ 
-%to weight gain?		& No &  5 & 2 & 7 \\ 
-%  \cline{2-5}
-%& Total & 6 & 12 & 18 \\
-%  \cline{2-5}
-%\end{tabular}
-%\caption{}
-%\label{sweetFinancialConflictOfInterestTable}
-%\end{table}
-%
-%\begin{example}{We would like to test whether the difference in conclusions between studies with and without a financial conflict of interest can be easily explained by chance. What hypotheses should we use?}\label{hypothesesForSugaryConflictsOfInterest}
-%The null difference supposes there was no difference while the alternative hypothesis supposes there was some difference:
-%\begin{description}
-%\item[$H_0$:] There is no relationship between financial conflicts of interest and conclusions relating sugar-sweetened beverages and weight gain.
-%\item[$H_A$:] Financial conflicts of interest are associated with conclusions relating sugar-sweetened beverages and weight gain.
-%\end{description}
-%\end{example}
-%
-%\begin{exercise}
-%Can we run a 2-proportion hypothesis test using the normal model to evaluate the hypotheses from Example~\ref{hypothesesForSugaryConflictsOfInterest}?\footnote{We'll assume the studies are independent. However, the success-failure condition cannot be satisfied with such a small study.}
-%\end{exercise}
-
 
 \index{data!CPR and blood thinner|(}
 
