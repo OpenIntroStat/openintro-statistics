@@ -104,24 +104,28 @@ To apply the normal distribution framework in the context of a hypothesis test f
 \index{data!nuclear arms reduction|(}
 
 \begin{exercise}
-Deborah Toohey is running for Congress, and her campaign manager claims she has more than 50\% support from the district's electorate. Set up a one-sided hypothesis test to evaluate this claim.\footnote{Is there convincing evidence that the campaign manager is correct? $H_0: p = 0.50$, $H_A: p > 0.50$.}
+Do a majority of American support nuclear arms reduction? Set up a one-sided hypothesis test to evaluate this question.\footnote{$H_0: p = 0.50$, $H_A: p > 0.50$.}
 \end{exercise}
 
-\begin{example}{A newspaper collects a simple random sample of 500 likely voters in the district and estimates Toohey's support to be 52\%. Does this provide convincing evidence for the claim of Toohey's manager at the 5\% significance level?} \label{TooheyInferenceExample}
-Because this is a simple random sample that includes fewer than 10\% of the population, the observations are independent. In a one-proportion hypothesis test, the success-failure condition is checked using the null proportion, $p_0=0.5$: $np_0 = n(1-p_0) = 500\times 0.5 = 250 > 10$. With these conditions verified, the normal model may be applied to $\hat{p}$.
+\begin{example}{A simple random sample of 1,028 US adults in March 2013 found that 56\% support nuclear arms reduction.\footnote{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}} Does this provide convincing evidence that a majority of Americans support nuclear arms reduction at the 5\% significance level?} \label{NuclearArmsInferenceExample}
+The poll was of a simple random sample that includes fewer than 10\% of US adults, meaning the observations are independent. In a one-proportion hypothesis test, the success-failure condition is checked using the null proportion, $p_0 = 0.5$: $n p_0 = n (1 - p_0) = 1028 \times 0.5 = 514 > 10$. With these conditions verified, the normal model may be applied to $\hat{p}$.
 
 Next the standard error can be computed. The null value is used again here, because this is a hypothesis test for a single proportion.
-$$SE = \sqrt{\frac{p_0\times (1-p_0)}{n}} = \sqrt{\frac{0.5\times (1-0.5)}{500}} = 0.022$$
-A picture of the normal model is shown in Figure~\ref{pValueForCampaignManagerClaimOfMoreThan50PercentSupport} with the p-value represented by the shaded region. Based on the normal model, the test statistic can be computed as the Z score of the point estimate:
-$$Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.52 - 0.50}{0.022} = 0.89$$
-The upper tail area, representing the p-value, is 0.1867. Because the p-value is larger than 0.05, we do not reject the null hypothesis, and we do not find convincing evidence to support the campaign manager's claim.
+\begin{align*}
+SE = \sqrt{\frac{p_0 (1 - p_0)}{n}} = \sqrt{\frac{0.5 (1 - 0.5)}{1028}} = 0.016
+\end{align*}
+A picture of the normal model is shown in Figure~\ref{nuclearArmsReductionPValue} with the p-value represented by the shaded region. Based on the normal model, the test statistic can be computed as the Z score of the point estimate:
+\begin{align*}
+Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.56 - 0.50}{0.016} = 3.75
+\end{align*}
+The upper tail area, representing the p-value, is about 0.00009. Because the p-value is smaller than 0.05, we reject $H_0$. The poll provides convincing evidence that a majority of Americans supported nuclear arms reduction efforts in March 2013.
 \end{example}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{ch_inference_for_props/figures/pValueForCampaignManagerClaimOfMoreThan50PercentSupport/pValueForCampaignManagerClaimOfMoreThan50PercentSupport}
-\caption{Sampling distribution of the sample proportion if the null hypothesis is true for Example~\ref{TooheyInferenceExample}. The p-value for the test is shaded.}
-\label{pValueForCampaignManagerClaimOfMoreThan50PercentSupport}
+\includegraphics[width=0.6\textwidth]{ch_inference_for_props/figures/nuclearArmsReduction/nuclearArmsReductionPValue}
+\caption{Sampling distribution of the sample proportion if the null hypothesis is true for Example~\ref{NuclearArmsInferenceExample}. The area representing the p-value is too small to be visible.}
+\label{nuclearArmsReductionPValue}
 \end{figure}
 
 \begin{termBox}{\tBoxTitle{Hypothesis test for a proportion}
