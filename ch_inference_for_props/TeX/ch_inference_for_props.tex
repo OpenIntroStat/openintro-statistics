@@ -616,12 +616,12 @@ The p-value for this test statistic is found by looking at the upper tail of thi
 \end{termBox}
 
 \begin{tipBox}{\tipBoxTitle{Conditions for the chi-square test}
-There are three conditions that must be checked before performing a chi-square test:\vspace{-1mm}
+There are two conditions that must be checked before performing a chi-square test:\vspace{-1mm}
 \begin{description}
 \setlength{\itemsep}{0mm}
 \item[Independence.] Each case that contributes a count to the table must be independent of all the other cases in the table.
 \item[Sample size / distribution.] Each particular scenario (i.e. cell count) must have at least 5~expected cases.
-\item[Degrees of freedom] We only apply the chi-square technique when the table is associated with a chi-square distribution with 2 or more degrees of freedom. \vspace{-1mm}
+\vspace{-1mm}
 \end{description}
 Failing to check conditions may affect the test's error rates.}
 \end{tipBox}
@@ -930,6 +930,8 @@ Because there are 2 rows and 3 columns, the degrees of freedom for the test is $
 \end{exercise}
 
 
+
+
 %__________________
 \section[Small sample hypothesis testing for a proportion (special topic)]{Small sample hypothesis testing for a proportion\\(special topic)}
 \label{smallSampleHTForProportion}
@@ -1059,15 +1061,19 @@ Since the minimum bin count condition was satisfied, the chi-square distribution
 
 
 %__________________
-\section[Hypothesis testing for two proportions (special topic)]{Hypothesis testing for two proportions \\ (special topic)}
+\section{Fisher exact test (special topic)}
 \label{smallSampleHTForTwoOrMoreProportion}
+
+\Comment{New title for this section.}
 
 \index{data!CPR and blood thinner|(}
 
-Cardiopulmonary resuscitation (CPR) is a procedure commonly used on individuals suffering a heart attack when other emergency resources are not available. This procedure is helpful in maintaining some blood circulation, but the chest compressions involved can also cause internal injuries. Internal bleeding and other injuries complicate additional treatment efforts following arrival at a hospital. For instance, blood thinners may be used to help release a clot that is causing the heart attack. However, the blood thinner would negatively affect an internal injury. Here we consider an experiment for patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.\footnote{\emph{Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial}, by B$\ddot{\text{o}}$ttiger et al., The Lancet, 2001.} These patients were randomly divided into a treatment group where they received a blood thinner or the control group where they did not receive a blood thinner. The outcome variable of interest was whether the patients survived for at least 24 hours.
+Cardiopulmonary resuscitation (CPR) is a procedure commonly used on individuals suffering a heart attack when other emergency resources are not available. This procedure is helpful in maintaining some blood circulation, but the chest compressions involved can also cause internal injuries. Internal bleeding and other injuries complicate additional treatment efforts following arrival at a hospital. For example, blood thinners may be used to release a clot responsible for a heart attack. However, the blood thinner would negatively affect internal bleeding.
 
-\begin{example}{Form hypotheses for this study in plain and statistical language. Let $p_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $p_t$ represent the survival rate for people receiving a blood thinner (corresponding to the treatment group).} \label{hypothesesForCPRStudyInSmallSampleSection}
-We are interested in whether the blood thinners are helpful or harmful, so this should be a two-sided test.
+We consider an experiment for patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.\footnote{\emph{Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial}, by B$\ddot{\text{o}}$ttiger et al., The Lancet, 2001.} These patients were randomly divided into a treatment group where they received a blood thinner or the control group where they did not receive a blood thinner. The outcome variable of interest was whether the patients survived for at least 24 hours.
+
+\begin{example}{What is an appropriate set of hypotheses for this study? Let $p_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $p_t$ represent the survival rate for people receiving a blood thinner (corresponding to the treatment group).} \label{hypothesesForCPRStudyInSmallSampleSection}
+We are interested in whether the blood thinners are helpful or harmful, so a two-sided test is appropriate.
 \begin{itemize}
 \item[$H_0$:] Blood thinners do not have an overall survival effect, i.e. the survival proportions are the same in each group. $p_t - p_c = 0$.
 \item[$H_A$:] Blood thinners do have an impact on survival. $p_t - p_c \neq 0$.
@@ -1098,7 +1104,7 @@ Total			&& 25		& 65		&& 90 \\
 What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups: $\hat{p}_t - \hat{p}_c$.\footnote{Observed control survival rate: $p_c = \frac{11}{50} = 0.22$. Treatment survival rate: $p_t = \frac{14}{40} = 0.35$. Observed difference: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$.}
 \end{exercise}
 
-According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13\% of these patients survive when they are treated with blood thinners. However, we wonder if this difference could be easily explainable by chance. We'd like to investigate this using a large sample framework, but we first need to check the conditions for such an approach.
+According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13\% survive when they are treated with blood thinners. However, this difference might be explainable by chance. We'd like to investigate this using a large sample framework, but we first need to check the conditions for such an approach.
 
 \begin{example}{Can the point estimate of the difference in survival proportions be adequately modeled using a normal distribution?}
 We will assume the patients are independent, which is probably reasonable. The success-failure condition is also satisfied. Since the proportions are equal under the null, we can compute the pooled proportion, $\hat{p} = (11+14)/(50+40) = 0.278$, for checking conditions. We find the expected number of successes (13.9, 11.1) and failures (36.1, 28.9) are above 10. The normal model is reasonable.
