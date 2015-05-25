@@ -295,51 +295,64 @@ Using the normal model for this test statistic, we identify the right tail area 
 
 
 
-\subsection{Hypothesis testing when $H_0: p_1=p_2$}
+\subsection{Hypothesis testing when $H_0$: $p_1=p_2$}
 \label{pooledHTForProportionsSection}
 
-\index{data!cancer in dogs, herbicide|(}
+\Comment{This subsection has been overhauled and contains a controversial topic, so it requires a careful review.}
 
-Here we use a new example to examine a special estimate of standard error when $H_0: p_1 = p_2$. We investigate whether there is an increased risk of cancer in dogs that are exposed to the herbicide 2,4-dichlorophenoxyacetic acid (2,4-D). A study in 1994 examined 491 dogs that had developed cancer and 945 dogs as a control group.\footnote{Hayes HM, Tarone RE, Cantor KP, Jessen CR, McCurnin DM, and Richardson RC. 1991. Case-Control Study of Canine Malignant Lymphoma: Positive Association With Dog Owner's Use of 2, 4-Dichlorophenoxyacetic Acid Herbicides. Journal of the National Cancer Institute 83(17):1226-1231.} Of these two groups, researchers identified which dogs had been exposed to 2,4-D in their owner's yard. The results are shown in Table~\ref{24DAndCancerInDogs}.
+\index{data!mammography|(}
+\index{data!breast cancer|(}
+
+A mammogram is an X-ray of a breast, and it is frequently used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it's the topic of our next example where we examine 2-proportion hypothesis test when $H_0$~is~$p_1 = p_2$.
+
+A 30-year study was conducted with nearly 90,000 female participants.\footnote{\oiRedirect{textbook-90k_mammogram_study_2014}{Miller AB. 2014. \emph{Twenty five year follow-up for breast cancer incidence and mortality of the Canadian National Breast Screening Study: randomised screening trial}. BMJ 2014;348:g366.}} During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Table~\ref{mammogramStudySummaryTable}.
+
+If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On the other hand, if mammograms are not as effective as regular breast cancer exams, we would expect to see an increase in breast cancer deaths in the mammogram group.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{rrr}
+\begin{tabular}{rrcc}
+	& \multicolumn{3}{c}{Death from breast cancer?} \\
+  \cline{2-4}
+ & \ \hspace{3mm}\ & Yes & No \\
   \hline
- & cancer & no cancer \\
-  \hline
-2,4-D & 191 & 304 \\
-no 2,4-D & 300 & 641 \\
+Mammogram && 500 & 44,425 \\
+Control && 505 & 44,405 \\
    \hline
 \end{tabular}
-\caption{Summary results for cancer in dogs and the use of 2,4-D by the dog's owner.}
-\label{24DAndCancerInDogs}
+\caption{Summary results for breast cancer study.}
+\label{mammogramStudySummaryTable}
 \end{table}
 
 \begin{exercise}
-Is this study an experiment or an observational study?\footnote{The owners were not instructed to apply or not apply the herbicide, so this is an observational study. This question was especially tricky because one group was called the \emph{control group}, which is a term usually seen in experiments.}
+Is this study an experiment or an observational study?\footnote{This is an experiment. Patients were randomized to receive mammograms or a standard breast cancer exam. We will be able to make causal conclusions based on this study.}
 \end{exercise}
 
-\begin{exercise} \label{htFor24DAndCancerInDogs}
-Set up hypotheses to test whether 2,4-D and the occurrence of cancer in dogs are related. Use a one-sided test and compare across the cancer and no cancer groups.\footnote{Using the proportions within the cancer and no cancer groups may seem odd. We intuitively may desire to compare the fraction of dogs with cancer in the 2,4-D and no 2,4-D groups, since the herbicide is an explanatory variable. However, the cancer rates in each group do not necessarily reflect the cancer rates in reality due to the way the data were collected. For this reason, computing cancer rates may greatly alarm dog owners. \\ $H_0$: the proportion of dogs with exposure to 2,4-D is the same in ``cancer'' and ``no cancer'' dogs, $p_c - p_n = 0$. \\ $H_A$: dogs with cancer are more likely to have been exposed to 2,4-D than dogs without cancer, $p_c - p_n > 0$.}
+\begin{exercise} \label{htFormammogramStudySummaryTable}
+Set up hypotheses to test whether there was a difference in breast cancer deaths in the mammogram and control groups.\footnote{$H_0$: the breast cancer death rate for patients screened using mammograms is the same as the breast cancer death rate for patients in the control, $p_{mgm} - p_{ctrl} = 0$. \\ $H_A$: the breast cancer death rate for patients screened using mammograms is different than the breast cancer death rate for patients in the control, $p_{mgm} - p_{ctrl} \neq 0$.}
 \end{exercise}
 
-\begin{example}{Are the conditions met to use the normal model and make inference on the results?}\label{condFor24DAndCancerInDogsNormalInference}
-(1) It is unclear whether this is a random sample. However, if we believe the dogs in both the cancer and no cancer groups are representative of each respective population and that the dogs in the study do not interact in any way, then we may find it reasonable to assume independence between observations. (2) The success-failure condition holds for each sample.
+In Example~\ref{condFormammogramStudySummaryTableNormalInference}, we check the conditions for using the normal model to analyze the results of the study. The details are very similar to what was completed in the previous sections. However, this time we use a special proportion called the \term{pooled proportion} to check the success-failure condition. This proportion, which in this example is the estimate of the breast cancer death rate across the entire study, is our best estimate of the proportions $p_{mgm}$ and $p_{ctrl}$ \emph{if the null hypothesis is true that $p_{mgm} = p_{ctrl}$}. We will also use the pooled proportion again when computing the standard error.
 
-Under the assumption of independence, we can use the normal model and make statements regarding the canine population based on the data.
+\begin{example}{Can we use the normal model to analyze this study?}\label{condFormammogramStudySummaryTableNormalInference}
+Because the patients are randomized, they can be treated as independent.
+
+We also much check the success-failure condition for each group. Under the null hypothesis, the proportions $p_{mgm}$ and $p_{ctrl}$ are equal, so we check the success-failure condition with our best estimate of these values under $H_0$, the \term{pooled proportion} from the two samples:
+\begin{align*}
+\hat{p} = \frac{500 + 505}{500 + \text{44,425} + 505 + \text{44,405}} = 0.0112
+\end{align*}
+We then use $\hat{p}$ to check the success-failure condition for each group:
+\begin{align*}
+\hat{p} \times n_{mgm} &= 0.0112 \times \text{44,925} = 503
+	& (1 - \hat{p}) \times n_{mgm} &= 0.9888 \times \text{44,925} = 44,422 \\
+\hat{p} \times n_{ctrl} &= 0.0112 \times \text{44,910} = 503
+	& (1 - \hat{p}) \times n_{ctrl} &= 0.9888 \times \text{44,910} = 44,407
+\end{align*}
+The success-failure condition is easily satisfied since all values are at least 10, and we can safely apply the normal model.
 \end{example}
 
-In your hypotheses for Exercise~\ref{htFor24DAndCancerInDogs}, the null is that the proportion of dogs with exposure to 2,4-D is the same in each group. The point estimate of the difference in sample proportions is $\hat{p}_c - \hat{p}_n = 0.067$. To identify the p-value for this test, we first check conditions (Example~\ref{condFor24DAndCancerInDogsNormalInference}) and compute the standard error of the difference:
-$$SE = \sqrt{\frac{p_c(1-p_c)}{n_c} + \frac{p_n(1-p_n)}{n_n}}$$
-In a hypothesis test, the distribution of the test statistic is always examined as though the null hypothesis is true, i.e. in this case, $p_c = p_n$. The standard error formula should reflect this equality in the null hypothesis. We will use $p$ to represent the common rate of dogs that are exposed to 2,4-D in the two groups:
-$$SE = \sqrt{\frac{p(1-p)}{n_c} + \frac{p(1-p)}{n_n}}$$
-We don't know the exposure rate, $p$, but we can obtain a good estimate of it by \emph{pooling} the results of both samples:
-$$\hat{p} = \frac{\text{\# of ``successes''}}{\text{\# of cases}} = \frac{191 + 304}{191+300+304+641} = 0.345$$
-This is called the \term{pooled estimate} of the sample proportion, and we use it to compute the standard error when the null hypothesis is that $p_1 = p_2$ (e.g. $p_c = p_n$ or $p_c - p_n = 0$). We also typically use it to verify the success-failure condition.
-
-\begin{termBox}{\tBoxTitle{Pooled estimate of a proportion}
-When the null hypothesis is $p_1 = p_2$, it is useful to find the pooled estimate of the shared proportion:
+\begin{termBox}{\tBoxTitle{Use the pooled proportion estimate when $\mathbf{H_0: p_1 = p_2}$}
+When the null hypothesis is that the proportions are equal, we use the pooled proportion estimate ($\hat{p}$) to verify the success-failure condition and estimate the standard error:
 \begin{eqnarray*}
 \hat{p} = \frac{\text{number of ``successes''}}{\text{number of cases}} = \frac{\hat{p}_1n_1 + \hat{p}_2n_2}{n_1 + n_2}
 \end{eqnarray*}
@@ -350,22 +363,51 @@ Here $\hat{p}_1n_1$ represents the number of successes in sample 1 since
 Similarly, $\hat{p}_2n_2$ represents the number of successes in sample 2.}
 \end{termBox}
 
-\begin{tipBox}{\tipBoxTitle{Use the pooled proportion estimate when $\mathbf{H_0: p_1 = p_2}$}
-When the null hypothesis suggests the proportions are equal, we use the pooled proportion estimate ($\hat{p}$) to verify the success-failure condition and also to estimate the standard error:
-\begin{eqnarray}
-SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n_1} + \frac{\hat{p}(1-\hat{p})}{n_2}} 
-\label{seOfDiffInPropUsingPooledEstimate}
-\end{eqnarray}}
-\index{data!cancer in dogs, herbicide|)}
-\end{tipBox}
+In Example~\ref{condFormammogramStudySummaryTableNormalInference}, the pooled proportion was used to check the success-failure condition. In the next example, we see the second place where the pooled proportion comes into play: the standard error calculation.
 
-\begin{exercise}\label{verifySEOfPooledEstimateOf24DWithCancerNoCancerDogs}
-Using Equation~\eqref{seOfDiffInPropUsingPooledEstimate}, $\hat{p}=0.345$, $n_1 = 491$, and $n_2=945$, verify the estimate for the standard error is $SE = 0.026$. Next, complete the hypothesis test using a significance level of 0.05. Be certain to draw a picture, compute the p-value, and state your conclusion in both statistical language and plain language.\footnote{Compute the test statistic:
-\begin{eqnarray*}
-Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.067 - 0}{0.026} = 2.58
-\end{eqnarray*}
-We leave the picture to you. Looking up $Z=2.58$ in the normal probability table: 0.9951. However this is the lower tail, and the upper tail represents the p-value: $1-0.9951 = 0.0049$. We reject the null hypothesis and conclude that dogs getting cancer and owners using 2,4-D are associated.}
-\end{exercise}
+\begin{example}{Compute the point estimate of the difference in breast cancer death rates in the two groups, and use the pooled proportion $\hat{p} = 0.0112$ from Example~\ref{condFormammogramStudySummaryTableNormalInference} to calculate the standard error.}
+The point estimate of the difference in breast cancer death rates for the mammogram group minus the control group is
+\begin{align*}
+\hat{p}_{mgm} - \hat{p}_{ctrl}
+	&= \frac{500}{500 + 44,425} - \frac{505}{505 + 44,405} \\
+	&= 0.01113 - 0.01125 \\
+	&= -0.00012
+\end{align*}
+There was a difference of about 0.012\% in death from breast cancer in the two groups. Next, the standard error is calculated using the pooled proportion, $\hat{p}$:
+\begin{align*}
+SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n_{mgm}}
+		+ \frac{\hat{p}(1-\hat{p})}{n_{ctrl}}}
+	= 0.00070
+\end{align*}
+\end{example}
+
+\begin{example}{Using the point estimate $\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012$ and standard error $SE = 0.00070$, calculate a p-value for the hypothesis test and write a conclusion.}
+As like in past tests, we first compute a test statistic and draw a picture:
+\begin{align*}
+Z = \frac{\text{point estimate} - \text{null value}}{SE}
+	= \frac{-0.00012 - 0}{0.00070}
+	= -0.17
+\end{align*}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{ch_inference_for_props/figures/mammograms/mammogramPValue}
+\end{center}
+The lower tail area is 0.4325, which we double to get the p-value:~0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits of or harm from mammograms relative to a regular breast exam.
+\end{example}
+
+Can we conclude that mammograms have no benefits or harm? Here are a few important considerations to keep in mind when reviewing the mammogram study as well as any other medical study:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item If mammograms are helpful or harmful, the data indicate that the effect isn't very large. So while we do not accept the null hypothesis, it is reasonable to say that mammograms do not reduce or increase breast cancer deaths by much. We could compute a confidence interval to give a sense of the plausible impact of mammograms.
+\item Are mammograms more or less expensive than a non-mammogram breast exam? If one is much more expensive than the other without offering clear benefits, then we should lean towards the less expensive option.
+\item The study also found that mammograms led to overdiagnosis of breast cancer, which means some breast cancers were found (or thought to be found) but that they would not cause symptoms during patients' lifetimes. That is, something else would kill the patient before breast cancer symptoms appeared. This means some patients may have been treated for breast cancer unnecessarily, and this treatment is another cost to consider. Additionally, overdiagnosis generally causes unnecessary physical or emotional harm to a patient.
+\end{itemize}
+These considerations highlight the complexity around medical care and treatment recommendations. Experts and medical boards who study medical treatments use considerations like those above to provide their best recommendation based on the current evidence.
+
+%The second consideration mentioned in Example~\ref{} -- the cost of a test and cost of overdiagnosis -- are frequently important in medical care, even.
+
+\index{data!breast cancer|)}
+\index{data!mammography|)}
+
 
 
 %__________________
@@ -1122,7 +1164,7 @@ We will assume the patients are independent, which is probably reasonable. The s
 While we can apply a normal framework as an approximation to find a p-value, we might keep in mind that the expected number of successes is only 13.9 in one group and 11.1 in the other. Below we conduct an analysis relying on the large sample normal theory. We will follow up with a small sample analysis and compare the results.
 
 \begin{example}{Assess the hypotheses presented in Example~\ref{hypothesesForCPRStudyInSmallSampleSection} using a large sample framework. Use a significance level of $\alpha=0.05$.}
-We suppose the null distribution of the sample difference follows a normal distribution with mean 0 (the null value) and a standard deviation equal to the standard error of the estimate. The null hypothesis in this case would be that the two proportions are the same, so we compute the standard error using the pooled standard error formula from Equation~\eqref{seOfDiffInPropUsingPooledEstimate} on page~\pageref{seOfDiffInPropUsingPooledEstimate}:
+We suppose the null distribution of the sample difference follows a normal distribution with mean 0 (the null value) and a standard deviation equal to the standard error of the estimate. The null hypothesis in this case would be that the two proportions are the same, so we compute the standard error using the pooled proportion:
 \begin{align*}
 SE = \sqrt{\frac{p(1-p)}{n_t} + \frac{p(1-p)}{n_c}}
 	\approx \sqrt{\frac{0.278(1-0.278)}{40} + \frac{0.278(1-0.278)}{50}} = 0.095
