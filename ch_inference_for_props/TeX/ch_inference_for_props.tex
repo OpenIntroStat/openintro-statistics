@@ -282,7 +282,7 @@ Using the normal model for this test statistic, we identify the right tail area 
 \label{gearsTwoSampleHTPValueQC}
 \end{figure}
 
-\Add{In Example~\ref{qualityCtrlEngHypothesisEval}, the null difference was 0.03. However, in the vast majority of applications for differences in means or proportions, the null difference is~0. While the details for a difference of means does not change if the null difference is zero or non-zero, that is not the case for a difference in proportions. As we'll see next, a hypothesis test for a difference in proportions where the null value is 0 requires an additional~care.}
+\Add{In Example~\ref{qualityCtrlEngHypothesisEval}, the null difference was 0.03. However, in the vast majority of applications for differences in means or proportions, the null difference is~0. While the details for a difference of means does not change if the null difference is zero or non-zero, that is not the case for a difference in proportions. As we'll see next, a hypothesis test for a difference in proportions where the null value is 0 requires additional~care.}
 
 
 
@@ -1061,10 +1061,44 @@ Since the minimum bin count condition was satisfied, the chi-square distribution
 
 
 %__________________
-\section{Fisher exact test (special topic)}
+\section{Randomization test (special topic)}
 \label{smallSampleHTForTwoOrMoreProportion}
 
 \Comment{New title for this section.}
+
+%A systematic review is a study that summarizes the findings from many other studies to try to give a more holistic picture of existing research.\footnote{Want to learn more about systematic reviews? Watch this video: \oiRedirect{textbook-healthcare_triage_systematic_review_explained}{youtu.be/5Ezs1DPUKXA}} In this section, we're going to consider the conclusions from several systematic reviews on sugar-sweetened beverages as well as conflicts of interests in those studies. An example of a conflict of interest is the soda industry paying for part of the researchers' salaries through a research grant.
+%
+%Table~\ref{sweetFinancialConflictOfInterestTable} summarizes the conclusions from several studies on the connection between sugar-sweetened beverages and weight gain along with whether there was a reported conflict of interest.\footnote{\oiRedirect{textbook-sugar_sweetened_conflicts_of_interest}{Bes-Rastrollo M, et al. 2013. \emph{Financial Conflicts of Interest and Reporting Bias Regarding the Association between Sugar-Sweetened Beverages and Weight Gain: A Systematic Review of Systematic Reviews}. PLOS Medicine.}}
+%
+%\begin{table}[ht]
+%\centering
+%\begin{tabular}{ll  cc  rr}
+%& & \multicolumn{2}{c}{Conflict of Interest} & \\
+%  \cline{3-4}
+%					&       & Yes & No & Total \\ 
+%  \cline{2-5}
+%Conclude connection	& Yes &  1 & 10 & 11 \\ 
+%to weight gain?		& No &  5 & 2 & 7 \\ 
+%  \cline{2-5}
+%& Total & 6 & 12 & 18 \\
+%  \cline{2-5}
+%\end{tabular}
+%\caption{}
+%\label{sweetFinancialConflictOfInterestTable}
+%\end{table}
+%
+%\begin{example}{We would like to test whether the difference in conclusions between studies with and without a financial conflict of interest can be easily explained by chance. What hypotheses should we use?}\label{hypothesesForSugaryConflictsOfInterest}
+%The null difference supposes there was no difference while the alternative hypothesis supposes there was some difference:
+%\begin{description}
+%\item[$H_0$:] There is no relationship between financial conflicts of interest and conclusions relating sugar-sweetened beverages and weight gain.
+%\item[$H_A$:] Financial conflicts of interest are associated with conclusions relating sugar-sweetened beverages and weight gain.
+%\end{description}
+%\end{example}
+%
+%\begin{exercise}
+%Can we run a 2-proportion hypothesis test using the normal model to evaluate the hypotheses from Example~\ref{hypothesesForSugaryConflictsOfInterest}?\footnote{We'll assume the studies are independent. However, the success-failure condition cannot be satisfied with such a small study.}
+%\end{exercise}
+
 
 \index{data!CPR and blood thinner|(}
 
