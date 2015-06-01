@@ -524,7 +524,7 @@ P(\text{\var{parents} $\to$ \resp{degree} given \var{teen} $\to$ \resp{not}}) = 
 \index{marginal probability|(}
 \index{joint probability|(}
 
-Table~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without conditioning on any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
+Table~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without regard to any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
 \begin{align*}
 P(\text{\var{teen} $\to$ \resp{college}}) = \frac{445}{792} = 0.56
 \end{align*}
@@ -583,7 +583,7 @@ Total & 1.00 \\
 Verify Table~\ref{familyCollegeDistribution} represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to~1.\footnote{Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is $0.29 + 0.06 + 0.27 + 0.38 = 1.00$.}
 \end{exercise}
 
-We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes from Table~\ref{familyCollegeDistribution} where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
+We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
 \begin{align*}
 P(\text{\underline{\color{black}\var{teen} $\to$ \resp{college}}})
 &=  P(\text{\var{parents} $\to$ \resp{degree} and \underline{\color{black}\var{teen} $\to$ \resp{college}}}) \\
@@ -664,7 +664,7 @@ P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
 &P(\text{\var{parents} $\to$ \resp{degree}}\ |\ \text{\var{teen} $\to$ \resp{not}}) \\
 &+ P(\text{\var{parents} $\to$ \resp{not}}\ |\ \text{\var{teen} $\to$ \resp{not}})
 \end{align*}
-(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnote{(a)~This probability is $\frac{P(\text{\var{parents} $\to$ \resp{degree}, \var{teen} $\to$ \resp{not}})}{P(\text{\var{teen} $\to$ \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works, provided the probabilities condition on the same information.}
+(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnote{(a)~This probability is $\frac{P(\text{\var{parents} $\to$ \resp{degree}, \var{teen} $\to$ \resp{not}})}{P(\text{\var{teen} $\to$ \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works for conditional probabilities, provided the probabilities are conditioned on the same information.}
 \end{exercise}
 
 \begin{exercise}
