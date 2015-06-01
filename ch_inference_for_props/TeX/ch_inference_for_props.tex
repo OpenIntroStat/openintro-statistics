@@ -231,9 +231,9 @@ SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
 The standard error for the difference in two proportions takes a similar form. The reasons behind this similarity are rooted in the probability theory of Section~\ref{randomVariablesSection}, which is described for this context in Exercise~\vref{derivingSEForDiffOfTwoMeansExercise}.
 
 
-\subsection{Intervals and tests for $p_1 -p_2$}
+\subsection{Confidence intervals for $p_1 -p_2$}
 
-In the setting of confidence intervals, the sample proportions are used to verify the success-failure condition and also compute standard error, just as was the case with a single proportion.
+In the setting of confidence intervals for a difference of two proportions, the two sample proportions are used to verify the success-failure condition and also compute the standard error, just as was the case with a single proportion.
 
 \begin{example}{The way a question is phrased can influence a person's response. For example, Pew Research Center conducted a survey with the following question:\footnote{\href{http://www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate/}{www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate/}. Sample sizes for each polling group are approximate.}
 \begin{quote}
@@ -266,46 +266,25 @@ We are 90\% confident that the approval rating for the 2010 healthcare law chang
 \index{data!health care|)}
 \end{example}
 
-\begin{exercise}\label{carWheelGearManufacturer}
-A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. If there is strong evidence of a more than 3\% improvement in the percent of gears that pass inspection, management says they will switch suppliers, otherwise they will maintain the current supplier. Set up appropriate hypotheses for the test.\footnote{$H_0$: The higher quality gears will pass inspection no more than 3\% more frequently than the standard quality gears. $p_{highQ} - p_{standard} = 0.03$. $H_A$: The higher quality gears will pass inspection more than 3\% more often than the standard quality gears. $p_{highQ} - p_{standard} > 0.03$.}
-\end{exercise}
 
-\begin{example}{The quality control engineer from Guided Practice~\ref{carWheelGearManufacturer} collects a sample of gears, examining 1000 gears from each company and finds that 899 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, evaluate the hypothesis setup of Guided Practice~\ref{carWheelGearManufacturer} using a significance level of 5\%.}\label{qualityCtrlEngHypothesisEval}
-First, we check the conditions. The sample is not necessarily random, so to proceed we must assume the gears are all independent; for this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. The success-failure condition also holds for each sample. Thus, the difference in sample proportions, $0.958-0.899=0.059$, can be said to come from a nearly normal distribution.
+\subsection{Hypothesis tests for $p_1 -p_2$}
 
-The standard error can be found using Equation~\eqref{seForDiffOfProp}:
-$$SE = \sqrt{\frac{0.958(1-0.958)}{1000} + \frac{0.899(1-0.899)}{1000}} = 0.0114$$
-In this hypothesis test, the sample proportions were used. We will discuss this choice more in Section~\ref{pooledHTForProportionsSection}.
+%There are two possible situations we'll encounter when conducting a hypothesis test for $p_1 - p_2$:
+%\begin{enumerate}
+%\item[The null hypothesis is that there is no difference.] This is, by far, the most common of the two situations.
+%\item[The null hypothesis is that the difference is a specific value.] For example, in Guided Practice~\ref{}, we'll see a situation where the sample mean
+%\end{enumerate}
 
-Next, we compute the test statistic and use it to find the p-value, which is depicted in Figure~\ref{gearsTwoSampleHTPValueQC}.
-$$Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.059 - 0.03}{0.0114} = 2.54$$
-Using the normal model for this test statistic, we identify the right tail area as 0.006. Since this is a one-sided test, this single tail area is also the p-value, and we reject the null hypothesis because 0.006 is less than 0.05. That is, we have statistically significant evidence that the higher quality gears actually do pass inspection more than 3\% as often as the currently used gears. Based on these results, management will approve the switch to the new supplier.
-\end{example}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{ch_inference_for_props/figures/gearsTwoSampleHTPValueQC/gearsTwoSampleHTPValueQC}
-\caption{Distribution of the test statistic if the null hypothesis was true. The p-value is represented by the shaded area.}
-\label{gearsTwoSampleHTPValueQC}
-\end{figure}
-
-\Add{In Example~\ref{qualityCtrlEngHypothesisEval}, the null difference was 0.03. However, in the vast majority of applications for differences in means or proportions, the null difference is~0. While the details for a difference of means does not change if the null difference is zero or non-zero, that is not the case for a difference in proportions. As we'll see next, a hypothesis test for a difference in proportions where the null value is 0 requires additional~care.}
-
-
-
-\subsection{Hypothesis testing when $H_0$: $p_1=p_2$}
-\label{pooledHTForProportionsSection}
-
-\Comment{This subsection has been overhauled and contains a controversial topic, so it requires a careful review.}
+\Comment{This subsection has been overhauled and contains a controversial topic, so it should be reviewed with extra care.}
 
 \index{data!mammography|(}
 \index{data!breast cancer|(}
 
-A mammogram is an X-ray of a breast, and it is frequently used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it's the topic of our next example where we examine 2-proportion hypothesis test when $H_0$~is~$p_1 = p_2$.
+A mammogram is an X-ray of a breast, and it is frequently used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it's the topic of our next example where we examine 2-proportion hypothesis test when $H_0$~is~$p_1 - p_2 = 0$ (or equivalently, $p_1 = p_2$).
 
 A 30-year study was conducted with nearly 90,000 female participants.\footnote{\oiRedirect{textbook-90k_mammogram_study_2014}{Miller AB. 2014. \emph{Twenty five year follow-up for breast cancer incidence and mortality of the Canadian National Breast Screening Study: randomised screening trial}. BMJ 2014;348:g366.}} During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Table~\ref{mammogramStudySummaryTable}.
 
-If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On the other hand, if mammograms are not as effective as regular breast cancer exams, we would expect to see an increase in breast cancer deaths in the mammogram group.
+If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On~the other hand, if mammograms are not as effective as regular breast cancer exams, we~would expect to see an increase in breast cancer deaths in the mammogram group.
 
 \begin{table}[h]
 \centering
@@ -330,26 +309,28 @@ Is this study an experiment or an observational study?\footnote{This is an exper
 Set up hypotheses to test whether there was a difference in breast cancer deaths in the mammogram and control groups.\footnote{$H_0$: the breast cancer death rate for patients screened using mammograms is the same as the breast cancer death rate for patients in the control, $p_{mgm} - p_{ctrl} = 0$. \\ $H_A$: the breast cancer death rate for patients screened using mammograms is different than the breast cancer death rate for patients in the control, $p_{mgm} - p_{ctrl} \neq 0$.}
 \end{exercise}
 
-In Example~\ref{condFormammogramStudySummaryTableNormalInference}, we check the conditions for using the normal model to analyze the results of the study. The details are very similar to what was completed in the previous sections. However, this time we use a special proportion called the \term{pooled proportion} to check the success-failure condition. This proportion, which in this example is the estimate of the breast cancer death rate across the entire study, is our best estimate of the proportions $p_{mgm}$ and $p_{ctrl}$ \emph{if the null hypothesis is true that $p_{mgm} = p_{ctrl}$}. We will also use the pooled proportion again when computing the standard error.
+In Example~\ref{condFormammogramStudySummaryTableNormalInference}, we check the conditions for using the normal model to analyze the results of the study. The details are very similar to that of confidence intervals. However, this time we use a special proportion called the \term{pooled proportion} to check the success-failure condition:
+\begin{align*}
+\hat{p} &= \frac{\text{\# of patients who died from breast cancer in the entire study}}{\text{\# of patients in the entire study}} \\
+	&= \frac{500 + 505}{500 + \text{44,425} + 505 + \text{44,405}} \\
+	&= 0.0112
+\end{align*}
+This proportion, which in this example is the estimate of the breast cancer death rate across the entire study, is our best estimate of the proportions $p_{mgm}$ and $p_{ctrl}$ \emph{if the null hypothesis is true that $p_{mgm} = p_{ctrl}$}. We will also use the pooled proportion again when computing the standard error.
 
 \begin{example}{Can we use the normal model to analyze this study?}\label{condFormammogramStudySummaryTableNormalInference}
 Because the patients are randomized, they can be treated as independent.
 
-We also much check the success-failure condition for each group. Under the null hypothesis, the proportions $p_{mgm}$ and $p_{ctrl}$ are equal, so we check the success-failure condition with our best estimate of these values under $H_0$, the \term{pooled proportion} from the two samples:
-\begin{align*}
-\hat{p} = \frac{500 + 505}{500 + \text{44,425} + 505 + \text{44,405}} = 0.0112
-\end{align*}
-We then use $\hat{p}$ to check the success-failure condition for each group:
+We also much check the success-failure condition for each group. Under the null hypothesis, the proportions $p_{mgm}$ and $p_{ctrl}$ are equal, so we check the success-failure condition with our best estimate of these values under $H_0$, the \hiddenterm{pooled proportion} from the two samples, $\hat{p} = 0.0112$:
 \begin{align*}
 \hat{p} \times n_{mgm} &= 0.0112 \times \text{44,925} = 503
-	& (1 - \hat{p}) \times n_{mgm} &= 0.9888 \times \text{44,925} = 44,422 \\
+	& (1 - \hat{p}) \times n_{mgm} &= 0.9888 \times \text{44,925} = \text{44,422} \\
 \hat{p} \times n_{ctrl} &= 0.0112 \times \text{44,910} = 503
-	& (1 - \hat{p}) \times n_{ctrl} &= 0.9888 \times \text{44,910} = 44,407
+	& (1 - \hat{p}) \times n_{ctrl} &= 0.9888 \times \text{44,910} = \text{44,407}
 \end{align*}
-The success-failure condition is easily satisfied since all values are at least 10, and we can safely apply the normal model.
+The success-failure condition is satisfied since all values are at least 10, and we can safely apply the normal model.
 \end{example}
 
-\begin{termBox}{\tBoxTitle{Use the pooled proportion estimate when $\mathbf{H_0: p_1 = p_2}$}
+\begin{termBox}{\tBoxTitle{Use the pooled proportion estimate when $\mathbf{H_0}$ is $\mathbf{p_1 - p_2 = 0}$}
 When the null hypothesis is that the proportions are equal, we use the pooled proportion estimate ($\hat{p}$) to verify the success-failure condition and estimate the standard error:
 \begin{eqnarray*}
 \hat{p} = \frac{\text{number of ``successes''}}{\text{number of cases}} = \frac{\hat{p}_1n_1 + \hat{p}_2n_2}{n_1 + n_2}
@@ -363,7 +344,7 @@ Similarly, $\hat{p}_2n_2$ represents the number of successes in sample 2.}
 
 In Example~\ref{condFormammogramStudySummaryTableNormalInference}, the pooled proportion was used to check the success-failure condition. In the next example, we see the second place where the pooled proportion comes into play: the standard error calculation.
 
-\begin{example}{Compute the point estimate of the difference in breast cancer death rates in the two groups, and use the pooled proportion $\hat{p} = 0.0112$ from Example~\ref{condFormammogramStudySummaryTableNormalInference} to calculate the standard error.}
+\begin{example}{Compute the point estimate of the difference in breast cancer death rates in the two groups, and use the pooled proportion $\hat{p} = 0.0112$ to calculate the standard error.}
 The point estimate of the difference in breast cancer death rates for the mammogram group minus the control group is
 \begin{align*}
 \hat{p}_{mgm} - \hat{p}_{ctrl}
@@ -371,7 +352,7 @@ The point estimate of the difference in breast cancer death rates for the mammog
 	&= 0.01113 - 0.01125 \\
 	&= -0.00012
 \end{align*}
-There was a difference of about 0.012\% in death from breast cancer in the two groups. Next, the standard error is calculated using the pooled proportion, $\hat{p}$:
+There was a difference of about 0.012\% in death from breast cancer in the two groups. Next, the standard error is calculated \emph{using the pooled proportion}, $\hat{p}$:
 \begin{align*}
 SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n_{mgm}}
 		+ \frac{\hat{p}(1-\hat{p})}{n_{ctrl}}}
@@ -380,7 +361,7 @@ SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n_{mgm}}
 \end{example}
 
 \begin{example}{Using the point estimate $\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012$ and standard error $SE = 0.00070$, calculate a p-value for the hypothesis test and write a conclusion.}
-As like in past tests, we first compute a test statistic and draw a picture:
+Just like in past tests, we first compute a test statistic and draw a picture:
 \begin{align*}
 Z = \frac{\text{point estimate} - \text{null value}}{SE}
 	= \frac{-0.00012 - 0}{0.00070}
@@ -395,16 +376,66 @@ The lower tail area is 0.4325, which we double to get the p-value:~0.8650. Becau
 Can we conclude that mammograms have no benefits or harm? Here are a few important considerations to keep in mind when reviewing the mammogram study as well as any other medical study:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item If mammograms are helpful or harmful, the data indicate that the effect isn't very large. So while we do not accept the null hypothesis, it is reasonable to say that mammograms do not reduce or increase breast cancer deaths by much. We could compute a confidence interval to give a sense of the plausible impact of mammograms.
-\item Are mammograms more or less expensive than a non-mammogram breast exam? If one is much more expensive than the other without offering clear benefits, then we should lean towards the less expensive option.
-\item The study also found that mammograms led to overdiagnosis of breast cancer, which means some breast cancers were found (or thought to be found) but that they would not cause symptoms during patients' lifetimes. That is, something else would kill the patient before breast cancer symptoms appeared. This means some patients may have been treated for breast cancer unnecessarily, and this treatment is another cost to consider. Additionally, overdiagnosis generally causes unnecessary physical or emotional harm to a patient.
+\item If mammograms are helpful or harmful, the data indicate that the effect isn't very large. So while we do not accept the null hypothesis, it is reasonable to say that mammograms do not reduce or increase breast cancer deaths, if we believe the study participants are reasonably representative of the population. We could also compute a confidence interval to give a sense of the plausible impact of mammograms.
+\item Are mammograms more or less expensive than a non-mammogram breast exam? If one option is much more expensive than the other and doesn't offer clear benefits, then we should lean towards the less expensive option.
+\item The study also found that mammograms led to overdiagnosis of breast cancer, which means some breast cancers were found (or thought to be found) but that these cancers would not cause symptoms during patients' lifetimes. That is, something else would kill the patient before breast cancer symptoms appeared. This means some patients may have been treated for breast cancer unnecessarily, and this treatment is another cost to consider. It is also important to recognize that overdiagnosis can cause unnecessary physical or emotional harm to patients.
 \end{itemize}
 These considerations highlight the complexity around medical care and treatment recommendations. Experts and medical boards who study medical treatments use considerations like those above to provide their best recommendation based on the current evidence.
+
+%\begin{caution}{Practical consideration on scientific research}
+%{Recognize that there may be deeper complexities to a problem than a simple hypothesis test. This is especially true in medical research. For example, even if one treatment is very effective, if it is far too costly, it may not be a viable treatmen}
+%\end{caution}
 
 %The second consideration mentioned in Example~\ref{} -- the cost of a test and cost of overdiagnosis -- are frequently important in medical care, even.
 
 \index{data!breast cancer|)}
 \index{data!mammography|)}
+
+
+\subsection{More on 2-proportion hypothesis tests (special topic)}
+
+When we conduct a 2-proportion hypothesis test, usually $H_0$ is $p_1 - p_2 = 0$. However, there are rare situations where we want to check for some difference in $p_1$ and $p_2$ that is some value other than 0. For example, maybe we care about checking a null hypothesis where $p_1 - p_2 = 0.1$.\footnote{We can also encounter a similar situation with a difference of two means, though no such example was given in Chapter~\ref{inferenceForNumericalData} since the methods remain exactly the same in that context whereas the success-failure condition and the calculation of the standard error vary slightly in different proportion contexts.} In contexts like these, we generally use $\hat{p}_1$ and $\hat{p}_2$ to check the success-failure condition and construct the standard error.
+
+\begin{exercise}\label{carWheelBladeManufacturer}
+A quadcopter company is considering a new manufacturer for rotor blades. The new manufacturer would be more expensive but their higher-quality blades are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive blades are worth the conversion before they approve the switch. If there is strong evidence of a more than 3\% improvement in the percent of blades that pass inspection, management says they will switch suppliers, otherwise they will maintain the current supplier. Set up appropriate hypotheses for the test.\footnote{$H_0$: The higher-quality blades will pass inspection no more than 3\% more frequently than the standard-quality blades. $p_{highQ} - p_{standard} = 0.03$. $H_A$: The higher-quality blades will pass inspection more than 3\% more often than the standard-quality blades. $p_{highQ} - p_{standard} > 0.03$.}
+\end{exercise}
+
+\setlength{\captionwidth}{85mm}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{ch_inference_for_props/figures/quadcopter/quadcopter_david_j}
+\caption[rissosDolphinPic]{A Phantom quadcopter.\vspace{-1mm} \\
+   -----------------------------\vspace{-2mm}\\
+   {\footnotesize Photo by David J (\oiRedirect{textbook-quadcopter_david_j}{http://flic.kr/p/oiWLNu}). \oiRedirect{textbook-CC_BY_2}{CC-BY 2.0 license.} This photo has been cropped and a border has been added.}}
+\label{quadcopter_david_j}
+\end{figure}
+
+\setlength{\captionwidth}{\mycaptionwidth}
+
+%\Add{In Guided Practice~\ref{qualityCtrlEngHypothesisEval}, the null difference is 0.03. However, in the vast majority of applications for differences in means or proportions, the null difference is~0. While the details for a difference of means does not change if the null difference is zero or non-zero, that is not the case for a difference in proportions. As we'll see in Section~\ref{}, a hypothesis test for a difference in proportions where the null value is 0 requires additional~care.}
+
+\begin{example}{The quality control engineer from Guided Practice~\ref{carWheelBladeManufacturer} collects a sample of blades, examining 1000 blades from each company and finds that 899 blades pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, evaluate the hypothesis setup of Guided Practice~\ref{carWheelBladeManufacturer} using a significance level of 5\%.}\label{qualityCtrlEngHypothesisEval}
+First, we check the conditions. The sample is not necessarily random, so to proceed we must assume the blades are all independent; for this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. The success-failure condition also holds for each sample. Thus, the difference in sample proportions, $0.958 - 0.899 = 0.059$, can be said to come from a nearly normal distribution.
+
+The standard error can be found using Equation~\eqref{seForDiffOfProp}:
+\begin{align*}
+SE = \sqrt{\frac{0.958(1-0.958)}{1000} + \frac{0.899(1-0.899)}{1000}} = 0.0114
+\end{align*}
+In this hypothesis test, because the null is that $p_1 - p_2 = 0.03$, the sample proportions were used for the standard error calculation rather than a pooled proportion.
+
+Next, we compute the test statistic and use it to find the p-value, which is depicted in Figure~\ref{bladesTwoSampleHTPValueQC}.
+$$Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.059 - 0.03}{0.0114} = 2.54$$
+Using the normal model for this test statistic, we identify the right tail area as 0.006. Since this is a one-sided test, this single tail area is also the p-value, and we reject the null hypothesis because 0.006 is less than 0.05. That is, we have statistically significant evidence that the higher-quality blades actually do pass inspection more than 3\% as often as the currently used blades. Based on these results, management will approve the switch to the new supplier.
+\end{example}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{ch_inference_for_props/figures/bladesTwoSampleHTPValueQC/bladesTwoSampleHTPValueQC}
+\caption{Distribution of the test statistic if the null hypothesis was true. The p-value is represented by the shaded area.}
+\label{bladesTwoSampleHTPValueQC}
+\end{figure}
+
 
 
 

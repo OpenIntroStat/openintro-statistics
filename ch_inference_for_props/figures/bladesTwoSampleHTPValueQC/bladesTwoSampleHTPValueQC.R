@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-myPDF('gearsTwoSampleHTPValueQC.pdf', 3.04, 1.56,
+myPDF('bladesTwoSampleHTPValueQC.pdf', 3.04, 1.56,
       mar = c(2.4, 0, 0.5, 0),
       mgp = c(3, 0.45, 0))
 normTail(U = 2.3, col = COL[1], axes = FALSE)
