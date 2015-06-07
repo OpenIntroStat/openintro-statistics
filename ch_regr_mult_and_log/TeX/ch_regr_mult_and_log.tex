@@ -427,7 +427,10 @@ generally depend on the following four assumptions:
 \item the residuals are independent, and
 \item each variable is linearly related to the outcome.
 \end{enumerate}
-Simple and effective plots can be used to check each of these assumptions. We will consider the model for the auction data that uses the game condition and number of wheels as predictors.
+\termsub{Diagnostic plots}{diagnostic plots} can be used to check each of these assumptions. We will consider the model from the Mario Kart auction data, and check whether there are any notable concerns:
+\begin{align*}
+\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\_\hspace{0.3mm}new}} + 1.12 \times \text{\var{stock\_\hspace{0.3mm}photo}} + 7.30 \times \text{\var{wheels}}
+\end{align*}
 
 \begin{description}
 \item[Normal probability plot.] A normal probability plot of the residuals is shown in Figure~\ref{mkDiagnosticNormalQuantilePlot}. While the plot exhibits some minor irregularities, there are no outliers that might be cause for concern. In a normal probability plot for residuals, we tend to be most worried about residuals that appear to be outliers, since these indicate long tails in the distribution of residuals.
@@ -457,18 +460,18 @@ Simple and effective plots can be used to check each of these assumptions. We wi
 \label{mkDiagnosticInOrder}
 \end{figure}
 
-\item[Residuals against each predictor variable.] We consider a plot of the residuals against the \var{cond\_\hspace{0.3mm}new} variable and the residuals against the \var{wheels} variable. These plots are shown in Figure~\ref{mkDiagnosticEvsVariables}. For the two-level condition variable, we are guaranteed not to see any remaining trend, and instead we are checking that the variability doesn't fluctuate across groups. In this example, when we consider the residuals against the \var{wheels} variable, we see some possible structure. There appears to be curvature in the residuals, indicating the relationship is probably not linear.
+\item[Residuals against each predictor variable.] We consider a plot of the residuals against the \var{cond\_\hspace{0.3mm}new} variable, the residuals against the \var{stock\_\hspace{0.3mm}photo} variable, and the residuals against the \var{wheels} variable. These plots are shown in Figure~\ref{mkDiagnosticEvsVariables}. For the two-level condition variable, we are guaranteed not to see any remaining trend, and instead we are checking that the variability doesn't fluctuate across groups, which it does not. However, looking at the stock photo variable, we find that there is some difference in the variability of the residuals in the two groups. Additionally, when we consider the residuals against the \var{wheels} variable, we see some possible structure. There appears to be curvature in the residuals, indicating the relationship is probably not linear.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{ch_regr_mult_and_log/figures/marioKartDiagnostics/mkDiagnosticEvsVariables}
-\caption{In the two-level variable for the game's condition, we check for differences in distribution shape or variability. For numerical predictors, we also check for trends or other structure. We see some slight bowing in the residuals against the \var{wheels} variable.}
+\includegraphics[width=\textwidth]{ch_regr_mult_and_log/figures/marioKartDiagnostics/mkDiagnosticEvsVariables}
+\caption{For the condition and stock photo variables, we check for differences in the distribution shape or variability of the residuals. In the case of the stock photos variable, we see a little less variability in the unique photo group than the stock photo group. For numerical predictors, we also check for trends or other structure. We see some slight bowing in the residuals against the \var{wheels} variable in the bottom plot.}
 \label{mkDiagnosticEvsVariables}
 \end{figure}
 
 \end{description}
 
-It is necessary to summarize diagnostics for any model fit. If the diagnostics support the model assumptions, this would improve credibility in the findings. If the diagnostic assessment shows remaining underlying structure in the residuals, we should try to adjust the model to account for that structure. If we are unable to do so, we may still report the model but must also note its shortcomings. In the case of the auction data, we report that there may be a nonlinear relationship between the total price and the number of wheels included for an auction. This information would be important to buyers and sellers; omitting this information could be a setback to the very people who the model might assist.
+It is necessary to summarize diagnostics for any model fit. If the diagnostics support the model assumptions, this would improve credibility in the findings. If the diagnostic assessment shows remaining underlying structure in the residuals, we should try to adjust the model to account for that structure. If we are unable to do so, we may still report the model but must also note its shortcomings. In the case of the auction data, we report that there appears to be non-constant variance in the stock photo variable and that there may be a nonlinear relationship between the total price and the number of wheels included for an auction. This information would be important to buyers and sellers who may review the analysis, and omitting this information could be a setback to the very people who the model might assist.
 
 \begin{tipBox}{\tipBoxTitle[]{``All models are wrong, but some are useful'' -George E.P. Box}
 The truth is that no model is perfect. However, even imperfect models can be useful. Reporting a flawed model can be reasonable so long as we are clear and report the model's shortcomings.}

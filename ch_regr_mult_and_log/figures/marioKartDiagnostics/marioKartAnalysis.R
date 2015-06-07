@@ -30,11 +30,8 @@ summary(lm(totalPr ~ condNew +
                      duration +
                      wheels,
            data = d))
-xtable(summary(lm(totalPr ~ condNew +
-                            stockPhoto +
-                            wheels,
-                  data = d)))
-xtable(summary(fit <- lm(totalPr ~ condNew + wheels, d)))
+fit <- lm(totalPr ~ condNew + stockPhoto + wheels, data = d)
+xtable(summary(fit))
 
 e <- fit$res
 f <- fit$fit
@@ -112,9 +109,9 @@ points(f, abs(e),
 box()
 dev.off()
 
-myPDF("mkDiagnosticEvsVariables.pdf", 6.5, 8.3,
+myPDF("mkDiagnosticEvsVariables.pdf", 5.4, 6.9,
       mgp = c(2, 0.6, 0),
-      mfrow = c(2,1),
+      mfrow = c(3, 1),
       mar = c(5.1, 3.1, 0.9, 0.5))
 boxPlot(e, d$condNew,
         xlab = "Condition",
@@ -141,6 +138,40 @@ dotPlot(e[d$condNew == 0],
         pch = 19,
         cex = 0.7)
 dotPlot(e[d$condNew == 1],
+        vertical = TRUE,
+        at = 2.05,
+        add = TRUE,
+        col = COL[1, 2],
+        pch = 19,
+        cex = 0.7)
+box()
+
+par(mar = c(3.8, 3.1, 2.2, 0.5))
+boxPlot(e, d$stockPhoto,
+        xlab = "Photo Type",
+        ylab = "Residuals",
+        axes = FALSE)
+axis(1, at = 1:2, c("Unique Photo", "Stock Photo"))
+axis(2, seq(-10, 10, 10))
+rect(-10, -50, 100, 50,
+     col = COL[7, 3])
+abline(h = seq(-50, 50, 10),
+       col = "#FFFFFF",
+       lwd = 3)
+abline(h = seq(-50, 50, 5),
+       col = "#FFFFFF",
+       lwd = 1)
+boxPlot(e, d$stockPhoto,
+        add = 1:2,
+        axes = FALSE)
+dotPlot(e[d$stockPhoto == 0],
+        vertical = TRUE,
+        at = 1.05,
+        add = TRUE,
+        col = COL[1, 2],
+        pch = 19,
+        cex = 0.7)
+dotPlot(e[d$stockPhoto == 1],
         vertical = TRUE,
         at = 2.05,
         add = TRUE,
