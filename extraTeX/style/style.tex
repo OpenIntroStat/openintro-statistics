@@ -281,19 +281,17 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-10mm}
-			\color{black}\ 
-			
+			\color{black}\ \\[-0.7mm]
 			#1
 			
-			\vspace{1.5mm}
+			\vspace{1mm}
 		\end{minipage}
 	\end{minipage}}}}
 }{
 
 \addvspace{1mm}}
 % 10.2 Tip Box
-\newenvironment{tipBoxTitle}[2][TIP:\ ]{\textbf{\color{oiB}#1#2} \\
-}{}
+\newenvironment{tipBoxTitle}[2][TIP:\ ]{\textbf{\color{oiB}#1#2}\\[0.3mm]}{}
 \newenvironment{tipBox}[1]{
 \addvspace{4mm}
 \noindent{\color{oiB}\framebox[\textwidth][l]{ \\
@@ -303,11 +301,10 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-8mm}
-			\color{black}\ 
-			
+			\color{black}\ \\[-0.7mm]
 			#1
 			
-			\vspace{1.5mm}
+			\vspace{1mm}
 		\end{minipage}
 	\end{minipage}}}
 }{
@@ -323,7 +320,7 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-8mm}
-			\textbf{\color{oiB}Caution: #1} \\
+			\textbf{\color{oiB}Caution: #1} \\[1mm]
 			\color{black}#2
 		\end{minipage}
 	\end{minipage}}}
