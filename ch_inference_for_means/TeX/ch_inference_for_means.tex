@@ -8,8 +8,6 @@ Chapter~\ref{foundationsForInference} introduced a framework for statistical inf
 \item Identify an appropriate distribution for the point estimate or test statistic.
 \item Apply the ideas from Chapter~\ref{foundationsForInference} using the distribution from step 2.
 \end{enumerate}
-\Cut{Each section in Chapter~\ref{inferenceForNumericalData} explores a new situation: the difference of two means (\ref{pairedData},~\ref{differenceOfTwoMeans}); a~single mean or difference of means where we relax the minimum sample size condition (\ref{oneSampleMeansWithTDistribution},~\ref{theTDistributionForTheDifferenceOfTwoMeans}); and the comparison of means across multiple groups (\ref{anovaAndRegrWithCategoricalVariables}). Chapter~\ref{inferenceForCategoricalData} will introduce scenarios that highlight categorical data.}
-
 
 
 
@@ -17,17 +15,18 @@ Chapter~\ref{foundationsForInference} introduced a framework for statistical inf
 \section{One-sample means with the $t$ distribution}
 \label{oneSampleMeansWithTDistribution}
 
-\Comment{This section was moved up.} The motivation in Chapter~\ref{foundationsForInference} for requiring a large sample was two-fold:
+The motivation in Chapter~\ref{foundationsForInference} for requiring a large sample was two-fold:
 \begin{enumerate}
+\setlength{\itemsep}{0mm}
 \item Large sample ensures that the sampling distribution of $\bar{x}$ is nearly normal. We will see in Section~\ref{normalityCond} that if the population data are nearly normal, then $\bar{x}$ is also nearly normal regardless of the sample size.
 \item We get a better estimate of the standard error when using a large sample. The standard error estimate will not generally be accurate for smaller sample sizes, and this motivates the introduction of the $t$ distribution, which we introduce in Section~\ref{introducingTheTDistribution}.
 \end{enumerate}
-\Cut{We will see that the} \Add{The} $t$ distribution is a helpful substitute for the normal distribution when we model a sample mean $\bar{x}$ that comes from a small\Add{er} sample. While we emphasize the use of the $t$ distribution for small samples, \Cut{this distribution may also be} \Add{generally this distribution is also} used for means from large samples.
+The $t$ distribution is a helpful substitute for the normal distribution when we model a sample mean $\bar{x}$ that comes from a smaller sample. While we emphasize the use of the $t$ distribution for small samples, this distribution is also generally used for large samples and will produce similar results to those from the normal distribution for large samples.
 
 \subsection{The normality condition}
 \label{normalityCond}
 
-\Cut{We use a} \Add{A} special case of the Central Limit Theorem \Cut{to} ensure\Add{s} the distribution of the sample means will be nearly normal, regardless of sample size, provided the data come from a nearly normal distribution.
+A special case of the Central Limit Theorem ensures the distribution of sample means will be nearly normal, regardless of sample size, when the data come from a nearly normal distribution.
 
 \begin{termBox}{\tBoxTitle{Central Limit Theorem for normal data}
 The sampling distribution of the mean is nearly normal when the sample observations are independent and come from a nearly normal distribution. This is true for any sample size.
@@ -49,7 +48,7 @@ You may relax the normality condition as the sample size goes up. If the sample 
 
 \index{$t$ distribution|(}
 
-\Cut{The second reason we previously required a large sample size was so that we could accurately estimate the standard error using the sample data.} In the cases where we will use a small sample to calculate the standard error, it will be useful to rely on a new distribution for inference calculations: the $t$ distribution. A $t$ distribution, shown as a solid line in Figure~\ref{tDistCompareToNormalDist}, has a bell shape. However, its tails are thicker than the normal model's. This means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.\footnote{The standard deviation of the $t$ distribution is actually a little more than 1. However, it is useful to always think of the $t$ distribution as having a standard deviation of 1 in all of our applications.} \Add{While our estimate of the standard error will be a little less accurate when we are analyzing a small data set, these extra thick tails of the $t$ distribution} \Cut{The extra thick tails} are exactly the correction we need to resolve the problem of a poorly estimated standard error.
+In the cases where we will use a small sample to calculate the standard error, it will be useful to rely on a new distribution for inference calculations: the $t$ distribution. A $t$ distribution, shown as a solid line in Figure~\ref{tDistCompareToNormalDist}, has a bell shape. However, its tails are thicker than the normal model's. This means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.\footnote{The standard deviation of the $t$ distribution is actually a little more than 1. However, it is useful to always think of the $t$ distribution as having a standard deviation of 1 in all of our applications.} While our estimate of the standard error will be a little less accurate when we are analyzing a small data set, these extra thick tails of the $t$ distribution are exactly the correction we need to resolve the problem of a poorly estimated standard error.
 
 \begin{figure}
 \centering
@@ -73,7 +72,11 @@ The degrees of freedom describe the shape of the $t$ distribution. The larger th
 
 When the degrees of freedom is about 30 or more, the $t$ distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we relate degrees of freedom to sample size.
 
-We will find it very useful to become familiar with the $t$ distribution, because it plays a very similar role to the normal distribution during inference for small samples of numerical data. We use a \term{t table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table for small sample numerical data. A larger table is presented in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. \Add{In~practice, it is also now standard to use statistical software instead of a table, and you can see some of these options at \href{https://openintro.org/stat/prob-tables}{openintro.org/stat/prob-tables}.} \Comment{Still need to create openintro.org/stat/prob-tables and tweak this link to have https:// etc. This type of note should also be added elsewhere in the textbook.}
+It's very useful to become familiar with the $t$ distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data. We use a \term{t table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table. A larger $t$ table is in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. In~practice, it's standard practice to use statistical software instead of a table, and you can see some of these options at
+\begin{center}
+\href{https://openintro.org/stat/prob-tables}{www.openintro.org/stat/prob-tables}.
+\end{center}
+\Comment{Still need to create redirect and add this note elsewhere in the textbook.}
 
 \begin{table}[hht]
 \centering
@@ -138,24 +141,17 @@ What proportion of the $t$ distribution with 19 degrees of freedom falls above -
 \subsection{Conditions for using the $t$ distribution for inference on a sample mean}
 \label{tDistSolutionToSEProblem}
 
-\Comment{Revised the title of this subsection. It was previously ``The $t$ distribution as a solution to the standard error problem''.}
+\Comment{{\small Subsection title was previously ``The $t$ distribution as a solution to the standard error problem''}}
 
-\Cut{When estimating the mean and standard error from a small sample, the $t$ distribution is a more accurate tool than the normal model. This is true for both small and large samples.}
-
-%\Add{The $t$ distribution is a more accurate tool than the normal model when working with sample means. Its slightly thicker tails account for some of the imprecision in the standard error calculation, and this is especially important when working with smaller samples.}
-
-To proceed with the $t$ distribution for inference about a single mean, we must check two conditions.
+To proceed with the $t$ distribution for inference about a single mean, we first check two conditions.
 \begin{description}
-\item[Independence of observations.] We verify this condition just as we did before. We collect a simple random sample from less than 10\% of the population, or if it was an experiment or random process, we carefully check to the best of our abilities that the observations were independent.
+\item[Independence of observations.] We verify this condition just as we did before. We collect a simple random sample from less than 10\% of the population, or if the data are from an experiment or random process, we check to the best of our abilities that the observations were independent.
 \item[Observations come from a nearly normal distribution.] This second condition is difficult to verify with small data sets. We often (i) take a look at a plot of the data for obvious departures from the normal model, and (ii) consider whether any previous experiences alert us that the data may not be nearly normal.
 \end{description}
-When examining a sample mean and estimated standard error from a sample of $n$ independent and nearly normal observations, we use a $t$ distribution with $n-1$ degrees of freedom~($df$). For example, if the sample size was 19, then we would use the $t$ distribution with $df=19-1=18$ degrees of freedom and proceed exactly as we did in Chapter~\ref{foundationsForInference}, except that \emph{now we use the $t$ \Add{distribution.}} \Cut{\emph{table}.}
-
-\Comment{The tip box below was moved here from earlier in the subsection.}
+When examining a sample mean and estimated standard error from a sample of $n$ independent and nearly normal observations, we use a $t$ distribution with $n-1$ degrees of freedom~($df$). For example, if the sample size was 19, then we would use the $t$ distribution with $df=19-1=18$ degrees of freedom and proceed exactly as we did in Chapter~\ref{foundationsForInference}, except that \emph{now we use the $t$ distribution}.
 
 \begin{tipBox}{\tipBoxTitle{When to use the $t$ distribution}
-Use the $t$ distribution for inference of the sample mean when observations are independent and nearly normal. You may relax the nearly normal condition as the sample size increases. For example, the data distribution may be moderately skewed when the sample size is at least~30.
-}
+Use the $t$ distribution for inference of the sample mean when observations are independent and nearly normal. You may relax the nearly normal condition as the sample size increases. For example, the data distribution may be moderately skewed when the sample size is at least~30.}
 \end{tipBox}
 
 
@@ -165,7 +161,7 @@ Use the $t$ distribution for inference of the sample mean when observations are 
 \index{data!dolphins and mercury|(}
 
 Dolphins are at the top of the oceanic food chain, which causes dangerous substances such as mercury to concentrate in their organs and muscles. This is an important problem for both dolphins and other animals, like humans, who occasionally eat them. For instance, this is particularly relevant in Japan where school meals have included dolphin at times.
-\setlength{\captionwidth}{71.5mm}
+\setlength{\captionwidth}{86mm}
 
 \begin{figure}[h]
 \centering
@@ -174,8 +170,7 @@ Dolphins are at the top of the oceanic food chain, which causes dangerous substa
 \begin{minipage}{\textwidth}
    \caption[rissosDolphinPic]{A Risso's dolphin.\vspace{-1mm} \\
    -----------------------------\vspace{-2mm}\\
-   {\footnotesize Photo by Mike Baird (\urlwofont{http://www.bairdphotos.com/}).%Image is under Creative Commons Attribution 2.0 Generic.
-}\vspace{-8mm}}
+   {\footnotesize Photo by Mike Baird (\oiRedirect{textbook-bairdphotos_com}{www.bairdphotos.com}). \oiRedirect{textbook-CC_BY_2}{CC~BY~2.0~license}.}\vspace{-8mm}}
    \label{rissosDolphin}
 \end{minipage}
 \vspace{3mm}
@@ -232,7 +227,7 @@ Finally, we can substitute all our values into the confidence interval equation 
 	\quad \to \quad
 (3.29, 5.51)
 \end{eqnarray*}
-We are 95\% confident the average mercury content of muscles in Risso's dolphins is between 3.29 and 5.51 $\mu$g/wet gram\Add{, which is considered extremely high}. \Cut{This is above the Japanese regulation level of 0.4 $\mu$g/wet gram.}
+We are 95\% confident the average mercury content of muscles in Risso's dolphins is between 3.29 and 5.51 $\mu$g/wet gram, which is considered extremely high.
 
 \index{data!dolphins and mercury|)}
 
@@ -268,9 +263,9 @@ Using the results of Exercise~\ref{croakerWhiteFishPacificExerConditions} and Ex
 \subsection{One sample $t$ tests}
 \label{oneSampleTTests}
 
-\Comment{This section is from ISRS. This should either be rewritten to have a different application or the context of Chapter 4 should be changed (or both).}
+\Comment{New application needed.}
 
-Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Run, comparing runners in 2006 and 2012. Technological advances in shoes, training, and diet might suggest runners would be faster in 2012. An opposing viewpoint might say that \Cut{with the average body mass index on the rise, people tend to run slower.} \Add{Americans (who make up most of the runners) have become less healthy, so the participants will tend to run slower.} In fact, all of these components might be influencing \Add{the average} run time.
+Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Run, comparing runners in 2006 and 2012. Technological advances in shoes, training, and diet might suggest runners would be faster in 2012. An opposing viewpoint might say that Americans (who make up most of the runners) have become less healthy, so the participants will tend to run slower. In fact, all of these components might be influencing the average run time.
 
 The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2012 Cherry Blossom Run whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
 
@@ -279,7 +274,7 @@ What are appropriate hypotheses for this context?\footnote{$H_0$: The average 10
 \end{exercise}
 
 \begin{exercise}
-The data come from a simple random sample from less than 10\% of all participants, so the observations are independent. However, should we be worried about skew in the data? A histogram of the differences \Add{is shown in Figure~\ref{run10SampTimeHistogram}.} \Cut{was shown in the left panel of Figure~\vref{run10SampHistograms}.}~\footnote{With a sample of 100, we should only be concerned if there is extreme skew. The histogram of the data suggest, at worst, slight skew.} \Comment{The caption to the figure was revised.}
+The data come from a simple random sample from less than 10\% of all participants, so the observations are independent. However, should we be worried about skew in the data? See Figure~\ref{run10SampTimeHistogram} for a histogram of the differences.\footnote{With a sample of 100, we should only be concerned if there is extreme skew. The histogram of the data suggest, at worst, slight skew.}
 \end{exercise}
 
 \begin{figure}[h]
@@ -289,7 +284,7 @@ The data come from a simple random sample from less than 10\% of all participant
 \label{run10SampTimeHistogram}
 \end{figure}
 
-With independence satisfied and \Add{slight} skew not a concern \Add{for this large of a sample}, we can proceed with performing a hypothesis test using the $t$ distribution.
+With independence satisfied and slight skew not a concern for this large of a sample, we can proceed with performing a hypothesis test using the $t$ distribution.
 
 \begin{exercise}
 The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?\footnote{With the conditions satisfied for the $t$ distribution, we can compute the standard error ($SE = 15.78 / \sqrt{100} = 1.58$ and the \emph{T score}: $T = \frac{95.61 - 93.29}{1.58} = 1.47$. (There is more on this after the guided practice, but a T score and Z score are basically the same thing.) For $df = 100 - 1 = 99$, we would find $T = 1.47$ to fall between the first and second column, which means the p-value is between 0.10 and 0.20 (use $df = 90$ and consider two tails since the test is two-sided). The p-value could also have been calculated more precisely with statistical software: 0.1447. Because the p-value is greater than 0.05, we do not reject the null hypothesis. That is, the data do not provide strong evidence that the average run time for the Cherry Blossom Run in 2012 is any different than the 2006 average.}
@@ -304,8 +299,6 @@ To help us remember to use the $t$ distribution, we use a $T$ to represent the t
 %__________________
 \section{Paired data}
 \label{pairedData}
-
-\Comment{This section was pulled from ISRS.}
 
 \index{paired data|(}
 \index{data!textbooks|(}
@@ -391,7 +384,7 @@ To visualize the p-value, the sampling distribution of $\bar{x}_{diff}$ is drawn
 
 To find the tail areas, we compute the test statistic, which is the T score of $\bar{x}_{diff}$ under the null condition that the actual mean difference is 0:
 $$T = \frac{\bar{x}_{diff} - 0}{SE_{x_{diff}}} = \frac{12.76 - 0}{1.67} = 7.59$$
-The degrees of freedom are $df = 73 - 1 = 72$. If we examined Appendix~\vref{tDistributionTable}, we would see that this value is larger than any in the 70 df row (we round down for $df$ when using the table), meaning the two-tailed p-value is less than 0.01. If we used statistical software, we would find the p-value is less than 1-in-10 billion! Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon \Cut{is} \Add{was}, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
+The degrees of freedom are $df = 73 - 1 = 72$. If we examined Appendix~\vref{tDistributionTable}, we would see that this value is larger than any in the 70 df row (we round down for $df$ when using the table), meaning the two-tailed p-value is less than 0.01. If we used statistical software, we would find the p-value is less than 1-in-10 billion! Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon was, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
 \end{example}
 
 \begin{figure}[h]
@@ -410,8 +403,6 @@ We are 95\% confident that Amazon is, on average, between \$9.44 and \$16.08 che
 \index{paired data|)}
 
 \end{exercise}
-
-\Cut{In the textbook price example, we applied the $t$ distribution. However, as we mentioned in the last section, the $t$ distribution looks a lot like the normal distribution when the degrees of freedom are larger than about 30. In such cases, including this one, it would be reasonable to use the normal distribution in place of the $t$ distribution.}
 
 
 
@@ -484,23 +475,14 @@ Because both conditions are met, we can use the $t$ distribution to model the di
 %\end{termBox}
 
 \index{point estimate!difference of means|)}
-
 \index{standard error!difference in means}
-\Add{
+
 We can quantify the variability in the point estimate, $\bar{x}_{esc} - \bar{x}_{control}$, using the following formula for its standard error:
 \index{standard error!difference in means}
 \begin{eqnarray*}
 SE_{\bar{x}_{esc} - \bar{x}_{control}} = \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}}
 \end{eqnarray*}
 We usually estimate this standard error using standard deviation estimates  based on the samples:
-}
-
-\Cut{Before we construct a confidence interval, we must calculate the standard error of the point estimate of the difference. For this, we use the following formula, where just as before we substitute the sample standard deviations into the formula:}
-% We can quantify the variability in the point estimate, $\bar{x}_{esc} - \bar{x}_{control}$, using the following formula for its standard error:
-%\begin{eqnarray*}
-%SE_{\bar{x}_{esc} - \bar{x}_{control}} = \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}}
-%\end{eqnarray*}
-%We usually estimate this standard error using standard deviation estimates  based on the samples:
 \begin{align*}
 SE_{\bar{x}_{esc} - \bar{x}_{control}}
 	&= \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}} \\
@@ -624,16 +606,15 @@ Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} 
 
 \begin{exercise} \label{babySmokeHTIDingHowToDetectDifferences}
 If we made a Type 2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?\footnote{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
-
 \end{exercise}
 
-\Add{Public service announcement: while we have used this relatively small data set as an example, larger data sets show that women who smoke tend to have smaller newborns. In~fact, some in the tobacco industry actually had the audacity to tout that as a \emph{benefit} of~smoking:
+\Comment{Carefully review the remaining text of this subsection.} Public service announcement: while we have used this relatively small data set as an example, larger data sets show that women who smoke tend to have smaller newborns. In~fact, some in the tobacco industry actually had the audacity to tout that as a \emph{benefit} of~smoking:
 \begin{quotation}
 \noindent\emph{It's true. The babies born from women who smoke are smaller, but they're just as healthy as the babies born from women who do not smoke. And some women would prefer having smaller babies.} \\[2mm]
 \indent\indent\indent\indent\indent\indent- Joseph Cullman, Philip Morris' Chairman of the Board \\
 \indent\indent\indent\indent\indent\indent{\color{white}...}on CBS' \emph{Face the Nation}, Jan 3,~1971
 \end{quotation}
-Fact check: the babies from women who smoke are not actually as healthy as from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \href{http://youtube.com/watch?v=6UsHHOCH4q8}{youtu.be/6UsHHOCH4q8}.} \Comment{The video in the footnote is unconventional for a textbook. Thoughts?}}
+Fact check: the babies from women who smoke are not actually as healthy as from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \href{http://youtube.com/watch?v=6UsHHOCH4q8}{youtu.be/6UsHHOCH4q8}.} \Comment{The video in the footnote is unconventional for a textbook. Thoughts?}
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
 
@@ -762,12 +743,10 @@ where $n_1$ and $n_2$ are the sample sizes, as before. To use this new statistic
 df = n_1 + n_2 - 2
 \end{align*}
 
-The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the $t$ distribution. Both of these changes may permit a more accurate model of the sampling distribution of $\bar{x}_1 - \bar{x}_2$\Add{, if the standard deviations of the two groups are~equal}.
-
-\Comment{I've updated the title of the caution box below from \emph{Pooling standard deviations should be done only after careful research}.}
+The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the $t$ distribution. Both of these changes may permit a more accurate model of the sampling distribution of $\bar{x}_1 - \bar{x}_2$, if the standard deviations of the two groups are~equal.
 
 \begin{caution}
-{Pooling standard deviations only after careful consideration}
+{Pool standard deviations only after careful consideration}
 {A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.}
 \end{caution}
 }
