@@ -3,74 +3,82 @@
 
 Statistical inference is concerned primarily with understanding the quality of parameter estimates. For example, a classic inferential question is, ``How sure are we that the estimated mean, $\bar{x}$, is near the true population mean, $\mu$?'' While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We introduce these common themes in Sections~\ref{variabilityInEstimates}-\ref{cltSection} by discussing inference about the population mean, $\mu$, and set the stage for other parameters and scenarios in Section~\ref{aFrameworkForInference}. Some advanced considerations are discussed in Section~\ref{sampleSizeAndPower}. Understanding this chapter will make the rest of this book, and indeed the rest of statistics, seem much more familiar.
 
-\index{data!run10|(}
+\index{data!yrbss|(}
 
-Throughout the next few sections we consider a data set called \data{run10}, which represents all 16,924 runners who finished the 2012 Cherry Blossom 10 mile run in Washington, DC.\footnote{\urlwofont{http://www.cherryblossom.org}} Part of this data set is shown in Table~\ref{run10DF}, and the variables are described in Table~\ref{run10Variables}.
+Throughout the next few sections we consider a data set called \data{yrbss}, which represents all 13,583 high school students in the Youth Risk Behavior Surveillance System (YRBSS) from 2013.\footnote{\urlwofont{http://www.cdc.gov/healthyyouth/data/yrbs/data.htm}} Part of this data set is shown in Table~\ref{yrbssDF}, and the variables are described in Table~\ref{yrbssVariables}.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{rrrrr}
+\begin{tabular}{rrllrrlrr}
   \hline
-ID & time & age & gender & state \\ 
+ID & age & gender & grade & height & weight & helmet & active & lifting \\ 
   \hline
-1 & 92.25 & 38.00 & M & MD \\ 
-2 & 106.35 & 33.00 & M & DC \\ 
-3 & 89.33 & 55.00 & F & VA \\ 
-4 & 113.50 & 24.00 & F & VA \\ 
-$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-16923 & 122.87 & 37.00 & F & VA \\ 
-16924 & 93.30 & 27.00 & F & DC \\ 
-   \hline
+1 &  14 & female & 9 &  &  & never &   4 &   0 \\ 
+  2 &  14 & female & 9 &  &  & never &   2 &   0 \\ 
+  3 &  15 & female & 9 & 1.73 & 84.37 & never &   7 &   0 \\ 
+  4 &  15 & female & 9 & 1.60 & 55.79 & never &   0 &   0 \\ 
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  13582 &  17 & female & 12 & 1.60 & 77.11 & sometimes &   5 &  \\ 
+  13583 &  17 & female & 12 & 1.57 & 52.16 & did not ride &   5 &  \\ 
+  \hline
 \end{tabular}
-\caption{Six cases from the \data{run10} data set.}
-\label{run10DF}
+\caption{Six cases from the \data{yrbss} data set. Some observations are blank since they are missing data. For example, the height and weight of students 1 and 2 are missing.}
+\label{yrbssDF}
 \end{table}
-% library(openintro); library(xtable); data(run10); xtable(run10[c(1,2,3,4, nrow(run10)-1:0), c("time", "age", "gender", "state")])
+% library(openintro); library(xtable); data(yrbss); xtable(rbind(head(yrbss, 4), tail(yrbss, 2))[, c("age", "gender", "grade", "height", "weight", "helmet_12m", "physically_active_7d", "strength_training_7d")])
 
 \begin{table}[h]
 \centering\small
-\begin{tabular}{l p{65mm}}
+\begin{tabular}{l p{110mm}}
 \hline
-{\bf variable} & {\bf description} \\
+{\bf age} & {\bf Age of the student.} \\
 \hline
-\var{time} & Ten mile run time, in minutes \\
-\var{age} & Age, in years \\
-\var{gender} & Gender (\resp{M} for male, \resp{F} for female) \\
-\var{state} & Home state (or country if not from the US) \\
+\var{gender} & {Sex of the student.} \\
+\var{grade} & Grade in high school \\
+\var{height} & Height, in meters. There are 3.28 feet in a meter. \\
+\var{weight} & Weight, in kilograms (2.2 pounds per kilogram). \\
+\var{helmet} & Frequency that the student wore a helmet while biking in the last 12~months. \\
+\var{active} & Number of days physically active for 60+ minutes in the last 7 days. \\
+\var{lifting} & Number of days of strength training (e.g. lifting weights) in the last 7 days. \\
 \hline
 \end{tabular}
-\caption{Variables and their descriptions for the \data{run10} data set.}
-\label{run10Variables}
+\caption{Variables and their descriptions for the \data{yrbss} data set.}
+\label{yrbssVariables}
 \end{table}
 
-\index{data!run10Samp|(}
+\index{data!yrbss\_samp|(}
 
-These data are special because they include the results for the entire population of runners who finished the 2012 Cherry Blossom Run. We took a simple random sample of this population, which is represented in Table~\ref{run10SampDF}. We will use this sample, which we refer to as the \data{run10Samp} data set, to draw conclusions about the entire population. This is the practice of statistical inference in the broadest sense. Two histograms summarizing the time and age variables in the \data{run10Samp} data set are shown in Figure~\ref{run10SampHistograms}.
+We're going to consider the population of high school students who participated in the 2013 YRBSS. We took a simple random sample of this population, which is represented in Table~\ref{yrbssSampDF}.\footnote{About 10\% of high schoolers for each variable chose not to answer the question, we used multiple regression (see Chapter~\ref{multipleAndLogisticRegression}) to predict what those responses would have been. For simplicity, we will assume that these predicted values are exactly the truth.} We will use this sample, which we refer to as the \data{yrbss\_samp} data set, to draw conclusions about the population of YRBSS participants. This is the practice of statistical inference in the broadest sense. Two histograms summarizing the \var{height}, \var{weight}, \var{active}, and \var{lifting} variables from \data{yrbss\_samp} data set are shown in Figure~\ref{yrbssSampHistograms}.
 
 \begin{table}
 \centering
-\begin{tabular}{rrrrr}
+\begin{tabular}{rrllrrlrr}
   \hline
-ID & time & age & gender & state \\ 
+ID & age & gender & grade & height & weight & helmet & active & lifting \\ 
   \hline
-1983 & 88.31 & 59 & M & MD \\ 
-8192 & 100.67 & 32 & M & VA \\ 
-11020 & 109.52 & 33 & F & VA \\ 
-  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\ 
-1287 & 89.49 & 26 & M & DC \\ 
+5653 &  16 & female & 11 & 1.50 & 52.62 & never &   0 &   0 \\ 
+  9437 &  17 & male & 11 & 1.78 & 74.84 & rarely &   7 &   5 \\ 
+  2021 &  17 & male & 11 & 1.75 & 106.60 & never &   7 &   0 \\ 
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  2325 &  14 & male & 9 & 1.70 & 55.79 & never &   1 &   0 \\ 
    \hline
 \end{tabular}
-\caption{Four observations for the \data{run10Samp} data set, which represents a simple random sample of 100 runners from the 2012 Cherry Blossom Run.}
-\label{run10SampDF}
-%library(openintro); library(xtable); data(run10); data(run10Samp); xtable(run10Samp[c(1,2,3,100),])
+\caption{Four observations for the \data{yrbss\_samp} data set, which represents a simple random sample of 100 high schoolers from the 2013 YRBSS.}
+\label{yrbssSampDF}
+% library(openintro); library(xtable); data(yrbss); xtable(rbind(head(yrbss.samp, 3), tail(yrbss.samp, 1))[, c("age", "gender", "grade", "height", "weight", "helmet_12m", "physically_active_7d", "strength_training_7d")])
+%library(openintro); library(xtable); data(yrbss); data(yrbss.samp); xtable(yrbss.amp[c(1,2,3,100),])
 \end{table}
+
+\Comment{Do extensive searching for ``run'' in the LaTeX to find forgotten items to correct.}
+
+\Comment{Figure~\ref{yrbssSampHistograms} is referenced in 4.2. Make sure that text is appropriately updated.}
 
 % WARNING: This figure is referenced in Section 4.2
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{ch_inference_foundations/figures/run10SampHistograms/run10SampHistograms} 
-\caption{Histograms of \var{time} and \var{age} for the sample Cherry Blossom Run data. The average time is in the mid-90s, and the average age is in the mid-30s. The age distribution is moderately skewed to the right.\index{skew!example: moderate}}
-\label{run10SampHistograms}
+\includegraphics[width=0.8\textwidth]{ch_inference_foundations/figures/yrbssSampHistograms/yrbssSampHistograms} 
+\caption{Histograms of \var{height}, \var{weight}, \var{activity}, and \var{lifting} for the sample YRBSS data. The \var{height} distribution is approximately symmetric, \var{weight} is moderately skewed to the right, \var{activity} is bimodal or multimodal (with unclear skew), and \var{lifting} is strongly right skewed.\index{skew!example: moderate}\index{skew!example: strong}}
+\label{yrbssSampHistograms}
 \end{figure}
 
 
@@ -80,57 +88,65 @@ ID & time & age & gender & state \\
 
 \index{point estimate|(}
 
-We would like to estimate two features of the Cherry Blossom runners using the sample. 
+We would like to estimate four features of the high schoolers in YRBSS using the sample. \Comment{Added a 3rd and 4th item.}
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[(1)] How long does it take a runner, on average, to complete the 10 miles?
-\item[(2)] What is the average age of the runners?
+\item[(1)] What is the average height of the YRBSS high schoolers?
+\item[(2)] What is the average weight of the YRBSS high schoolers?
+\item[(3)] On average, how many days per week are YRBSS high schoolers physically active?
+\item[(4)] On average, how many days per week do YRBSS high schoolers do weight training?
 \end{itemize}
-These questions may be informative for planning the Cherry Blossom Run in future years.\footnote{While we focus on the mean in this chapter, questions regarding variation are often just as important in practice. For instance, we would plan an event very differently if the standard deviation of runner age was 2 versus if it was 20.} We will use $x_1, ..., x_{100}$ to represent the 10 mile time for each runner in our sample, and $y_1, ..., y_{100}$ will represent the age of each of these participants.
+While we focus on the mean in this chapter, questions regarding variation are often just as important in practice. For instance, if students are either very active or almost entirely inactive (the distribution is bimodal), we might try different strategies to promote a healthy lifestyle among students than if all high schoolers were already somewhat active.
+
+% We will use $x_1, ..., x_{100}$ to represent the heights for each high schooler in our sample, and $y_1, ..., y_{100}$ will represent their weights.
 
 \subsection{Point estimates}
 \label{pointEstimates}
 
 \index{point estimate!single mean|(}
 
-We want to estimate the \term{population mean} based on the sample. The most intuitive way to go about doing this is to simply take the \term{sample mean}. That is, to estimate the average 10 mile run time of all participants, take the average time for the sample:
+We want to estimate the \term{population mean} based on the sample. The most intuitive way to go about doing this is to simply take the \term{sample mean}. That is, to estimate the average height of all YRBSS students, take the average height for the sample:
 \begin{eqnarray*}
-\bar{x} = \frac{88.22 + 100.58 + \dots + 89.40}{100} = 95.61
+\bar{x}_{height} = \frac{1.50 + 1.78 + \dots + 1.70}{100} = 1.697
 \end{eqnarray*}
-The sample mean $\bar{x} = 95.61$ minutes is called a \term{point estimate} of the population mean: if we can only choose one value to estimate the population mean, this is our best guess. Suppose we take a new sample of 100 people and recompute the mean; we will probably not get the exact same answer that we got using the \data{run10Samp} data set. Estimates generally vary from one sample to another, and this \term{sampling variation} suggests our estimate may be close, but it will not be exactly equal to the parameter.
+%library(openintro); data(yrbss.samp); mean(yrbss.samp$height); yrbss.samp$height
+The sample mean $\bar{x} = 1.697$ meters (5 feet, 6.8 inches) is called a \term{point estimate} of the population mean: if we can only choose one value to estimate the population mean, this is our best guess. Suppose we take a new sample of 100 people and recompute the mean; we will probably not get the exact same answer that we got using the \data{yrbss\_samp} data set. Estimates generally vary from one sample to another, and this \term{sampling variation} suggests our estimate may be close, but it will not be exactly equal to the parameter.
 
-We can also estimate the average age of participants by examining the sample mean of \var{age}:
-\begin{eqnarray*}
-\bar{y} = \frac{59 + 32 + \dots + 26}{100} = 35.05
-\end{eqnarray*}
-%library(openintro); library(xtable); data(run10); data(run10Samp); run10Samp$age[c(1,2,100)]; mean(run10Samp$age); mean(run10$age, na.rm=TRUE)
+We can also estimate the average weight of YRBSS respondents by examining the sample mean of \var{weight} (in kg), and average number of days physically active in a~week:
+\begin{align*}
+\bar{x}_{weight} &= \frac{52.6 + 74.8 + \dots + 55.8}{100} = 68.89
+&\bar{x}_{active} &= \frac{0 + 7 + \dots + 1}{100} = 3.75
+\end{align*}
+%library(openintro); data(yrbss.samp); d <- yrbss.samp$weight; mean(d); d
+%library(openintro); data(yrbss.samp); d <- yrbss.samp$physically_active_7d; mean(d); d
+The average weight is 68.89 kilograms, which is about 151.6 pounds.
 
-What about generating point estimates of other \term{population parameters}, such as the population median or population standard deviation? Once again we might estimate parameters based on sample statistics, as shown in Table~\ref{ptEstimatesNetTimeAge}. For example, we estimate the population standard deviation for the running time using the sample standard deviation, 15.78 minutes.
+What about generating point estimates of other \term{population parameters}, such as the population median or population standard deviation? Once again we might estimate parameters based on sample statistics, as shown in Table~\ref{ptEstimatesYrbssActive}. For example, the population standard deviation of \var{active} using the sample standard deviation, 2.56~days.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{ l rr}
 \hline
-\resp{time}		& estimate & parameter  \\
+\var{active}	& estimate & parameter  \\
 \hline
-mean		& 95.61 & 94.52 \\
-median	& 95.46 & 94.03 \\
-st. dev.		& 15.78 & 15.93 \\
+mean		& 3.75 & 3.90 \\
+median		& 4.00 & 4.00 \\
+st. dev.		& 2.556 & 2.564 \\
 \hline
 \end{tabular}
-\caption{Point estimates and parameter values for the \var{time} variable.}
-\label{ptEstimatesNetTimeAge}
+\caption{Point estimates and parameter values for the \var{active} variable. The parameters were obtained by computing the mean, median, and SD for all YRBSS respondents.}
+\label{ptEstimatesYrbssActive}
 \end{table}
-%library(openintro); library(xtable); data(run10); data(run10Samp); d <- run10Samp$time; mean(d); median(d); sd(d); d <- run10$time; mean(d); median(d); sd(d)
+%library(openintro); library(xtable); data(yrbss); data(yrbss.samp); d <- yrbss.samp$physically_active_7d; mean(d); median(d); sd(d); d <- yrbss$physically_active_7d; mean(d, na.rm = TRUE); median(d, na.rm = TRUE); sd(d, na.rm = TRUE)
 
 
 \begin{exercise} \label{pointEstimateOfDifferentNetTimesBetweenGender}
-Suppose we want to estimate the difference in run times for men and women. If $\bar{x}_{men} = 87.65$ and $\bar{x}_{women} = 102.13$, then what would be a good point estimate for the population difference?\footnote{We could take the difference of the two sample means: $102.13 - 87.65 = 14.48$. Men ran about 14.48 minutes faster on average in the 2012 Cherry Blossom Run.}
+Suppose we want to estimate the difference in days active for men and women. If $\bar{x}_{men} = 4.3$ and $\bar{x}_{women} = 3.2$, then what would be a good point estimate for the population difference?\footnote{We could take the difference of the two sample means: $4.3 - 3.2 = 1.1$. Men are physically active about 1.1 days per week more than women on average in YRBSS.}
 \end{exercise}
-%library(openintro); library(xtable); data(run10); data(run10Samp); (x <- by(run10Samp$time, run10Samp$gender, mean)); diff(x)
+%library(openintro); library(xtable); data(yrbss); data(yrbss.samp); (x <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, mean)); diff(x)
 
 \begin{exercise}
-If you had to provide a point estimate of the population IQR for the run time of participants, how might you make such an estimate using a sample?\footnote{To obtain a point estimate of the IQR for the population, we could take the IQR of the sample.}
+If you had to provide a point estimate of the population IQR for the heights of participants, how might you make such an estimate using a sample?\footnote{To obtain a point estimate of the height for the full set of YRBSS students, we could take the IQR of the sample.}
 
 \index{point estimate!single mean|)}
 
@@ -138,38 +154,37 @@ If you had to provide a point estimate of the population IQR for the run time of
 
 \subsection{Point estimates are not exact}
 
-Estimates are usually not exactly equal to the truth, but they get better as more data become available. We can see this by plotting a running mean from our \data{run10Samp} sample. A \term{running mean} is a sequence of means, where each mean uses one more observation in its calculation than the mean directly before it in the sequence. For example, the second mean in the sequence is the average of the first two observations and the third in the sequence is the average of the first three. The running mean for the 10 mile run time in the \data{run10Samp} data set is shown in Figure~\ref{netTimeRunningMean}, and it approaches the true population average, 94.52 minutes, as more data become available.
+Estimates are usually not exactly equal to the truth, but they get better as more data become available. We can see this by plotting a running mean from \data{yrbss\_samp}. A \term{running mean} is a sequence of means, where each mean uses one more observation in its calculation than the mean directly before it in the sequence. For example, the second mean in the sequence is the average of the first two observations and the third in the sequence is the average of the first three. The running mean for the \var{active} variable in the \data{yrbss\_samp} is shown in Figure~\ref{yrbssActiveRunningMean}, and it approaches the true population average, 3.90~days, as more data become available.
 
-\begin{figure}
+\begin{figure}[h]
    \centering
-   \includegraphics[width=0.7\textwidth]{ch_inference_foundations/figures/netTimeRunningMean/netTimeRunningMean}
+   \includegraphics[width=0.72\textwidth]{ch_inference_foundations/figures/yrbssActiveRunningMean/yrbssActiveRunningMean}
    \caption{The mean computed after adding each individual to the sample. The mean tends to approach the true population average as more data become available.}
-   \label{netTimeRunningMean}
+   \label{yrbssActiveRunningMean}
 \end{figure}
 
-Sample point estimates only approximate the population parameter, and they vary from one sample to another. If we took another simple random sample of the Cherry Blossom runners, we would find that the sample mean for the run time would be a little different. It will be useful to quantify how variable
-an estimate is from one sample to another. If this variability is small (i.e. the sample mean doesn't change much from one sample to another) then that estimate is probably very accurate. If it varies widely from one sample to another, then we should not expect our estimate to be very good.
+Sample point estimates only approximate the population parameter, and they vary from one sample to another. If we took another simple random sample of the YRBSS students, we would find that the sample mean for the number of days active would be a little different. It will be useful to quantify how variable an estimate is from one sample to another. If this variability is small (i.e. the sample mean doesn't change much from one sample to another) then that estimate is probably very accurate. If it varies widely from one sample to another, then we should not expect our estimate to be very good.
 
 
 \subsection{Standard error of the mean}
 \label{seOfTheMean}
 
-From the random sample represented in \data{run10Samp}, we guessed the average time it takes to run 10 miles is 95.61 minutes. Suppose we take another random sample of 100 individuals and take its mean: 95.30 minutes. Suppose we took another (93.43 minutes) and another (94.16 minutes), and so on. If we do this many many times -- which we can do only because we have the entire population data set -- we can build up a \term{sampling distribution} for the sample mean when the sample size is 100, shown in Figure~\ref{netTime1000SamplingDistribution}.
+From the random sample represented in \data{yrbss\_samp}, we guessed the average number of days a YRBSS student is physically active is 3.75~days. Suppose we take another random sample of 100 individuals and take its mean: 3.22~days. Suppose we took another (3.67~days) and another (4.10~days), and so on. If we do this many many times -- which we can do only because we have all YRBSS students -- we can build up a \term{sampling distribution} for the sample mean when the sample size is 100, shown in Figure~\ref{yrbssActive1000SampDist}.
 
-\begin{figure}
+\begin{figure}[h]
    \centering
-   \includegraphics[width=0.85\textwidth]{ch_inference_foundations/figures/netTime1000SamplingDistribution/netTime1000SamplingDistribution}
-   \caption{A histogram of 1000 sample means for run time, where the samples are of size $n=100$.}
-   \label{netTime1000SamplingDistribution}
+   \includegraphics[width=0.85\textwidth]{ch_inference_foundations/figures/yrbssActive1000SampDist/yrbssActive1000SampDist}
+   \caption{A histogram of 1000 sample means for number of days physically active per week, where the samples are of size $n=100$.}
+   \label{yrbssActive1000SampDist}
 \end{figure}
 
 \begin{termBox}{\tBoxTitle{Sampling distribution}
 The sampling distribution represents the distribution of the point estimates based on samples of a fixed size from a certain population. It is useful to think of a particular point estimate as being drawn from such a distribution. Understanding the concept of a sampling distribution is central to understanding statistical inference.}
 \end{termBox}
 
-The sampling distribution shown in Figure~\ref{netTime1000SamplingDistribution} is unimodal and approximately symmetric. It is also centered exactly at the true population mean: $\mu=94.52$. Intuitively, this makes sense. The sample means should tend to ``fall around'' the population mean.
+The sampling distribution shown in Figure~\ref{yrbssActive1000SampDist} is unimodal and approximately symmetric. It is also centered exactly at the true population mean: $\mu=3.90$. Intuitively, this makes sense. The sample means should tend to ``fall around'' the population mean.
 
-We can see that the sample mean has some variability around the population mean, which can be quantified using the standard deviation of this distribution of sample means: $\sigma_{\bar{x}} = 1.59$. The standard deviation of the sample mean tells us how far the typical estimate is away from the actual population mean, 94.52 minutes. It also describes the typical \term{error} of the point estimate, and for this reason we usually call this standard deviation the \term{standard error (SE)}\index{SE}\marginpar[\raggedright\vspace{-4mm}
+We can see that the sample mean has some variability around the population mean, which can be quantified using the standard deviation of this distribution of sample means: $\sigma_{\bar{x}} = 0.26$. The standard deviation of the sample mean tells us how far the typical estimate is away from the actual population mean, 3.90~days. It also describes the typical \term{error} of the point estimate, and for this reason we usually call this standard deviation the \term{standard error (SE)}\index{SE}\marginpar[\raggedright\vspace{-4mm}
 
 $SE$\\\footnotesize standard\\error]{\raggedright\vspace{-4mm}
 
@@ -185,11 +200,11 @@ When considering the case of the point estimate $\bar{x}$, there is one problem:
 (a) Would you rather use a small sample or a large sample when estimating a parameter? Why? (b) Using your reasoning from (a), would you expect a point estimate based on a small sample to have smaller or larger standard error than a point estimate based on a larger sample?\footnote{(a) Consider two random samples: one of size 10 and one of size 1000. Individual observations in the small sample are highly influential on the estimate while in larger samples these individual observations would more often average each other out. The larger sample would tend to provide a more accurate estimate. (b) If we think an estimate is better, we probably mean it typically has less error. Based on (a), our intuition suggests that a larger sample size corresponds to a smaller standard error.}
 \end{exercise}
 
-In the sample of 100 runners, the standard error of the sample mean is equal to one-tenth of the population standard deviation: $1.59 = 15.93/10$. In other words, the standard error of the sample mean based on 100 observations is equal to
+In the sample of 100 students, the standard error of the sample mean is equal to one-tenth of the population standard deviation: $0.26 = 2.6 / 10$. In other words, the standard error of the sample mean based on 100 observations is equal to
 \begin{eqnarray*}
-SE_{\bar{x}} = \sigma_{\bar{x}} = \frac{\sigma_{x}}{\sqrt{n}} = \frac{15.93}{\sqrt{100}} = 1.59
+SE_{\bar{x}} = \sigma_{\bar{x}} = \frac{\sigma_{x}}{\sqrt{n}} = \frac{2.6}{\sqrt{100}} = 0.26
 \end{eqnarray*}
-where $\sigma_{x}$ is the standard deviation of the individual observations. This is no coincidence. We can show mathematically that this equation is correct when the observations are independent  using the probability tools of Section~\ref{randomVariablesSection}.
+where $\sigma_{x}$ is the standard deviation of the individual observations. This is no coincidence. We can show mathematically that this equation is correct when the observations are independent using the probability tools of Section~\ref{randomVariablesSection}.
 
 \begin{termBox}{\tBoxTitle{Computing SE for the sample mean}
 Given $n$ independent observations from a population with standard deviation $\sigma$, the standard error of the sample mean is equal to \vspace{-1mm}
@@ -209,13 +224,13 @@ There is one subtle issue of Equation~(\ref{seOfXBar}): the population standard 
 . Thus, we often just use the sample standard deviation $s$ instead of~$\sigma$. When the sample size is smaller than 30, we will need to use a method to account for extra uncertainty in the standard error. If the skew condition is not met, a larger sample is needed to compensate for the extra skew. These topics are further discussed in Section~\ref{cltSection}.
 
 \begin{exercise}
-In the sample of 100 runners, the standard deviation of the runners' ages is $s_y = 8.97$. Because the sample is simple random and consists of less than 10\% of the population, the observations are independent. (a)~What is the standard error of the sample mean, $\bar{y}=35.05$ years? (b)~Would you be surprised if someone told you the average age of all the runners was actually 36~years?\footnote{(a) Use Equation~(\ref{seOfXBar}) with the sample standard deviation to compute the standard error: $SE_{\bar{y}} = 8.97/\sqrt{100} = 0.90$ years. (b) It would not be surprising. Our sample is about 1 standard error from 36 years. In other words, 36 years old does not seem to be implausible given that our sample was relatively close to it. (We use the standard error to identify what is close.)}
+In the sample of 100 students, the standard deviation of student heights is $s_{height} = 0.088$ meters. Because the sample is simple random and consists of less than 10\% of the population, the observations are independent. (a)~What is the standard error of the sample mean, $\bar{x}_{height} = 1.70$ meters? (b)~Would you be surprised if someone told you the average height of all YRBSS respondents was actually 1.69~meters?\footnote{(a) Use Equation~(\ref{seOfXBar}) with the sample standard deviation to compute the standard error: $SE_{\bar{y}} = 0.088 / \sqrt{100} = 0.0088$ meters. (b) It would not be surprising. Our sample is about 1 standard error from 1.69m. In other words, 1.69m does not seem to be implausible given that our sample was relatively close to it. (We use the standard error to identify what is close.)}
 \end{exercise}
-%library(openintro); library(xtable); data(run10); data(run10Samp); mean(run10Samp$age); sd(run10Samp$age); sd(run10$age, na.rm=TRUE)
+%library(openintro); library(xtable); data(yrbss); data(yrbss.samp); d <- yrbss.samp$height; mean(d); sd(d); mean(yrbss$height, na.rm=TRUE); sd(yrbss$height, na.rm=TRUE)
 
 
 \begin{exercise}
-(a) Would you be more trusting of a sample that has 100 observations or 400 observations? (b) We want to show mathematically that our estimate tends to be better when the sample size is larger. If the standard deviation of the individual observations is 10, what is our estimate of the standard error when the sample size is 100? What about when it is 400? (c) Explain how your answer to (b) mathematically justifies your intuition in part~(a).\footnote{(a) Extra observations are usually helpful in understanding the population, so a point estimate with 400 observations seems more trustworthy. (b) The standard error when the sample size is 100 is given by $SE_{100} = 10/\sqrt{100} = 1$. For 400: $SE_{400} = 10/\sqrt{400} = 0.5$. The larger sample has a smaller standard error. (c) The standard error of the sample with 400 observations is lower than that of the sample with 100 observations. The standard error describes the typical error, and since it is lower for the larger sample, this mathematically shows the estimate from the larger sample tends to be better -- though it does not guarantee that every large sample will provide a better estimate than a particular small sample.}
+(a) Would you be more trusting of a sample that has 100 observations or 400 observations? (b) We want to show mathematically that our estimate tends to be better when the sample size is larger. If the standard deviation of the individual observations is 10, what is our estimate of the standard error when the sample size is 100? What about when it is 400? (c) Explain how your answer to part~(b) mathematically justifies your intuition in part~(a).\footnote{(a) Extra observations are usually helpful in understanding the population, so a point estimate with 400 observations seems more trustworthy. (b) The standard error when the sample size is 100 is given by $SE_{100} = 10/\sqrt{100} = 1$. For 400: $SE_{400} = 10/\sqrt{400} = 0.5$. The larger sample has a smaller standard error. (c) The standard error of the sample with 400 observations is lower than that of the sample with 100 observations. The standard error describes the typical error, and since it is lower for the larger sample, this mathematically shows the estimate from the larger sample tends to be better -- though it does not guarantee that every large sample will provide a better estimate than a particular small sample.}
 \end{exercise}
 
 \subsection{Basic properties of point estimates}
@@ -261,7 +276,7 @@ But what does ``95\% confident'' mean? Suppose we took many samples and built a 
 \begin{figure}[hht]
    \centering
    \includegraphics[width=0.75\textwidth]{ch_inference_foundations/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
-   \caption{Twenty-five samples of size $n=100$ were taken from the \data{run10} data set. For each sample, a confidence interval was created to try to capture the average 10 mile time for the population. Only~1 of these~25 intervals did not capture the true mean, $\mu = 94.52$ minutes.}
+   \caption{Twenty-five samples of size $n=100$ were taken from the \data{yrbss} data set. For each sample, a confidence interval was created to try to capture the average 10 mile time for the population. Only~1 of these~25 intervals did not capture the true mean, $\mu = 94.52$ minutes.}
    \label{95PercentConfidenceInterval}
 \end{figure}
 
@@ -271,23 +286,23 @@ In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain 94.52
 
 The rule where about 95\% of observations are within 2 standard deviations of the mean is only approximately true. However, it holds very well for the normal distribution. As we will soon see, the mean tends to be normally distributed when the sample size is sufficiently large. 
 
-\begin{example}{If the sample mean of times from \data{run10Samp} is 95.61 minutes and the standard error, as estimated using the sample standard deviation, is 1.58 minutes, what would be an approximate 95\% confidence interval for the average 10 mile time of all runners in the race? Apply the standard error calculated using the sample standard deviation ($SE=\frac{15.78}{\sqrt{100}} = 1.58$), which is how we usually proceed since the population standard deviation is generally unknown.}
+\begin{example}{If the sample mean of times from \data{yrbss\_samp} is 95.61 minutes and the standard error, as estimated using the sample standard deviation, is 1.58 minutes, what would be an approximate 95\% confidence interval for the average 10 mile time of all runners in the race? Apply the standard error calculated using the sample standard deviation ($SE=\frac{15.78}{\sqrt{100}} = 1.58$), which is how we usually proceed since the population standard deviation is generally unknown.}
 We apply Equation~(\ref{95PercentConfidenceIntervalFormula}):
 \begin{eqnarray*}
 95.61\ \pm\ 2 \times  1.58 \quad \rightarrow \quad (92.45, 98.77)
 \end{eqnarray*}
 Based on these data, we are about 95\% confident that the average 10 mile time for all runners in the race was larger than 92.45 but less than 98.77 minutes. Our interval extends out 2 standard errors from the point estimate, $\bar{x}$.
 \end{example}
-% library(openintro); library(xtable); data(run10); data(run10Samp); mean(run10Samp$time); sd(run10Samp$time); sd(run10$time, na.rm=TRUE)
+% library(openintro); library(xtable); data(yrbss); data(yrbss.samp); mean(yrbss.samp$time); sd(yrbss.samp$time); sd(yrbss$time, na.rm=TRUE)
 
-\begin{exercise} \label{95CIExerciseForAgeOfRun10Samp1}
+\begin{exercise} \label{95CIExerciseForAgeOfYrbssSamp1}
 The sample data suggest the average runner's age is about 35.05 years with a standard error of 0.90 years (estimated using the sample standard deviation, 8.97). What is an approximate 95\% confidence interval for the average age of all of the runners?\footnote{Again apply Equation~(\ref{95PercentConfidenceIntervalFormula}): $35.05 \ \pm \ 2\times 0.90 \rightarrow (33.25, 36.85)$. We interpret this interval as follows: We are about 95\% confident the average age of all participants in the 2012 Cherry Blossom Run was between 33.25 and 36.85 years.}
 \end{exercise}
-%library(openintro); data(run10Samp); mean(run10Samp$age); sd(run10Samp$age)
+%library(openintro); data(yrbss.samp); mean(yrbss.samp$age); sd(yrbss.samp$age)
 
 \subsection{A sampling distribution for the mean}
 
-In Section~\ref{seOfTheMean}, we introduced a sampling distribution for $\bar{x}$, the average run time for samples of size 100. We examined this distribution earlier in Figure~\ref{netTime1000SamplingDistribution}. Now we'll take 100,000 samples, calculate the mean of each, and plot them in a histogram to get an especially accurate depiction of the sampling distribution. This histogram is shown in the left panel of Figure~\ref{netTimeBigSamplingDistribution}.
+In Section~\ref{seOfTheMean}, we introduced a sampling distribution for $\bar{x}$, the average run time for samples of size 100. We examined this distribution earlier in Figure~\ref{yrbssActive1000SampDist}. Now we'll take 100,000 samples, calculate the mean of each, and plot them in a histogram to get an especially accurate depiction of the sampling distribution. This histogram is shown in the left panel of Figure~\ref{netTimeBigSamplingDistribution}.
 
 \begin{figure}[hht]
    \centering
@@ -370,10 +385,10 @@ Observations in a simple random sample consisting of less than 10\% of the popul
 
 % WARNING !!!!
 % EOCE 4.9 (as of 2nd Edition) references the results of this exercise
-\begin{exercise} \label{find99CIForRun10AgeExercise}
-Create a 99\% confidence interval for the average age of all runners in the 2012 Cherry Blossom Run. The point estimate is $\bar{y} = 35.05$ and the standard error is $SE_{\bar{y}} = 0.90$.\footnote{The observations are independent (simple random sample, $<10\%$ of the population), the sample size is at least 30 ($n=100$), and the distribution is only slightly skewed (Figure~\ref{run10SampHistograms}); the normal approximation and estimate of SE should be reasonable. Apply the 99\% confidence interval formula: $\bar{y}\ \pm\ 2.58 \times  SE_{\bar{y}} \rightarrow (32.7, 37.4)$. We are 99\% confident that the average age of all runners is between 32.7 and 37.4 years.}
+\begin{exercise} \label{find99CIForYrbssAgeExercise}
+Create a 99\% confidence interval for the average age of all runners in the 2012 Cherry Blossom Run. The point estimate is $\bar{y} = 35.05$ and the standard error is $SE_{\bar{y}} = 0.90$.\footnote{The observations are independent (simple random sample, $<10\%$ of the population), the sample size is at least 30 ($n=100$), and the distribution is only slightly skewed (Figure~\ref{yrbssSampHistograms}); the normal approximation and estimate of SE should be reasonable. Apply the 99\% confidence interval formula: $\bar{y}\ \pm\ 2.58 \times  SE_{\bar{y}} \rightarrow (32.7, 37.4)$. We are 99\% confident that the average age of all runners is between 32.7 and 37.4 years.}
 \end{exercise}
-%library(openintro); data(run10Samp); d <- run10Samp; mean(d$age); sd(d$age)/sqrt(100)
+%library(openintro); data(yrbss.samp); d <- yrbss.samp; mean(d$age); sd(d$age)/sqrt(100)
 
 \begin{termBox}{\tBoxTitle{Confidence interval for any confidence level}
 If the point estimate follows the normal model with standard error $SE$, then a confidence interval for the population parameter is
@@ -389,8 +404,8 @@ Figure~\ref{choosingZForCI} provides a picture of how to identify $z^{\star}$ ba
 \label{marginOfErrorTermBox}In a confidence interval, $z^{\star}\times SE$ is called the \term{margin of error}.}
 \end{termBox}
 
-\begin{exercise} \label{find90CIForRun10AgeExercise}
-Use the data in Exercise~\ref{find99CIForRun10AgeExercise} to create a 90\% confidence interval for the average age of all runners in the 2012 Cherry Blossom Run.\footnote{We first find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5\% (the other 5\% is in the upper tail), thus $z^{\star}=1.65$. The 90\% confidence interval can then be computed as $\bar{y}\ \pm\ 1.65\times SE_{\bar{y}} \to (33.6, 36.5)$. (We had already verified conditions for normality and the standard error.) That is, we are 90\% confident the average age is larger than 33.6 but less than 36.5 years.}
+\begin{exercise} \label{find90CIForYrbssAgeExercise}
+Use the data in Exercise~\ref{find99CIForYrbssAgeExercise} to create a 90\% confidence interval for the average age of all runners in the 2012 Cherry Blossom Run.\footnote{We first find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5\% (the other 5\% is in the upper tail), thus $z^{\star}=1.65$. The 90\% confidence interval can then be computed as $\bar{y}\ \pm\ 1.65\times SE_{\bar{y}} \to (33.6, 36.5)$. (We had already verified conditions for normality and the standard error.) That is, we are 90\% confident the average age is larger than 33.6 but less than 36.5 years.}
 \end{exercise}
 
 \subsection{Interpreting confidence intervals}
@@ -465,7 +480,7 @@ In addition to considering run times in this section, we consider a topic near a
 
 \subsection{Hypothesis testing framework}
 
-The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine if the \data{run10Samp} data set provides strong evidence that the participants in 2012 were faster or slower than those runners in 2006, versus the other possibility that there has been no change.\footnote{While we could answer this question by examining the entire population data (\data{run10}), we only consider the sample data (\data{run10Samp}), which is more realistic since we rarely have access to population data.} We simplify these three options into two competing \termsub{hypotheses}{hypothesis}:
+The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine if the \data{yrbss\_samp} data set provides strong evidence that the participants in 2012 were faster or slower than those runners in 2006, versus the other possibility that there has been no change.\footnote{While we could answer this question by examining the entire population data (\data{yrbss}), we only consider the sample data (\data{yrbss\_samp}), which is more realistic since we rarely have access to population data.} We simplify these three options into two competing \termsub{hypotheses}{hypothesis}:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[$H_0$:] The average 10 mile run time was the same for 2006 and 2012.
@@ -501,7 +516,7 @@ In the example with the Cherry Blossom Run, the null hypothesis represents no di
 \item[$H_0$:] $\mu_{12} = 93.29$ %93.28864
 \item[$H_A$:] $\mu_{12} \neq 93.29$
 \end{itemize}
-where $93.29$ minutes (93 minutes and about 17 seconds) is the average 10 mile time for all runners in the 2006 Cherry Blossom Run. Using this mathematical notation, the hypotheses can now be evaluated using statistical tools. We call 93.29 the \term{null value} since it represents the value of the parameter if the null hypothesis is true. We will use the \data{run10Samp} data set to evaluate the hypothesis test.
+where $93.29$ minutes (93 minutes and about 17 seconds) is the average 10 mile time for all runners in the 2006 Cherry Blossom Run. Using this mathematical notation, the hypotheses can now be evaluated using statistical tools. We call 93.29 the \term{null value} since it represents the value of the parameter if the null hypothesis is true. We will use the \data{yrbss\_samp} data set to evaluate the hypothesis test.
 
 
 \subsection{Testing hypotheses using confidence intervals}
@@ -511,7 +526,7 @@ We can start the evaluation of the hypothesis setup by comparing 2006 and 2012 r
 
 We learned in Section~\ref{variabilityInEstimates} that there is fluctuation from one sample to another, and it is very unlikely that the sample mean will be exactly equal to our parameter; we should not expect $\bar{x}_{12}$ to exactly equal $\mu_{12}$. Given that $\bar{x}_{12} = 95.61$, it might still be possible that the population average in 2012 has remained unchanged from 2006. The difference between $\bar{x}_{12}$ and 93.29 could be due to \emph{sampling variation}, i.e. the variability associated with the point estimate when we take a random sample.
 
-In Section~\ref{confidenceIntervals}, confidence intervals were introduced as a way to find a range of plausible values for the population mean. Based on \data{run10Samp}, a 95\% confidence interval for the 2012 population mean, $\mu_{12}$, was calculated as
+In Section~\ref{confidenceIntervals}, confidence intervals were introduced as a way to find a range of plausible values for the population mean. Based on \data{yrbss\_samp}, a 95\% confidence interval for the 2012 population mean, $\mu_{12}$, was calculated as
 \begin{eqnarray*}
 (92.45, 98.77)
 \end{eqnarray*}
@@ -521,7 +536,7 @@ Because the 2006 mean, 93.29, falls in the range of plausible values, we cannot 
 In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
 \end{tipBox}
 
-\begin{example}{Next consider whether there is strong evidence that the average age of runners has changed from 2006 to 2012 in the Cherry Blossom Run. In 2006, the average age was 36.13 years, and in the 2012 \data{run10Samp} data set, the average was 35.05 years with a standard deviation of 8.97 years for 100 runners.}
+\begin{example}{Next consider whether there is strong evidence that the average age of runners has changed from 2006 to 2012 in the Cherry Blossom Run. In 2006, the average age was 36.13 years, and in the 2012 \data{yrbss\_samp} data set, the average was 35.05 years with a standard deviation of 8.97 years for 100 runners.}
 First, set up the hypotheses:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -535,8 +550,8 @@ We have previously verified conditions for this data set. The normal model may b
 	\quad\to\quad (33.29, 36.81)
 \end{eqnarray*}
 This confidence interval contains the \emph{null value}, 36.13. Because 36.13 is not implausible, we cannot reject the null hypothesis. We have not found strong evidence that the average age is different than 36.13 years.
-\index{data!run10Samp|)}
-\index{data!run10|)}
+\index{data!yrbss\_samp|)}
+\index{data!yrbss|)}
 \end{example}
 
 \begin{exercise} \label{htForHousingExpenseForCommunityCollege650}
@@ -995,7 +1010,7 @@ The normal approximation is said to be valid, so we apply Equation~\eqref{95Perc
 \end{eqnarray*}
 Thus, we are 95\% confident that the men were, on average, between 9.03 and 19.93 minutes faster than women in the 2012 Cherry Blossom Run. That is, the actual average difference is plausibly between 9.03 and 19.93 minutes with 95\% confidence.
 \end{example}
-%library(openintro); library(xtable); data(run10); data(run10Samp); (x <- by(run10Samp$time, run10Samp$gender, mean)); diff(x); s <- by(run10Samp$time, run10Samp$gender, sd); n <- by(run10Samp$time, run10Samp$gender, length); sqrt(sum(s^2/n))
+%library(openintro); library(xtable); data(yrbss); data(yrbss.samp); (x <- by(yrbss.samp$time, yrbss.samp$gender, mean)); diff(x); s <- by(yrbss.samp$time, yrbss.samp$gender, sd); n <- by(yrbss.samp$time, yrbss.samp$gender, length); sqrt(sum(s^2/n))
 
 
 \begin{example}{Does Example~\ref{confIntervalForDifferenceOfRunTimeBetweenGenders} guarantee that if a husband and wife both ran in the race, the husband would run between 9.03 and 19.93 minutes faster than the wife?}
@@ -1007,7 +1022,7 @@ What $z^{\star}$ would be appropriate for a 99\% confidence level? For help, see
 \end{exercise}
 
 \begin{exercise}
-The proportion of men in the \data{run10Samp} sample is $\hat{p}=0.45$. This sample meets certain conditions that ensure $\hat{p}$ will be nearly normal, and the standard error of the estimate is $SE_{\hat{p}}=0.05$. Create a 90\% confidence interval for the proportion of participants in the 2012 Cherry Blossom Run who are men.\footnote{We use $z^{\star}=1.65$ (see Exercise~\vref{find90CIForRun10AgeExercise}), and apply the general confidence interval formula:
+The proportion of men in the \data{yrbss\_samp} sample is $\hat{p}=0.45$. This sample meets certain conditions that ensure $\hat{p}$ will be nearly normal, and the standard error of the estimate is $SE_{\hat{p}}=0.05$. Create a 90\% confidence interval for the proportion of participants in the 2012 Cherry Blossom Run who are men.\footnote{We use $z^{\star}=1.65$ (see Exercise~\vref{find90CIForYrbssAgeExercise}), and apply the general confidence interval formula:
 \begin{eqnarray*}
 \hat{p}\ \pm\ z^{\star}SE_{\hat{p}}
 	\quad\to\quad 0.45\ \pm\ 1.65\times 0.05
