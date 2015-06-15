@@ -3,6 +3,9 @@ data(COL)
 data(run10)
 set.seed(52)
 
+# This still references run10, but the actual range of values
+# isn't shown, so just tweaking the printed value.
+
 myPDF('95PercentConfidenceInterval.pdf', 6, 4,
       mar = c(2, 1, 1, 1),
       mgp = c(2.7, 0.9, 0))
@@ -29,7 +32,7 @@ plot(xR, yR,
      ylab = '',
      axes = FALSE)
 abline(v = m, lty = 2, col = COL[6])
-axis(1, at = m, expression(mu*' = 94.52'),
+axis(1, at = m, expression(mu*' = 3.90'),
      cex.axis = 1.15)
 for(i in 1:k){
   ci <- means[i] + 2 * c(-1, 1) * SE[i]

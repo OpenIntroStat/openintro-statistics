@@ -248,7 +248,7 @@ We achieved three goals in this section. First, we determined that point estimat
 
 A point estimate provides a single plausible value for a parameter. However, a point estimate is rarely perfect; usually there is some error in the estimate. Instead of supplying just a point estimate of a parameter, a next logical step would be to provide a plausible \emph{range of values} for the parameter.
 
-In this section and in Section~\ref{hypothesisTesting}, we will emphasize the special case where the point estimate is a sample mean and the parameter is the population mean. In Section~\ref{aFrameworkForInference}, we generalize these methods for a variety of point estimates and population parameters that we will encounter in Chapter~\ref{inferenceForNumericalData} and beyond.
+% In this section and in Section~\ref{hypothesisTesting}, we will emphasize the special case where the point estimate is a sample mean and the parameter is the population mean. In Section~\ref{aFrameworkForInference}, we generalize these methods for a variety of point estimates and population parameters that we will encounter in Chapter~\ref{inferenceForNumericalData} and beyond.
 
 \subsection{Capturing the population parameter}
 
@@ -271,47 +271,47 @@ The standard error represents the standard deviation associated with the estimat
 \text{point estimate}\ \pm\ 2\times SE
 \label{95PercentConfidenceIntervalFormula}
 \end{eqnarray}
-But what does ``95\% confident'' mean? Suppose we took many samples and built a confidence interval from each sample using Equation~(\ref{95PercentConfidenceIntervalFormula}). Then about 95\% of those intervals would contain the actual mean, $\mu$. Figure~\ref{95PercentConfidenceInterval} shows this process with 25 samples, where 24 of the resulting confidence intervals contain the average time for all the runners, $\mu=94.52$ minutes, and one does not.
+But what does ``95\% confident'' mean? Suppose we took many samples and built a confidence interval from each sample using Equation~(\ref{95PercentConfidenceIntervalFormula}). Then about 95\% of those intervals would contain the actual mean, $\mu$. Figure~\ref{95PercentConfidenceInterval} shows this process with 25 samples, where 24 of the resulting confidence intervals contain the average number of days per week that YRBSS students are physically active, $\mu=3.90$~days, and one interval does not.
 
 \begin{figure}[hht]
    \centering
    \includegraphics[width=0.75\textwidth]{ch_inference_foundations/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
-   \caption{Twenty-five samples of size $n=100$ were taken from the \data{yrbss} data set. For each sample, a confidence interval was created to try to capture the average 10 mile time for the population. Only~1 of these~25 intervals did not capture the true mean, $\mu = 94.52$ minutes.}
+   \caption{Twenty-five samples of size $n=100$ were taken from \data{yrbss}. For~each sample, a confidence interval was created to try to capture the average number of days per week that students are physically active. Only~1 of these~25 intervals did not capture the true mean, $\mu = 3.90$~days.}
    \label{95PercentConfidenceInterval}
 \end{figure}
 
 \begin{exercise}
-In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain 94.52 minutes. Does this imply that the mean cannot be 94.52? \footnote{Just as some observations occur more than 2 standard deviations from the mean, some point estimates will be more than 2 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
+In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain 3.90 minutes. Does this imply that the mean cannot be 3.90? \footnote{Just as some observations occur more than 2 standard deviations from the mean, some point estimates will be more than 2 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
 \end{exercise}
 
 The rule where about 95\% of observations are within 2 standard deviations of the mean is only approximately true. However, it holds very well for the normal distribution. As we will soon see, the mean tends to be normally distributed when the sample size is sufficiently large. 
 
-\begin{example}{If the sample mean of times from \data{yrbss\_samp} is 95.61 minutes and the standard error, as estimated using the sample standard deviation, is 1.58 minutes, what would be an approximate 95\% confidence interval for the average 10 mile time of all runners in the race? Apply the standard error calculated using the sample standard deviation ($SE=\frac{15.78}{\sqrt{100}} = 1.58$), which is how we usually proceed since the population standard deviation is generally unknown.}
+\begin{example}{The sample mean of days active per week from \data{yrbss\_samp} is 3.75~days. The standard error, as estimated using the sample standard deviation, is $SE=\frac{2.6}{\sqrt{100}} = 0.26$~days. (The population SD is unknown in most applications, so we use the sample SD here.) Calculate an approximate 95\% confidence interval for the average days active per week for all YRBSS students.}
 We apply Equation~(\ref{95PercentConfidenceIntervalFormula}):
 \begin{eqnarray*}
-95.61\ \pm\ 2 \times  1.58 \quad \rightarrow \quad (92.45, 98.77)
+3.75\ \pm\ 2 \times  0.26 \quad \rightarrow \quad (3.23, 4.27)
 \end{eqnarray*}
-Based on these data, we are about 95\% confident that the average 10 mile time for all runners in the race was larger than 92.45 but less than 98.77 minutes. Our interval extends out 2 standard errors from the point estimate, $\bar{x}$.
+Based on these data, we are about 95\% confident that the average days active per week for all YRBSS students was larger than 3.23 but less than 4.27~days. Our~interval extends out 2 standard errors from the point estimate, $\bar{x}_{active}$.
 \end{example}
-% library(openintro); library(xtable); data(yrbss); data(yrbss.samp); mean(yrbss.samp$time); sd(yrbss.samp$time); sd(yrbss$time, na.rm=TRUE)
+% library(openintro); library(xtable); d <- yrbss.samp; mean(d$physically_active_7d); sd(d$physically_active_7d); sd(yrbss$physically_active_7d, na.rm=TRUE)
 
 \begin{exercise} \label{95CIExerciseForAgeOfYrbssSamp1}
-The sample data suggest the average runner's age is about 35.05 years with a standard error of 0.90 years (estimated using the sample standard deviation, 8.97). What is an approximate 95\% confidence interval for the average age of all of the runners?\footnote{Again apply Equation~(\ref{95PercentConfidenceIntervalFormula}): $35.05 \ \pm \ 2\times 0.90 \rightarrow (33.25, 36.85)$. We interpret this interval as follows: We are about 95\% confident the average age of all participants in the 2012 Cherry Blossom Run was between 33.25 and 36.85 years.}
+The sample data suggest the average YRBSS student height is $\bar{x}_{height} = 1.697$ meters with a standard error of 0.0088 meters (estimated using the sample standard deviation, 0.088 meters). What is an approximate 95\% confidence interval for the average height of all of the YRBSS students?\footnote{Apply Equation~(\ref{95PercentConfidenceIntervalFormula}): $1.697 \ \pm \ 2\times 0.0088 \rightarrow (1.6794, 1.7146)$. We interpret this interval as follows: We are about 95\% confident the average height of all YRBSS students was between 1.6794 and 1.7146 meters (5.51~to 5.62~feet).}
 \end{exercise}
-%library(openintro); data(yrbss.samp); mean(yrbss.samp$age); sd(yrbss.samp$age)
+% library(openintro); d <- yrbss.samp; mean(d$height); sd(d$height)
 
 \subsection{A sampling distribution for the mean}
 
-In Section~\ref{seOfTheMean}, we introduced a sampling distribution for $\bar{x}$, the average run time for samples of size 100. We examined this distribution earlier in Figure~\ref{yrbssActive1000SampDist}. Now we'll take 100,000 samples, calculate the mean of each, and plot them in a histogram to get an especially accurate depiction of the sampling distribution. This histogram is shown in the left panel of Figure~\ref{netTimeBigSamplingDistribution}.
+In Section~\ref{seOfTheMean}, we introduced a sampling distribution for $\bar{x}$, the average days physically active per week for samples of size 100. We examined this distribution earlier in Figure~\ref{yrbssActive1000SampDist}. Now we'll take 100,000 samples, calculate the mean of each, and plot them in a histogram to get an especially accurate depiction of the sampling distribution. This histogram is shown in the left panel of Figure~\ref{yrbssActiveBigSampDist}.
 
 \begin{figure}[hht]
    \centering
-   \includegraphics[width=\textwidth]{ch_inference_foundations/figures/netTimeBigSamplingDistribution/netTimeBigSamplingDistribution}
+   \includegraphics[width=\textwidth]{ch_inference_foundations/figures/yrbssActiveBigSampDist/yrbssActiveBigSampDist}
    \caption{The left panel shows a histogram of the sample means for 100,000 different random samples. The right panel shows a normal probability plot of those sample means.}
-   \label{netTimeBigSamplingDistribution}
+   \label{yrbssActiveBigSampDist}
 \end{figure}
 
-Does this distribution look familiar? Hopefully so! The distribution of sample means closely resembles the normal distribution (see Section~\ref{normalDist}). A normal probability plot of these sample means is shown in the right panel of Figure~\ref{netTimeBigSamplingDistribution}. Because all of the points closely fall around a straight line, we can conclude the distribution of sample means is nearly normal. This result can be explained by the Central Limit Theorem.
+Does this distribution look familiar? Hopefully so! The distribution of sample means closely resembles the normal distribution (see Section~\ref{normalDist}). A normal probability plot of these sample means is shown in the right panel of Figure~\ref{yrbssActiveBigSampDist}. Because all of the points closely fall around a straight line, we can conclude the distribution of sample means is nearly normal. This result can be explained by the Central Limit Theorem.
 
 \begin{termBox}{\tBoxTitle{Central Limit Theorem, informal description}
 If a sample consists of at least 30 independent observations and the data are not strongly skewed, then the distribution of the sample mean is well approximated by a~normal model.\index{Central Limit Theorem}}
@@ -332,7 +332,7 @@ If a point estimate, such as $\bar{x}$, is associated with a normal model and st
 
 \index{confidence interval!confidence level|(}
 
-Suppose we want to consider confidence intervals where the confidence level is somewhat higher than 95\%: perhaps we would like a confidence level of 99\%. Think back to the analogy about trying to catch a fish: if we want to be more sure that we will catch the fish, we should use a wider net. To create a 99\% confidence level, we must also widen our 95\% interval. On the other hand, if we want an interval with lower confidence, such as 90\%, we could make our original 95\% interval slightly slimmer.
+Suppose we want to consider confidence intervals where the confidence level is somewhat higher than 95\%; perhaps we would like a confidence level of 99\%. Think back to the analogy about trying to catch a fish: if we want to be more sure that we will catch the fish, we should use a wider net. To create a 99\% confidence level, we must also widen our 95\% interval. On the other hand, if we want an interval with lower confidence, such as 90\%, we could make our original 95\% interval slightly slimmer.
 
 The 95\% confidence interval structure provides guidance in how to make intervals with new confidence levels. Below is a general 95\% confidence interval for a point estimate that comes from a nearly normal distribution:
 \begin{eqnarray}
@@ -350,7 +350,7 @@ To create a 99\% confidence interval, change 1.96 in the 95\% confidence interva
 \label{99PercCIForMean}
 \end{eqnarray}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{ch_inference_foundations/figures/choosingZForCI/choosingZForCI}
 \caption{The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99\%, we choose $z^{\star}$ such that 99\% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5\% in the lower tail and 0.5\% in the upper tail: $z^{\star}=2.58$.}
@@ -366,27 +366,24 @@ Important conditions to help ensure the sampling distribution of $\bar{x}$ is ne
 \setlength{\itemsep}{0mm}
 \item The sample observations are independent.
 \item The sample size is large: $n\geq30$ is a good rule of thumb.
-\item The population distribution is not strongly skewed. (We check this using the sample distribution as an estimate of the population distribution.)
+\item The population distribution is not strongly skewed. This condition can be difficult and a bit subjective, so we'll discuss it more bit in a bit.
 \end{itemize}
 Additionally, the larger the sample size, the more lenient we can be with the sample's skew.}
 \end{termBox}
 
-Verifying independence is often the most difficult of the conditions to check, and the way to check for independence varies from one situation to another. However, we can provide simple rules for the most common scenarios. 
+The way to check for independence varies from one situation to another. However, we can provide simple rules for some common scenarios.
 
 \begin{tipBox}{\tipBoxTitle{How to verify sample observations are independent}
-Observations in a simple random sample consisting of less than 10\% of the population are independent.}
+If the observations are from a simple random sample and consist of fewer than 10\% of the population, then they are independent.\\[2mm]
+Usually subjects in an experiment are considered independent if they undergo random assignment to the treatment groups. However, this is not foolproof, e.g. allowing patients to mingle in a waiting room may be problematic. \\[2mm]
+If a sample is from a random process, checking independence is more difficult. In~this case, use your best judgement.}
 \end{tipBox}
-
-\begin{caution}
-{Independence for random processes and experiments}
-{If a sample is from a random process or experiment, it is important to verify the observations from the process or subjects in the experiment are nearly independent and maintain their independence throughout the process or experiment. Usually subjects are considered independent if they undergo random assignment in an experiment.}
-\end{caution}
 
 
 % WARNING !!!!
 % EOCE 4.9 (as of 2nd Edition) references the results of this exercise
 \begin{exercise} \label{find99CIForYrbssAgeExercise}
-Create a 99\% confidence interval for the average age of all runners in the 2012 Cherry Blossom Run. The point estimate is $\bar{y} = 35.05$ and the standard error is $SE_{\bar{y}} = 0.90$.\footnote{The observations are independent (simple random sample, $<10\%$ of the population), the sample size is at least 30 ($n=100$), and the distribution is only slightly skewed (Figure~\ref{yrbssSampHistograms}); the normal approximation and estimate of SE should be reasonable. Apply the 99\% confidence interval formula: $\bar{y}\ \pm\ 2.58 \times  SE_{\bar{y}} \rightarrow (32.7, 37.4)$. We are 99\% confident that the average age of all runners is between 32.7 and 37.4 years.}
+Create a 99\% confidence interval for the average days active per week of all YRBSS students using \data{yrbss\_samp}. The point estimate is $\bar{x}_{active} = 3.75$ and the standard error is $SE_{\bar{x}} = 0.26$.\footnote{The observations are independent (simple random sample, $<10\%$ of the population), the sample size is at least 30 ($n = 100$), and the distribution doesn't have a clear skew (Figure~\ref{yrbssSampHistograms}); the normal approximation and estimate of SE should be reasonable. Apply the 99\% confidence interval formula: $\bar{x}_{active}\ \pm\ 2.58 \times  SE_{\bar{x}} \rightarrow (3.08, 4.42)$. We are 99\% confident that the average days active per week of all YRBSS students is between 3.08 and 4.42~days.}
 \end{exercise}
 %library(openintro); data(yrbss.samp); d <- yrbss.samp; mean(d$age); sd(d$age)/sqrt(100)
 
@@ -398,14 +395,14 @@ If the point estimate follows the normal model with standard error $SE$, then a 
 where $z^{\star}$ corresponds to the confidence level selected.}
 \end{termBox}
 
-Figure~\ref{choosingZForCI} provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. 
+Figure~\ref{choosingZForCI} provides a picture of how to identify $z^{\star}$ based on a confidence level. We~select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. 
 
 \begin{termBox}{\tBoxTitle{Margin of error}
 \label{marginOfErrorTermBox}In a confidence interval, $z^{\star}\times SE$ is called the \term{margin of error}.}
 \end{termBox}
 
 \begin{exercise} \label{find90CIForYrbssAgeExercise}
-Use the data in Exercise~\ref{find99CIForYrbssAgeExercise} to create a 90\% confidence interval for the average age of all runners in the 2012 Cherry Blossom Run.\footnote{We first find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5\% (the other 5\% is in the upper tail), thus $z^{\star}=1.65$. The 90\% confidence interval can then be computed as $\bar{y}\ \pm\ 1.65\times SE_{\bar{y}} \to (33.6, 36.5)$. (We had already verified conditions for normality and the standard error.) That is, we are 90\% confident the average age is larger than 33.6 but less than 36.5 years.}
+Use the data in Exercise~\ref{find99CIForYrbssAgeExercise} to create a 90\% confidence interval for the average days active per week of all YRBSS students.\footnote{We first find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5\% (the other 5\% is in the upper tail): $z^{\star}=1.65$. The 90\% confidence interval can then be computed as $\bar{x}_{active}\ \pm\ 1.65\times SE_{\bar{x}} \to (3.32, 4.18)$. (We had already verified conditions for normality and the standard error.) That is, we are 90\% confident the average days active per week is between 3.32 and 4.18~days.}
 \end{exercise}
 
 \subsection{Interpreting confidence intervals}
@@ -417,15 +414,17 @@ A careful eye might have observed the somewhat awkward language used to describe
 \begin{quote}
 We are XX\% confident that the population parameter is between...
 \end{quote}
-\emph{Incorrect} language might try to describe the confidence interval as capturing the population parameter with a certain probability. This is one of the most common errors: while it might be useful to think of it as a probability, the confidence level only quantifies how plausible it is that the parameter is in the interval.
+\emph{Incorrect} language might try to describe the confidence interval as capturing the population parameter with a certain probability. This is a common error: while it might be useful to think of it as a probability, the confidence level only quantifies how plausible it is that the parameter is in the interval.
 
-Another especially important consideration of confidence intervals is that they \emph{only try to capture the population parameter}. Our intervals say nothing about the confidence of capturing individual observations, a proportion of the observations, or about capturing point estimates. Confidence intervals only attempt to capture population parameters.
+Another important consideration of confidence intervals is that they \emph{only try to capture the population parameter}. A confidence interval says nothing about the confidence of capturing individual observations, a proportion of the observations, or about capturing point estimates. Confidence intervals only attempt to capture population parameters.
 
 \index{confidence interval!interpretation|)}
 \index{confidence interval|)}
 
 \subsection[Nearly normal population with known SD (special topic)]{Nearly normal population with known SD (special topic)}
 \label{nearlyNormalPopWithKnownSD}
+
+\Comment{This subsection is on the chopping block.}
 
 \index{Central Limit Theorem!normal data|(}
 

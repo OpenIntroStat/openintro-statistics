@@ -1,33 +1,34 @@
 require(openintro)
 data(COL)
-data(run10)
+data(yrbss)
 
-set.seed(1)
+set.seed(5)
 N     <- 100000
 means <- rep(0, N)
 pb <- txtProgressBar(0, N, style = 3)
 for (i in 1:N) {
-  temp <- sample(nrow(run10), 100)
-  means[i] <- mean(run10$time[temp], na.rm = TRUE)
+  tmp <- sample(nrow(yrbss), 200)
+  tmp <- tmp[!is.na(tmp)][1:100]
+  means[i] <- mean(yrbss$physically_active_7d[tmp], na.rm = TRUE)
   setTxtProgressBar(pb, i)
 }
 
-myPDF('netTimeBigSamplingDistribution.pdf', 8, 3.15,
+myPDF('yrbssActiveBigSampDist.pdf', 8, 3.15,
       mar = c(3.3, 4, 1.4, 1),
       mgp = c(2.7,0.55,0))
 layout(matrix(1:2, 1),
        c(4.3, 3))
 plot(0, 0,
      type = 'n',
-     xlim = c(88, 102),
-     ylim = c(0, 1350 * N / 25000),
+     xlim = c(2.8, 5.1),
+     ylim = c(0, 2000 * N / 25000),
      xlab = '',
      ylab = '',
      axes = FALSE)
-mtext("Sample mean", 1, 2)
+mtext("Sample Mean", 1, 2)
 mtext("Frequency", 2, line = 3, las = 0)
-m <- mean(run10$time, na.rm = TRUE)
-s <- sd(run10$time, na.rm = TRUE) / 10
+m <- mean(yrbss$physically_active_7d, na.rm = TRUE)
+s <- sd(yrbss$physically_active_7d, na.rm = TRUE) / 10
 rect(m - s / 100, 0,
      m + s / 100, 1350,
      col = '#00000044',
@@ -44,10 +45,13 @@ rect(m - 3 * s, 0,
      m + 3 * s, 135000,
      col = '#00000011',
      border = '#00000000')
-histPlot(means, col = COL[1], breaks = 50, add = TRUE)
+histPlot(means,
+         col = COL[1],
+         breaks = seq(2, 6, length.out = 80),
+         add = TRUE)
 abline(h = 0)
-axis(1, at = c(90, 95, 100))
-axis(2, at = seq(0, 5000, 1000))
+axis(1, at = seq(3.0, 5, 0.5))
+axis(2, at = seq(0, 8000, 2000))
 
 par(las = 1, mar = c(4, 4, 1.4, 1))
 q <- c(seq(0.00001, 0.0009, 0.00001),
@@ -63,6 +67,6 @@ plot(nq, ms,
      axes = FALSE)
 mtext("Theoretical quantiles", 1, 2)
 axis(1)
-axis(2, c(90, 95, 100))
+axis(2, seq(3, 5, 0.5))
 box()
 dev.off()
