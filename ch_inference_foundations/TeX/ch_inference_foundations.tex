@@ -366,19 +366,27 @@ Important conditions to help ensure the sampling distribution of $\bar{x}$ is ne
 \setlength{\itemsep}{0mm}
 \item The sample observations are independent.
 \item The sample size is large: $n\geq30$ is a good rule of thumb.
-\item The population distribution is not strongly skewed. This condition can be difficult and a bit subjective, so we'll discuss it more bit in a bit.
+\item The population distribution is not strongly skewed. This condition can be difficult to evaluate, so just use your best judgement.
 \end{itemize}
 Additionally, the larger the sample size, the more lenient we can be with the sample's skew.}
 \end{termBox}
 
-The way to check for independence varies from one situation to another. However, we can provide simple rules for some common scenarios.
+%The way to check for independence varies from one situation to another. However, we can provide simple rules for some common scenarios.
+
+\Comment{The next two term boxes were notably changed.}
 
 \begin{tipBox}{\tipBoxTitle{How to verify sample observations are independent}
 If the observations are from a simple random sample and consist of fewer than 10\% of the population, then they are independent.\\[2mm]
-Usually subjects in an experiment are considered independent if they undergo random assignment to the treatment groups. However, this is not foolproof, e.g. allowing patients to mingle in a waiting room may be problematic. \\[2mm]
+Subjects in an experiment are considered independent if they undergo random assignment to the treatment groups. \\[2mm]
 If a sample is from a random process, checking independence is more difficult. In~this case, use your best judgement.}
 \end{tipBox}
 
+\begin{tipBox}{\tipBoxTitle{Checking for strong skew means checking for obvious outliers}
+When there are very clear outliers present, the sample should contain at least 100 observations, and in some cases, much more. \\[2mm]
+This is a first course in statistics, so you won't have perfect judgement on assessing skew. That's okay. If you're in a bind, either consult a statistician or learn about new methods, and in particular the studentized bootstrap (bootstrap-t).}
+\end{tipBox}
+
+\Comment{Mine, FYI that the next exercise was changed, and it was referenced in EOCE 4.9.}
 
 % WARNING !!!!
 % EOCE 4.9 (as of 2nd Edition) references the results of this exercise
