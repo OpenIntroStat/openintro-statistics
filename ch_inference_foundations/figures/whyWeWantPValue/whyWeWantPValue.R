@@ -10,7 +10,7 @@ normTail(L = -5,
          xlim = c(-6, 3),
          lwd = 2)
 at <- seq(-10, 5, 5)
-labels <- expression('', 'null value '*-5*'*SE   ',
+labels <- expression('', 'null value '*-5*'×SE   ',
                      'null value', '')
 axis(1, at, labels)
 yMax <- 0.4

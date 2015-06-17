@@ -371,6 +371,8 @@ Important conditions to help ensure the sampling distribution of $\bar{x}$ is ne
 Additionally, the larger the sample size, the more lenient we can be with the sample's skew.}
 \end{termBox}
 
+\Comment{I used ``judgement'' above instead of ``judgment''. The former is the British spelling, and the latter is the American... I think I've always used it with the `e'. If you feel strongly, express an opinion!}
+
 %The way to check for independence varies from one situation to another. However, we can provide simple rules for some common scenarios.
 
 \Comment{The next two term boxes were notably changed.}
@@ -381,9 +383,9 @@ Subjects in an experiment are considered independent if they undergo random assi
 If a sample is from a random process, checking independence is more difficult. In~this case, use your best judgement.}
 \end{tipBox}
 
-\begin{tipBox}{\tipBoxTitle{Checking for strong skew means checking for obvious outliers}
-When there are very clear outliers present, the sample should contain at least 100 observations, and in some cases, much more. \\[2mm]
-This is a first course in statistics, so you won't have perfect judgement on assessing skew. That's okay. If you're in a bind, either consult a statistician or learn about new methods, and in particular the studentized bootstrap (bootstrap-t).}
+\begin{tipBox}{\tipBoxTitle{Checking for strong skew usually means checking for obvious outliers}
+When there are prominent outliers present, the sample should contain at least 100 observations, and in some cases, much more. \\[2mm]
+This is a first course in statistics, so you won't have perfect judgement on assessing skew. That's okay. If you're in a bind, either consult a statistician or learn about the studentized bootstrap (bootstrap-t) method.}
 \end{tipBox}
 
 \Comment{Mine, FYI that the next exercise was changed, and it was referenced in EOCE 4.9.}
@@ -481,17 +483,17 @@ As the sample size becomes larger, it is reasonable to \emph{slowly} relax the n
 
 \index{hypothesis testing|(}
 
-Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Run, comparing runners in 2006 and 2012. Technological advances in shoes, training, and diet might suggest runners would be faster in 2012. An opposing viewpoint might say that with the average body mass index on the rise, people tend to run slower. In fact, all of these components might be influencing run time.
+Are students lifting weights or performing other strength training exercises more or less often than they have in the past? We'll compare data from students from the 2011 YRBSS survey to our sample of 100 students from the 2013 YRBSS survey.
 
-In addition to considering run times in this section, we consider a topic near and dear to most students: sleep. A recent study found that college students average about 7 hours of sleep per night.\footnote{\urlwofont{http://theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
+We'll also consider sleep behavior. A recent study found that college students average about 7~hours of sleep per night.\footnote{\urlwofont{http://theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
 
 \subsection{Hypothesis testing framework}
 
-The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine if the \data{yrbss\_samp} data set provides strong evidence that the participants in 2012 were faster or slower than those runners in 2006, versus the other possibility that there has been no change.\footnote{While we could answer this question by examining the entire population data (\data{yrbss}), we only consider the sample data (\data{yrbss\_samp}), which is more realistic since we rarely have access to population data.} We simplify these three options into two competing \termsub{hypotheses}{hypothesis}:
+Students from the 2011 YRBSS lifted weights (or performed other strength training exercises) 3.09~days per week on average. We want to determine if the \data{yrbss\_samp} data set provides strong evidence that YRBSS students selected in 2013 are lifting more or less than the 2011 YRBSS students, versus the other possibility that there has been no change.\footnote{While we could answer this question by examining the entire YRBSS data set from 2013 (\data{yrbss}), we only consider the sample data (\data{yrbss\_samp}), which is more realistic since we rarely have access to population data.} We simplify these three options into two competing \termsub{hypotheses}{hypothesis}:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[$H_0$:] The average 10 mile run time was the same for 2006 and 2012.
-\item[$H_A$:] The average 10 mile run time for 2012 was \emph{different} than that of 2006.
+\item[$H_0$:] The average days per week that YRBSS students lifted weights was the same for 2011 and~2013.
+\item[$H_A$:] The average days per week that YRBSS students lifted weights was \emph{different} for 2011 than~in~2013.
 \end{itemize}
 We call $H_0$\marginpar[\raggedright\vspace{6mm}
 
@@ -517,49 +519,62 @@ A US court considers two possible claims about a defendant: she is either innoce
 
 Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. Even if the jurors leave unconvinced of guilt beyond a reasonable doubt, this does not mean they believe the defendant is innocent. This is also the case with hypothesis testing: \emph{even if we fail to reject the null hypothesis, we typically do not accept the null hypothesis as true}. Failing to find strong evidence for the alternative hypothesis is not equivalent to accepting the null hypothesis.
 
-In the example with the Cherry Blossom Run, the null hypothesis represents no difference in the average time from 2006 to 2012. The alternative hypothesis represents something new or more interesting: there was a difference, either an increase or a decrease. These hypotheses can be described in mathematical notation using $\mu_{12}$ as the average run time for 2012:
+In the example with the YRSS, the null hypothesis represents no difference in the average days per week of weight lifting in 2011 and 2013. The alternative hypothesis represents something new or more interesting: there was a difference, either an increase or a decrease. These hypotheses can be described in mathematical notation using $\mu_{13}$ as the average days of weight lifting for 2013:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[$H_0$:] $\mu_{12} = 93.29$ %93.28864
-\item[$H_A$:] $\mu_{12} \neq 93.29$
+\item[$H_0$:] $\mu_{13} = 3.09$
+\item[$H_A$:] $\mu_{13} \neq 3.09$
 \end{itemize}
-where $93.29$ minutes (93 minutes and about 17 seconds) is the average 10 mile time for all runners in the 2006 Cherry Blossom Run. Using this mathematical notation, the hypotheses can now be evaluated using statistical tools. We call 93.29 the \term{null value} since it represents the value of the parameter if the null hypothesis is true. We will use the \data{yrbss\_samp} data set to evaluate the hypothesis test.
+where 3.09 is the average number of days per week that students from the 2011 YRBSS lifted weights. Using the mathematical notation, the hypotheses can more easily be evaluated using statistical tools. We call 3.09 the \term{null value} since it represents the value of the parameter if the null hypothesis is true.
 
 
 \subsection{Testing hypotheses using confidence intervals}
 \label{utilizingOurCI}
 
-We can start the evaluation of the hypothesis setup by comparing 2006 and 2012 run times using a point estimate from the 2012 sample: $\bar{x}_{12} = 95.61$ minutes. This estimate suggests the average time is actually longer than the 2006 time, 93.29 minutes. However, to evaluate whether this provides strong evidence that there has been a change, we must consider the uncertainty associated with $\bar{x}_{12}$.
+We will use the \data{yrbss\_samp} data set to evaluate the hypothesis test, and we start by comparing the 2013 point estimate of the number of days per week that students lifted weights: $\bar{x}_{13} = 2.78$~days. This estimate suggests that students from the 2013 YRBSS were lifting weights less than students in the 2011 YRBSS. However, to evaluate whether this provides strong evidence that there has been a change, we must consider the uncertainty associated with $\bar{x}_{13}$.
 
-We learned in Section~\ref{variabilityInEstimates} that there is fluctuation from one sample to another, and it is very unlikely that the sample mean will be exactly equal to our parameter; we should not expect $\bar{x}_{12}$ to exactly equal $\mu_{12}$. Given that $\bar{x}_{12} = 95.61$, it might still be possible that the population average in 2012 has remained unchanged from 2006. The difference between $\bar{x}_{12}$ and 93.29 could be due to \emph{sampling variation}, i.e. the variability associated with the point estimate when we take a random sample.
+We learned in Section~\ref{variabilityInEstimates} that there is fluctuation from one sample to another, and it is unlikely that the sample mean will be exactly equal to the parameter; we should not expect $\bar{x}_{13}$ to exactly equal $\mu_{13}$. Given that $\bar{x}_{13} = 2.78$, it might still be possible that the average of all students from the 2013 YRBSS survey is the same as the average from the 2011 YRBSS survey. The difference between $\bar{x}_{13}$ and 3.09 could be due to \emph{sampling variation}, i.e. the variability associated with the point estimate when we take a random sample.
 
-In Section~\ref{confidenceIntervals}, confidence intervals were introduced as a way to find a range of plausible values for the population mean. Based on \data{yrbss\_samp}, a 95\% confidence interval for the 2012 population mean, $\mu_{12}$, was calculated as
-\begin{eqnarray*}
-(92.45, 98.77)
-\end{eqnarray*}
-Because the 2006 mean, 93.29, falls in the range of plausible values, we cannot say the null hypothesis is implausible. That is, we failed to reject the null hypothesis, $H_0$. 
+In Section~\ref{confidenceIntervals}, confidence intervals were introduced as a way to find a range of plausible values for the population mean.
+
+\begin{example}{In the sample of 100 students from the 2013 YRBSS survey, the average number of days per week that students lifted weights was 2.78~days with a standard deviation of 2.56 days (coincidentally the same as days active). Compute a 95\% confidence interval for the average for all students from the 2013 YRBSS survey. You can assume the conditions for the normal model are met.}
+The general formula for the confidence interval based on the normal distribution is
+\begin{align*}
+\bar{x} \pm z^{\star} SE_{\bar{x}}
+\end{align*}
+We are given $\bar{x}_{13} = 2.78$, we use $z^{\star} = 1.96$ for a 95\% confidence level, and we can compute the standard error using the standard deviation divided by the square root of the sample size:
+\begin{align*}
+SE_{\bar{x}} = \frac{s_{13}}{\sqrt{n}} = \frac{2.56}{\sqrt{100}} = 0.256
+\end{align*}
+Entering the sample mean, $z^{\star}$, and the standard error into the confidence interval formula results in (2.27, 3.29). We are 95\% confident that the average number of days per week that all students from the 2013 YRBSS lifted weights was between 2.27~and 3.29~days.
+\end{example}
+
+Because the average of all students from the 2013 YRBSS survey is 3.09, which falls within the range of plausible values from the confidence interval, we cannot say the null hypothesis is implausible. That is, we fail to reject the null hypothesis, $H_0$.
 
 \begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
 In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
 \end{tipBox}
 
-\begin{example}{Next consider whether there is strong evidence that the average age of runners has changed from 2006 to 2012 in the Cherry Blossom Run. In 2006, the average age was 36.13 years, and in the 2012 \data{yrbss\_samp} data set, the average was 35.05 years with a standard deviation of 8.97 years for 100 runners.}
-First, set up the hypotheses:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] The average age of runners has not changed from 2006 to 2012, $\mu_{age} = 36.13$.
-\item[$H_A$:] The average age of runners has changed from 2006 to 2012, $\mu_{age} \neq 36.13$.
-\end{itemize}
-We have previously verified conditions for this data set. The normal model may be applied to $\bar{y}$ and the estimate of $SE$ should be very accurate. Using the sample mean and standard error, we can construct a 95\% confidence interval for $\mu_{age}$ to determine if there is sufficient evidence to reject $H_0$:
-\begin{eqnarray*}
-\bar{y}\ \pm\ 1.96 \times  \frac{s}{\sqrt{100}} 
-	\quad\to\quad 35.05\ \pm\ 1.96\times 0.90 
-	\quad\to\quad (33.29, 36.81)
-\end{eqnarray*}
-This confidence interval contains the \emph{null value}, 36.13. Because 36.13 is not implausible, we cannot reject the null hypothesis. We have not found strong evidence that the average age is different than 36.13 years.
-\index{data!yrbss\_samp|)}
-\index{data!yrbss|)}
-\end{example}
+%%\begin{example}{Next consider whether the \data{yrbss\_samp} data set provides strong evidence that the average days active per week is different in 2011 and 2013. In 2011, the average was 3.92~days per week, and in the 2013 \data{yrbss\_samp} data set, the average was 2.75 years with a standard deviation of 2.56~days for 100 students.}
+%\begin{example}{Next consider whether there is strong evidence that the average age of runners has changed from 2006 to 2012 in the Cherry Blossom Run. In 2006, the average age was 36.13 years, and in the 2012 \data{yrbss\_samp} data set, the average was 35.05 years with a standard deviation of 8.97 years for 100 runners.}
+%First, set up the hypotheses:
+%\begin{itemize}
+%\setlength{\itemsep}{0mm}
+%\item[$H_0$:] The average age of runners has not changed from 2006 to 2012, $\mu_{age} = 36.13$.
+%\item[$H_A$:] The average age of runners has changed from 2006 to 2012, $\mu_{age} \neq 36.13$.
+%\end{itemize}
+%We have previously verified conditions for this data set. The normal model may be applied to $\bar{y}$ and the estimate of $SE$ should be very accurate. Using the sample mean and standard error, we can construct a 95\% confidence interval for $\mu_{age}$ to determine if there is sufficient evidence to reject $H_0$:
+%\begin{eqnarray*}
+%\bar{y}\ \pm\ 1.96 \times  \frac{s}{\sqrt{100}} 
+%	\quad\to\quad 35.05\ \pm\ 1.96\times 0.90 
+%	\quad\to\quad (33.29, 36.81)
+%\end{eqnarray*}
+%This confidence interval contains the \emph{null value}, 36.13. Because 36.13 is not implausible, we cannot reject the null hypothesis. We have not found strong evidence that the average age is different than 36.13 years.
+%\index{data!yrbss\_samp|)}
+%\index{data!yrbss|)}
+%\end{example}
+
+\Comment{The college housing data set was updated to have 175 observations and have stronger skew.}
 
 \begin{exercise} \label{htForHousingExpenseForCommunityCollege650}
 Colleges frequently provide estimates of student expenses such as housing. A consultant hired by a community college claimed that the average student housing expense was \$650 per month. What are the null and alternative hypotheses to test whether this claim is accurate?\footnote{$H_0$: The average cost is \$650 per month, $\mu = \$650$.
@@ -568,23 +583,30 @@ Colleges frequently provide estimates of student expenses such as housing. A con
 \end{exercise}
 
 \begin{exercise} \label{normalDistCondForHousingExpenseForCommunityCollege650}
-The community college decides to collect data to evaluate the \$650 per month claim. They take a random sample of 75 students at their school and obtain the data represented in Figure~\ref{communityCollegeClaimedHousingExpenseDistribution}. Can we apply the normal model to the sample mean?\footnote{Applying the normal model requires that certain conditions are met. Because the data are a simple random sample and the sample (presumably) represents no more than 10\% of all students at the college, the observations are independent. The sample size is also sufficiently large ($n=75$) and the data exhibit only moderate skew. Thus, the normal model may be applied to the sample mean.}
+The community college decides to collect data to evaluate the \$650 per month claim. They take a random sample of 175 students at their school and obtain the data represented in Figure~\ref{communityCollegeClaimedHousingExpenseDistribution}. Can we apply the normal model to the sample mean?\footnote{Applying the normal model requires that certain conditions are met. Because the data are a simple random sample and the sample (presumably) represents no more than 10\% of all students at the college, the observations are independent. The sample size is also sufficiently large ($n = 175$) and the data exhibit strong skew. While the data are strongly skewed, the sample is sufficiently large that this is acceptable, and the normal model may be applied to the sample mean.}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.85\textwidth]{ch_inference_foundations/figures/communityCollegeClaimedHousingExpenseDistribution/communityCollegeClaimedHousingExpenseDistribution}
-\caption{Sample distribution of student housing expense. These data are moderately skewed\index{skew!example: moderate}, roughly determined using the outliers on the~right.}
+\caption{Sample distribution of student housing expense. These data are strongly skewed\index{skew!example: strong}, which we can see by the long right tail with a few notable outliers.}
 \label{communityCollegeClaimedHousingExpenseDistribution}
 \end{figure}
 \end{exercise}
 
+\Comment{Additional box on skew since this is such a frustrating topic for students.}
 
+\begin{tipBox}{\tipBoxTitle[]{Evaluating the skew condition is challenging}
+Don't despair if checking the skew condition is difficult or confusing. You aren't alone -- nearly all students get frustrated when checking skew. Properly assessing skew takes practice, and you won't be a pro, even at the end of this book. \\[2mm]
+But this doesn't mean you should give up. Checking skew and the other conditions is extremely important for a responsible data analysis. However, rest assured that evaluating skew isn't something you need to be a master of by the end of the book, though by that time you should be able to properly assess clear cut cases.}
+\end{tipBox}
 
-\begin{example}{The sample mean for student housing is \$611.63 and the sample standard deviation is \$132.85. Construct a 95\% confidence interval for the population mean and evaluate the hypotheses of Exercise~\ref{htForHousingExpenseForCommunityCollege650}.}
-The standard error associated with the mean may be estimated using the sample standard deviation divided by the square root of the sample size. Recall that $n=75$ students were sampled.
-$$ SE = \frac{s}{\sqrt{n}} = \frac{132.85}{\sqrt{75}} = 15.34 $$
+\begin{example}{The sample mean for student housing is \$616.91 and the sample standard deviation is \$128.65. Construct a 95\% confidence interval for the population mean and evaluate the hypotheses of Exercise~\ref{htForHousingExpenseForCommunityCollege650}.}
+The standard error associated with the mean may be estimated using the sample standard deviation divided by the square root of the sample size. Recall that $n = 175$ students were sampled.
+\begin{align*}
+SE = \frac{s}{\sqrt{n}} = \frac{128.65}{\sqrt{175}} = 9.73
+\end{align*}
 You showed in Exercise~\ref{normalDistCondForHousingExpenseForCommunityCollege650} that the normal model may be applied to the sample mean. This ensures a 95\% confidence interval may be accurately constructed:
-$$\bar{x}\ \pm\ z^{\star} SE \quad\to\quad 611.63\ \pm\ 1.96 \times  15.34 \quad \to \quad (581.56, 641.70) $$
+$$\bar{x}\ \pm\ z^{\star} SE \quad\to\quad 616.91\ \pm\ 1.96 \times 9.73 \quad \to \quad (597.84, 635.98) $$
 Because the null value \$650 is not in the confidence interval, a true mean of \$650 is implausible and we reject the null hypothesis. The data provide statistically significant evidence that the actual average housing expense is less than \$650 per month.
 \end{example}
 
@@ -593,9 +615,11 @@ Because the null value \$650 is not in the confidence interval, a true mean of \
 
 \index{hypothesis testing!decision errors|(}
 
-Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, we can make a wrong decision in statistical hypothesis tests. However, the difference is that we have the tools necessary to quantify how often we make such errors.
+Hypothesis tests are not flawless, since we can make a wrong decision in statistical hypothesis tests based on the data. For example, in the court system innocent people are sometimes wrongly convicted and the guilty sometimes walk free. However, the difference is that in statistical hypothesis tests, we have the tools necessary to quantify how often we make such errors.
 
-There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized in Table~\ref{fourHTScenarios}.
+% Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, we can make a wrong decision in statistical hypothesis tests. However, the difference is that we have the tools necessary to quantify how often we make such errors.
+
+There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios, which are summarized in Table~\ref{fourHTScenarios}.
 
 \begin{table}[ht]
 \centering
@@ -638,7 +662,7 @@ $\alpha$\\\footnotesize significance\\level of a\\hypothesis test]{\raggedright\
 
 $\alpha$\\\footnotesize significance\\level of a\\hypothesis test} (the Greek letter \emph{alpha}\index{Greek!alpha@alpha ($\alpha$)}): $\alpha = 0.05$. We discuss the appropriateness of different significance levels in Section~\ref{significanceLevel}.
 
-If we use a 95\% confidence interval to test a hypothesis where the null hypothesis is true, we will make an error whenever the point estimate is at least 1.96 standard errors away from the population parameter. This happens about 5\% of the time (2.5\% in each tail). Similarly, using a 99\% confidence interval to evaluate a hypothesis is equivalent to a significance level of $\alpha = 0.01$.
+If we use a 95\% confidence interval to evaluate a hypothesis test where the null hypothesis is true, we will make an error whenever the point estimate is at least 1.96 standard errors away from the population parameter. This happens about 5\% of the time (2.5\% in each tail). Similarly, using a 99\% confidence interval to evaluate a hypothesis is equivalent to a significance level of $\alpha = 0.01$.
 
 A confidence interval is, in one sense, simplistic in the world of hypothesis tests. Consider the following two scenarios:
 \begin{itemize}
@@ -685,7 +709,7 @@ Using $\mu > 7$ as the alternative is an example of a \term{one-sided} hypothesi
 Always use a two-sided test unless it was made clear prior to data collection that the test should be one-sided. Switching a two-sided test to a one-sided test after observing the data is dangerous because it can inflate the Type~1 Error rate. 
 
 \begin{tipBox}{\tipBoxTitle{One-sided and two-sided tests}
-If the researchers are only interested in showing an increase or a decrease, but not both, use a one-sided test. If the researchers would be interested in any difference from the null value -- an increase or decrease -- then the test should be two-sided.\vspace{0.5mm}}
+When you are interested in checking for an increase or a decrease, but not both, use a one-sided test. When you are interested in any difference from the null value~--~an increase or decrease~--~then the test should be two-sided.\vspace{0.5mm}}
 \end{tipBox}
 
 \begin{tipBox}{\tipBoxTitle{Always write the null hypothesis as an equality}
@@ -697,17 +721,17 @@ The researchers at the rural school conducted a simple random sample of $n=110$ 
 \begin{figure}
 \centering
 \includegraphics[height=55mm]{ch_inference_foundations/figures/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
-\caption{Distribution of a night of sleep for 110 college students. These data are moderately skewed.\index{skew!example: moderate}}
+\caption{Distribution of a night of sleep for 110 college students. These data are strongly skewed.\index{skew!example: strong}}
 \label{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
 \end{figure}
 
-Before we can use a normal model for the sample mean or compute the standard error of the sample mean, we must verify conditions. (1)~Because this is a simple random sample from less than 10\% of the student body, the observations are independent. (2)~The sample size in the sleep study is sufficiently large since it is greater than 30. (3)~The data show moderate skew in Figure~\ref{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours} and the presence of a couple of outliers. This skew and the outliers (which are not too extreme) are acceptable for a sample size of $n=110$. With these conditions verified, the normal model can be safely applied to $\bar{x}$ and the estimated standard error will be very accurate.
+Before we can use a normal model for the sample mean or compute the standard error of the sample mean, we must verify conditions. (1)~Because this is a simple random sample from less than 10\% of the student body, the observations are independent. (2)~The sample size in the sleep study is sufficiently large since it is greater than 30. (3)~The data show strong skew in Figure~\ref{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours} and the presence of a couple of outliers. This skew and the outliers are acceptable for a sample size of $n=110$. With these conditions verified, the normal model can be safely applied to $\bar{x}$ and we can reasonably calculate the standard error.
 
 \begin{exercise} \label{findSEOfFirstSleepStudyCheckingGreaterThan7Hours}
-What is the standard deviation associated with $\bar{x}$? That is, estimate the standard error of $\bar{x}$.\footnote{The standard error can be estimated from the sample standard deviation and the sample size: $SE_{\bar{x}} = \frac{s_x}{\sqrt{n}} = \frac{1.75}{\sqrt{110}} = 0.17$.}
+In the sleep study, the sample standard deviation was 1.75 hours and the sample size is 110. Calculate the standard error of $\bar{x}$.\footnote{The standard error can be estimated from the sample standard deviation and the sample size: $SE_{\bar{x}} = \frac{s_x}{\sqrt{n}} = \frac{1.75}{\sqrt{110}} = 0.17$.}
 \end{exercise}
 
-The hypothesis test will be evaluated using a significance level of $\alpha = 0.05$. We want to consider the data under the scenario that the null hypothesis is true. In this case, the sample mean is from a distribution that is nearly normal and has mean 7 and standard deviation of about 0.17. Such a distribution is shown in Figure~\ref{pValueOneSidedSleepStudy}.
+The hypothesis test for the sleep study will be evaluated using a significance level of $\alpha = 0.05$. We want to consider the data under the scenario that the null hypothesis is true. In this case, the sample mean is from a distribution that is nearly normal and has mean 7 and standard deviation of about $SE_{\bar{x}} = 0.17$. Such a distribution is shown in Figure~\ref{pValueOneSidedSleepStudy}.
 
 \begin{figure}[hht]
    \centering
@@ -716,7 +740,7 @@ The hypothesis test will be evaluated using a significance level of $\alpha = 0.
    \label{pValueOneSidedSleepStudy}
 \end{figure}
 
-The shaded tail in Figure~\ref{pValueOneSidedSleepStudy} represents the chance of observing such a large mean, conditional on the null hypothesis being true. That is, the shaded tail represents the p-value. We shade all means larger than our sample mean, $\bar{x} = 7.42$, because they are more favorable to the alternative hypothesis than the observed mean.
+The shaded tail in Figure~\ref{pValueOneSidedSleepStudy} represents the chance of observing such a large mean, conditional on the null hypothesis being true. That is, the shaded tail represents the \mbox{p-value}. We shade all means larger than our sample mean, $\bar{x} = 7.42$, because they are more favorable to the alternative hypothesis than the observed mean.
 
 We compute the p-value by finding the tail area of this normal distribution, which we learned to do in Section~\ref{normalDist}. First compute the Z score of the sample mean, $\bar{x} = 7.42$:
 \begin{eqnarray*}
@@ -732,7 +756,7 @@ The p-value quantifies how strongly the data favor $H_A$ over $H_0$. A small p-v
 \end{termBox}
 
 \begin{tipBox}{\tipBoxTitle{It is useful to first draw a picture to find the p-value}
-It is useful to draw a picture of the distribution of $\bar{x}$ as though $H_0$ was true (i.e. $\mu$ equals the null value), and shade the region (or regions) of sample means that are at least as favorable to the alternative hypothesis. These shaded regions represent the p-value.}
+It is useful to draw a picture of the distribution of $\bar{x}$ as though $H_0$ was true (i.e.~$\mu$~equals the null value), and shade the region (or regions) of sample means that are at least as favorable to the alternative hypothesis. These shaded regions represent the p-value.}
 \end{tipBox}
 
 The ideas below review the process of evaluating hypothesis tests with p-values:
@@ -775,7 +799,7 @@ Ebay might be interested in showing that buyers on its site tend to pay less tha
 
 \begin{exercise} \label
 {exerciseFor52EbayAuctionsToExamineMarioKartLessExpensiveThanAmazonConditions}
-During early October, 2009, 52 Ebay auctions were recorded for \emph{Mario Kart}.\footnote{These data were collected by OpenIntro staff.} The total prices for the auctions are presented using a histogram in Figure~\ref{ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}, and we may like to apply the normal model to the sample mean. Check the three conditions required for applying the normal model: (1)~independence, (2)~at~least 30 observations, and (3)~the data are not strongly skewed.\footnote{(1) The independence condition is unclear. \emph{We will make the assumption that the observations are independent, which we should report with any final results.} (2) The sample size is sufficiently large: $n =52 \geq 30$. (3) The data distribution is not strongly skewed; it is approximately symmetric.}
+During early October 2009, 52 Ebay auctions were recorded for \emph{Mario Kart}.\footnote{These data were collected by OpenIntro staff.} The total prices for the auctions are presented using a histogram in Figure~\ref{ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}, and we may like to apply the normal model to the sample mean. Check the three conditions required for applying the normal model: (1)~independence, (2)~at~least 30 observations, and (3)~the data are not strongly skewed.\footnote{(1) The independence condition is unclear. \emph{We will make the assumption that the observations are independent, which we should report with any final results.} (2) The sample size is sufficiently large: $n =52 \geq 30$. (3) The data distribution is not strongly skewed; it is approximately symmetric.}
 \end{exercise}
 
 \begin{figure}
@@ -800,7 +824,7 @@ Because the p-value is so small -- specifically, smaller than $\alpha = 0.01$ --
 \end{example}
 
 \begin{termBox}{\tBoxTitle{What's so special about 0.05?}
-It's common to use a threshold of 0.05 to determine whether a result is statistically significant, but why is the most common value 0.05? Maybe the standard significance level should be bigger, or maybe it should be smaller. If you're a little puzzled, that probably means you're reading with a critical eye -- good job! We've made a video to help clarify \emph{why 0.05}:
+It's common to use a threshold of 0.05 to determine whether a result is statistically significant, but why is the most common value 0.05? Maybe the standard significance level should be bigger, or maybe it should be smaller. If you're a little puzzled, that probably means you're reading with a critical eye -- good job! We've made a 5-minute task to help clarify \emph{why 0.05}:
 \begin{center}
 \oiRedirect{textbook-why05}{www.openintro.org/why05}
 \end{center}
@@ -819,18 +843,18 @@ We now consider how to compute a p-value for a two-sided test. In one-sided test
 Earlier we talked about a research group investigating whether the students at their school slept longer than 7 hours each night. Let's consider a second group of researchers who want to evaluate whether the students at their college differ from the norm of 7 hours. Write the null and alternative hypotheses for this investigation.\footnote{Because the researchers are interested in any difference, they should use a two-sided setup: $H_0: \mu = 7$, $H_A: \mu \neq 7$.}
 \end{exercise}
 
-\begin{example}{The second college randomly samples 72 students and finds a mean of $\bar{x} = 6.83$ hours and a standard deviation of $s=1.8$ hours. Does this provide strong evidence against $H_0$ in Exercise~\ref{2ndSchSleepHypSetupExercise}? Use a significance level of $\alpha=0.05$.}
-First, we must verify assumptions. (1) A simple random sample of less than 10\% of the student body means the observations are independent. (2) The sample size is 72, which is greater than 30. (3) Based on the earlier distribution and what we already know about college student sleep habits, the distribution is probably not strongly~skewed.
+\begin{example}{The second college randomly samples 122 students and finds a mean of $\bar{x} = 6.83$ hours and a standard deviation of $s=1.8$ hours. Does this provide strong evidence against $H_0$ in Exercise~\ref{2ndSchSleepHypSetupExercise}? Use a significance level of $\alpha=0.05$.}
+First, we must verify assumptions. (1) A simple random sample of less than 10\% of the student body means the observations are independent. (2) The sample size is 122, which is greater than 30. (3) Based on the earlier distribution and what we already know about college student sleep habits, the sample size will be acceptable.
 
-Next we can compute the standard error ($SE_{\bar{x}} = \frac{s}{\sqrt{n}} = 0.21$) of the estimate and create a picture to represent the p-value, shown in Figure~\ref{2ndSchSleepHTExample}. Both tails are shaded. An estimate of 7.17 or more provides at least as strong of evidence against the null hypothesis and in favor of the alternative as the observed estimate, $\bar{x} = 6.83$.
+Next we can compute the standard error ($SE_{\bar{x}} = \frac{s}{\sqrt{n}} = 0.16$) of the estimate and create a picture to represent the p-value, shown in Figure~\ref{2ndSchSleepHTExample}. Both tails are shaded. An estimate of 7.17 or more provides at least as strong of evidence against the null hypothesis and in favor of the alternative as the observed estimate, $\bar{x} = 6.83$.
 
 We can calculate the tail areas by first finding the lower tail corresponding to $\bar{x}$:
 \begin{eqnarray*}
-Z = \frac{6.83 - 7.00}{0.21} = -0.81 \quad\stackrel{table}{\rightarrow}\quad \text{left tail}=0.2090
+Z = \frac{6.83 - 7.00}{0.16} = -1.06 \quad\stackrel{table}{\rightarrow}\quad \text{left tail} = 0.1446
 \end{eqnarray*}
 Because the normal model is symmetric, the right tail will have the same area as the left tail. The p-value is found as the sum of the two shaded tails:
 \begin{eqnarray*}
-\text{p-value} = \text{left tail} + \text{right tail} = 2\times(\text{left tail}) = 0.4180
+\text{p-value} = \text{left tail} + \text{right tail} = 2\times(\text{left tail}) = 0.2892
 \end{eqnarray*}
 This p-value is relatively large (larger than $\alpha=0.05$), so we should not reject $H_0$. That is, if $H_0$ is true, it would not be very unusual to see a sample mean this far from 7 hours simply due to sampling variation. Thus, we do not have sufficient evidence to conclude that the mean is different than 7 hours.
 
@@ -862,7 +886,7 @@ By examining these two scenarios, we can determine that we will make a Type~1 Er
 \end{example}
 
 \begin{caution}{One-sided hypotheses are allowed only \emph{before} seeing data}
-{After observing data, it is tempting to turn a two-sided test into a one-sided test. Avoid this temptation. Hypotheses must be set up \emph{before} observing the data. If~they are not, the test must be two-sided.}
+{After observing data, it is tempting to turn a two-sided test into a one-sided test. Avoid this temptation. Hypotheses must be set up \emph{before} observing the data. If~they are not, the test should be two-sided.}
 \end{caution}
 
 \subsection{Choosing a significance level}

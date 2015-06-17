@@ -4,19 +4,19 @@ data(COL)
 myPDF('2ndSchSleepHTExample.pdf', 6, 2.4,
       mar = c(2, 0, 0.5, 0),
       mgp = c(3, 0.65, 0))
-normTail(L = -0.81,
-         U = 0.81,
+normTail(L = -1.06,
+         U = 1.06,
          col = COL[1],
          axes = FALSE)
-labels <- expression(bar(x)*'  =  6.83')
-axis(1, at = -0.81, labels = labels, cex.axis = 0.87)
+labels <- expression(bar(x)*' = 6.83')
+axis(1, at = -1.06, labels = labels, cex.axis = 0.87)
 
 par(mgp = c(3, 0.77, 0))
 at <- c(-15, 0, 5)
-labels <- expression(0, H[0]*': '*mu*'  =  7', 0)
+labels <- expression(0, H[0]*': '*mu*' = 7', 0)
 axis(1, at, labels, cex.axis = 0.87)
 
-yMax <- max(Y)
+yMax <- dnorm(0)
 arrows(-2, yMax / 2,
        -1.6, yMax / 3,
        length = 0.1,
