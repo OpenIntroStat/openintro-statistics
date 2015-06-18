@@ -137,46 +137,52 @@ Set up hypotheses and verify the conditions using the null value, $p_0$, to ensu
 
 \index{margin of error|(}
 
-We first encountered sample size computations in Section~\ref{sampleSizeAndPower}, which considered the case of estimating a single mean. We found that these computations were helpful in planning a study to control the size of the standard error of a point estimate. The task was to find a sample size $n$ so that the sample mean would be within some margin of error $m$ of the actual mean with a certain level of confidence. For example, the margin of error for a point estimate using 95\% confidence can be written as $1.96\times SE$. We set up a general equation to represent the problem:
-\begin{align*}
-ME = z^{\star}SE \leq m
-\end{align*}
-where $ME$ represented the actual margin of error and $z^{\star}$ was chosen to correspond to the confidence level. The standard error formula is specified to correspond to the particular setting. For instance, in the case of means, the standard error was given as $\sigma / \sqrt{n}$. In the case of a single proportion, we use $\sqrt{p(1-p) / n\ }$ for the standard error.
+When collecting data, we choose a sample size suitable for the purpose of the study. Often times this means choosing a sample size large enough that the \term{margin of error} -- which is the part we add and subtract from the point estimate in a confidence interval -- is sufficiently small that the sample is useful. More explicitly, our task is to find a sample size $n$ so that the sample proportion is within some margin of error $m$ of the actual proportion with a certain level of confidence.
 
-Planning a sample size before collecting data is equally important when estimating a proportion. For instance, if we are conducting a university survey to determine whether students support a \$200 per year increase in fees to pay for a new football stadium, how big of a sample is needed to be sure the margin of error is less than 0.04 using a 95\% confidence level?
+% For example, the margin of error for a point estimate using 95\% confidence can be written as $1.96\times SE$. We set up a general equation to represent the problem:
+%\begin{align*}
+%ME = z^{\star}SE \leq m
+%\end{align*}
+%where $ME$ represented the actual margin of error and $z^{\star}$ was chosen to correspond to the confidence level. The standard error formula is specified to correspond to the particular setting. For instance, in the case of means, the standard error was given as $\sigma / \sqrt{n}$. In the case of a single proportion, we use $\sqrt{p(1-p) / n\ }$ for the standard error.
 
-\begin{example}{Find the smallest sample size $n$ so that the margin of error of the point estimate $\hat{p}$ will be no larger than $m=0.04$ when using a 95\% confidence interval.}
-For a 95\% confidence level, the value $z^{\star}$ corresponds to 1.96, and we can write the margin of error expression as follows:
+\begin{example}{A university newspaper is conducting a survey to determine what fraction of students support a \$200 per year increase in fees to pay for a new football stadium. How big of a sample is required to ensure the margin of error is smaller than 0.04 using a 95\% confidence level?}
+The margin of error for a sample proportion is
 \begin{align*}
-ME = z^{\star}SE = 1.96\times \sqrt{\frac{p(1-p)}{n}} \leq 0.04
+z^{\star} \sqrt{\frac{p (1 - p)}{n}}
 \end{align*}
-There are two unknowns in the equation: $p$ and $n$. If we have an estimate of $p$, perhaps from a similar survey, we could use that value. If we have no such estimate, we must use some other value for $p$. It turns out that the margin of error is largest when $p$ is 0.5, so we typically use this \emph{worst case estimate} if no other estimate is available:
+Our goal is to find the smallest sample size $n$ so that this margin of error is smaller than $m=0.04$. For a 95\% confidence level, the value $z^{\star}$ corresponds to 1.96:
 \begin{align*}
-	1.96\times \sqrt{\frac{0.5(1-0.5)}{n}} &\leq 0.04 \\
-	1.96^2\times \frac{0.5(1-0.5)}{n} &\leq 0.04^2 \\
-	1.96^2\times \frac{0.5(1-0.5)}{0.04^2} &\leq n \\
-	600.25 &\leq n
+1.96\times \sqrt{\frac{p(1-p)}{n}} \ < \ 0.04
 \end{align*}
-We would need at least 600.25 participants, which means we need 601 participants or more, to ensure the sample proportion is within 0.04 of the true proportion with 95\% confidence.
+There are two unknowns in the equation: $p$ and $n$. If we have an estimate of $p$, perhaps from a similar survey, we could enter in that value and solve for $n$. If we have no such estimate, we must use some other value for $p$. It turns out that the margin of error is largest when $p$ is 0.5, so we typically use this \emph{worst case value} if no estimate of the proportion is available:
+\begin{align*}
+	1.96\times \sqrt{\frac{0.5(1-0.5)}{n}} &\ < \ 0.04 \\
+	1.96^2\times \frac{0.5(1-0.5)}{n} &\ < \ 0.04^2 \\
+	1.96^2\times \frac{0.5(1-0.5)}{0.04^2} &\ < \ n \\
+	600.25 &\ < \  n
+\end{align*}
+We would need over 600.25 participants, which means we need 601 participants or more, to ensure the sample proportion is within 0.04 of the true proportion with 95\% confidence.
 \end{example}
 
-No estimate of the true proportion is required in sample size computations for a proportion, whereas an estimate of the standard deviation is always needed when computing a sample size for a margin of error for the sample mean. However, if we have an estimate of the proportion, we should use it in place of the worst case estimate of the proportion,~0.5.
+When an estimate of the proportion is available, we use it in place of the worst case proportion value,~0.5.
 
-\begin{exercise}
-A manager is about to oversee the mass production of a new tire model in her factory, and she would like to estimate what proportion of these tires will be rejected through quality control. The quality control team has monitored the last three tire models produced by the factory, failing 1.7\% of tires in the first model, 6.2\% of the second model, and 1.3\% of the third model. The manager would like to examine enough tires to estimate the failure rate of the new tire model to within about 2\% with a 90\% confidence level.\footnote{(a) For the 1.7\% estimate of $p$, we estimate the appropriate sample size as follows:
-\begin{align*}
-1.65\times \sqrt{\frac{p(1-p)}{n}} \approx
-1.65\times \sqrt{\frac{0.017(1-0.017)}{n}} &\leq 0.02 \qquad\to\qquad n \geq 113.7
-\end{align*}
-Using the estimate from the first model, we would suggest examining 114 tires (round up!). A similar computation can be accomplished using 0.062 and 0.013 for $p$: 396 and 88. \par
-(b) We could examine which of the old models is most like the new model, then choose the corresponding sample size. Or if two of the previous estimates are based on small samples while the other is based on a larger sample, we should consider the value corresponding to the larger sample. (Answers will vary.)}
-\begin{itemize}
+\begin{example}{A manager is about to oversee the mass production of a new tire model in her factory, and she would like to estimate what proportion of these tires will be rejected through quality control. The quality control team has monitored the last three tire models produced by the factory, failing 1.7\% of tires in the first model, 6.2\% of the second model, and 1.3\% of the third model. The manager would like to examine enough tires to estimate the failure rate of the new tire model to within about 2\% with a 90\% confidence level.
+\begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item[(a)] There are three different failure rates to choose from. Perform the sample size computation for each separately, and identify three sample sizes to consider.
 \item[(b)] The sample sizes vary widely. Which of the three would you suggest using? What would influence your choice?
-\index{margin of error|)}
-\end{itemize}
-\end{exercise}
+\end{enumerate}}
+(a)~For a 90\% confidence interval, $z^{\star} = 1.65$, and since an estimate of the proportion 0.017 is available, we'll use it in the margin of error formula: %use theFor the 1.7\% estimate of $p$, we estimate the appropriate sample size as follows:
+\begin{align*}
+1.65\times \sqrt{\frac{0.017(1-0.017)}{n}} &\ < \ 0.02 \\
+113.7 &\ < \ n
+\end{align*}
+For sample size calculations, we always round up, so the first tire model suggests 114 tires would be sufficient.
+
+A similar computation can be accomplished using 0.062 and 0.013 for $p$, and you should verify that using these proportions results in minimum sample sizes of 396 and~88 tires, respectively.
+
+(b) We could examine which of the old models is most like the new model, then choose the corresponding sample size. Or if two of the previous estimates are based on small samples while the other is based on a larger sample, we should consider the value corresponding to the larger sample. There is no one clearly correct approach here. Can you think of other reasonable approaches?
+\end{example}
 
 \index{data!Congress approval rating|(}
 
@@ -189,6 +195,7 @@ A recent estimate of Congress' approval rating was 19\%.\footnote{\oiRedirect{te
 A sample size of 370 or more would be reasonable. (Reminder: always round up for sample size calculations!)}
 
 \index{data!Congress approval rating|)}
+\index{margin of error|)}
 
 \end{exercise}
 
@@ -667,7 +674,7 @@ Figure~\ref{chiSquareAreaAbove9Point21WithDF3} shows a cutoff of 9.21 with a chi
 \index{data!racial make-up of jury|(}
 In Section~\ref{chiSquareTestStatistic}, we identified a new test statistic ($\chi^2$) within the context of assessing whether there was evidence of racial bias in how jurors were sampled. The null hypothesis represented the claim that jurors were randomly sampled and there was no racial bias. The alternative hypothesis was that there was racial bias in how the jurors were sampled.
 
-We determined that a large $\chi^2$ value would suggest strong evidence favoring the alternative hypothesis: that there was racial bias. However, we could not quantify what the chance was of observing such a large test statistic ($\chi^2=5.89$) if the null hypothesis actually was true. This is where the chi-square distribution becomes useful. If the null hypothesis was true and there was no racial bias, then $\chi^2$ would follow a chi-square distribution, with three degrees of freedom in this case. Under certain conditions, the statistic $\chi^2$ follows a chi-square distribution with $k-1$ degrees of freedom, where $k$ is the number of bins.
+We determined that a large $\chi^2$ value would suggest strong evidence favoring the alternative hypothesis: that there was racial bias. However, we could not quantify what the chance was of observing such a large test statistic ($\chi^2=5.89$) if the null hypothesis actually was true. This is where the chi-square distribution becomes useful. If the null hypothesis was true and there was no racial bias, then $\chi^2$ would follow a chi-square distribution, with three degrees of freedom in this case. Under certain conditions, the statistic $\chi^2$ follows a chi-square distribution with $k - 1$ degrees of freedom, where $k$ is the number of bins.
 
 \begin{example}{How many categories were there in the juror example? How many degrees of freedom should be associated with the chi-square distribution used for $\chi^2$?}
 In the jurors example, there were $k=4$ categories: white, black, Hispanic, and other. According to the rule above, the test statistic $\chi^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
