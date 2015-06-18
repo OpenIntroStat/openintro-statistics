@@ -140,7 +140,7 @@ st. dev.		& 2.556 & 2.564 \\
 %library(openintro); library(xtable); data(yrbss); data(yrbss.samp); d <- yrbss.samp$physically_active_7d; mean(d); median(d); sd(d); d <- yrbss$physically_active_7d; mean(d, na.rm = TRUE); median(d, na.rm = TRUE); sd(d, na.rm = TRUE)
 
 
-\begin{exercise} \label{pointEstimateOfDifferentNetTimesBetweenGender}
+\begin{exercise} \label{peOfDiffActiveBetweenGender}
 Suppose we want to estimate the difference in days active for men and women. If $\bar{x}_{men} = 4.3$ and $\bar{x}_{women} = 3.2$, then what would be a good point estimate for the population difference?\footnote{We could take the difference of the two sample means: $4.3 - 3.2 = 1.1$. Men are physically active about 1.1 days per week more than women on average in YRBSS.}
 \end{exercise}
 %library(openintro); library(xtable); data(yrbss); data(yrbss.samp); (x <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, mean)); diff(x)
@@ -344,7 +344,7 @@ There are three components to this interval: the point estimate, ``1.96'', and t
 If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?\footnote{This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure~\ref{choosingZForCI}.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of $\mu$.}
 \end{exercise}
 
-To create a 99\% confidence interval, change 1.96 in the 95\% confidence interval formula to be $2.58$. Exercise~\ref{leadInForMakingA99PercentCIExercise} highlights that 99\% of the time a normal random variable will be within 2.58 standard deviations of the mean. This approach -- using the Z scores in the normal model to compute confidence levels -- is appropriate when $\bar{x}$ is associated with a normal distribution with mean $\mu$ and standard deviation $SE_{\bar{x}}$. Thus, the formula for a 99\% confidence interval is
+To create a 99\% confidence interval, change 1.96 in the 95\% confidence interval formula to be $2.58$. Guided Practice~\ref{leadInForMakingA99PercentCIExercise} highlights that 99\% of the time a normal random variable will be within 2.58 standard deviations of the mean. This approach -- using the Z scores in the normal model to compute confidence levels -- is appropriate when $\bar{x}$ is associated with a normal distribution with mean $\mu$ and standard deviation $SE_{\bar{x}}$. Thus, the formula for a 99\% confidence interval is
 \begin{eqnarray}
 \bar{x}\ \pm\ 2.58\times SE_{\bar{x}}
 \label{99PercCIForMean}
@@ -412,7 +412,7 @@ Figure~\ref{choosingZForCI} provides a picture of how to identify $z^{\star}$ ba
 \end{termBox}
 
 \begin{exercise} \label{find90CIForYrbssAgeExercise}
-Use the data in Exercise~\ref{find99CIForYrbssAgeExercise} to create a 90\% confidence interval for the average days active per week of all YRBSS students.\footnote{We first find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5\% (the other 5\% is in the upper tail): $z^{\star}=1.65$. The 90\% confidence interval can then be computed as $\bar{x}_{active}\ \pm\ 1.65\times SE_{\bar{x}} \to (3.32, 4.18)$. (We had already verified conditions for normality and the standard error.) That is, we are 90\% confident the average days active per week is between 3.32 and 4.18~days.}
+Use the data in Guided Practice~\ref{find99CIForYrbssAgeExercise} to create a 90\% confidence interval for the average days active per week of all YRBSS students.\footnote{We first find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5\% (the other 5\% is in the upper tail): $z^{\star}=1.65$. The 90\% confidence interval can then be computed as $\bar{x}_{active}\ \pm\ 1.65\times SE_{\bar{x}} \to (3.32, 4.18)$. (We had already verified conditions for normality and the standard error.) That is, we are 90\% confident the average days active per week is between 3.32 and 4.18~days.}
 \end{exercise}
 
 \subsection{Interpreting confidence intervals}
@@ -600,12 +600,12 @@ Don't despair if checking the skew condition is difficult or confusing. You aren
 But this doesn't mean you should give up. Checking skew and the other conditions is extremely important for a responsible data analysis. However, rest assured that evaluating skew isn't something you need to be a master of by the end of the book, though by that time you should be able to properly assess clear cut cases.}
 \end{tipBox}
 
-\begin{example}{The sample mean for student housing is \$616.91 and the sample standard deviation is \$128.65. Construct a 95\% confidence interval for the population mean and evaluate the hypotheses of Exercise~\ref{htForHousingExpenseForCommunityCollege650}.}
+\begin{example}{The sample mean for student housing is \$616.91 and the sample standard deviation is \$128.65. Construct a 95\% confidence interval for the population mean and evaluate the hypotheses of Guided Practice~\ref{htForHousingExpenseForCommunityCollege650}.}
 The standard error associated with the mean may be estimated using the sample standard deviation divided by the square root of the sample size. Recall that $n = 175$ students were sampled.
 \begin{align*}
 SE = \frac{s}{\sqrt{n}} = \frac{128.65}{\sqrt{175}} = 9.73
 \end{align*}
-You showed in Exercise~\ref{normalDistCondForHousingExpenseForCommunityCollege650} that the normal model may be applied to the sample mean. This ensures a 95\% confidence interval may be accurately constructed:
+You showed in Guided Practice~\ref{normalDistCondForHousingExpenseForCommunityCollege650} that the normal model may be applied to the sample mean. This ensures a 95\% confidence interval may be accurately constructed:
 $$\bar{x}\ \pm\ z^{\star} SE \quad\to\quad 616.91\ \pm\ 1.96 \times 9.73 \quad \to \quad (597.84, 635.98) $$
 Because the null value \$650 is not in the confidence interval, a true mean of \$650 is implausible and we reject the null hypothesis. The data provide statistically significant evidence that the actual average housing expense is less than \$650 per month.
 \end{example}
@@ -809,7 +809,7 @@ During early October 2009, 52 Ebay auctions were recorded for \emph{Mario Kart}.
    \label{ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}
 \end{figure}
 
-\begin{example}{The average sale price of the 52 Ebay auctions for \emph{Wii Mario Kart} was \$44.17 with a standard deviation of \$4.15. Does this provide sufficient evidence to reject the null hypothesis in Exercise~\ref{ebayAmazonOneSidedTestExercise}? Use a significance level of $\alpha = 0.01$.}
+\begin{example}{The average sale price of the 52 Ebay auctions for \emph{Wii Mario Kart} was \$44.17 with a standard deviation of \$4.15. Does this provide sufficient evidence to reject the null hypothesis in Guided Practice~\ref{ebayAmazonOneSidedTestExercise}? Use a significance level of $\alpha = 0.01$.}
 The hypotheses were set up and the conditions were checked in Exercises~\ref{ebayAmazonOneSidedTestExercise} and~\ref{exerciseFor52EbayAuctionsToExamineMarioKartLessExpensiveThanAmazonConditions}. The next step is to find the standard error of the sample mean and produce a sketch to help find the p-value.
 \begin{eqnarray*}
 SE_{\bar{x}} = s/\sqrt{n} = 4.15/\sqrt{52} = 0.5755
@@ -837,13 +837,13 @@ Sometimes it's also a good idea to deviate from the standard. We'll discuss when
 
 \index{data!school sleep|(}
 
-We now consider how to compute a p-value for a two-sided test. In one-sided tests, we shade the single tail in the direction of the alternative hypothesis. For example, when the alternative had the form $\mu > 7$, then the p-value was represented by the upper tail (Figure~\ref{pValueOneSidedSleepStudyExplained}). When the alternative was $\mu < 46.99$, the p-value was the lower tail (Exercise~\ref{ebayAmazonOneSidedTestExercise}). In a two-sided test, \emph{we shade two tails} since evidence in either direction is favorable to $H_A$.
+We now consider how to compute a p-value for a two-sided test. In one-sided tests, we shade the single tail in the direction of the alternative hypothesis. For example, when the alternative had the form $\mu > 7$, then the p-value was represented by the upper tail (Figure~\ref{pValueOneSidedSleepStudyExplained}). When the alternative was $\mu < 46.99$, the p-value was the lower tail (Guided Practice~\ref{ebayAmazonOneSidedTestExercise}). In a two-sided test, \emph{we shade two tails} since evidence in either direction is favorable to $H_A$.
 
 \begin{exercise} \label{2ndSchSleepHypSetupExercise}
 Earlier we talked about a research group investigating whether the students at their school slept longer than 7 hours each night. Let's consider a second group of researchers who want to evaluate whether the students at their college differ from the norm of 7 hours. Write the null and alternative hypotheses for this investigation.\footnote{Because the researchers are interested in any difference, they should use a two-sided setup: $H_0: \mu = 7$, $H_A: \mu \neq 7$.}
 \end{exercise}
 
-\begin{example}{The second college randomly samples 122 students and finds a mean of $\bar{x} = 6.83$ hours and a standard deviation of $s=1.8$ hours. Does this provide strong evidence against $H_0$ in Exercise~\ref{2ndSchSleepHypSetupExercise}? Use a significance level of $\alpha=0.05$.}
+\begin{example}{The second college randomly samples 122 students and finds a mean of $\bar{x} = 6.83$ hours and a standard deviation of $s=1.8$ hours. Does this provide strong evidence against $H_0$ in Guided Practice~\ref{2ndSchSleepHypSetupExercise}? Use a significance level of $\alpha=0.05$.}
 First, we must verify assumptions. (1) A simple random sample of less than 10\% of the student body means the observations are independent. (2) The sample size is 122, which is greater than 30. (3) Based on the earlier distribution and what we already know about college student sleep habits, the sample size will be acceptable.
 
 Next we can compute the standard error ($SE_{\bar{x}} = \frac{s}{\sqrt{n}} = 0.16$) of the estimate and create a picture to represent the p-value, shown in Figure~\ref{2ndSchSleepHTExample}. Both tails are shaded. An estimate of 7.17 or more provides at least as strong of evidence against the null hypothesis and in favor of the alternative as the observed estimate, $\bar{x} = 6.83$.
@@ -1035,35 +1035,39 @@ SE_{\bar{x}} = \frac{s}{\sqrt{n}}
 \end{eqnarray*}
 In this section, we provide the computed standard error for each example and exercise without detailing where the values came from. In future chapters, you will learn to fill in these and other details for each situation.
 
-\begin{example}{In Exercise~\vref{pointEstimateOfDifferentNetTimesBetweenGender}, we computed a point estimate for the average difference in run times between men and women: $\bar{x}_{women}-\bar{x}_{men}=14.48$ minutes. This point estimate is associated with a nearly normal distribution with standard error $SE=2.78$ minutes. What is a reasonable 95\% confidence interval for the difference in average run times?}
-\label{confIntervalForDifferenceOfRunTimeBetweenGenders}
+\Comment{Next two examples adjusted for YRBSS.}
+
+\begin{example}{In Guided Practice~\vref{peOfDiffActiveBetweenGender}, we computed a point estimate for the difference in the average days active per week between male and female students: $\bar{x}_{female}-\bar{x}_{male}=1.1$~days. This point estimate is associated with a nearly normal distribution with standard error $SE = 0.5$~days. What is a reasonable 95\% confidence interval for the difference in average days active per week?}
+\label{ciForDiffOfPhysActiveBetweenGenders}
 The normal approximation is said to be valid, so we apply Equation~\eqref{95PercGeneralCIInGeneralizingSection}:
 \begin{eqnarray*}
 \text{point estimate}\ \pm\ z^{\star} SE
-	\quad\rightarrow\quad 14.48\ \pm\ 1.96\times 2.78
-	\quad\rightarrow\quad (9.03, 19.93)
+	\quad\rightarrow\quad 1.1\ \pm\ 1.96\times 0.5
+	\quad\rightarrow\quad (0.12, 2.08)
 \end{eqnarray*}
-Thus, we are 95\% confident that the men were, on average, between 9.03 and 19.93 minutes faster than women in the 2012 Cherry Blossom Run. That is, the actual average difference is plausibly between 9.03 and 19.93 minutes with 95\% confidence.
+We are 95\% confident that the male students, on average, were physically active 0.12 to 2.08 days more than female students in YRBSS each week. That is, the actual average difference is plausibly between 0.12 and 2.08 days per week with 95\% confidence.
 \end{example}
-%library(openintro); library(xtable); data(yrbss); data(yrbss.samp); (x <- by(yrbss.samp$time, yrbss.samp$gender, mean)); diff(x); s <- by(yrbss.samp$time, yrbss.samp$gender, sd); n <- by(yrbss.samp$time, yrbss.samp$gender, length); sqrt(sum(s^2/n))
+%library(openintro); library(xtable); data(yrbss); data(yrbss.samp); (x <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, mean)); diff(x); s <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, sd); n <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, length); sqrt(sum(s^2/n))
 
 
-\begin{example}{Does Example~\ref{confIntervalForDifferenceOfRunTimeBetweenGenders} guarantee that if a husband and wife both ran in the race, the husband would run between 9.03 and 19.93 minutes faster than the wife?}
-Our confidence interval says absolutely nothing about individual observations. It {only} makes a statement about a plausible range of values for the \emph{average} difference between all men and women who participated in the run.
+\begin{example}{Does Example~\ref{ciForDiffOfPhysActiveBetweenGenders} guarantee that if a male and female student are selected at random from YRBSS, the male student would be active 0.12 to 2.08 days more than the female student?}
+Our confidence interval says absolutely nothing about individual observations. It {only} makes a statement about a plausible range of values for the \emph{average} difference between all male and female students who participated in YRBSS.
 \end{example}
 
 \begin{exercise} \label{findZFor99PercConfLevelInFrameworkForInf}
 What $z^{\star}$ would be appropriate for a 99\% confidence level? For help, see Figure~\vref{choosingZForCI}.\footnote{We seek $z^{\star}$ such that 99\% of the area under the normal curve will be between the Z scores -$z^{\star}$ and $z^{\star}$. Because the remaining 1\% is found in the tails, each tail has area 0.5\%, and we can identify -$z^{\star}$ by looking up 0.0050 in the normal probability table: $z^{\star} = 2.58$. See also Figure~\vref{choosingZForCI}.}
 \end{exercise}
 
+\Comment{Next exercise adjusted for YRBSS.}
+
 \begin{exercise}
-The proportion of men in the \data{yrbss\_samp} sample is $\hat{p}=0.45$. This sample meets certain conditions that ensure $\hat{p}$ will be nearly normal, and the standard error of the estimate is $SE_{\hat{p}}=0.05$. Create a 90\% confidence interval for the proportion of participants in the 2012 Cherry Blossom Run who are men.\footnote{We use $z^{\star}=1.65$ (see Exercise~\vref{find90CIForYrbssAgeExercise}), and apply the general confidence interval formula:
+The proportion of students who are male in the \data{yrbss\_samp} sample is $\hat{p} = 0.48$. This sample meets certain conditions that ensure $\hat{p}$ will be nearly normal, and the standard error of the estimate is $SE_{\hat{p}} = 0.05$. Create a 90\% confidence interval for the proportion of students in the 2013 YRBSS survey who are male.\footnote{We use $z^{\star}=1.65$ (see Guided Practice~~\vref{find90CIForYrbssAgeExercise}), and apply the general confidence interval formula:
 \begin{eqnarray*}
 \hat{p}\ \pm\ z^{\star}SE_{\hat{p}}
-	\quad\to\quad 0.45\ \pm\ 1.65\times 0.05
-	\quad\to\quad (0.3675, 0.5325)
+	\quad\to\quad 0.48\ \pm\ 1.65\times 0.05
+	\quad\to\quad (0.3975, 0.5625)
 \end{eqnarray*}
-Thus, we are 90\% confident that between 37\% and 53\% of the participants were men.}
+Thus, we are 90\% confident that between 40\% and 56\% of the YRBSS students were male.}
 \index{confidence interval!using normal model|)}
 \end{exercise}
 
@@ -1088,7 +1092,7 @@ Just as the confidence interval method works with many other point estimates, we
 A drug called sulphinpyrazone was under consideration for use in reducing the death rate in heart attack patients. To determine whether the drug was effective, a set of 1,475 patients were recruited into an experiment and randomly split into two groups: a control group that received a placebo and a treatment group that received the new drug. What would be an appropriate null hypothesis? And the alternative?\footnote{The skeptic's perspective is that the drug does not work at reducing deaths in heart attack patients ($H_0$), while the alternative is that the drug does work ($H_A$).}
 \end{exercise}
 
-We can formalize the hypotheses from Exercise~\ref{fdaHypSetupForSulph} by letting $p_{control}$ and $p_{treatment}$ represent the proportion of patients who died in the control and treatment groups, respectively. Then the hypotheses can be written as
+We can formalize the hypotheses from Guided Practice~\ref{fdaHypSetupForSulph} by letting $p_{control}$ and $p_{treatment}$ represent the proportion of patients who died in the control and treatment groups, respectively. Then the hypotheses can be written as
 \begin{eqnarray*}
 &&H_0: p_{control} = p_{treatment} \quad\text{(the drug doesn't work)} \quad \\
 &&H_A: p_{control} > p_{treatment} \quad\text{(the drug works)}
