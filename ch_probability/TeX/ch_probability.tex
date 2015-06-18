@@ -507,14 +507,14 @@ The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases
 \begin{example}{If at least one parent completed a college degree, what is the chance their teenager attended college right after high school?}
 We can estimate this probability using the data. Of the 280 cases in this data set where \var{parents} takes value \resp{degree}, 231 represent cases where the \var{teen} variable takes value \resp{college}:
 \begin{eqnarray*}
-P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
+P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
 \end{eqnarray*}
 \end{example}
 
 \begin{example}{A teenager is randomly selected from the sample and she did not attend college right after high school. What is the probability that at least one of her parents has a college degree?}\label{collegeProbOfParentsGivenStudentNot}
 If the teenager did not attend, then she is one of the 347 teens in the second row. Of~these 347 teens, 49 had at least one parent who got a college degree:
 \begin{eqnarray*}
-P(\text{\var{parents} $\to$ \resp{degree} given \var{teen} $\to$ \resp{not}}) = \frac{49}{347} = 0.141
+P(\text{\var{parents} \resp{degree} given \var{teen} \resp{not}}) = \frac{49}{347} = 0.141
 \end{eqnarray*}
 \end{example}
 
@@ -526,17 +526,17 @@ P(\text{\var{parents} $\to$ \resp{degree} given \var{teen} $\to$ \resp{not}}) = 
 
 Table~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without regard to any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college}}) = \frac{445}{792} = 0.56
+P(\text{\var{teen} \resp{college}}) = \frac{445}{792} = 0.56
 \end{align*}
 A probability of outcomes for two or more variables or processes is called a \termsub{joint \mbox{probability}}{joint probability}:
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{not}}) = \frac{214}{792} = 0.27
+P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}}) = \frac{214}{792} = 0.27
 \end{align*}
 It is common to substitute a comma for ``and'' in a joint probability, although either is acceptable. That is,
 \begin{center}
-$P(\text{\var{teen} $\to$ \resp{college}, \var{parents} $\to$ \resp{not}})$ \\[2mm]
+$P(\text{\var{teen} \resp{college}, \var{parents} \resp{not}})$ \\[2mm]
 means the same thing as \\[2mm]
-$P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{not}})$
+$P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}})$
 \end{center}
 
 \begin{termBox}{\tBoxTitle{Marginal and joint probabilities}
@@ -567,10 +567,10 @@ Total & 0.35 & 0.65 & 1.00 \\
   \hline
 Joint outcome & Probability \\
   \hline
-\var{parents} $\to$ \resp{degree} and \var{teen} $\to$ \resp{college} & 0.29 \\
-\var{parents} $\to$ \resp{degree} and \var{teen} $\to$ \resp{not} & 0.06 \\
-\var{parents} $\to$ \resp{not} and \var{teen} $\to$ \resp{college} & 0.27 \\
-\var{parents} $\to$ \resp{not} and \var{teen} $\to$ \resp{not} & 0.38 \\
+\var{parents} \resp{degree} and \var{teen} \resp{college} & 0.29 \\
+\var{parents} \resp{degree} and \var{teen} \resp{not} & 0.06 \\
+\var{parents} \resp{not} and \var{teen} \resp{college} & 0.27 \\
+\var{parents} \resp{not} and \var{teen} \resp{not} & 0.38 \\
    \hline
 Total & 1.00 \\
 \hline
@@ -585,9 +585,9 @@ Verify Table~\ref{familyCollegeDistribution} represents a probability distributi
 
 We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
 \begin{align*}
-P(\text{\underline{\color{black}\var{teen} $\to$ \resp{college}}})
-&=  P(\text{\var{parents} $\to$ \resp{degree} and \underline{\color{black}\var{teen} $\to$ \resp{college}}}) \\
-& \quad \quad + P(\text{\var{parents} $\to$ \resp{not} and \underline{\color{black}\var{teen} $\to$ \resp{college}}}) \\
+P(\text{\underline{\color{black}\var{teen} \resp{college}}})
+&=  P(\text{\var{parents} \resp{degree} and \underline{\color{black}\var{teen} \resp{college}}}) \\
+& \quad \quad + P(\text{\var{parents} \resp{not} and \underline{\color{black}\var{teen} \resp{college}}}) \\
 &= 0.28 + 0.27 \\
 &= 0.56
 \end{align*}
@@ -601,14 +601,14 @@ There is some connection between education level of parents and of the teenager:
 
 The probability that a random teenager from the study attended college is 0.56. Could we update this probability if we knew that one of the teen's parents has a college degree? Absolutely. To do so, we limit our view to only those 280 cases where a parent has a college degree and look at the fraction where the teenager attended college:
 \begin{eqnarray*}
-P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
+P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
 \end{eqnarray*}
 We call this a \term{conditional probability} because we computed the probability under a condition: a parent has a college degree. There are two parts to a conditional probability, \term{the outcome of interest} and the \term{condition}. It is useful to think of the condition as information we know to be true, and this information usually can be described as a known outcome or~event.
 
 We separate the text inside our probability notation into the outcome of interest and the condition:
 \begin{eqnarray}
-&& P(\text{\var{teen} $\to$ \resp{college} given \var{parents} $\to$ \resp{degree}}) \notag \\
-&& = P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) = \frac{231}{280} = 0.825
+&& P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) \notag \\
+&& = P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
 \label{probStudentUsedIfParentsUsedInFormalNotation}
 \end{eqnarray}
 \marginpar[\raggedright\vspace{-10mm}
@@ -619,18 +619,18 @@ $P(A | B)$\vspace{1mm}\\\footnotesize Probability of\\outcome $A$\\given $B$}The
 
 In Equation~\eqref{probStudentUsedIfParentsUsedInFormalNotation}, we computed the probability a teen attended college based on the condition that at least one parent has a college degree as a fraction:\vspaceB{-1mm}
 \begin{eqnarray}
-&& P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) \notag \\
-&&\quad = \frac{\text{\# cases where \var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree}}}{\text{\# cases where \var{parents} $\to$ \resp{degree}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
+&& P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
+&&\quad = \frac{\text{\# cases where \var{teen} \resp{college} and \var{parents} \resp{degree}}}{\text{\# cases where \var{parents} \resp{degree}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
 &&\quad = \frac{231}{280} = 0.825 \notag
 \end{eqnarray}
-We considered only those cases that met the condition, \var{parents} $\to$ \resp{degree}, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
+We considered only those cases that met the condition, \var{parents} \resp{degree}, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
 
 Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~(\ref{ratioOfBothToRatioOfConditionalForParentsAndStudent}) as an example demonstrating this technique.
 
-We considered only those cases that satisfied the condition, \var{parents} $\to$ \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} $\to$ \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} $\to$ \resp{degree}). Similarly, we would expect about 6\% or $0.06\times 1000 = 60$ to meet both the information criterion and represent our outcome of interest. Thus, the conditional probability could be computed:
+We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 6\% or $0.06\times 1000 = 60$ to meet both the information criterion and represent our outcome of interest. Thus, the conditional probability could be computed:
 \begin{align}
-&P(\text{\var{teen} $\to$ \resp{college}}\ |\ \text{\var{parents} $\to$ \resp{degree}}) \notag \\
-	&= \frac{\text{\# (\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree})}}{\text{\# (\var{parents} $\to$ \resp{degree})}} \notag \\
+&P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
+	&= \frac{\text{\# (\var{teen} \resp{college} and \var{parents} \resp{degree})}}{\text{\# (\var{parents} \resp{degree})}} \notag \\
 	&= \frac{60}{350}
 		= \frac{0.06}{0.35}
 		= 0.171
@@ -638,9 +638,9 @@ We considered only those cases that satisfied the condition, \var{parents} $\to$
 \end{align}
 In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.06 and 0.35, which we can write as
 \begin{align*}
-P(\text{\var{teen} $\to$ \resp{college} and \var{parents} $\to$ \resp{degree}})
+P(\text{\var{teen} \resp{college} and \var{parents} \resp{degree}})
 	\quad\text{and}\quad
-	P(\text{\var{parents} $\to$ \resp{degree}}).
+	P(\text{\var{parents} \resp{degree}}).
 \end{align*}
 The fraction of these probabilities is an example of the general formula for conditional probability.
 
@@ -654,17 +654,17 @@ P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
 
 \begin{exercise}\label{familyCollegeProbOfParentsEqualNotGivenTeen}
 (a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case where neither parent has a college degree if it is known that the teenager didn't attend college right after high school}''. Notice that the condition is now based on the {teenager}, not the {parent}. \\[1mm]
-(b)~Determine the probability from part (a). Table~\vref{familyCollegeProbTable} may be helpful.\footnote{(a) $P(\text{\var{parents} $\to$ \resp{not}}\ |\ \text{\var{teen} $\to$ \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} $\to$ \resp{not} and \var{teen} $\to$ \resp{not}}) = 0.38$ and $P(\text{\var{teen} $\to$ \resp{not}}) = 0.44$. Then the ratio represents the conditional probability: $0.38 / 0.44 = 0.864$.}
+(b)~Determine the probability from part (a). Table~\vref{familyCollegeProbTable} may be helpful.\footnote{(a) $P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} \resp{not} and \var{teen} \resp{not}}) = 0.38$ and $P(\text{\var{teen} \resp{not}}) = 0.44$. Then the ratio represents the conditional probability: $0.38 / 0.44 = 0.864$.}
 \end{exercise}
 
 \begin{exercise}\label{whyCondProbSumTo1}
 (a)~Determine the probability that one of the parents has a college degree if it is known the teenager did not attend college. \\[1mm]
 (b)~Using the answers from part~(a) and Guided Practice~\ref{familyCollegeProbOfParentsEqualNotGivenTeen}(b), compute
 \begin{align*}
-&P(\text{\var{parents} $\to$ \resp{degree}}\ |\ \text{\var{teen} $\to$ \resp{not}}) \\
-&+ P(\text{\var{parents} $\to$ \resp{not}}\ |\ \text{\var{teen} $\to$ \resp{not}})
+&P(\text{\var{parents} \resp{degree}}\ |\ \text{\var{teen} \resp{not}}) \\
+&+ P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})
 \end{align*}
-(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnote{(a)~This probability is $\frac{P(\text{\var{parents} $\to$ \resp{degree}, \var{teen} $\to$ \resp{not}})}{P(\text{\var{teen} $\to$ \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works for conditional probabilities, provided the probabilities are conditioned on the same information.}
+(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnote{(a)~This probability is $\frac{P(\text{\var{parents} \resp{degree}, \var{teen} \resp{not}})}{P(\text{\var{teen} \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works for conditional probabilities, provided the probabilities are conditioned on the same information.}
 \end{exercise}
 
 \begin{exercise}
