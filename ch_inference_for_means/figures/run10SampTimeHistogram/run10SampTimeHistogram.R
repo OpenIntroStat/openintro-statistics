@@ -4,7 +4,7 @@ data(COL)
 data(run10Samp)
 d <- run10Samp
 
-myPDF("run10SampTimeHistogram.pdf", 3.5, 2.8,
+myPDF("run10SampTimeHistogram.pdf", 5, 2.8,
       mar = c(3.5, 3.5, 0.5, 1),
       mgp = c(2.2, 0.55, 0))
 histPlot(d$time,
