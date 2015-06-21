@@ -752,6 +752,189 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 
 
 %__________________
+\section{Power calculations for a difference of means}
+%\section{Determining a sample size for an experiment}
+%\section{Consult: planning an experiment}
+\label{PowerForDifferenceOfTwoMeans}
+
+%So far we've been focused on controlling the Type~1 Error rate for hypothesis tests. However, when planning an experiment, we often are interested in detecting any real effect, so we should also be concerned about the size of the Type~2 Error rate.
+Often times in experiment planning, there are often two competing considerations:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item We want to collect enough data that we can detect important effects.
+\item Collecting data can be expensive, and in experiments involving people, there may be some risk to patients.
+\end{itemize}
+%The first point is relatively simple: the more data we collect, the more precise our estimates and the smaller effects we can typically detect. The second point is more subtle, since we need to determine the size of effects that we care about.
+In this section, we focus on the context of a clinical trial, which is a health-related experiment where the subject are people, and we will determine an appropriate sample size where we can be 80\% sure that we would detect any practically important effects.\footnote{Even though we don't cover it explicitly, similar sample size planning is also helpful for observational studies.}
+
+%\begin{example}{Alzheimer's disease is a neurological disease. It affects patients mildly at the beginning and eventually leads to dementia. If an Alzheimer's patient lives long enough, the disease will begin affecting bodily functions and ultimately lead to death. It's an extremely serious condition that millions of people, has no cure, and is very expensive to research, partially due to its slow progression. A group of researchers is }
+
+%\begin{example}{Suppose a company has developed a new drug for lowering blood pressure and are preparing a clinical trial to determine its efficacy. They are targeting patients with systolic blood pressure between 140 and 180 mmHg. They have brought you in as a statistician for the project. What are some of the questions you should ask?}
+%As a statistician, you may not generally be an expert in the application, so asking questions -- and a lot of questions -- is very important to better understand the context and the data to expect. Below are small sample of questions that could be asked during a first meeting about the project:
+%\begin{description}
+%\setlength{\itemsep}{0mm}
+%\item[What is the main aim of the study? Who will I be working with] It's important to ask basic question to get a firm understanding of the context.
+%\item[What side effects do you suspect may arise that we should monitor?] We may be well aware of the main outcome of interest, systolic blood pressure. However, it's also important to think about other data that should be collected.
+%\item[Who is eligible for the study?] Asking about the study subjects is important. We'd also want to ask some numerical questions about who will be recruited, e.g. get a sense for the approximate average and standard deviation of patients on key variables such as systolic blood pressure.
+%\item[What is the study timeline?] Understanding a deadlines is important. It's common for a statistician to be brought in at the last minute. Additionally, it's common for the amount of work required is underestimated, so it's important to push back on unrealistic timelines or get back to the researcher if the statistician determines the proposed timeline is unrealistic.
+%\item[Who will need to review the study before it goes forward?] Clinical trials generally have review boards that are generally in place to ensure ethical research. Knowing who will be reviewing the plan can offer guidance on what the responsibilities will be for the statistician.
+%\end{description}
+%\end{example}
+
+
+\subsection{Going through the motions of a test}
+
+We're going to go through the motions of a hypothesis test. While this may not seem helpful at first, it will help us frame our calculations for determining an appropriate sample size for the study.
+
+\begin{example}{Suppose a company has developed a new drug for lowering blood pressure, and they are preparing a clinical trial (experiment) to test the drug's effectiveness. They recruit people who are taking a particular standard blood pressure medication. People in the control group will continue to take their current medication through with generic-looking pills to ensure treatment blinding. Write down the hypotheses for a two-sided hypothesis test in this context.}
+Generally, clinical trials use a two-sided alternative hypothesis, so below are suitable hypotheses for this context:
+\begin{description}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] The new drug performs exactly as well as the standard medication. \\
+  $\mu_{trmt} - \mu_{ctrl} = 0$.
+\item[$H_A$:] The new drug's performance differs from the standard medication. \\
+  $\mu_{trmt} - \mu_{ctrl} \neq 0$.
+\end{description}
+Some researchers might argue for a one-sided test here, where the alternative would consider only whether the new drug performs better than the standard medication. However, it would be very informative to know whether the new drug performs worse than the standard medication, so we use a two-sided test to consider this possibility during an analysis.
+\end{example}
+
+\begin{example}{The company's researchers would like to run the clinical trial on patients with systolic blood pressures between 140 and 180~mmHg. Suppose the study's doctors expect the standard deviation of the patients' blood pressures to be about 12~mmHg and the distribution of patient blood pressures to be approximately symmetric.\footnote{In this particular study, we'd generally measure each patient's blood pressure at the beginning and end of the study, and then the outcome measurement for the study would be the average change in blood pressure. That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would represent average differences. This is what you might think of as a 2-sample paired testing structure, and we'd analyze it exactly just like a hypothesis test for a difference in the average change for patients. In the calculations we perform here, we'll suppose that 12~mmHg is the predicted standard deviation of a patient's blood pressure difference over the course of the study.} If~we had 100 patients per group, what would be the approximate standard error for $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
+The standard error is calculated as follows:
+\begin{align*}
+SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}
+  = \sqrt{\frac{s_{trmt}^2}{n_{trmt}} + \frac{s_{ctrl}^2}{n_{ctrl}}}
+  = \sqrt{\frac{12^2}{100} + \frac{12^2}{100}}
+  = 1.70
+\end{align*}
+Since the doctors have only taken an educated guess at the standard deviation for the patients who will enroll, and the treatment may affect the variability of the patients, this may be an imperfect estimate of $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$. However, it is sufficient for our purposes.
+\end{example}
+
+\begin{example}{What does the null distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ look like?}
+The degrees of freedom are greater than 30, so the distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ will be approximately normal. Its standard deviation (the standard error) would be about 1.70, and under the null hypothesis, its mean would be 0.
+\begin{center}
+\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_A_0_1-7}
+\end{center}
+\end{example}
+
+\begin{example}{For what values of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ would we reject the null hypothesis?}
+%If the observed difference is in the far left tail or far right tail of the null distribution, we reject the null hypothesis.
+For $\alpha = 0.05$, we would reject $H_0$ if the difference is in the lower 2.5\% or upper 2.5\% tail:
+\begin{description}
+\setlength{\itemsep}{0mm}
+\item[Lower 2.5\%:] For the normal model, this is 1.96 standard errors below 0, so any difference smaller than $-1.96 \times 1.70 = -3.332$.
+\item[Upper 2.5\%:] For the normal model, this is 1.96 standard errors above 0, so any difference larger than $1.96 \times 1.70 = 3.332$.
+\end{description}
+The boundaries of these \term{rejection regions} are shown below:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_B_0_1-7_with_rejection_region}
+\end{center}
+\end{example}
+
+Next, we'll perform some hypothetical calculations to determine the probability we reject the null hypothesis, if the alternative hypothesis were actually true.
+
+
+\subsection{Computing the power for a 2-sample test}
+
+When planning a study, we want to know how likely we are to detect an effect we care about. In~other words, if there is a real effect, and that effect is large enough that it has practical value, then what's the probability that we detect that effect? This probability is called the \term{power}, and we can compute it for different sample sizes or for different \emph{effect sizes}.
+
+We first determine what is a practically significant result. Suppose that the company researchers care about finding any effect on blood pressure that is 3~mmHg or larger vs the standard medication. Here, 3~mmHg is the minimum \term{effect size} of interest, and we want to know how likely we are to detect this size of an effect in the study.
+
+\begin{example}{Suppose we decided to move forward with 100 patients per treatment group and the new drug reduces blood pressure by an additional 3~mmHg relative to the standard medication. What is the probability that we detect a drop?}
+Before we even do any calculations, notice that if $\bar{x}_{trmt} - \bar{x}_{ctrl} = -3$~mmHg, there wouldn't even be sufficient evidence to reject $H_0$. That's not a good sign.
+
+To calculate the probability that we will reject $H_0$, we need to determine a few things:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The sampling distribution for $\bar{x}_{trmt} - \bar{x}_{ctrl}$ when the true difference is -3~mmHg. This is the same as the null distribution, except it is shifted to the left by~-3:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_C_0_1-7_with_alt_at_3}
+\end{center}
+\item The rejection regions, which is outside of the dotted lines above.
+\item A little elbow grease to calculate the fraction of the sampling distribution that falls in the rejection region.
+\end{itemize}
+In short, we need to calculate the probability that $x < -3.332$ for a normal distribution with mean -3 and standard deviation 1.7. (We'll ignore the upper tail, which is in the opposite direction of the truth, if the true difference is indeed -3.) To do so, we first shade the area we want to calculate:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_D_0_1-7_with_alt_at_3_and_shaded}
+\end{center}
+Then we calculate the Z-score and find the tail area using either the normal probability table or statistical software:
+\begin{align*}
+Z = \frac{-3.332 - (-3)}{1.7} = -0.20 \qquad \to \qquad 0.4207
+\end{align*}
+The power for the test is about 42\% when $\mu_{trmt} - \mu_{ctrl} = -3$ and each group has a sample size of 100.
+\end{example}
+
+
+\subsection{Determining a proper sample size}
+
+In the last example, we found that if we have a sample size of 100 in each group, we can only detect an effect size of 3~mmHg with a probability of about 0.42. Suppose the researchers used just 100 patients per group, and the data did not support the alternative hypothesis, i.e. the researchers did not reject $H_0$. This is a very bad situation to be in for a few reasons:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item In the back of the researchers' minds, they'd all be wondering, \emph{maybe there is a real and meaningful difference, but we weren't able to detect it with such a small sample}. 
+\item The company probably invested hundreds of millions of dollars in developing the new drug, so now they are left with great uncertainty about its potential since the experiment didn't have a great shot at detecting effects that would still be important.
+\item Patients were subjected to the drug, and we can't even say with much certainty that the drug doesn't help (or harm) patients.
+\item Another clinical trial is likely to be run to get a more conclusive answer as to whether the drug does hold any practical value, and conducting a second clinical trial may take years and many millions of dollars.
+\end{itemize}
+We want to avoid this situation, so we need to determine an appropriate sample size to ensure we can be pretty confident that we'll detect any effects that are practically important. As mentioned earlier, a change of 3~mmHg was deemed to be the minimum difference that was practically important. As~a first step, we could calculate power for several different sample sizes. For instance, let's try 500 patients per group.
+
+\begin{exercise}
+Calculate the power to detect a change of -3~mmHg when using a sample size of 500 per group.\footnote{(a) The standard error is given as $SE = \sqrt{\frac{12^2}{500} + \frac{12^2}{500}} = 0.76$.\\
+(b) \& (c) The null distribution, rejection boundaries, and alternative distribution are shown below: \\
+\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/power_null_0_0-76/power_null_0_0-76_with_alt_at_3_and_shaded} \\
+The rejection regions are the areas on the outside of the two dotted lines and are at $\pm 0.76 \times 1.96 = \pm 1.49$. \\
+(d) The area of the alternative distribution where $\mu_{trmt} - \mu_{ctrl} = -3$ has been shaded. We compute the Z-score and find the tail area: $Z = \frac{-1.49 - (-3)}{0.76} = 1.99 \to 0.9767$, which is the power of the test for a difference of 3 mmHg. With 500 patients per group, we would be about 97.7\% sure (or more) that we'd detect any effects that are at least 3~mmHg in size.}
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item Determine the standard error (recall that the standard deviation for patients was expected to be about 12~mmHg).
+\item Identify the null distribution and rejection regions.
+\item Identify the alternative distribution when $\mu_{trmt} - \mu_{ctrl} = -3$.
+\item Compute the probability we reject the null hypothesis.
+\end{enumerate}
+\end{exercise}
+
+The researchers decided 3~mmHg was the minimum difference that was practically important, and with a sample size of 500, we can be very certain (97.7\% or better) that we will detect any such difference. We now have moved to another extreme where we are exposing an unnecessary number of patients to the new drug in the clinical trial. Not only is this ethically questionable, but it would also cost a lot more money than is necessary to be quite sure we'd detect any important effects.
+
+The most common practice is to identify the sample size where the power is around 80\%, and sometimes 90\%. Other values may be reasonable for a specific context, but 80\% and 90\% are most commonly targeted as a good balance between high power and not exposing too many patients to a new treatment (or wasting too much money). We could compute the power of the test at several other possible sample sizes until we find one that's close to 80\%, but that's inefficient. Instead, we should solve the problem backwards.
+
+\begin{example}{What sample size will lead to a power of 80\%?}
+We start by identifying the Z-score that would give us a lower tail of 80\%: it would be about 0.84:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_best_sample_size/power_best_sample_size}
+\end{center}
+Additionally, the rejection region always extends $1.96\times SE$ from the center of the null distribution for $\alpha = 0.05$. This allows us to calculate the target distance between the center of the null and alternative distributions in terms of the standard error:
+\begin{align*}
+0.84 \times SE + 1.96 \times SE = 2.8 \times SE
+\end{align*}
+In our example, we also want the distance between the null and alternative distributions' centers to equal the minimum effect size of interest, 3~mmHg, which allows us to set up an equation between this difference and the standard error:
+\begin{align*}
+3 &= 2.8 \times SE \\
+3 &= 2.8 \times \sqrt{\frac{12^2}{n} + \frac{12^2}{n}} \\
+% 3^2 &= 2.8^2 \times \left( \frac{12^2}{n} + \frac{12^2}{n} \right) \\
+n &= \frac{2.8^2}{3^2} \times \left( 12^2 + 12^2 \right) = 250.88 \\
+\end{align*}
+We should target about 251 patients per group.
+\end{example}
+
+The standard error difference of $2.8 \times SE$ is specific to a context where the targeted power is 80\% and the significance level is $\alpha = 0.05$. If the targeted power is 90\% or if we use a difference significance level, then we'll use something a little different than $2.8 \times SE$.
+
+\begin{exercise}
+Suppose the targeted power was 90\% and we were using $\alpha = 0.01$. How many standard errors should separate the centers of the null and alternative distribution, where the alternative distribution is centered at the minimum effect size of interest? Assume the test is two-sided.\footnote{First, find the Z-score such that 90\% of the distribution is below it: $Z = 1.28$. Next, find the cutoffs for the rejection regions: $\pm 2.58$. Then the difference in centers should be about $1.28 \times SE + 2.58 \times SE = 3.86 \times SE$.}
+\end{exercise}
+
+\begin{exercise}
+What considerations do you think would be important in selecting power?\footnote{Answers will vary, but here are a few important considerations:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item Whether there is any risk to patients in the study.
+\item The cost of enrolling more patients.
+\item The potential downside of not detecting an effect of interest.
+\end{itemize}}
+\end{exercise}
+
+Power calculations for expensive or risky experiments are critical. However, what about experiments that are inexpensive and where the ethical considerations are minimal? For example, if we are doing final testing on a new feature on a popular website, how would our sample size considerations change? As before, we'd want to make sure the sample is big enough. However, if the feature has undergone some testing and is known to perform well (i.e. not frustrate many site users), then we may run a much larger experiment than is necessary to detect the minimum effects of interest. The reason is that there may be additional benefits to having an even more precise estimate of the effect of the new feature. We may even conduct a much larger experiment as part of the rollout of the new feature.
+
+
+
+%__________________
 \section[Comparing many means with ANOVA (special topic)]{Comparing many means with ANOVA\\(special topic)}
 \label{anovaAndRegrWithCategoricalVariables}
 
