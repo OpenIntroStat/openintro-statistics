@@ -468,6 +468,9 @@ If a linear model has a very strong negative relationship with a correlation of 
 \index{least squares regression!R-squared ($R^2$)|)}
 \end{exercise}
 
+\CalculatorVideos{how to find regression coefficients}
+
+
 \subsection{Categorical predictors with two levels}
 \label{categoricalPredictorsWithTwoLevels}
 
@@ -688,10 +691,6 @@ family\_\hspace{0.3mm}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\
 If conditions for fitting the regression line do not hold, then the methods presented here should not be applied. The standard error or distribution assumption of the point estimate -- assumed to be normal when applying the $t$ test statistic -- may not be valid.}
 \end{tipBox}
 
-\ANOVASection{\subsection{An alternative test statistic}
-
-We considered the $t$ test statistic as a way to evaluate the strength of evidence for a hypothesis test in Section~\ref{testStatisticForTheSlope}. However, we could focus on $R^2$. Recall that $R^2$ described the proportion of variability in the response variable ($y$) explained by the explanatory variable ($x$). If this proportion is large, then this suggests a linear relationship exists between the variables. If this proportion is small, then the evidence provided by the data may not be convincing.
-
-This concept -- considering the amount of variability in the response variable explained by the explanatory variable -- is a key component in some statistical techniques. The \emph{analysis of variance (ANOVA)}\index{analysis of variance (ANOVA)} technique introduced in Section~\ref{anovaAndRegrWithCategoricalVariables} uses this general principle. The method states that if enough variability is explained away by the categories, then we would conclude the mean varied between the categories. On the other hand, we might not be convinced if only a little variability is explained. ANOVA can be further employed in advanced regression modeling to evaluate the inclusion of explanatory variables, though we leave these details to a later course.}{}
+\CalculatorVideos{hypothesis testing for a regression coefficient}
 
 

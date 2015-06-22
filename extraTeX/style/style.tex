@@ -151,6 +151,10 @@
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
 \newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=os3_pdf}{#2}}
+\newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera}~}
+\newcommand{\CalculatorVideos}[1]{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
+Videos covering #1 using TI and Casio graphing calculators are available at \mbox{\oiRedirect{textbook-openintro_videos}{openintro.org/videos}}.}
+\end{tipBox}}
 \newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
 \newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
 
