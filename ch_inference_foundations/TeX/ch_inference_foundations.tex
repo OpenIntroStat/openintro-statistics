@@ -1,11 +1,11 @@
 \chapter{Foundations for inference}
 \label{foundationsForInference}
 
-Statistical inference is concerned primarily with understanding the quality of parameter estimates. For example, a classic inferential question is, ``How sure are we that the estimated mean, $\bar{x}$, is near the true population mean, $\mu$?'' While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We introduce these common themes in Sections~\ref{variabilityInEstimates}-\ref{cltSection} by discussing inference about the population mean, $\mu$, and set the stage for other parameters and scenarios in Section~\ref{aFrameworkForInference}. Some advanced considerations are discussed in Section~\ref{sampleSizeAndPower}. Understanding this chapter will make the rest of this book, and indeed the rest of statistics, seem much more familiar.
+Statistical inference is concerned primarily with understanding the quality of parameter estimates. For example, a classic inferential question is, ``How sure are we that the estimated mean, $\bar{x}$, is near the true population mean, $\mu$?'' While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We introduce these common themes in Sections~\ref{variabilityInEstimates}-\ref{cltSection} by discussing inference about the population mean, $\mu$, and set the stage for other parameters and scenarios in Section~\ref{aFrameworkForInference}. Understanding this chapter will make the rest of this book, and indeed the rest of statistics, seem much more familiar.
 
 \index{data!yrbss|(}
 
-Throughout the next few sections we consider a data set called \data{yrbss}, which represents all 13,583 high school students in the Youth Risk Behavior Surveillance System (YRBSS) from 2013.\footnote{\urlwofont{http://www.cdc.gov/healthyyouth/data/yrbs/data.htm}} Part of this data set is shown in Table~\ref{yrbssDF}, and the variables are described in Table~\ref{yrbssVariables}.
+Throughout the next few sections we consider a data set called \data{yrbss}, which represents all 13,583 high school students in the Youth Risk Behavior Surveillance System (YRBSS) from 2013.\footnote{\oiRedirect{textbook-yrbss}{www.cdc.gov/healthyyouth/data/yrbs/data.htm}} Part of this data set is shown in Table~\ref{yrbssDF}, and the variables are described in Table~\ref{yrbssVariables}.
 
 \begin{table}[h]
 \centering
@@ -69,8 +69,6 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 %library(openintro); library(xtable); data(yrbss); data(yrbss.samp); xtable(yrbss.amp[c(1,2,3,100),])
 \end{table}
 
-\Comment{Do extensive searching for ``run'' in the LaTeX to find forgotten items to correct.}
-
 \Comment{Figure~\ref{yrbssSampHistograms} is referenced in 4.2. Make sure that text is appropriately updated.}
 
 % WARNING: This figure is referenced in Section 4.2
@@ -83,7 +81,7 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 
 
 %__________________
-\section{Variability in estimates}
+\section[Variability in estimates]{Variability in estimates \sectionvideohref{youtube-DNIauUrRIEM&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}}
 \label{variabilityInEstimates}
 
 \index{point estimate|(}
@@ -241,7 +239,7 @@ We achieved three goals in this section. First, we determined that point estimat
 
 
 %__________________
-\section{Confidence intervals}
+\section[Confidence intervals]{Confidence intervals \sectionvideohref{youtube-FUaXoKdCre4&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}}
 \label{confidenceIntervals}
 
 \index{confidence interval|(}
@@ -478,14 +476,14 @@ As the sample size becomes larger, it is reasonable to \emph{slowly} relax the n
 
 
 %__________________
-\section{Hypothesis testing}
+\section[Hypothesis testing]{Hypothesis testing \sectionvideohref{youtube-NVbPE1_Cbx8&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}}
 \label{hypothesisTesting}
 
 \index{hypothesis testing|(}
 
 Are students lifting weights or performing other strength training exercises more or less often than they have in the past? We'll compare data from students from the 2011 YRBSS survey to our sample of 100 students from the 2013 YRBSS survey.
 
-We'll also consider sleep behavior. A recent study found that college students average about 7~hours of sleep per night.\footnote{\urlwofont{http://theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
+We'll also consider sleep behavior. A recent study found that college students average about 7~hours of sleep per night.\footnote{\oiRedirect{textbook-theloquitur_1161}{theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
 
 \subsection{Hypothesis testing framework}
 
@@ -554,25 +552,6 @@ Because the average of all students from the 2013 YRBSS survey is 3.09, which fa
 \begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
 In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
 \end{tipBox}
-
-%%\begin{example}{Next consider whether the \data{yrbss\_samp} data set provides strong evidence that the average days active per week is different in 2011 and 2013. In 2011, the average was 3.92~days per week, and in the 2013 \data{yrbss\_samp} data set, the average was 2.75 years with a standard deviation of 2.56~days for 100 students.}
-%\begin{example}{Next consider whether there is strong evidence that the average age of runners has changed from 2006 to 2012 in the Cherry Blossom Run. In 2006, the average age was 36.13 years, and in the 2012 \data{yrbss\_samp} data set, the average was 35.05 years with a standard deviation of 8.97 years for 100 runners.}
-%First, set up the hypotheses:
-%\begin{itemize}
-%\setlength{\itemsep}{0mm}
-%\item[$H_0$:] The average age of runners has not changed from 2006 to 2012, $\mu_{age} = 36.13$.
-%\item[$H_A$:] The average age of runners has changed from 2006 to 2012, $\mu_{age} \neq 36.13$.
-%\end{itemize}
-%We have previously verified conditions for this data set. The normal model may be applied to $\bar{y}$ and the estimate of $SE$ should be very accurate. Using the sample mean and standard error, we can construct a 95\% confidence interval for $\mu_{age}$ to determine if there is sufficient evidence to reject $H_0$:
-%\begin{eqnarray*}
-%\bar{y}\ \pm\ 1.96 \times  \frac{s}{\sqrt{100}} 
-%	\quad\to\quad 35.05\ \pm\ 1.96\times 0.90 
-%	\quad\to\quad (33.29, 36.81)
-%\end{eqnarray*}
-%This confidence interval contains the \emph{null value}, 36.13. Because 36.13 is not implausible, we cannot reject the null hypothesis. We have not found strong evidence that the average age is different than 36.13 years.
-%\index{data!yrbss\_samp|)}
-%\index{data!yrbss|)}
-%\end{example}
 
 \Comment{The college housing data set was updated to have 175 observations and have stronger skew.}
 
@@ -899,7 +878,7 @@ Choosing a significance level for a test is important in many contexts, and the 
 
 If making a Type~1 Error is dangerous or especially costly, we should choose a small significance level (e.g. 0.01). Under this scenario we want to be very cautious about rejecting the null hypothesis, so we demand very strong evidence favoring $H_A$ before we would reject $H_0$.
 
-If a Type 2 Error is relatively more dangerous or much more costly than a Type~1 Error, then we should choose a higher significance level (e.g. 0.10). Here we want to be cautious about failing to reject $H_0$ when the null is actually false.  We will discuss this particular case in greater detail in Section~\ref{sampleSizeAndPower}.
+If a Type 2 Error is relatively more dangerous or much more costly than a Type~1 Error, then we should choose a higher significance level (e.g. 0.10). Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
 
 \begin{tipBox}{\tipBoxTitle[]{Significance levels should reflect consequences of errors}
 The significance level selected for a test should reflect the consequences associated with Type~1 and Type 2 Errors.}
@@ -925,7 +904,7 @@ A part inside of a machine is very expensive to replace. However, the machine us
 
 
 %__________________
-\section{Examining the Central Limit Theorem}
+\section[Examining the Central Limit Theorem]{Examining the Central Limit Theorem \sectionvideohref{youtube-lsCc_pS3O28&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}}
 \label{cltSection}
 
 \index{Central Limit Theorem|(}
@@ -999,7 +978,7 @@ You won't be a pro at assessing skew by the end of this book, so just use your b
 
 
 %__________________
-\section{Inference for other estimators}
+\section[Inference for other estimators]{Inference for other estimators \sectionvideohref{youtube-PUMBNtVKr_g&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}}
 \label{aFrameworkForInference}
 
 The sample mean is not the only point estimate for which the sampling distribution is nearly normal. For example, the sampling distribution of sample proportions closely resembles the normal distribution when the sample size is sufficiently large. In this section, we introduce a number of examples where the normal approximation is reasonable for the point estimate. Chapters~\ref{inferenceForNumericalData} and~\ref{inferenceForCategoricalData} will revisit each of the point estimates you see in this section along with some other new statistics.
@@ -1169,11 +1148,11 @@ Verification of conditions for statistical tools is always necessary. Whenever c
 Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See Sections~\ref{overviewOfDataCollectionPrinciples}-\ref{experimentsSection} for basic principles of data collection.
 
 
-%\subsection{Statistical significance versus practical significance}
-%
-%When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is \term{statistically significant}, it might not be \term{practically significant}.
-%
-%Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
-%
-%The role of a statistician in conducting a study often includes planning the size of the study. The statistician might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
+\subsection{Statistical significance versus practical significance}
+
+When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is \term{statistically significant}, it might not be \term{practically significant}.
+
+Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
+
+The role of a statistician in conducting a study often includes planning the size of the study. The statistician might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
 

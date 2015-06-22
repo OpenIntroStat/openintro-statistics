@@ -49,7 +49,7 @@ We will also see examples in this chapter where fitting a straight line to the d
 
 
 %__________________
-\section{Line fitting, residuals, and correlation}
+\section[Line fitting, residuals, and correlation]{Line fitting, residuals, and correlation \sectionvideohref{youtube-mPvtZhdPBhQ&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{lineFittingResidualsCorrelation}
 
 It is helpful to think deeply about the line fitting process. In this section, we examine criteria for identifying a linear model and introduce a new statistic, \emph{correlation}.
@@ -67,14 +67,16 @@ Scatterplots were introduced in Chapter~\ref{introductionToData} as a graphical 
    \label{scattHeadLTotalL}
 \end{figure}
 
+\setlength{\captionwidth}{0.9\mycaptionwidth}
 \begin{figure}
    \centering
-   \includegraphics[width=0.8\textwidth]{ch_regr_simple_linear/figures/possumPic/possumPic}
+   \includegraphics[width=0.85\textwidth]{ch_regr_simple_linear/figures/possumPic/possumPic}
    \caption{The common brushtail possum of Australia.\vspace{-1mm} \\
    -----------------------------\vspace{-2mm}\\
-   {\footnotesize Photo by wollombi on Flickr: \href{http://flickr.com/photos/wollombi/58499575/}{www.flickr.com/photos/wollombi/58499575}}\vspace{-8mm}}
+   {\footnotesize Photo by Peter Firminger (\oiRedirect{textbook-flickr_com_wollombi_58499575}{http://flic.kr/p/6aPTn}). \oiRedirect{textbook-CC_BY_2}{CC~BY~2.0~license}.}\vspace{-8mm}}
    \label{possumPic}
 \end{figure}
+\setlength{\captionwidth}{\mycaptionwidth}
 
 The head and total length variables are associated. Possums with an above average total length also tend to have above average head lengths. While the relationship is not perfectly linear, it could be helpful to partially explain the connection between these variables with a straight line.
 
@@ -222,14 +224,14 @@ It appears no straight line would fit any of the datasets represented in Figure~
 
 
 %__________________
-\section{Fitting a line by least squares regression}
+\section[Fitting a line by least squares regression]{Fitting a line by least squares regression \sectionvideohref{youtube-z8DmwG2G4Qc&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{fittingALineByLSR}
 
 \index{least squares regression|(}
 
 Fitting linear models by eye is open to criticism since it is based on an individual preference. In this section, we use \emph{least squares regression} as a more rigorous approach.
 
-This section considers family income and gift aid data from a random sample of fifty students in the 2011 freshman class of Elmhurst College in Illinois.\footnote{These data were sampled from a table of data for all freshman from the 2011 class at Elmhurst College that accompanied an article titled \emph{What Students Really Pay to Go to College} published online by \emph{The~Chronicle of Higher Education}: \href{http://chronicle.com/article/What-Students-Really-Pay-to-Go/131435}{chronicle.com/article/What-Students-Really-Pay-to-Go/131435}} Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
+This section considers family income and gift aid data from a random sample of fifty students in the 2011 freshman class of Elmhurst College in Illinois.\footnote{These data were sampled from a table of data for all freshman from the 2011 class at Elmhurst College that accompanied an article titled \emph{What Students Really Pay to Go to College} published online by \emph{The~Chronicle of Higher Education}: \oiRedirect{textbook-chronicle_elmhurst_article}{chronicle.com/article/What-Students-Really-Pay-to-Go/131435}} Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
 
 \begin{figure}
 \centering
@@ -360,7 +362,7 @@ $$y - \bar{y} = b_1 (x - \bar{x}) $$
 \end{itemize}}
 \end{tipBox}
 
-\begin{example}{Using the point $(101.8, 19.94)$ from the sample means and the slope estimate $b_1 = -0.0431$ from Exercise~\ref{findingTheSlopeOfTheLSRLineForIncomeAndAid}, find the least-squares line for predicting aid based on family income.} \label{exampleToFindLSRLineOfElmhurstData}
+\begin{example}{Using the point $(101.8, 19.94)$ from the sample means and the slope estimate $b_1 = -0.0431$ from Guided Practice~\ref{findingTheSlopeOfTheLSRLineForIncomeAndAid}, find the least-squares line for predicting aid based on family income.} \label{exampleToFindLSRLineOfElmhurstData}
 Apply the point-slope equation using $(101.8, 19.94)$ and the slope $b_1 = -0.0431$:
 \begin{align*}
 y - y_0     &= b_1 (x - x_0) \\
@@ -423,7 +425,7 @@ The slope describes the estimated difference in the $y$ variable if the explanat
 
 \noindent\hspace{\textwidth}\hspace{-40mm}Stephen Colbert
 
-\noindent\hspace{\textwidth}\hspace{-40mm}April 6th, 2010 \footnote{\urlwofont{http://www.colbertnation.com/the-colbert-report-videos/269929/}} \\
+\noindent\hspace{\textwidth}\hspace{-40mm}April 6th, 2010\footnote{\oiRedirect{textbook-colbert_extrapolation}{www.colbertnation.com/the-colbert-report-videos/269929}} \\
 
 Linear models can be used to approximate the relationship between two variables. However, these models have real limitations. Linear regression is simply a modeling framework. The truth is almost always much more complex than our simple line. For example, we do not know how the data outside of our limited window will behave.
 
@@ -469,7 +471,7 @@ If a linear model has a very strong negative relationship with a correlation of 
 \subsection{Categorical predictors with two levels}
 \label{categoricalPredictorsWithTwoLevels}
 
-Categorical variables are also useful in predicting outcomes. Here we consider a categorical predictor with two levels (recall that a \emph{level} is the same as a \emph{category}). We'll consider Ebay auctions for a video game, \emph{Mario Kart} for the Nintendo Wii, where both the total price of the auction and the condition of the game were recorded.\footnote{These data were collected in Fall 2009 and may be found at \href{http://www.openintro.org}{openintro.org}.} Here we want to predict total price based on game condition, which takes values \resp{used} and \resp{new}. A plot of the auction data is shown in Figure~\ref{marioKartNewUsed}.
+Categorical variables are also useful in predicting outcomes. Here we consider a categorical predictor with two levels (recall that a \emph{level} is the same as a \emph{category}). We'll consider Ebay auctions for a video game, \emph{Mario Kart} for the Nintendo Wii, where both the total price of the auction and the condition of the game were recorded.\footnote{These data were collected in Fall 2009 and may be found at \oiRedirect{textbook-openintro}{openintro.org}.} Here we want to predict total price based on game condition, which takes values \resp{used} and \resp{new}. A plot of the auction data is shown in Figure~\ref{marioKartNewUsed}.
 
 \begin{figure}
 \centering
@@ -518,7 +520,7 @@ The estimated intercept is the value of the response variable for the first cate
 
 
 %__________________
-\section{Types of outliers in linear regression}
+\section[Types of outliers in linear regression]{Types of outliers in linear regression \sectionvideohref{youtube-jZEKAlo1E54&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{typesOfOutliersInLinearRegression}
 
 In this section, we identify criteria for determining which outliers are important and influential.
@@ -563,7 +565,7 @@ Be cautious about using a categorical predictor when one of the levels has very 
 
 
 %__________________
-\section{Inference for linear regression}
+\section[Inference for linear regression]{Inference for linear regression \sectionvideohref{youtube-depiT-hTaGA&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{inferenceForLinearRegression}
 
 In this section we discuss uncertainty in the estimates of the slope and y-intercept for a regression line. Just as we identified standard errors for point estimates in previous chapters, we first discuss standard errors for these new estimates. However, in the case of regression, we will identify standard errors using statistical software.

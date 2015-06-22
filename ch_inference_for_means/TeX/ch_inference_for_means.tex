@@ -74,9 +74,9 @@ When the degrees of freedom is about 30 or more, the $t$-distribution is nearly 
 
 It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data. We use a \term{t table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table. A larger $t$-table is in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. In~practice, it's standard practice to use statistical software instead of a table, and you can see some of these options at
 \begin{center}
-\href{https://openintro.org/stat/prob-tables}{www.openintro.org/stat/prob-tables}
+\oiRedirect{textbook-prob_distribution_calculations}{www.openintro.org/stat/prob-tables}
 \end{center}
-\Comment{Still need to create redirect and add this note elsewhere in the textbook.}
+\Comment{Still need to create www.openintro.org/stat/prob-tables redirect and add this note elsewhere in the textbook.}
 
 \begin{table}[hht]
 \centering
@@ -241,10 +241,10 @@ where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confiden
 
 \begin{exercise} \label{croakerWhiteFishPacificExerConditions}
 \index{data!white fish and mercury|(}
-The FDA's webpage provides some data on mercury content of fish.\footnote{\urlwofont{http://www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?\footnote{There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.}
+The FDA's webpage provides some data on mercury content of fish.\footnote{\oiRedirect{textbook-fda_mercury_in_fish_2010}{www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?\footnote{There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.}
 \end{exercise}
 
-\begin{example}{Estimate the standard error of $\bar{x}=0.287$ ppm using the data summaries in Exercise~\ref{croakerWhiteFishPacificExerConditions}. If we are to use the $t$-distribution to create a 90\% confidence interval for the actual mean of the mercury content, identify the degrees of freedom we should use and also find $t^{\star}_{df}$.}
+\begin{example}{Estimate the standard error of $\bar{x}=0.287$ ppm using the data summaries in Guided Practice~\ref{croakerWhiteFishPacificExerConditions}. If we are to use the $t$-distribution to create a 90\% confidence interval for the actual mean of the mercury content, identify the degrees of freedom we should use and also find $t^{\star}_{df}$.}
 \label{croakerWhiteFishPacificExerSEDFTStar}
 The standard error: $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. Degrees of freedom: $df = n - 1 = 14$.
 
@@ -252,7 +252,7 @@ Looking in the column where two tails is 0.100 (for a 90\% confidence interval) 
 \end{example}
 
 \begin{exercise}
-Using the results of Exercise~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnote{$\bar{x} \ \pm\ t^{\star}_{14} SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90\% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.}
+Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnote{$\bar{x} \ \pm\ t^{\star}_{14} SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90\% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.}
 
 \index{data!white fish and mercury|)}
 
@@ -263,7 +263,7 @@ Using the results of Exercise~\ref{croakerWhiteFishPacificExerConditions} and Ex
 \subsection{One sample $t$-tests}
 \label{oneSampleTTests}
 
-Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each~spring.\footnote{\urlwofont{http://www.cherryblossom.org}} %We'll compare runners in 2006 and 2012.
+Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each~spring.\footnote{\oiRedirect{textbook-cherryblossom_org}{www.cherryblossom.org}}
 
 The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2012 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
 
@@ -612,7 +612,7 @@ If we made a Type~2 Error and there is a difference, what could we have done dif
 \indent\indent\indent\indent\indent\indent- Joseph Cullman, Philip Morris' Chairman of the Board \\
 \indent\indent\indent\indent\indent\indent{\color{white}...}on CBS' \emph{Face the Nation}, Jan 3,~1971
 \end{quotation}
-Fact check: the babies from women who smoke are not actually as healthy as from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \href{http://youtube.com/watch?v=6UsHHOCH4q8}{youtu.be/6UsHHOCH4q8}.} \Comment{The video in the footnote is unconventional for a textbook. Thoughts?}
+Fact check: the babies from women who smoke are not actually as healthy as from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \oiRedirect{textbook-johnoliver_tobacco}{youtu.be/6UsHHOCH4q8}.} \Comment{The video in the footnote is unconventional for a textbook. Thoughts?}
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
 
@@ -752,7 +752,7 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 
 
 %__________________
-\section{Power calculations for a difference of means}
+\section[Power calculations for a difference of means (special topic)]{Power calculations for a difference of means\\ (special topic)}
 %\section{Determining a sample size for an experiment}
 %\section{Consult: planning an experiment}
 \label{PowerForDifferenceOfTwoMeans}
@@ -1073,7 +1073,7 @@ The primary issue here is that we are inspecting the data before picking the gro
 Suppose we are to measure the aptitude for students in 20 classes in a large elementary school at the beginning of the year. In this school, all students are randomly assigned to classrooms, so any differences we observe between the classes at the start of the year are completely due to chance. However, with so many groups, we will probably observe a few groups that look rather different from each other. If we select only these classes that look so different, we will probably make the wrong conclusion that the assignment wasn't random. While we might only formally test differences for a few pairs of classes, we informally evaluated the other classes by eye before choosing the most extreme cases for a comparison.
 \end{example}
 
-For additional information on the ideas expressed in Example~\ref{multipleComparisonExampleThatIncludesDiscussionOfClassrooms}, we recommend reading about the \term{prosecutor's fallacy}.\footnote{See, for example, \href{http://www.stat.columbia.edu/~cook/movabletype/archives/2007/05/the_prosecutors.html}{www.stat.columbia.edu/$\sim$cook/movabletype/archives/2007/05/the\_prosecutors.html}.}
+For additional information on the ideas expressed in Example~\ref{multipleComparisonExampleThatIncludesDiscussionOfClassrooms}, we recommend reading about the \term{prosecutor's fallacy}.\footnote{See, for example, \oiRedirect{textbook-prosecutors_fallacy}{andrewgelman.com/2007/05/18/the\_prosecutors}.}
 
 In the next section we will learn how to use the $F$ statistic and ANOVA to test whether observed differences in sample means could have happened just by chance even if there was no difference in the respective population means.
 
@@ -1126,7 +1126,7 @@ Analysis of variance (ANOVA) is used to test whether the mean outcome differs ac
 The test statistic for the baseball example is $F=1.994$. Shade the area corresponding to the p-value in Figure~\ref{fDist3And323}. \footnote{\ \vspace{-4mm}\\\includegraphics[height=20mm]{ch_inference_for_means/figures/fDist3And323/fDist3And323Shaded}}
 \end{exercise}
 
-\begin{example}{The p-value corresponding to the shaded area in the solution of Exercise~\ref{describePValueAreaForFDistributionInMLBOBPExample} is equal to about 0.115. Does this provide strong evidence against the null hypothesis?}
+\begin{example}{The p-value corresponding to the shaded area in the solution of Guided Practice~\ref{describePValueAreaForFDistributionInMLBOBPExample} is equal to about 0.115. Does this provide strong evidence against the null hypothesis?}
 The p-value is larger than 0.05, indicating the evidence is not strong enough to reject the null hypothesis at a significance level of 0.05. That is, the data do not provide strong evidence that the average on-base percentage varies by player's primary field position.
 \end{example}
 
@@ -1245,7 +1245,7 @@ The scenario of testing many pairs of groups is called \term{multiple comparison
 where $K$ is the number of comparisons being considered (formally or informally). If there are $k$ groups, then usually all possible pairs are compared and $K=\frac{k(k-1)}{2}$.}
 \end{termBox}
 
-\begin{example}{In Exercise~\ref{exerExaminingAnovaSummaryTableForMidtermData}, you found strong evidence of differences in the average midterm grades between the three lectures. Complete the three possible pairwise comparisons using the Bonferroni correction and report any differences.} \label{multipleComparisonsOfThreeStatClasses}
+\begin{example}{In Guided Practice~\ref{exerExaminingAnovaSummaryTableForMidtermData}, you found strong evidence of differences in the average midterm grades between the three lectures. Complete the three possible pairwise comparisons using the Bonferroni correction and report any differences.} \label{multipleComparisonsOfThreeStatClasses}
 We use a modified significance level of $\alpha^* = 0.05/3 = 0.0167$. Additionally, we use the pooled estimate of the standard deviation: $s_{pooled}=13.61$ on $df=161$, which is provided in the ANOVA summary table.
 
 Lecture A versus Lecture B: The estimated difference and standard error are, respectively,

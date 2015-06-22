@@ -30,9 +30,9 @@ segments(2.1 * c(-1, 1), rep(0, 2), y1 = rep(0.2, 2),
          col = COL[4, 4], lty = 3, lwd = 3)
 segments(2.1 * c(-1, 1), rep(0, 2), y1 = rep(0.2, 2),
          col = COL[4, 4], lty = 3, lwd = 1.5)
-text(rep(-5.8, 2), 1.5 * c(0.21, 0.15),
+text(rep(-6, 2), 1.5 * c(0.21, 0.15),
      c("Distribution with",
-       expression(mu[trmt] - mu[ctrl]*" = 3")),
+       expression(mu[trmt] - mu[ctrl]*" = -3")),
      col = COL[2])
 arrows(-3, 0.02, -2.15, 0.02,
        col = COL[3], lwd = 2,

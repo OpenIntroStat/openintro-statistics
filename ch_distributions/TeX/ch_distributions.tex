@@ -116,16 +116,8 @@ Head lengths of brushtail possums follow a nearly normal distribution with mean 
 We can use Z scores to roughly identify which observations are more unusual than others. One observation $x_1$ is said to be more unusual than another observation $x_2$ if the absolute value of its Z score is larger than the absolute value of the other observation's Z score: $|Z_1| > |Z_2|$. This technique is especially insightful when a distribution is symmetric.
 
 \begin{exercise}
-Which of the observations in Exercise~\ref{headLZScore} is more unusual?\footnote{Because the \emph{absolute value} of Z score for the second observation is larger than that of the first, the second observation has a more unusual head length.}
+Which of the observations in Guided Practice~\ref{headLZScore} is more unusual?\footnote{Because the \emph{absolute value} of Z score for the second observation is larger than that of the first, the second observation has a more unusual head length.}
 \end{exercise}
-
-%\begin{exercise} \label{email_num_char_ZScore}
-%The variable \var{num\_\hspace{0.3mm}char} from the \data{email} data set describes the number of characters in nearly 4,000 emails. The distribution has mean 10,476 and standard deviation 14,383. Identify the Z scores for $\var{num\_\hspace{0.3mm}char}_{36}=13,788$ mm and $\var{num\_\hspace{0.3mm}char}_{79}=3,485$, which correspond to the $36^{th}$ and $76^{th}$ emails in the data set.\footnote{$Z_{36} = \frac{13,788 - 10,476}{14,383} = 0.23$, $Z_{79} = \frac{3,485 - 10,476}{14,383} = -0.49$}
-%\end{exercise}
-
-%\begin{exercise}
-%Which of the observations in Exercise~\ref{email_num_char_ZScore} is more unusual?\footnote{In Exercise~\ref{email_num_char_ZScore}, $Z_{36} = 0.23$ and $Z_{79}=-0.49$. Because the \emph{absolute value} of $Z_{79}$ is larger than $Z_{36}$, case 79 appears to have a more unusual number of email characters.}
-%\end{exercise}
 
 \subsection{Normal probability table}
 
@@ -294,7 +286,7 @@ These heights correspond to 69 inches and 74 inches. First, draw the figure. The
 \begin{center}
 \includegraphics[height=0.85in]{ch_distributions/figures/between59And62/between59And62}
 \end{center}
-The total area under the curve is~1. If we find the area of the two tails that are not shaded (from Exercise~\ref{more74Less69}, these areas are $0.3821$ and $0.1131$), then we can find the middle area:
+The total area under the curve is~1. If we find the area of the two tails that are not shaded (from Guided Practice~\ref{more74Less69}, these areas are $0.3821$ and $0.1131$), then we can find the middle area:
 \begin{center}
 \includegraphics[height=0.65in]{ch_distributions/figures/subtracting2Areas/subtracting2Areas}
 \end{center}
@@ -367,7 +359,7 @@ The data set with 400 observations has a histogram that greatly resembles the no
 Notice the histograms look more normal as the sample size increases, and the normal probability plot becomes straighter and more stable.
 \end{example}
 
-\begin{example}{Are NBA player heights normally distributed? Consider all 435 NBA players from the 2008-9 season presented in Figure~\ref{nbaNormal}.\footnote{These data were collected from \urlwofont{http://www.nba.com}.}}
+\begin{example}{Are NBA player heights normally distributed? Consider all 435 NBA players from the 2008-9 season presented in Figure~\ref{nbaNormal}.\footnote{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}}
 We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. We can compare these characteristics to the sample of 400 normally distributed observations in Example~\ref{normalExamplesExample} and see that they represent much stronger deviations from the normal model. NBA player heights do not appear to come from a normal distribution.
 \end{example}
 
@@ -396,7 +388,7 @@ Determine which data sets represented in Figure~\ref{normalQuantileExer} plausib
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExer}
-\caption{Four normal probability plots for Exercise~\ref{normalQuantileExercise}.}
+\caption{Four normal probability plots for Guided Practice~\ref{normalQuantileExercise}.}
 \label{normalQuantileExer}
 \end{figure}
 
@@ -409,7 +401,7 @@ Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExerAdditional}
-\caption{Normal probability plots for Exercise~\ref{normalQuantileExerciseAdditional}.}
+\caption{Normal probability plots for Guided Practice~\ref{normalQuantileExerciseAdditional}.}
 \label{normalQuantileExerAdditional}
 \end{figure}
 
@@ -429,7 +421,7 @@ How long should we expect to flip a coin until it turns up \resp{heads}? Or how 
 
 \index{distribution!Bernoulli|(}
 
-Stanley Milgram\index{Milgram, Stanley} began a series of experiments in 1963 to estimate what proportion of people would willingly obey an authority and give severe shocks to a stranger. Milgram found that about 65\% of people would obey the authority and give such shocks. Over the years, additional research suggested this number is approximately consistent across communities and time.\footnote{Find further information on Milgram's experiment at \par \ \ \hspace{0.2mm}\ \href{http://www.cnr.berkeley.edu/ucce50/ag-labor/7article/article35.htm}{www.cnr.berkeley.edu/ucce50/ag-labor/7article/article35.htm}.}
+Stanley Milgram\index{Milgram, Stanley} began a series of experiments in 1963 to estimate what proportion of people would willingly obey an authority and give severe shocks to a stranger. Milgram found that about 65\% of people would obey the authority and give such shocks. Over the years, additional research suggested this number is approximately consistent across communities and time.\footnote{Find further information on Milgram's experiment at \par \ \ \hspace{0.2mm}\ \oiRedirect{textbook-milgram}{www.cnr.berkeley.edu/ucce50/ag-labor/7article/article35.htm}.}
 
 Each person in Milgram's experiment can be thought of as a \term{trial}. We label a person a \term{success} if she refuses to administer the worst shock. A person is labeled a \term{failure} if she administers the worst shock. Because only 35\% of individuals refused to administer the most severe shock, we denote the \term{probability of a success} with $p=0.35$. The probability of a failure is sometimes denoted with $q=1-p$.
 
@@ -675,7 +667,7 @@ Suppose these four friends do not know each other and we can treat them as if th
 \end{exercise}
 
 \begin{exercise}
-What is the probability that at least 2 of your 4 smoking friends will develop a severe lung condition in their lifetimes?\footnote{The complement (no more than one will develop a severe lung condition) as computed in Exercise~\ref{noMoreThanOneFriendWSevereLungCondition} as 0.6517, so we compute one minus this value: 0.3483.}
+What is the probability that at least 2 of your 4 smoking friends will develop a severe lung condition in their lifetimes?\footnote{The complement (no more than one will develop a severe lung condition) as computed in Guided Practice~\ref{noMoreThanOneFriendWSevereLungCondition} as 0.6517, so we compute one minus this value: 0.3483.}
 \end{exercise}
 
 \begin{exercise}
@@ -858,7 +850,7 @@ If the probability Brian kicks a 35 yard field goal is $p=0.8$, what is the prob
 &P(\text{$1^{st}$ sequence OR $2^{nd}$ sequence OR ... OR $10^{th}$ sequence}) \\
 &\quad = P(\text{$1^{st}$ sequence}) + P(\text{$2^{nd}$ sequence}) + \cdots + P(\text{$10^{th}$ sequence})
 \end{align*}
-}The probability of the first sequence was identified in Exercise~\ref{probOfEachSeqOfSixTriesToGetFourSuccesses} as 0.0164, and each of the other sequences have the same probability. Since each of the ten sequence has the same probability, the total probability is ten times that of any individual sequence.
+}The probability of the first sequence was identified in Guided Practice~\ref{probOfEachSeqOfSixTriesToGetFourSuccesses} as 0.0164, and each of the other sequences have the same probability. Since each of the ten sequence has the same probability, the total probability is ten times that of any individual sequence.
 
 The way to compute this negative binomial probability is similar to how the binomial problems were solved in Section~\ref{binomialModel}. The probability is broken into two pieces:
 \begin{align*}

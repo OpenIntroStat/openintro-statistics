@@ -15,8 +15,8 @@ main.toc
 *gitignore~
 *.Rapp.history
 *~
+Icon[^/]
 \#*
 *.dropbox
-Icon*
 _README
 *-deprecated*

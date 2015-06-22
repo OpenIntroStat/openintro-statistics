@@ -32,7 +32,7 @@ segments(1.5 * c(-1, 1), rep(0, 2), y1 = rep(0.3, 2),
          col = COL[4], lty = 3, lwd = 1.5)
 text(rep(-5.8, 2), 2 * c(0.21, 0.15),
      c("Distribution with",
-       expression(mu[trmt] - mu[ctrl]*" = 3")),
+       expression(mu[trmt] - mu[ctrl]*" = -3")),
      col = COL[2])
 dev.off()
 
