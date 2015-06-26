@@ -788,9 +788,9 @@ In this section, we focus on the context of a clinical trial, which is a health-
 
 \subsection{Going through the motions of a test}
 
-We're going to go through the motions of a hypothesis test. While this may not seem helpful at first, it will help us frame our calculations for determining an appropriate sample size for the study.
+We're going to go through the motions of a hypothesis test. This will help us frame our calculations for determining an appropriate sample size for the study.
 
-\begin{example}{Suppose a company has developed a new drug for lowering blood pressure, and they are preparing a clinical trial (experiment) to test the drug's effectiveness. They recruit people who are taking a particular standard blood pressure medication. People in the control group will continue to take their current medication through with generic-looking pills to ensure treatment blinding. Write down the hypotheses for a two-sided hypothesis test in this context.}
+\begin{example}{Suppose a pharmaceutical company has developed a new drug for lowering blood pressure, and they are preparing a clinical trial (experiment) to test the drug's effectiveness. They recruit people who are taking a particular standard blood pressure medication. People in the control group will continue to take their current medication through generic-looking pills to ensure blinding. Write down the hypotheses for a two-sided hypothesis test in this context.}
 Generally, clinical trials use a two-sided alternative hypothesis, so below are suitable hypotheses for this context:
 \begin{description}
 \setlength{\itemsep}{0mm}
@@ -799,10 +799,10 @@ Generally, clinical trials use a two-sided alternative hypothesis, so below are 
 \item[$H_A$:] The new drug's performance differs from the standard medication. \\
   $\mu_{trmt} - \mu_{ctrl} \neq 0$.
 \end{description}
-Some researchers might argue for a one-sided test here, where the alternative would consider only whether the new drug performs better than the standard medication. However, it would be very informative to know whether the new drug performs worse than the standard medication, so we use a two-sided test to consider this possibility during an analysis.
+Some researchers might argue for a one-sided test here, where the alternative would consider only whether the new drug performs better than the standard medication. However, it would be very informative to know whether the new drug performs worse than the standard medication, so we use a two-sided test to consider this possibility during the analysis.
 \end{example}
 
-\begin{example}{The company's researchers would like to run the clinical trial on patients with systolic blood pressures between 140 and 180~mmHg. Suppose the study's doctors expect the standard deviation of the patients' blood pressures to be about 12~mmHg and the distribution of patient blood pressures to be approximately symmetric.\footnote{In this particular study, we'd generally measure each patient's blood pressure at the beginning and end of the study, and then the outcome measurement for the study would be the average change in blood pressure. That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would represent average differences. This is what you might think of as a 2-sample paired testing structure, and we'd analyze it exactly just like a hypothesis test for a difference in the average change for patients. In the calculations we perform here, we'll suppose that 12~mmHg is the predicted standard deviation of a patient's blood pressure difference over the course of the study.} If~we had 100 patients per group, what would be the approximate standard error for $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
+\begin{example}{The researchers would like to run the clinical trial on patients with systolic blood pressures between 140 and 180~mmHg. Suppose previously published studies suggest that the standard deviation of the patients' blood pressures will be about 12~mmHg and the distribution of patient blood pressures will be approximately symmetric.\footnote{In this particular study, we'd generally measure each patient's blood pressure at the beginning and end of the study, and then the outcome measurement for the study would be the average change in blood pressure. That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would represent average differences. This is what you might think of as a 2-sample paired testing structure, and we'd analyze it exactly just like a hypothesis test for a difference in the average change for patients. In the calculations we perform here, we'll suppose that 12~mmHg is the predicted standard deviation of a patient's blood pressure difference over the course of the study.} If~we had 100 patients per group, what would be the approximate standard error for $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
 The standard error is calculated as follows:
 \begin{align*}
 SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}
@@ -810,11 +810,11 @@ SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}
   = \sqrt{\frac{12^2}{100} + \frac{12^2}{100}}
   = 1.70
 \end{align*}
-Since the doctors have only taken an educated guess at the standard deviation for the patients who will enroll, and the treatment may affect the variability of the patients, this may be an imperfect estimate of $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$. However, it is sufficient for our purposes.
+This may be an imperfect estimate of $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$, since the standard deviation estimate we used may not be correct for this group of patients. However, it is sufficient for our purposes.
 \end{example}
 
 \begin{example}{What does the null distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ look like?}
-The degrees of freedom are greater than 30, so the distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ will be approximately normal. Its standard deviation (the standard error) would be about 1.70, and under the null hypothesis, its mean would be 0.
+The degrees of freedom are greater than 30, so the distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ will be approximately normal. The standard deviation of this distribution (the standard error) would be about 1.70, and under the null hypothesis, its mean would be 0.
 \begin{center}
 \includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_A_0_1-7}
 \end{center}
@@ -843,7 +843,7 @@ When planning a study, we want to know how likely we are to detect an effect we 
 
 We first determine what is a practically significant result. Suppose that the company researchers care about finding any effect on blood pressure that is 3~mmHg or larger vs the standard medication. Here, 3~mmHg is the minimum \term{effect size} of interest, and we want to know how likely we are to detect this size of an effect in the study.
 
-\begin{example}{Suppose we decided to move forward with 100 patients per treatment group and the new drug reduces blood pressure by an additional 3~mmHg relative to the standard medication. What is the probability that we detect a drop?}
+\begin{example}{Suppose we decided to move forward with 100 patients per treatment group and the new drug reduces blood pressure by an additional 3~mmHg relative to the standard medication. What is the probability that we detect a drop?}\label{PowerFor100AtNeg3}
 Before we even do any calculations, notice that if $\bar{x}_{trmt} - \bar{x}_{ctrl} = -3$~mmHg, there wouldn't even be sufficient evidence to reject $H_0$. That's not a good sign.
 
 To calculate the probability that we will reject $H_0$, we need to determine a few things:
@@ -853,10 +853,10 @@ To calculate the probability that we will reject $H_0$, we need to determine a f
 \begin{center}
 \includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_C_0_1-7_with_alt_at_3}
 \end{center}
-\item The rejection regions, which is outside of the dotted lines above.
+\item The rejection regions, which are outside of the dotted lines above.
 \item A little elbow grease to calculate the fraction of the sampling distribution that falls in the rejection region.
 \end{itemize}
-In short, we need to calculate the probability that $x < -3.332$ for a normal distribution with mean -3 and standard deviation 1.7. (We'll ignore the upper tail, which is in the opposite direction of the truth, if the true difference is indeed -3.) To do so, we first shade the area we want to calculate:
+In short, we need to calculate the probability that $x < -3.332$ for a normal distribution with mean -3 and standard deviation~1.7. To do so, we first shade the area we want to calculate:
 \begin{center}
 \includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_D_0_1-7_with_alt_at_3_and_shaded}
 \end{center}
@@ -867,16 +867,18 @@ Z = \frac{-3.332 - (-3)}{1.7} = -0.20 \qquad \to \qquad 0.4207
 The power for the test is about 42\% when $\mu_{trmt} - \mu_{ctrl} = -3$ and each group has a sample size of 100.
 \end{example}
 
+In Example~\ref{PowerFor100AtNeg3}, we ignore'd the upper tail in the calculation, which was in the opposite direction of the hypothetical truth, i.e. -3. The reasoning? There wouldn't be any value in rejecting the null hypothesis and concluding there was an increase when in fact there was a decrease.
+
 
 \subsection{Determining a proper sample size}
 
-In the last example, we found that if we have a sample size of 100 in each group, we can only detect an effect size of 3~mmHg with a probability of about 0.42. Suppose the researchers used just 100 patients per group, and the data did not support the alternative hypothesis, i.e. the researchers did not reject $H_0$. This is a very bad situation to be in for a few reasons:
+In the last example, we found that if we have a sample size of 100 in each group, we can only detect an effect size of 3~mmHg with a probability of about 0.42. Suppose the researchers moved forward and only used 100 patients per group, and the data did not support the alternative hypothesis, i.e. the researchers did not reject $H_0$. This is a very bad situation to be in for a few reasons:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item In the back of the researchers' minds, they'd all be wondering, \emph{maybe there is a real and meaningful difference, but we weren't able to detect it with such a small sample}. 
-\item The company probably invested hundreds of millions of dollars in developing the new drug, so now they are left with great uncertainty about its potential since the experiment didn't have a great shot at detecting effects that would still be important.
+\item The company probably invested hundreds of millions of dollars in developing the new drug, so now they are left with great uncertainty about its potential since the experiment didn't have a great shot at detecting effects that could still be important.
 \item Patients were subjected to the drug, and we can't even say with much certainty that the drug doesn't help (or harm) patients.
-\item Another clinical trial is likely to be run to get a more conclusive answer as to whether the drug does hold any practical value, and conducting a second clinical trial may take years and many millions of dollars.
+\item Another clinical trial may need to be run to get a more conclusive answer as to whether the drug does hold any practical value, and conducting a second clinical trial may take years and many millions of dollars.
 \end{itemize}
 We want to avoid this situation, so we need to determine an appropriate sample size to ensure we can be pretty confident that we'll detect any effects that are practically important. As mentioned earlier, a change of 3~mmHg was deemed to be the minimum difference that was practically important. As~a first step, we could calculate power for several different sample sizes. For instance, let's try 500 patients per group.
 
@@ -925,7 +927,7 @@ Suppose the targeted power was 90\% and we were using $\alpha = 0.01$. How many 
 \end{exercise}
 
 \begin{exercise}
-What considerations do you think would be important in selecting power?\footnote{Answers will vary, but here are a few important considerations:
+List some considerations that are important in determining what the power should be for an experiment.\footnote{Answers will vary, but here are a few important considerations:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item Whether there is any risk to patients in the study.
@@ -934,7 +936,16 @@ What considerations do you think would be important in selecting power?\footnote
 \end{itemize}}
 \end{exercise}
 
-Power calculations for expensive or risky experiments are critical. However, what about experiments that are inexpensive and where the ethical considerations are minimal? For example, if we are doing final testing on a new feature on a popular website, how would our sample size considerations change? As before, we'd want to make sure the sample is big enough. However, if the feature has undergone some testing and is known to perform well (i.e. not frustrate many site users), then we may run a much larger experiment than is necessary to detect the minimum effects of interest. The reason is that there may be additional benefits to having an even more precise estimate of the effect of the new feature. We may even conduct a much larger experiment as part of the rollout of the new feature.
+Figure~\ref{power_curve_neg-3} shows the power for sample sizes from 20~patients to 5,000~patients when $\alpha = 0.05$ and the true difference is -3. This curve was constructed by writing a program to compute the power for many different sample sizes.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/power_curve/power_curve_neg-3}
+\caption{The curve shows the power for different sample sizes in the context of the blood pressure example when the true difference is -3. Having more than about 250 to 350 observations doesn't provide much additional value in detecting an effect when $\alpha = 0.05$.}
+\label{power_curve_neg-3}
+\end{figure}
+
+Power calculations for expensive or risky experiments are critical. However, what about experiments that are inexpensive and where the ethical considerations are minimal? For example, if we are doing final testing on a new feature on a popular website, how would our sample size considerations change? As before, we'd want to make sure the sample is big enough. However, if the feature has undergone some testing and is known to perform well (i.e. not frustrate many site users), then we may run a much larger experiment than is necessary to detect the minimum effects of interest. The reason is that there may be additional benefits to having an even more precise estimate of the effect of the new feature. We may even conduct a large experiment as part of the rollout of the new feature.
 
 
 
