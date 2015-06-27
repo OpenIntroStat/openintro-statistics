@@ -3,8 +3,8 @@ data(email)
 data(COL)
 
 myPDF('emailNumberBarPlot.pdf',
-      6.5,
-      2.8,
+      7,
+      3,
       mar = c(3.6, 4.5, 1, 1.5),
       mgp = c(3.4, 0.7, 0),
       mfrow = 1:2)

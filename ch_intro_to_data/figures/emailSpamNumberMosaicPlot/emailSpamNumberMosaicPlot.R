@@ -34,6 +34,7 @@ myPDF("emailSpamNumberMosaicRev.pdf",
       3,
       2.25,
       mar = rep(1, 4) / 4)
+colnames(tab)[1] <- "not spam"
 mosaicplot(t(tab),
            main = '',
            xlab = '',

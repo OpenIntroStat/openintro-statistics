@@ -3,14 +3,14 @@ data(email50)
 data(COL)
 d   <- email50$num_char
 
-myPDF("boxPlotLayoutNumVar.pdf", 5.5, 4,
+myPDF("boxPlotLayoutNumVar.pdf", 5.5, 3.8,
       mar = c(0, 4, 0, 1),
       mgp = c(2.8, 0.7, 0))
 boxPlot(d,
         ylab = 'Number of Characters (in thousands)',
         xlim = c(0.3, 3),
         axes = FALSE,
-        ylim = range(d) + sd(d) * c(-1, 1) * 0.2)
+        ylim = range(d))
 axis(2)
 
 arrows(2,0, 1.35, min(d) - 0.5, length = 0.08)

@@ -24,17 +24,15 @@ dotPlot(d,
 m <- round(mean(d), 1)
 s <- round(sd(d), 1)
 abline(v = m, col = COL[7])
-col <- '#0000001C'
+col <- '#0000000D'
 border <- '#00000000'
 rect(m - s, -5, m + s, 5,
      col = col, border = border)
-rect(m + s, -5, m + 2 * s, 5,
+rect(m - 2 * s, -5, m + 2 * s, 5,
      col = col, border = border)
-rect(m - s, -5, m - 2 * s, 5,
+rect(m - 3 * s, -5, m + 3 * s, 5,
      col = col, border = border)
-rect(m + 2 * s, -5, m + 3 * s, 5,
-     col = col, border = border)
-rect(m + 4 * s, -5, m + 3 * s, 5,
+rect(m - 4 * s, -5, m + 4 * s, 5,
      col = col, border = border)
 dotPlot(d,
         col = COL[1, 2],

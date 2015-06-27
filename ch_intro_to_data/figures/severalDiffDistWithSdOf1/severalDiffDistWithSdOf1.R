@@ -1,6 +1,6 @@
 library(openintro)
 data(COL)
-pdf("severalDiffDistWithSdOf1.pdf", 5.5, 4.3)
+pdf("severalDiffDistWithSdOf1.pdf", 5.2, 3.8)
 
 
 x1 <- rep(0:1, c(10,10))
