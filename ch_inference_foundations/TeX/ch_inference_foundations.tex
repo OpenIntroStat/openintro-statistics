@@ -198,7 +198,7 @@ When considering the case of the point estimate $\bar{x}$, there is one problem:
 (a) Would you rather use a small sample or a large sample when estimating a parameter? Why? (b) Using your reasoning from (a), would you expect a point estimate based on a small sample to have smaller or larger standard error than a point estimate based on a larger sample?\footnote{(a) Consider two random samples: one of size 10 and one of size 1000. Individual observations in the small sample are highly influential on the estimate while in larger samples these individual observations would more often average each other out. The larger sample would tend to provide a more accurate estimate. (b) If we think an estimate is better, we probably mean it typically has less error. Based on (a), our intuition suggests that a larger sample size corresponds to a smaller standard error.}
 \end{exercise}
 
-In the sample of 100 students, the standard error of the sample mean is equal to one-tenth of the population standard deviation: $0.26 = 2.6 / 10$. In other words, the standard error of the sample mean based on 100 observations is equal to
+In the sample of 100 students, the standard error of the sample mean is equal to the population standard deviation divided by the square root of the sample size:
 \begin{eqnarray*}
 SE_{\bar{x}} = \sigma_{\bar{x}} = \frac{\sigma_{x}}{\sqrt{n}} = \frac{2.6}{\sqrt{100}} = 0.26
 \end{eqnarray*}
@@ -215,14 +215,14 @@ A reliable method to ensure sample observations are independent is to conduct a 
 }
 \end{termBox}
 
-There is one subtle issue of Equation~(\ref{seOfXBar}): the population standard deviation is typically unknown. You might have already guessed how to resolve this problem: we can use the point estimate of the standard deviation from the sample. This estimate tends to be sufficiently good when the sample size is at least 30 and the population distribution is not strongly skewed%\footnote{Some books suggest 30 is sufficient; we take a slightly more conservative approach.}
+There is one subtle issue in Equation~(\ref{seOfXBar}): the population standard deviation is typically unknown. You might have already guessed how to resolve this problem: we can use the point estimate of the standard deviation from the sample. This estimate tends to be sufficiently good when the sample size is at least 30 and the population distribution is not strongly skewed%\footnote{Some books suggest 30 is sufficient; we take a slightly more conservative approach.}
 % x <- c(); for(i in 1:10000){ x[i] <- mean(exp(rnorm(30, sd=0.5))) }; hist(x); (quantile(x, c(0.025, 0.975)) - mean(x)) / sd(x)
 % M <- mean(x); x <- rep(NA, 1000); for(i in 1:1000){ temp <- exp(rnorm(30, sd=0.5)); x[i] <- (max(temp) - M) / sd(temp) }; hist(x); quantile(x, 0.95)
 % for(i in 1:1000){ temp <- exp(rnorm(30, sd=0.5)); hist(temp, breaks=seq(0, 12, 0.5), main=round((max(temp) - mean(temp))/sd(temp), 1)); Sys.sleep(0.5) }
 . Thus, we often just use the sample standard deviation $s$ instead of~$\sigma$. When the sample size is smaller than 30, we will need to use a method to account for extra uncertainty in the standard error. If the skew condition is not met, a larger sample is needed to compensate for the extra skew. These topics are further discussed in Section~\ref{cltSection}.
 
 \begin{exercise}
-In the sample of 100 students, the standard deviation of student heights is $s_{height} = 0.088$ meters. Because the sample is simple random and consists of less than 10\% of the population, the observations are independent. (a)~What is the standard error of the sample mean, $\bar{x}_{height} = 1.70$ meters? (b)~Would you be surprised if someone told you the average height of all YRBSS respondents was actually 1.69~meters?\footnote{(a) Use Equation~(\ref{seOfXBar}) with the sample standard deviation to compute the standard error: $SE_{\bar{y}} = 0.088 / \sqrt{100} = 0.0088$ meters. (b) It would not be surprising. Our sample is about 1 standard error from 1.69m. In other words, 1.69m does not seem to be implausible given that our sample was relatively close to it. (We use the standard error to identify what is close.)}
+In the sample of 100 students, the standard deviation of student heights is $s_{height} = 0.088$ meters. In this case, we can confirm that the observations are independent by checking that the data come from a simple random sample consisting of less than 10\% of the population. (a)~What is the standard error of the sample mean, $\bar{x}_{height} = 1.70$ meters? (b)~Would you be surprised if someone told you the average height of all YRBSS respondents was actually 1.69~meters?\footnote{(a) Use Equation~(\ref{seOfXBar}) with the sample standard deviation to compute the standard error: $SE_{\bar{y}} = 0.088 / \sqrt{100} = 0.0088$ meters. (b) It would not be surprising. Our sample is about 1 standard error from 1.69m. In other words, 1.69m does not seem to be implausible given that our sample was relatively close to it. (We use the standard error to identify what is close.)}
 \end{exercise}
 %library(openintro); library(xtable); data(yrbss); data(yrbss.samp); d <- yrbss.samp$height; mean(d); sd(d); mean(yrbss$height, na.rm=TRUE); sd(yrbss$height, na.rm=TRUE)
 
@@ -298,7 +298,7 @@ The sample data suggest the average YRBSS student height is $\bar{x}_{height} = 
 \end{exercise}
 % library(openintro); d <- yrbss.samp; mean(d$height); sd(d$height)
 
-\subsection{A sampling distribution for the mean}
+\subsection{The sampling distribution for the mean}
 
 In Section~\ref{seOfTheMean}, we introduced a sampling distribution for $\bar{x}$, the average days physically active per week for samples of size 100. We examined this distribution earlier in Figure~\ref{yrbssActive1000SampDist}. Now we'll take 100,000 samples, calculate the mean of each, and plot them in a histogram to get an especially accurate depiction of the sampling distribution. This histogram is shown in the left panel of Figure~\ref{yrbssActiveBigSampDist}.
 
@@ -375,13 +375,13 @@ Additionally, the larger the sample size, the more lenient we can be with the sa
 
 \Comment{The next two term boxes were notably changed.}
 
-\begin{tipBox}{\tipBoxTitle{How to verify sample observations are independent}
+\begin{tipBox}{\tipBoxTitle[]{How to verify sample observations are independent}
 If the observations are from a simple random sample and consist of fewer than 10\% of the population, then they are independent.\\[2mm]
 Subjects in an experiment are considered independent if they undergo random assignment to the treatment groups. \\[2mm]
-If a sample is from a random process, checking independence is more difficult. In~this case, use your best judgement.}
+If a sample is from a seemingly random process, e.g. the lifetimes of wrenches used in a particular manufacturing process, checking independence is more difficult. In~this case, use your best judgement.}
 \end{tipBox}
 
-\begin{tipBox}{\tipBoxTitle{Checking for strong skew usually means checking for obvious outliers}
+\begin{tipBox}{\tipBoxTitle[]{Checking for strong skew usually means checking for obvious outliers}
 When there are prominent outliers present, the sample should contain at least 100 observations, and in some cases, much more. \\[2mm]
 This is a first course in statistics, so you won't have perfect judgement on assessing skew. That's okay. If you're in a bind, either consult a statistician or learn about the studentized bootstrap (bootstrap-t) method.}
 \end{tipBox}
@@ -429,50 +429,6 @@ Another important consideration of confidence intervals is that they \emph{only 
 \index{confidence interval!interpretation|)}
 \index{confidence interval|)}
 
-\subsection[Nearly normal population with known SD (special topic)]{Nearly normal population with known SD (special topic)}
-\label{nearlyNormalPopWithKnownSD}
-
-\Comment{This subsection is on the chopping block.}
-
-\index{Central Limit Theorem!normal data|(}
-
-In rare circumstances we know important characteristics of a population. For instance, we might know a population is nearly normal and we may also know its parameter values. Even so, we may still like to study characteristics of a random sample from the population. Consider the conditions required for modeling a sample mean using the normal distribution:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item[(1)] The observations are independent.
-\item[(2)] The sample size $n$ is at least 30.
-\item[(3)] The data distribution is not strongly skewed.
-\end{enumerate}
-These conditions are required so we can adequately estimate the standard deviation and so we can ensure the distribution of sample means is nearly normal. However, if the population is known to be nearly normal, the sample mean is always nearly normal (this is a special case of the Central Limit Theorem). If the standard deviation is also known, then conditions (2) and (3) are not necessary for those data.
-
-\begin{example}{The heights of male seniors in high school closely follow a normal distribution $N(\mu=70.43, \sigma=2.73)$, where the units are inches.\footnote{These values were computed using the USDA Food Commodity Intake Database.} If we randomly sampled the heights of five male seniors, what distribution should the sample mean follow?}\label{simpleSampleOfFiveMaleSeniors}
-The population is nearly normal, the population standard deviation is known, and the heights represent a random sample from a much larger population, satisfying the independence condition. Therefore the sample mean of the heights will follow a nearly normal distribution with mean $\mu=70.43$ inches and standard error $SE=\sigma/\sqrt{n} = 2.73/\sqrt{5}=1.22$ inches.
-\end{example}
-
-\begin{termBox}{\tBoxTitle{Alternative conditions for applying the normal distribution to model the sample mean}
-If the population of cases is known to be nearly normal and the population standard deviation $\sigma$ is known, then the sample mean $\bar{x}$ will follow a nearly normal distribution $N(\mu, \sigma/\sqrt{n})$ if the sampled observations are also independent.}
-\end{termBox}
-
-Sometimes the mean changes over time but the standard deviation remains the same. In such cases, a sample mean of small but nearly normal observations paired with a known standard deviation can be used to produce a confidence interval for the current population mean using the normal distribution.
-
-\begin{example}{Is there a connection between height and popularity in high school? Many students may suspect as much, but what do the data say? Suppose the top 5 nominees for prom king at a high school have an average height of 71.8 inches. Does this provide strong evidence that these seniors' heights are not representative of all male seniors at their high school?}
-If these five seniors are height-representative, then their heights should be like a random sample from the distribution given in Example~\ref{simpleSampleOfFiveMaleSeniors}, $N\left(\mu=70.43, \sigma = 2.73\right)$, and the sample mean should follow $N\left(\mu=70.43, \sigma/\sqrt{n} = 1.22\right)$. Formally we are conducting what is called a \emph{hypothesis test}, which we will discuss in greater detail during the next section. We are weighing two possibilities:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] The prom king nominee heights are representative; $\bar{x}$ will follow a normal distribution with mean 70.43 inches and standard error 1.22 inches.
-\item[$H_A$:] The heights are not representative; we suspect the mean height is different from 70.43 inches.
-\end{itemize}
-If there is strong evidence that the sample mean is not from the normal distribution provided in $H_0$, then that suggests the heights of prom king nominees are not a simple random sample (i.e. $H_A$ is true). We can look at the Z score of the sample mean to tell us how unusual our sample is. If $H_0$ is true:
-\begin{align*}
-Z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}} = \frac{71.8 - 70.43}{1.22} = 1.12
-\end{align*}
-A Z score of just 1.12 is not very unusual (we typically use a threshold of $\pm2$ to decide what is unusual), so there is not strong evidence against the claim that the heights are representative. This does not mean the heights are actually representative, only that this very small sample does not necessarily show otherwise.
-\end{example}
-
-\begin{tipBox}{\tipBoxTitle{Relaxing the nearly normal condition}
-As the sample size becomes larger, it is reasonable to \emph{slowly} relax the nearly normal assumption on the data when dealing with small samples. By the time the sample size reaches 30, the data must show strong skew for us to be concerned about the normality of the sampling distribution.}
-\index{Central Limit Theorem!normal data|)}
-\end{tipBox}
 
 
 %__________________
@@ -483,7 +439,7 @@ As the sample size becomes larger, it is reasonable to \emph{slowly} relax the n
 
 Are students lifting weights or performing other strength training exercises more or less often than they have in the past? We'll compare data from students from the 2011 YRBSS survey to our sample of 100 students from the 2013 YRBSS survey.
 
-We'll also consider sleep behavior. A recent study found that college students average about 7~hours of sleep per night.\footnote{\oiRedirect{textbook-theloquitur_1161}{theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
+We'll also consider sleep behavior. A recent study found that college students average about 7~hours of sleep per night.\footnote{\oiRedirect{textbook-theloquitur_1161}{\emph{Poll shows college students get least amount of sleep}. theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
 
 \subsection{Hypothesis testing framework}
 
@@ -491,7 +447,7 @@ Students from the 2011 YRBSS lifted weights (or performed other strength trainin
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[$H_0$:] The average days per week that YRBSS students lifted weights was the same for 2011 and~2013.
-\item[$H_A$:] The average days per week that YRBSS students lifted weights was \emph{different} for 2011 than~in~2013.
+\item[$H_A$:] The average days per week that YRBSS students lifted weights was \emph{different} for 2013 than~in~2011.
 \end{itemize}
 We call $H_0$\marginpar[\raggedright\vspace{6mm}
 
@@ -725,12 +681,12 @@ We compute the p-value by finding the tail area of this normal distribution, whi
 \begin{eqnarray*}
 Z = \frac{\bar{x} - \text{null value}}{SE_{\bar{x}}} = \frac{7.42 - 7}{0.17} = 2.47
 \end{eqnarray*}
-Using the normal probability table, the lower unshaded area is found to be 0.993. Thus the shaded area is $1-0.993 = 0.007$. {\em If the null hypothesis is true, the probability of observing such a large sample mean for a sample of 110 students is only 0.007.}\index{p-value!interpretation example} That is, if the null hypothesis is true, we would not often see such a large mean.
+Using the normal probability table, the lower unshaded area is found to be 0.993. Thus the shaded area is $1-0.993 = 0.007$. {\em If the null hypothesis is true, the probability of observing a sample mean at least as large as 7.42 hours for a sample of 110 students is only 0.007.}\index{p-value!interpretation example} That is, if the null hypothesis is true, we would not often see such a large mean.
 
 We evaluate the hypotheses by comparing the p-value to the significance level. Because the p-value is less than the significance level (p-value $=0.007 < 0.05=\alpha$), we reject the null hypothesis. What we observed is so unusual with respect to the null hypothesis that it casts serious doubt on $H_0$ and provides strong evidence favoring $H_A$.
 
 \begin{termBox}{\tBoxTitle{p-value as a tool in hypothesis testing}
-The p-value quantifies how strongly the data favor $H_A$ over $H_0$. A small p-value (usually $<0.05$) corresponds to sufficient evidence to reject $H_0$ in favor of $H_A$.}
+The smaller the p-value, the stronger the data favor $H_A$ over $H_0$. A small p-value (usually $<0.05$) corresponds to sufficient evidence to reject $H_0$ in favor of $H_A$.}
 \index{hypothesis testing!p-value|)}
 \end{termBox}
 
@@ -1117,7 +1073,7 @@ Because the p-value is less than the significance level ($\alpha=0.05$), we say 
 The Z score in Equation~(\ref{zScoreOfPointEstimateForSulphinpyrazoneThisIsFirstTestStatReference}) is called a \term{test statistic}. In most hypothesis tests, a test statistic is a particular data summary that is especially useful for computing the p-value and evaluating the hypothesis test. In the case of point estimates that are nearly normal, the test statistic is the Z score.
 
 \begin{termBox}{\tBoxTitle{Test statistic}
-A \emph{test statistic} is a special summary statistic that is particularly useful for evaluating a hypothesis test or identifying the p-value. When a point estimate is nearly normal, we use the Z score of the point estimate as the test statistic. In later chapters we encounter situations where other test statistics are helpful.}
+A \emph{test statistic} is a summary statistic that is particularly useful for evaluating a hypothesis test or identifying the p-value. When a point estimate is nearly normal, we use the Z score of the point estimate as the test statistic. In later chapters we encounter situations where other test statistics are helpful.}
 \index{hypothesis testing!using normal model|)}
 \end{termBox}
 
