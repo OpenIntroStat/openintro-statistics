@@ -757,33 +757,15 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 
 %__________________
 \section[Power calculations for a difference of means (special topic)]{Power calculations for a difference of means\\ (special topic)}
-%\section{Determining a sample size for an experiment}
-%\section{Consult: planning an experiment}
 \label{PowerForDifferenceOfTwoMeans}
 
-%So far we've been focused on controlling the Type~1 Error rate for hypothesis tests. However, when planning an experiment, we often are interested in detecting any real effect, so we should also be concerned about the size of the Type~2 Error rate.
 Often times in experiment planning, there are often two competing considerations:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item We want to collect enough data that we can detect important effects.
 \item Collecting data can be expensive, and in experiments involving people, there may be some risk to patients.
 \end{itemize}
-%The first point is relatively simple: the more data we collect, the more precise our estimates and the smaller effects we can typically detect. The second point is more subtle, since we need to determine the size of effects that we care about.
 In this section, we focus on the context of a clinical trial, which is a health-related experiment where the subject are people, and we will determine an appropriate sample size where we can be 80\% sure that we would detect any practically important effects.\footnote{Even though we don't cover it explicitly, similar sample size planning is also helpful for observational studies.}
-
-%\begin{example}{Alzheimer's disease is a neurological disease. It affects patients mildly at the beginning and eventually leads to dementia. If an Alzheimer's patient lives long enough, the disease will begin affecting bodily functions and ultimately lead to death. It's an extremely serious condition that millions of people, has no cure, and is very expensive to research, partially due to its slow progression. A group of researchers is }
-
-%\begin{example}{Suppose a company has developed a new drug for lowering blood pressure and are preparing a clinical trial to determine its efficacy. They are targeting patients with systolic blood pressure between 140 and 180 mmHg. They have brought you in as a statistician for the project. What are some of the questions you should ask?}
-%As a statistician, you may not generally be an expert in the application, so asking questions -- and a lot of questions -- is very important to better understand the context and the data to expect. Below are small sample of questions that could be asked during a first meeting about the project:
-%\begin{description}
-%\setlength{\itemsep}{0mm}
-%\item[What is the main aim of the study? Who will I be working with] It's important to ask basic question to get a firm understanding of the context.
-%\item[What side effects do you suspect may arise that we should monitor?] We may be well aware of the main outcome of interest, systolic blood pressure. However, it's also important to think about other data that should be collected.
-%\item[Who is eligible for the study?] Asking about the study subjects is important. We'd also want to ask some numerical questions about who will be recruited, e.g. get a sense for the approximate average and standard deviation of patients on key variables such as systolic blood pressure.
-%\item[What is the study timeline?] Understanding a deadlines is important. It's common for a statistician to be brought in at the last minute. Additionally, it's common for the amount of work required is underestimated, so it's important to push back on unrealistic timelines or get back to the researcher if the statistician determines the proposed timeline is unrealistic.
-%\item[Who will need to review the study before it goes forward?] Clinical trials generally have review boards that are generally in place to ensure ethical research. Knowing who will be reviewing the plan can offer guidance on what the responsibilities will be for the statistician.
-%\end{description}
-%\end{example}
 
 
 \subsection{Going through the motions of a test}
@@ -825,8 +807,8 @@ The degrees of freedom are greater than 30, so the distribution of $\bar{x}_{trm
 For $\alpha = 0.05$, we would reject $H_0$ if the difference is in the lower 2.5\% or upper 2.5\% tail:
 \begin{description}
 \setlength{\itemsep}{0mm}
-\item[Lower 2.5\%:] For the normal model, this is 1.96 standard errors below 0, so any difference smaller than $-1.96 \times 1.70 = -3.332$.
-\item[Upper 2.5\%:] For the normal model, this is 1.96 standard errors above 0, so any difference larger than $1.96 \times 1.70 = 3.332$.
+\item[Lower 2.5\%:] For the normal model, this is 1.96 standard errors below 0, so any difference smaller than $-1.96 \times 1.70 = -3.332$~mmHg.
+\item[Upper 2.5\%:] For the normal model, this is 1.96 standard errors above 0, so any difference larger than $1.96 \times 1.70 = 3.332$~mmHg.
 \end{description}
 The boundaries of these \term{rejection regions} are shown below:
 \begin{center}
@@ -849,12 +831,12 @@ Before we even do any calculations, notice that if $\bar{x}_{trmt} - \bar{x}_{ct
 To calculate the probability that we will reject $H_0$, we need to determine a few things:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item The sampling distribution for $\bar{x}_{trmt} - \bar{x}_{ctrl}$ when the true difference is -3~mmHg. This is the same as the null distribution, except it is shifted to the left by~-3:
+\item The sampling distribution for $\bar{x}_{trmt} - \bar{x}_{ctrl}$ when the true difference is -3~mmHg. This is the same as the null distribution, except it is shifted to the left by~3:
 \begin{center}
 \includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_C_0_1-7_with_alt_at_3}
 \end{center}
 \item The rejection regions, which are outside of the dotted lines above.
-\item A little elbow grease to calculate the fraction of the sampling distribution that falls in the rejection region.
+\item The fraction of the distribution that falls in the rejection region.
 \end{itemize}
 In short, we need to calculate the probability that $x < -3.332$ for a normal distribution with mean -3 and standard deviation~1.7. To do so, we first shade the area we want to calculate:
 \begin{center}
@@ -867,7 +849,7 @@ Z = \frac{-3.332 - (-3)}{1.7} = -0.20 \qquad \to \qquad 0.4207
 The power for the test is about 42\% when $\mu_{trmt} - \mu_{ctrl} = -3$ and each group has a sample size of 100.
 \end{example}
 
-In Example~\ref{PowerFor100AtNeg3}, we ignore'd the upper tail in the calculation, which was in the opposite direction of the hypothetical truth, i.e. -3. The reasoning? There wouldn't be any value in rejecting the null hypothesis and concluding there was an increase when in fact there was a decrease.
+In Example~\ref{PowerFor100AtNeg3}, we ignored the upper rejection region in the calculation, which was in the opposite direction of the hypothetical truth, i.e. -3. The reasoning? There wouldn't be any value in rejecting the null hypothesis and concluding there was an increase when in fact there was a decrease.
 
 
 \subsection{Determining a proper sample size}
