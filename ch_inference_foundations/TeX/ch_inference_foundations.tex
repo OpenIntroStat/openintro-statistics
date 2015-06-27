@@ -69,8 +69,6 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 %library(openintro); library(xtable); data(yrbss); data(yrbss.samp); xtable(yrbss.amp[c(1,2,3,100),])
 \end{table}
 
-\Comment{Figure~\ref{yrbssSampHistograms} is referenced in 4.2. Make sure that text is appropriately updated.}
-
 % WARNING: This figure is referenced in Section 4.2
 \begin{figure}
 \centering
@@ -86,7 +84,7 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 
 \index{point estimate|(}
 
-We would like to estimate four features of the high schoolers in YRBSS using the sample. \Comment{Added a 3rd and 4th item.}
+We would like to estimate four features of the high schoolers in YRBSS using the sample.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[(1)] What is the average height of the YRBSS high schoolers?
@@ -369,12 +367,6 @@ Important conditions to help ensure the sampling distribution of $\bar{x}$ is ne
 Additionally, the larger the sample size, the more lenient we can be with the sample's skew.}
 \end{termBox}
 
-\Comment{I used ``judgement'' above instead of ``judgment''. The former is the British spelling, and the latter is the American... I think I've always used it with the `e'. If you feel strongly, express an opinion!}
-
-%The way to check for independence varies from one situation to another. However, we can provide simple rules for some common scenarios.
-
-\Comment{The next two term boxes were notably changed.}
-
 \begin{tipBox}{\tipBoxTitle[]{How to verify sample observations are independent}
 If the observations are from a simple random sample and consist of fewer than 10\% of the population, then they are independent.\\[2mm]
 Subjects in an experiment are considered independent if they undergo random assignment to the treatment groups. \\[2mm]
@@ -386,12 +378,10 @@ When there are prominent outliers present, the sample should contain at least 10
 This is a first course in statistics, so you won't have perfect judgement on assessing skew. That's okay. If you're in a bind, either consult a statistician or learn about the studentized bootstrap (bootstrap-t) method.}
 \end{tipBox}
 
-\Comment{Mine, FYI that the next exercise was changed, and it was referenced in EOCE 4.9.}
-
 % WARNING !!!!
 % EOCE 4.9 (as of 2nd Edition) references the results of this exercise
 \begin{exercise} \label{find99CIForYrbssAgeExercise}
-Create a 99\% confidence interval for the average days active per week of all YRBSS students using \data{yrbss\_samp}. The point estimate is $\bar{x}_{active} = 3.75$ and the standard error is $SE_{\bar{x}} = 0.26$.\footnote{The observations are independent (simple random sample, $<10\%$ of the population), the sample size is at least 30 ($n = 100$), and the distribution doesn't have a clear skew (Figure~\ref{yrbssSampHistograms}); the normal approximation and estimate of SE should be reasonable. Apply the 99\% confidence interval formula: $\bar{x}_{active}\ \pm\ 2.58 \times  SE_{\bar{x}} \rightarrow (3.08, 4.42)$. We are 99\% confident that the average days active per week of all YRBSS students is between 3.08 and 4.42~days.}
+Create a 99\% confidence interval for the average days active per week of all YRBSS students using \data{yrbss\_samp}. The point estimate is $\bar{x}_{active} = 3.75$ and the standard error is $SE_{\bar{x}} = 0.26$.\footnote{The observations are independent (simple random sample, $<10\%$ of the population), the sample size is at least 30 ($n = 100$), and the distribution doesn't have a clear skew (Figure~\ref{yrbssSampHistograms} on page~\pageref{yrbssSampHistograms}); the normal approximation and estimate of SE should be reasonable. Apply the 99\% confidence interval formula: $\bar{x}_{active}\ \pm\ 2.58 \times  SE_{\bar{x}} \rightarrow (3.08, 4.42)$. We are 99\% confident that the average days active per week of all YRBSS students is between 3.08 and 4.42~days.}
 \end{exercise}
 %library(openintro); data(yrbss.samp); d <- yrbss.samp; mean(d$age); sd(d$age)/sqrt(100)
 
@@ -509,8 +499,6 @@ Because the average of all students from the 2013 YRBSS survey is 3.09, which fa
 In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
 \end{tipBox}
 
-\Comment{The college housing data set was updated to have 175 observations and have stronger skew.}
-
 \begin{exercise} \label{htForHousingExpenseForCommunityCollege650}
 Colleges frequently provide estimates of student expenses such as housing. A consultant hired by a community college claimed that the average student housing expense was \$650 per month. What are the null and alternative hypotheses to test whether this claim is accurate?\footnote{$H_0$: The average cost is \$650 per month, $\mu = \$650$.
 
@@ -527,8 +515,6 @@ The community college decides to collect data to evaluate the \$650 per month cl
 \label{communityCollegeClaimedHousingExpenseDistribution}
 \end{figure}
 \end{exercise}
-
-\Comment{Additional box on skew since this is such a frustrating topic for students.}
 
 \begin{tipBox}{\tipBoxTitle[]{Evaluating the skew condition is challenging}
 Don't despair if checking the skew condition is difficult or confusing. You aren't alone -- nearly all students get frustrated when checking skew. Properly assessing skew takes practice, and you won't be a pro, even at the end of this book. \\[2mm]
@@ -921,8 +907,6 @@ Since we should be skeptical of the independence of observations and the very ex
 {Some data sets are collected in such a way that they have a natural underlying structure between observations, e.g. when observations occur consecutively. Be especially cautious about independence assumptions regarding such data sets.}
 \end{caution}
 
-\Comment{Updated the next caution box and added the paragraph following it.}
-
 \begin{caution}{Watch out for strong skew and outliers}
 {Strong skew is often identified by the presence of clear outliers. If a data set has prominent outliers, or such observations are somewhat common for the type of data under study, then it is useful to collect a sample with many more than 30 observations if the normal model will be used for $\bar{x}$.}
 \index{Central Limit Theorem|)}
@@ -970,8 +954,6 @@ SE_{\bar{x}} = \frac{s}{\sqrt{n}}
 \end{eqnarray*}
 In this section, we provide the computed standard error for each example and exercise without detailing where the values came from. In future chapters, you will learn to fill in these and other details for each situation.
 
-\Comment{Next two examples adjusted for YRBSS.}
-
 \begin{example}{In Guided Practice~\vref{peOfDiffActiveBetweenGender}, we computed a point estimate for the difference in the average days active per week between male and female students: $\bar{x}_{female}-\bar{x}_{male}=1.1$~days. This point estimate is associated with a nearly normal distribution with standard error $SE = 0.5$~days. What is a reasonable 95\% confidence interval for the difference in average days active per week?}
 \label{ciForDiffOfPhysActiveBetweenGenders}
 The normal approximation is said to be valid, so we apply Equation~\eqref{95PercGeneralCIInGeneralizingSection}:
@@ -992,8 +974,6 @@ Our confidence interval says absolutely nothing about individual observations. I
 \begin{exercise} \label{findZFor99PercConfLevelInFrameworkForInf}
 What $z^{\star}$ would be appropriate for a 99\% confidence level? For help, see Figure~\vref{choosingZForCI}.\footnote{We seek $z^{\star}$ such that 99\% of the area under the normal curve will be between the Z scores -$z^{\star}$ and $z^{\star}$. Because the remaining 1\% is found in the tails, each tail has area 0.5\%, and we can identify -$z^{\star}$ by looking up 0.0050 in the normal probability table: $z^{\star} = 2.58$. See also Figure~\vref{choosingZForCI}.}
 \end{exercise}
-
-\Comment{Next exercise adjusted for YRBSS.}
 
 \begin{exercise}
 The proportion of students who are male in the \data{yrbss\_samp} sample is $\hat{p} = 0.48$. This sample meets certain conditions that ensure $\hat{p}$ will be nearly normal, and the standard error of the estimate is $SE_{\hat{p}} = 0.05$. Create a 90\% confidence interval for the proportion of students in the 2013 YRBSS survey who are male.\footnote{We use $z^{\star}=1.65$ (see Guided Practice~~\vref{find90CIForYrbssAgeExercise}), and apply the general confidence interval formula:
