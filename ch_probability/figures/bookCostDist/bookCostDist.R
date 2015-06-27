@@ -52,15 +52,14 @@ probDist <- function(x,
   make.bar(x, prob, thickness = thickness, col = col)
 }
 
-pdf('bookCostDist.pdf', 5, 3)
+myPDF('bookCostDist.pdf', 5, 2.3)
 at <- c(0, 137, 170)
 prob <- c(0.2, .55, .25)
 
-par(las = 1,
-    mar = c(3.2, 4, 0.5, 0.5),
-    mgp = c(2, 0.7, 0))
+par(mar = c(2.9, 4, 0.1, 0.5),
+    mgp = c(1.7, 0.7, 0))
 probDist(at, prob,
-         xlab = 'cost (dollars)',
+         xlab = 'Cost (US Dollars)',
          ylab = '',
          ylim = c(-0.02, 0.55),
          col = COL[1])
@@ -70,5 +69,5 @@ polygon(117.85 + c(-17, 17, 0),
         c(-0.08, -0.08, 0),
         col = COL[4])
 par(las = 0)
-mtext('probability', side = 2, line = 2.8)
+mtext('Probability', side = 2, line = 2.8)
 dev.off()

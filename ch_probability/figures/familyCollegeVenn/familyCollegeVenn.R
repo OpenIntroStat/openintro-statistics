@@ -13,7 +13,7 @@ rect(0.07, 0.15,
      col = paste0(COL[4], "25"),
      lty = 3,
      lwd = 2.512)
-text(0.32, 0.07, '1+ parent attended college', col=COL[4,2])
+text(0.33, 0.07, 'parent completed a college degree', col=COL[4,2])
 rect(0.18, 0.14,
      0.96, 0.86,
      border=COL[1],

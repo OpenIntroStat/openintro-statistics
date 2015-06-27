@@ -12,8 +12,8 @@ X <- c(1:100, seq(102, 500, 2),
 Y <- y[X]
 
 # _____ Plotting _____ #
-myPDF('dieProp.pdf', 6.5, 3.5,
-      mar = c(3.8, 3.8, 0.5, 0.5))
+myPDF('dieProp.pdf', 6.5, 3,
+      mar = c(3.8, 3.8, 0.5, 1))
 plot(X, Y,
      log = 'x',
      type = 'l',
@@ -21,13 +21,14 @@ plot(X, Y,
      ylab = '',
      axes = FALSE,
      col = COL[1],
-     lwd = 1.5)
+     lwd = 2)
 mtext('n (number of rolls)', side = 1, line = 2.5)
 abline(h = 1 / 6, lty = 2)
 at <- 10^(0:5)
 labels <- c('1', '10', '100', '1,000', '10,000', '100,000')
-axis(1, at, labels, cex.axis = 0.9)
-axis(2, cex.axis = 0.9)
+axis(1, at, labels)
+axis(2, at = seq(0, 0.3, 0.1))
+axis(2, at = seq(0.05, 0.3, 0.1), labels = rep(NA, 3), tcl = -0.15)
 at <- 1 / 6
 labels <- expression(paste(hat(p)[n]))
 axis(2, at, labels,
