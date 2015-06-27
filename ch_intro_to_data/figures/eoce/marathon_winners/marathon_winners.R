@@ -5,9 +5,9 @@ library(openintro)
 data(marathon)
 
 # histogram and box plot of marathon finishing times of winners -----
-pdf("marathon_winners_hist_box.pdf", height = 2.5, width = 7)
+pdf("marathon_winners_hist_box.pdf", height = 2.2, width = 7)
 
-par(mar = c(2, 2.8, 0, 0), las = 1, mgp = c(2.9, 0.7, 0),
+par(mar = c(2, 2.8, 0.5, 5), las = 1, mgp = c(2.9, 0.7, 0),
     cex.axis = 1.5, cex.lab = 1.5)
 layout(matrix(1:2, 1), 2:1)
 histPlot(marathon$Time, col = COL[1], 
@@ -16,6 +16,7 @@ histPlot(marathon$Time, col = COL[1],
 axis(1, at = seq(2, 3.2, 0.4))
 axis(2, at = seq(0, 20, 10))
 
+par(mar = c(2, 2.8, 0.5, 0))
 boxPlot(marathon$Time, col = COL[1,2], ylim = c(2, 3.2),
         ylab = "Marathon times",
         axes = FALSE)
