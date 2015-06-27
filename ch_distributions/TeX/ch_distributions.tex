@@ -11,7 +11,7 @@ Among all the distributions we see in practice, one is overwhelmingly the most c
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{ch_distributions/figures/simpleNormal/simpleNormal}
+\includegraphics[width=0.7\textwidth]{ch_distributions/figures/simpleNormal/simpleNormal}
 \caption{A normal curve.}
 \label{simpleNormal}
 \end{figure}
@@ -19,6 +19,7 @@ Among all the distributions we see in practice, one is overwhelmingly the most c
 \begin{termBox}{\tBoxTitle{Normal distribution facts}
 Many variables are nearly normal, but none are exactly normal. Thus the normal distribution, while not perfect for any single problem, is very useful for a variety of problems. We will use it in data exploration and to solve important problems in statistics.\vspace{0.7mm}}
 \end{termBox}
+
 
 \subsection{Normal distribution model}
 
@@ -33,7 +34,7 @@ The normal distribution model always describes a symmetric, unimodal, bell-shape
 
 \begin{figure}[hht]
 \centering
-\includegraphics[width=0.62\textwidth]{ch_distributions/figures/twoSampleNormalsStacked/twoSampleNormalsStacked}
+\includegraphics[width=0.65\textwidth]{ch_distributions/figures/twoSampleNormalsStacked/twoSampleNormalsStacked}
 \caption{The normal models shown in Figure~\ref{twoSampleNormals} but plotted together and on the same scale.}
 \label{twoSampleNormalsStacked}
 \end{figure}
@@ -127,7 +128,7 @@ Ann's \term{percentile} is the percentage of people who earned a lower SAT score
 
 \begin{figure}[htb]
    \centering
-   \includegraphics[height=1.5in]{ch_distributions/figures/satBelow1800/satBelow1800}
+   \includegraphics[width=0.6\textwidth]{ch_distributions/figures/satBelow1800/satBelow1800}
    \caption{The normal model for SAT scores, shading the area of those individuals who scored below Ann.}
    \label{satBelow1800}
 \end{figure}
@@ -138,7 +139,7 @@ A normal probability table is given in Appendix~\vref{normalProbabilityTable} an
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{ch_distributions/figures/normalTails/normalTails}
+\includegraphics[width=0.9\textwidth]{ch_distributions/figures/normalTails/normalTails}
 \caption{The area to the left of $Z$ represents the percentile of the observation.}
 \label{normalTails}
 \end{figure}
@@ -182,6 +183,10 @@ We can also find the Z score associated with a percentile. For example, to ident
 Determine the proportion of SAT test takers who scored better than Ann on the SAT.\footnote{If 84\% had lower scores than Ann, the number of people who had better scores must be 16\%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)}
 \end{exercise}
 
+
+\textC{\newpage}
+
+
 \subsection{Normal probability examples}
 
 Cumulative SAT scores are approximated well by a normal model, $N(\mu=1500, \sigma=300)$.
@@ -189,7 +194,7 @@ Cumulative SAT scores are approximated well by a normal model, $N(\mu=1500, \sig
 \begin{example}{Shannon is a randomly selected SAT taker, and nothing is known about Shannon's SAT aptitude. What is the probability Shannon scores at least 1630 on her SATs?}\label{satAbove1630Exam}
 First, always draw and label a picture of the normal distribution. (Drawings need not be exact to be useful.) We are interested in the chance she scores above 1630, so we shade this upper tail:
 \begin{center}
-\includegraphics[height=0.9in]{ch_distributions/figures/satAbove1630/satAbove1630}
+\includegraphics[width=0.45\textwidth]{ch_distributions/figures/satAbove1630/satAbove1630}
 \end{center}
 The picture shows the mean and the values at 2 standard deviations above and below the mean. The simplest way to find the shaded area under the curve makes use of the Z score of the cutoff value. With $\mu=1500$, $\sigma=300$, and the cutoff value $x=1630$, the Z score is computed as
 \begin{eqnarray*}
@@ -197,7 +202,7 @@ Z = \frac{x - \mu}{\sigma} = \frac{1630 - 1500}{300} = \frac{130}{300} = 0.43
 \end{eqnarray*}
 We look up the percentile of $Z=0.43$ in the normal probability table shown in Table~\ref{zTableShort} or in Appendix~\vref{normalProbabilityTable}, which yields 0.6664. However, the percentile describes those who had a Z score \emph{lower} than 0.43. To find the area \emph{above} $Z=0.43$, we compute one minus the area of the lower tail:
 \begin{center}
-\includegraphics[height=0.8in]{ch_distributions/figures/subtractingArea/subtractingArea}
+\includegraphics[width=0.5\textwidth]{ch_distributions/figures/subtractingArea/subtractingArea}
 \end{center}
 The probability Shannon scores at least 1630 on the SAT is 0.3336.
 \end{example}
@@ -215,7 +220,7 @@ If the probability of Shannon scoring at least 1630 is 0.3336, then what is the 
 \begin{example}{Edward earned a 1400 on his SAT. What is his percentile?} \label{edwardSatBelow1400}
 First, a picture is needed. Edward's percentile is the proportion of people who do not get as high as a 1400. These are the scores to the left of 1400.
 \begin{center}
-\includegraphics[height=22mm]{ch_distributions/figures/satBelow1400/satBelow1400}
+\includegraphics[width=0.4\textwidth]{ch_distributions/figures/satBelow1400/satBelow1400}
 \end{center}
 Identifying the mean $\mu=1500$, the standard deviation $\sigma=300$, and the cutoff for the tail area $x=1400$ makes it easy to compute the Z score:
 \begin{eqnarray*}
@@ -240,7 +245,7 @@ Stuart earned an SAT score of 2100. Draw a picture for each part. (a)~What is hi
 Based on a sample of 100 men,\footnote{This sample was taken from the USDA Food Commodity Intake Database.} the heights of male adults between the ages 20 and 62 in the US is nearly normal with mean 70.0'' and standard deviation 3.3''.
 
 \begin{exercise}
-Mike is 5'7'' and Jim is 6'4''. (a) What is Mike's height percentile? (b) What is Jim's height percentile? Also draw one picture for each part.\footnote{First put the heights into inches: 67 and 76 inches. Figures are shown below. (a) $Z_{Mike} = \frac{67 - 70}{3.3} = -0.91\ \to\ 0.1814$. (b) $Z_{Jim} = \frac{76 - 70}{3.3} = 1.82\ \to\ 0.9656$. \\\includegraphics[height=12mm]{ch_distributions/figures/mikeAndJimPercentiles/mikeAndJimPercentiles}}
+Mike is 5'7'' and Jim is 6'4''. (a) What is Mike's height percentile? (b) What is Jim's height percentile? Also draw one picture for each~part.\footnote{First put the heights into inches: 67 and 76 inches. Figures are shown below. (a) $Z_{Mike} = \frac{67 - 70}{3.3} = -0.91\ \to\ 0.1814$. (b) $Z_{Jim} = \frac{76 - 70}{3.3} = 1.82\ \to\ 0.9656$. \\\includegraphics[height=12mm]{ch_distributions/figures/mikeAndJimPercentiles/mikeAndJimPercentiles}}
 \end{exercise}
 
 The last several problems have focused on finding the probability or percentile for a particular observation. What if you would like to know the observation corresponding to a particular percentile?
@@ -248,7 +253,7 @@ The last several problems have focused on finding the probability or percentile 
 \begin{example}{Erik's height is at the $40^{th}$ percentile. How tall is he?}\label{normalExam40Perc}
 As always, first draw the picture.\vspace{-1mm}
 \begin{center}
-\includegraphics[height=22mm]{ch_distributions/figures/height40Perc/height40Perc}\vspace{-1mm}
+\includegraphics[width=0.35\textwidth]{ch_distributions/figures/height40Perc/height40Perc}\vspace{-1mm}
 \end{center}
 In this case, the lower tail probability is known (0.40), which can be shaded on the diagram. We want to find the observation that corresponds to this value. As a first step in this direction, we determine the Z score associated with the $40^{th}$ percentile.
 
@@ -262,9 +267,9 @@ Solving for $x_{Erik}$ yields the height 69.18 inches. That is, Erik is about 5'
 \end{example}
 
 \begin{example}{What is the adult male height at the $82^{nd}$ percentile?}
-Again, we draw the figure first.\vspace{-1mm}
+Again, we draw the figure first.\textC{\vspace{-3mm}}
 \begin{center}
-\includegraphics[height=22mm]{ch_distributions/figures/height82Perc/height82Perc}\vspace{-1mm}
+\includegraphics[width=0.28\textwidth]{ch_distributions/figures/height82Perc/height82Perc}\textC{\vspace{-1mm}}
 \end{center}
 Next, we want to find the Z score at the $82^{nd}$ percentile, which will be a positive value. Looking in the Z table, we find $Z$ falls in row $0.9$ and the nearest column is $0.02$, i.e. $Z=0.92$. Finally, the height $x$ is found using the Z score formula with the known mean $\mu$, standard deviation $\sigma$, and Z score $Z=0.92$:
 \begin{eqnarray*}
@@ -282,13 +287,13 @@ This yields 73.04 inches or about 6'1'' as the height at the $82^{nd}$ percentil
 \end{exercise}
 
 \begin{example}{What is the probability that a random adult male is between 5'9'' and 6'2''?}
-These heights correspond to 69 inches and 74 inches. First, draw the figure. The area of interest is no longer an upper or lower tail.
+These heights correspond to 69 inches and 74 inches. First, draw the figure. The area of interest is no longer an upper or lower tail.\textC{\vspace{-2mm}}
 \begin{center}
-\includegraphics[height=0.85in]{ch_distributions/figures/between59And62/between59And62}
+\includegraphics[width=0.35\textwidth]{ch_distributions/figures/between59And62/between59And62}\textC{\vspace{-2mm}}
 \end{center}
-The total area under the curve is~1. If we find the area of the two tails that are not shaded (from Guided Practice~\ref{more74Less69}, these areas are $0.3821$ and $0.1131$), then we can find the middle area:
+The total area under the curve is~1. If we find the area of the two tails that are not shaded (from Guided Practice~\ref{more74Less69}, these areas are $0.3821$ and $0.1131$), then we can find the middle area:\textC{\vspace{-2mm}}
 \begin{center}
-\includegraphics[height=0.65in]{ch_distributions/figures/subtracting2Areas/subtracting2Areas}
+\includegraphics[width=0.6\textwidth]{ch_distributions/figures/subtracting2Areas/subtracting2Areas}\textC{\vspace{-2mm}}
 \end{center}
 That is, the probability of being between 5'9'' and 6'2'' is 0.5048.
 \end{example}
@@ -344,6 +349,8 @@ There are two visual methods for checking the assumption of normality, which can
 \label{fcidMHeights}
 \end{figure}
 
+\textC{\newpage}
+
 \begin{example}{Three data sets of 40, 100, and 400 samples were simulated from a normal distribution, and the histograms and normal probability plots of the data sets are shown in Figure~\ref{normalExamples}. These will provide a benchmark for what to look for in plots of real data.} \label{normalExamplesExample}
 
 \begin{figure}
@@ -361,6 +368,8 @@ The data set with 400 observations has a histogram that greatly resembles the no
 
 Notice the histograms look more normal as the sample size increases, and the normal probability plot becomes straighter and more stable.
 \end{example}
+
+\textC{\pagebreak}
 
 \begin{example}{Are NBA player heights normally distributed? Consider all 435 NBA players from the 2008-9 season presented in Figure~\ref{nbaNormal}.\footnote{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}}
 We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. We can compare these characteristics to the sample of 400 normally distributed observations in Example~\ref{normalExamplesExample} and see that they represent much stronger deviations from the normal model. NBA player heights do not appear to come from a normal distribution.
@@ -571,6 +580,9 @@ But there are three other scenarios: Brittany, Caroline, or Damian could have be
 Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability $(0.35)^1(0.65)^3$.\footnote{$P(A=\text{\resp{shock}},\text{ }B=\text{\resp{refuse}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3$.}
 \end{exercise}
 
+\textC{\newpage}
+
+
 \subsection{The binomial distribution}
 
 The scenario outlined in Example~\ref{oneRefuser} is a special case of what is called the binomial distribution. The \termsub{binomial distribution}{distribution!binomial} describes the probability of having exactly $k$ successes in $n$ independent Bernoulli trials with probability of a success $p$  (in Example~\ref{oneRefuser}, $n=4$, $k=1$, $p=0.35$). We would like to determine the probabilities associated with the binomial distribution more generally, i.e. we want a formula where we can use $n$, $k$, and $p$ to obtain the probability. To do this, we reexamine each part of the example.
@@ -677,7 +689,7 @@ What is the probability that at least 2 of your 4 smoking friends will develop a
 Suppose you have 7 friends who are smokers and they can be treated as a random sample of smokers. (a) How many would you expect to develop a severe lung condition, i.e. what is the mean? (b) What is the probability that at most 2 of your 7 friends will develop a severe lung condition.\footnote{(a)~$\mu=0.3\times7 = 2.1$. (b)~$P($0, 1, or 2 develop severe lung condition$) = P(k=0) + P(k=1)+P(k=2) = 0.6471$.}
 \end{exercise}
 
-Below we consider the first term in the binomial probability, $n$ choose $k$ under some special scenarios.
+Next we consider the first term in the binomial probability, $n$ choose $k$ under some special scenarios.
 
 \begin{exercise}
 Why is it true that ${n \choose 0}=1$ and ${n \choose n}=1$ for any number $n$?\footnote{Frame these expressions into words. How many different ways are there to arrange 0 successes and $n$ failures in $n$ trials? (1 way.) How many different ways are there to arrange $n$ successes and 0 failures in $n$ trials? (1 way.)}
@@ -719,7 +731,7 @@ Here we consider the binomial model when the probability of a success is $p=0.10
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{ch_distributions/figures/fourBinomialModelsShowingApproxToNormal/fourBinomialModelsShowingApproxToNormal}
+\includegraphics[width=0.92\textwidth]{ch_distributions/figures/fourBinomialModelsShowingApproxToNormal/fourBinomialModelsShowingApproxToNormal}
 \caption{Hollow histograms of samples from the binomial model when $p=0.10$. The sample sizes for the four plots are $n=10$, 30, 100, and 300, respectively.}
 \label{fourBinomialModelsShowingApproxToNormal}
 \end{figure}
@@ -786,10 +798,8 @@ The tip to add extra area when applying the normal approximation is most often u
 
 
 %_________________
-\section{More discrete distributions (special topic)}
+\section{Negative binomial distribution (special topic)}
 \label{discreteModels}
-
-\subsection{Negative binomial distribution}
 \label{negativeBinomial}
 
 \index{distribution!negative binomial|(}
@@ -886,6 +896,8 @@ P(\text{the $k^{th}$ success on the $n^{th}$ trial}) = {n-1 \choose k-1} p^{k}(1
 where $p$ is the probability an individual trial is a success. All trials are assumed to be independent.}
 \end{termBox}
 
+\textC{\pagebreak}
+
 \begin{example}{Show using Equation~\eqref{negativeBinomialEquation} that the probability Brian kicks his fourth successful field goal on the sixth attempt is 0.164.}
 The probability of a single success is $p=0.8$, the number of successes is $k=4$, and the number of necessary attempts under this scenario is $n=6$.
 \begin{align*}
@@ -923,87 +935,3 @@ On 70\% of days, a hospital admits at least one heart attack patient. On 30\% of
 \index{distribution!negative binomial|)}
 \end{exercise}
 
-
-\subsection{Poisson distribution}
-\label{poisson}
-
-\index{distribution!Poisson|(}
-
-\begin{example}{There are about 8 million individuals in New York City. How many individuals might we expect to be hospitalized for acute myocardial infarction (AMI), i.e. a heart attack, each day? According to historical records, the average number is about 4.4 individuals. However, we would also like to know the approximate distribution of counts. What would a histogram of the number of AMI occurrences each day look like if we recorded the daily counts over an entire year?} \label{amiIncidencesEachDayOver1YearInNYCExample}
-A histogram of the number of occurrences of AMI on 365 days\footnote{These data are simulated. In practice, we should check for an association between successive days.} for NYC is shown in Figure~\ref{amiIncidencesOver100Days}. The sample mean (4.38) is similar to the historical average of 4.4. The sample standard deviation is about 2, and the histogram indicates that about 70\% of the data fall between 2.4 and 6.4. The distribution's shape is unimodal and skewed to the right.
-\end{example}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{ch_distributions/figures/amiIncidencesOver100Days/amiIncidencesOver100Days}
-\caption{A histogram of the number of occurrences of AMI on 365 separate days in NYC.}
-\label{amiIncidencesOver100Days}
-\end{figure}
-
-The \termsub{Poisson distribution}{distribution!Poisson} is often useful for estimating the number of events in a large population over a unit of time. For instance, consider each of the following events:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item having a heart attack,
-\item getting married, and
-\item getting struck by lightning.
-\end{itemize}
-The Poisson distribution helps us describe the number of such events that will occur in a short unit of time for a fixed population if the individuals within the population are independent.
-
-The histogram in Figure~\ref{amiIncidencesOver100Days} approximates a Poisson distribution with rate equal to 4.4. The \term{rate} for a Poisson distribution is the average number of occurrences in a mostly-fixed population per unit of time. In Example~\ref{amiIncidencesEachDayOver1YearInNYCExample}, the time unit is a day, the population is all New York City residents, and the historical rate is 4.4. The parameter in the Poisson distribution is the rate -- or how many events we expect to observe -- and it is typically denoted by $\lambda$\marginpar[\raggedright\vspace{-5mm}
-
-$\lambda$\vspace{0mm}\\\footnotesize Rate for the\\Poisson dist.]{\raggedright\vspace{-5mm}
-
-$\lambda$\vspace{0mm}\\\footnotesize Rate for the\\Poisson dist.}\index{Greek!lambda@lambda ($\lambda$)}
-(the Greek letter \emph{lambda})  or $\mu$. Using the rate, we can describe the probability of observing exactly $k$ events in a single unit of time.
-
-\begin{termBox}{\tBoxTitle{Poisson distribution}
-Suppose we are watching for events and the number of observed events follows a Poisson distribution with rate $\lambda$. Then
-\begin{align*}
-P(\text{observe $k$ events}) = \frac{\lambda^{k} e^{-\lambda}}{k!}
-\end{align*}
-where $k$ may take a value 0, 1, 2, and so on, and $k!$ represents $k$-factorial, as described on page~\pageref{factorialDefinitionInTheBinomialSection}. The letter $e\approx2.718$ is the base of the natural logarithm. The mean and standard deviation of this distribution are $\lambda$ and $\sqrt{\lambda}$, respectively.}
-\end{termBox}
-
-We will leave a rigorous set of conditions for the Poisson distribution to a later course. However, we offer a few simple guidelines that can be used for an initial evaluation of whether the Poisson model would be appropriate.
-
-\begin{tipBox}{\tipBoxTitle{Is it Poisson?}
-A random variable may follow a Poisson distribution if we are looking for the number of events, the population that generates such events is large, and the events occur independently of each other.}
-\end{tipBox}
-
-Even when events are not really independent -- for instance, Saturdays and Sundays are especially popular for weddings -- a Poisson model may sometimes still be reasonable if we allow it to have a different rate for different times. In the wedding example, the rate would be modeled as higher on weekends than on weekdays. The idea of modeling rates for a Poisson distribution against a second variable such as \var{dayOfTheWeek} forms the foundation of some more advanced methods that fall in the realm of \termsub{generalized linear models}{generalized linear model}. In Chapters~\ref{linRegrForTwoVar} and~\ref{multipleAndLogisticRegression}, we will discuss a foundation of linear models.
-
-\index{distribution!Poisson|)}
-
-
-
-%=========================
-%\section{More continuous models}
-%\label{continuousModels}
-%
-%\begin{itemize}\color{gray}
-%\item Continuous distributions are more often studied
-%\item Uniform distribution serves as a basic but important foundation for later courses
-%\item Exponential model is useful in modeling
-%\end{itemize}
-%
-%\subsection{Continuous uniform}
-%\label{continuousUniform}
-%
-%\begin{itemize}\color{gray}
-%\item Bowling with bumpers
-%\item Each location is equally likely
-%\end{itemize}
-%
-%
-%
-%\subsection{Exponential}
-%\label{exponential}
-%
-%\begin{itemize}\color{gray}
-%\item Waiting for groups of customers
-%\item Each customer behaves independently
-%\item Conditions: customers are independent, each customer is equally likely to turn up one minute as the next, there are many customers, and the chance any given customer will show up is very small (e.g. less than 10\%)
-%\item Emphasize similarity in conditions -- and then the connection -- to Poisson random variables
-%\end{itemize}
-%
-%

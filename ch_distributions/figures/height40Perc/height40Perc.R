@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-myPDF('height40Perc.pdf', 2.15, 1.13,
+myPDF('height40Perc.pdf', 2.15, 0.95,
       mar = c(1.31, 0, 0.01, 0),
       mgp = c(3, 0.45, 0))
 X <- seq(-4, 4, 0.01)

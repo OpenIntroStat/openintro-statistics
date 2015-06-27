@@ -1,8 +1,8 @@
 library(openintro)
 data(COL)
 
-myPDF('between59And62.pdf', 2.5, 1.3,
-      mar = c(1.5, 0, 0.5, 0),
+myPDF('between59And62.pdf', 2.5, 0.9,
+      mar = c(1.4, 0, 0, 0),
       mgp = c(3, 0.45, 0))
 normTail(70, 3.3,
          M = c(69, 74),

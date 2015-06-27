@@ -1,8 +1,8 @@
 library(openintro)
 data(COL)
 
-myPDF("twoSampleNormalsStacked.pdf", 4.65, 2.24,
-      mar = c(2,1,0.5,1))
+myPDF("twoSampleNormalsStacked.pdf", 4.65, 2,
+      mar = c(1.7,1,0.1,1))
 
 # curve 1
 X <- seq(-4,4,0.01)

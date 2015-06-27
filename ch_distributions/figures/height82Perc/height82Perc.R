@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-myPDF('height82Perc.pdf', 2.15, 1.13,
+myPDF('height82Perc.pdf', 2.15, 1,
       mar = c(1.31, 0, 0.01, 0),
       mgp = c(3, 0.45, 0))
 X <- seq(-4, 4, 0.01)
@@ -21,8 +21,8 @@ polygon(c(X[these[1]], X[these], X[rev(these)[1]]),
 
 text(-2, 0.23, '  82%\n(0.82)', cex = 0.8, col = COL[1])
 
-arrows(2, 0.22, 1.45, 0.07, length = 0.07)
-text(2.1, 0.2, '  18%\n(0.18)', cex = 0.8, pos = 3)
+arrows(2, 0.2, 1.45, 0.07, length = 0.07)
+text(2.1, 0.18, '  18%\n(0.18)', cex = 0.8, pos = 3)
 
 lines(X, Y)
 abline(h = 0)
