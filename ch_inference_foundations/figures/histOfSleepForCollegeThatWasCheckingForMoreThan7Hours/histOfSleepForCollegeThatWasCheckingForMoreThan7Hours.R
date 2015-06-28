@@ -11,9 +11,9 @@ length(x)
 
 fn <- paste0('histOfSleepForCollege',
              'ThatWasCheckingForMoreThan7Hours.pdf')
-myPDF(fn, 5, 3,
-      mar = c(3.2, 3.5, 1, 1),
-      mgp = c(1.9, 0.7, 0))
+myPDF(fn, 5, 2.3,
+      mar = c(2.65, 3.5, 0, 1),
+      mgp = c(1.6, 0.45, 0))
 histPlot(x,
          xlab = 'Nightly sleep (hours)',
          ylab = '',

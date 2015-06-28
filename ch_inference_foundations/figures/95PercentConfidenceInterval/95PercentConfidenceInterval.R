@@ -6,9 +6,9 @@ set.seed(52)
 # This still references run10, but the actual range of values
 # isn't shown, so just tweaking the printed value.
 
-myPDF('95PercentConfidenceInterval.pdf', 6, 4,
-      mar = c(2, 1, 1, 1),
-      mgp = c(2.7, 0.9, 0))
+myPDF('95PercentConfidenceInterval.pdf', 6, 3.4,
+      mar = c(1.7, 1, 0, 1),
+      mgp = c(2.7, 0.7, 0))
 m <- 94.52
 s <- 16.0
 n <- 100
@@ -25,15 +25,14 @@ for(i in 1:k){
   SE[i]    <- sd(d)/sqrt(n)
 }
 xR <- m + 4 * c(-1, 1) * s / sqrt(n)
-yR <- c(0, 41 * k / 40)
+yR <- c(0.7, 25.3)
 plot(xR, yR,
      type = 'n',
      xlab = 'run time (minutes)',
      ylab = '',
      axes = FALSE)
-abline(v = m, lty = 2, col = COL[6])
-axis(1, at = m, expression(mu*' = 3.90'),
-     cex.axis = 1.15)
+abline(v = m, lty = 2, col = COL[5,2])
+axis(1, at = m, expression(mu*' = 3.90'))
 for(i in 1:k){
   ci <- means[i] + 2 * c(-1, 1) * SE[i]
   if(abs(means[i] - m) > 1.96 * SE[i]){

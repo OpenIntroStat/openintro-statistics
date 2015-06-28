@@ -16,13 +16,12 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 1 &  14 & female & 9 &  &  & never &   4 &   0 \\ 
   2 &  14 & female & 9 &  &  & never &   2 &   0 \\ 
   3 &  15 & female & 9 & 1.73 & 84.37 & never &   7 &   0 \\ 
-  4 &  15 & female & 9 & 1.60 & 55.79 & never &   0 &   0 \\ 
   $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
   13582 &  17 & female & 12 & 1.60 & 77.11 & sometimes &   5 &  \\ 
   13583 &  17 & female & 12 & 1.57 & 52.16 & did not ride &   5 &  \\ 
   \hline
 \end{tabular}
-\caption{Six cases from the \data{yrbss} data set. Some observations are blank since they are missing data. For example, the height and weight of students 1 and 2 are missing.}
+\caption{Five cases from the \data{yrbss} data set. Some observations are blank since there are missing data. For example, the height and weight of students 1 and 2 are missing.\textC{\vspace{-2mm}}}
 \label{yrbssDF}
 \end{table}
 % library(openintro); library(xtable); data(yrbss); xtable(rbind(head(yrbss, 4), tail(yrbss, 2))[, c("age", "gender", "grade", "height", "weight", "helmet_12m", "physically_active_7d", "strength_training_7d")])
@@ -169,7 +168,7 @@ From the random sample represented in \data{yrbss\_samp}, we guessed the average
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.85\textwidth]{ch_inference_foundations/figures/yrbssActive1000SampDist/yrbssActive1000SampDist}
+   \includegraphics[width=0.9\textwidth]{ch_inference_foundations/figures/yrbssActive1000SampDist/yrbssActive1000SampDist}
    \caption{A histogram of 1000 sample means for number of days physically active per week, where the samples are of size $n=100$.}
    \label{yrbssActive1000SampDist}
 \end{figure}
@@ -191,6 +190,8 @@ The standard deviation associated with an estimate is called the \emph{standard 
 \end{termBox}
 
 When considering the case of the point estimate $\bar{x}$, there is one problem: there is no obvious way to estimate its standard error from a single sample. However, statistical theory provides a helpful tool to address this issue. 
+
+\textC{\newpage}
 
 \begin{exercise}
 (a) Would you rather use a small sample or a large sample when estimating a parameter? Why? (b) Using your reasoning from (a), would you expect a point estimate based on a small sample to have smaller or larger standard error than a point estimate based on a larger sample?\footnote{(a) Consider two random samples: one of size 10 and one of size 1000. Individual observations in the small sample are highly influential on the estimate while in larger samples these individual observations would more often average each other out. The larger sample would tend to provide a more accurate estimate. (b) If we think an estimate is better, we probably mean it typically has less error. Based on (a), our intuition suggests that a larger sample size corresponds to a smaller standard error.}
@@ -224,6 +225,7 @@ In the sample of 100 students, the standard deviation of student heights is $s_{
 \end{exercise}
 %library(openintro); library(xtable); data(yrbss); data(yrbss.samp); d <- yrbss.samp$height; mean(d); sd(d); mean(yrbss$height, na.rm=TRUE); sd(yrbss$height, na.rm=TRUE)
 
+\textC{\pagebreak}
 
 \begin{exercise}
 (a) Would you be more trusting of a sample that has 100 observations or 400 observations? (b) We want to show mathematically that our estimate tends to be better when the sample size is larger. If the standard deviation of the individual observations is 10, what is our estimate of the standard error when the sample size is 100? What about when it is 400? (c) Explain how your answer to part~(b) mathematically justifies your intuition in part~(a).\footnote{(a) Extra observations are usually helpful in understanding the population, so a point estimate with 400 observations seems more trustworthy. (b) The standard error when the sample size is 100 is given by $SE_{100} = 10/\sqrt{100} = 1$. For 400: $SE_{400} = 10/\sqrt{400} = 0.5$. The larger sample has a smaller standard error. (c) The standard error of the sample with 400 observations is lower than that of the sample with 100 observations. The standard error describes the typical error, and since it is lower for the larger sample, this mathematically shows the estimate from the larger sample tends to be better -- though it does not guarantee that every large sample will provide a better estimate than a particular small sample.}
@@ -258,6 +260,10 @@ If we report a point estimate, we probably will not hit the exact population par
 If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?\footnote{If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.}
 \end{exercise}
 
+
+\textC{\pagebreak}
+
+
 \subsection{An approximate 95\% confidence interval}
 
 Our point estimate is the most plausible value of the parameter, so it makes sense to build the confidence interval around the point estimate. The standard error, which is a measure of the uncertainty associated with the point estimate, provides a guide for how large we should make the confidence interval.
@@ -271,7 +277,7 @@ But what does ``95\% confident'' mean? Suppose we took many samples and built a 
 
 \begin{figure}[hht]
    \centering
-   \includegraphics[width=0.75\textwidth]{ch_inference_foundations/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
+   \includegraphics[width=0.78\textwidth]{ch_inference_foundations/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
    \caption{Twenty-five samples of size $n=100$ were taken from \data{yrbss}. For~each sample, a confidence interval was created to try to capture the average number of days per week that students are physically active. Only~1 of these~25 intervals did not capture the true mean, $\mu = 3.90$~days.}
    \label{95PercentConfidenceInterval}
 \end{figure}
@@ -399,6 +405,8 @@ Figure~\ref{choosingZForCI} provides a picture of how to identify $z^{\star}$ ba
 \label{marginOfErrorTermBox}In a confidence interval, $z^{\star}\times SE$ is called the \term{margin of error}.}
 \end{termBox}
 
+\textC{\newpage}
+
 \begin{exercise} \label{find90CIForYrbssAgeExercise}
 Use the data in Guided Practice~\ref{find99CIForYrbssAgeExercise} to create a 90\% confidence interval for the average days active per week of all YRBSS students.\footnote{We first find $z^{\star}$ such that 90\% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5\% (the other 5\% is in the upper tail): $z^{\star}=1.65$. The 90\% confidence interval can then be computed as $\bar{x}_{active}\ \pm\ 1.65\times SE_{\bar{x}} \to (3.32, 4.18)$. (We had already verified conditions for normality and the standard error.) That is, we are 90\% confident the average days active per week is between 3.32 and 4.18~days.}
 \end{exercise}
@@ -510,7 +518,7 @@ The community college decides to collect data to evaluate the \$650 per month cl
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{ch_inference_foundations/figures/communityCollegeClaimedHousingExpenseDistribution/communityCollegeClaimedHousingExpenseDistribution}
+\includegraphics[width=0.9\textwidth]{ch_inference_foundations/figures/communityCollegeClaimedHousingExpenseDistribution/communityCollegeClaimedHousingExpenseDistribution}
 \caption{Sample distribution of student housing expense. These data are strongly skewed\index{skew!example: strong}, which we can see by the long right tail with a few notable outliers.}
 \label{communityCollegeClaimedHousingExpenseDistribution}
 \end{figure}
@@ -520,6 +528,8 @@ The community college decides to collect data to evaluate the \$650 per month cl
 Don't despair if checking the skew condition is difficult or confusing. You aren't alone -- nearly all students get frustrated when checking skew. Properly assessing skew takes practice, and you won't be a pro, even at the end of this book. \\[2mm]
 But this doesn't mean you should give up. Checking skew and the other conditions is extremely important for a responsible data analysis. However, rest assured that evaluating skew isn't something you need to be a master of by the end of the book, though by that time you should be able to properly assess clear cut cases.}
 \end{tipBox}
+
+\textC{\newpage}
 
 \begin{example}{The sample mean for student housing is \$616.91 and the sample standard deviation is \$128.65. Construct a 95\% confidence interval for the population mean and evaluate the hypotheses of Guided Practice~\ref{htForHousingExpenseForCommunityCollege650}.}
 The standard error associated with the mean may be estimated using the sample standard deviation divided by the square root of the sample size. Recall that $n = 175$ students were sampled.
@@ -641,7 +651,7 @@ The researchers at the rural school conducted a simple random sample of $n=110$ 
 
 \begin{figure}
 \centering
-\includegraphics[height=55mm]{ch_inference_foundations/figures/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
+\includegraphics[width=0.7\textwidth]{ch_inference_foundations/figures/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
 \caption{Distribution of a night of sleep for 110 college students. These data are strongly skewed.\index{skew!example: strong}}
 \label{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
 \end{figure}
@@ -656,7 +666,7 @@ The hypothesis test for the sleep study will be evaluated using a significance l
 
 \begin{figure}[hht]
    \centering
-   \includegraphics[width=0.73\textwidth]{ch_inference_foundations/figures/pValueOneSidedSleepStudy/pValueOneSidedSleepStudy}
+   \includegraphics[width=0.83\textwidth]{ch_inference_foundations/figures/pValueOneSidedSleepStudy/pValueOneSidedSleepStudy}
    \caption{If the null hypothesis is true, then the sample mean $\bar{x}$ came from this nearly normal distribution. The right tail describes the probability of observing such a large sample mean if the null hypothesis is true.}
    \label{pValueOneSidedSleepStudy}
 \end{figure}
@@ -725,7 +735,7 @@ During early October 2009, 52 Ebay auctions were recorded for \emph{Mario Kart}.
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.68\textwidth]{ch_inference_foundations/figures/ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise/ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}
+   \includegraphics[width=0.77\textwidth]{ch_inference_foundations/figures/ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise/ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}
    \caption{A histogram of the total auction prices for 52 Ebay auctions.}
    \label{ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}
 \end{figure}
@@ -810,6 +820,7 @@ By examining these two scenarios, we can determine that we will make a Type~1 Er
 {After observing data, it is tempting to turn a two-sided test into a one-sided test. Avoid this temptation. Hypotheses must be set up \emph{before} observing the data. If~they are not, the test should be two-sided.}
 \end{caution}
 
+
 \subsection{Choosing a significance level}
 \label{significanceLevel}
 
@@ -836,7 +847,7 @@ The null hypothesis would be that the suppliers' parts are equally reliable. Bec
 
 \begin{exercise}
 A part inside of a machine is very expensive to replace. However, the machine usually functions properly even if this part is broken, so the part is replaced only if we are extremely certain it is broken based on a series of measurements. Identify appropriate hypotheses for this test (in plain language) and suggest an appropriate significance level.\footnote{Here the null hypothesis is that the part is not broken, and the alternative is that it is broken. If we don't have sufficient evidence to reject $H_0$, we would not replace the part. It sounds like failing to fix the part if it is broken ($H_0$ false, $H_A$ true) is not very problematic, and replacing the part is expensive. Thus, we should require very strong evidence against $H_0$ before we replace the part. Choose a small significance level, such as $\alpha=0.01$.}
-\end{exercise}
+\end{exercise}\textC{\vspace{-3mm}}
 
 \index{significance level|)}
 \index{hypothesis testing!significance level|)}
@@ -975,6 +986,8 @@ Our confidence interval says absolutely nothing about individual observations. I
 What $z^{\star}$ would be appropriate for a 99\% confidence level? For help, see Figure~\vref{choosingZForCI}.\footnote{We seek $z^{\star}$ such that 99\% of the area under the normal curve will be between the Z scores -$z^{\star}$ and $z^{\star}$. Because the remaining 1\% is found in the tails, each tail has area 0.5\%, and we can identify -$z^{\star}$ by looking up 0.0050 in the normal probability table: $z^{\star} = 2.58$. See also Figure~\vref{choosingZForCI}.}
 \end{exercise}
 
+\textC{\newpage}
+
 \begin{exercise}
 The proportion of students who are male in the \data{yrbss\_samp} sample is $\hat{p} = 0.48$. This sample meets certain conditions that ensure $\hat{p}$ will be nearly normal, and the standard error of the estimate is $SE_{\hat{p}} = 0.05$. Create a 90\% confidence interval for the proportion of students in the 2013 YRBSS survey who are male.\footnote{We use $z^{\star}=1.65$ (see Guided Practice~~\vref{find90CIForYrbssAgeExercise}), and apply the general confidence interval formula:
 \begin{eqnarray*}
@@ -1007,6 +1020,8 @@ Just as the confidence interval method works with many other point estimates, we
 A drug called sulphinpyrazone was under consideration for use in reducing the death rate in heart attack patients. To determine whether the drug was effective, a set of 1,475 patients were recruited into an experiment and randomly split into two groups: a control group that received a placebo and a treatment group that received the new drug. What would be an appropriate null hypothesis? And the alternative?\footnote{The skeptic's perspective is that the drug does not work at reducing deaths in heart attack patients ($H_0$), while the alternative is that the drug does work ($H_A$).}
 \end{exercise}
 
+\textC{\newpage}
+
 We can formalize the hypotheses from Guided Practice~\ref{fdaHypSetupForSulph} by letting $p_{control}$ and $p_{treatment}$ represent the proportion of patients who died in the control and treatment groups, respectively. Then the hypotheses can be written as
 \begin{eqnarray*}
 &&H_0: p_{control} = p_{treatment} \quad\text{(the drug doesn't work)} \quad \\
@@ -1032,7 +1047,7 @@ We would like to identify the p-value to evaluate the hypotheses. If the null hy
 
 \begin{figure}[bt]
    \centering
-   \includegraphics[height=37mm]{ch_inference_foundations/figures/sulphStudyFindPValueUsingNormalApprox/sulphStudyFindPValueUsingNormalApprox}
+   \includegraphics[width=0.88\textwidth]{ch_inference_foundations/figures/sulphStudyFindPValueUsingNormalApprox/sulphStudyFindPValueUsingNormalApprox}
    \caption{The distribution of the sample difference if the null hypothesis is true.}
    \label{sulphStudyFindPValueUsingNormalApprox}
 \end{figure}
@@ -1068,6 +1083,9 @@ We may apply the ideas of confidence intervals and hypothesis testing to cases w
 \item the point estimate tends towards some distribution that is not the normal distribution.
 \end{itemize}
 For each case where the normal approximation is not valid, our first task is always to understand and characterize the sampling distribution of the point estimate or test statistic. Next, we can apply the general frameworks for confidence intervals and hypothesis testing to these alternative distributions.
+
+
+\textC{\newpage}
 
 
 \subsection{When to retreat}
