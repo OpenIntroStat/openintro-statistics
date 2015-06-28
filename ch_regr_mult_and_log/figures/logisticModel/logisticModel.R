@@ -40,7 +40,7 @@ dev.off()
 
 
 ns1 <- 7
-myPDF("logisticModelSpline.pdf", 7.7, 4.9,
+myPDF("logisticModelSpline.pdf", 7.7, 4.4,
       mar = c(3.9, 6.6, 0.5, 0.2),
       mgp = c(2.4, 0.55, 0))
 plot(p, e$spam+noise/5,
@@ -103,7 +103,7 @@ arrows(0.6, 0.36,
 text(0.6, 0.27,
      paste("The bounds become wide\nbecause not much data",
            "are found this far right",
-           sep = "\n")
+           sep = "\n"),
      cex = 0.75)
 dev.off()
 

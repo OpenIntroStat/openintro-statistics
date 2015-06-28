@@ -45,7 +45,7 @@ qqnorm(e,
        pch = 19)
 dev.off()
 
-myPDF("mkDiagnosticInOrder.pdf", 5.65, 4.61,
+myPDF("mkDiagnosticInOrder.pdf", 5.65, 3.9,
       mgp = c(2.5, 0.6, 0))
 plot(e,
      xlab = "Order of collection",
@@ -87,7 +87,7 @@ points(f, e,
 box()
 dev.off()
 
-myPDF("mkDiagnosticEvsAbsF.pdf", 5.65, 4.61,
+myPDF("mkDiagnosticEvsAbsF.pdf", 5.5, 3.7,
       mgp = c(2.5, 0.6, 0))
 plot(f, abs(e),
      xlab = "Fitted values",

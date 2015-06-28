@@ -12,12 +12,11 @@ d <- marioKart[-toss, keep]
 d$stockPhoto <- ifelse(d$stockPhoto == "yes", 1, 0)
 d$cond <- ifelse(d$cond == "new", 1, 0)
 
-myPDF("marioKartSingle.pdf", 5, 3.8,
-      mar = c(3.7, 3.7, 0.5, 0.5),
+myPDF("marioKartSingle.pdf", 5.2, 4.5,
+      mar = c(3.7, 3.7, 0, 0.5),
       mgp = c(2.5,0.55,0))
 plot(d$cond, d$totalPr,
      xlim = c(-0.15, 1.15),
-     ylim = c(25, 75),
      axes = FALSE,
      col = COL[1, 3],
      pch = 19,
