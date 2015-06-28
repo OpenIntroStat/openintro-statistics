@@ -12,7 +12,7 @@ n <- survey %>%
 
 # histogram ---------------------------------------------------------
 
-pdf("exclusive_relationships_rel_hist.pdf", height = 3, width = 6)
-par(mar=c(3.7,2.2,0.5,0.5), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.5)
+pdf("exclusive_relationships_rel_hist.pdf", height = 2.3, width = 5.5)
+par(mar=c(3.3,2.2,0.3,0.5), las=1, mgp=c(2.2,0.55,0))
 histPlot(survey$excl_relation, col = COL[1], xlab = "Number of exclusive relationships", ylab = "")
 dev.off()
