@@ -20,3 +20,4 @@ Icon[^/]
 *.dropbox
 _README
 *-deprecated*
+*.Rhistory
