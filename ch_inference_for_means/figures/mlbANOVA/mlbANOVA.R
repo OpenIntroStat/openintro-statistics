@@ -22,15 +22,17 @@ xtable(summary(mod))
 xtable(anova(mod), digits = 4)
 
 
-myPDF("mlbANOVABoxPlot.pdf", 6, 4)
+myPDF("mlbANOVABoxPlot.pdf", 5.4, 3,
+      mar = c(2.8, 4, 0, 1))
 boxPlot(out, gp,
-        xlab = "Position",
+        xlab = "",
         ylab = "On base percentage",
         axes = FALSE,
         pchCex = 1,
         key = POS,
         col = COL[1, 3],
         lcol = COL[1])
+mtext("Position", 1, 1.5)
 axis(1, 1:4, POS)
 axis(2)
 dev.off()

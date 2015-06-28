@@ -3,8 +3,8 @@ data(textbooks)
 data(COL)
 d <- textbooks
 
-myPDF('textbooksS10HTTails.pdf', 5, 2,
-      mar = c(1.7, 0, 0.5, 0),
+myPDF('textbooksS10HTTails.pdf', 5, 1.6,
+      mar = c(1.7, 0, 0, 0),
       mgp = c(3, 0.5, 0))
 normTail(L = -6.5,
          U = 6.5,

@@ -15,13 +15,16 @@ Chapter~\ref{foundationsForInference} introduced a framework for statistical inf
 \section{One-sample means with the $t$-distribution}
 \label{oneSampleMeansWithTDistribution}
 
-The motivation in Chapter~\ref{foundationsForInference} for requiring a large sample was two-fold:
+We required a large sample in Chapter~\ref{foundationsForInference} for two reasons:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Large sample ensures that the sampling distribution of $\bar{x}$ is nearly normal. We will see in Section~\ref{normalityCond} that if the population data are nearly normal, then $\bar{x}$ is also nearly normal regardless of the sample size.
-\item We get a better estimate of the standard error when using a large sample. The standard error estimate will not generally be accurate for smaller sample sizes, and this motivates the introduction of the $t$-distribution, which we introduce in Section~\ref{introducingTheTDistribution}.
+\item The sampling distribution of $\bar{x}$ tends to be more normal when the sample is large.
+\item The calculated standard error is typically very accurate when using a large sample.
 \end{enumerate}
-The $t$-distribution is a helpful substitute for the normal distribution when we model a sample mean $\bar{x}$ that comes from a smaller sample. While we emphasize the use of the $t$-distribution for small samples, this distribution is also generally used for large samples and will produce similar results to those from the normal distribution for large samples.
+So what should we do when the sample size is small? As we'll discuss in Section~\ref{normalityCond}, if the population data are nearly normal, then $\bar{x}$ will also follow a normal distribution, which addresses the first problem. The accuracy of the standard error is trickier, and for this challenge we'll introduce a new distribution called the $t$-distribution.
+
+While we emphasize the use of the $t$-distribution for small samples, this distribution is also generally used for large samples, where it produces similar results to those from the normal distribution.
+
 
 \subsection{The normality condition}
 \label{normalityCond}
@@ -57,7 +60,7 @@ In the cases where we will use a small sample to calculate the standard error, i
 \label{tDistCompareToNormalDist}
 \end{figure}
 
-The $t$-distribution, always centered at zero, has a single parameter: degrees of freedom. The \termsub{degrees of freedom (df)}{degrees of freedom (df)!$t$-distribution} describe the precise form of the bell-shaped $t$-distribution. Several $t$-distributions are shown in Figure~\ref{tDistConvergeToNormalDist}. When there are more degrees of freedom, the $t$~distribution looks very much like the standard normal distribution.
+The $t$-distribution, always centered at zero, has a single parameter: degrees of freedom. The \termsub{degrees of freedom (df)}{degrees of freedom (df)!$t$-distribution} describe the precise form of the bell-shaped $t$-distribution. Several $t$-distributions are shown in Figure~\ref{tDistConvergeToNormalDist}. When there are more degrees of freedom, the $t$-distribution looks very much like the standard normal distribution.
 
 \begin{figure}
 \centering
@@ -72,11 +75,10 @@ The degrees of freedom describe the shape of the $t$-distribution. The larger th
 
 When the degrees of freedom is about 30 or more, the $t$-distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we relate degrees of freedom to sample size.
 
-It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data. We use a \term{t table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table. A larger $t$-table is in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. In~practice, it's standard practice to use statistical software instead of a table, and you can see some of these options at
+It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data. We use a \term{t-table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table. A larger $t$-table is in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. In~practice, it's more common to use statistical software instead of a table, and you can see some of these options at
 \begin{center}
 \oiRedirect{textbook-prob_distribution_calculations}{www.openintro.org/stat/prob-tables}
 \end{center}
-\Comment{Still need to create www.openintro.org/stat/prob-tables redirect and add this note elsewhere in the textbook.}
 
 \begin{table}[hht]
 \centering
@@ -101,15 +103,15 @@ $\infty$  &  {\normalsize  1.28} & {\normalsize  1.64} & {\normalsize  1.96} & {
 \label{tTableSample}
 \end{table}
 
-Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is \highlightO{highlighted} in Table~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
+Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is highlighted in Table~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
 
 \begin{example}{What proportion of the $t$-distribution with 18 degrees of freedom falls below -2.10?}
-Just like a normal probability problem, we first draw the picture in Figure~\ref{tDistDF18LeftTail2Point10} and shade the area below -2.10. To find this area, we identify the appropriate row: $df=18$. Then we identify the column containing the absolute value of -2.10; it is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. About 2.5\% of the distribution falls below -2.10. In the next example we encounter a case where the exact $t$ value is not listed in the table.
+Just like a normal probability problem, we first draw the picture in Figure~\ref{tDistDF18LeftTail2Point10} and shade the area below -2.10. To find this area, we identify the appropriate row: \mbox{$df=18$}. Then we identify the column containing the absolute value of -2.10; it~is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. About 2.5\% of the distribution falls below -2.10. In the next example we encounter a case where the exact $t$ value is not listed in the table.
 \end{example}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.55\textwidth]{ch_inference_for_means/figures/tDistDF18LeftTail2Point10/tDistDF18LeftTail2Point10}
+\includegraphics[width=0.5\textwidth]{ch_inference_for_means/figures/tDistDF18LeftTail2Point10/tDistDF18LeftTail2Point10}
 \caption{The $t$-distribution with 18 degrees of freedom. The area below -2.10 has been shaded.}
 \label{tDistDF18LeftTail2Point10}
 \end{figure}
@@ -141,8 +143,6 @@ What proportion of the $t$-distribution with 19 degrees of freedom falls above -
 \subsection{Conditions for using the $t$-distribution for inference on a sample mean}
 \label{tDistSolutionToSEProblem}
 
-\Comment{{\small Subsection title was previously ``The $t$-distribution as a solution to the standard error problem''}}
-
 To proceed with the $t$-distribution for inference about a single mean, we first check two conditions.
 \begin{description}
 \item[Independence of observations.] We verify this condition just as we did before. We collect a simple random sample from less than 10\% of the population, or if the data are from an experiment or random process, we check to the best of our abilities that the observations were independent.
@@ -165,7 +165,7 @@ Dolphins are at the top of the oceanic food chain, which causes dangerous substa
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/rissosDolphin/rissosDolphin.jpg}  \\
+\includegraphics[width=0.75\textwidth]{ch_inference_for_means/figures/rissosDolphin/rissosDolphin.jpg}  \\
 \addvspace{2mm}
 \begin{minipage}{\textwidth}
    \caption[rissosDolphinPic]{A Risso's dolphin.\vspace{-1mm} \\
@@ -239,6 +239,8 @@ Based on a sample of $n$ independent and nearly normal observations, a confidenc
 where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error as estimated by the sample.}
 \end{termBox}
 
+\textC{\pagebreak}
+
 \begin{exercise} \label{croakerWhiteFishPacificExerConditions}
 \index{data!white fish and mercury|(}
 The FDA's webpage provides some data on mercury content of fish.\footnote{\oiRedirect{textbook-fda_mercury_in_fish_2010}{www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?\footnote{There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.}
@@ -296,6 +298,10 @@ To help us remember to use the $t$-distribution, we use a $T$ to represent the t
 
 
 
+\textC{\newpage}
+
+
+
 %__________________
 \section{Paired data}
 \label{pairedData}
@@ -341,7 +347,7 @@ for each book. It is important that we always subtract using a consistent order;
 
 \begin{figure}
 \centering
-\includegraphics[width=0.87\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
+\includegraphics[width=0.85\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
 \caption{Histogram of the difference in price for each book sampled. These data are strongly skewed.\index{skew!example: strong}}
 \label{diffInTextbookPricesS10}
 \end{figure}
@@ -548,6 +554,8 @@ A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of
 \label{babySmokePlotOfTwoGroupsToExamineSkew}
 \end{figure}
 
+\textC{\newpage}
+
 \begin{example}{Set up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.}\label{babySmokeHTForWeight}
 The null hypothesis represents the case of no difference between the groups.
 \begin{itemize}
@@ -588,7 +596,7 @@ SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
 \begin{example}{Draw a picture to represent the p-value for the hypothesis test from Example~\ref{babySmokeHTForWeight}.} \label{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}
 To depict the p-value, we draw the distribution of the point estimate as though $H_0$ were true and shade areas representing at least as much evidence against $H_0$ as what was observed. Both tails are shaded because it is a two-sided test.
 \begin{center}
-\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData}
+\includegraphics[width=0.56\textwidth]{ch_inference_for_means/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData}
 \end{center}
 \end{example}
 
@@ -608,13 +616,13 @@ Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} 
 If we made a Type~2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?\footnote{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
 \end{exercise}
 
-\Comment{Carefully review the remaining text of this subsection.} Public service announcement: while we have used this relatively small data set as an example, larger data sets show that women who smoke tend to have smaller newborns. In~fact, some in the tobacco industry actually had the audacity to tout that as a \emph{benefit} of~smoking:
+Public service announcement: while we have used this relatively small data set as an example, larger data sets show that women who smoke tend to have smaller newborns. In~fact, some in the tobacco industry actually had the audacity to tout that as a \emph{benefit} of~smoking:
 \begin{quotation}
 \noindent\emph{It's true. The babies born from women who smoke are smaller, but they're just as healthy as the babies born from women who do not smoke. And some women would prefer having smaller babies.} \\[2mm]
 \indent\indent\indent\indent\indent\indent- Joseph Cullman, Philip Morris' Chairman of the Board \\
 \indent\indent\indent\indent\indent\indent{\color{white}...}on CBS' \emph{Face the Nation}, Jan 3,~1971
 \end{quotation}
-Fact check: the babies from women who smoke are not actually as healthy as from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \oiRedirect{textbook-johnoliver_tobacco}{youtu.be/6UsHHOCH4q8}.} \Comment{The video in the footnote is unconventional for a textbook. Thoughts?}
+Fact check: the babies from women who smoke are not actually as healthy as from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \oiRedirect{textbook-johnoliver_tobacco}{youtu.be/6UsHHOCH4q8}.}
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
 
@@ -645,6 +653,8 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.\footnote{Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
 \end{exercise}
 
+\textC{\pagebreak}
+
 \begin{exercise} \label{conditionsForTDistForEvaluatingTwoExamVersions}
 To evaluate the hypotheses in Guided Practice~\ref{htSetupForEvaluatingTwoExamVersions} using the $t$-distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?\footnote{(a) It is probably reasonable to conclude the scores are independent, provided there was no cheating. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn't seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.}
 \end{exercise}
@@ -661,7 +671,7 @@ If we have a computer handy, we can identify the degrees of freedom as 45.97. Ot
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+\includegraphics[width=0.63\textwidth]{ch_inference_for_means/figures/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
 \caption{The $t$-distribution with 26 degrees of freedom. The shaded right tail represents values with $T \geq 1.15$. Because it is a two-sided test, we also shade the corresponding lower tail.}
 \label{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
 \end{figure}
@@ -671,7 +681,6 @@ We examine row $df=26$ in the $t$-table. Because this value is smaller than the 
 
 \index{data!two exam comparison|)}
 \end{example}
-
 
 
 \subsection{Summary for inference using the $t$-distribution}
@@ -704,12 +713,10 @@ We examine row $df=26$ in the $t$-table. Because this value is smaller than the 
 
 \subsection{Examining the standard error formula (special topic)}
 
-\Comment{Made this a special topic section.}
-
-The formula for the standard error of the difference in two means is similar to the formula for other standard errors. Recall that the standard error of a single mean, $\bar{x}_1$, can be approximated by
-\begin{eqnarray*}
+The formula for the standard error of the difference in two means is similar to the formula for other standard errors. Recall that the standard error of a single mean, $\bar{x}_1$, can be approximated by\textC{\vspace{-3mm}}
+\begin{align*}
 SE_{\bar{x}_1} = \frac{s_1}{\ \sqrt{n_1}\ }
-\end{eqnarray*}
+\end{align*}
 where $s_1$ and $n_1$ represent the sample standard deviation and sample size.
 
 The standard error of the difference of two sample means can be constructed from the standard errors of the separate sample means:
@@ -784,6 +791,8 @@ Generally, clinical trials use a two-sided alternative hypothesis, so below are 
 Some researchers might argue for a one-sided test here, where the alternative would consider only whether the new drug performs better than the standard medication. However, it would be very informative to know whether the new drug performs worse than the standard medication, so we use a two-sided test to consider this possibility during the analysis.
 \end{example}
 
+\textC{\newpage}
+
 \begin{example}{The researchers would like to run the clinical trial on patients with systolic blood pressures between 140 and 180~mmHg. Suppose previously published studies suggest that the standard deviation of the patients' blood pressures will be about 12~mmHg and the distribution of patient blood pressures will be approximately symmetric.\footnote{In this particular study, we'd generally measure each patient's blood pressure at the beginning and end of the study, and then the outcome measurement for the study would be the average change in blood pressure. That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would represent average differences. This is what you might think of as a 2-sample paired testing structure, and we'd analyze it exactly just like a hypothesis test for a difference in the average change for patients. In the calculations we perform here, we'll suppose that 12~mmHg is the predicted standard deviation of a patient's blood pressure difference over the course of the study.} If~we had 100 patients per group, what would be the approximate standard error for $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
 The standard error is calculated as follows:
 \begin{align*}
@@ -798,7 +807,7 @@ This may be an imperfect estimate of $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$, sin
 \begin{example}{What does the null distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ look like?}
 The degrees of freedom are greater than 30, so the distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ will be approximately normal. The standard deviation of this distribution (the standard error) would be about 1.70, and under the null hypothesis, its mean would be 0.
 \begin{center}
-\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_A_0_1-7}
+\includegraphics[width=0.75\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_A_0_1-7}
 \end{center}
 \end{example}
 
@@ -812,7 +821,7 @@ For $\alpha = 0.05$, we would reject $H_0$ if the difference is in the lower 2.5
 \end{description}
 The boundaries of these \term{rejection regions} are shown below:
 \begin{center}
-\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_B_0_1-7_with_rejection_region}
+\includegraphics[width=0.75\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_B_0_1-7_with_rejection_region}
 \end{center}
 \end{example}
 
@@ -863,6 +872,8 @@ In the last example, we found that if we have a sample size of 100 in each group
 \item Another clinical trial may need to be run to get a more conclusive answer as to whether the drug does hold any practical value, and conducting a second clinical trial may take years and many millions of dollars.
 \end{itemize}
 We want to avoid this situation, so we need to determine an appropriate sample size to ensure we can be pretty confident that we'll detect any effects that are practically important. As mentioned earlier, a change of 3~mmHg was deemed to be the minimum difference that was practically important. As~a first step, we could calculate power for several different sample sizes. For instance, let's try 500 patients per group.
+
+\textC{\newpage}
 
 \begin{exercise}
 Calculate the power to detect a change of -3~mmHg when using a sample size of 500 per group.\footnote{(a) The standard error is given as $SE = \sqrt{\frac{12^2}{500} + \frac{12^2}{500}} = 0.76$.\\
@@ -931,6 +942,10 @@ Power calculations for expensive or risky experiments are critical. However, wha
 
 
 
+\textC{\newpage}
+
+
+
 %__________________
 \section[Comparing many means with ANOVA (special topic)]{Comparing many means with ANOVA\\(special topic)}
 \label{anovaAndRegrWithCategoricalVariables}
@@ -954,6 +969,8 @@ Generally we must check three conditions on the data before performing ANOVA:
 \end{itemize}
 When these three conditions are met, we may perform an ANOVA to determine whether the data provide strong evidence against the null hypothesis that all the $\mu_i$ are equal.
 
+\textC{\newpage}
+
 \begin{example}{College departments commonly run multiple lectures of the same introductory course each semester because of high demand. Consider a statistics department that runs three lectures of an introductory statistics course. We might like to determine whether there are statistically significant differences in first exam scores in these three classes ($A$, $B$, and $C$). Describe appropriate hypotheses to determine whether there are any differences between the three classes.} \label{firstExampleForThreeStatisticsClassesAndANOVA}
 The hypotheses may be written in the following form:
 \begin{itemize}
@@ -967,15 +984,18 @@ Strong evidence favoring the alternative hypothesis in ANOVA is described by unu
 
 \begin{example}{Examine Figure~\ref{toyANOVA}. Compare groups I, II, and III. Can you visually determine if the differences in the group centers is due to chance or not? Now compare groups IV, V, and VI. Do these differences appear to be due to chance?}
 
+Any real difference in the means of groups I, II, and III is difficult to discern, because the data within each group are very volatile relative to any differences in the average outcome. On the other hand, it appears there are differences in the centers of groups IV, V, and VI. For instance, group V appears to have a higher mean than that of the other two groups. Investigating groups IV, V, and VI, we see the differences in the groups' centers are noticeable because those differences are large \emph{relative to the variability in the individual observations within each group}.
+\end{example}
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/toyANOVA/toyANOVA}
-\caption{Side-by-side dot plot for the outcomes for six groups.\vspaceB{-3.5mm}}
+\caption{Side-by-side dot plot for the outcomes for six groups.}
 \label{toyANOVA}
 \end{figure}
 
-Any real difference in the means of groups I, II, and III is difficult to discern, because the data within each group are very volatile relative to any differences in the average outcome. On the other hand, it appears there are differences in the centers of groups IV, V, and VI. For instance, group V appears to have a higher mean than that of the other two groups. Investigating groups IV, V, and VI, we see the differences in the groups' centers are noticeable because those differences are large \emph{relative to the variability in the individual observations within each group}.
-\end{example}
+
+\textC{\pagebreak}
 
 
 \subsection{Is batting performance related to player position in MLB?}
@@ -999,7 +1019,7 @@ We would like to discern whether there are real differences between the batting 
   327 & C Heisey & CIN & OF & 201 & 51 & 8 & 21 & 0.254 & 0.324 \\ 
    \hline
 \end{tabular}
-\caption{Six cases from the \data{bat10} data matrix.\vspaceB{-3mm}}
+\caption{Six cases from the \data{bat10} data matrix.}
 \label{mlbBat10DataMatrix}
 \end{table}
 
@@ -1052,7 +1072,7 @@ Sample SD ($s_i$)	& 0.029 & 0.037 & 0.036 & 0.045 \\
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{ch_inference_for_means/figures/mlbANOVA/mlbANOVABoxPlot}
+\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/mlbANOVA/mlbANOVABoxPlot}
 \caption{Side-by-side box plot of the on-base percentage for 327 players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern.}
 \label{mlbANOVABoxPlot}
 \end{figure}
@@ -1108,7 +1128,7 @@ We can use the $F$ statistic to evaluate the hypotheses in what is called an \te
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/fDist3And323/fDist3And323}
+\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/fDist3And323/fDist3And323}
 \caption{An $F$ distribution with $df_1=3$ and $df_2=323$.}
 \label{fDist3And323}
 \end{figure}
@@ -1208,7 +1228,7 @@ $s_i$		& 13.9	& 13.8	& 13.1 \\
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/classData/classDataSBSBoxPlot}
+\includegraphics[width=0.72\textwidth]{ch_inference_for_means/figures/classData/classDataSBSBoxPlot}
 \caption{Side-by-side box plot for the first midterm scores in three different  lectures of the same course.}
 \label{classDataSBSBoxPlot}
 \end{figure}
@@ -1228,11 +1248,11 @@ lecture & 2 & 1290.11 & 645.06 & 3.48 & 0.0330 \\
    \hline
 \multicolumn{6}{r}{$s_{pooled}=13.61$ on $df=161$}
 \end{tabular}
-\caption{ANOVA summary table for the midterm data.\vspaceB{-5mm}}
+\caption{ANOVA summary table for the midterm data.}
 \label{anovaSummaryTableForMidtermData}
 \end{table}
 
-There is strong evidence that the different means in each of the three classes is not simply due to chance. We might wonder, which of the classes are actually different? As discussed in earlier chapters, a two-sample $t$-test could be used to test for differences in each possible pair of groups. However, one pitfall was discussed in Example~\vref{multipleComparisonExampleThatIncludesDiscussionOfClassrooms}: when we run so many tests, the Type~1 Error rate increases. This issue is resolved by using a modified significance level. \vspaceB{-1mm}
+There is strong evidence that the different means in each of the three classes is not simply due to chance. We might wonder, which of the classes are actually different? As discussed in earlier chapters, a two-sample $t$-test could be used to test for differences in each possible pair of groups. However, one pitfall was discussed in Example~\vref{multipleComparisonExampleThatIncludesDiscussionOfClassrooms}: when we run so many tests, the Type~1 Error rate increases. This issue is resolved by using a modified significance level.
 
 \begin{termBox}{\tBoxTitle{Multiple comparisons and the Bonferroni correction for $\alpha$}
 The scenario of testing many pairs of groups is called \term{multiple comparisons}. The \term{Bonferroni correction} suggests that a more stringent significance level is more appropriate for these tests:

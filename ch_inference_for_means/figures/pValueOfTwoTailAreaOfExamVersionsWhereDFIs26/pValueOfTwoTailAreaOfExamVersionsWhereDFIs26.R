@@ -2,8 +2,8 @@ library(openintro)
 data(COL)
 
 myPDF('pValueOfTwoTailAreaOfExamVersionsWhereDFIs26.pdf',
-      4.8, 1.9,
-      mar = c(1.6, 1, 0.2, 1),
+      4.8, 1.7,
+      mar = c(1.6, 1, 0, 1),
       mgp = c(0, 0.45, 0))
 normTail(0, 1,
          L = -1.15,
@@ -14,7 +14,6 @@ lines(c(1.16, 1.16),
       c(dt(1.16, 26), 0.25),
       lty = 3,
       cex = 2)
-text(1.46, 0.24, "T = 1.15",
-     pos = 3,
-     cex = 0.8)
+text(1.55, 0.24, "T = 1.15",
+     pos = 3)
 dev.off()

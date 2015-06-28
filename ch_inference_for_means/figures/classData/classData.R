@@ -3,7 +3,7 @@ data(COL)
 library(xtable)
 data(classData)
 
-myPDF("classDataSBSBoxPlot.pdf", 5.5, 3.3,
+myPDF("classDataSBSBoxPlot.pdf", 5.5, 2.7,
       mgp = c(2.3, 0.5, 0),
       mar = c(3.4, 3.2, 0.5, 0.5))
 boxPlot(classData$m1, classData$lecture,
