@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-myPDF("oneSidedTailForMidtermUnemploymentHT.pdf", 6.325, 2.875,
+myPDF("oneSidedTailForMidtermUnemploymentHT.pdf", 6.325, 2.7,
       mar = c(1.8, 0.5, 0.2, 0.5))
 normTail(0, 0.8717,
          L = -1.0010,

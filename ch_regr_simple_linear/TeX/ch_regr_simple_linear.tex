@@ -13,7 +13,7 @@ Imagine what a perfect linear relationship would mean: you would know the exact 
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.6\textwidth]{ch_regr_simple_linear/figures/perfLinearModel/perfLinearModel}
+   \includegraphics[width=0.65\textwidth]{ch_regr_simple_linear/figures/perfLinearModel/perfLinearModel}
    \caption{Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker \texttt{TGT}, April 26th, 2012), and the total cost of the shares were reported. Because the cost is computed using a linear formula, the linear fit is perfect.}
    \label{perfLinearModel}
 \end{figure}
@@ -42,10 +42,15 @@ We will also see examples in this chapter where fitting a straight line to the d
 
 \begin{figure}
    \centering
-   \includegraphics[width=115mm]{ch_regr_simple_linear/figures/notGoodAtAllForALinearModel/notGoodAtAllForALinearModel}
+   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/notGoodAtAllForALinearModel/notGoodAtAllForALinearModel}
    \caption{A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment.}
    \label{notGoodAtAllForALinearModel}
 \end{figure}
+
+
+
+\textC{\newpage}
+
 
 
 %__________________
@@ -94,6 +99,8 @@ Straight lines should only be used when the data appear to have a linear relatio
 {We only consider models based on straight lines in this chapter. If data show a nonlinear trend, like that in the right panel of Figure~\ref{scattHeadLTotalLTube}, more advanced techniques should be used.\vspace{0.7mm}}
 \end{caution}
 
+\textC{\newpage}
+
 \subsection{Fitting a line by eye}
 
 We want to describe the relationship between the head length and total length variables in the possum data set using a line. In this example, we will use the total length as the predictor variable, $x$, to predict a possum's head length, $y$. We could fit the linear relationship by eye, as in Figure~\ref{scattHeadLTotalLLine}. The equation for this line is
@@ -110,8 +117,8 @@ A ``hat'' on $y$ is used to signify that this is an estimate. This estimate may 
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.8\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLLine/scattHeadLTotalLLine}
-   \caption{A reasonable linear model was fit to represent the relationship between head length and total length.}
+   \includegraphics[width=0.71\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLLine/scattHeadLTotalLLine}
+   \caption{A reasonable linear model was fit to represent the relationship between head length and total length.\textC{\vspace{-2mm}}}
    \label{scattHeadLTotalLLine}
 \end{figure}
 
@@ -171,7 +178,7 @@ Residuals are helpful in evaluating how well a linear model fits a data set. We 
 
 \begin{figure}
    \centering
-   \includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/sampleLinesAndResPlots/sampleLinesAndResPlots}
+   \includegraphics[width=0.95\textwidth]{ch_regr_simple_linear/figures/sampleLinesAndResPlots/sampleLinesAndResPlots}
    \caption{Sample data with their best fitting lines (top row) and their corresponding residual plots (bottom row).}
    \label{sampleLinesAndResPlots}
 \end{figure}
@@ -182,6 +189,7 @@ The second data set shows a pattern in the residuals. There is some curvature in
 The last plot shows very little upwards trend, and the residuals also show no obvious patterns. It is reasonable to try to fit a linear model to the data. However, it is unclear whether there is statistically significant evidence that the slope parameter is different from zero. The point estimate of the slope parameter, labeled $b_1$, is not zero, but we might wonder if this could just be due to chance. We will address this sort of scenario in Section~\ref{inferenceForLinearRegression}.
 \index{residual|)}
 \end{example}
+
 
 \subsection{Describing linear relationships with correlation}
 
@@ -233,7 +241,7 @@ Fitting linear models by eye is open to criticism since it is based on an indivi
 
 This section considers family income and gift aid data from a random sample of fifty students in the 2011 freshman class of Elmhurst College in Illinois.\footnote{These data were sampled from a table of data for all freshman from the 2011 class at Elmhurst College that accompanied an article titled \emph{What Students Really Pay to Go to College} published online by \emph{The~Chronicle of Higher Education}: \oiRedirect{textbook-chronicle_elmhurst_article}{chronicle.com/article/What-Students-Really-Pay-to-Go/131435}} Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/elmhurstPlots/elmhurstScatterW2Lines}
 \caption{Gift aid and family income for a random sample of 50 freshman students from Elmhurst College. Two lines are fit to the data, the solid line being the \emph{least squares line}.}
@@ -273,7 +281,7 @@ When fitting a least squares line, we generally require
 \item[Nearly normal residuals.] Generally the residuals must be nearly normal.
 When this condition is found to be unreasonable, it is usually because of outliers or concerns about influential points, which we  will discuss in greater depth in Section~\ref{typesOfOutliersInLinearRegression}. An example of non-normal residuals is shown in the second panel of Figure~\ref{whatCanGoWrongWithLinearModel}.
 \item[Constant variability.] The variability of points around the least squares line remains roughly constant. An example of non-constant variability is shown in the third panel of Figure~\ref{whatCanGoWrongWithLinearModel}.
-\Add{\item[Independent observations.] Be cautious about applying regression to \term{time series} data, which are sequential observations in time such as a stock price each day. Such data may have an underlying structure that should be considered in a model and analysis. An example of non-constant variability is shown in the third panel of Figure~\ref{whatCanGoWrongWithLinearModel}. There are other instances where correlations within the data are important, which is further discussed in Chapter~\ref{multipleRegressionAndANOVA}.}
+\item[Independent observations.] Be cautious about applying regression to \term{time series} data, which are sequential observations in time such as a stock price each day. Such data may have an underlying structure that should be considered in a model and analysis. An example of non-constant variability is shown in the third panel of Figure~\ref{whatCanGoWrongWithLinearModel}. There are also other instances where correlations within the data are important, which is further discussed in Chapter~\ref{multipleRegressionAndANOVA}.
 \end{description}
 
 \begin{figure}
@@ -286,6 +294,10 @@ When this condition is found to be unreasonable, it is usually because of outlie
 \begin{exercise}
 Should we have concerns about applying least squares regression to the Elmhurst data in Figure~\ref{elmhurstScatterW2Lines}?\footnote{The trend appears to be linear, the data fall around the line with no obvious outliers, the variance is roughly constant. These are also not time series observations. Least squares regression can be applied to these data.}
 \end{exercise}
+
+
+\textC{\newpage}
+
 
 \subsection{Finding the least squares line}
 \label{findingTheLeastSquaresLineSection}
@@ -400,6 +412,10 @@ She may use it as an estimate, though some qualifiers on this approach are impor
 \index{least squares regression|)}
 \end{example} 
 
+
+\textC{\newpage}
+
+
 \subsection{Interpreting regression line parameter estimates}
 
 \index{least squares regression!interpreting parameters|(}
@@ -428,6 +444,8 @@ The slope describes the estimated difference in the $y$ variable if the explanat
 \noindent\hspace{\textwidth}\hspace{-40mm}April 6th, 2010\footnote{\oiRedirect{textbook-colbert_extrapolation}{www.colbertnation.com/the-colbert-report-videos/269929}} \\
 
 Linear models can be used to approximate the relationship between two variables. However, these models have real limitations. Linear regression is simply a modeling framework. The truth is almost always much more complex than our simple line. For example, we do not know how the data outside of our limited window will behave.
+
+\textC{\pagebreak}
 
 \begin{example}{Use the model $\widehat{aid} = 24.3 - 0.0431\times family\_\hspace{0.3mm}income$ to estimate the aid of another freshman student whose family had income of \$1 million.}
 Recall that the units of family income are in \$1000s, so we want to calculate the aid for $family\_\hspace{0.3mm}income = 1000$:
@@ -522,16 +540,19 @@ The estimated intercept is the value of the response variable for the first cate
 \MultipleRegression{We'll elaborate further on this Ebay auction data in Chapter~\ref{multipleRegressionAndANOVA}, where we examine the influence of many predictor variables simultaneously using multiple regression\index{multiple regression}. In multiple regression, we will consider the association of auction price with regard to each variable while controlling for the influence of other variables. This is especially important since some of the predictors are associated. For example, auctions with games in new condition also often came with more accessories.}{}
 
 
+
+\textC{\pagebreak}
+
+
 %__________________
 \section[Types of outliers in linear regression]{Types of outliers in linear regression \sectionvideohref{youtube-jZEKAlo1E54&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}}
 \label{typesOfOutliersInLinearRegression}
 
-In this section, we identify criteria for determining which outliers are important and influential.
+In this section, we identify criteria for determining which outliers are important and influential. Outliers in regression are observations that fall far from the ``cloud'' of points. These points are especially important because they can have a strong influence on the least squares line. 
 
-Outliers in regression are observations that fall far from the ``cloud'' of points. These points are especially important because they can have a strong influence on the least squares line. 
-
-\begin{example}{There are six plots shown in Figure~\ref{outlierPlots} along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify any obvious outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.}\label{outlierPlotsExample}
+\begin{example}{There are six plots shown in Figure~\ref{outlierPlots} along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify the outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.}\label{outlierPlotsExample}
 \begin{itemize}
+%\setlength{\itemsep}{0mm}
 \item[(1)] There is one outlier far from the other points, though it only appears to slightly influence the line.
 \item[(2)] There is one outlier on the right, though it is quite close to the least squares line, which suggests it wasn't very influential.
 \item[(3)] There is one point far away from the cloud, and this outlier appears to pull the least squares line up on the right; examine how the line around the primary cloud doesn't appear to fit very well.
@@ -590,10 +611,12 @@ Examining the data, there are no clear deviations from linearity, the constant v
 
 \begin{figure}
 \centering
-\includegraphics[width=0.95\textwidth]{ch_regr_simple_linear/figures/unemploymentAndChangeInHouse/unemploymentAndChangeInHouse}
+\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/unemploymentAndChangeInHouse/unemploymentAndChangeInHouse}
 \caption{The percent change in House seats for the President's party in each election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data.}
 \label{unemploymentAndChangeInHouse}
 \end{figure}
+
+\textC{\newpage}
 
 \begin{exercise}
 The data for the Great Depression (1934 and 1938) were removed because the unemployment rate was 21\% and 18\%, respectively. Do you agree that they should be removed for this investigation? Why or why not?\footnote{We will provide two considerations. Each of these points would have very high leverage on any least-squares regression line, and years with such high unemployment may not help us understand what would happen in other years where the unemployment is only modestly high. On the other hand, these are exceptional cases, and we would be discarding important information if we exclude them from a final analysis.}
@@ -605,6 +628,9 @@ There is a negative slope in the line shown in Figure~\ref{unemploymentAndChange
 \item[$H_A$:] $\beta_1 < 0$. The true linear model has a slope less than zero. The higher the unemployment, the greater the loss for the President's party in the House of Representatives.
 \end{itemize}
 We would reject $H_0$ in favor of $H_A$ if the data provide strong evidence that the true slope parameter is less than zero. To assess the hypotheses, we identify a standard error for the estimate, compute an appropriate test statistic, and identify the p-value.
+
+
+\textC{\newpage}
 
 
 \subsection{Understanding regression output from software}
@@ -641,12 +667,14 @@ T = \frac{\text{estimate} - \text{null value}}{\text{SE}} = \frac{-1.0010 - 0}{0
 \end{align*}
 We can look for the one-sided p-value -- shown in Figure~\ref{oneSidedTailForMidtermUnemploymentHT} -- using the probability table for the $t$ distribution in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.82\textwidth]{ch_regr_simple_linear/figures/oneSidedTailForMidtermUnemploymentHT/oneSidedTailForMidtermUnemploymentHT}
 \caption{The distribution shown here is the sampling distribution for $b_1$, if the null hypothesis was true. The shaded tail represents the p-value for the hypothesis test evaluating whether there is convincing evidence that higher unemployment corresponds to a greater loss of House seats for the President's party during a midterm election.}
 \label{oneSidedTailForMidtermUnemploymentHT}
 \end{figure}
+
+\textC{\newpage}
 
 \begin{example}{Table~\ref{midtermElectionUnemploymentRRegressionOutput} offers the degrees of freedom for the test statistic $T$: $df=25$. Identify the p-value for the hypothesis test.}
 Looking in the 25 degrees of freedom row in Appendix~\ref{tDistributionTable}, we see that the absolute value of the test statistic is smaller than any value listed, which means the tail area and therefore also the p-value is larger than 0.100 (one tail!). Because the p-value is so large, we fail to reject the null hypothesis. That is, the data do not provide convincing evidence that a higher unemployment rate has any correspondence with smaller or larger losses for the President's party in the House of Representatives in midterm elections.

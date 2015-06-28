@@ -3,9 +3,9 @@ data(COL)
 data(possum)
 set.seed(1)
 
-myPDF('scattHeadLTotalLLine.pdf', 6, 4,
-      mar = c(3.4, 3.4, 0.5, 1),
-      mgp = c(2.3, 0.5, 0))
+myPDF('scattHeadLTotalLLine.pdf', 5.5, 3.2,
+      mar = c(3, 3.2, 0.1, 1),
+      mgp = c(1.9, 0.45, 0))
 these <- c(48, 42, 3)
 plot(possum$totalL[-these], possum$headL[-these],
      pch = 20,
