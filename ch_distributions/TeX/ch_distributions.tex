@@ -798,8 +798,10 @@ The tip to add extra area when applying the normal approximation is most often u
 
 
 %_________________
-\section{Negative binomial distribution (special topic)}
+\section{More discrete distributions (special topic)}
 \label{discreteModels}
+
+\subsection{Negative binomial distribution}
 \label{negativeBinomial}
 
 \index{distribution!negative binomial|(}
@@ -934,4 +936,59 @@ On 70\% of days, a hospital admits at least one heart attack patient. On 30\% of
 (c) What is the probability the fifth day of next month will be the first day with a heart attack patient?
 \index{distribution!negative binomial|)}
 \end{exercise}
+
+
+\textC{\pagebreak}
+
+
+\subsection{Poisson distribution}
+\label{poisson}
+
+\index{distribution!Poisson|(}
+
+\begin{example}{There are about 8 million individuals in New York City. How many individuals might we expect to be hospitalized for acute myocardial infarction (AMI), i.e. a heart attack, each day? According to historical records, the average number is about 4.4 individuals. However, we would also like to know the approximate distribution of counts. What would a histogram of the number of AMI occurrences each day look like if we recorded the daily counts over an entire year?} \label{amiIncidencesEachDayOver1YearInNYCExample}
+A histogram of the number of occurrences of AMI on 365 days\footnote{These data are simulated. In practice, we should check for an association between successive days.} for NYC is shown in Figure~\ref{amiIncidencesOver100Days}. The sample mean (4.38) is similar to the historical average of 4.4. The sample standard deviation is about 2, and the histogram indicates that about 70\% of the data fall between 2.4 and 6.4. The distribution's shape is unimodal and skewed to the right.
+\end{example}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{ch_distributions/figures/amiIncidencesOver100Days/amiIncidencesOver100Days}
+\caption{A histogram of the number of occurrences of AMI on 365 separate days in NYC.}
+\label{amiIncidencesOver100Days}
+\end{figure}
+
+The \termsub{Poisson distribution}{distribution!Poisson} is often useful for estimating the number of events in a large population over a unit of time. For instance, consider each of the following events:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item having a heart attack,
+\item getting married, and
+\item getting struck by lightning.
+\end{itemize}
+The Poisson distribution helps us describe the number of such events that will occur in a short unit of time for a fixed population if the individuals within the population are independent.
+
+The histogram in Figure~\ref{amiIncidencesOver100Days} approximates a Poisson distribution with rate equal to 4.4. The \term{rate} for a Poisson distribution is the average number of occurrences in a mostly-fixed population per unit of time. In Example~\ref{amiIncidencesEachDayOver1YearInNYCExample}, the time unit is a day, the population is all New York City residents, and the historical rate is 4.4. The parameter in the Poisson distribution is the rate -- or how many events we expect to observe -- and it is typically denoted by $\lambda$\marginpar[\raggedright\vspace{-5mm}
+
+$\lambda$\vspace{0mm}\\\footnotesize Rate for the\\Poisson dist.]{\raggedright\vspace{-5mm}
+
+$\lambda$\vspace{0mm}\\\footnotesize Rate for the\\Poisson dist.}\index{Greek!lambda@lambda ($\lambda$)}
+(the Greek letter \emph{lambda})  or $\mu$. Using the rate, we can describe the probability of observing exactly $k$ events in a single unit of time.
+
+\begin{termBox}{\tBoxTitle{Poisson distribution}
+Suppose we are watching for events and the number of observed events follows a Poisson distribution with rate $\lambda$. Then
+\begin{align*}
+P(\text{observe $k$ events}) = \frac{\lambda^{k} e^{-\lambda}}{k!}
+\end{align*}
+where $k$ may take a value 0, 1, 2, and so on, and $k!$ represents $k$-factorial, as described on page~\pageref{factorialDefinitionInTheBinomialSection}. The letter $e\approx2.718$ is the base of the natural logarithm. The mean and standard deviation of this distribution are $\lambda$ and $\sqrt{\lambda}$, respectively.}
+\end{termBox}
+
+We will leave a rigorous set of conditions for the Poisson distribution to a later course. However, we offer a few simple guidelines that can be used for an initial evaluation of whether the Poisson model would be appropriate.
+
+\begin{tipBox}{\tipBoxTitle{Is it Poisson?}
+A random variable may follow a Poisson distribution if we are looking for the number of events, the population that generates such events is large, and the events occur independently of each other.}
+\end{tipBox}
+
+Even when events are not really independent -- for instance, Saturdays and Sundays are especially popular for weddings -- a Poisson model may sometimes still be reasonable if we allow it to have a different rate for different times. In the wedding example, the rate would be modeled as higher on weekends than on weekdays. The idea of modeling rates for a Poisson distribution against a second variable such as \var{dayOfTheWeek} forms the foundation of some more advanced methods that fall in the realm of \termsub{generalized linear models}{generalized linear model}. In Chapters~\ref{linRegrForTwoVar} and~\ref{multipleAndLogisticRegression}, we will discuss a foundation of linear models.
+
+\index{distribution!Poisson|)}
+
 
