@@ -165,7 +165,7 @@ Dolphins are at the top of the oceanic food chain, which causes dangerous substa
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.75\textwidth]{ch_inference_for_means/figures/rissosDolphin/rissosDolphin.jpg}  \\
+\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/rissosDolphin/rissosDolphin.jpg}  \\
 \addvspace{2mm}
 \begin{minipage}{\textwidth}
    \caption[rissosDolphinPic]{A Risso's dolphin.\vspace{-1mm} \\
@@ -347,7 +347,7 @@ for each book. It is important that we always subtract using a consistent order;
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
+\includegraphics[width=0.93\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
 \caption{Histogram of the difference in price for each book sampled. These data are strongly skewed.\index{skew!example: strong}}
 \label{diffInTextbookPricesS10}
 \end{figure}
@@ -447,13 +447,6 @@ control		& 9		& -4.33		& 2.76  	 \\
 \label{summaryStatsForSheepHeartDataWhoReceivedMiceESCs}
 \end{table}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/stemCellTherapyForHearts/stemCellTherapyForHearts}
-\caption{Histograms for both the embryonic stem cell group and the control group. Higher values are associated with greater improvement. We don't see any evidence of skew in these data; however, it is worth noting that skew would be difficult to detect with such a small sample.}
-\label{stemCellTherapyForHearts}
-\end{figure}
-
 %\begin{example}{Set up hypotheses that will be used to test whether there is convincing evidence that ESCs actually increase the amount of blood the heart pumps. Also, check conditions for using the $t$-distribution for inference with the point estimate $\bar{x}_1 - \bar{x}_2$. To assist in this assessment, the data are presented in Figure~\ref{stemCellTherapyForHearts}.}\label{exampleToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}
 %We first setup the hypotheses:
 %\begin{itemize}
@@ -475,6 +468,13 @@ We check the two required conditions: % the $t$-distribution can be used by (1) 
 \end{enumerate}
 Because both conditions are met, we can use the $t$-distribution to model the difference of the two sample means.
 \end{example}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.58\textwidth]{ch_inference_for_means/figures/stemCellTherapyForHearts/stemCellTherapyForHearts}
+\caption{Histograms for both the embryonic stem cell group and the control group. Higher values are associated with greater improvement. We don't see any evidence of skew in these data; however, it is worth noting that skew would be difficult to detect with such a small sample.}
+\label{stemCellTherapyForHearts}
+\end{figure}
 
 %\begin{termBox}{\tBoxTitle{Conditions for applying the $t$-distribution to $\bar{x}_1 - \bar{x}_2$}
 %If the sample means, $\bar{x}_1$ and $\bar{x}_2$, each meet the criteria for using the $t$-distribution and the observations in the two samples are independent, then we can analyze the difference in sample means using the $t$-distribution.}
@@ -505,15 +505,15 @@ SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
 \label{seOfDifferenceInMeans}
 \end{eqnarray}
 when each sample mean can itself be modeled using a $t$-distribution and the samples are independent. To calculate the degrees of freedom, use statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.}
-\end{termBox}
+\end{termBox}\textC{\vspace{-10mm}}
 
 \begin{example}{Calculate a 95\% confidence interval for the effect of ESCs on the change in heart pumping capacity of sheep after they've suffered a heart attack.}
-We will use the sample difference and the standard error for that point estimate from our earlier calculations:
+We will use the sample difference and the standard error for that point estimate from our earlier calculations:\textC{\vspace{-3mm}}
 \begin{align*}
 & \bar{x}_{esc} - \bar{x}_{control} = 7.83 \\
 & SE = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
 \end{align*}
-Using $df = 8$, we can identify the appropriate $t^{\star}_{df} = t^{\star}_{8}$ for a 95\% confidence interval as 2.31. Finally, we can enter the values into the confidence interval formula:
+Using $df = 8$, we can identify the appropriate $t^{\star}_{df} = t^{\star}_{8}$ for a 95\% confidence interval as 2.31. Finally, we can enter the values into the confidence interval formula:\textC{\vspace{-1mm}}
 \begin{align*}
 \text{point estimate} \ \pm\ z^{\star}SE \quad\rightarrow\quad
 7.83 \ \pm\ 2.31\times 1.95 \quad\rightarrow\quad (3.38, 12.38)
@@ -543,18 +543,16 @@ A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of
   150 & 45 & 50 &  36 & 9.25 & female & nonsmoker \\ 
    \hline
 \end{tabular}
-\caption{Four cases from the \data{baby\_\hspace{0.3mm}smoke} data set. The value ``NA'', shown for the first two entries of the first variable, indicates that piece of data is missing.}
+\caption{Four cases from the \data{baby\_\hspace{0.3mm}smoke} data set. The value ``NA'', shown for the first two entries of the first variable, indicates that piece of data is missing.\textC{-2mm}}
 \label{babySmokeDF}
 \end{table}
 
 \begin{figure}[hhh]
 \centering
-\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/babySmokePlotOfTwoGroupsToExamineSkew/babySmokePlotOfTwoGroupsToExamineSkew}
+\includegraphics[width=0.63\textwidth]{ch_inference_for_means/figures/babySmokePlotOfTwoGroupsToExamineSkew/babySmokePlotOfTwoGroupsToExamineSkew}
 \caption{The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke. The distributions exhibit moderate-to-strong and strong~skew, respectively.\index{skew!example: strong}}
 \label{babySmokePlotOfTwoGroupsToExamineSkew}
 \end{figure}
-
-\textC{\newpage}
 
 \begin{example}{Set up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.}\label{babySmokeHTForWeight}
 The null hypothesis represents the case of no difference between the groups.
@@ -593,10 +591,12 @@ SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
 \end{eqnarray*}}
 \end{exercise}
 
+\textC{\newpage}
+
 \begin{example}{Draw a picture to represent the p-value for the hypothesis test from Example~\ref{babySmokeHTForWeight}.} \label{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}
 To depict the p-value, we draw the distribution of the point estimate as though $H_0$ were true and shade areas representing at least as much evidence against $H_0$ as what was observed. Both tails are shaded because it is a two-sided test.
 \begin{center}
-\includegraphics[width=0.56\textwidth]{ch_inference_for_means/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData}
+\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData}
 \end{center}
 \end{example}
 
@@ -615,6 +615,8 @@ Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} 
 \begin{exercise} \label{babySmokeHTIDingHowToDetectDifferences}
 If we made a Type~2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?\footnote{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
 \end{exercise}
+
+\textC{\newpage}
 
 Public service announcement: while we have used this relatively small data set as an example, larger data sets show that women who smoke tend to have smaller newborns. In~fact, some in the tobacco industry actually had the audacity to tout that as a \emph{benefit} of~smoking:
 \begin{quotation}
@@ -652,8 +654,6 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 \begin{exercise} \label{htSetupForEvaluatingTwoExamVersions}
 Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.\footnote{Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
 \end{exercise}
-
-\textC{\pagebreak}
 
 \begin{exercise} \label{conditionsForTDistForEvaluatingTwoExamVersions}
 To evaluate the hypotheses in Guided Practice~\ref{htSetupForEvaluatingTwoExamVersions} using the $t$-distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?\footnote{(a) It is probably reasonable to conclude the scores are independent, provided there was no cheating. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn't seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.}
@@ -791,8 +791,6 @@ Generally, clinical trials use a two-sided alternative hypothesis, so below are 
 Some researchers might argue for a one-sided test here, where the alternative would consider only whether the new drug performs better than the standard medication. However, it would be very informative to know whether the new drug performs worse than the standard medication, so we use a two-sided test to consider this possibility during the analysis.
 \end{example}
 
-\textC{\newpage}
-
 \begin{example}{The researchers would like to run the clinical trial on patients with systolic blood pressures between 140 and 180~mmHg. Suppose previously published studies suggest that the standard deviation of the patients' blood pressures will be about 12~mmHg and the distribution of patient blood pressures will be approximately symmetric.\footnote{In this particular study, we'd generally measure each patient's blood pressure at the beginning and end of the study, and then the outcome measurement for the study would be the average change in blood pressure. That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would represent average differences. This is what you might think of as a 2-sample paired testing structure, and we'd analyze it exactly just like a hypothesis test for a difference in the average change for patients. In the calculations we perform here, we'll suppose that 12~mmHg is the predicted standard deviation of a patient's blood pressure difference over the course of the study.} If~we had 100 patients per group, what would be the approximate standard error for $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
 The standard error is calculated as follows:
 \begin{align*}
@@ -804,10 +802,12 @@ SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}
 This may be an imperfect estimate of $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$, since the standard deviation estimate we used may not be correct for this group of patients. However, it is sufficient for our purposes.
 \end{example}
 
+\textC{\newpage}
+
 \begin{example}{What does the null distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ look like?}
 The degrees of freedom are greater than 30, so the distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ will be approximately normal. The standard deviation of this distribution (the standard error) would be about 1.70, and under the null hypothesis, its mean would be 0.
 \begin{center}
-\includegraphics[width=0.75\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_A_0_1-7}
+\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_A_0_1-7}
 \end{center}
 \end{example}
 
@@ -821,7 +821,7 @@ For $\alpha = 0.05$, we would reject $H_0$ if the difference is in the lower 2.5
 \end{description}
 The boundaries of these \term{rejection regions} are shown below:
 \begin{center}
-\includegraphics[width=0.75\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_B_0_1-7_with_rejection_region}
+\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_B_0_1-7_with_rejection_region}
 \end{center}
 \end{example}
 
@@ -842,14 +842,14 @@ To calculate the probability that we will reject $H_0$, we need to determine a f
 \setlength{\itemsep}{0mm}
 \item The sampling distribution for $\bar{x}_{trmt} - \bar{x}_{ctrl}$ when the true difference is -3~mmHg. This is the same as the null distribution, except it is shifted to the left by~3:
 \begin{center}
-\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_C_0_1-7_with_alt_at_3}
+\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_C_0_1-7_with_alt_at_3}
 \end{center}
 \item The rejection regions, which are outside of the dotted lines above.
 \item The fraction of the distribution that falls in the rejection region.
 \end{itemize}
 In short, we need to calculate the probability that $x < -3.332$ for a normal distribution with mean -3 and standard deviation~1.7. To do so, we first shade the area we want to calculate:
 \begin{center}
-\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_D_0_1-7_with_alt_at_3_and_shaded}
+\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_D_0_1-7_with_alt_at_3_and_shaded}
 \end{center}
 Then we calculate the Z-score and find the tail area using either the normal probability table or statistical software:
 \begin{align*}
@@ -859,6 +859,9 @@ The power for the test is about 42\% when $\mu_{trmt} - \mu_{ctrl} = -3$ and eac
 \end{example}
 
 In Example~\ref{PowerFor100AtNeg3}, we ignored the upper rejection region in the calculation, which was in the opposite direction of the hypothetical truth, i.e. -3. The reasoning? There wouldn't be any value in rejecting the null hypothesis and concluding there was an increase when in fact there was a decrease.
+
+
+\textC{\newpage}
 
 
 \subsection{Determining a proper sample size}
@@ -873,12 +876,10 @@ In the last example, we found that if we have a sample size of 100 in each group
 \end{itemize}
 We want to avoid this situation, so we need to determine an appropriate sample size to ensure we can be pretty confident that we'll detect any effects that are practically important. As mentioned earlier, a change of 3~mmHg was deemed to be the minimum difference that was practically important. As~a first step, we could calculate power for several different sample sizes. For instance, let's try 500 patients per group.
 
-\textC{\newpage}
-
 \begin{exercise}
 Calculate the power to detect a change of -3~mmHg when using a sample size of 500 per group.\footnote{(a) The standard error is given as $SE = \sqrt{\frac{12^2}{500} + \frac{12^2}{500}} = 0.76$.\\
 (b) \& (c) The null distribution, rejection boundaries, and alternative distribution are shown below: \\
-\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/power_null_0_0-76/power_null_0_0-76_with_alt_at_3_and_shaded} \\
+\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/power_null_0_0-76/power_null_0_0-76_with_alt_at_3_and_shaded} \\
 The rejection regions are the areas on the outside of the two dotted lines and are at $\pm 0.76 \times 1.96 = \pm 1.49$. \\
 (d) The area of the alternative distribution where $\mu_{trmt} - \mu_{ctrl} = -3$ has been shaded. We compute the Z-score and find the tail area: $Z = \frac{-1.49 - (-3)}{0.76} = 1.99 \to 0.9767$, which is the power of the test for a difference of 3 mmHg. With 500 patients per group, we would be about 97.7\% sure (or more) that we'd detect any effects that are at least 3~mmHg in size.}
 \begin{enumerate}[(a)]
@@ -897,7 +898,7 @@ The most common practice is to identify the sample size where the power is aroun
 \begin{example}{What sample size will lead to a power of 80\%?}
 We start by identifying the Z-score that would give us a lower tail of 80\%: it would be about 0.84:
 \begin{center}
-\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/power_best_sample_size/power_best_sample_size}
+\includegraphics[width=0.93\textwidth]{ch_inference_for_means/figures/power_best_sample_size/power_best_sample_size}
 \end{center}
 Additionally, the rejection region always extends $1.96\times SE$ from the center of the null distribution for $\alpha = 0.05$. This allows us to calculate the target distance between the center of the null and alternative distributions in terms of the standard error:
 \begin{align*}
@@ -969,8 +970,6 @@ Generally we must check three conditions on the data before performing ANOVA:
 \end{itemize}
 When these three conditions are met, we may perform an ANOVA to determine whether the data provide strong evidence against the null hypothesis that all the $\mu_i$ are equal.
 
-\textC{\newpage}
-
 \begin{example}{College departments commonly run multiple lectures of the same introductory course each semester because of high demand. Consider a statistics department that runs three lectures of an introductory statistics course. We might like to determine whether there are statistically significant differences in first exam scores in these three classes ($A$, $B$, and $C$). Describe appropriate hypotheses to determine whether there are any differences between the three classes.} \label{firstExampleForThreeStatisticsClassesAndANOVA}
 The hypotheses may be written in the following form:
 \begin{itemize}
@@ -982,6 +981,8 @@ The hypotheses may be written in the following form:
 
 Strong evidence favoring the alternative hypothesis in ANOVA is described by unusually large differences among the group means. We will soon learn that assessing the variability of the group means relative to the variability among individual observations within each group is key to ANOVA's success.
 
+\textC{\newpage}
+
 \begin{example}{Examine Figure~\ref{toyANOVA}. Compare groups I, II, and III. Can you visually determine if the differences in the group centers is due to chance or not? Now compare groups IV, V, and VI. Do these differences appear to be due to chance?}
 
 Any real difference in the means of groups I, II, and III is difficult to discern, because the data within each group are very volatile relative to any differences in the average outcome. On the other hand, it appears there are differences in the centers of groups IV, V, and VI. For instance, group V appears to have a higher mean than that of the other two groups. Investigating groups IV, V, and VI, we see the differences in the groups' centers are noticeable because those differences are large \emph{relative to the variability in the individual observations within each group}.
@@ -989,13 +990,10 @@ Any real difference in the means of groups I, II, and III is difficult to discer
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/toyANOVA/toyANOVA}
+\includegraphics[width=0.68\textwidth]{ch_inference_for_means/figures/toyANOVA/toyANOVA}
 \caption{Side-by-side dot plot for the outcomes for six groups.}
 \label{toyANOVA}
 \end{figure}
-
-
-\textC{\pagebreak}
 
 
 \subsection{Is batting performance related to player position in MLB?}
@@ -1049,6 +1047,8 @@ The null hypothesis under consideration is the following: $\mu_{\resp{OF}} = \mu
 Write the null and corresponding alternative hypotheses in plain language.\footnote{$H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups.}
 \end{exercise}
 
+\textC{\newpage}
+
 \begin{example}{The player positions have been divided into four groups: outfield (\resp{OF}), infield (\resp{IF}), designated hitter (\resp{DH}), and catcher (\resp{C}). What would be an appropriate point estimate of the on-base percentage by outfielders, $\mu_{\resp{OF}}$?}
 A good estimate of the on-base percentage by outfielders would be the sample average of \var{OBP} for just those players whose position is outfield: $\bar{x}_{OF} = 0.334$.
 \end{example}
@@ -1076,6 +1076,8 @@ Sample SD ($s_i$)	& 0.029 & 0.037 & 0.036 & 0.045 \\
 \caption{Side-by-side box plot of the on-base percentage for 327 players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern.}
 \label{mlbANOVABoxPlot}
 \end{figure}
+
+\textC{\newpage}
 
 \begin{example}{The largest difference between the sample means is between the designated hitter and the catcher positions. Consider again the original hypotheses:
 \begin{itemize}
@@ -1202,6 +1204,8 @@ There are three conditions we must check for an ANOVA analysis: all observations
 \index{significance level!multiple comparisons|(}
 
 When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample $t$-test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Table~\ref{anovaSummaryTableForOBPAgainstPosition}.
+
+\textC{\newpage}
 
 \begin{example}{Example~\vref{firstExampleForThreeStatisticsClassesAndANOVA} discussed three statistics lectures, all taught during the same semester. Table~\ref{summaryStatisticsForClassTestData} shows summary statistics for these three courses, and a side-by-side box plot of the data is shown in Figure~\ref{classDataSBSBoxPlot}. We would like to conduct an ANOVA for these data. Do you see any deviations from the three conditions for ANOVA?}
 In this case (like many others) it is difficult to check independence in a rigorous way. Instead, the best we can do is use common sense to consider reasons the assumption of independence may not hold. For instance, the independence assumption may not be reasonable if there is a star teaching assistant that only half of the students may access; such a scenario would divide a class into two subgroups. No such situations were evident for these particular data, and we believe that independence is acceptable.
