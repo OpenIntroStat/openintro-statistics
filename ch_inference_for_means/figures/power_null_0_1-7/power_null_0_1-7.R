@@ -1,11 +1,11 @@
 library(openintro)
 data(COL)
 
-BuildNull <- function() {
+BuildNull <- function(xlim = c(-10, 10)) {
   normTail(0, 1.70, L = -1000, U = 1000,
            df = 50, lwd = 2.5, axes = FALSE,
            curveColor = COL[1],
-           xlim = c(-10, 10))
+           xlim = xlim)
   axis(1, at = seq(-15, 15, 3))
   mtext(expression(bar(x)[trmt] - bar(x)[ctrl]),
         side = 1, line = 1.8)
@@ -49,7 +49,7 @@ myPDF('power_null_C_0_1-7_with_alt_at_3.pdf',
       7, 1.9,
       mar = c(2.8, 0, 0, 0),
       mgp = c(0, 0.45, 0))
-BuildNull()
+BuildNull(xlim = c(-8.8, 10))
 normTail(-3, 1.70, L = -1000, U = 1000,
          df = 50, lwd = 2.5, add = TRUE,
          curveColor = COL[2])
