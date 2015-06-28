@@ -10,7 +10,7 @@ levels(survey_sub$major) = c("Arts and Humanities", "Natural Sciences", "Social 
 
 pdf("gpaMajor_box.pdf", height = 3, width = 8)
 
-par(mar=c(2,4.5,0.5,3), mgp=c(2.5,0.7,0), las = 1, cex.lab = 1.25, cex.axis = 1.25)
+par(mar=c(2,4.5,0,3), mgp=c(2.5,0.7,0), las = 1, cex.lab = 1.25, cex.axis = 1.25)
 
 boxPlot(survey_sub$gpa, fact = survey_sub$major, col = oiB, ylab = "GPA", axes = FALSE, xlim=c(0.6, 3.4))
 axis(1, at = c(1,2,3), labels = c("Arts and Humanities", "Natural Sciences", "Social Sciences"))
