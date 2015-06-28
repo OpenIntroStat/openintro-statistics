@@ -20,6 +20,9 @@ The methods we learned in previous chapters will continue to be useful in these 
 In New York City on October 23rd, 2014, a doctor who had recently been treating Ebola patients in Guinea went to the hospital with a slight fever and was subsequently diagnosed with Ebola. Soon thereafter, an NBC 4 New York/The Wall Street Journal/Marist Poll found that 82\% of New Yorkers favored a ``mandatory 21-day quarantine for anyone who has come in contact with an Ebola patient''.\footnote{\oiRedirect{textbook-maristpoll_ebola_201410}{Poll ID NY141026 on maristpoll.marist.edu}.} This poll included responses of 1,042 New York adults between October 26th and 28th, 2014.
 
 
+\textC{\newpage}
+
+
 \subsection{Identifying when the sample proportion is nearly normal}
 
 A sample proportion can be described as a sample mean. If we represent each ``success'' as a 1 and each ``failure'' as a 0, then the sample proportion is the mean of these numerical outcomes:
@@ -51,6 +54,9 @@ Typically we don't know the true proportion, $p$, so we substitute some value to
 \begin{tipBox}{\tipBoxTitle{Reminder on checking independence of observations}
 If data come from a simple random sample and consist of less than 10\% of the population, then the independence assumption is reasonable. Alternatively, if the data come from a random process, we must evaluate the independence condition more carefully.}
 \end{tipBox}
+
+
+\textC{\newpage}
 
 
 \subsection{Confidence intervals for a proportion}
@@ -119,8 +125,8 @@ The upper tail area, representing the p-value, is about 0.0001. Because the p-va
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.6\textwidth]{ch_inference_for_props/figures/nuclearArmsReduction/nuclearArmsReductionPValue}
-\caption{Sampling distribution of the sample proportion if the null hypothesis is true for Example~\ref{NuclearArmsInferenceExample}. The area representing the p-value is too small to be visible.}
+\includegraphics[width=0.48\textwidth]{ch_inference_for_props/figures/nuclearArmsReduction/nuclearArmsReductionPValue}
+\caption{Sampling distribution for Example~\ref{NuclearArmsInferenceExample}.}
 \label{nuclearArmsReductionPValue}
 \end{figure}
 
@@ -198,6 +204,11 @@ A sample size of 370 or more would be reasonable. (Reminder: always round up for
 \index{margin of error|)}
 
 \end{exercise}
+
+
+
+\textC{\newpage}
+
 
 
 %__________________
@@ -622,6 +633,8 @@ df \hfill 2 & \footnotesize 2.41 & \footnotesize \highlightO{3.22} & \footnotesi
 \label{chiSquareProbabilityTableShort}
 \end{table}
 
+\textC{\pagebreak}
+
 \begin{example}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Table~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
 This distribution has three degrees of freedom, so only the row with 3 degrees of freedom (df) is relevant. This row has been italicized in the table. Next, we see that the value -- 6.25 -- falls in the column with upper tail area 0.1. That is, the shaded upper tail of Figure~\ref{chiSquareAreaAbove6Point25WithDF3} has area 0.1.
 \end{example}
@@ -652,7 +665,14 @@ This distribution has three degrees of freedom, so only the row with 3 degrees o
 \includegraphics[width=0.475\textwidth]{ch_inference_for_props/figures/arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove9Point21WithDF3/chiSquareAreaAbove9Point21WithDF3}
 \label{chiSquareAreaAbove9Point21WithDF3}
 }
-\caption{\textbf{\subref{chiSquareAreaAbove6Point25WithDF3}} Chi-square distribution with 3 degrees of freedom, area above 6.25 shaded. \textbf{\subref{chiSquareAreaAbove4Point3WithDF2}} 2 degrees of freedom, area above 4.3 shaded. \textbf{\subref{chiSquareAreaAbove5Point1WithDF5}} 5 degrees of freedom, area above 5.1 shaded. \textbf{\subref{chiSquareAreaAbove11Point7WithDF7}} 7 degrees of freedom, area above 11.7 shaded. \textbf{\subref{chiSquareAreaAbove10WithDF4}} 4 degrees of freedom, area above 10 shaded. \textbf{\subref{chiSquareAreaAbove9Point21WithDF3}} 3 degrees of freedom, area above 9.21 shaded.}
+\caption{
+\textbf{\subref{chiSquareAreaAbove6Point25WithDF3}}~Chi-square distribution with 3~degrees of freedom, area above 6.25 shaded.
+\textbf{\subref{chiSquareAreaAbove4Point3WithDF2}}~2~degrees of freedom, area above 4.3 shaded.
+\textbf{\subref{chiSquareAreaAbove5Point1WithDF5}}~5~degrees of freedom, area above 5.1 shaded.
+\textbf{\subref{chiSquareAreaAbove11Point7WithDF7}}~7~degrees of freedom, area above 11.7 shaded.
+\textbf{\subref{chiSquareAreaAbove10WithDF4}}~4~degrees of freedom, area above 10 shaded.
+\textbf{\subref{chiSquareAreaAbove9Point21WithDF3}}~3~degrees of freedom, area above 9.21 shaded.
+}
 \label{arrayOfFigureAreasForChiSquareDistribution}
 \end{figure}
 
@@ -698,7 +718,7 @@ The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueSh
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.61\textwidth]{ch_inference_for_props/figures/jurorHTPValueShown/jurorHTPValueShown}
+\includegraphics[width=0.55\textwidth]{ch_inference_for_props/figures/jurorHTPValueShown/jurorHTPValueShown}
 \caption{The p-value for the juror hypothesis test is shaded in the chi-square distribution with $df=3$.}
 \label{jurorHTPValueShown}
 \end{figure}
@@ -810,9 +830,9 @@ Because the expected counts are all at least~5, we can safely apply the chi-squa
 Figure~\ref{geomFitPValueForSP500For1990To2011} shows the chi-square distribution, cutoff, and the shaded p-value. If we look up the statistic $\chi^2=15.08$ in Appendix~\ref{chiSquareProbabilityTable}, we find that the p-value is between 0.01 and 0.02. In other words, we have sufficient evidence to reject the notion that the wait times follow a geometric distribution, i.e. trading days are not independent and past days may help predict what the stock market will do today.
 \end{example}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.97\textwidth]{ch_inference_for_props/figures/geomFitPValueForSP500For1990To2011/geomFitPValueForSP500For1990To2011}
+\includegraphics[width=0.9\textwidth]{ch_inference_for_props/figures/geomFitPValueForSP500For1990To2011/geomFitPValueForSP500For1990To2011}
 \caption{Chi-square distribution with 6 degrees of freedom. The p-value for the stock analysis is shaded.}
 \label{geomFitPValueForSP500For1990To2011}
 \end{figure}
@@ -937,6 +957,9 @@ $$\text{Expected Count}_{\text{row }i,\text{ col }j} = \frac{(\text{row $i$ tota
 \end{termBox}
 
 
+\textC{\newpage}
+
+
 \subsection{The chi-square test for two-way tables}
 
 The chi-square test statistic for a two-way table is found the same way it is found for a one-way table. For each table count, compute
@@ -976,6 +999,8 @@ When analyzing 2-by-2 contingency tables, use the two-proportion methods introdu
 \label{googleHTForDiffAlgPerformancePValue}
 \end{figure}
 
+\textC{\pagebreak}
+
 \begin{example}{Compute the p-value and draw a conclusion about whether the search algorithms have different performances.}
 Looking in Appendix~\ref{chiSquareProbabilityTable} on page~\pageref{chiSquareProbabilityTable}, we examine the row corresponding to 2 degrees of freedom. The test statistic, $\chi^2=6.120$, falls between the fourth and fifth columns, which means the p-value is between 0.02 and 0.05. Because we typically test at a significance level of $\alpha=0.05$ and the p-value is less than 0.05, the null hypothesis is rejected. That is, the data provide convincing evidence that there is some difference in performance among the algorithms.
 \index{data!search algorithm|)}
@@ -1013,7 +1038,7 @@ Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
 \end{table}
 
 \begin{exercise}
-A chi-square test for a two-way table may be used to test the hypotheses in Example~\ref{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}. As a first step, compute the expected values for each of the six table cells.\footnote{The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{4223} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0}
+A chi-square test for a two-way table may be used to test the hypotheses in Example~\ref{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}. As a first step, compute the expected values for each of the six table cells.\footnote{The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{4223} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0.}
 % R <- c(2119, 2104); C <- c(1458, 1382, 1383); R*C[1]/sum(C); R*C[2]/sum(C); R*C[3]/sum(C)
 \end{exercise}
 
@@ -1043,10 +1068,10 @@ In this section we develop inferential methods for a single proportion that are 
 People providing an organ for donation sometimes seek the help of a special ``medical consultant''. These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. Patients might choose a consultant based in part on the historical complication rate of the consultant's clients. One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10\%, but her clients have only had 3 complications in the 62 liver donor surgeries she has facilitated. She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!).
 
 \begin{exercise}
-We will let $p$ represent the true complication rate for liver donors working with this consultant. Estimate $p$ using the data, and label this value $\hat{p}$.\footnote{The sample proportion: $\hat{p} = 3/62 = 0.048$}
+We will let $p$ represent the true complication rate for liver donors working with this consultant. Estimate $p$ using the data, and label this value~$\hat{p}$.\footnote{The sample proportion: $\hat{p} = 3/62 = 0.048$}
 \end{exercise}
 
-\begin{example}{Is it possible to assess the consultant's claim using the data provided?}
+\begin{example}{Is it possible to assess the consultant's claim with the data provided?}
 No. The claim is that there is a causal connection, but the data are observational. Patients who hire this medical consultant may have lower complication rates for other reasons.
 
 While it is not possible to assess this causal claim, it is still possible to test for an association using these data. For this question we ask, could the low complication rate of $\hat{p} = 0.048$ be due to chance?
@@ -1100,6 +1125,8 @@ Because the estimated p-value is 0.1222, which is larger than the significance l
 \index{data!medical consultant|)}
 \end{exercise}
 
+\textC{\newpage}
+
 \begin{exercise}
 Does the conclusion in Guided Practice~\ref{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant} imply there is no real association between the surgical consultant's work and the risk of complications? Explain.\footnote{No. It might be that the consultant's work is associated with a reduction but that there isn't enough data to convincingly show this connection.}
 \end{exercise}
@@ -1122,6 +1149,8 @@ P(k\text{ successes}) = {n\choose k} p^{k}(1-p)^{n-k} = \frac{n!}{k!(n-k)!} p^{k
 where $p$ is the true probability of success. The expression ${n\choose k}$ is read as \emph{$n$ choose $k$}, and the exclamation points represent factorials. For instance, $3!$ is equal to $3\times 2\times 1=6$, $4!$ is equal to $4\times 3\times 2\times 1 = 24$, and so on (see Section~\ref{binomialModel}).
 
 The tail area of the null distribution is computed by adding up the probability in Equation~\eqref{binomialEquationShownForFindingNullDistributionInSmallSamplePropTest} for each $k$ that provides at least as strong of evidence favoring the alternative hypothesis as the data. If the hypothesis test is one-sided, then the p-value is represented by a single tail area. If the test is two-sided, compute the single tail area and double it to get the p-value, just as we have done in the past.
+
+\textC{\pagebreak}
 
 \begin{example}{Compute the exact p-value to check the consultant's claim that her clients' complication rate is below 10\%.}
 Exactly $k=3$ complications were observed in the $n=62$ cases cited by the consultant. Since we are testing against the 10\% national average, our null hypothesis is $p=0.10$. We can compute the p-value by adding up the cases where there are 3 or fewer complications:
@@ -1162,8 +1191,6 @@ Since the minimum bin count condition was satisfied, the chi-square distribution
 %__________________
 \section{Randomization test (special topic)}
 \label{smallSampleHTForTwoOrMoreProportion}
-
-\Comment{New title for this section.}
 
 \index{data!CPR and blood thinner|(}
 
@@ -1227,7 +1254,7 @@ If we look this Z score up in Appendix~\ref{normalProbabilityTable}, we see that
 \end{example}
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.75\textwidth]{ch_inference_for_props/figures/pValueCPRStudyLargeSampleAnalysisInSmallSampleSection/pValueCPRStudyLargeSampleAnalysisInSmallSampleSection}
+\includegraphics[width=0.67\textwidth]{ch_inference_for_props/figures/pValueCPRStudyLargeSampleAnalysisInSmallSampleSection/pValueCPRStudyLargeSampleAnalysisInSmallSampleSection}
 \caption{The null distribution of the point estimate $\hat{p}_t - \hat{p}_c$ under the large sample framework is a normal distribution with mean $0$ and standard deviation equal to the standard error, in this case $SE=0.095$. The p-value is represented by the shaded areas.}
 \label{pValueCPRStudyLargeSampleAnalysisInSmallSampleSection}
 \end{figure}

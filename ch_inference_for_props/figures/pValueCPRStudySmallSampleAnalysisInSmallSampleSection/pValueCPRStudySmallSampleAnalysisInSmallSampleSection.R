@@ -40,5 +40,5 @@ lines(rep(0.13, 2),
       lwd = 1.7)
 text(0.13, 3 * N / 25, "0.13",
      pos = 3,
-     cex = 0.7)
+     cex = 0.85)
 dev.off()
