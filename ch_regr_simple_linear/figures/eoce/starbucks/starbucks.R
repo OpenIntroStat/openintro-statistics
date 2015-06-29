@@ -1,33 +1,36 @@
-setwd("~/Desktop/Open Intro/EOCE - Second Edition/07/figures/eoce/starbucks")
+library(openintro)
 
 sb = read.csv("starbucks.csv")
 
-###
+lmSbuxCarb = lm(sb$carb ~ sb$calories)
 
-pdf("carb_cals.pdf", 5.5, 7)
+#####################
+# carb vs. calories
+#####################
 
-lmPlot(sb$calories, sb$carb, col = fadeColor(COL[1],90), xlab="Calories", ylab="Carb (in grams)", lCol = COL[2], lwd = 2, resSymm = TRUE, xAxis = 6, resAxis = 3, cex.lab = 1.25, cex.axis = 1.25)
-
+pdf("carb_cals_scat.pdf", 5.5, 4.3)
+par(mar=c(4,4,0.7,0.5), mgp=c(2.75,1.1,0), cex.lab = 1.5, cex.axis = 1.5)
+plot(sb$calories, sb$carb, col = COL[1,3], xlab="Calories", ylab="Carb (in grams)", pch = 19)
+abline(lmSbuxCarb, col = COL[2], lwd = 2)
 dev.off()
 
 ##
 
-lmSbuxCarb = lm(sb$carb ~ sb$calories)
-
-###
-
-pdf("carb_cals_res_hist.pdf", 5.5, 4.3)
-
-par(mar=c(3.6,3,1,1), las=1, mgp=c(2.5,0.8,0))
-
-histPlot(lmSbuxCarb$res, xlab = "Residuals", ylab = "", cex.lab = 1.5, cex.axis = 1.5, axes = FALSE, col = COL[1])
-
-axis(1, c(-30, -15, 0, 15, 30), cex.axis = 1.5)
-axis(2, c(0, 5, 10, 15,20,25), cex.axis = 1.5)
-
+pdf("carb_cals_res_scat.pdf", 5.5, 4.3)
+par(mar=c(4,4,0.7,0.5),  mgp=c(2.75,1.1,0), cex.lab = 1.5, cex.axis = 1.5)
+plot(sb$calories, lmSbuxCarb$residuals, col = COL[1,3], xlab="Calories", ylab="Residuals", pch = 19)
+abline(h = 0, lty = 2)
 dev.off()
 
-###
+##
+
+pdf("carb_cals_res_hist.pdf", 5.5, 4.3)
+par(mar=c(4,2.7,0.5,0.5), las=1, mgp=c(2.75,1.1,0), cex.lab = 1.5, cex.axis = 1.5)
+histPlot(lmSbuxCarb$residuals, xlab = "Residuals", ylab = "", col = COL[1], xlim = c(-40,40))
+dev.off()
+
+
+#################
 
 
 ###

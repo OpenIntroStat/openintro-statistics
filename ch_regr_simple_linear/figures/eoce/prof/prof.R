@@ -9,9 +9,9 @@ eval <- d$courseevaluation
 beauty_eval_lm = lm(eval ~ beauty)
 
 # Make a scatterplot
-pdf("beauty_eval.pdf", height = 5, width = 5)
+pdf("beauty_eval.pdf", 5.5, 4.3)
 
-plot(x = beauty, y = eval, xlab="beauty", ylab="teaching evaluation", pch = 19, col = fadeColor(COL[1],80), cex = 0.9, cex.lab = 1.5)
+plot(x = beauty, y = eval, xlab="beauty", ylab="teaching evaluation", pch = 19, col = COL[1,2], cex = 0.9, cex.lab = 1.5)
 
 dev.off()
 

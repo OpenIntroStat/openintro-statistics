@@ -1,6 +1,4 @@
 library(openintro)
-data(COL)
-#setwd("~/Desktop/Open Intro/EOCE - Second Edition/07/figures/eoce/urbanOwner")
 
 uo = read.csv("urbanOwner.csv")
 
@@ -34,7 +32,7 @@ dev.off()
 
 ###
 
-pdf("urbanOwner_withoutDC.pdf", 5.5, 7)
+pdf("urbanOwner_withoutDC.pdf", 5.5, 6)
 
 lmPlot(uo_noDC$poppct_urban, uo_noDC$pct_owner_occupied, col = COL[1], xlab='% urban population', ylab='% who own home', lCol = COL[2], lwd = 2, resSymm = TRUE, resAxis = 3, xAxis = 5, yAxis = 5, cex.lab = 1.5, cex.axis = 1.5)
 

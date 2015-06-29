@@ -1,4 +1,4 @@
-setwd("~/Desktop/Open Intro/EOCE - Second Edition/07/figures/eoce/resDemo1")
+library(openintro)
 
 x = seq(1,100,1)
 
@@ -7,8 +7,6 @@ yLin = 3 * x + 5 + rnorm(length(x), mean = 0, sd = 20)
 yFanBack = 4*x + 5 + rnorm(length(x), mean = 0, sd = sort(x, decreasing = TRUE))
 
 ###
-
-setwd("/Users/mine/Desktop/Open Intro/Chp 7 - EOCE/figures")
 
 pdf("resDemoLin.pdf", 5.5, 4.3)
 

@@ -1,4 +1,4 @@
-setwd("~/Desktop/Open Intro/EOCE - Second Edition/07/figures/eoce/resDemo2")
+library(openintro)
 
 set.seed(8313)
 
@@ -11,8 +11,6 @@ yLog = log(x)+rnorm(300, mean = 0, s = 0.5)
 
 
 ###
-
-setwd("/Users/mine/Desktop/Open Intro/Chp 7 - EOCE/figures")
 
 pdf("resDemoFan.pdf", 5.5, 4.3)
 
