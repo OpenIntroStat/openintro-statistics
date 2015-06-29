@@ -339,7 +339,7 @@ Each textbook has two corresponding prices in the data set: one for the UCLA boo
 Two sets of observations are \emph{paired} if each observation in one set has a special correspondence or connection with exactly one observation in the other data set.}
 \end{termBox}
 
-To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In the \data{textbook} data set, we look at the difference in prices, which is represented as the \var{diff} variable in the \data{textbooks} data. Here the differences are taken as
+To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In the \data{textbook} data set, we look at the differences in prices, which is represented as the \var{diff} variable in the \data{textbooks} data. Here the differences are taken as
 \begin{eqnarray*}
 \text{UCLA price} - \text{Amazon price}
 \end{eqnarray*}
@@ -421,7 +421,7 @@ In this section we consider a difference in two population means, $\mu_1 - \mu_2
 
 We apply these methods in three contexts: determining whether stem cells can improve heart function, exploring the impact of pregnant womens' smoking habits on birth weights of newborns, and exploring whether there is statistically significant evidence that one variations of an exam is harder than another variation. This section is motivated by questions like ``Is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke?''
 
-\subsection{Confidence interval for a differences of means}
+\subsection{Confidence interval for a difference of means}
 
 \index{data!stem cells, heart function|(}
 \index{point estimate!difference of means|(}
@@ -460,8 +460,8 @@ control		& 9		& -4.33		& 2.76  	 \\
 \label{ConditionsForTwoSampleTDist}The $t$-distribution can be used for inference when working with the standardized difference of two means if (1) each sample meets the conditions for using the $t$-distribution and (2) the samples are independent.}
 \end{termBox}
 
-\begin{example}{Can the point estimate, $\bar{x}_{esc} - \bar{x}_{control} = 7.83$, be analyzed using the $t$-distribution?}
-We check the two required conditions: % the $t$-distribution can be used by (1) checking whether each sample mean could itself be modeled using the $t$-distribution and (2) determining whether the samples are independent.
+\begin{example}{Can the $t$-distribution be used to make inference using the point estimate, $\bar{x}_{esc} - \bar{x}_{control} = 7.83$?}
+We check the two required conditions:
 \begin{enumerate}
 \item In this study, the sheep were independent of each other. Additionally, the distributions in Figure~\ref{stemCellTherapyForHearts} don't show any clear deviations from normality, where we watch for prominent outliers in particular for such small samples. These findings imply each sample mean could itself be modeled using a $t$-distribution.
 \item The sheep in each group were also independent of each other.
@@ -613,7 +613,7 @@ Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} 
 \end{exercise}
 
 \begin{exercise} \label{babySmokeHTIDingHowToDetectDifferences}
-If we made a Type~2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?\footnote{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
+If we made a Type~2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect the difference?\footnote{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
 \end{exercise}
 
 \textC{\newpage}
@@ -624,7 +624,7 @@ Public service announcement: while we have used this relatively small data set a
 \indent\indent\indent\indent\indent\indent- Joseph Cullman, Philip Morris' Chairman of the Board \\
 \indent\indent\indent\indent\indent\indent{\color{white}...}on CBS' \emph{Face the Nation}, Jan 3,~1971
 \end{quotation}
-Fact check: the babies from women who smoke are not actually as healthy as from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \oiRedirect{textbook-johnoliver_tobacco}{youtu.be/6UsHHOCH4q8}.}
+Fact check: the babies from women who smoke are not actually as healthy as the babies from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{This Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \oiRedirect{textbook-johnoliver_tobacco}{youtu.be/6UsHHOCH4q8}.}
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
 

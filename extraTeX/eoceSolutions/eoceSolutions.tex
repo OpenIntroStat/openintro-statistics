@@ -902,8 +902,8 @@ Total			& {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 % 39
 \eocesol{(a)~$H_0$: The distribution of the format of the book used by the students follows the professor's predictions. $H_A$: The distribution of the format of the book used by the students does not follow the professor's predictions.
 (b)~$E_{hard~copy} = 126 \times  0.60 = 75.6$. $E_{print} = 126 \times  0.25 = 31.5$. $E_{online} = 126 \times  0.15 = 18.9$.
-(c)~Independence:  The sample is not random. However, if the professor has reason to believe that the proportions are stable from one term to the next and students are not affecting each other's study habits, independence is probably reasonable. Sample size: All expected counts are at least 5. Degrees of freedom: $df = k - 1 = 3 - 1 = 2$ is more than 1.
-(d)~$X^2 = 2.32$, $df=2$, p-value $> 0.3$.
+(c)~Independence:  The sample is not random. However, if the professor has reason to believe that the proportions are stable from one term to the next and students are not affecting each other's study habits, independence is probably reasonable. Sample size: All expected counts are at least 5.
+(d)~$\chi^2 = 2.32$, $df=2$, p-value $> 0.3$.
 (e)~Since the p-value is large, we fail to reject $H_0$. The data do not provide strong evidence indicating the professor's predictions were statistically inaccurate.}
 
 % 41
@@ -931,8 +931,8 @@ Total				& 70			& 230	& 300 \\
 &E_{row~2, col~1} = 162.1 && E_{row~2, col~2} = 143.9 \\
 &E_{row~3, col~1} = 124.5 && E_{row~3, col~2} = 110.5
 \end{align*}
-Independence: The samples are both random, unrelated, and from less than 10\% of the population, so independence between observations is reasonable. Sample size: All expected counts are at least 5. Degrees of freedom: $df = (R - 1) \times  (C - 1) = (3 - 1) \times  (2 - 1) = 2$, which is greater than 1.
-$X^2 = 11.47$, $df = 2$ $\to$ $0.001<$ p-value $<0.005$.
+Independence: The samples are both random, unrelated, and from less than 10\% of the population, so independence between observations is reasonable. Sample size: All expected counts are at least 5.
+$\chi^2 = 11.47$, $df = 2$ $\to$ $0.001<$ p-value $<0.005$.
 Since the p-value $< \alpha$, we reject $H_0$.  There is strong evidence that there is an association between support for off-shore drilling and having a college degree.}
 
 % 45
@@ -943,7 +943,7 @@ Since the p-value $< \alpha$, we reject $H_0$.  There is strong evidence that th
 &E_{row~2,col~1} = 54.8 && E_{row~2,col~2} = 68.2 \\
 &E_{row~3,col~1} = 7.6 && E_{row~3,col~2} = 9.4
 \end{align*}
-The sample is random, all expected counts are above 5, and $df=(3-1)\times(2-1) = 2 > 1$, so we may proceed with the test.} %The test statistic may be computed as $X^2 = 3.1291$ with $df= 2$. The p-value is greater than 0.2, indicating that the evidence is not sufficiently strong for us to reject the null hypothesis. That is, the data do not provide sufficiently strong evidence to conclude that Facebook users knowledge about privacy settings varies by gender.}
+The sample is random, all expected counts are above 5, and $df=(3-1)\times(2-1) = 2 > 1$, so we may proceed with the test.} %The test statistic may be computed as $\chi^2 = 3.1291$ with $df= 2$. The p-value is greater than 0.2, indicating that the evidence is not sufficiently strong for us to reject the null hypothesis. That is, the data do not provide sufficiently strong evidence to conclude that Facebook users knowledge about privacy settings varies by gender.}
 
 % 47
 \eocesol{It is not appropriate. There are only 9 successes in the sample, so the success-failure condition is not met.}
