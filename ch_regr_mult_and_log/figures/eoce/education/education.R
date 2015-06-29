@@ -1,8 +1,11 @@
-setwd("~/Desktop/Open Intro/EOCE - Second Edition/08/figures/eoce/education")
+# packages ----------------------------------------------------------
+library(xtable)
 
-edu = read.csv("education.csv")
+# load data ---------------------------------------------------------
+edu <- read.csv("education.csv")
 edu$gender[edu$gender == 2] = 0
 
+# mlr ---------------------------------------------------------------
 lmEdu = lm(gpa ~ iq + gender, data = edu)
 
 xtable(summary(lmEdu), digits = 2)

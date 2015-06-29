@@ -44,7 +44,7 @@ The variability within the smokers and non-smokers are about equal and the distr
 \end{parts}
 }{}
 
-\textB{\newpage}
+\textC{\newpage}
 
 % 3
 
@@ -86,7 +86,7 @@ The summary table below shows the results of a regression model for predicting t
 \end{parts}
 }{}
 
-\textB{\newpage}
+\textC{\newpage}
 
 % 4
 
@@ -124,8 +124,6 @@ The summary table below shows the results of a linear regression model for predi
 \end{parts}
 }{}
 
-\textC{\pagebreak}
-
 % 5
 
 \eoce{\qt{GPA} \label{gpa} A survey of 55 Duke University students asked about their GPA, number of hours they study at night, number of nights they go out, and their gender. Summary output of the regression model is shown below. Note that male is coded as 1. 
@@ -148,7 +146,7 @@ The summary table below shows the results of a linear regression model for predi
 \end{parts}
 }{}
 
-\textB{\newpage}
+\textC{\newpage}
 
 % 6
 
@@ -178,74 +176,43 @@ diameter & 4.71 & 0.26 & 17.82 & 0.00 \\
 
 % 7
 
-\eoce{\qt{Baby weights, Part IV} \label{babiesMRfinal} Exercise~\ref{babiesMR} considers a model that predicts a newborn's weight using several predictors. Use the regression table below, which summarizes the model, to answer the following questions. If necessary, refer back to Exercise~\ref{babiesMR} for a reminder about the meaning of each variable.
+\eoce{\qt{Baby weights, Part IV} \label{babiesMRfinal} Exercise~\ref{babiesMR} considers a model that predicts a newborn's weight using several predictors (gestation length, parity, age of mother, height of mother, weight of mother, smoking status of mother). The table below shows the adjusted R-squared for this (full) model as well as adjusted R-squared values for all models we evaluate in the first step of the backwards elimination process. 
 \begin{center}
-\begin{tabular}{rrrrr}
+\begin{tabular}{rlr}
   \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+ & Model & Adjusted $R^2$ \\ 
   \hline
-(Intercept) & -80.41 & 14.35 & -5.60 & 0.0000 \\ 
-  gestation & 0.44 & 0.03 & 15.26 & 0.0000 \\ 
-  parity & -3.33 & 1.13 & -2.95 & 0.0033 \\ 
-  age & -0.01 & 0.09 & -0.10 & 0.9170 \\ 
-  height & 1.15 & 0.21 & 5.63 & 0.0000 \\ 
-  weight & 0.05 & 0.03 & 1.99 & 0.0471 \\ 
-  smoke & -8.40 & 0.95 & -8.81 & 0.0000 \\ 
+1 & Full model & 0.2541 \\ 
+  2 & No gestation & 0.1031 \\ 
+  3 & No parity & 0.2492 \\ 
+  4 & No age & 0.2547 \\ 
+  5 & No height & 0.2311 \\ 
+  6 & No weight & 0.2536 \\ 
+  7 & No smoking status & 0.2072 \\ 
    \hline
 \end{tabular}
 \end{center}
-\begin{parts}
-\item Determine which variables, if any, do not have a significant linear relationship with the outcome and should be candidates for removal from the model. If there is more than one such variable, indicate which one should be removed first.
-\item The summary table below shows the results of the model with the \var{age} variable removed. Determine if any other variable(s) should be removed from the model.
-\begin{center}
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -80.64 & 14.04 & -5.74 & 0.0000 \\ 
-  gestation & 0.44 & 0.03 & 15.28 & 0.0000 \\ 
-  parity & -3.29 & 1.06 & -3.10 & 0.0020 \\ 
-  height & 1.15 & 0.20 & 5.64 & 0.0000 \\ 
-  weight & 0.05 & 0.03 & 2.00 & 0.0459 \\ 
-  smoke & -8.38 & 0.95 & -8.82 & 0.0000 \\ 
-   \hline
-\end{tabular}
-\end{center}
-\end{parts}
+Which, if any, variable should be removed from the model first?
 }{}
 
-\textB{\newpage}
+\textC{\newpage}
 
 % 8
 
-\eoce{\qt{Absenteeism, Part II} Exercise~\ref{daysAbsent} considers a model that predicts the number of days absent using three predictors: ethnic background (\var{eth}), gender (\var{sex}), and learner status (\var{lrn}). Use the regression table below to answer the following questions. If necessary, refer back to Exercise~\ref{daysAbsent} for additional details about each variable. 
+\eoce{\qt{Absenteeism, Part II} Exercise~\ref{daysAbsent} considers a model that predicts the number of days absent using three predictors: ethnic background (\var{eth}), gender (\var{sex}), and learner status (\var{lrn}). The table below shows the adjusted R-squared for this (full) model as well as adjusted R-squared values for all models we evaluate in the first step of the backwards elimination process. 
 \begin{center}
-\begin{tabular}{rrrrr}
+\begin{tabular}{rlr}
   \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+ & Model & Adjusted $R^2$ \\ 
   \hline
-(Intercept) & 18.93 & 2.57 & 7.37 & 0.0000 \\ 
-  eth & -9.11 & 2.60 & -3.51 & 0.0000 \\ 
-  sex & 3.10 & 2.64 & 1.18 & 0.2411 \\ 
-  lrn & 2.15 & 2.65 & 0.81 & 0.4177 \\ 
+1 & Full model & 0.0701 \\ 
+  2 & No ethnicity & -0.0033 \\ 
+  3 & No sex & 0.0676 \\ 
+  4 & No learner status & 0.0723 \\ 
    \hline
 \end{tabular}
 \end{center}
- \begin{parts}
-\item Determine which variables, if any, do not have a significant linear relationship with the outcome and should be candidates for removal from the model. If there is more than one such variable, indicate which one should be removed first.
-\item The summary table below shows the results of the regression we refit after removing learner status from the model. Determine if any other variable(s) should be removed from the model.
-\begin{center}
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & 19.98 & 2.22 & 9.01 & 0.0000 \\ 
-  eth & -9.06 & 2.60 & -3.49 & 0.0006 \\ 
-  sex & 2.78 & 2.60 & 1.07 & 0.2878 \\ 
-   \hline
-\end{tabular}
-\end{center}
-\end{parts}
+Which, if any, variable should be removed from the model first?
 }{}
 
 % 9
@@ -279,8 +246,28 @@ $R_{adj}^2$	& 0.0714		& 0.0001	& 0 \\
 \end{center}
 }{}
 
+% 11
+\eoce{\qt{Movie lovers, Part I} Suppose a social scientist is interested in studying what makes
+audiences love or hate a movie. She collects data a random sample of movies (genre, length, 
+cast, director, budget, etc.) as well as a measure of the success of the movie (score on a
+film review aggregator website). If as part of her research she is interested in finding out
+which variables are significant predictor of movie success, what type of model selection
+method should she use?
+}{}
 
-\textB{\newpage}
+% 12
+\eoce{\qt{Movie lovers, Part II} Suppose an online media streaming company is interested in
+building a movie recommender engine. The website maintains data on the
+movies in their database (genre, length, cast, director, budget, etc.) and additionally collects
+data from their subscribers (demographic information, previously watched movies, how they
+rated previously watched movies, etc.). The recommender engine will be deemed successful if
+subscribers actually watch, and rate highly, the movies recommended to them. What type of
+model selection method should this company use in determining the best model to use
+for making predictions for their subscribers?
+}{}
+
+
+\textC{\newpage}
 
 %________________
 \subsection{Checking model assumptions using graphs}
@@ -313,10 +300,10 @@ $R_{adj}^2$	& 0.0714		& 0.0001	& 0 \\
 \end{center}
 }{}
 
-\textB{\newpage}
+\textC{\newpage}
 
 %________________
-\subsection{Logistic regression}
+\subsection{Introduction to logistic regression}
 
 % 13
 
@@ -359,7 +346,7 @@ We use logistic regression to differentiate between possums in these two regions
 \end{parts}
 }{}
 
-\textB{\newpage}
+\textC{\newpage}
 
 % 14
 
@@ -416,7 +403,7 @@ Temperature & -0.2162 & 0.0532 & -4.07 & 0.0000 \\
 \end{parts}
 }{}
 
-\textB{\newpage}
+\textC{\newpage}
 
 % 16
 

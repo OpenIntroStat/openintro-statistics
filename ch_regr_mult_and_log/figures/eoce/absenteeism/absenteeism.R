@@ -1,39 +1,25 @@
 # packages ----------------------------------------------------------
 library(xtable)
+library(MASS)
 
 # load data ---------------------------------------------------------
-babies <- read.csv("babies.csv")
+data(quine)
 
 # mlr ---------------------------------------------------------------
-babies_full <- lm(bwt ~ gestation + parity + age + 
-                height + weight + smoke, data = babies)
+absent_full <- lm(Days ~ Eth + Sex + Lrn, data = quine)
 
 # drop each variable and record adj R-squared -----------------------
-full_adjrsq <- summary(babies_full)$adj.r.squared
+full_adjrsq <- summary(absent_full)$adj.r.squared
 
-no_ges_adjrsq <- summary(lm(bwt ~ parity + age + height + weight + smoke, 
-                             data = babies))$adj.r.squared
+no_eth_adjrsq <- summary(lm(Days ~ Sex + Lrn, data = quine))$adj.r.squared
 
-no_par_adjrsq <- summary(lm(bwt ~ gestation + age + height + weight + smoke, 
-                             data = babies))$adj.r.squared
+no_sex_adjrsq <- summary(lm(Days ~ Eth + Lrn, data = quine))$adj.r.squared
 
-no_age_adjrsq <- summary(lm(bwt ~ gestation + parity + height + weight + smoke, 
-                            data = babies))$adj.r.squared
-
-no_hgt_adjrsq <- summary(lm(bwt ~ gestation + parity + age + weight + smoke, 
-                            data = babies))$adj.r.squared
-
-no_wgt_adjrsq <- summary(lm(bwt ~ gestation + parity + age + height + smoke, 
-                            data = babies))$adj.r.squared
-
-no_smk_adjrsq <- summary(lm(bwt ~ gestation + parity + age + height + weight, 
-                            data = babies))$adj.r.squared
+no_lrn_adjrsq <- summary(lm(Days ~ Eth + Sex, data = quine))$adj.r.squared
 
 step1_adjrsq <- data.frame(
-  m = c("Full model", "No gestation", "No parity", "No age", 
-        "No height", "No weight", "No smoking status"),
-  adjrsq = round(c(full_adjrsq, no_ges_adjrsq, no_pas_adjrsq, no_age_adjrsq, 
-             no_hgt_adjrsq, no_wgt_adjrsq, no_smk_adjrsq), 4)
+  m = c("Full model", "No ethnicity", "No sex", "No learner status"),
+  adjrsq = round(c(full_adjrsq, no_eth_adjrsq, no_sex_adjrsq, no_lrn_adjrsq), 4)
   )
 
 xtable(step1_adjrsq, digits = 4)
