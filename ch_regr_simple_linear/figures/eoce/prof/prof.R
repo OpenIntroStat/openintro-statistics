@@ -19,7 +19,10 @@ dev.off()
 
 pdf("beauty_eval_res.pdf", height = 5, width = 5)
 
-plot(beauty_eval_lm$residuals ~ beauty, xlab = "beauty", ylab = "residuals", pch = 19, col = fadeColor(COL[1],80), cex.lab = 1.5)
+plot(beauty_eval_lm$residuals ~ beauty, xlab = "beauty", ylab = "residuals", pch = 19, col = fadeColor(COL[1],80), cex.lab = 1.5, axes = FALSE)
+axis(1, at = -1:2, cex.axis = 1.5)
+axis(2, at = -1:1, cex.axis = 1.5)
+box()
 abline(h = 0, lty = 3)
 
 dev.off()
