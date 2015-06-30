@@ -688,9 +688,11 @@ Using the normal approximation: 0.0582. With a 0.5 correction: 0.0559.}
 (d)~$1-0.25^3=0.9844$.}
 
 
+\textC{
 \end{multicols}
-\textC{\newpage}
+\newpage
 \begin{multicols}{2}
+}
 
 
 % 33
@@ -743,11 +745,331 @@ Using the normal approximation: 0.0582. With a 0.5 correction: 0.0559.}
 
 
 
-\eocesolch{{\color{red}CHAPTER 4 IS NOT YET ENTERED}}
+%_______________
+\eocesolch{Foundations for inference}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%_______________
+\begin{multicols}{2}
+
+% 1
+
+\eocesol{(a)~Mean. Each student reports a numerical value: a number of hours.
+(b)~Mean. Each student reports a number, which is a percentage, and we can 
+average over these percentages.
+(c)~Proportion. Each student reports Yes or No, so this is a categorical 
+variable and we use a proportion.
+(d)~Mean. Each student reports a number, which is a percentage like in part~(b).
+(e)~Proportion. Each student reports whether or not s/he expects to get a job, 
+so this is a categorical variable and we use a proportion.}
+
+% 3
+
+\eocesol{(a)~Mean: 13.65. Median: 14.
+(b)~SD: 1.91. IQR: $15-13=2$.
+(c)~$Z_{16} = 1.23$, which is not unusual since it is within 2 SD of the mean. 
+$Z_{18} = 2.23$, which is generally considered unusual.
+(d)~No. Point estimates that are based on samples only approximate the 
+population parameter, and they vary from one sample to another.
+(e)~We use the SE, which is $1.91/\sqrt{100} = 0.191$ for this sample's mean.}
+
+% 5
+
+\eocesol{(a)~We are building a distribution of sample statistics, in this case the sample 
+mean. Such a distribution is called a sampling distribution.
+(b)~Because we are dealing with the distribution of sample means, we need to 
+check to see if the Central Limit Theorem applies. Our sample size is greater 
+than 30, and we are told that random sampling is employed. With these conditions 
+met, we expect that the distribution of the sample mean will be nearly normal 
+and therefore symmetric.
+(c)~Because we are dealing with a sampling distribution, we measure its 
+variability with the standard error. $SE = 18.2 / \sqrt{45} = 2.713$.
+(d)~The sample means will be more variable with the smaller sample size.}
+
+% 7
+
+\eocesol{Recall that the general formula is
+\begin{align*}
+\text{point estimate} \pm Z^{\star} \times SE
+\end{align*}
+First, identify the three different values. The point estimate is 45\%, 
+$Z^{\star} = 1.96$ for a 95\% confidence level, and $SE = 1.2\%$. Then, plug the 
+values into the formula:
+\begin{align*}
+45\% \pm 1.96 \times 1.2\% \quad\to\quad (42.6\%, 47.4\%)
+\end{align*}
+We are 95\% confident that the proportion of US adults who live with one or more 
+chronic conditions is between 42.6\% and 47.4\%.}
+
+% 9
+
+\eocesol{(a)~False. Confidence intervals provide a range of plausible values, and 
+sometimes the truth is missed. A 95\% confidence interval ``misses'' about 5\% 
+of the time.
+(b)~True. Notice that the description focuses on the true population value.
+(c)~True. If we examine the 95\% confidence interval computed in Exercise~\ref{chronic_illness_tf}, we can see that 50\% is not included in this interval. This 
+means that in a hypothesis test, we would reject the null hypothesis that the 
+proportion is 0.5.
+(d)~False. The standard error describes the uncertainty in the overall estimate 
+from natural fluctuations due to randomness, not the uncertainty corresponding 
+to individuals' responses.}
+
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
+% 11
+
+\eocesol{(a)~We are 95\% confident that Americans spend an average of 1.38 to 1.92 hours 
+per day relaxing or pursuing activities they enjoy.
+(b)~Their confidence level must be higher as the width of the confidence 
+interval increases as the confidence level increases.
+(c)~The new margin of error will be smaller since as the sample size increases 
+the standard error decreases, which will decrease the margin of error.}
+
+% 13
+
+\eocesol{(a)~False. Provided the data distribution is not very strongly skewed ($n = 64$ in 
+this sample, so we can be slightly lenient with the skew), the sample mean will 
+be nearly normal, allowing for the method normal approximation described.
+(b)~False. Inference is made on the population parameter, not the point 
+estimate. The point estimate is always in the confidence interval.
+(c)~True.
+(d)~False. The confidence interval is not about a sample mean.
+(e)~False. To be more confident that we capture the parameter, we need a wider 
+interval. Think about needing a bigger net to be more sure of catching a fish in 
+a murky lake.
+(f)~True. Optional explanation: This is true since the normal model was used to 
+model the sample mean. The margin of error is half the width of the interval, 
+and the sample mean is the midpoint of the interval.
+(g)~False. In the calculation of the standard error, we divide the standard 
+deviation by the square root of the sample size. To cut the SE (or margin of 
+error) in half, we would need to sample $2^2 = 4$ times the number of people in 
+the initial sample.}
+
+% 15
+
+\eocesol{Independence: sample from $<10\%$ of population, and it is a random sample. We 
+can assume that the students in this sample are independent of each other with 
+respect to number of exclusive relationships they have been in. Notice that 
+there are no students who have had no exclusive relationships in the 
+sample, which suggests some student responses are likely missing (perhaps only 
+positive values were reported). The sample size is at least 30. The skew is 
+strong, but the sample is very large so this is not a concern. 90\% CI: (2.97, 3.
+43). We are 90\% confident that undergraduate students have been in 2.97 to 3.43 exclusive relationships, on average.}
+
+% 17
+
+\eocesol{(a)~$H_0: \mu = 8$ (On average, New Yorkers sleep 8 hours a night.) 
+$H_A: \mu < 8$ (On average, New Yorkers sleep less than 8 hours a night.)
+(b)~$H_0: \mu = 15$ (The average amount of company time each employee spends not 
+working is 15 minutes for March Madness.) $H_A: \mu > 15$ (The average amount of 
+company time each employee spends not working is greater than 15 minutes for 
+March Madness.)}
+
+% 19
+
+\eocesol{The hypotheses should be about the population mean ($\mu$), not the sample mean. 
+The null hypothesis should have an equal sign and the alternative hypothesis 
+should be about the null hypothesized value, not the observed sample mean. 
+Correction:
+\begin{align*}
+H_0&: \mu = 10~hours \\
+H_A&: \mu > 10~hours
+\end{align*}
+The one-sided test indicates that we are only interested in showing that 10 is an 
+underestimate. Here the interest is in only one direction, so a one-sided test 
+seems most appropriate. If we would also be interested if the data showed strong 
+evidence that 10 was an overestimate, then the test should be two-sided.}
+
+% 21
+
+\eocesol{(a)~This claim does is not supported since 3 hours (180 minutes) is not in 
+the interval.
+(b)~2.2~hours (132 minutes) is in the 95\% confidence interval, so we do not 
+have evidence to say she is wrong. However, it would be more appropriate to use 
+the point estimate of the sample.
+(c)~A 99\% confidence interval will be wider than a 95\% confidence interval, 
+meaning it would enclose this smaller interval. This means 132 minutes would be 
+in the wider interval, and we would not reject her claim based on a 99\% 
+confidence level.}
+
+% 23
+
+\eocesol{$H_0: \mu = 130$. $H_A: \mu \ne 130$. $Z=1.39$ $\to$ p-value $= 0.1646$, which 
+is larger than $\alpha=0.05$. The data do not provide convincing evidence that 
+the true average calorie content in bags of potato chips is different than 130 
+calories.}
+
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
+% 25
+
+\eocesol{(a)~Independence: The sample is random and 64 patients would almost certainly 
+make up less than 10\% of the ER residents. The sample size is at least 30. No 
+information is provided about the skew. In practice, we would ask to see the 
+data to check this condition, but here we will make the assumption that the skew 
+is not very strong.
+(b)~$H_0: \mu = 127$. $H_A: \mu \ne 127$. $Z=2.15$ $\to$ p-value $= 0.0316$. 
+Since the p-value is less than $\alpha=0.05$, we reject $H_0$. The data provide 
+convincing evidence that the the average ER wait time has increased over the 
+last year.
+(c)~Yes, it would change. The p-value is greater than 0.01, meaning we would 
+fail to reject $H_0$ at $\alpha = 0.01$.}
+
+% 27
+
+\eocesol{31.97 or higher.}
+
+% 29
+
+\eocesol{(a)~$H_0$: Anti-depressants do not help symptoms of Fibromyalgia. $H_A$: Anti-
+depressants do treat symptoms of Fibromyalgia. Remark: Diana might also have 
+taken special note if her symptoms got much worse, so a more scientific approach 
+would have been to use a two-sided test. While parts (b)-(d) use the one-sided 
+version, your answers will be a little different if you used a two-sided test.
+(b)~Concluding that anti-depressants work for the treatment of Fibromyalgia 
+symptoms when they actually do not.
+(c)~Concluding that anti-depressants do not work for the treatment of 
+Fibromyalgia symptoms when they actually do.
+(d)~If she makes a Type~1 error, she will continue taking medication that does 
+not actually treat her disorder. If she makes a Type~2 error, she will stop 
+taking medication that could treat her disorder.}
+
+% 31
+
+\eocesol{(a)~Scenario I is higher. Recall that a sample mean based on less data tends to 
+be less accurate and have larger standard errors.
+(b)~Scenario I is higher. The higher the confidence level, the higher the 
+corresponding margin of error.
+(c)~They are equal. The sample size does not affect the calculation of the p-
+value for a given Z-score.
+(d)~Scenario I is higher. If the null hypothesis is harder to reject 
+(lower $\alpha$), then we are more likely to make a Type~2 error when the 
+alternative hypothesis is true.}
+
+% 33
+
+\eocesol{(a)~The distribution is unimodal and strongly right skewed with a median between 
+5 and 10 years old. Ages range from 0 to slightly over 50 years old, and the 
+middle 50\% of the distribution is roughly between 5 and 15 years old. There are 
+potential outliers on the higher end.
+(b)~When the sample size is small, the sampling distribution is right skewed, 
+just like the population distribution. As the sample size increases, the 
+sampling distribution gets more unimodal, symmetric, and approaches normality. 
+The variability also decreases. This is consistent with the Central Limit 
+Theorem.
+(c)~n = 5: $\mu_{\bar{x}} = 10.44, \quad \sigma_{\bar{x}} = 4.11$;
+n = 30: $\mu_{\bar{x}} = 10.44, \quad \sigma_{\bar{x}} = 1.68$;
+n = 100: $\mu_{\bar{x}} = 10.44, \quad \sigma_{\bar{x}} = 0.92$.
+The centers of the sampling distributions shown in part~(b) appear to be 
+around 10. It is difficult to estimate the standard deviation for 
+the sampling distribution when $n = 5$ from the histogram (since the 
+distribution is somewhat skewed). If 1.68 is a plausible estimate for the 
+standard deviation of the sampling distribution when $n = 30$, then using 
+the 68-95-99.7\% Rule, we would expect the values to range roughly between 
+$10.44 \pm 3* 1.68 = (5.4, 15.48)$, which seems to be the case. Similarly, when 
+$n = 100$, we would expect the values to range roughly between 
+$10.44 \pm 3* 0.92 = (7.68, 13.2)$, which also seems to be the case.}
+
+% 35
+
+\eocesol{(a)~Right skewed. There is a long tail on the higher end of the distribution but 
+a much shorter tail on the lower end.
+(b)~Less than, as the median would be less than the mean in a right skewed 
+distribution.
+(c)~We should not.
+(d)~Even though the population distribution is not normal, the conditions for 
+inference are reasonably satisfied, with the possible exception of skew. If the 
+skew isn't very strong (we should ask to see the data), then we can use the 
+Central Limit Theorem to estimate this probability. For now, we'll assume the 
+skew isn't very strong, though the description suggests it is at least moderate 
+to strong. Use $N(1.3, SD_{\bar{x}} = 0.3/\sqrt{60})$: $Z=2.58$ $\to$ 0.0049.
+(e)~It would decrease it by a factor of $1/\sqrt{2}$.}
+
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
+% 37
+
+\eocesol{The centers are the same in each plot, and each data set is from a nearly normal 
+distribution, though the histograms may not look very normal since each 
+represents only 100 data points. The only way to tell which plot corresponds to 
+which scenario is to examine the variability of each distribution. Plot B is the 
+most variable, followed by Plot A, then Plot C. This means Plot B will 
+correspond to the original data, Plot A to the sample means with size 5, and 
+Plot C to the sample means with size 25.}
+
+% 39
+
+\eocesol{(a)~$Z=-3.33$ $\to$ 0.0004.
+(b)~The population SD is known and the data are nearly normal, so the sample mean will be nearly normal with distribution $N(\mu, \sigma/\sqrt{n})$, i.e. $N(2.5, 0.0095)$.
+(c)~$Z=-10.54$ $\to$ $\approx0$.
+(d)~See below:
+\begin{center}
+\includegraphics[width=0.48\textwidth]{ch_inference_foundations/figures/eoce/penny_weights/penny_weights_sketch.pdf}
+\end{center}
+(e)~We could not estimate (a) without a nearly normal population distribution. We also could not estimate (c) since the sample size is not sufficient to yield a nearly normal sampling distribution if the population distribution is not nearly normal.}
+
+% 41
+
+\eocesol{(a)~We cannot use the normal model for this calculation, but we can use the 
+histogram. About 500 songs are shown to be longer than 5 minutes, so the 
+probability is about $500/3000 = 0.167$.
+(b)~Two different answers are reasonable. $^{Option~1}$Since the population 
+distribution is only slightly skewed to the right, even a small sample size will 
+yield a nearly normal sampling distribution. We also know that the songs are 
+sampled randomly and the sample size is less than 10\% of the population, so the 
+length of one song in the sample is independent of another.  We are looking for 
+the probability that the total length of 15 songs is more than 60 minutes, which 
+means that the average song should last at least $60/15 = 4$ minutes. Using 
+$SD_{\bar{x}}=1.63/\sqrt{15}$, $Z=1.31$ $\to$ 0.0951. $^{Option~2}$Since the 
+population distribution is not normal, a small sample size may not be sufficient 
+to yield a nearly normal sampling distribution. Therefore, we cannot estimate 
+the probability using the tools we have learned so far.
+(c)~We can now be confident that the conditions are satisfied. 
+$Z = 0.92$ $\to$ 0.1788.}
+
+% 43
+
+\eocesol{(a)~$H_0: \mu_{2009} = \mu_{2004}$. $H_A: \mu_{2009} \ne \mu_{2004}$.
+(b)~$\bar{x}_{2009} - \bar{x}_{2004} = -3.6$ spam emails per day.
+(c)~The null hypothesis was not rejected, and the data do not provide convincing 
+evidence that the true average number of spam emails per day in years 2004 and 
+2009 are different. The observed difference is about what we might expect from 
+sampling variability alone.
+(d)~Yes, since the hypothesis of no difference was not rejected in part~(c).}
+
+% 45
+
+\eocesol{(a)~$H_0: p_{2009} = p_{2004}$.  $H_A: p_{2009} \ne p_{2004}$.
+(b)~-7\%.
+(c)~The null hypothesis was rejected. The data provide strong evidence that the 
+true proportion of those who once a month or less frequently delete their spam 
+email was higher in 2004 than in 2009. The difference is so large that it cannot 
+easily be explained as being due to chance.
+(d)~No, since the null difference, 0, was rejected in part (c).}
+
+% 47
+
+\eocesol{True. If the sample size is large, then the standard error will be small, 
+meaning even relatively small differences between the null value and point 
+estimate can be statistically significant.}
+
+
+\end{multicols}
+
+\textC{\newpage}
 
 
 
@@ -812,6 +1134,12 @@ Using the normal approximation: 0.0582. With a 0.5 correction: 0.0559.}
 (c)~Since itÕs the same subjects at the beginning and the end of the study, there is a pairing between the datasets, for a subject student their beginning and end of semester artery thickness are dependent.
 (d)~Since itÕs the same subjects at the beginning and the end of the study, there is a pairing between the datasets, for a subject student their beginning and end of semester weights are dependent.}
 
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
 % 19
 \eocesol{(a)~For each observation in one data set, there is exactly one specially-corresponding observation in the other data set for the same geographic location. The data are paired.
 (b)~$H_0: \mu_{diff} = 0$ (There is no difference in average daily high temperature between January 1, 1968 and January 1, 2008 in the continental US.) $H_A: \mu_{diff} > 0$ (Average daily high temperature in January 1, 1968 was lower than average daily high temperature in January, 2008 in the continental US.) If you chose a two-sided test, that would also be acceptable. If this is the case, note that your p-value will be a little bigger than what is reported here in part~(d).
@@ -842,6 +1170,12 @@ Using the normal approximation: 0.0582. With a 0.5 correction: 0.0559.}
 (f)~If the average number of cars passing the intersection actually was the same on Friday the 6$^{\text{th}}$ and $13^{th}$, then the probability that we would observe a test statistic so far from zero is less than 0.01.
 (g)~We might have made a Type 1 error, i.e. incorrectly rejected the null hypothesis.}
 
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
 % 29
 \eocesol{(a)~$H_0: \mu_{diff} = 0$. $H_A: \mu_{diff} \ne 0$. $T=-2.71$. $df=5$. $0.02<$ p-value $<0.05$. Since p-value $<$ 0.05, reject $H_0$. The data provide strong evidence that the average number of traffic accident related emergency room admissions are different between Friday the 6$^{\text{th}}$ and Friday the 13$^{\text{th}}$. Furthermore, the data indicate that the direction of that difference is that accidents are lower on Friday the $6^{th}$ relative to Friday the 13$^{\text{th}}$.
 (b)~(-6.49, -0.17).
@@ -867,6 +1201,12 @@ Using the normal approximation: 0.0582. With a 0.5 correction: 0.0559.}
 
 % 41
 \eocesol{$H_0$: $\mu_1 = \mu_2 = \cdots = \mu_6$. $H_A$: The average weight varies across some (or all) groups. Independence: Chicks are randomly assigned to feed types (presumably kept separate from one another), therefore independence of observations is reasonable. Approx. normal: the distributions of weights within each feed type appear to be fairly symmetric. Constant variance: Based on the side-by-side box plots, the constant variance assumption appears to be reasonable. There are differences in the actual computed standard deviations, but these might be due to chance as these are quite small samples. $F_{5,65} = 15.36$ and the p-value is approximately 0. With such a small p-value, we reject $H_0$. The data provide convincing evidence that the average weight of chicks varies across some (or all) feed supplement groups.}
+
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
 
 % 43
 \eocesol{(a)~$H_0$: The population mean of MET for each group is equal to the others. $H_A$: At least one pair of means is different.
@@ -938,6 +1278,12 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 (d)~True. Quadrupling the sample size decreases the SE and ME by a factor of $1/\sqrt{4}$.
 (e)~True. The 95\% CI is entirely above 50\%.}
 
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
 % 7
 \eocesol{With a random sample from $<10\%$ of the population, independence is satisfied. The success-failure condition is also satisfied. $ME = z^{\star} \sqrt{ \frac{\hat{p} (1-\hat{p})} {n} } = 1.96 \sqrt{ \frac{0.56 \times  0.44}{600} }= 0.0397 \approx 4\%$}
 
@@ -977,6 +1323,12 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 
 % 23
 \eocesol{This is not a randomized experiment, and it is unclear whether people would be affected by the behavior of their peers. That is, independence may not hold. Additionally, there are only 5 interventions under the provocative scenario, so the success-failure condition does not hold. Even if we consider a hypothesis test where we pool the proportions, the success-failure condition will not be satisfied. Since one condition is questionable and the other is not satisfied, the difference in sample proportions will not follow a nearly normal distribution.}
+
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
 
 % 25
 \eocesol{(a)~False. The entire confidence interval is above 0.
@@ -1033,6 +1385,12 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 (d)~$\chi^2 = 2.32$, $df=2$, p-value $> 0.3$.
 (e)~Since the p-value is large, we fail to reject $H_0$. The data do not provide strong evidence indicating the professor's predictions were statistically inaccurate.}
 
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
 % 43
 \eocesol{Use a chi-squared goodness of fit test.
 $H_0$: Each option is equally likely.
@@ -1073,14 +1431,20 @@ Since the p-value $< \alpha$, we reject $H_0$.  There is strong evidence that th
 % 49
 \eocesol{(a)~$H_0$:~The age of Los Angeles residents is independent of shipping carrier preference variable. $H_A$:~The age of Los Angeles residents is associated with the shipping carrier preference variable. (b)~The conditions are not satisfied since some expected counts are below~5.}
 
-% 49
+% 51
 \eocesol{(a)~$H_0: p = 0.69$. $H_A: p \ne 0.69$.
 (b)~$\hat{p} = \frac{17}{30} = 0.57$.
 (c)~The success-failure condition is not satisfied; note that it is appropriate to use the null value ($p_0 = 0.69$) to compute the expected number of successes and failures.
 (d)~Answers may vary. Each student can be represented with a card. Take 100 cards, 69 black cards representing those who follow the news about Egypt and 31 red cards representing those who do not. Shuffle the cards and draw with replacement (shuffling each time in between draws) 30 cards representing the 30 high school students. Calculate the proportion of black cards in this sample, $\hat{p}_{sim}$, i.e. the proportion of those who follow the news in the simulation. Repeat this many times (e.g. 10,000 times) and plot the resulting sample proportions. The p-value will be two times the proportion of simulations where $\hat{p}_{sim} \le 0.57$. (Note: we would generally use a computer to perform these simulations.)
 (e)~The p-value is about $0.001 + 0.005 + 0.020 + 0.035 + 0.075 = 0.136$, meaning the two-sided p-value is about 0.272. Your p-value may vary slightly since it is based on a visual estimate. Since the p-value is greater than 0.05, we fail to reject $H_0$. The data do not provide strong evidence that the proportion of high school students who followed the news about Egypt is different than the proportion of American adults who did.}
 
-% 51
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
+% 53
 \eocesol{The subscript $_{pr}$ corresponds to provocative and $_{con}$ to conservative.
 (a)~$H_0: p_{pr} = p_{con}$. $H_A: p_{pr} \ne p_{con}$.
 (b)~-0.35.
@@ -1123,9 +1487,66 @@ predictors, and not interested in making a precise prediction.}
 \eocesol{Nearly normal residuals: The normal probability plot shows a nearly normal distribution of the residuals, however, there are some minor irregularities at the tails. With a data set so large, these would not be a concern. \\ Constant variability of residuals: The scatterplot of the residuals versus the fitted values does not show any overall structure. However, values that have very low or very high fitted values appear to also have somewhat larger outliers. In addition, the residuals do appear to have constant variability between the two parity and smoking status groups, though these items are relatively minor. \\ Independent residuals: The scatterplot of residuals versus the order of data collection shows a random scatter, suggesting that there is no apparent structures related to the order the data were collected. \\ Linear relationships between the response variable and numerical explanatory variables: The residuals vs. height and weight of mother are randomly distributed around 0. The residuals vs. length of gestation plot also does not show any clear or strong remaining structures, with the possible exception of very short or long gestations. The rest of the residuals do appear to be randomly distributed around 0. \\All concerns raised here are relatively mild. There are some outliers, but there is so much data that the influence of such observations will be minor.}
 
 
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
 % 15
 \eocesol{(a)~There are a few potential outliers, e.g. on the left in the \var{total\_\hspace{0.3mm}length} variable, but nothing that will be of serious concern in a data set this large.
 (b)~When coefficient estimates are sensitive to which variables are included in the model, this typically indicates that some variables are collinear. For example, a possum's gender may be related to its head length, which would explain why the coefficient (and p-value) for \var{sex\_\hspace{0.3mm}male} changed when we removed the \var{head\_\hspace{0.3mm}length} variable. Likewise, a possum's skull width is likely to be related to its head length, probably even much more closely related than the head length was to gender.}
+
+% 17
+\eocesol{(a)~The logistic model relating $\hat{p}_i$ to the predictors may be written as 
+$\log\left( \frac{\hat{p}_i}{1 - \hat{p}_i} \right) = 33.5095 - 1.4207\times sex\_male_i - 0.2787 \times skull\_width_i + 0.5687 \times total\_length_i$. Only \var{total\_\hspace{0.3mm}length} has a positive association with a possum being from Victoria.
+(b)~$\hat{p} = 0.0062$. While the probability is very near zero, we have not run diagnostics on the model. We might also be a little skeptical that the model will remain accurate for a possum found in a US zoo. For example, perhaps the zoo selected a possum with specific characteristics but only looked in one region. On the other hand, it is encouraging that the possum was caught in the wild. (Answers regarding the reliability of the model probability will vary.)}
+
+\end{multicols}
+
+
+
+\eocesolch{Multiple and logistic regression}
+
+\begin{multicols}{2}
+
+% 1
+\eocesol{(a)~$\widehat{baby\_\hspace{0.3mm}weight} = 123.05 - 8.94 \times smoke$
+(b)~The estimated body weight of babies born to smoking mothers is 8.94 ounces lower than babies born to non-smoking mothers.  Smoker: $123.05 - 8.94 \times 1 = 114.11$ ounces. Non-smoker: $123.05 - 8.94 \times 0 = 123.05$ ounces.
+(c)~$H_0$: $\beta_1 = 0$. $H_A$: $\beta_1 \ne 0$. $T= -8.65$, and the p-value is approximately 0. Since the p-value is very small, we reject $H_0$. The data provide strong evidence that the true slope parameter is different than 0 and that there is an association between birth weight and smoking. Furthermore, having rejected $H_0$, we can conclude that smoking is associated with lower birth weights.}
+
+% 3
+\eocesol{(a)~$\widehat{baby\_\hspace{0.3mm}weight} = -80.41 + 0.44 \times gestation - 3.33 \times parity - 0.01 \times age + 1.15 \times height + 0.05 \times weight - 8.40 \times smoke$.
+(b)~$\beta_{gestation}$: The model predicts a 0.44 ounce increase in the birth weight of the baby for each additional day of pregnancy, all else held constant.  $\beta_{age}$: The model predicts a 0.01 ounce decrease in the birth weight of the baby for each additional year in mother's age, all else held constant. 
+(c)~Parity might be correlated with one of the other variables in the model, which complicates model estimation.
+(d)~$\widehat{baby\_\hspace{0.3mm}weight} = 120.58$.
+$e = 120 - 120.58 = -0.58$. The model over-predicts this baby's birth weight.
+(e)~$R^2 = 0.2504$. $R_{adj}^2 = 0.2468$.}
+
+% 5
+\eocesol{(a)~(-0.32, 0.16). We are 95\% confident that male students on average have GPAs 0.32 points lower to 0.16 points higher than females when controlling for the other variables in the model.
+(b)~Yes, since the p-value is larger than 0.05 in all cases (not including the intercept).}
+
+% 7
+\eocesol{Strictly speaking, remove age. However the adjusted R-squared values for the full model and the model excluding age as a predictor are so close that not removing age would not result in a substantial amount of predictive power.}
+
+% 9
+\eocesol{Based on the p-value alone, either gestation or smoke should be added to the model first. However, since the adjusted $R^2$ for the model with gestation is higher, it would be preferable to add gestation in the first step of the forward-selection algorithm. (Other explanations are possible. For instance, it would be reasonable to only use the adjusted $R^2$.)}
+
+% 11
+\eocesol{She should use p-value selection since she is interested in finding out about significant
+predictors, and not interested in making a precise prediction.}
+
+% 13
+\eocesol{Nearly normal residuals: The normal probability plot shows a nearly normal distribution of the residuals, however, there are some minor irregularities at the tails. With a data set so large, these would not be a concern. \\ Constant variability of residuals: The scatterplot of the residuals versus the fitted values does not show any overall structure. However, values that have very low or very high fitted values appear to also have somewhat larger outliers. In addition, the residuals do appear to have constant variability between the two parity and smoking status groups, though these items are relatively minor. \\ Independent residuals: The scatterplot of residuals versus the order of data collection shows a random scatter, suggesting that there is no apparent structures related to the order the data were collected. \\ Linear relationships between the response variable and numerical explanatory variables: The residuals vs. height and weight of mother are randomly distributed around 0. The residuals vs. length of gestation plot also does not show any clear or strong remaining structures, with the possible exception of very short or long gestations. The rest of the residuals do appear to be randomly distributed around 0. \\All concerns raised here are relatively mild. There are some outliers, but there is so much data that the influence of such observations will be minor.}
+
+
+\textC{\pagebreak}
+
+% 15
+\eocesol{(a)~There are a few potential outliers, e.g. on the left in the \var{total\_\hspace{0.3mm}length} variable, but nothing that will be of serious concern in a data set this large.
+(b)~When coefficient estimates are sensitive to which variables are included in the model, this typically indicates that some variables are collinear. For example, a possum's gender may be related to its head length, which would explain why the coefficient (and p-value) for \var{sex\_\hspace{0.3mm}male} changed when we removed the \var{head\_\hspace{0.3mm}length} variable. Likewise, a possum's skull width is likely to be related to its head length, probably even much more closely related than the head length was to gender.}\textC{\vspace{10mm}}
+
 
 % 17
 \eocesol{(a)~The logistic model relating $\hat{p}_i$ to the predictors may be written as 
