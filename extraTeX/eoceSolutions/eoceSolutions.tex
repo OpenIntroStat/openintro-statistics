@@ -1204,10 +1204,7 @@ estimate can be statistically significant.}
 \eocesol{Let $\mu_{diff} = \mu_{pre} - \mu_{post}$. $H_0: \mu_{diff} = 0$: Treatment has no effect. $H_A: \mu_{diff} > 0$: Treatment is effective in reducing Pd T scores, the average pre-treatment score is higher than the average post-treatment score. Note that the reported values are pre minus post, so we are looking for a positive difference, which would correspond to a reduction in the psychopathic deviant T score. Conditions are checked as follows. Independence: The subjects are randomly assigned to treatments, so the patients in each group are independent. All three sample sizes are smaller than 30, so we use $t$-tests. Distributions of differences are somewhat skewed. The sample sizes are small, so we cannot reliably relax this assumption. (We will proceed, but we would not report the results of this specific analysis, at least for treatment group 1.) For all three groups: $df=13$. $T_1= 1.89$ ($0.025<$ p-value $<0.05$), $T_2=1.35$ (p-value = 0.10), $T_3 = -1.40$ (p-value $>0.10$). The only significant test reduction is found in Treatment 1, however, we had earlier noted that this result might not be reliable due to the skew in the distribution. Note that the calculation of the p-value for Treatment 3 was unnecessary: the sample mean indicated a increase in Pd T scores under this treatment (as opposed to a decrease, which was the result of interest). That is, we could tell without formally completing the hypothesis test that the p-value would be large for this treatment group.}
 
 % 39
-\eocesol{Alternative.}
-
-% 41
-\eocesol{$H_0$: $\mu_1 = \mu_2 = \cdots = \mu_6$. $H_A$: The average weight varies across some (or all) groups. Independence: Chicks are randomly assigned to feed types (presumably kept separate from one another), therefore independence of observations is reasonable. Approx. normal: the distributions of weights within each feed type appear to be fairly symmetric. Constant variance: Based on the side-by-side box plots, the constant variance assumption appears to be reasonable. There are differences in the actual computed standard deviations, but these might be due to chance as these are quite small samples. $F_{5,65} = 15.36$ and the p-value is approximately 0. With such a small p-value, we reject $H_0$. The data provide convincing evidence that the average weight of chicks varies across some (or all) feed supplement groups.}
+\eocesol{Difference we care about: 40. Single tail of 90\%: $1.28 \times SE$. Rejection region bounds: $\pm 1.96 \times SE$ (if 5\% significance level). Setting $3.24 \times SE = 40$, subbing in $SE = \sqrt{\frac{94^2}{n} + \frac{94^2}{n}}$, and solving for the sample size $n$ gives 116 plots of land for each fertilizer.}
 
 \textC{
 \end{multicols}
@@ -1215,7 +1212,15 @@ estimate can be statistically significant.}
 \begin{multicols}{2}
 }
 
+% 41
+
+\eocesol{Alternative.}
+
 % 43
+
+\eocesol{$H_0$: $\mu_1 = \mu_2 = \cdots = \mu_6$. $H_A$: The average weight varies across some (or all) groups. Independence: Chicks are randomly assigned to feed types (presumably kept separate from one another), therefore independence of observations is reasonable. Approx. normal: the distributions of weights within each feed type appear to be fairly symmetric. Constant variance: Based on the side-by-side box plots, the constant variance assumption appears to be reasonable. There are differences in the actual computed standard deviations, but these might be due to chance as these are quite small samples. $F_{5,65} = 15.36$ and the p-value is approximately 0. With such a small p-value, we reject $H_0$. The data provide convincing evidence that the average weight of chicks varies across some (or all) feed supplement groups.}
+
+% 45
 \eocesol{(a)~$H_0$: The population mean of MET for each group is equal to the others. $H_A$: At least one pair of means is different.
 (b)~Independence: We don't have any information on how the data were collected, so we cannot assess independence. To proceed, we must assume the subjects in each group are independent. In practice, we would inquire for more details. Approx. normal: The data are bound below by zero and the standard deviations are larger than the means, indicating very strong strong skew. However, since the sample sizes are extremely large, even extreme skew is acceptable. Constant variance: This condition is sufficiently met, as the standard deviations are reasonably consistent across groups.
 (c)~See below, with the last column omitted:\\[-2mm]
@@ -1238,18 +1243,18 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 \end{adjustwidth} \vspace{1mm}
 (d)~Since p-value is very small, reject $H_0$. The data provide convincing evidence that the average MET differs between at least one pair of groups.}
 
-% 45
+% 47
 \eocesol{(a)~$H_0$: Average GPA is the same for all majors. $H_A$: At least one pair of means are different.
 (b)~Since p-value $>$ 0.05, fail to reject $H_0$. The data do not provide convincing evidence of a difference between the average GPAs across three groups of majors.
 (c)~The total degrees of freedom is $195 + 2 = 197$, so the sample size is $197+1=198$.}
 
-% 47
+% 49
 \eocesol{(a)~False. As the number of groups increases, so does the number of comparisons and hence the modified significance level decreases.
 (b)~True.
 (c)~True.
 (d)~False. We need observations to be independent regardless of sample size.}
 
-% 49
+% 51
 \eocesol{(a)~$H_0$: Average score difference is the same for all treatments. $H_A$: At least one pair of means are different.
 (b)~We should check conditions. If we look back to the earlier exercise, we will see that the patients were randomized, so independence is satisfied. There are some minor concerns about skew, especially with the third group, though this may be acceptable. The standard deviations across the groups are reasonably similar. Since the p-value is less than 0.05, reject $H_0$. The data provide convincing evidence of a difference between the average reduction in score among treatments.
 (c)~We determined that at least two means are different in part (b), so we now conduct $K=3\times2/2=3$ pairwise $t$-tests that each use $\alpha=0.05/3 = 0.0167$ for a significance level. Use the following hypotheses for each pairwise test. $H_0$: The two means are equal. $H_A$: The two means are different. The sample sizes are equal and we use the pooled SD, so we can compute $SE=3.7$ with the pooled $df=39$. The p-value only for Trmt 1 vs. Trmt 3 may be statistically significant: $0.01<$ p-value $<0.02$. Since we cannot tell, we should use a computer to get the p-value, 0.015, which is statistically significant for the adjusted significance level. That is, we have identified Treatment 1 and Treatment 3 as having different effects. Checking the other two comparisons, the differences are not statistically significant.}
@@ -1257,6 +1262,12 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 \end{multicols}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\textC{\newpage}
+
+
 
 % Chp 6
 \eocesolch{Inference for categorical data}
@@ -1285,12 +1296,6 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 (d)~True. Quadrupling the sample size decreases the SE and ME by a factor of $1/\sqrt{4}$.
 (e)~True. The 95\% CI is entirely above 50\%.}
 
-\textC{
-\end{multicols}
-\newpage
-\begin{multicols}{2}
-}
-
 % 7
 \eocesol{With a random sample from $<10\%$ of the population, independence is satisfied. The success-failure condition is also satisfied. $ME = z^{\star} \sqrt{ \frac{\hat{p} (1-\hat{p})} {n} } = 1.96 \sqrt{ \frac{0.56 \times  0.44}{600} }= 0.0397 \approx 4\%$}
 
@@ -1317,6 +1322,12 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 (b)~If in fact 38\% of Americans used their cell phones as a primary access point to the internet, the probability of obtaining a random sample of 2,254 Americans where 17\% or less or 59\% or more use their only their cell phones to access the internet would be approximately 0.
 (c)~(0.1545, 0.1855). We are 95\% confident that approximately 15.5\% to 18.6\% of all Americans primarily use their cell phones to browse the internet.}
 
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
 % 17
 \eocesol{(a)~$H_0: p = 0.5$. $H_A: p > 0.5$. Independence (random sample, $<10\%$ of population) is satisfied, as is the success-failure conditions (using $p_0 = 0.5$, we expect 40 successes and 40 failures). $Z = 2.91$ $\to$ p-value $= 0.0018$. Since the p-value $< 0.05$, we reject the null hypothesis. The data provide strong evidence that the rate of correctly identifying a soda for these people is significantly better than just by random guessing.
 (b)~If in fact people cannot tell the difference between diet and regular soda and they randomly guess, the probability of getting a random sample of 80 people where 53 or more identify a soda correctly would be 0.0018.}
@@ -1330,12 +1341,6 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 
 % 23
 \eocesol{This is not a randomized experiment, and it is unclear whether people would be affected by the behavior of their peers. That is, independence may not hold. Additionally, there are only 5 interventions under the provocative scenario, so the success-failure condition does not hold. Even if we consider a hypothesis test where we pool the proportions, the success-failure condition will not be satisfied. Since one condition is questionable and the other is not satisfied, the difference in sample proportions will not follow a nearly normal distribution.}
-
-\textC{
-\end{multicols}
-\newpage
-\begin{multicols}{2}
-}
 
 % 25
 \eocesol{(a)~False. The entire confidence interval is above 0.
@@ -1358,6 +1363,12 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 
 % 33
 \eocesol{Subscript $_C$ means control group. Subscript $_T$ means truck drivers. $H_0: p_C = p_T$. $H_A: p _C \ne p_T$. Independence is satisfied (random samples, $<10\%$ of the population), as is the success-failure condition, which we would check using the pooled proportion ($\hat{p} = 70/495 = 0.141$). $Z = -1.58$ $\to$ p-value $=0.1164$. Since the p-value is high, we fail to reject $H_0$. The data do not provide strong evidence that the rates of sleep deprivation are different for non-transportation workers and truck drivers.}
+
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
 
 % 35
 \eocesol{(a)~Summary of the study:
@@ -1391,12 +1402,6 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 (c)~Independence:  The sample is not random. However, if the professor has reason to believe that the proportions are stable from one term to the next and students are not affecting each other's study habits, independence is probably reasonable. Sample size: All expected counts are at least 5.
 (d)~$\chi^2 = 2.32$, $df=2$, p-value $> 0.3$.
 (e)~Since the p-value is large, we fail to reject $H_0$. The data do not provide strong evidence indicating the professor's predictions were statistically inaccurate.}
-
-\textC{
-\end{multicols}
-\newpage
-\begin{multicols}{2}
-}
 
 % 43
 \eocesol{Use a chi-squared goodness of fit test.
@@ -1438,18 +1443,18 @@ Since the p-value $< \alpha$, we reject $H_0$.  There is strong evidence that th
 % 49
 \eocesol{(a)~$H_0$:~The age of Los Angeles residents is independent of shipping carrier preference variable. $H_A$:~The age of Los Angeles residents is associated with the shipping carrier preference variable. (b)~The conditions are not satisfied since some expected counts are below~5.}
 
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
 % 51
 \eocesol{(a)~$H_0: p = 0.69$. $H_A: p \ne 0.69$.
 (b)~$\hat{p} = \frac{17}{30} = 0.57$.
 (c)~The success-failure condition is not satisfied; note that it is appropriate to use the null value ($p_0 = 0.69$) to compute the expected number of successes and failures.
 (d)~Answers may vary. Each student can be represented with a card. Take 100 cards, 69 black cards representing those who follow the news about Egypt and 31 red cards representing those who do not. Shuffle the cards and draw with replacement (shuffling each time in between draws) 30 cards representing the 30 high school students. Calculate the proportion of black cards in this sample, $\hat{p}_{sim}$, i.e. the proportion of those who follow the news in the simulation. Repeat this many times (e.g. 10,000 times) and plot the resulting sample proportions. The p-value will be two times the proportion of simulations where $\hat{p}_{sim} \le 0.57$. (Note: we would generally use a computer to perform these simulations.)
 (e)~The p-value is about $0.001 + 0.005 + 0.020 + 0.035 + 0.075 = 0.136$, meaning the two-sided p-value is about 0.272. Your p-value may vary slightly since it is based on a visual estimate. Since the p-value is greater than 0.05, we fail to reject $H_0$. The data do not provide strong evidence that the proportion of high school students who followed the news about Egypt is different than the proportion of American adults who did.}
-
-\textC{
-\end{multicols}
-\newpage
-\begin{multicols}{2}
-}
 
 % 53
 \eocesol{The subscript $_{pr}$ corresponds to provocative and $_{con}$ to conservative.
@@ -1490,15 +1495,14 @@ $e = 120 - 120.58 = -0.58$. The model over-predicts this baby's birth weight.
 \eocesol{She should use p-value selection since she is interested in finding out about significant
 predictors, and not interested in making a precise prediction.}
 
-% 13
-\eocesol{Nearly normal residuals: The normal probability plot shows a nearly normal distribution of the residuals, however, there are some minor irregularities at the tails. With a data set so large, these would not be a concern. \\ Constant variability of residuals: The scatterplot of the residuals versus the fitted values does not show any overall structure. However, values that have very low or very high fitted values appear to also have somewhat larger outliers. In addition, the residuals do appear to have constant variability between the two parity and smoking status groups, though these items are relatively minor. \\ Independent residuals: The scatterplot of residuals versus the order of data collection shows a random scatter, suggesting that there is no apparent structures related to the order the data were collected. \\ Linear relationships between the response variable and numerical explanatory variables: The residuals vs. height and weight of mother are randomly distributed around 0. The residuals vs. length of gestation plot also does not show any clear or strong remaining structures, with the possible exception of very short or long gestations. The rest of the residuals do appear to be randomly distributed around 0. \\All concerns raised here are relatively mild. There are some outliers, but there is so much data that the influence of such observations will be minor.}
-
-
 \textC{
 \end{multicols}
 \newpage
 \begin{multicols}{2}
 }
+
+% 13
+\eocesol{Nearly normal residuals: The normal probability plot shows a nearly normal distribution of the residuals, however, there are some minor irregularities at the tails. With a data set so large, these would not be a concern. \\ Constant variability of residuals: The scatterplot of the residuals versus the fitted values does not show any overall structure. However, values that have very low or very high fitted values appear to also have somewhat larger outliers. In addition, the residuals do appear to have constant variability between the two parity and smoking status groups, though these items are relatively minor. \\ Independent residuals: The scatterplot of residuals versus the order of data collection shows a random scatter, suggesting that there is no apparent structures related to the order the data were collected. \\ Linear relationships between the response variable and numerical explanatory variables: The residuals vs. height and weight of mother are randomly distributed around 0. The residuals vs. length of gestation plot also does not show any clear or strong remaining structures, with the possible exception of very short or long gestations. The rest of the residuals do appear to be randomly distributed around 0. \\All concerns raised here are relatively mild. There are some outliers, but there is so much data that the influence of such observations will be minor.}
 
 % 15
 \eocesol{(a)~There are a few potential outliers, e.g. on the left in the \var{total\_\hspace{0.3mm}length} variable, but nothing that will be of serious concern in a data set this large.
@@ -1530,12 +1534,24 @@ $\log\left( \frac{\hat{p}_i}{1 - \hat{p}_i} \right) = 33.5095 - 1.4207\times sex
 $e = 120 - 120.58 = -0.58$. The model over-predicts this baby's birth weight.
 (e)~$R^2 = 0.2504$. $R_{adj}^2 = 0.2468$.}
 
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
+
 % 5
 \eocesol{(a)~(-0.32, 0.16). We are 95\% confident that male students on average have GPAs 0.32 points lower to 0.16 points higher than females when controlling for the other variables in the model.
 (b)~Yes, since the p-value is larger than 0.05 in all cases (not including the intercept).}
 
 % 7
 \eocesol{Strictly speaking, remove age. However the adjusted R-squared values for the full model and the model excluding age as a predictor are so close that not removing age would not result in a substantial amount of predictive power.}
+
+\textC{
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+}
 
 % 9
 \eocesol{Based on the p-value alone, either gestation or smoke should be added to the model first. However, since the adjusted $R^2$ for the model with gestation is higher, it would be preferable to add gestation in the first step of the forward-selection algorithm. (Other explanations are possible. For instance, it would be reasonable to only use the adjusted $R^2$.)}
@@ -1546,9 +1562,6 @@ predictors, and not interested in making a precise prediction.}
 
 % 13
 \eocesol{Nearly normal residuals: The normal probability plot shows a nearly normal distribution of the residuals, however, there are some minor irregularities at the tails. With a data set so large, these would not be a concern. \\ Constant variability of residuals: The scatterplot of the residuals versus the fitted values does not show any overall structure. However, values that have very low or very high fitted values appear to also have somewhat larger outliers. In addition, the residuals do appear to have constant variability between the two parity and smoking status groups, though these items are relatively minor. \\ Independent residuals: The scatterplot of residuals versus the order of data collection shows a random scatter, suggesting that there is no apparent structures related to the order the data were collected. \\ Linear relationships between the response variable and numerical explanatory variables: The residuals vs. height and weight of mother are randomly distributed around 0. The residuals vs. length of gestation plot also does not show any clear or strong remaining structures, with the possible exception of very short or long gestations. The rest of the residuals do appear to be randomly distributed around 0. \\All concerns raised here are relatively mild. There are some outliers, but there is so much data that the influence of such observations will be minor.}
-
-
-\textC{\pagebreak}
 
 % 15
 \eocesol{(a)~There are a few potential outliers, e.g. on the left in the \var{total\_\hspace{0.3mm}length} variable, but nothing that will be of serious concern in a data set this large.
