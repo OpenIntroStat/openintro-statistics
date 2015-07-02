@@ -3,7 +3,7 @@ library(openintro)
 
 # plot sketch -------------------------------------------------------
 
-pdf("penny_weights_sketch.pdf", height = 3, width = 6)
+pdf("penny_weights_sketch.pdf", height = 1.8, width = 6)
 
 par(mar=c(2,0,0,0), las=1, mgp=c(3,1,0), mfrow = c(1,1))
 
@@ -15,7 +15,7 @@ s = 0.03
 X <- seq((m - 3 * s),(m + 3 * s),0.001)
 Y <- dnorm(X, m, s)
 
-plot(X, Y, type='l', axes=FALSE, xlim=c(min(X), max(X)), ylim=c(0, 42), ylab = "", lwd=2.5)
+plot(X, Y, type='l', axes=FALSE, xlim=c(min(X), max(X) + 0.005), ylim=c(0, 42), ylab = "", lwd=2.5)
 lines(X, rep(0,length(X)), lwd=1.5)
 axis(1, at = seq((m - 3 * s),(m + 3 * s),s), cex.axis = 1.25)
 
