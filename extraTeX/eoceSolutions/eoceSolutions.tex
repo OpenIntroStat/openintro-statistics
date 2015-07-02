@@ -1471,9 +1471,133 @@ Since the p-value $< \alpha$, we reject $H_0$.  There is strong evidence that th
 
 \begin{multicols}{2}
 
-\Comment{To be filled in.}
+% 1
+\eocesol{(a)~The residual plot will show randomly distributed residuals around 0. The variance is also approximately constant.
+(b)~The residuals will show a fan shape, with higher variability for smaller $x$. There will also be many points on the right above the line. There is trouble with the model being fit here.}
+
+% 3
+\eocesol{(a)~Strong relationship, but a straight line would not fit the data.
+(b)~Strong relationship, and a linear fit would be reasonable.
+(c)~Weak relationship, and trying a linear fit would be reasonable.
+(d)~Moderate relationship, but a straight line would not fit the data. (e)~Strong relationship, and a linear fit would be reasonable.
+(f)~Weak relationship, and trying a linear fit would be reasonable.}
+
+% 5
+\eocesol{(a)~Exam 2 since there is less of a scatter in the plot of final exam grade versus exam 2. Notice that the relationship between Exam 1 and the Final Exam appears to be slightly nonlinear.
+(b)~Exam 2 and the final are relatively close to each other chronologically, or Exam 2 may be cumulative so has greater similarities in material to the final exam. Answers may vary for part~(b).}
+
+% 7
+\eocesol{(a)~$r = -0.7$ $\rightarrow$ (4).
+(b)~$r = 0.45$  $\rightarrow$ (3).
+(c)~$r = 0.06$ $\rightarrow$ (1).
+(d)~$r = 0.92$ $\rightarrow$ (2).}
+
+% 9
+\eocesol{(a)~ True.
+(b)~False, correlation is a measure of the linear association between any two numerical variables.}
+
+% 11
+\eocesol{(a)~The relationship is positive, weak, and possibly linear. However, there do appear to be some anomalous observations along the left where several students have the same height that is notably far from the cloud of the other points. Additionally, there are many students who appear not to have driven a car, and they are represented by a set of points along the bottom of the scatterplot.
+(b)~There is no obvious explanation why simply being tall should lead a person to drive faster. However, one confounding factor is gender. Males tend to be taller than females on average, and personal experiences (anecdotal) may suggest they drive faster. If we were to follow-up on this suspicion, we would find that sociological studies confirm this suspicion.
+(c)~Males are taller on average and they drive faster. The gender variable is indeed an important confounding variable.}
+
+% 13
+\eocesol{(a)~There is a somewhat weak, positive, possibly linear relationship between the distance traveled and travel time. There is clustering near the lower left corner that we should take special note of.
+(b)~Changing the units will not change the form, direction or strength of the relationship between the two variables. If longer distances measured in miles are associated with longer travel time measured in minutes, longer distances measured in kilometers will be associated with longer travel time measured in hours.
+(c)~Changing units doesn't affect correlation: $r = 0.636$.}
+
+% 15
+
+\eocesol{(a)~There is a moderate, positive, and linear relationship between shoulder girth and height.
+(b)~Changing the units, even if just for one of the variables, will not change the form, direction or strength of the relationship between the two variables.}
+
+% 17
+
+\eocesol{In each part, we may write the husband ages as a linear function of the wife ages: (a) $age_{H} = age_{W} + 3$; (b) $age_{H} = age_{W} - 2$; and (c) $age_{H} = 2 \times age_{W}$. Since the slopes are positive and these are perfect linear relationships, the correlation will be exactly 1 in all three parts. An alternative way to gain insight into this solution is to create a mock data set, such as a data set of 5 women with ages 26, 27, 28, 29, and 30 (or some other set of ages). Then, based on the description, say for part (a), we can compute their husbands' ages as 29, 30, 31, 32, and 33. We can plot these points to see they fall on a straight line, and they always will. The same approach can be applied to the other parts as well.}
+
+% 19
+\eocesol{Correlation: no units. Intercept: kg. Slope: kg/cm.}
+
+% 21
+\eocesol{Over-estimate. Since the residual is calculated as $observed - predicted$, a negative residual means that the predicted value is higher than the observed value.}
+
+%%%%%%%%%%%
+
+% 23
+
+\eocesol{(a)~There is a positive, very strong, linear association between the number of tourists and spending.
+(b)~Explanatory: number of tourists (in thousands). Response: spending (in millions of US dollars).
+(c)~We can predict spending for a given number of tourists using a regression line. This may be useful information for determining how much the country may want to spend in advertising abroad, or to forecast expected revenues from tourism.
+(d)~Even though the relationship appears linear in the scatterplot, the residual plot actually shows a nonlinear relationship. This is not a contradiction: residual plots can show divergences from linearity that can be difficult to see in a scatterplot. A simple linear model is inadequate for modeling these data. It is also important to consider that these data are observed sequentially, which means there may be a hidden structure that it is not evident in the current data but that is important to consider.}
+
+% 25
+
+\eocesol{(a)~First calculate the slope: $b_1 = R\times s_y/s_x = 0.636\times113/99 = 0.726$. Next, make use of the fact that the regression line passes through the point $(\bar{x},\bar{y})$: $\bar{y} = b_0 + b_1 \times \bar{x}$. Plug in $\bar{x}$, $\bar{y}$, and $b_1$, and solve for $b_0$: 51. Solution: $\widehat{travel~time} = 51 + 0.726 \times distance$.
+(b)~$b_1$: For each additional mile in distance, the model predicts an additional 0.726 minutes in travel time. $b_0$: When the distance traveled is 0 miles, the travel time is expected to be 51 minutes. It does not make sense to have a travel distance of 0 miles in this context. Here, the $y$-intercept serves only to adjust the height of the line and is meaningless by itself.
+(c)~$R^2 = 0.636^2 = 0.40$. About 40\% of the variability in travel time is accounted for by the model, i.e. explained by the distance traveled.
+(d)~$\widehat{travel~time} =  51 + 0.726 \times distance = 51 + 0.726 \times 103 \approx 126$ minutes. (Note: we should be cautious in our predictions with this model since we have not yet evaluated whether it is a well-fit model.)
+(e)~$e_i = y_i - \hat{y}_i = 168 - 126 = 42$ minutes. A positive residual means that the model underestimates the travel time.
+(f)~No, this calculation would require extrapolation.}
+
+% 27
+\eocesol{There is an upwards trend. However, the variability is higher for higher calorie counts, and it looks like there might be two clusters of observations above and below the line on the right, so we should not plot a linear model to these data.}
+
+% 29
+\eocesol{(a)~$\widehat{murder} = -29.901 + 2.559 \times poverty\%$
+(b)~Expected murder rate in metropolitan areas with no poverty is -29.901 per million. This is obviously not a meaningful value, it just serves to adjust the height of the regression line.
+(c)~For each additional percentage increase in poverty, we expect murders per million to be lower on average by 2.559.
+(d)~Poverty level explains 70.52\% of the variability in murder rates in metropolitan areas.
+(e)~$\sqrt{0.7052} = 0.8398$}
+
+% 31
+
+\eocesol{(a)~There is an outlier in the bottom right. Since it is far from the center of the data, it is a point with high leverage. It is also an influential point since, without that observation, the regression line would have a very different slope. \\
+(b)~There is an outlier in the bottom right. Since it is far from the center of the data, it is a point with high leverage. However, it does not appear to be affecting the line much, so it is not an influential point. \\
+(c)~The observation is in the center of the data (in the x-axis direction), so this point does \emph{not} have high leverage. This means the point won't have much effect on the slope of the line and so is not an influential point.}
+
+% 33
+
+\eocesol{(a)~There is a negative, moderate-to-strong, somewhat linear relationship between percent of families who own their home and the percent of the population living in urban areas in 2010. There is one outlier: a state where 100\% of the population is urban. The variability in the percent of homeownership also increases as we move from left to right in the plot.
+(b)~The outlier is located in the bottom right corner, horizontally far from the center of the other points, so it is a point with high leverage. It is an influential point since excluding this point from the analysis would greatly affect the slope of the regression line.}
+
+% 35
+
+\eocesol{(a)~The relationship is positive, moderate-to-strong, and linear. There are a few outliers but no points that appear to be influential.
+(b)~$\widehat{weight} = -105.0113 + 1.0176 \times height$. Slope: For each additional centimeter in height, the model predicts the average weight to be 1.0176 additional kilograms (about 2.2 pounds).  Intercept: People who are 0 centimeters tall are expected to weigh -105.0113 kilograms. This is obviously not possible. Here, the $y$-intercept serves only to adjust the height of the line and is meaningless by itself.
+(c)~$H_0$: The true slope coefficient of height is zero ($\beta_1 = 0$). $H_0$: The true slope coefficient of height is greater than zero ($\beta_1 > 0$). A two-sided test would also be acceptable for this application. The p-value for the two-sided alternative hypothesis ($\beta_1 \ne 0$) is incredibly small, so the p-value for the one-sided hypothesis will be even smaller. That is, we reject $H_0$. The data provide convincing evidence that height and weight are positively correlated. The true slope parameter is indeed greater than~0.
+(d)~$R^2 = 0.72^2 = 0.52$. Approximately 52\% of the variability in weight can be explained by the height of individuals.}
+
+% 37
+
+\eocesol{(a)~$H_0$: $\beta_1 = 0$. $H_A$: $\beta_1 > 0$. A two-sided test would also be acceptable for this application. The p-value, as reported in the table, is incredibly small. Thus, for a one-sided test, the p-value will also be incredibly small, and we reject $H_0$. The data provide convincing evidence that wives' and husbands' heights are positively correlated.
+(b)~$\widehat{height}_{W} = 43.5755 + 0.2863 \times height_{H}$.
+(c)~Slope: For each additional inch in husband's height, the average wife's height is expected to be an additional 0.2863 inches on average. Intercept: Men who are 0 inches tall are expected to have wives who are, on average, 43.5755 inches tall. The intercept here is meaningless, and it serves only to adjust the height of the line.
+(d)~The slope is positive, so $r$ must also be positive. $r = \sqrt{0.09} = 0.30$.
+(e)~63.2612. Since $R^2$ is low, the prediction based on this regression model is not very reliable.
+(f)~No, we should avoid extrapolating.}
+
+% 39
+
+\eocesol{(a)~$r = \sqrt{0.28} \approx -0.53$, we know the correlation is negative due to the negative association shown in the scatterplot.
+(b)~The residuals appear to be fan shaped, indicating non-constant variance. Therefore a simple least squares fit is not appropriate for these data.}
+
+% 41
+
+\eocesol{(a)~$H_0: \beta_1 = 0; H_A: \beta_1 \ne 0$
+(b)~The p-value for this test is approximately 0, therefore we reject $H_0$. The data provide convincing evidence that poverty percentage is a significant predictor of murder rate.
+(c)~$n = 20, df = 18, T^*_{18} =  2.10$; $2.559 \pm 2.10 \times 0.390 = (1.74, 3.378)$; For each percentage point poverty is higher, murder rate is expected to be higher on average by 1.74 to 3.378 per million.
+(d)~Yes, we rejected $H_0$ and the confidence interval does not include 0.}
+
+% 43
+
+\eocesol{This is a one-sided test, so the p-value should be half of the p-value given in the regression table, which will be approximately 0. Therefore the data provide convincing evidence that poverty percentage is positively associated with murder rate.}
+
+% 45
 
 \end{multicols}
+
+
+
 
 
 \eocesolch{Multiple and logistic regression}
