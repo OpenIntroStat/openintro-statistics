@@ -273,7 +273,7 @@ variables for their recommendation system?
 \subsection{Checking model assumptions using graphs}
 
 
-% 11
+% 13
 
 \eoce{\qt{Baby weights, Part V} Exercise~\ref{babiesMRfinal} presents a regression model for predicting the average birth weight of babies based on length of gestation, parity, height, weight, and smoking status of the mother. Determine if the model assumptions are met using the plots below. If not, describe how to proceed with the analysis.
 \begin{center}
@@ -288,7 +288,7 @@ variables for their recommendation system?
 \end{center}
 }{}
 
-% 12
+% 14
 
 \eoce{\qt{GPA and IQ} A regression model for predicting GPA from gender and IQ was fit, and both predictors were found to be statistically significant. Using the plots given below, determine if this regression model is appropriate for these data.
 \begin{center}
@@ -305,9 +305,9 @@ variables for their recommendation system?
 %________________
 \subsection{Introduction to logistic regression}
 
-% 13
+% 15
 
-\eoce{\qt{Possum classification, Part I} \label{possumClassification1} The common brushtail possum of the Australia region is a bit cuter than its distant cousin, the American opossum (see Figure~\vref{possumPic}). We consider 104 brushtail possums from two regions in Australia, where the possums may be considered a random sample from the population. The first region is Victoria, which is in the eastern half of Australia and traverses the southern coast. The second region consists of New South Wales and Queensland, which make up eastern and northeastern Australia.
+\eoce{\qt{Possum classification, Part I} \label{possumClassification1} The common brushtail possum of the Australia region is a bit cuter than its distant cousin, the American opossum (see Figure~\vref{brushtail_possum}). We consider 104 brushtail possums from two regions in Australia, where the possums may be considered a random sample from the population. The first region is Victoria, which is in the eastern half of Australia and traverses the southern coast. The second region consists of New South Wales and Queensland, which make up eastern and northeastern Australia.
 
 We use logistic regression to differentiate between possums in these two regions. The outcome variable, called \var{population}, takes value 1 when a possum is from Victoria and 0 when it is from New South Wales or Queensland. We consider five predictors: \var{sex\_\hspace{0.3mm}male} (an indicator for a possum being male), \var{head\_\hspace{0.3mm}length}, \var{skull\_\hspace{0.3mm}width}, \var{total\_\hspace{0.3mm}length}, and \var{tail\_\hspace{0.3mm}length}. Each variable is summarized in a histogram. The full logistic regression model and a reduced model after variable selection are summarized in the table.
 
@@ -348,7 +348,7 @@ We use logistic regression to differentiate between possums in these two regions
 
 \textC{\newpage}
 
-% 14
+% 16
 
 \eoce{\qt{Challenger disaster, Part I} \label{ChallengerDisasterPartI} On January 28, 1986, a routine launch was anticipated for the Challenger space shuttle. Seventy-three seconds into the flight, disaster happened: the shuttle broke apart, killing all seven crew members on board. An investigation into the cause of the disaster focused on a critical seal called an O-ring, and it is believed that damage to these O-rings during a shuttle launch may be related to the ambient temperature during the launch. The table below summarizes observational data on O-rings for 23 shuttle missions, where the mission order is based on the temperature at the time of the launch. \emph{Temp} gives the temperature in Fahrenheit, \emph{Damaged} represents the number of damaged O-rings, and \emph{Undamaged} represents the number of O-rings that were not damaged.
 \begin{center}
@@ -393,7 +393,7 @@ Temperature & -0.2162 & 0.0532 & -4.07 & 0.0000 \\
 \end{parts}
 }{}
 
-% 15
+% 17
 
 \eoce{\qt{Possum classification, Part II} A logistic regression model was proposed for classifying common brushtail possums into their two regions in Exercise~\ref{possumClassification1}. The outcome variable took value 1 if the possum was from Victoria and 0 otherwise.
 \begin{center}
@@ -420,7 +420,7 @@ Temperature & -0.2162 & 0.0532 & -4.07 & 0.0000 \\
 
 \textC{\newpage}
 
-% 16
+% 18
 
 \eoce{\qt{Challenger disaster, Part II} Exercise~\ref{ChallengerDisasterPartI} introduced us to O-rings that were identified as a plausible explanation for the breakup of the Challenger space shuttle 73 seconds into takeoff in 1986. The investigation found that the ambient temperature at the time of the shuttle launch was closely related to the damage of O-rings, which are a critical component of the shuttle. See this earlier exercise if you would like to browse the original data.
 \begin{center}
