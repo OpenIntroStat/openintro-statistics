@@ -1,5 +1,14 @@
+library(openintro)
 set.seed(83629)
 x = seq(1,50,1)
+
+Pdf <- function(file.name, width = 4, height = 3) {
+  pdf(file.name, width, height)
+  par(mar = c(2.4, 0.5, 0.2, 0.5),
+      las = 1,
+      mgp = c(1, 0.7, 0),
+      cex.lab = 1.5)
+}
 
 y = -2 * x + 20 + rnorm(length(x), mean = 0, sd = 10)
 
@@ -11,11 +20,9 @@ yOut = c(y[1:25], y[26]+100, y[27:50])
 
 ###
 
-pdf("outInf1.pdf", 5.5, 4.3)
+Pdf("outInf1.pdf")
 
-par(mar=c(2,1,1,1), las=1, mgp=c(1,0.7,0), cex.lab = 1.5, las = 1)
-
-plot(y ~ xInf, pch = 19, col=COL[1], xlab = "(a)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
+plot(y ~ xInf, pch = 19, col=COL[1,2], xlab = "(a)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
 
 lmInf = lm(y ~ xInf)
 abline(lmInf, col = COL[2])
@@ -24,11 +31,10 @@ dev.off()
 
 ###
 
-pdf("outLev1.pdf", 5.5, 4.3)
 
-par(mar=c(2,1,1,1), las=1, mgp=c(1,0.7,0), cex.lab = 1.5, las = 1)
+Pdf("outLev1.pdf")
 
-plot(yLev ~ xInf, pch = 19, col=COL[1], xlab = "(b)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
+plot(yLev ~ xInf, pch = 19, col=COL[1,2], xlab = "(b)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
 
 lmLev = lm(yLev ~ xInf)
 abline(lmLev, col = COL[2])
@@ -37,11 +43,9 @@ dev.off()
 
 ###
 
-pdf("outOut1.pdf", 5.5, 4.3)
+Pdf("outOut1.pdf")
 
-par(mar=c(2,1,1,1), las=1, mgp=c(1,0.7,0), cex.lab = 1.5, las = 1)
-
-plot(yOut ~ x, pch = 19, col=COL[1], xlab = "(c)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
+plot(yOut ~ x, pch = 19, col=COL[1,2], xlab = "(c)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
 
 lmOut = lm(yOut~ x)
 abline(lmOut, col = COL[2])
@@ -62,11 +66,9 @@ yInf = c(y[1:49], -300)
 yOut = c(y[1:25], y[26]+100, y[27:50])
 
 
-pdf("outInf2.pdf", 5.5, 4.3)
+Pdf("outInf2.pdf")
 
-par(mar=c(2,1,1,1), las=1, mgp=c(1,0.7,0), cex.lab = 1.5, las = 1)
-
-plot(y ~ xInf, pch = 19, col=COL[1], xlab = "(a)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
+plot(y ~ xInf, pch = 19, col=COL[1,2], xlab = "(a)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
 
 lmInf = lm(y ~ xInf)
 abline(lmInf, col = COL[2])
@@ -75,11 +77,9 @@ dev.off()
 
 ###
 
-pdf("outInf3.pdf", 5.5, 4.3)
+Pdf("outInf3.pdf")
 
-par(mar=c(2,1,1,1), las=1, mgp=c(1,0.7,0), cex.lab = 1.5, las = 1)
-
-plot(yInf ~ xInf, pch = 19, col=COL[1], xlab = "(b)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
+plot(yInf ~ xInf, pch = 19, col=COL[1,2], xlab = "(b)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
 
 abline(lm(yInf ~ xInf), col = COL[2])
 
@@ -87,11 +87,9 @@ dev.off()
 
 ###
 
-pdf("outOut2.pdf", 5.5, 4.3)
+Pdf("outOut2.pdf")
 
-par(mar=c(2,1,1,1), las=1, mgp=c(1,0.7,0), cex.lab = 1.5, las = 1)
-
-plot(yOut ~ x, pch = 19, col=COL[1], xlab = "(c)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
+plot(yOut ~ x, pch = 19, col=COL[1,2], xlab = "(c)", ylab = "", xaxt = "n", yaxt = "n", cex.lab = 1.5)
 
 lmOut = lm(yOut~ x)
 abline(lmOut, col = COL[2])
