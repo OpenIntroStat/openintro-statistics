@@ -395,9 +395,24 @@ Temperature & -0.2162 & 0.0532 & -4.07 & 0.0000 \\
 
 % 15
 
-\eoce{\qt{Possum classification, Part II} A logistic regression model was proposed for classifying common brushtail possums into their two regions in Exercise~\ref{possumClassification1}. Use the results of the summary table for the reduced model presented in Exercise~\ref{possumClassification1} for the questions below. The outcome variable took value 1 if the possum was from Victoria and 0 otherwise.
+\eoce{\qt{Possum classification, Part II} A logistic regression model was proposed for classifying common brushtail possums into their two regions in Exercise~\ref{possumClassification1}. The outcome variable took value 1 if the possum was from Victoria and 0 otherwise.
+\begin{center}\footnotesize
+\begin{tabular}{r rrrr}
+  \hline
+\vspace{-3.1mm} \\
+ & Estimate & SE & Z & Pr($>$$|$Z$|$) \\ 
+  \hline
+\vspace{-3.1mm} \\
+  (Intercept) & 33.5095 & 9.9053 & 3.38 & 0.0007 \\ 
+  sex\_\hspace{0.3mm}male & -1.4207 & 0.6457 & -2.20 & 0.0278 \\ 
+  skull\_\hspace{0.3mm}width & -0.2787 & 0.1226 & -2.27 & 0.0231\\ 
+  total\_\hspace{0.3mm}length & 0.5687 & 0.1322 & 4.30 & 0.0000\\ 
+  tail\_\hspace{0.3mm}length & -1.8057 & 0.3599 & -5.02 & 0.0000\\ 
+   \hline
+\end{tabular}
+\end{center}
 \begin{parts}
-\item Write out the form of the model. Also identify which of the following variables are positively associated (when controlling for other variables) with a possum being from Victoria: \var{skull\_\hspace{0.3mm}width}, \var{total\_\hspace{0.3mm}length}, and \var{tail\_\hspace{0.3mm}length}.
+\item Write out the form of the model. Also identify which of the variables are positively associated when controlling for other variables.
 \item Suppose we see a brushtail possum at a zoo in the US, and a sign says the possum had been captured in the wild in Australia, but it doesn't say which part of Australia. However, the sign does indicate that the possum is male, its skull is about 63 mm wide, its tail is 37 cm long, and its total length is 83 cm. What is the reduced model's computed probability that this possum is from Victoria? How confident are you in the model's accuracy of this probability calculation?
 %logitp <- 33.5095 - 1.4207 - 0.2787*63 + 0.5687*83 - 1.8057*37; exp(logitp)/(1+exp(logitp))
 \end{parts}
