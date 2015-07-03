@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-myPDF("satAbove1630.pdf", 2.5, 1.2,
+myPDF("satAbove1630.pdf", 3, 1.4,
       mar = c(1.2, 0, 0, 0),
       mgp = c(3, 0.17, 0))
 normTail(1500, 300,

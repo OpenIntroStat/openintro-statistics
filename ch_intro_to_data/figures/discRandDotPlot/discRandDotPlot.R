@@ -43,7 +43,7 @@ for (i in 1:length(diffs)) {
 }
 
 
-myPDF('discRandDotPlot.pdf',
+myPDF('discRandDotPlot.pdf', 6, 3.5,
       mar = c(3.4, 0.5, 0.5, 0.5),
       mgp = c(2.35, 0.6, 0))
 plot(X, Y,
@@ -52,7 +52,6 @@ plot(X, Y,
      axes = FALSE,
      ylim = c(0, max(Y)),
      col = COL[1],
-     cex = 0.8,
      pch = 20)
 at <- seq(-0.4, 0.4, 0.1)
 labels <- c(-0.4, "", -0.2, "", 0, "", 0.2, "", 0.4)

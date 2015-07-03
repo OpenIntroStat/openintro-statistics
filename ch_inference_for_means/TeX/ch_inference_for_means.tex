@@ -49,7 +49,8 @@ You may relax the normality condition as the sample size goes up. If the sample 
 \subsection{Introducing the $t$-distribution}
 \label{introducingTheTDistribution}
 
-\index{$t$-distribution|(}
+\index{t-distribution|(}
+\index{distribution!$t$|(}
 
 In the cases where we will use a small sample to calculate the standard error, it will be useful to rely on a new distribution for inference calculations: the $t$-distribution. A $t$-distribution, shown as a solid line in Figure~\ref{tDistCompareToNormalDist}, has a bell shape. However, its tails are thicker than the normal model's. This means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.\footnote{The standard deviation of the $t$-distribution is actually a little more than 1. However, it is useful to always think of the $t$-distribution as having a standard deviation of 1 in all of our applications.} While our estimate of the standard error will be a little less accurate when we are analyzing a small data set, these extra thick tails of the $t$-distribution are exactly the correction we need to resolve the problem of a poorly estimated standard error.
 
@@ -134,7 +135,8 @@ As before, first identify the appropriate row: $df=2$. Next, find the columns th
 \begin{exercise}
 What proportion of the $t$-distribution with 19 degrees of freedom falls above -1.79 units?\footnote{We find the shaded area \emph{above} -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.}
 
-\index{$t$-distribution|)}
+\index{distribution!$t$|)}
+\index{t-distribution|)}
 
 \end{exercise}
 
@@ -481,10 +483,10 @@ Because both conditions are met, we can use the $t$-distribution to model the di
 %\end{termBox}
 
 \index{point estimate!difference of means|)}
-\index{standard error!difference in means}
+\index{standard error (SE)!difference in means}
 
 We can quantify the variability in the point estimate, $\bar{x}_{esc} - \bar{x}_{control}$, using the following formula for its standard error:
-\index{standard error!difference in means}
+\index{standard error (SE)!difference in means}
 \begin{eqnarray*}
 SE_{\bar{x}_{esc} - \bar{x}_{control}} = \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}}
 \end{eqnarray*}
@@ -1099,7 +1101,7 @@ In the next section we will learn how to use the $F$ statistic and ANOVA to test
 
 \subsection{Analysis of variance (ANOVA) and the F test}
 
-The method of analysis of variance in this context focuses on answering one question: is the variability in the sample means so large that it seems unlikely to be from chance alone? This question is different from earlier testing procedures since we will \emph{simultaneously} consider many groups, and evaluate whether their sample means differ more than we would expect from natural variation. We call this variability the \term{mean square between groups ($MSG$)}, and it has an associated degrees of freedom, $df_{G}=k-1$ when there are $k$ groups. The $MSG$ can be thought of as a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn't be too large. Details of $MSG$ calculations are provided in the footnote,\footnote{Let $\bar{x}$ represent the mean of outcomes across all groups. Then the mean square between groups is computed as
+The method of analysis of variance in this context focuses on answering one question: is the variability in the sample means so large that it seems unlikely to be from chance alone? This question is different from earlier testing procedures since we will \emph{simultaneously} consider many groups, and evaluate whether their sample means differ more than we would expect from natural variation. We call this variability the \term{mean square between groups ($MSG$)}, and it has an associated degrees of freedom, $df_{G}=k-1$ when there are $k$ groups.\index{degrees of freedom (df)!ANOVA} The $MSG$ can be thought of as a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn't be too large. Details of $MSG$ calculations are provided in the footnote,\footnote{Let $\bar{x}$ represent the mean of outcomes across all groups. Then the mean square between groups is computed as
 \begin{align*}
 MSG = \frac{1}{df_{G}}SSG = \frac{1}{k-1}\sum_{i=1}^{k} n_{i}\left(\bar{x}_{i} - \bar{x}\right)^2
 \end{align*}

@@ -848,7 +848,7 @@ An \term{outlier} is an observation that appears extreme relative to the rest of
 Examination of data for possible outliers serves many useful purposes, including\vspace{-2mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Identifying \indexthis{strong skew}{skew!strong skew} in the distribution.
+\item Identifying \indexthis{strong skew}{skew!example: strong} in the distribution.
 \item Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64,401 characters to ensure this value was accurate.
 \item Providing insight into interesting properties of the data.\vspace{0.5mm}
 \end{enumerate}}
@@ -1182,7 +1182,7 @@ In some other cases, a segmented bar plot that is not standardized will be more 
 \label{emailSpamNumberMosaicPlot}
 \end{figure}
 
-A \term{mosaic plot} is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure~\ref{emailNumberMosaic} shows a mosaic plot for the \var{number} variable. Each column represents a level of \var{number}, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box \emph{areas} to represent the number of observations that box represents.
+A \term{mosaic plot} is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure~\ref{emailNumberMosaic} shows a mosaic plot for the \var{number} variable. Each column represents a level of \var{number}, and the column widths correspond to the proportion of emails for each number~type. For~instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box \emph{areas} to represent the number of observations that box represents.
 
 \begin{figure}
    \centering
@@ -1367,7 +1367,7 @@ We computed one possible difference under the independence model in Guided Pract
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_intro_to_data/figures/discRandDotPlot/discRandDotPlot}
+\includegraphics[width=0.85\textwidth]{ch_intro_to_data/figures/discRandDotPlot/discRandDotPlot}
 \caption{A stacked dot plot of differences from 100 simulations produced under the independence model, $H_0$, where \var{gender\_\hspace{0.3mm}sim} and \var{decision} are independent. Two of the 100 simulations had a difference of at least 29.2\%, the difference observed in the study.}
 \label{discRandDotPlot}
 \end{figure}
@@ -1377,6 +1377,8 @@ Note that the distribution of these simulated differences is centered around 0. 
 \begin{example}{How often would you observe a difference of at least 29.2\% (0.292) according to Figure~\ref{discRandDotPlot}? Often, sometimes, rarely, or never?}
 It appears that a difference of at least 29.2\% due to chance alone would only happen about 2\% of the time according to Figure~\ref{discRandDotPlot}. Such a low probability indicates a rare event.
 \end{example}
+
+\textC{\newpage}
 
 The difference of 29.2\% being a rare event suggests two possible interpretations of the results of the study:
 \begin{itemize}

@@ -27,14 +27,14 @@ The normal distribution model always describes a symmetric, unimodal, bell-shape
 
 \begin{figure}[hht]
 \centering
-\includegraphics[width=0.9\textwidth]{ch_distributions/figures/twoSampleNormals/twoSampleNormals}
+\includegraphics[width=0.85\textwidth]{ch_distributions/figures/twoSampleNormals/twoSampleNormals}
 \caption{Both curves represent the normal distribution, however, they differ in their center and spread. The normal distribution with mean 0 and standard deviation 1 is called the \term{standard normal distribution}.}
 \label{twoSampleNormals}
 \end{figure}
 
 \begin{figure}[hht]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_distributions/figures/twoSampleNormalsStacked/twoSampleNormalsStacked}
+\includegraphics[width=0.6\textwidth]{ch_distributions/figures/twoSampleNormalsStacked/twoSampleNormalsStacked}
 \caption{The normal models shown in Figure~\ref{twoSampleNormals} but plotted together and on the same scale.}
 \label{twoSampleNormalsStacked}
 \end{figure}
@@ -50,7 +50,12 @@ N(\mu=0,\sigma=1)\quad\text{and}\quad N(\mu=19,\sigma=4)
 Because the mean and standard deviation describe a normal distribution exactly, they are called the distribution's \termsub{parameters}{parameter}.
 
 \begin{exercise}
-Write down the short-hand for a normal distribution with (a)~mean~5 and standard deviation~3, (b)~mean~-100 and standard deviation~10, and (c)~mean~2 and standard deviation~9.\footnote{(a)~$N(\mu=5,\sigma=3)$. (b)~$N(\mu=-100, \sigma=10)$. (c)~$N(\mu=2, \sigma=9)$.}
+Write down the short-hand for a normal distribution with\footnote{(a)~$N(\mu=5,\sigma=3)$. (b)~$N(\mu=-100, \sigma=10)$. (c)~$N(\mu=2, \sigma=9)$.}
+\begin{parts}
+\item mean~5 and standard deviation~3,
+\item mean~-100 and standard deviation~10, and
+\item mean~2 and standard deviation~9.
+\end{parts}
 \end{exercise}
 
 \subsection{Standardizing with Z-scores}
@@ -340,7 +345,7 @@ Many processes can be well approximated by the normal distribution. We have alre
 
 Example~\ref{normalExam40Perc} suggests the distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
 
-There are two visual methods for checking the assumption of normality, which can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot}.\footnote{Also commonly called a \term{quantile-quantile plot}.}, shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
+There are two visual methods for checking the assumption of normality, which can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot},\footnote{Also commonly called a \term{quantile-quantile plot}.} shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
 
 \begin{figure}
 \centering
@@ -577,7 +582,7 @@ But there are three other scenarios: Brittany, Caroline, or Damian could have be
 \end{example}
 
 \begin{exercise}
-Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability $(0.35)^1(0.65)^3$.\footnote{$P(A=\text{\resp{shock}},\text{ }B=\text{\resp{refuse}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3$.}
+Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability $(0.35)^1(0.65)^3$.~\footnote{$P(A=\text{\resp{shock}},\text{ }B=\text{\resp{refuse}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3$.}
 \end{exercise}
 
 \textC{\newpage}
@@ -947,7 +952,7 @@ On 70\% of days, a hospital admits at least one heart attack patient. On 30\% of
 \index{distribution!Poisson|(}
 
 \begin{example}{There are about 8 million individuals in New York City. How many individuals might we expect to be hospitalized for acute myocardial infarction (AMI), i.e. a heart attack, each day? According to historical records, the average number is about 4.4 individuals. However, we would also like to know the approximate distribution of counts. What would a histogram of the number of AMI occurrences each day look like if we recorded the daily counts over an entire year?} \label{amiIncidencesEachDayOver1YearInNYCExample}
-A histogram of the number of occurrences of AMI on 365 days\footnote{These data are simulated. In practice, we should check for an association between successive days.} for NYC is shown in Figure~\ref{amiIncidencesOver100Days}. The sample mean (4.38) is similar to the historical average of 4.4. The sample standard deviation is about 2, and the histogram indicates that about 70\% of the data fall between 2.4 and 6.4. The distribution's shape is unimodal and skewed to the right.
+A histogram of the number of occurrences of AMI on 365 days for NYC is shown in Figure~\ref{amiIncidencesOver100Days}.\footnote{These data are simulated. In practice, we should check for an association between successive days.} The sample mean (4.38) is similar to the historical average of 4.4. The sample standard deviation is about 2, and the histogram indicates that about 70\% of the data fall between 2.4 and 6.4. The distribution's shape is unimodal and skewed to the right.
 \end{example}
 
 \begin{figure}[h]
