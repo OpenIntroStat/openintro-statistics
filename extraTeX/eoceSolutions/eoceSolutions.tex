@@ -481,12 +481,12 @@ chance that he actually has lupus. House may be right.
 \eocesol{(a)~$2/9 \approx 0.22$.
 (b)~$3/9 \approx 0.33$.
 (c)~$\frac{3}{10} \times \frac{2}{9} \approx 0.067$.
-(d)~No, e.g. in this exercise, removing one marble meaningfully 
+(d)~No, e.g. in this exercise, removing one chip meaningfully 
 changes the probability of what might be drawn next.}
 
 % 31
 
-\eocesol{$P(^1$leggings, $^2$jeans, $^3$jeans$) = \frac{5}{24} \times \frac{7}{23} \times \frac{6}{23} = 0.0173$. However, the person with leggings could have come 2nd or 3rd, and these each have this same probability, so $3 \times 0.0173 = 0.519$.}
+\eocesol{$P(^1$leggings, $^2$jeans, $^3$jeans$) = \frac{5}{24} \times \frac{7}{23} \times \frac{6}{23} = 0.0173$. However, the person with leggings could have come 2nd or 3rd, and these each have this same probability, so $3 \times 0.0173 = 0.0519$.}
 
 % 33
 
@@ -1154,15 +1154,15 @@ estimate can be statistically significant.}
 % 19
 \eocesol{(a)~For each observation in one data set, there is exactly one specially-corresponding observation in the other data set for the same geographic location. The data are paired.
 (b)~$H_0: \mu_{diff} = 0$ (There is no difference in average daily high temperature between January 1, 1968 and January 1, 2008 in the continental US.) $H_A: \mu_{diff} > 0$ (Average daily high temperature in January 1, 1968 was lower than average daily high temperature in January, 2008 in the continental US.) If you chose a two-sided test, that would also be acceptable. If this is the case, note that your p-value will be a little bigger than what is reported here in part~(d).
-(c)~Independence: locations are random and represent less than 10\% of all possible locations in the US. The sample size is at least 30. We are not given the distribution to check the skew. In practice, we would ask to see the data to check this condition, but here we will move forward under the assumption that it is not strongly skewed.
-(d)~$Z=1.60$ $\to$ p-value $=0.0548$.
+(c)~Locations are random and represent less than 10\% of all possible locations in the US. The sample size is at least 30. We are not given the distribution to check the skew. In practice, we would ask to see the data to check this condition, but here we will move forward under the assumption that it is not strongly skewed.
+(d)~$T_{50} \approx 1.60 \to 0.05 <$ p-value $< 0.10$.
 (e)~Since the p-value $> \alpha$ (since not given use 0.05), fail to reject $H_0$. The data do not provide strong evidence of temperature warming in the continental US. However it should be noted that the p-value is very close to 0.05.
 (f)~Type~2 Error, since we may have incorrectly failed to reject $H_0$. There may be an increase, but we were unable to detect it.
 (g)~Yes, since we failed to reject $H_0$, which had a null value of 0.}
 
 % 21
-\eocesol{(a)~(-0.03, 2.23).
-(b)~We are 90\% confident that the average daily high on January 1, 2008 in the continental US was 0.03 degrees lower to 2.23 degrees higher than the average daily high on January 1, 1968.
+\eocesol{(a)~(-0.05, 2.25).
+(b)~We are 90\% confident that the average daily high on January 1, 2008 in the continental US was 0.05 degrees lower to 2.25 degrees higher than the average daily high on January 1, 1968.
 (c)~No, since 0 is included in the interval.}
 
 
@@ -1175,7 +1175,7 @@ estimate can be statistically significant.}
 
 % 23
 \eocesol{(a)~Each of the 36 mothers is related to exactly one of the 36 fathers (and vice-versa), so there is a special correspondence between the mothers and fathers.
-(b)~$H_0: \mu_{diff} = 0$. $H_A: \mu_{diff} \ne 0$. Independence: random sample from less than 10\% of population. Sample size of at least 30. The skew of the differences is, at worst, slight. $Z = 2.72$ $\to$ p-value $= 0.0066$. Since p-value $<$ 0.05, reject $H_0$. The data provide strong evidence that the average IQ scores of mothers and fathers of gifted children are different, and the data indicate that mothers' scores are higher than fathers' scores for the parents of gifted children.}
+(b)~$H_0: \mu_{diff} = 0$. $H_A: \mu_{diff} \ne 0$. Independence: random sample from less than 10\% of population. Sample size of at least 30. The skew of the differences is, at worst, slight. $T_{35} = 2.72 \to$ p-value $= 0.01$. Since p-value $<$ 0.05, reject $H_0$. The data provide strong evidence that the average IQ scores of mothers and fathers of gifted children are different, and the data indicate that mothers' scores are higher than fathers' scores for the parents of gifted children.}
 
 % 25
 \eocesol{No, he should not move forward with the test since the distributions of total personal income are very strongly skewed. When sample sizes are large, we can be a bit lenient with skew. However, such strong skew observed in this exercise would require somewhat large sample sizes, somewhat higher than~30.}
@@ -1183,7 +1183,7 @@ estimate can be statistically significant.}
 % 27
 \eocesol{(a)~These data are paired. For example, the Friday the 13th in say, September 1991, would probably be more similar to the Friday the 6th in September 1991 than to Friday the 6th in another month or year.
 (b)~Let $\mu_{diff} = \mu_{sixth} - \mu_{thirteenth}$. $H_0: \mu_{diff} = 0$. $H_A: \mu_{diff} \ne 0$.
-(c)~Independence: The months selected are not random. However, if we think these dates are roughly equivalent to a simple random sample of all such Friday 6th/13th date pairs, then independence is reasonable. To proceed, we must make this strong assumption, though we should note this assumption in any reported results. With fewer than 10 observations, we would need to use the $t$-distribution to model the sample mean. The normal probability plot of the differences shows an approximately straight line. There isn't a clear reason why this distribution would be skewed, and since the normal quantile plot looks reasonable, we can mark this condition as reasonably satisfied.
+(c)~Independence: The months selected are not random. However, if we think these dates are roughly equivalent to a simple random sample of all such Friday 6th/13th date pairs, then independence is reasonable. To proceed, we must make this strong assumption, though we should note this assumption in any reported results. Normality: With fewer than 10 observations, we would need to use the $t$-distribution to model the sample mean. The normal probability plot of the differences shows an approximately straight line. There isn't a clear reason why this distribution would be skewed, and since the normal quantile plot looks reasonable, we can mark this condition as reasonably satisfied.
 (d)~$T = 4.94$ for $df=10-1=9$ $\to$ p-value $<0.01$.
 (e)~Since p-value $<$ 0.05, reject $H_0$. The data provide strong evidence that the average number of cars at the intersection is higher on Friday the 6$^{\text{th}}$ than on Friday the 13$^{\text{th}}$. (We might believe this intersection is representative of all roads, i.e. there is higher traffic on Friday the 6$^{\text{th}}$ relative to Friday the 13$^{\text{th}}$. However, we should be cautious of the required assumption for such a generalization.)
 (f)~If the average number of cars passing the intersection actually was the same on Friday the 6$^{\text{th}}$ and $13^{th}$, then the probability that we would observe a test statistic so far from zero is less than 0.01.
@@ -1335,7 +1335,7 @@ Total           & {\textcolor{oiB}{{\scriptsize 50738}}} & 25575327 \\
 (d)~Yes. The interval lies entirely above 50\%.}
 
 % 13
-\eocesol{(a)~This is an appropriate setting for a hypothesis test. $H_0: p = 0.50$. $H_A:  p > 0.50$. Both independence and the success-failure condition are satisfied. $Z=1.12$ $\to$ p-value $= 0.1314$. Since the p-value $> \alpha=0.05$, we fail to reject $H_0$. The data do not provide strong evidence in favor of the claim.
+\eocesol{(a)~This is an appropriate setting for a hypothesis test. $H_0: p = 0.50$. $H_A:  p > 0.50$. Both independence and the success-failure condition are satisfied. $Z=1.12$ $\to$ p-value $= 0.1314$. Since the p-value $> \alpha=0.05$, we fail to reject $H_0$. The data do not provide strong evidence that more than half of all Independents oppose the public option plan.
 (b)~Yes, since we did not reject $H_0$ in part~(a).}
 
 % 15
@@ -1437,7 +1437,7 @@ Expected counts: (1/3) * 99 = 33 for each option. These are all above 5, so cond
 $df = 3 - 1 = 2$ and $\chi^2 = \frac{(43 - 33)^2}{33} + \frac{(21 - 33)^2}{33} + \frac{(35 - 33)^2}{33} = 7.52 \rightarrow 0.02 <$ p-value $< 0.05$. Since the p-value is less than 5\%, we reject $H_0$. The data provide convincing evidence that some options are preferred over others.}
 
 % 45
-\eocesol{(a). Two-way table:
+\eocesol{(a) Two-way table:
 \begin{center}\scriptsize
 \begin{tabular}{l l c c c}
 & \multicolumn{2}{c}{\textit{Quit}} &       \\
