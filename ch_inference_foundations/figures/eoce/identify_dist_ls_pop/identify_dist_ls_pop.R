@@ -7,8 +7,10 @@ a  = rbeta(1e6, 3.5, 2)
 b = a * 94
 
 # plot population ---------------------------------------------------
-myPDF("identify_dist_ls_pop.pdf", 4.25, 1.95, mar=c(2.3,0,0,0), mgp=c(2.7,0.5,0), las = 1)
-densityPlot(b, bw = 1, from = 0, to = 101, col = COL[5], fadingBorder = "66", histo = "faded", xlab = "", axes = FALSE, ylab = "")
+myPDF("identify_dist_ls_pop.pdf", 4.25, 1.95, mar=c(2.3,0,0,0), 
+      mgp=c(2.7,0.5,0), las = 1)
+densityPlot(b, bw = 1, from = 0, to = 101, col = COL[5], 
+            fadingBorder = "66", histo = "faded", xlab = "", axes = FALSE, ylab = "")
 axis(1)
 text(x = 10, y = 0.015, "Population")
 text(x = 10, y = 0.0125, expression(paste(mu, " = 60")))

@@ -9,7 +9,7 @@ bimod = c(rnorm(300, mean = 5, sd = 1),
 
 # histogram and box plot --------------------------------------------
 pdf("hist_vs_box.pdf", height = 2.2, width = 8)
-par(mar = c(2, 2.8, 0.2, 5), las = 1, mgp = c(2.9, 0.7, 0),
+par(mar = c(2, 2.8, 0.2, 0.5), las = 1, mgp = c(2.9, 0.7, 0),
     cex.axis = 1.5, cex.lab = 1.5)
 layout(matrix(1:2, 1), 2:1)
 histPlot(bimod, xlab = "", ylab = "", yaxt = "n", col = COL[1])

@@ -43,7 +43,7 @@ dev.off()
 # rel. freq. histogram of infant mortality  - solution --------------
 summary(cia_factbook$infant_mortality_rate)
 
-pdf("infant_mortality_rel_freq_hist_soln.pdf", 5.5, 4.3)
+pdf("infant_mortality_rel_freq_hist_soln.pdf", height = 4.3, width = 8)
 par(mar = c(4, 4.1, 1, 1), las = 1, mgp = c(2.9, 0.7, 0), 
     cex.axis = 1.5, cex.lab = 1.5)
 hist(cia_factbook$infant_mortality_rate, 

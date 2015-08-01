@@ -6,8 +6,11 @@ set.seed(85479)
 a  = rnorm(1e6, 10, 3)
 
 # plot population ---------------------------------------------------
-myPDF("identify_dist_symm_pop.pdf", 4.25, 1.95, mar=c(2.3,0,0,0), mgp=c(2.7,0.5,0), las = 1)
-densityPlot(a, bw = 1/4, from = -2, to = 22, col = COL[5], fadingBorder = "66", histo = "faded", xlab = "", axes = FALSE, ylab = "", breaks = 60, xlim=c(0, 20))
+myPDF("identify_dist_symm_pop.pdf", 4.25, 1.95, mar=c(2.3,0,0,0), 
+      mgp=c(2.7,0.5,0), las = 1)
+densityPlot(a, bw = 1/4, from = -2, to = 22, col = COL[5], 
+            fadingBorder = "66", histo = "faded", xlab = "", 
+            axes = FALSE, ylab = "", breaks = 60, xlim=c(0, 20))
 axis(1, at = seq(0,20,5), labels = seq(0,20,5))
 text(x = 17, y = 0.103, "Population")
 text(x = 17, y = 0.085, expression(paste(mu, " = 10")))
@@ -35,7 +38,8 @@ for(i in 1:100){
    	sampling_5[i] <- mean(temp)
    	}
 
-myPDF("identify_dist_symm_sampling_n5.pdf", 3.2, 2, mar=c(3.3,2,0.5,0.5), mgp=c(2.1,0.5,0))
+myPDF("identify_dist_symm_sampling_n5.pdf", 3.2, 2, mar=c(3.3,2,0.5,0.5), 
+      mgp=c(2.1,0.5,0))
 hist(sampling_5, col = COL[1], xlab = "Plot A", ylab = "", main = "", axes=FALSE)
 axis(1)
 axis(2, at=c(0, 10, 20))
@@ -52,7 +56,8 @@ for(i in 1:100){
    	sampling_25[i] <- mean(temp)
    	}
 
-myPDF("identify_dist_symm_sampling_n25.pdf", 3.2, 2, mar=c(3.3,2,0.5,0.5), mgp=c(2.1,0.5,0))
+myPDF("identify_dist_symm_sampling_n25.pdf", 3.2, 2, mar=c(3.3,2,0.5,0.5), 
+      mgp=c(2.1,0.5,0))
 hist(sampling_25, col = COL[1], xlab = "Plot C", ylab = "", main = "", axes = FALSE)
 axis(2, at=seq(0, 20, 10))
 axis(1, at = 9:11, labels = 9:11)

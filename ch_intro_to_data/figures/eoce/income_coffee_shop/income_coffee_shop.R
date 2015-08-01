@@ -10,7 +10,7 @@ sal_skewed = c(sal_symmetric, 225000, 250000)
 options(scipen=2)
 
 # histograms --------------------------------------------------------
-pdf("income_coffee_shop.pdf", 7.2, 5.6)
+pdf("income_coffee_shop.pdf", 5.5, 4.3)
 par(mar = c(3.6, 1, 0.5, 1), las = 1, mgp = c(2.5, 0.7, 0), 
     mfrow = c(2,1), cex.lab = 1.5, cex.axis = 1.5)
 
