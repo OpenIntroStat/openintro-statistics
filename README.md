@@ -27,8 +27,14 @@ This isn't important for casual browsing, but it is important for a "final" vers
 Learning LaTeX
 --------------
 
-If you are not familiar with LaTeX but would like to learn how to use it, check out
+If you are not familiar with LaTeX but would like to learn how to use it, check out the slides from two LaTeX mini-courses at
 
 https://github.com/OpenIntroOrg/mini-course-materials
+
+PDFs:
+
+[Basics of LaTeX](https://github.com/OpenIntroOrg/mini-course-materials/raw/master/LaTeX_Basics/basicsOfLatex.pdf)
+
+[Math and BibTeX](https://github.com/OpenIntroOrg/mini-course-materials/raw/master/LaTeX_Math_and_BibTeX/bibtexMathInLatex.pdf)
 
 For a more authoritative review, the book "Guide to LaTeX" is an excellent resource.
