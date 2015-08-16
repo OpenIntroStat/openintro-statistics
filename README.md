@@ -39,4 +39,4 @@ PDFs:
 
 For a more authoritative review, the book "Guide to LaTeX" is an excellent resource.
 
-Also, see the branches of [this repo](https://github.com/statkclee/mini-course-materials) by Kwangchun Lee for Korean translation of these mini-course materials.
+Also, see the branches of [this repo](https://github.com/statkclee/mini-course-materials) by Kwangchun Lee for Korean translations of these mini-course materials.
