@@ -38,3 +38,5 @@ PDFs:
 [Math and BibTeX](https://github.com/OpenIntroOrg/mini-course-materials/raw/master/LaTeX_Math_and_BibTeX/bibtexMathInLatex.pdf)
 
 For a more authoritative review, the book "Guide to LaTeX" is an excellent resource.
+
+Also, see the branches of [this repo](https://github.com/statkclee/mini-course-materials) by Kwangchun Lee for Korean translation of these mini-course materials.
