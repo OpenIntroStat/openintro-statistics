@@ -884,9 +884,9 @@ scenario && median & IQR && $\bar{x}$ & $s$ \\
   \hline
 original \var{num\_\hspace{0.3mm}char} data 	&& 6,890 & 12,875 && 11,600 & 13,130 \\
 % library(openintro); data(email50); d <- email50$num_char; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d)
-drop 66,924 observation		&& 6,768 & 11,702 && 10,521 & 10,798 \\
+drop 64,401 observation		&& 6,768 & 11,702 && 10,521 & 10,798 \\
 % library(openintro); data(email50); d <- email50$num_char; d <- d[-which.max(d)]; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d)
-move 66,924 to 150,000		&& 6,890 & 12,875 && 13,310 & 22,434 \\
+move 64,401 to 150,000		&& 6,890 & 12,875 && 13,310 & 22,434 \\
 % library(openintro); data(email50); d <- email50$num_char; d[which.max(d)] <- 100000; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d)
    \hline
 \end{tabular}

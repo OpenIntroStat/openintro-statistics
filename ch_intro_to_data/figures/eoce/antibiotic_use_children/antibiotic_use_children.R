@@ -25,11 +25,10 @@ dev.off()
 
 # pie chart ---------------------------------------------------------
 pdf("antibiotic_use_children_pie.pdf", height = 3, width = 6)
-par(mar=c(0, 0, 0, 1.5), las = 1, mgp = c(2.5, 0.7, 0),
-    cex.lab = 1.25, cex.axis = 1.25)
-pie(table(conditions), 
+par(mar=c(0, 2.8, 0, 6), las = 1)
+pie(summary_table, 
     col = c(COL[1,1], COL[1,4], COL[2,1], COL[2,4], 
             COL[3,1], COL[3,4], COL[4,1], COL[4,4]), 
-    cex = 1.25, clockwise = TRUE,
+    cex = 1, clockwise = FALSE,
     labels = names(summary_table))
 dev.off()
