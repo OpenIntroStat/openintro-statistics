@@ -62,7 +62,7 @@ xbar100 = xbar
 myPDF("pennies_ages_sampling_n100.pdf", 3, 2.4, 
       mar=c(3.5,0.5,0.5,0.5), las=1, mgp=c(2.1,0.4,0))
 histPlot(xbar100, col = COL[1], 
-         xlab = expression(bar(x)[" n = 30"]), ylab = "", 
+         xlab = expression(bar(x)[" n = 100"]), ylab = "", 
          axes = FALSE)
 axis(1)
 dev.off()

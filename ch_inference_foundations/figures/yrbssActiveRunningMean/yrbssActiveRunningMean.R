@@ -12,7 +12,7 @@ plot(xBars,
      type = "l",
      axes = FALSE,
      xlab = "",
-     ylab = "Running mean of\nstudent height (in meters)",
+     ylab = "Running mean of days\nphysically active per week",
      col = COL[1],
      lwd = 2,
      ylim = range(xBars))
