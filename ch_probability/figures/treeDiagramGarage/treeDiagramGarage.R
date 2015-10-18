@@ -13,6 +13,6 @@ treeDiag(c('Event', 'Garage full'),
          c('Academic', 'Sporting', 'None'),
          c('Full', 'Spaces Available'),
          digits = 5,
-         col.main = "#555555",
+         col.main = COL[1],
          showWork = TRUE)
 dev.off()

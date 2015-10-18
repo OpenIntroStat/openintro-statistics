@@ -11,6 +11,6 @@ treeDiag(c('Inoculated', 'Result'),
          c('yes', 'no'),
          c('lived', 'died'),
          digits = 5,
-         col.main = "#555555",
+         col.main = COL[1],
          showWork = TRUE)
 dev.off()

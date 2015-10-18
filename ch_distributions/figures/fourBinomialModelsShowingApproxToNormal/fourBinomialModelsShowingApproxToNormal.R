@@ -24,8 +24,8 @@ for (i in 1:4) {
        axes = FALSE,
        xlab = paste("n  = ", n[i]),
        ylab = "",
-       col = COL[5],
-       lwd = 1.5)
+       col = COL[1],
+       lwd = 2)
   axis(1, axis1[[i]])
   abline(h = 0)
   if (i == 2) {

@@ -1,5 +1,5 @@
 
-QQNorm <- function(obs, at  =  pretty(obs), lwd  =  1) {
+QQNorm <- function(obs, at  =  pretty(obs), lwd = 2) {
   qqnorm(obs,
          cex = 0.9,
          main = '',

@@ -18,7 +18,8 @@ pdf("work_hours_education.pdf", height = 2.5, width = 8)
 par(mar = c(2,3.5,0.5,.5), mgp = c(2.3,0.7,0), las = 1)
 
 boxPlot(gss_sub$hrs1, fact = gss_sub$degree, 
-        col = COL[1,2], ylab = "Hours worked per week", xlim=c(0.6, 5.4))
+        col = COL[1,2], ylab = "Hours worked per week", xlim=c(0.6, 5.4),
+        lcol = COL[1], lwd = 1.5, medianLwd = 2.5)
 dev.off()
 
 # summary stats -----------------------------------------------------

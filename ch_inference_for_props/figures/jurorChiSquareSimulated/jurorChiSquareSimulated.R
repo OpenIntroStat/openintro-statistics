@@ -24,8 +24,8 @@ X <- c(seq(0, 1, 0.01),
        seq(1.1, 50, 0.1))
 Y <- dchisq(X, 3)
 lines(X, Y,
-      col = COL[4],
-      lwd = 2.5)
+      col = COL[1],
+      lwd = 3)
 arrows(5.89, 0.12,
        5.89, 0.06,
        0.1)

@@ -12,6 +12,6 @@ treeDiag(c('\nAble to construct\ntree diagrams', 'Pass class'),
          c('yes', 'no'),
          c('pass', 'fail'),
          digits = 5,
-         col.main = "#555555",
+         col.main = COL[1],
          showWork = TRUE)
 dev.off()

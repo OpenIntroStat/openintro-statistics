@@ -11,6 +11,6 @@ treeDiag(c('Midterm', 'Final'),
          c('A', 'other'),
          c('A', 'other'),
          digits = 5,
-         col.main = "#555555",
+         col.main = COL[1],
          showWork = TRUE)
 dev.off()

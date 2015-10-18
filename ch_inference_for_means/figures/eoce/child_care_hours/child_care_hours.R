@@ -32,7 +32,8 @@ pdf("child_care_hours.pdf", height = 4, width = 15)
 par(mar = c(2,4,1,5), las = 1, mgp = c(2.7,0.7,0), 
     cex.lab = 1.45, cex.axis = 1.45)
 boxPlot(china$child_care, fact = china$edu, ylab = "Child care hours", 
-        col = COL[1,2], xlim = c(0.6, 5.4))
+        col = COL[1,2], xlim = c(0.6, 5.4),
+        lcol = COL[1], lwd = 1.5, medianLwd = 2.5)
 
 dev.off()
 

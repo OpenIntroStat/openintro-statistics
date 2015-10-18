@@ -39,7 +39,7 @@ par(mar = c(3, 2, 0.5, 0.5),
     mgp = c(2.8, 0.5, 0),
     cex.axis = 0.8)
 qqnorm(obs,
-       cex = 0.5,
+       cex = 0.8, col = COL[1], lwd = 2,
        main = '',
        axes = FALSE,
        xlab = '',

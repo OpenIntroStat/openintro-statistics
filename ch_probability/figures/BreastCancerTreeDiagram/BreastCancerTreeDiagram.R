@@ -11,6 +11,6 @@ treeDiag(c('Truth', 'Mammogram'),
          c('cancer', 'no cancer'),
          c('positive','negative'),
          digits = 5,
-         col.main = "#555555",
+         col.main = COL[1],
          showWork = TRUE)
 dev.off()

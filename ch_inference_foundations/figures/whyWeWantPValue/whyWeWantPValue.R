@@ -8,7 +8,7 @@ normTail(L = -5,
          df = 20,
          axes = FALSE,
          xlim = c(-6, 3),
-         lwd = 2)
+         lwd = 2.5, curveColor = COL[5])
 at <- seq(-10, 5, 5)
 labels <- expression('', 'null value '*-5*'×SE   ',
                      'null value', '')
@@ -25,8 +25,10 @@ text(0, yMax / 3 - 0.01,
 arrows(-5, yMax / 3,
        -5, yMax / 20,
        length = 0.1,
-       lwd = 1.5)
+       lwd = 2,
+       col = COL[1])
 text(-5, yMax / 3, expression('observed '*bar(x)),
      cex = 1.1,
-     pos = 3)
+     pos = 3,
+     col = COL[1])
 dev.off()
