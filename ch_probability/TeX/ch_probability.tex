@@ -193,15 +193,17 @@ Let's consider calculations for two events that are not disjoint in the context 
 
 Let $A$ represent the event that a randomly selected card is a diamond and $B$ represent the event that it is a face card. How do we compute $P(A$ or $B)$? Events $A$ and $B$ are not disjoint -- the cards {\color{redcards}$J\diamondsuit$}, {\color{redcards}$Q\diamondsuit$}, and {\color{redcards}$K\diamondsuit$} fall into both categories -- so we cannot use the Addition Rule for disjoint events. Instead we use the Venn diagram. We start by adding the probabilities of the two events:
 \begin{eqnarray*}
-P(A) + P(B) = P({\color{redcards}\diamondsuit}) + P(\text{face card}) = 12/52 + 13/52
+P(A) + P(B)
+  = P({\color{redcards}\diamondsuit}) + P(\text{face card})
+  = 13/52 + 12/52
 \label{overCountFaceDiamond}
 \end{eqnarray*}
 However, the three cards that are in both events were counted twice, once in each probability. We must correct this double counting:
 \begin{eqnarray}
-P(A\text{ or } B) &=&P(\text{face card or }{\color{redcards}\diamondsuit})  \notag \\
- &=& P(\text{face card}) + P({\color{redcards}\diamondsuit}) - P(\text{face card and }{\color{redcards}\diamondsuit}) \label{diamondFace} \\
- &=& 13/52 + 12/52 - 3/52 \notag \\
- &=& 22/52 = 11/26 \notag
+P(A\text{ or } B) &=&P({\color{redcards}\diamondsuit}\text{ or face card})  \notag \\
+  &=& P({\color{redcards}\diamondsuit}) + P(\text{face card}) - P({\color{redcards}\diamondsuit}\text{ and face card}) \label{diamondFace} \\
+  &=& 13/52 + 12/52 - 3/52 \notag \\
+  &=& 22/52 = 11/26 \notag
 \end{eqnarray}
 Equation~(\ref{diamondFace}) is an example of the \term{General Addition Rule}. 
 
