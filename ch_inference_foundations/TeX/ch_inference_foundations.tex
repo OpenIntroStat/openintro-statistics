@@ -30,8 +30,9 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 \centering\small
 \begin{tabular}{l p{110mm}}
 \hline
-{\bf age} & {\bf Age of the student.} \\
+{\bf Name} & {\bf Description} \\
 \hline
+\var{age} & {Age of the student.} \\
 \var{gender} & {Sex of the student.} \\
 \var{grade} & Grade in high school \\
 \var{height} & Height, in meters. There are 3.28 feet in a meter. \\
@@ -47,7 +48,7 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 
 \index{data!yrbss\_samp|(}
 
-We're going to consider the population of high school students who participated in the 2013 YRBSS. We took a simple random sample of this population, which is represented in Table~\ref{yrbssSampDF}.\footnote{About 10\% of high schoolers for each variable chose not to answer the question, we used multiple regression (see Chapter~\ref{multipleAndLogisticRegression}) to predict what those responses would have been. For simplicity, we will assume that these predicted values are exactly the truth.} We will use this sample, which we refer to as the \data{yrbss\_samp} data set, to draw conclusions about the population of YRBSS participants. This is the practice of statistical inference in the broadest sense. Two histograms summarizing the \var{height}, \var{weight}, \var{active}, and \var{lifting} variables from \data{yrbss\_samp} data set are shown in Figure~\ref{yrbssSampHistograms}.
+We're going to consider the population of high school students who participated in the 2013 YRBSS. We took a simple random sample of this population, which is represented in Table~\ref{yrbssSampDF}.\footnote{About 10\% of high schoolers for each variable chose not to answer the question, we used multiple regression (see Chapter~\ref{multipleAndLogisticRegression}) to predict what those responses would have been. For simplicity, we will assume that these predicted values are exactly the truth.} We will use this sample, which we refer to as the \data{yrbss\_samp} data set, to draw conclusions about the population of YRBSS participants. This is the practice of statistical inference in the broadest sense. Four histograms summarizing the \var{height}, \var{weight}, \var{active}, and \var{lifting} variables from \data{yrbss\_samp} data set are shown in Figure~\ref{yrbssSampHistograms}.
 
 \begin{table}
 \centering
@@ -72,7 +73,7 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{ch_inference_foundations/figures/yrbssSampHistograms/yrbssSampHistograms} 
-\caption{Histograms of \var{height}, \var{weight}, \var{activity}, and \var{lifting} for the sample YRBSS data. The \var{height} distribution is approximately symmetric, \var{weight} is moderately skewed to the right, \var{activity} is bimodal or multimodal (with unclear skew), and \var{lifting} is strongly right skewed.\index{skew!example: moderate}\index{skew!example: strong}}
+\caption{Histograms of \var{height}, \var{weight}, \var{active}, and \var{lifting} for the sample YRBSS data. The \var{height} distribution is approximately symmetric, \var{weight} is moderately skewed to the right, \var{activity} is bimodal or multimodal (with unclear skew), and \var{lifting} is strongly right skewed.\index{skew!example: moderate}\index{skew!example: strong}}
 \label{yrbssSampHistograms}
 \end{figure}
 
@@ -85,7 +86,7 @@ ID & age & gender & grade & height & weight & helmet & active & lifting \\
 
 We would like to estimate four features of the high schoolers in YRBSS using the sample.
 \begin{itemize}
-\setlength{\itemsep}{0mm}
+\setlength{\itemsep}{-0.5mm}
 \item[(1)] What is the average height of the YRBSS high schoolers?
 \item[(2)] What is the average weight of the YRBSS high schoolers?
 \item[(3)] On average, how many days per week are YRBSS high schoolers physically active?
@@ -283,7 +284,7 @@ But what does ``95\% confident'' mean? Suppose we took many samples and built a 
 \end{figure}
 
 \begin{exercise}
-In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain 3.90 minutes. Does this imply that the mean cannot be 3.90?\footnote{Just as some observations occur more than 2 standard deviations from the mean, some point estimates will be more than 2 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
+In Figure~\ref{95PercentConfidenceInterval}, one interval does not contain 3.90 days. Does this imply that the mean cannot be 3.90?\footnote{Just as some observations occur more than 2 standard deviations from the mean, some point estimates will be more than 2 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.}
 \end{exercise}
 
 The rule where about 95\% of observations are within 2 standard deviations of the mean is only approximately true. However, it holds very well for the normal distribution. As we will soon see, the mean tends to be normally distributed when the sample size is sufficiently large. 
@@ -965,7 +966,7 @@ SE_{\bar{x}} = \frac{s}{\sqrt{n}}
 \end{eqnarray*}
 In this section, we provide the computed standard error for each example and exercise without detailing where the values came from. In future chapters, you will learn to fill in these and other details for each situation.
 
-\begin{example}{In Guided Practice~\vref{peOfDiffActiveBetweenGender}, we computed a point estimate for the difference in the average days active per week between male and female students: $\bar{x}_{female}-\bar{x}_{male}=1.1$~days. This point estimate is associated with a nearly normal distribution with standard error $SE = 0.5$~days. What is a reasonable 95\% confidence interval for the difference in average days active per week?}
+\begin{example}{In Guided Practice~\vref{peOfDiffActiveBetweenGender}, we computed a point estimate for the difference in the average days active per week between male and female students: $\bar{x}_{male}-\bar{x}_{female}=1.1$~days. This point estimate is associated with a nearly normal distribution with standard error $SE = 0.5$~days. What is a reasonable 95\% confidence interval for the difference in average days active per week?}
 \label{ciForDiffOfPhysActiveBetweenGenders}
 The normal approximation is said to be valid, so we apply Equation~\eqref{95PercGeneralCIInGeneralizingSection}:
 \begin{eqnarray*}

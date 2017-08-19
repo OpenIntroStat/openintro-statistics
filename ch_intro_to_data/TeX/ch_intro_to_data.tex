@@ -379,7 +379,7 @@ If someone was permitted to pick and choose exactly which graduates were include
 
 \APVersion{Sometimes a simple random sample is difficult to implement and an alternative method is helpful. One such substitute is a \term{systematic sample}, where one case is sampled after letting a fixed number of others, say 10 other cases, pass by. Since this approach uses a mechanism that is not easily subject to personal biases, it often yields a reasonably representative sample. This book will focus on random samples since the use of systematic samples is uncommon and requires additional considerations of the context.}{}
 
-The act of taking a simple random sample helps minimize bias, however, bias can crop up in other ways.
+The act of taking a simple random sample helps minimize bias. However, bias can crop up in other ways.
 Even when people are picked at random, e.g. for surveys, caution must be exercised if the \term{non-response} \index{sample!non-response|textbf} is high. For instance, if only 30\% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are \term{representative} of the entire population. This \term{non-response bias} \index{sample!non-response bias|textbf} can skew results.
 
 \begin{figure}[h]
@@ -655,7 +655,7 @@ Examine Equations~\eqref{sampleMeanEquation} and~\eqref{meanEquation} above. Wha
 What was $n$ in this sample of emails?\footnote{The sample size was $n=50$.}
 \end{exercise}
 
-The \data{email50} data set represents a sample from a larger population of emails that were received in January and March. We could compute a mean for this population in the same way as the sample mean, however, the population mean has a special label: $\mu$\marginpar[\raggedright$\mu$\\\footnotesize population\\ mean]{\raggedright$\mu$\\\footnotesize population\\ mean}. \index{Greek!mu@mu ($\mu$)} The symbol $\mu$ is the Greek letter \emph{mu} and represents the average of all observations in the population. Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g. $\mu_x$.
+The \data{email50} data set represents a sample from a larger population of emails that were received in January and March. We could compute a mean for this population in the same way as the sample mean. However, the population mean has a special label: $\mu$\marginpar[\raggedright$\mu$\\\footnotesize population\\ mean]{\raggedright$\mu$\\\footnotesize population\\ mean}. \index{Greek!mu@mu ($\mu$)} The symbol $\mu$ is the Greek letter \emph{mu} and represents the average of all observations in the population. Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g. $\mu_x$.
 
 \begin{example}{The average number of characters across all emails can be estimated using the sample data. Based on the sample of 50 emails, what would be a reasonable estimate of $\mu_x$, the mean number of characters in all emails in the \data{email} data set? (Recall that \data{email50} is a sample from \data{email}.)}
 The sample mean, 11,600, may provide a reasonable estimate of $\mu_x$. While this number will not be perfect, it provides a \emph{point estimate} of the population mean. In Chapter~\ref{foundationsForInference} and beyond, we will develop tools to characterize the accuracy of point estimates, and we will find that point estimates based on larger samples tend to be more accurate than those based on smaller samples.
@@ -815,7 +815,7 @@ A \term{box plot} summarizes a data set using five statistics while also plottin
    \label{boxPlotLayoutNumVar}
 \end{figure}
 
-The first step in building a box plot is drawing a dark line denoting the \term{median}, which splits the data in half. Figure~\ref{boxPlotLayoutNumVar} shows 50\% of the data falling below the median (dashes) and other 50\% falling above the median (open circles). There are 50 character counts in the data set (an even number) so the data are perfectly split into two groups of~25. We take the median in this case to be the average of the two observations closest to the $50^{th}$ percentile: $(\text{6,768} + \text{7,012}) / 2 = \text{6,890}$. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed).
+The first step in building a box plot is drawing a dark line denoting the \term{median}, which splits the data in half. Figure~\ref{boxPlotLayoutNumVar} shows 50\% of the data falling below the median (dashes) and other 50\% falling above the median (open circles). There are 50 character counts in the data set (an even number) so the data are perfectly split into two groups of~25. We take the median in this case to be the average of the two observations closest to the $50^{th}$ percentile: $(\text{6,768} + \text{7,012}) / 2 = \text{6,890}$. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in such a case that observation is the median (no average needed).
 
 \begin{termBox}{\tBoxTitle{Median: the number in the middle}
 If the data are ordered from smallest to largest, the \term{median} is the observation right in the middle. If there are an even number of observations, there will be two values in the middle, and the median is taken as their average.}
@@ -1064,7 +1064,7 @@ Table~\ref{rowPropSpamNumber} shows the row proportions for Table~\ref{emailSpam
   \hline
 spam &  $149/367 = 0.406$ & $168/367 = 0.458$ &
 			$50/367 = 0.136$ & 1.000 \\ 
-not spam &  $400/3554 = 0.113$ & $2657/3554 = 0.748$ &
+not spam &  $400/3554 = 0.113$ & $2659/3554 = 0.748$ &
 			$495/3554 = 0.139$ & 1.000 \\ 
    \hline
 Total & $549/3921 = 0.140$ & $2827/3921 = 0.721$ &
@@ -1087,7 +1087,7 @@ A contingency table of the column proportions is computed in a similar way, wher
 spam &  $149/549 = 0.271$ & $168/2827 = 0.059$ &
 				$50/545 = 0.092$ & $367/3921 = 0.094$ \\ 
 not spam &  $400/549 = 0.729$ & $2659/2827 = 0.941$ &
-				$495/545 = 0.908$ & $3684/3921 = 0.906$ \\ 
+				$495/545 = 0.908$ & $3554/3921 = 0.906$ \\ 
    \hline
 Total & 1.000 & 1.000 & 1.000 & 1.000 \\
    \hline
@@ -1391,5 +1391,3 @@ Based on the simulations, we have two options. (1)~We conclude that the study re
 \index{data!discrimination|)}
 
 One field of statistics, statistical inference, is built on evaluating whether such differences are due to chance. In statistical inference, statisticians evaluate which model is most reasonable given the data. Errors do occur, just like rare events, and we might choose the wrong model. While we do not always choose correctly, statistical inference gives us tools to control and evaluate how often these errors occur. In Chapter~\ref{foundationsForInference}, we give a formal introduction to the problem of model selection. We spend the next two chapters building a foundation of probability and theory necessary to make that discussion rigorous.
-
-Test~\ref{eoce_1_7}.
