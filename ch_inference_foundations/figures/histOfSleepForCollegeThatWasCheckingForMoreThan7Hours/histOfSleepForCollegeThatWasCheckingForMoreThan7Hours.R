@@ -1,9 +1,7 @@
 library(openintro)
 data(COL)
-set.seed(2)
-x <- exp(c(rnorm(100, log(7.5), 0.15),
-           rnorm(10, log(10), 0.196)))
-x <- x - mean(x) + 7.42
+data(student.sleep)
+x <- student.sleep$hours
 t.test(x, mu = 7)
 mean(x)
 sd(x)
