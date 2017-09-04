@@ -15,8 +15,6 @@ https://www.openintro.org/contact
 
 3. Derivative title. No derivative may include "OpenIntro" in the title, unless it is included in text of the form "Derivative of OpenIntro".
 
-There is one exception to this guideline. If the original textbook PDF is used to make paper copies the textbook and no modifications (changes or additions) are made, then the title may be "OpenIntro Statistics" with a clear designation of the edition. However, it should also be clearly noted that it is not an official copy of the textbook; this communicates that the authors have not endorsed the print product.
-
 Use of the OpenIntro logo is strictly prohibited and is not licensed for use.
 
 4. Below are other suggested guidelines for attribution.
