@@ -20,11 +20,11 @@ arrows(-1.67, yMax * 0.6,
        length=0.1,
        lwd=1.5)
 text(-1.5, yMax * 0.8,
-     expression('distribution of '*bar(x)),
+     expression('Distribution of '*bar(x)),
      cex=1,
      pos=2)
 text(-1.5, yMax * 0.7,
-     expression('if '*H[0]*' was true'),
+     expression('if '*H[0]*' is true'),
      cex=1,
      pos=2)
 
@@ -35,7 +35,7 @@ arrows(2.56, yMax / 2.3,
        col=COL[1],
        lwd=1.5)
 text(xLoc, 0.83 * yMax,
-     expression('chance of observed '*bar(x)),
+     expression('Chance of observed '*bar(x)),
      pos=4,
      cex=1,
      col=COL[1])
