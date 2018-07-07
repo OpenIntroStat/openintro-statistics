@@ -18,7 +18,7 @@ In this section we will be introduced to techniques for exploring and summarizin
 
 A \term{scatterplot} provides a case-by-case view of data for two numerical variables. In Figure~\vref{county_fed_spendVsPoverty}, a scatterplot was used to examine how federal spending and poverty were related in the \data{county} data set. Another scatterplot is shown in Figure~\ref{email50LinesCharacters}, comparing the number of line breaks (\var{line\_\hspace{0.3mm}breaks}) and number of characters (\var{num\_\hspace{0.3mm}char}) in emails for the \data{email50} data set. In any scatterplot, each point represents a single case. Since there are 50 cases in \data{email50}, there are 50 points in Figure~\ref{email50LinesCharacters}.
 
-\textC{\setlength{\captionwidth}{0.9\textwidth}}
+%\textC{\setlength{\captionwidth}{0.9\textwidth}}
 
 \begin{figure}[h]
    \centering
@@ -27,7 +27,7 @@ A \term{scatterplot} provides a case-by-case view of data for two numerical vari
    \label{email50LinesCharacters}
 \end{figure}
 
-\textC{\setlength{\captionwidth}{\mycaptionwidth}}
+%\textC{\setlength{\captionwidth}{\mycaptionwidth}}
 
 To put the number of characters in perspective, this paragraph has 363 characters. Looking at Figure~\ref{email50LinesCharacters}, it seems that some emails are incredibly verbose! Upon further investigation, we would actually find that most of the long emails use the HTML format, which means most of the characters in those emails are used to format the email rather than provide text.
 
@@ -420,8 +420,6 @@ The \data{county} data set offers many numerical variables that we could plot us
 \label{countyIntensityMaps2}
 \end{figure}
 
-\textC{\pagebreak}
-
 \begin{example}{What interesting features are evident in the \var{fed\_\hspace{0.3mm}spend} and \var{poverty} intensity maps?}
 The federal spending intensity map shows substantial spending in the Dakotas and along the central-to-western part of the Canadian border, which may be related to the oil boom in this region. There are several other patches of federal spending, such as a vertical strip in eastern Utah and Arizona and the area where Colorado, Nebraska, and Kansas meet. There are also seemingly random counties with very high federal spending relative to their neighbors. If we did not cap the federal spending range at \$18 per capita, we would actually find that some counties have extremely high federal spending while there is almost no federal spending in the neighboring counties. These high-spending counties might contain military bases, companies with large government contracts, or other government facilities with many employees.
 
@@ -436,8 +434,6 @@ What interesting features are evident in the \var{med\_\hspace{0.3mm}income} int
 \index{data!county|)}
 
 
-
-\textC{\newpage}
 
 \section[Considering categorical data]{Considering categorical data \sectionvideohref{youtube-7NhNeADL8fA&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-7}}
 \label{categoricalData}
@@ -580,8 +576,6 @@ Example~\ref{weighingRowColumnProportions} points out that row and column propor
 Look back to Tables~\ref{rowPropSpamNumber} and~\ref{colPropSpamNumber}. Which would be more useful to someone hoping to identify spam emails using the \var{number} variable?\footnote{The column proportions in Table~\ref{colPropSpamNumber} will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9\% of the time (relatively rare). We would also see that about 27.1\% of emails with no numbers are spam, and 9.2\% of emails with big numbers are spam.}
 \end{exercise}
 
-
-\textC{\newpage}
 
 \subsection{Segmented bar and mosaic plots}
 \label{segmentedBarPlotsAndIndependence}
@@ -803,8 +797,6 @@ What is the difference in promotion rates between the two simulated groups in Ta
 \end{exercise}
 
 
-\textC{\pagebreak}
-
 \subsection{Checking for independence}
 
 We computed one possible difference under the independence model in Guided Practice~\ref{sampleDifferenceInMaleAndFemaleDiscrimination}, which represents one difference due to chance. While in this first simulation, we physically dealt out files, it is more efficient to perform this simulation using a computer. Repeating the simulation on a computer, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the \emph{distribution of differences from chance alone}. Figure~\ref{discRandDotPlot} shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files that were recommended for promotion.
@@ -821,8 +813,6 @@ Note that the distribution of these simulated differences is centered around 0. 
 \begin{example}{How often would you observe a difference of at least 29.2\% (0.292) according to Figure~\ref{discRandDotPlot}? Often, sometimes, rarely, or never?}
 It appears that a difference of at least 29.2\% due to chance alone would only happen about 2\% of the time according to Figure~\ref{discRandDotPlot}. Such a low probability indicates a rare event.
 \end{example}
-
-\textC{\newpage}
 
 The difference of 29.2\% being a rare event suggests two possible interpretations of the results of the study:
 \begin{itemize}

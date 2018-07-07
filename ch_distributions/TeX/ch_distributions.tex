@@ -189,8 +189,6 @@ Determine the proportion of SAT test takers who scored better than Ann on the SA
 \end{exercise}
 
 
-\textC{\newpage}
-
 
 \subsection{Normal probability examples}
 
@@ -272,9 +270,9 @@ Solving for $x_{Erik}$ yields the height 69.18 inches. That is, Erik is about 5'
 \end{example}
 
 \begin{example}{What is the adult male height at the $82^{nd}$ percentile?}
-Again, we draw the figure first.\textC{\vspace{-3mm}}
+Again, we draw the figure first.%\textC{\vspace{-3mm}}
 \begin{center}
-\includegraphics[width=0.28\textwidth]{ch_distributions/figures/height82Perc/height82Perc}\textC{\vspace{-1mm}}
+\includegraphics[width=0.28\textwidth]{ch_distributions/figures/height82Perc/height82Perc}%\textC{\vspace{-1mm}}
 \end{center}
 Next, we want to find the Z-score at the $82^{nd}$ percentile, which will be a positive value. Looking in the Z-table, we find $Z$ falls in row $0.9$ and the nearest column is $0.02$, i.e. $Z=0.92$. Finally, the height $x$ is found using the Z-score formula with the known mean $\mu$, standard deviation $\sigma$, and Z-score $Z=0.92$:
 \begin{eqnarray*}
@@ -292,13 +290,13 @@ This yields 73.04 inches or about 6'1'' as the height at the $82^{nd}$ percentil
 \end{exercise}
 
 \begin{example}{What is the probability that a random adult male is between 5'9'' and 6'2''?}
-These heights correspond to 69 inches and 74 inches. First, draw the figure. The area of interest is no longer an upper or lower tail.\textC{\vspace{-2mm}}
+These heights correspond to 69 inches and 74 inches. First, draw the figure. The area of interest is no longer an upper or lower tail.%\textC{\vspace{-2mm}}
 \begin{center}
-\includegraphics[width=0.35\textwidth]{ch_distributions/figures/between59And62/between59And62}\textC{\vspace{-2mm}}
+\includegraphics[width=0.35\textwidth]{ch_distributions/figures/between59And62/between59And62}%\textC{\vspace{-2mm}}
 \end{center}
-The total area under the curve is~1. If we find the area of the two tails that are not shaded (from Guided Practice~\ref{more74Less69}, these areas are $0.3821$ and $0.1131$), then we can find the middle area:\textC{\vspace{-2mm}}
+The total area under the curve is~1. If we find the area of the two tails that are not shaded (from Guided Practice~\ref{more74Less69}, these areas are $0.3821$ and $0.1131$), then we can find the middle area:%\textC{\vspace{-2mm}}
 \begin{center}
-\includegraphics[width=0.6\textwidth]{ch_distributions/figures/subtracting2Areas/subtracting2Areas}\textC{\vspace{-2mm}}
+\includegraphics[width=0.6\textwidth]{ch_distributions/figures/subtracting2Areas/subtracting2Areas}%\textC{\vspace{-2mm}}
 \end{center}
 That is, the probability of being between 5'9'' and 6'2'' is 0.5048.
 \end{example}
@@ -354,8 +352,6 @@ There are two visual methods for checking the assumption of normality, which can
 \label{fcidMHeights}
 \end{figure}
 
-\textC{\newpage}
-
 \begin{example}{Three data sets of 40, 100, and 400 samples were simulated from a normal distribution, and the histograms and normal probability plots of the data sets are shown in Figure~\ref{normalExamples}. These will provide a benchmark for what to look for in plots of real data.} \label{normalExamplesExample}
 
 \begin{figure}
@@ -373,8 +369,6 @@ The data set with 400 observations has a histogram that greatly resembles the no
 
 Notice the histograms look more normal as the sample size increases, and the normal probability plot becomes straighter and more stable.
 \end{example}
-
-\textC{\pagebreak}
 
 \begin{example}{Are NBA player heights normally distributed? Consider all 435 NBA players from the 2008-9 season presented in Figure~\ref{nbaNormal}.\footnote{These data were collected from \oiRedirect{textbook-nba_com}{www.nba.com}.}}
 We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. We can compare these characteristics to the sample of 400 normally distributed observations in Example~\ref{normalExamplesExample} and see that they represent much stronger deviations from the normal model. NBA player heights do not appear to come from a normal distribution.
@@ -584,8 +578,6 @@ But there are three other scenarios: Brittany, Caroline, or Damian could have be
 \begin{exercise}
 Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability $(0.35)^1(0.65)^3$.~\footnote{$P(A=\text{\resp{shock}},\text{ }B=\text{\resp{refuse}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3$.}
 \end{exercise}
-
-\textC{\newpage}
 
 
 \subsection{The binomial distribution}
@@ -904,8 +896,6 @@ P(\text{the $k^{th}$ success on the $n^{th}$ trial}) = {n-1 \choose k-1} p^{k}(1
 where $p$ is the probability an individual trial is a success. All trials are assumed to be independent.}
 \end{termBox}
 
-\textC{\pagebreak}
-
 \begin{example}{Show using Equation~\eqref{negativeBinomialEquation} that the probability Brian kicks his fourth successful field goal on the sixth attempt is 0.164.}
 The probability of a single success is $p=0.8$, the number of successes is $k=4$, and the number of necessary attempts under this scenario is $n=6$.
 \begin{align*}
@@ -943,8 +933,6 @@ On 70\% of days, a hospital admits at least one heart attack patient. On 30\% of
 \index{distribution!negative binomial|)}
 \end{exercise}
 
-
-\textC{\pagebreak}
 
 
 \subsection{Poisson distribution}

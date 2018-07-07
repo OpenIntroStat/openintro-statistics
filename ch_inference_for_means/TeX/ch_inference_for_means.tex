@@ -242,8 +242,6 @@ Based on a sample of $n$ independent and nearly normal observations, a confidenc
 where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error as estimated by the sample.}
 \end{termBox}
 
-\textC{\pagebreak}
-
 \begin{exercise} \label{croakerWhiteFishPacificExerConditions}
 \index{data!white fish and mercury|(}
 The FDA's webpage provides some data on mercury content of fish.\footnote{\oiRedirect{textbook-fda_mercury_in_fish_2010}{www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?\footnote{There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.}
@@ -300,8 +298,6 @@ To help us remember to use the $t$-distribution, we use a $T$ to represent the t
 \CalculatorVideos{confidence intervals and hypothesis tests for a single mean}
 
 
-
-\textC{\newpage}
 
 
 
@@ -510,15 +506,15 @@ SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
 \label{seOfDifferenceInMeans}
 \end{eqnarray}
 when each sample mean can itself be modeled using a $t$-distribution and the samples are independent. To calculate the degrees of freedom, use statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.}
-\end{termBox}\textC{\vspace{-10mm}}
+\end{termBox}
 
 \begin{example}{Calculate a 95\% confidence interval for the effect of ESCs on the change in heart pumping capacity of sheep after they've suffered a heart attack.}
-We will use the sample difference and the standard error for that point estimate from our earlier calculations:\textC{\vspace{-3mm}}
+We will use the sample difference and the standard error for that point estimate from our earlier calculations:
 \begin{align*}
 & \bar{x}_{esc} - \bar{x}_{control} = 7.83 \\
 & SE = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
 \end{align*}
-Using $df = 8$, we can identify the appropriate $t^{\star}_{df} = t^{\star}_{8}$ for a 95\% confidence interval as 2.31. Finally, we can enter the values into the confidence interval formula:\textC{\vspace{-1mm}}
+Using $df = 8$, we can identify the appropriate $t^{\star}_{df} = t^{\star}_{8}$ for a 95\% confidence interval as 2.31. Finally, we can enter the values into the confidence interval formula:
 \begin{align*}
 \text{point estimate} \ \pm\ t^{\star}SE \quad\rightarrow\quad
 7.83 \ \pm\ 2.31\times 1.95 \quad\rightarrow\quad (3.32, 12.34)
@@ -596,8 +592,6 @@ SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
 \end{eqnarray*}}
 \end{exercise}
 
-\textC{\newpage}
-
 \begin{example}{Draw a picture to represent the p-value for the hypothesis test from Example~\ref{babySmokeHTForWeight}.} \label{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}
 To depict the p-value, we draw the distribution of the point estimate as though $H_0$ were true and shade areas representing at least as much evidence against $H_0$ as what was observed. Both tails are shaded because it is a two-sided test.
 \begin{center}
@@ -620,8 +614,6 @@ Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} 
 \begin{exercise} \label{babySmokeHTIDingHowToDetectDifferences}
 If we made a Type~2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect the difference?\footnote{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
 \end{exercise}
-
-\textC{\newpage}
 
 Public service announcement: while we have used this relatively small data set as an example, larger data sets show that women who smoke tend to have smaller newborns. In~fact, some in the tobacco industry actually had the audacity to tout that as a \emph{benefit} of~smoking:
 \begin{quotation}
@@ -718,7 +710,7 @@ We examine row $df=26$ in the $t$-table. Because this value is smaller than the 
 
 \subsection{Examining the standard error formula (special topic)}
 
-The formula for the standard error of the difference in two means is similar to the formula for other standard errors. Recall that the standard error of a single mean, $\bar{x}_1$, can be approximated by\textC{\vspace{-3mm}}
+The formula for the standard error of the difference in two means is similar to the formula for other standard errors. Recall that the standard error of a single mean, $\bar{x}_1$, can be approximated by
 \begin{align*}
 SE_{\bar{x}_1} = \frac{s_1}{\ \sqrt{n_1}\ }
 \end{align*}
@@ -807,8 +799,6 @@ SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}
 This may be an imperfect estimate of $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$, since the standard deviation estimate we used may not be correct for this group of patients. However, it is sufficient for our purposes.
 \end{example}
 
-\textC{\newpage}
-
 \begin{example}{What does the null distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ look like?}
 The degrees of freedom are greater than 30, so the distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ will be approximately normal. The standard deviation of this distribution (the standard error) would be about 1.70, and under the null hypothesis, its mean would be 0.
 \begin{center}
@@ -865,8 +855,6 @@ The power for the test is about 42\% when $\mu_{trmt} - \mu_{ctrl} = -3$ and eac
 
 In Example~\ref{PowerFor100AtNeg3}, we ignored the upper rejection region in the calculation, which was in the opposite direction of the hypothetical truth, i.e. -3. The reasoning? There wouldn't be any value in rejecting the null hypothesis and concluding there was an increase when in fact there was a decrease.
 
-
-\textC{\newpage}
 
 
 \subsection{Determining a proper sample size}
@@ -948,8 +936,6 @@ Power calculations for expensive or risky experiments are critical. However, wha
 
 
 
-\textC{\newpage}
-
 
 
 %__________________
@@ -985,8 +971,6 @@ The hypotheses may be written in the following form:
 \end{example}
 
 Strong evidence favoring the alternative hypothesis in ANOVA is described by unusually large differences among the group means. We will soon learn that assessing the variability of the group means relative to the variability among individual observations within each group is key to ANOVA's success.
-
-\textC{\newpage}
 
 \begin{example}{Examine Figure~\ref{toyANOVA}. Compare groups I, II, and III. Can you visually determine if the differences in the group centers is due to chance or not? Now compare groups IV, V, and VI. Do these differences appear to be due to chance?}
 
@@ -1052,8 +1036,6 @@ The null hypothesis under consideration is the following: $\mu_{\resp{OF}} = \mu
 Write the null and corresponding alternative hypotheses in plain language.\footnote{$H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups.}
 \end{exercise}
 
-\textC{\newpage}
-
 \begin{example}{The player positions have been divided into four groups: outfield (\resp{OF}), infield (\resp{IF}), designated hitter (\resp{DH}), and catcher (\resp{C}). What would be an appropriate point estimate of the on-base percentage by outfielders, $\mu_{\resp{OF}}$?}
 A good estimate of the on-base percentage by outfielders would be the sample average of \var{OBP} for just those players whose position is outfield: $\bar{x}_{OF} = 0.334$.
 \end{example}
@@ -1081,8 +1063,6 @@ Sample SD ($s_i$)	& 0.029 & 0.037 & 0.036 & 0.045 \\
 \caption{Side-by-side box plot of the on-base percentage for 327 players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern.}
 \label{mlbANOVABoxPlot}
 \end{figure}
-
-\textC{\newpage}
 
 \begin{example}{The largest difference between the sample means is between the designated hitter and the catcher positions. Consider again the original hypotheses:
 \begin{itemize}
@@ -1209,8 +1189,6 @@ There are three conditions we must check for an ANOVA analysis: all observations
 \index{significance level!multiple comparisons|(}
 
 When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample $t$-test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Table~\ref{anovaSummaryTableForOBPAgainstPosition}.
-
-\textC{\newpage}
 
 \begin{example}{Example~\vref{firstExampleForThreeStatisticsClassesAndANOVA} discussed three statistics lectures, all taught during the same semester. Table~\ref{summaryStatisticsForClassTestData} shows summary statistics for these three courses, and a side-by-side box plot of the data is shown in Figure~\ref{classDataSBSBoxPlot}. We would like to conduct an ANOVA for these data. Do you see any deviations from the three conditions for ANOVA?}
 In this case (like many others) it is difficult to check independence in a rigorous way. Instead, the best we can do is use common sense to consider reasons the assumption of independence may not hold. For instance, the independence assumption may not be reasonable if there is a star teaching assistant that only half of the students may access; such a scenario would divide a class into two subgroups. No such situations were evident for these particular data, and we believe that independence is acceptable.

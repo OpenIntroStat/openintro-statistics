@@ -93,8 +93,6 @@ Results of this model are shown in Table~\ref{singleVarModelsForPriceUsingCond} 
 Examine Figure~\ref{marioKartSingle}. Does the linear model seem reasonable?\footnote{Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.}
 \end{exercise}
 
-\textC{\pagebreak}
-
 \begin{example}{Interpret the coefficient for the game's condition in the model. Is this coefficient significantly different from 0?}
 Note that \var{cond\_\hspace{0.3mm}new} is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra \$10.90 for those games that are new versus those that are used. (See Section~\ref{categoricalPredictorsWithTwoLevels} for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Table~\ref{singleVarModelsForPriceUsingCond}, we can see that the p-value for \var{cond\_\hspace{0.3mm}new} is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.
 \end{example}
@@ -103,8 +101,6 @@ Note that \var{cond\_\hspace{0.3mm}new} is a two-level categorical variable that
 \label{includingAndAssessingManyVariablesInAModel}
 
 Sometimes there are underlying structures or relationships between predictor variables. For instance, new games sold on Ebay tend to come with more Wii wheels, which may have led to higher prices for those auctions. We would like to fit a model that includes all potentially important variables simultaneously. This would help us evaluate the relationship between a predictor variable and the outcome while controlling for the potential influence of other variables. This is the strategy used in \term{multiple regression}. While we remain cautious about making any causal interpretations using multiple regression, such models are a common first step in providing evidence of a causal connection.
-
-\textC{\pagebreak}
 
 We want to construct a model that accounts for not only the game condition, as in Section~\ref{twoSingleVariableModelsForMarioKartData}, but simultaneously accounts for three other variables: \var{stock\_\hspace{0.3mm}photo}, \var{duration}, and \var{wheels}.
 \begin{align}
@@ -156,8 +152,6 @@ A multiple regression model is a linear model with many predictors. In general, 
 \end{align*}
 when there are $k$ predictors. We often estimate the $\beta_i$ parameters using a computer.\vspace{1mm}}
 \end{termBox}
-
-\textC{\pagebreak}
 
 \begin{exercise} \label{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}
 Write out the model in Equation~\eqref{eqForMultipleRegrOfTotalPrForAllPredictors} using the point estimates from Table~\ref{outputForMultipleRegrOutputForAllPredictors}. How many predictors are there in this model?\footnote{$\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.}
@@ -223,8 +217,6 @@ Adjusted $R^2$ could have been used in Chapter~\ref{linRegrForTwoVar}. However, 
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|)}
 
 
-
-\textC{\newpage}
 
 
 
@@ -339,8 +331,6 @@ None of these models lead to an improvement in adjusted $R^2$, so we do not elim
 \widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\_\hspace{0.3mm}new}} + 1.12 \times \text{\var{stock\_\hspace{0.3mm}photo}} + 7.30 \times \text{\var{wheels}}
 \end{align*}
 \end{example}
-
-\textC{\newpage}
 
 The \term{forward selection} strategy is the reverse of the backward elimination technique. Instead of eliminating variables one-at-a-time, we add variables one-at-a-time until we cannot find any variables that improve the model (as measured by adjusted $R^2$).
 
@@ -583,8 +573,6 @@ The logit transformation is shown in Figure~\ref{logitTransformationFigureHoriz}
 \end{align*}
 In our spam example, there are 10 predictor variables, so $k = 10$. This model isn't very intuitive, but it still has some resemblance to multiple regression, and we can fit this model using software. In fact, once we look at results from software, it will start to feel like we're back in multiple regression, even if the interpretation of the coefficients is more complex.
 
-\textC{\newpage}
-
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{ch_regr_mult_and_log/figures/logitTransformationFigureHoriz/logitTransformationFigureHoriz}
@@ -671,8 +659,6 @@ Just like multiple regression, we could trim some variables from the model using
 % library(openintro); ?email # run example
 % g <- glm(spam ~ to_multiple + winner + format + re_subj + attach + password, data=e, family=binomial); xtable(g)
 
-\textC{\pagebreak}
-
 \begin{exercise}
 Examine the summary of the reduced model in Table~\ref{emailLogisticReducedModel}, and in particular, examine the \var{to\_\hspace{0.3mm}multiple} row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.\footnote{The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.}
 \end{exercise}
@@ -750,8 +736,6 @@ e_i = Y_i - \hat{p}_i
 \end{align*}
 We could plot these residuals against a variety of variables or in their order of collection, as we did with the residuals in multiple regression. However, since the model will need to be revised to effectively classify spam and you have already seen similar residual plots in Section~\ref{multipleRegressionModelAssumptions}, we won't investigate the residuals here.
 
-
-\textC{\pagebreak}
 
 
 \subsection{Improving the set of variables for a spam filter}
