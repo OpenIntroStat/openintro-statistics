@@ -110,15 +110,17 @@
 % 5 Section Coloring
 % 5.1 Chapter
 \titleformat{\chapter}[display]
-{\color{oiB}\normalfont\huge\bfseries\raggedright}{\chaptertitlename\
+{\color{oiB}\normalfont\Huge\bfseries\raggedright}{\chaptertitlename\
 \thechapter}{20pt}{\Huge}
 % 5.2 Section
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
 \titleformat{\section}
-{\color{oiB}\normalfont\Large\bfseries}
+{\color{oiB}\normalfont\huge\bfseries}
 {\color{oiB}\thesection}{1em}{}
 % 5.3 Subsection
 \titleformat{\subsection}
-{\color{oiB}\normalfont\large\bfseries}
+{\color{oiB}\normalfont\large\bfseries\Large}
 {\color{oiB}\thesubsection}{1em}{}
 
 
@@ -131,6 +133,7 @@
 \newcommand{\note}[1]{\Comment{#1}}
 % 6.2 Special Symbols
 \newcommand{\degree}{\ensuremath{^\circ}}
+\newcommand{\R}{\textbf{\textsf{R}}}
 % 6.3 Text Commands (Terms, Data, Variable, Response)
 \newcommand{\term}[1]{\textbf{#1}\index{#1|textbf}}
 \newcommand{\termsub}[2]{\textbf{#1}\index{#2|textbf}}
@@ -144,6 +147,7 @@
 \newenvironment{calctext}[1]{{\color{oiB}\texttt{#1}}}{}
 \newenvironment{calctextmath}[1]{{\color{oiB}\mathtt{#1}}}{}
 \newenvironment{calcbutton}[1]{{\color{oiB}\texttt{#1}}}{}
+\newcommand{\codeindent}{\hspace{5mm}}
 % 6.4 Highlighting
 \newenvironment{highlight}{\textbf}{}
 \newcommand{\highlightO}[1]{\textbf{\color{oiB}#1}}
