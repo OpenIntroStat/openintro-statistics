@@ -32,7 +32,7 @@ plot(xR, yR,
      ylab = '',
      axes = FALSE)
 abline(v = m, lty = 2, col = COL[5,2])
-axis(1, at = m, expression(mu*' = 3.90'))
+axis(1, at = m, "p = 0.56")
 for(i in 1:k){
   ci <- means[i] + 2 * c(-1, 1) * SE[i]
   if(abs(means[i] - m) > 1.96 * SE[i]){
