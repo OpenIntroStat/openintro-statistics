@@ -2,6 +2,29 @@
 \chapter{Inference for categorical data}
 \label{inferenceForCategoricalData}
 
+Statistical inference is concerned primarily with understanding the
+accuracy of parameter estimates. While the equations and details change
+depending on the setting, the foundations for inference are the same
+throughout all of statistics. We introduce these common themes in
+Sections~\ref{pointEstimates}-\ref{hypothesisTesting} by discussing
+inference about the population proportion, $p$.
+In Sections~\ref{}-\ref{}, we'll expand
+to the application of comparing two proportions against each other.
+Finally, we'll complete this chapter by analyzing categorical data
+where there are many levels.
+
+Each of the ideas in this chapter are applicable to a broad set of
+applications and new contexts. We'll expand on these ideas in later
+chapters.
+
+
+%__________________
+\section[Point estimates and sampling variability]{Point
+    estimates and sampling variability} %\sectionvideohref{youtube-DNIauUrRIEM&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-1}}
+\label{pointEstimates}
+
+\index{data!solar survey|(}
+
 \newcommand{\pewsolarpollsize}{1000}
 \newcommand{\pewsolarpollprop}{0.887}
 \newcommand{\pewsolarpollpropcomplement}{0.113}
@@ -30,22 +53,6 @@ who support expanding solar energy is \emph{exactly}
 \pewsolarpollpercent{}\%, but it's probably something close to
 \pewsolarpollpercent{}\%.
 
-Statistical inference is concerned primarily with understanding the
-accuracy of parameter estimates. While the equations and details change
-depending on the setting, the foundations for inference are the same
-throughout all of statistics. We introduce these common themes in
-Sections~\ref{pointEstimates}-\ref{} by discussing inference about the
-population proportion, $p$, and we'll expand on these ideas into other
-context in later chapters.
-
-
-%__________________
-\section[Point estimates and sampling variability]{Point
-    estimates and sampling variability} %\sectionvideohref{youtube-DNIauUrRIEM&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-1}}
-\label{pointEstimates}
-
-In 2018, Pew Research poll of 1,000 American adults found that
-\pewsolarpollpercent{}\% support expanding the use of solar energy.
 In this section, we discuss what a point estimate like
 \pewsolarpollpercent{}\% represents
 and the uncertainty associated with such an estimate. We'll also
@@ -68,7 +75,6 @@ be using some new notation and terminology:
 \end{itemize}
 
 \subsection{Point Estimates}
-\label{pointEstimates}
 
 \index{point estimate|(}
 
@@ -83,6 +89,9 @@ and it's quite possible for the \term{true proportion}
 (a.k.a. the population proportion) to be a little lower
 or a little higher. The difference between a point estimate
 and the parameter is called the estimate's \term{error}.
+
+\Comment{Should we aggressively cut out the usage of ``true''
+  in the way it is used above?}
 
 The error varies from one sample to the next: maybe
 in one sample it is 1\% too low while in another
@@ -411,12 +420,6 @@ situations.
 
 \index{confidence interval|(}
 
-\Comment{There is some flipping back and forth between the general
-situation of point estimate / parameter and sample / population
-proportion. Revise this section so that this is not so jumpy, likely
-reducing the emphasis on the general situation and saving that for
-a later section.}
-
 The sample proportion $\hat{p}$ provides a single plausible value
 for the population proportion $p$. However, the sample proportion
 isn't perfect and will have some \emph{standard error}
@@ -674,8 +677,94 @@ In a confidence interval, $z^{\star}\times SE$ is called the
   $\hat{p}\ \pm\ 1.65\times SE_{\hat{p}} \to (0.8705, 0.9035)$.
   (We had already verified conditions for normality and the standard error.)
   That is, we are 90\% confident that 87.1\% to 90.4\% of American
-  adults support the expansion of solar power.
+  adults support the expansion of solar power in 2018.
 \end{example}
+
+
+
+\subsection{Two case studies}
+
+\index{data!Ebola poll|(}
+
+\newcommand{\wsjebolapollsize}{1042}
+\newcommand{\wsjebolapollsizecomma}{1,042}
+\newcommand{\wsjebolapollprop}{0.82}
+\newcommand{\wsjebolapollpropcomplement}{0.18}
+\newcommand{\wsjebolapollpercent}{82}
+\newcommand{\wsjebolapollpercentcomplement}{18}
+\newcommand{\wsjebolapollcount}{854}
+\newcommand{\wsjebolapollcountcomplement}{188}
+\newcommand{\wsjebolapollse}{0.012}
+
+
+In New York City on October 23rd, 2014, a doctor who had recently been
+treating Ebola patients in Guinea went to the hospital with a slight fever
+and was subsequently diagnosed with Ebola. Soon thereafter,
+an NBC~4 New York/The Wall Street Journal/Marist Poll found that
+\wsjebolapollpercent{}\% of New Yorkers favored a ``mandatory 21-day
+quarantine for anyone who has come in contact with an Ebola
+patient''.\footnote{\oiRedirect{textbook-maristpoll_ebola_201410}{Poll
+ID NY141026 on maristpoll.marist.edu}.} This poll included responses
+of \wsjebolapollsizecomma{} New York adults between October 26th and~28th,
+2014. We may want a confidence interval for the proportion of New York
+adults who favored a mandatory quarantine of anyone who had been in
+contact with an Ebola patient.
+
+\begin{example}{What is the point estimate in this case,
+    and is it reasonable to
+    use the normal distribution to model that point estimate?}
+  The point estimate, based on a sample of size $n = \wsjebolapollsize{}$,
+  is $\hat{p} = \wsjebolapollprop{}$. To check whether $\hat{p}$ can be reasonably
+  modeled using the normal distribution, we check independence
+  (the poll is based on a simple random sample) and the
+  success-failure condition
+  ($\wsjebolapollsize{} \times \hat{p} \approx \wsjebolapollcount{}$
+  and $\wsjebolapollsize{} \times (1 - \hat{p})
+      \approx \wsjebolapollcountcomplement{}$,
+  both easily greater than~10). With the conditions met, we are assured
+  that the sampling distribution of $\hat{p}$ can be modeled using
+  a normal distribution.
+\end{example}
+
+\begin{example}{Estimate the standard error of
+    $\hat{p} = \wsjebolapollprop{}$ from the Ebola survey.}
+  We'll use the substitution approximation of
+  $p \approx \hat{p} = \wsjebolapollprop{}$ to compute the standard error:
+  \footnote{$SE = \sqrt{\frac{p(1-p)}{n}}
+    \approx \sqrt{\frac{\wsjebolapollprop{}
+        (1 - \wsjebolapollprop{})}{\wsjebolapollsize{}}}
+    = \wsjebolapollse{}$.}
+\end{example}
+
+\begin{example}{Construct a 95\% confidence interval for $p$,
+    the proportion of New York adults who supported a quarantine
+    for anyone who has come into contact with an Ebola patient.}
+  Using the standard error $SE = 0.012$ from
+  Example~\ref{seOfPropOfAmericansJobApprovalOfSupremeCourt},
+  the point estimate \wsjebolapollprop{}, and $z^{\star} = 1.96$
+  for a 95\% confidence interval, the confidence interval is
+  \begin{eqnarray*}
+  \text{point estimate} \ \pm\ z^{\star}SE
+    \quad\to\quad \wsjebolapollprop{} \ \pm\ 1.96\times \wsjebolapollse{}
+    \quad\to\quad (0.796, 0.844)
+  \end{eqnarray*}
+  We are 95\% confident that the proportion of New York adults
+  in October 2014 who supported a quarantine for anyone who had come
+  into contact with an Ebola patient was between 0.796 and 0.844.
+\index{data!Ebola poll|)}
+\end{example}
+
+\begin{exercise}
+Do you think the confidence interval is still valid for the opinions
+of New Yorkers today?\footnote{No. The poll was taken at a
+time where there was a huge public safety concern. Now that people
+have had some time to step back, they may have changed their opinions.
+We would need to run a new poll if we wanted to get an estimate of the
+current proportion of New York adults who would support such a
+quarantine period.}
+\end{exercise}
+
+\index{data!wind turbine survey|(}
 
 \newcommand{\pewwindpollsize}{\pewsolarpollsize}
 \newcommand{\pewwindpollprop}{0.848}
@@ -686,20 +775,50 @@ In a confidence interval, $z^{\star}\times SE$ is called the
 \newcommand{\pewwindpollcountcomplement}{152}
 \newcommand{\pewwindpollse}{0.0114}
 
+In the same survey asking about Americans' support of expanding
+solar energy usage, Pew Research asked the same question about
+wind turbines and found support from \pewwindpollpercent{}\%
+of respondents.
+
 \begin{exercise}\label{pew_wind_turbine_support_normal_dist_gp}
-In the same survey asking about Americans' support of expanding solar energy usage, Pew Research asked the same question about wind turbines and found support from \pewwindpollpercent{}\% of respondents. Is the normal approximation reasonable in this case?\footnote{We check independence, which is okay since this survey was a simple random sample, and also the success-failure condition ($\pewwindpollsize{} \times \pewwindpollprop{} = \pewwindpollcount{}$ and $\pewwindpollsize{} \times \pewwindpollpropcomplement{} = \pewwindpollcountcomplement$ are both at least 10). Since both are satisfied, $\hat{p} = \pewwindpollprop{}$ can be modeled using the normal distribution.}
+Is the normal approximation reasonable in this case?\footnote{We
+check independence, which is okay since this survey was a simple
+random sample, and also the success-failure condition
+($\pewwindpollsize{} \times \pewwindpollprop{} = \pewwindpollcount{}$
+and $\pewwindpollsize{} \times \pewwindpollpropcomplement{}
+    = \pewwindpollcountcomplement$ are both at least 10).
+Since both are satisfied, $\hat{p} = \pewwindpollprop{}$ can be
+modeled using the normal distribution.}
 \end{exercise}
 
 \begin{exercise}
-Using the Pew Research survey where $n = \pewwindpollsize{}$ and $\hat{p} = \pewwindpollprop{}$, create a 99\% confidence interval for the level of American support for expanding the use of wind turbines for power generation?\footnote{We earlier confirmed in Guided Practice~\ref{pew_wind_turbine_support_normal_dist_gp} that $\hat{p}$ closely follows a normal distribution, so we can use the confidence interval formula:
+Using the Pew Research survey where $n = \pewwindpollsize{}$ and
+$\hat{p} = \pewwindpollprop{}$, create a 99\% confidence interval
+for the level of American support for expanding the use of wind
+turbines for power
+generation?\footnote{Guided
+Practice~\ref{pew_wind_turbine_support_normal_dist_gp}
+confirmed that that $\hat{p}$ closely follows a normal distribution,
+so we can use the confidence interval formula:
 \begin{align*}
 \text{point estimate} \pm z^{\star} SE
 \end{align*}
-In this case, the point estimate is $\hat{p} = \pewwindpollprop{}$. For a 99\% confidence interval, $z^{\star} = 2.58$. Computing the standard error: $SE_{\hat{p}} = \sqrt{\frac{\pewwindpollprop{}(1 - \pewwindpollprop{})}{\pewwindpollsize{}}} = \pewwindpollse{}$. Finally, we compute the interval as $\pewwindpollprop{} \pm 2.58 \times \pewwindpollse{} \to (0.8186, 0.8774)$. It is also \emph{always} important to provide an interpretation for the interval:
-we are 99\% confident the proportion of
+In this case, the point estimate is $\hat{p} = \pewwindpollprop{}$.
+For a 99\% confidence interval, $z^{\star} = 2.58$. Computing the
+standard error:
+$SE_{\hat{p}}
+  = \sqrt{\frac{\pewwindpollprop{}(1 - \pewwindpollprop{})}
+      {\pewwindpollsize{}}}
+  = \pewwindpollse{}$.
+Finally, we compute the interval as
+$\pewwindpollprop{} \pm 2.58 \times \pewwindpollse{} \to (0.8186, 0.8774)$.
+It is also \emph{always} important to provide an interpretation for
+the interval: we are 99\% confident the proportion of
 Americans adults that support expanding the use of wind
-turbines is between 81.9\% and 87.7\%.}
+turbines is between 81.9\% and 87.7\% in 2018.}
 \end{exercise}
+
+
 
 
 \subsection{Interpreting confidence intervals}
@@ -707,15 +826,19 @@ turbines is between 81.9\% and 87.7\%.}
 
 \index{confidence interval!interpretation|(}
 
-We described the solar and wind turbine confidence
+In each of the examples, we described the confidence
 intervals by putting them into the context of the data and also
 using somewhat formal language:
 \begin{description}
   \item[Solar.] We are 90\% confident that 87.1\% to 90.4\% of
-      American adults support the expansion of solar power.
+      American adults support the expansion of solar power in 2018.
+  \item[Ebola.] We are 95\% confident that the proportion
+      of New York adults in October 2014 who supported a quarantine
+      for anyone who had come into contact with an Ebola patient was
+      between 0.796 and 0.844.
   \item[Wind Turbine.] We are 99\% confident the proportion of
       Americans adults that support expanding the use of wind
-      turbines is between 81.9\% and 87.7\%.
+      turbines is between 81.9\% and 87.7\% in 2018.
 \end{description}
 First, notice that the statements are always about the population
 parameter, which is American adults in this case, \emph{not} only
@@ -736,12 +859,245 @@ observations, a proportion of the observations, or about capturing
 point estimates. Confidence intervals only attempt to capture
 population parameters.
 
+\index{data!wind turbine survey|)}
+\index{data!solar survey|)}
 \index{confidence interval!interpretation|)}
 \index{confidence interval|)}
 
 
 
 
+\section{Hypothesis testing for the 1-proportion context}
+\label{hypothesis_testing_one_prop}
+
+
+
+
+
+
+
+%__________________
+\subsection{Hypothesis testing for a proportion}
+\label{hypothesisTesting}
+%\section[Hypothesis testing]{Hypothesis testing \sectionvideohref{youtube-NVbPE1_Cbx8&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-3}}
+
+\index{hypothesis testing|(}
+
+Are students lifting weights or performing other strength training exercises more or less often than they have in the past? We'll compare data from students from the 2011 YRBSS survey to our sample of 100 students from the 2013 YRBSS survey.
+
+We'll also consider sleep behavior. A recent study found that college students average about 7~hours of sleep per night.\footnote{\oiRedirect{textbook-theloquitur_1161}{\emph{Poll shows college students get least amount of sleep}. theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
+
+\subsection{Hypothesis testing framework}
+
+Students from the 2011 YRBSS lifted weights (or performed other strength training exercises) 3.09~days per week on average. We want to determine if the \data{yrbss\_samp} data set provides strong evidence that YRBSS students selected in 2013 are lifting more or less than the 2011 YRBSS students, versus the other possibility that there has been no change.\footnote{While we could answer this question by examining the entire YRBSS data set from 2013 (\data{yrbss}), we only consider the sample data (\data{yrbss\_samp}), which is more realistic since we rarely have access to population data.} We simplify these three options into two competing \termsub{hypotheses}{hypothesis}:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] The average days per week that YRBSS students lifted weights was the same for 2011 and~2013.
+\item[$H_A$:] The average days per week that YRBSS students lifted weights was \emph{different} for 2013 than~in~2011.
+\end{itemize}
+We call $H_0$\marginpar[\raggedright\vspace{6mm}
+
+$H_0$\\\footnotesize null hypothesis\vspace{3mm}\\\normalsize $H_A$\\\footnotesize alternative\\ hypothesis]{\raggedright\vspace{6mm}
+
+$H_0$\\\footnotesize null hypothesis\vspace{3mm}\\\normalsize $H_A$\\\footnotesize alternative\\ hypothesis} the null hypothesis and $H_A$ the alternative hypothesis.
+
+\begin{termBox}{\tBoxTitle{Null and alternative hypotheses}
+{\small The \term{null hypothesis ($H_0$)} often represents either a skeptical perspective or a claim to be tested. The \term{alternative hypothesis ($H_A$)} represents an alternative claim under consideration and is often represented by a range of possible parameter values.}}
+\end{termBox}
+
+The null hypothesis often represents a skeptical position or a perspective of no difference. The alternative hypothesis often represents a new perspective, such as the possibility that there has been a change. 
+
+\begin{tipBox}{\tipBoxTitle{Hypothesis testing framework}
+The skeptic will not reject the null hypothesis ($H_0$), unless the evidence in favor of the alternative hypothesis ($H_A$) is so strong that she rejects $H_0$ in favor of $H_A$.}
+\end{tipBox}
+
+The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if there is sufficient evidence that supports the claim, we set aside our skepticism and reject the null hypothesis in favor of the alternative. The hallmarks of hypothesis testing are also found in the US court system. 
+
+\begin{exercise} \label{hypTestCourtExample}
+A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?\footnote{The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt; in such a case, the jury rejects innocence (the null hypothesis) and concludes the defendant is guilty (alternative hypothesis).}
+\end{exercise}
+
+Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. Even if the jurors leave unconvinced of guilt beyond a reasonable doubt, this does not mean they believe the defendant is innocent. This is also the case with hypothesis testing: \emph{even if we fail to reject the null hypothesis, we typically do not accept the null hypothesis as true}. Failing to find strong evidence for the alternative hypothesis is not equivalent to accepting the null hypothesis.
+
+In the example with the YRBSS, the null hypothesis represents no difference in the average days per week of weight lifting in 2011 and 2013. The alternative hypothesis represents something new or more interesting: there was a difference, either an increase or a decrease. These hypotheses can be described in mathematical notation using $\mu_{13}$ as the average days of weight lifting for 2013:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] $\mu_{13} = 3.09$
+\item[$H_A$:] $\mu_{13} \neq 3.09$
+\end{itemize}
+where 3.09 is the average number of days per week that students from the 2011 YRBSS lifted weights. Using the mathematical notation, the hypotheses can more easily be evaluated using statistical tools. We call 3.09 the \term{null value} since it represents the value of the parameter if the null hypothesis is true.
+
+
+\subsection{Testing hypotheses using confidence intervals}
+\label{utilizingOurCI}
+
+We will use the \data{yrbss\_samp} data set to evaluate the hypothesis test, and we start by comparing the 2013 point estimate of the number of days per week that students lifted weights: $\bar{x}_{13} = 2.78$~days. This estimate suggests that students from the 2013 YRBSS were lifting weights less than students in the 2011 YRBSS. However, to evaluate whether this provides strong evidence that there has been a change, we must consider the uncertainty associated with $\bar{x}_{13}$.
+
+We learned in Section~\ref{variabilityInEstimates} that there is fluctuation from one sample to another, and it is unlikely that the sample mean will be exactly equal to the parameter; we should not expect $\bar{x}_{13}$ to exactly equal $\mu_{13}$. Given that $\bar{x}_{13} = 2.78$, it might still be possible that the average of all students from the 2013 YRBSS survey is the same as the average from the 2011 YRBSS survey. The difference between $\bar{x}_{13}$ and 3.09 could be due to \emph{sampling variation}, i.e. the variability associated with the point estimate when we take a random sample.
+
+In Section~\ref{confidenceIntervals}, confidence intervals were introduced as a way to find a range of plausible values for the population mean.
+
+\begin{example}{In the sample of 100 students from the 2013 YRBSS survey, the average number of days per week that students lifted weights was 2.78~days with a standard deviation of 2.56 days (coincidentally the same as days active). Compute a 95\% confidence interval for the average for all students from the 2013 YRBSS survey. You can assume the conditions for the normal model are met.}
+The general formula for the confidence interval based on the normal distribution is
+\begin{align*}
+\bar{x} \pm z^{\star} SE_{\bar{x}}
+\end{align*}
+We are given $\bar{x}_{13} = 2.78$, we use $z^{\star} = 1.96$ for a 95\% confidence level, and we can compute the standard error using the standard deviation divided by the square root of the sample size:
+\begin{align*}
+SE_{\bar{x}} = \frac{s_{13}}{\sqrt{n}} = \frac{2.56}{\sqrt{100}} = 0.256
+\end{align*}
+Entering the sample mean, $z^{\star}$, and the standard error into the confidence interval formula results in (2.27, 3.29). We are 95\% confident that the average number of days per week that all students from the 2013 YRBSS lifted weights was between 2.27~and 3.29~days.
+\end{example}
+
+Because the average of all students from the 2011 YRBSS survey is 3.09, which falls within the range of plausible values from the confidence interval, we cannot say the null hypothesis is implausible. That is, we fail to reject the null hypothesis, $H_0$.
+
+\begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
+In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
+\end{tipBox}
+
+\begin{exercise} \label{htForHousingExpenseForCommunityCollege650}
+Colleges frequently provide estimates of student expenses such as housing. A consultant hired by a community college claimed that the average student housing expense was \$650 per month. What are the null and alternative hypotheses to test whether this claim is accurate?\footnote{$H_0$: The average cost is \$650 per month, $\mu = \$650$.
+
+\hspace{3.4mm}$H_A$: The average cost is different than \$650 per month, $\mu \neq \$650$.}
+\end{exercise}
+
+\begin{exercise} \label{normalDistCondForHousingExpenseForCommunityCollege650}
+The community college decides to collect data to evaluate the \$650 per month claim. They take a random sample of 175 students at their school and obtain the data represented in Figure~\ref{communityCollegeClaimedHousingExpenseDistribution}. Can we apply the normal model to the sample mean?\footnote{Applying the normal model requires that certain conditions are met. Because the data are a simple random sample and the sample (presumably) represents no more than 10\% of all students at the college, the observations are independent. The sample size is also sufficiently large ($n = 175$) and the data exhibit strong skew. While the data are strongly skewed, the sample is sufficiently large that this is acceptable, and the normal model may be applied to the sample mean.}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{ch_inference_for_props/figures/communityCollegeClaimedHousingExpenseDistribution/communityCollegeClaimedHousingExpenseDistribution}
+\caption{Sample distribution of student housing expense. These data are strongly skewed\index{skew!example: strong}, which we can see by the long right tail with a few notable outliers.}
+\label{communityCollegeClaimedHousingExpenseDistribution}
+\end{figure}
+\end{exercise}
+
+\begin{tipBox}{\tipBoxTitle[]{Evaluating the skew condition is challenging}
+Don't despair if checking the skew condition is difficult or confusing. You aren't alone -- nearly all students get frustrated when checking skew. Properly assessing skew takes practice, and you won't be a pro, even at the end of this book. \\[2mm]
+But this doesn't mean you should give up. Checking skew and the other conditions is extremely important for a responsible data analysis. However, rest assured that evaluating skew isn't something you need to be a master of by the end of the book, though by that time you should be able to properly assess clear cut cases.}
+\end{tipBox}
+
+\textC{\newpage}
+
+\begin{example}{The sample mean for student housing is \$616.91 and the sample standard deviation is \$128.65. Construct a 95\% confidence interval for the population mean and evaluate the hypotheses of Guided Practice~\ref{htForHousingExpenseForCommunityCollege650}.}
+The standard error associated with the mean may be estimated using the sample standard deviation divided by the square root of the sample size. Recall that $n = 175$ students were sampled.
+\begin{align*}
+SE = \frac{s}{\sqrt{n}} = \frac{128.65}{\sqrt{175}} = 9.73
+\end{align*}
+You showed in Guided Practice~\ref{normalDistCondForHousingExpenseForCommunityCollege650} that the normal model may be applied to the sample mean. This ensures a 95\% confidence interval may be accurately constructed:
+$$\bar{x}\ \pm\ z^{\star} SE \quad\to\quad 616.91\ \pm\ 1.96 \times 9.73 \quad \to \quad (597.84, 635.98) $$
+Because the null value \$650 is not in the confidence interval, a true mean of \$650 is implausible and we reject the null hypothesis. The data provide statistically significant evidence that the actual average housing expense is less than \$650 per month.
+\end{example}
+
+
+\subsection{Decision errors}
+
+\index{hypothesis testing!decision errors|(}
+
+Hypothesis tests are not flawless, since we can make a wrong decision in statistical hypothesis tests based on the data. For example, in the court system innocent people are sometimes wrongly convicted and the guilty sometimes walk free. However, the difference is that in statistical hypothesis tests, we have the tools necessary to quantify how often we make such errors.
+
+% Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, we can make a wrong decision in statistical hypothesis tests. However, the difference is that we have the tools necessary to quantify how often we make such errors.
+
+There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios, which are summarized in Table~\ref{fourHTScenarios}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l l c c}
+& & \multicolumn{2}{c}{\textbf{Test conclusion}} \\
+  \cline{3-4}
+\vspace{-3.7mm} \\
+& & do not reject $H_0$ &  reject $H_0$ in favor of $H_A$ \\
+  \cline{2-4}
+\vspace{-3.7mm} \\
+& $H_0$ true & okay &  Type~1 Error \\
+\raisebox{1.5ex}{\textbf{Truth}} & $H_A$ true & Type~2 Error & okay \\
+  \cline{2-4}
+\end{tabular}
+\caption{Four different scenarios for hypothesis tests.}
+\label{fourHTScenarios}
+\end{table}
+
+A \term{Type~1 Error} is rejecting the null hypothesis when $H_0$ is actually true. A \term{Type~2 Error} is failing to reject the null hypothesis when the alternative is actually true.
+
+\begin{exercise} \label{whatAreTheErrorTypesInUSCourts}
+In a US court, the defendant is either innocent ($H_0$) or  guilty ($H_A$). What does a Type~1 Error represent in this context? What does a Type~2 Error represent? Table~\ref{fourHTScenarios} may be useful.\footnote{If the court makes a Type~1 Error, this means the defendant is innocent ($H_0$ true) but wrongly convicted. A Type~2 Error means the court failed to reject $H_0$ (i.e. failed to convict the person) when she was in fact guilty ($H_A$ true).}
+\end{exercise}
+
+\begin{exercise} \label{howToReduceType1ErrorsInUSCourts}
+How could we reduce the Type~1 Error rate in US courts? What influence would this have on the Type~2 Error rate?\footnote{To lower the Type~1 Error rate, we might raise our standard for conviction from ``beyond a reasonable doubt'' to ``beyond a conceivable doubt'' so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type~2 Errors.}
+\end{exercise}
+
+\begin{exercise} \label{howToReduceType2ErrorsInUSCourts}
+How could we reduce the Type~2 Error rate in US courts? What influence would this have on the Type~1 Error rate?\footnote{To lower the Type~2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from ``beyond a reasonable doubt'' to ``beyond a little doubt''. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type~1 Error rate.}
+\end{exercise}
+
+\index{hypothesis testing!decision errors|)}
+
+Exercises~\ref{whatAreTheErrorTypesInUSCourts}-\ref{howToReduceType2ErrorsInUSCourts} provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.
+
+Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless we have strong evidence. But what precisely does \emph{strong evidence} mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5\% of the time. This corresponds to a \term{significance level}\index{hypothesis testing!significance level} of 0.05. We often write the significance level using $\alpha$\marginpar[\raggedright\vspace{-4mm}
+
+$\alpha$\\\footnotesize significance\\level of a\\hypothesis test]{\raggedright\vspace{-4mm}
+
+$\alpha$\\\footnotesize significance\\level of a\\hypothesis test} (the Greek letter \emph{alpha}\index{Greek!alpha@alpha ($\alpha$)}): $\alpha = 0.05$. We discuss the appropriateness of different significance levels in Section~\ref{significanceLevel}.
+
+If we use a 95\% confidence interval to evaluate a hypothesis test where the null hypothesis is true, we will make an error whenever the point estimate is at least 1.96 standard errors away from the population parameter. This happens about 5\% of the time (2.5\% in each tail). Similarly, using a 99\% confidence interval to evaluate a hypothesis is equivalent to a significance level of $\alpha = 0.01$.
+
+A confidence interval is, in one sense, simplistic in the world of hypothesis tests. Consider the following two scenarios:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The null value (the parameter value under the null hypothesis) is in the 95\% confidence interval but just barely, so we would not reject $H_0$. However, we might like to somehow say, quantitatively, that it was a close decision.
+\item The null value is very far outside of the interval, so we reject $H_0$. However, we want to communicate that, not only did we reject the null hypothesis, but it wasn't even close. Such a case is depicted in Figure~\ref{whyWeWantPValue}.
+\end{itemize}
+In Section~\ref{pValue}, we introduce a tool called the \emph{p-value} that will be helpful in these cases. The p-value method also extends to hypothesis tests where confidence intervals cannot be easily constructed or applied.
+
+\begin{figure}[hht]
+\centering
+\includegraphics[width=0.75\textwidth]{ch_inference_for_props/figures/whyWeWantPValue/whyWeWantPValue}
+\caption{It would be helpful to quantify the strength of the evidence against the null hypothesis. In this case, the evidence is extremely strong.}
+\label{whyWeWantPValue}
+\end{figure}
+
+
+
+\subsection{Hypothesis testing for a proportion}
+
+To apply the normal distribution framework in the context of a hypothesis test for a proportion, the independence and success-failure conditions must be satisfied. In a hypothesis test, the success-failure condition is checked using the null proportion: we verify $np_0$ and $n(1-p_0)$ are at least 10, where $p_0$ is the null value.
+
+\index{data!nuclear arms reduction|(}
+
+\begin{exercise}
+Do a majority of American support nuclear arms reduction? Set up a one-sided hypothesis test to evaluate this question.\footnote{$H_0: p = 0.50$. $H_A: p > 0.50$.}
+\end{exercise}
+
+\begin{example}{A simple random sample of 1,028 US adults in March 2013 found that 56\% support nuclear arms reduction.\footnote{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}} Does this provide convincing evidence that a majority of Americans supported nuclear arms reduction at the 5\% significance level?} \label{NuclearArmsInferenceExample}
+The poll was of a simple random sample that includes fewer than 10\% of US adults, meaning the observations are independent. In a one-proportion hypothesis test, the success-failure condition is checked using the null proportion, which is $p_0 = 0.5$ in this context: $n p_0 = n (1 - p_0) = 1028 \times 0.5 = 514 > 10$. With these conditions verified, the normal model may be applied to $\hat{p}$.
+
+Next the standard error can be computed. The null value $p_0$ is used again here, because this is a hypothesis test for a single proportion.
+\begin{align*}
+SE = \sqrt{\frac{p_0 (1 - p_0)}{n}} = \sqrt{\frac{0.5 (1 - 0.5)}{1028}} = 0.016
+\end{align*}
+A picture of the normal model is shown in Figure~\ref{nuclearArmsReductionPValue} with the p-value represented by the shaded region. Based on the normal model, the test statistic can be computed as the Z-score of the point estimate:
+\begin{align*}
+Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.56 - 0.50}{0.016} = 3.75
+\end{align*}
+The upper tail area, representing the p-value, is about 0.0001. Because the p-value is smaller than 0.05, we reject $H_0$. The poll provides convincing evidence that a majority of Americans supported nuclear arms reduction efforts in March 2013.
+\end{example}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{ch_inference_for_props/figures/nuclearArmsReduction/nuclearArmsReductionPValue}
+\caption{Sampling distribution for Example~\ref{NuclearArmsInferenceExample}.}
+\label{nuclearArmsReductionPValue}
+\end{figure}
+
+\begin{termBox}{\tBoxTitle{Hypothesis test for a proportion}
+Set up hypotheses and verify the conditions using the null value, $p_0$, to ensure $\hat{p}$ is nearly normal under $H_0$. If the conditions hold, construct the standard error, again using $p_0$, and show the p-value in a drawing. Lastly, compute the p-value and evaluate the hypotheses.}
+\end{termBox}
+
+\index{data!nuclear arms reduction|)}
+
+\CalculatorVideos{confidence intervals and hypothesis tests for a single proportion}
 
 
 
