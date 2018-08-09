@@ -364,7 +364,7 @@ To analyze a paired data set, we simply analyze the differences. We can use the 
 \centering
 \begin{tabular}{ccccc}
 \hline
-$n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \vspace{1mm}\\
+$n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $s_{_{\text{\emph{diff}}}}$ \vspace{1mm}\\
 73			&& 12.76				&& 14.26 \\
 \hline
 \end{tabular}
@@ -377,19 +377,19 @@ $n_{_{diff}}$	&\hspace{3mm}& $\bar{x}_{_{diff}}$	&\hspace{3mm}& $s_{_{diff}}$ \v
 We are considering two scenarios: there is no difference or there is some difference in average prices.
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[$H_0$:] $\mu_{diff}=0$. There is no difference in the average textbook price.
-\item[$H_A$:] $\mu_{diff} \neq 0$. There is a difference in average prices.
+\item[$H_0$:] $\mu_{\text{\emph{diff}}}=0$. There is no difference in the average textbook price.
+\item[$H_A$:] $\mu_{\text{\emph{diff}}} \neq 0$. There is a difference in average prices.
 \end{itemize}
 
 Can the $t$-distribution be used for this application? The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable. While the distribution is strongly skewed, the sample is reasonably large ($n=73$), so we can proceed. Because the conditions are reasonably satisfied, we can apply the $t$-distribution to this setting.
 
-We compute the standard error associated with $\bar{x}_{diff}$ using the standard deviation of the differences ($s_{_{diff}}=14.26$) and the number of differences ($n_{_{diff}}=73$):
-$$SE_{\bar{x}_{diff}} = \frac{s_{diff}}{\sqrt{n_{diff}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
-To visualize the p-value, the sampling distribution of $\bar{x}_{diff}$ is drawn as though $H_0$ is true, which is shown in Figure~\ref{textbooksS10HTTails}. The p-value is represented by the two (very) small tails.
+We compute the standard error associated with $\bar{x}_{\text{\emph{diff}}}$ using the standard deviation of the differences ($s_{_{\text{\emph{diff}}}}=14.26$) and the number of differences ($n_{_{\text{\emph{diff}}}}=73$):
+$$SE_{\bar{x}_{\text{\emph{diff}}}} = \frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
+To visualize the p-value, the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ is drawn as though $H_0$ is true, which is shown in Figure~\ref{textbooksS10HTTails}. The p-value is represented by the two (very) small tails.
 
-To find the tail areas, we compute the test statistic, which is the T-score of $\bar{x}_{diff}$ under the null condition that the actual mean difference is 0:
+To find the tail areas, we compute the test statistic, which is the T-score of $\bar{x}_{\text{\emph{diff}}}$ under the null condition that the actual mean difference is 0:
 \begin{align*}
-T = \frac{\bar{x}_{diff} - 0}{SE_{x_{diff}}} = \frac{12.76 - 0}{1.67} = 7.65
+T = \frac{\bar{x}_{\text{\emph{diff}}} - 0}{SE_{x_{\text{\emph{diff}}}}} = \frac{12.76 - 0}{1.67} = 7.65
 \end{align*}
 The degrees of freedom are $df = 73 - 1 = 72$. If we examined Appendix~\vref{tDistributionTable}, we would see that this value is larger than any in the 70 df row (we round down for $df$ when using the table), meaning the two-sided p-value is less than 0.01. If we used statistical software, we would find the p-value is less than 1-in-10 billion! Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon was, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
 \end{example}

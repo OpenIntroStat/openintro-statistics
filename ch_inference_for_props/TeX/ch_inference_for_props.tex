@@ -17,6 +17,10 @@ Each of the ideas in this chapter are applicable to a broad set of
 applications and new contexts. We'll expand on these ideas in later
 chapters.
 
+\Comment{Do additional checks to confirm that the term
+\emph{standard error} is being used consistently rather than
+\emph{standard deviation}.}
+
 
 %__________________
 \section[Point estimates and sampling variability]{Point
@@ -262,7 +266,7 @@ the observations must be independent, and the the sample size must
 be sufficiently large such that $np \geq 10$ and $n(1-p) \geq 10$.
 
 \begin{example}{Earlier we estimated the mean and standard
-deviation of the $\hat{p}$'s using simulated data when
+error of the $\hat{p}$'s using simulated data when
 $p = \pewsolarpollprop{}$ and $n = \pewsolarpollsize{}$.
 Confirm that the distribution is approximately
 normal.}\label{sample_p887_n1000_confirm_normal}
@@ -291,7 +295,7 @@ satisfied, so the Central Limit Theorem applies and the normal
 distribution is reasonable in this context!
 \end{example}
 
-\begin{example}{Compute the theoretical mean and standard deviation
+\begin{example}{Compute the theoretical mean and standard error
 of the $\hat{p}$'s when
 $p = \pewsolarpollprop{}$ and $n = \pewsolarpollsize{}$,
 according to the
@@ -415,7 +419,7 @@ situations.
 
 %__________________
 \section[Confidence interval for a sample proportion]{Confidence
-    intervals for a sample\\proportion} % \sectionvideohref{youtube-FUaXoKdCre4&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-2}}
+    intervals for\\a sample proportion} % \sectionvideohref{youtube-FUaXoKdCre4&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-2}}
 \label{confidenceIntervals}
 
 \index{confidence interval|(}
@@ -464,7 +468,7 @@ The \hiddenterm{standard error} provides a guide for how
 large we should make the confidence interval.
 
 The standard error represents the standard deviation
-of with the point estimate, and when the Central
+of the point estimate, and when the Central
 Limit Theorem conditions are satisfied, we also know
 that the point estimate closely follows a normal
 distribution. In a normal distribution, about 95\% of
@@ -518,7 +522,7 @@ based on the data, this does not mean they are impossible.
 While about 95\% of the data is within 2 standard deviations
 in a normal distribution, it would be more precise to use
 a value of 1.96 standard deviations. This more precise value
-is what is used to construct standard confidence intervals.
+is typically what is used to construct confidence intervals.
 
 \begin{termBox}{\tBoxTitle{95\% confidence interval for
     a parameter}
@@ -604,7 +608,6 @@ with mean $p$ and standard error $SE_{\hat{p}}$. Thus, the formula
 for a 99\% confidence interval for $\hat{p}$ is
 \begin{eqnarray}
 \hat{p}\ \pm\ 2.58\times SE_{\hat{p}}
-%\label{99PercCIForMean}
 \label{99PercCIForProp}
 \end{eqnarray}
 
@@ -682,7 +685,7 @@ In a confidence interval, $z^{\star}\times SE$ is called the
 
 
 
-\subsection{Two case studies}
+\subsection{More case studies}
 
 \index{data!Ebola poll|(}
 
@@ -775,10 +778,11 @@ quarantine period.}
 \newcommand{\pewwindpollcountcomplement}{152}
 \newcommand{\pewwindpollse}{0.0114}
 
-In the same survey asking about Americans' support of expanding
-solar energy usage, Pew Research asked the same question about
-wind turbines and found support from \pewwindpollpercent{}\%
-of respondents.
+In the poll by Pew Research asking about solar energy, the
+researchers also inquired about other forms of energy.
+In this next case study, we examine the support for expanding wind
+turbines, which received support from \pewwindpollpercent{}\%
+of the \pewwindpollsize{} respondents.
 
 \begin{exercise}\label{pew_wind_turbine_support_normal_dist_gp}
 Is the normal approximation reasonable in this case?\footnote{We
@@ -796,7 +800,7 @@ Using the Pew Research survey where $n = \pewwindpollsize{}$ and
 $\hat{p} = \pewwindpollprop{}$, create a 99\% confidence interval
 for the level of American support for expanding the use of wind
 turbines for power
-generation?\footnote{Guided
+generation.\footnote{Guided
 Practice~\ref{pew_wind_turbine_support_normal_dist_gp}
 confirmed that that $\hat{p}$ closely follows a normal distribution,
 so we can use the confidence interval formula:
@@ -841,7 +845,8 @@ using somewhat formal language:
       turbines is between 81.9\% and 87.7\% in 2018.
 \end{description}
 First, notice that the statements are always about the population
-parameter, which is American adults in this case, \emph{not} only
+parameter, which considers all American adults for the energy polls
+and all New York adults for the quarantine poll, \emph{not} only
 the adults included in the sample.
 
 We also avoided another common mistake:
@@ -862,53 +867,147 @@ population parameters.
 \index{data!wind turbine survey|)}
 \index{data!solar survey|)}
 \index{confidence interval!interpretation|)}
+
+\CalculatorVideos{confidence intervals for a single proportion}
+
 \index{confidence interval|)}
 
 
 
 
-\section{Hypothesis testing for the 1-proportion context}
-\label{hypothesis_testing_one_prop}
-
-
-
-
-
-
-
 %__________________
-\subsection{Hypothesis testing for a proportion}
-\label{hypothesisTesting}
 %\section[Hypothesis testing]{Hypothesis testing \sectionvideohref{youtube-NVbPE1_Cbx8&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-3}}
+\section{Hypothesis testing for a proportion}
+\label{hypothesis_testing_one_prop}
+\label{hypothesisTesting}
 
 \index{hypothesis testing|(}
 
-Are students lifting weights or performing other strength training exercises more or less often than they have in the past? We'll compare data from students from the 2011 YRBSS survey to our sample of 100 students from the 2013 YRBSS survey.
+Warren Buffett is a legendary investor who has made a fortune
+of about \$85~billion in the stock market. His net worth is
+more than the gross domestic product of dozens of countries.
+As perhaps the most thoughtful investors of our time, Buffett
+has advised people to steer clear of hedge funds and instead
+invest directly in an index
+fund.\footnote{\oiRedirect{buffett-invest-in-index-fund}{www.cnbc.com/2018/01/03/why-warren-buffett-says-index-funds-are-the-best-investment.html}}
+\Comment{Make sure the URL link goes where it should.}
 
-We'll also consider sleep behavior. A recent study found that college students average about 7~hours of sleep per night.\footnote{\oiRedirect{textbook-theloquitur_1161}{\emph{Poll shows college students get least amount of sleep}. theloquitur.com/?p=1161}} However, researchers at a rural college are interested in showing that their students sleep longer than seven hours on average. We investigate this topic in Section~\ref{pValue}.
+Buffett's suggestion is that hedge funds tend to give lower
+rates of return than index funds, and it is helpful to test
+that theory! We'll look at a sample of managed funds
+and see whether these funds tend to beat or fall behind a
+standard index fund.
+
+
+
+
+
+
+%There's an adage in United States financial markets that
+%it is better to get out of investments during the six ``summer''
+%months: \emph{sell in May and go away!}\footnote{Summer in the
+%northern hemisphere, anyways. \rotatebox[origin=c]{180}{(Hello
+%Australia!)}} While this clever saying does rhyme, that doesn't
+%mean it is sound financial advice. Let's investigate.
+
+%so is this is a pretty strong statement, since the stock
+%market has a very strong historical trend of moving upwards.
+%
+%To test this theory, we've retrieved the 
+%
+%If this adage holds meaning, we would expect that about half of the time the market would be in decline each year. Of course, we also would care to learn if it happens to be up more often than not, so we will also check that!
+
+%Finance is a field where a lot of money can be made or lost. We're going to explore a few topics in relation to the US stock market and 
+
+%The United States stock market moves down and up in unpredictable ways, and it can be useful to look for small inconsistencies in the market behavior that can be leveraged for minor gains. We will test three theories about the stock market in this section:
+
+%\item We might wonder whether the stock market is more likely to go up or down in any given day. Of course, the average return each day has been historically positive, and so this exploration will allow us to better understand if that is also reflected in the fraction of days that are up.
+%\item Each week there is a 65.5 hours window from the time the market closes on Friday to when it opens on the weekdays. That's a lot of time for good news and bad news that can affect the returns on Mondays. We'll see whether we 
+
+%The market has the same chance of going up or down on any given day of the week. For example, we would be interested to learn if the stock market goes up a little more often on, say, Fridays, that could be useful for 
+
 
 \subsection{Hypothesis testing framework}
 
-Students from the 2011 YRBSS lifted weights (or performed other strength training exercises) 3.09~days per week on average. We want to determine if the \data{yrbss\_samp} data set provides strong evidence that YRBSS students selected in 2013 are lifting more or less than the 2011 YRBSS students, versus the other possibility that there has been no change.\footnote{While we could answer this question by examining the entire YRBSS data set from 2013 (\data{yrbss}), we only consider the sample data (\data{yrbss\_samp}), which is more realistic since we rarely have access to population data.} We simplify these three options into two competing \termsub{hypotheses}{hypothesis}:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] The average days per week that YRBSS students lifted weights was the same for 2011 and~2013.
-\item[$H_A$:] The average days per week that YRBSS students lifted weights was \emph{different} for 2013 than~in~2011.
-\end{itemize}
-We call $H_0$\marginpar[\raggedright\vspace{6mm}
+%We took a sample of 50 actively managed funds in the
+%United States and compared their performance to that of the
+%S\&P 500 stock index. 
+%
+%Ultimately, we want to understand: which
+%has a better chance of outperforming the other, the actively
+%managed fund or the index fund?
+%The data for this study can be found in \data{active_fund},
+%and it is summarized in Table~\ref{}
 
-$H_0$\\\footnotesize null hypothesis\vspace{3mm}\\\normalsize $H_A$\\\footnotesize alternative\\ hypothesis]{\raggedright\vspace{6mm}
+\Comment{When reviewing, make the discussion more clearly focused on the proportion of fund managers that beat the index fund.}
 
-$H_0$\\\footnotesize null hypothesis\vspace{3mm}\\\normalsize $H_A$\\\footnotesize alternative\\ hypothesis} the null hypothesis and $H_A$ the alternative hypothesis.
+The historical return rate in the stock market is about 7\%.
+Many fund managers believe their knowledge about the market gives
+them a leg up and that they can get a higher return. While
+they may invest their own money, these fund managers
+find investors who are willing to bet on their skills,
+and for their trouble they get a cut any financial
+gains.\footnote{Getting even just an 8\% return over a 7\%
+return would be hugely valuable, since the gains compound over
+time. For example, \$1000 invested at 7\% will be be about
+\$7600 after 30 years while it would have been \$10,000 with
+an 8\% return.}
+
+We all would like to know: what fraction of fund managers
+outperform a simple index fund? We'll be using the S\&P~500
+index fund as our source of comparison.
+Ultimately, there are two possibilities:
+\begin{description}
+\item[$H_0$:] %$\mathbf{H_0}$: Even chance of beating S\&P~500.]
+  If we randomly picked a fund manager, there's a 50-50 chance
+  they'll beat the S\&P~500.
+\item[$H_A$:] %$\mathbf{H_A}$: Either fund managers or the S\&P~500 is better.]
+  There's something more systematic: the proportion of fund
+  managers who beat the S\&P~500 isn't 50\%. That is, the
+  proportion is either less than 50\% or greater than 50\%.
+%  That is, it is  fund managers or the S\&P~500 is better.
+%  That said, we're not sure which it will be!
+%  While we don't know which will do better, we 
+%  We aren't sure which it might be, but one of
+%  these investment approaches is typically better than the
+%  other.
+\end{description}
+%Ultimately, we don't know which is true!
+These competing ideas are called \term{hypotheses}.
+We call $H_0$ the null hypothesis and $H_A$ the alternative
+hypothesis.
 
 \begin{termBox}{\tBoxTitle{Null and alternative hypotheses}
-{\small The \term{null hypothesis ($H_0$)} often represents either a skeptical perspective or a claim to be tested. The \term{alternative hypothesis ($H_A$)} represents an alternative claim under consideration and is often represented by a range of possible parameter values.}}
+  The \term{null hypothesis ($H_0$)} often represents
+  either a skeptical perspective or a claim to be tested.
+  The \term{alternative hypothesis ($H_A$)} represents an
+  alternative claim under consideration and is often
+  represented by a range of possible parameter values.}
 \end{termBox}
 
-The null hypothesis often represents a skeptical position or a perspective of no difference. The alternative hypothesis often represents a new perspective, such as the possibility that there has been a change. 
+The null hypothesis often represents a skeptical position
+or a perspective of no difference. This makes sense for our
+setup with the fund managers: we're basically saying that
+there's no difference and it's a flip of the coin on whether
+a fund manager beats the S\&P~500.
 
-\begin{tipBox}{\tipBoxTitle{Hypothesis testing framework}
-The skeptic will not reject the null hypothesis ($H_0$), unless the evidence in favor of the alternative hypothesis ($H_A$) is so strong that she rejects $H_0$ in favor of $H_A$.}
+The alternative hypothesis generally represents a new
+or stronger perspective. In the case of the fund managers,
+it would certainly be interesting to learn whether most fund
+managers beat the S\&P~500 index fund, since that would mean
+there are potential benefits to working with the typical fund
+manager. It would also be darn interesting if it were true
+that most fund managers don't beat the index fund, since
+that would mean the typical fund manager is effectively paid
+to \emph{lose} the money for their investors!
+
+\begin{tipBox}{\tipBoxTitle{Be a skeptic of $\mathbf{H_A}$
+    and require supporting evidence}
+  The alternative hypothesis is generally an assertion of
+  something genuinely interesting or new. For this reason,
+  our job as data scientists is to play the role of a skeptic:
+  before we buy into the alternative hypothesis, we need to
+  see strong supporting evidence.}
 \end{tipBox}
 
 The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if there is sufficient evidence that supports the claim, we set aside our skepticism and reject the null hypothesis in favor of the alternative. The hallmarks of hypothesis testing are also found in the US court system. 
@@ -917,77 +1016,177 @@ The hypothesis testing framework is a very general tool, and we often use it wit
 A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?\footnote{The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt; in such a case, the jury rejects innocence (the null hypothesis) and concludes the defendant is guilty (alternative hypothesis).}
 \end{exercise}
 
+\begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
+In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
+\end{tipBox}
+
 Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. Even if the jurors leave unconvinced of guilt beyond a reasonable doubt, this does not mean they believe the defendant is innocent. This is also the case with hypothesis testing: \emph{even if we fail to reject the null hypothesis, we typically do not accept the null hypothesis as true}. Failing to find strong evidence for the alternative hypothesis is not equivalent to accepting the null hypothesis.
 
-In the example with the YRBSS, the null hypothesis represents no difference in the average days per week of weight lifting in 2011 and 2013. The alternative hypothesis represents something new or more interesting: there was a difference, either an increase or a decrease. These hypotheses can be described in mathematical notation using $\mu_{13}$ as the average days of weight lifting for 2013:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] $\mu_{13} = 3.09$
-\item[$H_A$:] $\mu_{13} \neq 3.09$
-\end{itemize}
-where 3.09 is the average number of days per week that students from the 2011 YRBSS lifted weights. Using the mathematical notation, the hypotheses can more easily be evaluated using statistical tools. We call 3.09 the \term{null value} since it represents the value of the parameter if the null hypothesis is true.
+In the fund manager example, the null hypothesis represents
+the notion that it's a flip of the coin whether any given
+fund manager will beat the S\&P~500. That is, the proportion
+$p$ of fund managers who beat the S\&P~500 is 50\%.
+The alternative hypothesis is that this proportion is something
+other than 50\%. While it's helpful to write these hypotheses
+in words, it can be simpler to write them using mathematical
+notation:
+\begin{description}
+\item[$H_0$:] $p = 0.50$
+\item[$H_A$:] $p \neq 0.50$
+\end{description}
+In this hypothesis setup, we want to make a conclusion about
+the population parameter $p$. The value we are comparing the
+parameter to is called the \term{null value}, which in this
+case is 0.50. It's common to label the null value with the
+same symbol as the parameter but with a subscript `0'.
+That is, in this case, the null value is $p_0 = 0.50$.
+
+\begin{example}{It may seem impossible that the
+    proportion of fund managers that beat the S\&P~500
+    is \emph{exactly} 50\%. If we don't believe the
+    null hypothesis, should we simply reject it?}
+  \label{fund_managers_sp500_not_reject_H0_interpretation}
+  No. While we may not buy into the notion that
+  the proportion is exactly 50\%, the hypothesis testing
+  framework requires that there be strong evidence before
+  we reject the null hypothesis and conclude something
+  more interesting.
+
+  After all, even if we don't believe the proportion is
+  \emph{exactly} 50\%, that doesn't really tell us anything
+  interesting! We still would not be able to get to the
+  truly interesting conclusion: do fund managers tend to
+  beat the S\&P~500 or vice-versa? Without data that strongly
+  points in one direction or the other, it is entirely
+  uninteresting and pointless to reject $H_0$.
+\end{example}
+
+\begin{exercise}
+  Another hypothesis test might be testing whether a new drug
+  is better or worse than an existing drug at treating headaches.
+  What should we use for the null and alternative hypotheses in
+  this case?\footnote{The null hypothesis ($H_0$) in this case
+  is the declaration of \emph{no difference}: the drugs are equally
+  effective. The alternative hypothesis ($H_A$)} is that one drug
+  is better than the other.
+  
+  Suppose we collected data but the data didn't show strong
+  evidence that the new drug performs better or worse than the
+  old drug. That doesn't mean the new drugs have the exact same
+  effectiveness. However, that does not mean the drugs perform
+  equally; it may be that we simply were unable to detect which
+  drug was in fact better than the other.
+\end{exercise}
+
+
+
+
 
 
 \subsection{Testing hypotheses using confidence intervals}
 \label{utilizingOurCI}
 
-We will use the \data{yrbss\_samp} data set to evaluate the hypothesis test, and we start by comparing the 2013 point estimate of the number of days per week that students lifted weights: $\bar{x}_{13} = 2.78$~days. This estimate suggests that students from the 2013 YRBSS were lifting weights less than students in the 2011 YRBSS. However, to evaluate whether this provides strong evidence that there has been a change, we must consider the uncertainty associated with $\bar{x}_{13}$.
+\Comment{Build the \data{fund\_managers} data set and put it
+in the R package. Only considering large-cap fund managers.
+See \href{https://us.spindices.com/documents/spiva/spiva-us-year-end-2016.pdf}{this report} as a reference.}
 
-We learned in Section~\ref{variabilityInEstimates} that there is fluctuation from one sample to another, and it is unlikely that the sample mean will be exactly equal to the parameter; we should not expect $\bar{x}_{13}$ to exactly equal $\mu_{13}$. Given that $\bar{x}_{13} = 2.78$, it might still be possible that the average of all students from the 2013 YRBSS survey is the same as the average from the 2011 YRBSS survey. The difference between $\bar{x}_{13}$ and 3.09 could be due to \emph{sampling variation}, i.e. the variability associated with the point estimate when we take a random sample.
+We will use the \data{fund\_managers} data set to evaluate
+the hypothesis test evaluating whether the proportion of fund
+managers who beat the S\&P~500 is different from 50\%. This
+data set summarizes the performance of 100 randomly sampled
+fund managers during the 2016 and evaluates whether each
+beat the S\&P~500 or not. Of those 100 managers,
+$\hat{p} = 0.36$ (36\%) beat the S\&P~500.
 
-In Section~\ref{confidenceIntervals}, confidence intervals were introduced as a way to find a range of plausible values for the population mean.
+Up until now, our discussion has been extremely theoretical
+and philosophical. Now that we have data, we ask ourselves:
+does the data provide strong evidence that the proportion
+of all fund managers is different than 50\%?
 
-\begin{example}{In the sample of 100 students from the 2013 YRBSS survey, the average number of days per week that students lifted weights was 2.78~days with a standard deviation of 2.56 days (coincidentally the same as days active). Compute a 95\% confidence interval for the average for all students from the 2013 YRBSS survey. You can assume the conditions for the normal model are met.}
-The general formula for the confidence interval based on the normal distribution is
-\begin{align*}
-\bar{x} \pm z^{\star} SE_{\bar{x}}
-\end{align*}
-We are given $\bar{x}_{13} = 2.78$, we use $z^{\star} = 1.96$ for a 95\% confidence level, and we can compute the standard error using the standard deviation divided by the square root of the sample size:
-\begin{align*}
-SE_{\bar{x}} = \frac{s_{13}}{\sqrt{n}} = \frac{2.56}{\sqrt{100}} = 0.256
-\end{align*}
-Entering the sample mean, $z^{\star}$, and the standard error into the confidence interval formula results in (2.27, 3.29). We are 95\% confident that the average number of days per week that all students from the 2013 YRBSS lifted weights was between 2.27~and 3.29~days.
+We learned in Section~\ref{pointEstimates} that there is
+fluctuation from one sample to another, and it is unlikely
+that $\hat{p}$ will exactly equal $p$, and we want to make
+a conclusion about $p$. So we are still left with a nagging
+concern: is this deviation of 36\% from 50\% simply due to
+chance, or does the data provide strong evidence that the
+true proportion is different from 50\%?
+
+In Section~\ref{confidenceIntervals}, we learned how to
+quantify the uncertainty in our estimate using confidence
+intervals. This can be useful for the hypothesis test.
+
+\begin{example}{Check whether it is reasonable to construct
+    a confidence interval for $p$ using the sample data, and
+    if so, construct a 95\% confidence interval.}
+  The conditions are met for $\hat{p}$ to be approximately
+  normal: the data come a simple random sample (satisfies
+  independence), and $n\hat{p} = 36$ and
+  $n(1 - \hat{p}) = 64$ are both greater than 10 (success-failure
+  condition).
+
+  To construct the confidence interval, we will need to identify
+  the point estimate ($\hat{p} = 0.36$), the critical value for
+  the 95\% confidence level ($z^{\star} = 1.96$), and the standard
+  error of $\hat{p}$
+  ($SE_{\hat{p}} = \sqrt{\hat{p}(1 - \hat{p}) / n} = 0.048$).
+  With those items, we can construct a confidence interval for $p$:
+  \begin{align*}
+    &\hat{p} \pm z^{\star} \times SE_{\hat{p}} \\
+    &0.36 \pm 1.96 \times 0.048 \\
+    &(0.266, 0.454)
+  \end{align*}
+  We are 95\% confident that the proportion of all fund
+  managers who beat the S\&P~500 in 2016 was between 26.6\%
+  and 45.4\%.
 \end{example}
+%At a first glance, it looks like it might be. After all,
+%36\% isn't that close to 50\%, so maybe this data constitutes
+%\emph{strong evidence}. We need to 
 
-Because the average of all students from the 2011 YRBSS survey is 3.09, which falls within the range of plausible values from the confidence interval, we cannot say the null hypothesis is implausible. That is, we fail to reject the null hypothesis, $H_0$.
+The null value for the hypothesis test falls entirely below
+the null value, $p_0 = 0.50$, which gives us strong evidence
+that the proportion is in fact not 50\%.
+More importantly,
+the confidence interval provides strong evidence that the
+actual proportion of fund managers who beat the S\&P~500
+is below 50\%.\footnote{You might be asking
+yourself whether there was something special about 2016;
+perhaps the fund managers perform better in other years.
+If this question came to mind, then great job on being
+a skeptic! This is an important question to ask,
+and we looked at research on the topic.
+Perhaps surprisingly, the 2016 finding is consistent
+with other historical data.
+For example, when tracking a 15-year period ending
+in 2016, only about 8\% of fund managers beat the S\&P~500:
+\oiRedirect{sp500-beats-fund-managers-report}{us.spindices.com/documents/spiva/spiva-us-year-end-2016.pdf}}
+\Comment{Ensure the redirect in the footnote works.}
 
-\begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
-In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
-\end{tipBox}
+Had the confidence interval contained the null value,
+in this case $p_0 = 0.5$, then the data would have been
+insufficient evidence to reject the null hypothesis.
+That is, had that been the case, the null value would
+have been in the \emph{range of plausible values}
+(at the 95\% confidence level), so we would not have
+had sufficient evidence to reject the notion that the
+proportion was actually 0.5.
+As discussed in
+Example~\ref{fund_managers_sp500_not_reject_H0_interpretation},
+failing to reject the
+null hypothesis does not necessarily mean we believe
+it is true, but it does mean we cannot conclude anything
+interesting (e.g. cannot differentiate whether the
+the proportion of fund managers that provides a better
+return on investment than index funds is smaller or
+larger than 0.5.
 
-\begin{exercise} \label{htForHousingExpenseForCommunityCollege650}
-Colleges frequently provide estimates of student expenses such as housing. A consultant hired by a community college claimed that the average student housing expense was \$650 per month. What are the null and alternative hypotheses to test whether this claim is accurate?\footnote{$H_0$: The average cost is \$650 per month, $\mu = \$650$.
+%You might wonder about what would happen if we had used
+%a higher confidence level, such as 99\% or 99.9\%. If we
+%use a high enough confidence level, the interval will end
+%up being wide enough.
 
-\hspace{3.4mm}$H_A$: The average cost is different than \$650 per month, $\mu \neq \$650$.}
-\end{exercise}
+\Comment{Introduce and go through a second case study.}
 
-\begin{exercise} \label{normalDistCondForHousingExpenseForCommunityCollege650}
-The community college decides to collect data to evaluate the \$650 per month claim. They take a random sample of 175 students at their school and obtain the data represented in Figure~\ref{communityCollegeClaimedHousingExpenseDistribution}. Can we apply the normal model to the sample mean?\footnote{Applying the normal model requires that certain conditions are met. Because the data are a simple random sample and the sample (presumably) represents no more than 10\% of all students at the college, the observations are independent. The sample size is also sufficiently large ($n = 175$) and the data exhibit strong skew. While the data are strongly skewed, the sample is sufficiently large that this is acceptable, and the normal model may be applied to the sample mean.}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{ch_inference_for_props/figures/communityCollegeClaimedHousingExpenseDistribution/communityCollegeClaimedHousingExpenseDistribution}
-\caption{Sample distribution of student housing expense. These data are strongly skewed\index{skew!example: strong}, which we can see by the long right tail with a few notable outliers.}
-\label{communityCollegeClaimedHousingExpenseDistribution}
-\end{figure}
-\end{exercise}
-
-\begin{tipBox}{\tipBoxTitle[]{Evaluating the skew condition is challenging}
-Don't despair if checking the skew condition is difficult or confusing. You aren't alone -- nearly all students get frustrated when checking skew. Properly assessing skew takes practice, and you won't be a pro, even at the end of this book. \\[2mm]
-But this doesn't mean you should give up. Checking skew and the other conditions is extremely important for a responsible data analysis. However, rest assured that evaluating skew isn't something you need to be a master of by the end of the book, though by that time you should be able to properly assess clear cut cases.}
-\end{tipBox}
-
-\textC{\newpage}
-
-\begin{example}{The sample mean for student housing is \$616.91 and the sample standard deviation is \$128.65. Construct a 95\% confidence interval for the population mean and evaluate the hypotheses of Guided Practice~\ref{htForHousingExpenseForCommunityCollege650}.}
-The standard error associated with the mean may be estimated using the sample standard deviation divided by the square root of the sample size. Recall that $n = 175$ students were sampled.
-\begin{align*}
-SE = \frac{s}{\sqrt{n}} = \frac{128.65}{\sqrt{175}} = 9.73
-\end{align*}
-You showed in Guided Practice~\ref{normalDistCondForHousingExpenseForCommunityCollege650} that the normal model may be applied to the sample mean. This ensures a 95\% confidence interval may be accurately constructed:
-$$\bar{x}\ \pm\ z^{\star} SE \quad\to\quad 616.91\ \pm\ 1.96 \times 9.73 \quad \to \quad (597.84, 635.98) $$
-Because the null value \$650 is not in the confidence interval, a true mean of \$650 is implausible and we reject the null hypothesis. The data provide statistically significant evidence that the actual average housing expense is less than \$650 per month.
-\end{example}
 
 
 \subsection{Decision errors}
@@ -1035,11 +1234,7 @@ How could we reduce the Type~2 Error rate in US courts? What influence would thi
 
 Exercises~\ref{whatAreTheErrorTypesInUSCourts}-\ref{howToReduceType2ErrorsInUSCourts} provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.
 
-Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless we have strong evidence. But what precisely does \emph{strong evidence} mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5\% of the time. This corresponds to a \term{significance level}\index{hypothesis testing!significance level} of 0.05. We often write the significance level using $\alpha$\marginpar[\raggedright\vspace{-4mm}
-
-$\alpha$\\\footnotesize significance\\level of a\\hypothesis test]{\raggedright\vspace{-4mm}
-
-$\alpha$\\\footnotesize significance\\level of a\\hypothesis test} (the Greek letter \emph{alpha}\index{Greek!alpha@alpha ($\alpha$)}): $\alpha = 0.05$. We discuss the appropriateness of different significance levels in Section~\ref{significanceLevel}.
+Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless we have strong evidence. But what precisely does \emph{strong evidence} mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5\% of the time. This corresponds to a \term{significance level}\index{hypothesis testing!significance level} of 0.05. We often write the significance level using $\alpha$ (the Greek letter \emph{alpha}\index{Greek!alpha@alpha ($\alpha$)}): $\alpha = 0.05$. We discuss the appropriateness of different significance levels in Section~\ref{significanceLevel}.
 
 If we use a 95\% confidence interval to evaluate a hypothesis test where the null hypothesis is true, we will make an error whenever the point estimate is at least 1.96 standard errors away from the population parameter. This happens about 5\% of the time (2.5\% in each tail). Similarly, using a 99\% confidence interval to evaluate a hypothesis is equivalent to a significance level of $\alpha = 0.01$.
 
@@ -1053,21 +1248,176 @@ In Section~\ref{pValue}, we introduce a tool called the \emph{p-value} that will
 
 \begin{figure}[hht]
 \centering
-\includegraphics[width=0.75\textwidth]{ch_inference_for_props/figures/whyWeWantPValue/whyWeWantPValue}
+\includegraphics[width=0.75\textwidth]{ch_inference_for_props/figures/whyWeWantPValue/whyWeWantPValueProp}
 \caption{It would be helpful to quantify the strength of the evidence against the null hypothesis. In this case, the evidence is extremely strong.}
 \label{whyWeWantPValue}
 \end{figure}
 
 
 
-\subsection{Hypothesis testing for a proportion}
+\subsection{Formal testing using p-values}
 
-To apply the normal distribution framework in the context of a hypothesis test for a proportion, the independence and success-failure conditions must be satisfied. In a hypothesis test, the success-failure condition is checked using the null proportion: we verify $np_0$ and $n(1-p_0)$ are at least 10, where $p_0$ is the null value.
+\label{pValue}
+
+\index{hypothesis testing!p-value|(}
+
+The p-value is a way of quantifying the strength of the evidence against the null hypothesis and in favor of the alternative. Formally the \emph{p-value} is a conditional probability.
+
+\begin{termBox}{\tBoxTitle{p-value}
+The \term{p-value}\index{hypothesis testing!p-value|textbf} is the probability of observing data at least as favorable to the alternative hypothesis as our current data set, if the null hypothesis is true. We typically use a summary statistic of the data, in this section the sample proportion, to help compute the p-value and evaluate the hypotheses.}
+\end{termBox}
+
+Statistical hypothesis testing almost always uses the p-value method rather than confidence intervals. In this formal space of hypothesis testing for proportions, we will slightly modify how we check the success-failure condition and compute the standard error. These changes aren't dramatic, but they will require paying a little more attention to how we use the null value, $p_0$.
+
+%To apply the normal distribution framework in the context of a hypothesis test for a proportion, the independence and success-failure conditions must be satisfied. In a hypothesis test, the success-failure condition is checked using the null proportion: we verify $np_0$ and $n(1-p_0)$ are at least 10, where $p_0$ is the null value.
+
+\index{data!coal power support|(}
+
+\begin{example}{Pew Research asked a random sample of 1000 American
+    adults whether they supported the increased usage of
+    coal. Set up hypotheses to evaluate whether this represents
+    a majority of Americans, one way or the other.}
+  The uninteresting result is that there is no majority either way:
+  half of Americans support and the other half oppose expanding the
+  use of coal to produce energy. The alternative hypothesis would
+  be that there is a majority support (or oppose) to expanding the
+  use of coal. If $p$ represents the proportion supporting, then
+  we can write the hypotheses as
+  \begin{description}
+    \item[$H_0$:] $p = 0.5$
+    \item[$H_A$:] $p \neq 0.5$
+  \end{description}
+  In this case, the null value ($p_0$) is 0.5.
+\end{example}
+
+Pew Research's sample found that 37\% of American adults support
+increased usage of coal. We now wonder, does 37\% represent a
+real difference from the null hypothesis of 50\%.
+
+\begin{example}{What would the sampling distribution of $\hat{p}$
+    look like if the null hypothesis were true?}
+  If the null hypothesis were true, the population proportion
+  would be the null value, 0.5. We previously learned that
+  the sampling distribution of $\hat{p}$ will be normal when
+  two conditions are met:
+  \begin{itemize}
+    \item Independence is reasonable since this poll is based on
+        a simple random sample.
+    \item Based on the poll's sample size of $n = 1000$,
+        the success-failure condition is met, since
+        \begin{align*}
+        np \quad \stackrel{H_0}{=} \quad 1000 \times 0.5 = 500
+        \qquad
+        n (1 - p) \quad \stackrel{H_0}{=} \quad 1000 \times (1 - 0.5) = 500
+        \end{align*}
+        are both greater than 10. Note that the success-failure
+        condition was checked using the null value, $p_0 = 0.5$;
+        this is the first procedural difference from confidence
+        intervals.
+  \end{itemize}
+  If the null hypothesis were true, the sampling distribution
+  indicates that a sample proportion based on $n = 1000$ observations
+  would be normally distributed. Next, we can compute the standard
+  error, where we will again use the null value $p_0 = 0.5$ in the
+  calculation:
+  \begin{align*}
+  SE = \sqrt{\frac{p (1 - p)}{n}}
+      \quad \stackrel{H_0}{=} \quad \sqrt{\frac{0.5 \times 0.5}{1000}}
+      = 0.016
+  \end{align*}
+  This marks the other procedural difference from confidence
+  intervals: since the sampling distribution is determined
+  under the null proportion, the null value $p_0$ was used for
+  the proportion in the calculation rather than $\hat{p}$.
+
+  Ultimately, if the null hypothesis were true, then the sample
+  proportion should follow a normal distribution with mean 0.500
+  and standard error of 0.016. This distribution is shown in
+  Figure~\ref{}. \Comment{Create this figure.}
+\end{example}
+
+When we identify the sampling distribution under the null hypothesis,
+it has a special name: the \term{null distribution}. The p-value
+represents the probability of the observed $\hat{p}$, or a $\hat{p}$
+that is more extreme, if the null hypothesis were true.
+
+\begin{example}{Compute the chance that $\hat{p} = 0.36$ or
+    further from 0.5 under the null distribution, which is a
+    normal distribution with mean 0.5 and $SE = 0.016$.}
+  This is a normal probability problem where $x = 0.36$.
+  First, we draw a simple graph to represent the situation,
+  similar to what is shown in Figure~\ref{}.
+  \Comment{Add figure ref.}
+  Since $\hat{p}$ is so far out in the tail, we know the
+  tail area is going to be very small. To find it, we start
+  by computing the Z-score using the mean of 0.5 and the
+  standard error of 0.016:
+  \begin{align*}
+  Z = \frac{0.37 - 0.5}{0.016} = 8.125 
+  \end{align*}
+  We can use the normal probability table or software to find
+  the tail area. If we use the probability table, we consider the
+  smallest Z-score shown, which in Appendix~\ref{} corresponds
+  to a tail area of 0.0002.
+
+  To get the p-value, we double this tail area, since observations
+  in the mirror-imaged tail (Figure~\ref{}) are also just as extreme
+  relative to 0.5 as those below 0.37.
+  \Comment{Create this new figure.}
+  This gives a p-value of 0.0004.
+
+  Here, the p-value represents the probability of observing
+  such an extreme sample proportion by chance, if the null hypothesis
+  were true.
+\end{example}
+
+\begin{example}{How should we evaluate the hypotheses using the
+    p-value of 0.0004? Use the standard significance level of
+    $\alpha = 0.05$.}
+  If the null hypothesis were true, it's very unlikely that we would
+  observe such an extreme deviation of $\hat{p}$ from 0.5. This means
+  there are one of two possibilities:
+  \begin{enumerate}
+    \item The null hypothesis is true, and we just happened to get
+        really unlucky.
+    \item The alternative hypothesis is true, which would be consistent
+        with observing a sample proportion far from 0.5.
+  \end{enumerate}
+  The p-value tells us that what we observed is so unusual
+  with respect to null hypothesis that it casts serious doubt on $H_0$.
+  Formally, we compare the p-value to the significance level
+  $\alpha = 0.05$. Since the p-value is less than $\alpha$,
+  we reject the null hypothesis.
+  That is, the data provide strong evidence against $H_0$,
+  and we conclude that a majority of Americans do not support
+  expanding the use of coal.
+\end{example}
+
+\index{data!coal power support|)}
+
+\begin{tipBox}{
+  \tipBoxTitle{Compare the p-value to $\mathbf{\alpha}$ to
+      evaluate $\mathbf{H_0}$}
+  When the p-value is less than the significance level, $\alpha$,
+  reject $H_0$. We would report a conclusion that the data provide
+  strong evidence supporting the alternative hypothesis. \\[2mm]
+  When the p-value is greater than $\alpha$, do not reject $H_0$,
+  and report that we do not have sufficient evidence to reject the
+  null hypothesis. \\[2mm]
+  In either case, it is important to describe the conclusion
+  in the context of the data.}
+\end{tipBox}
+
+
+
+
+
+
 
 \index{data!nuclear arms reduction|(}
 
 \begin{exercise}
-Do a majority of American support nuclear arms reduction? Set up a one-sided hypothesis test to evaluate this question.\footnote{$H_0: p = 0.50$. $H_A: p > 0.50$.}
+Do a majority of American support or oppose nuclear arms reduction? Set up hypotheses to evaluate this question.\footnote{We would like to understand if a majority supports or opposes, or ultimately, if there is no difference. $H_0: p = 0.50$. $H_A: p > 0.50$.}
 \end{exercise}
 
 \begin{example}{A simple random sample of 1,028 US adults in March 2013 found that 56\% support nuclear arms reduction.\footnote{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}} Does this provide convincing evidence that a majority of Americans supported nuclear arms reduction at the 5\% significance level?} \label{NuclearArmsInferenceExample}
@@ -1097,12 +1447,141 @@ Set up hypotheses and verify the conditions using the null value, $p_0$, to ensu
 
 \index{data!nuclear arms reduction|)}
 
-\CalculatorVideos{confidence intervals and hypothesis tests for a single proportion}
+\begin{tipBox}{\tipBoxTitle{One-sided and two-sided tests}
+When you are interested in checking for an increase or a decrease, but not both, use a one-sided test. When you are interested in any difference from the null value~--~an increase or decrease~--~then the test should be two-sided.\vspace{0.5mm}}
+\end{tipBox}
+
+\begin{tipBox}{\tipBoxTitle{Always write the null hypothesis as an equality}
+We will find it most useful if we always list the null hypothesis as an equality (e.g. $\mu = 7$) while the alternative always uses an inequality (e.g. $\mu\neq7$, $\mu>7$, or $\mu<7$).}
+\end{tipBox}
+
+The researchers at the rural school conducted a simple random sample of $n=110$ students on campus. They found that these students averaged 7.42 hours of sleep and the standard deviation of the amount of sleep for the students was 1.75 hours. A histogram of the sample is shown in Figure~\ref{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}.
+
+\begin{figure}
+\centering
+%\includegraphics[width=0.7\textwidth]{ch_inference_foundations/figures/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours/histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
+\caption{Distribution of a night of sleep for 110 college students. These data are strongly skewed.\index{skew!example: strong}}
+\label{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours}
+\end{figure}
+
+Before we can use a normal model for the sample mean or compute the standard error of the sample mean, we must verify conditions. (1)~Because this is a simple random sample from less than 10\% of the student body, the observations are independent. (2)~The sample size in the sleep study is sufficiently large since it is greater than 30. (3)~The data show strong skew in Figure~\ref{histOfSleepForCollegeThatWasCheckingForMoreThan7Hours} and the presence of a couple of outliers. This skew and the outliers are acceptable for a sample size of $n=110$. With these conditions verified, the normal model can be safely applied to $\bar{x}$ and we can reasonably calculate the standard error.
+
+\begin{exercise} \label{findSEOfFirstSleepStudyCheckingGreaterThan7Hours}
+In the sleep study, the sample standard deviation was 1.75 hours and the sample size is 110. Calculate the standard error of $\bar{x}$.\footnote{The standard error can be estimated from the sample standard deviation and the sample size: $SE_{\bar{x}} = \frac{s_x}{\sqrt{n}} = \frac{1.75}{\sqrt{110}} = 0.17$.}
+\end{exercise}
+
+The hypothesis test for the sleep study will be evaluated using a significance level of $\alpha = 0.05$. We want to consider the data under the scenario that the null hypothesis is true. In this case, the sample mean is from a distribution that is nearly normal and has mean 7 and standard deviation of about $SE_{\bar{x}} = 0.17$. Such a distribution is shown in Figure~\ref{pValueOneSidedSleepStudy}.
+
+\begin{figure}[hht]
+   \centering
+%   \includegraphics[width=0.83\textwidth]{ch_inference_foundations/figures/pValueOneSidedSleepStudy/pValueOneSidedSleepStudy}
+   \caption{If the null hypothesis is true, then the sample mean $\bar{x}$ came from this nearly normal distribution. The right tail describes the probability of observing such a large sample mean if the null hypothesis is true.}
+   \label{pValueOneSidedSleepStudy}
+\end{figure}
+
+The shaded tail in Figure~\ref{pValueOneSidedSleepStudy} represents the chance of observing such a large mean, conditional on the null hypothesis being true. That is, the shaded tail represents the \mbox{p-value}. We shade all means larger than our sample mean, $\bar{x} = 7.42$, because they are more favorable to the alternative hypothesis than the observed mean.
+
+We compute the p-value by finding the tail area of this normal distribution, which we learned to do in Section~\ref{normalDist}. First compute the Z-score of the sample mean, $\bar{x} = 7.42$:
+\begin{eqnarray*}
+Z = \frac{\bar{x} - \text{null value}}{SE_{\bar{x}}} = \frac{7.42 - 7}{0.17} = 2.47
+\end{eqnarray*}
+Using the normal probability table, the lower unshaded area is found to be 0.993. Thus the shaded area is $1-0.993 = 0.007$. {\em If the null hypothesis is true, the probability of observing a sample mean at least as large as 7.42 hours for a sample of 110 students is only 0.007.}\index{p-value!interpretation example} That is, if the null hypothesis is true, we would not often see such a large mean.
+
+We evaluate the hypotheses by comparing the p-value to the significance level. Because the p-value is less than the significance level (p-value $=0.007 < 0.05=\alpha$), we reject the null hypothesis. What we observed is so unusual with respect to the null hypothesis that it casts serious doubt on $H_0$ and provides strong evidence favoring $H_A$.
+
+\begin{termBox}{\tBoxTitle{p-value as a tool in hypothesis testing}
+The smaller the p-value, the stronger the data favor $H_A$ over $H_0$. A small p-value (usually $<0.05$) corresponds to sufficient evidence to reject $H_0$ in favor of $H_A$.}
+\index{hypothesis testing!p-value|)}
+\end{termBox}
+
+\begin{tipBox}{\tipBoxTitle{It is useful to first draw a picture to find the p-value}
+It is useful to draw a picture of the distribution of $\bar{x}$ as though $H_0$ was true (i.e.~$\mu$~equals the null value), and shade the region (or regions) of sample means that are at least as favorable to the alternative hypothesis. These shaded regions represent the p-value.}
+\end{tipBox}
+
+The ideas below review the process of evaluating hypothesis tests with p-values:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item The null hypothesis represents a skeptic's position or a position of no difference. We reject this position only if the evidence strongly favors $H_A$.
+\item A small p-value means that if the null hypothesis is true, there is a low probability of seeing a point estimate at least as extreme as the one we saw. We interpret this as strong evidence in favor of the alternative.
+\item We reject the null hypothesis if the p-value is smaller than the significance level, $\alpha$, which is usually 0.05. Otherwise, we fail to reject $H_0$.
+\item We should always state the conclusion of the hypothesis test in plain language so folks who aren't data scientists can also understand the results.
+\end{itemize}
+
+The p-value is constructed in such a way that we can directly compare it to the significance level ($\alpha$) to determine whether or not to reject $H_0$. This method ensures that the Type~1 Error rate does not exceed the significance level standard. 
+
+\begin{figure}[ht]
+   \centering
+%   \includegraphics[width=0.9\textwidth]{ch_inference_foundations/figures/pValueOneSidedSleepStudyExplained/pValueOneSidedSleepStudyExplained}
+   \caption{To identify the p-value, the distribution of the sample mean is considered as if the null hypothesis was true. Then the p-value is defined and computed as the probability of the observed $\bar{x}$ or an $\bar{x}$ even more favorable to $H_A$ under this distribution.}
+   \label{pValueOneSidedSleepStudyExplained}
+\end{figure}
+
+\begin{exercise}
+If the null hypothesis is true, how often should the p-value be less than 0.05?\footnote{About 5\% of the time. If the null hypothesis is true, then the data only has a 5\% chance of being in the 5\% of data most favorable to $H_A$.}
+\index{data!school sleep|)}
+\end{exercise}
+
+\begin{exercise}
+Suppose we had used a significance level of 0.01 in the sleep study. Would the evidence have been strong enough to reject the null hypothesis? (The p-value was 0.007.) What if the significance level was $\alpha = 0.001$? \footnote{We reject the null hypothesis whenever $p$-$value < \alpha$. Thus, we would still reject the null hypothesis if $\alpha = 0.01$ but not if the significance level had been $\alpha = 0.001$.}
+\end{exercise}
+
+\begin{exercise} \label{ebayAmazonOneSidedTestExercise}
+\index{data!mario\_kart|(}
+Ebay might be interested in showing that buyers on its site tend to pay less than they would for the corresponding new item on Amazon. We'll research this topic for one particular product: a video game called \emph{Mario Kart} for the Nintendo Wii. During early October 2009, Amazon sold this game for \$46.99. Set up an appropriate (one-sided!) hypothesis test to check the claim that Ebay buyers pay less during auctions at this same time.\footnote{The skeptic would say the average is the same on Ebay, and we are interested in showing the average price is lower.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item[$H_0$:] The average auction price on Ebay is equal to (or more than) the price on Amazon. We write only the equality in the statistical notation: $\mu_{ebay} = 46.99$.
+\item[$H_A$:] The average price on Ebay is less than the price on Amazon, $\mu_{ebay} < 46.99$.
+\end{itemize}}
+\end{exercise}
+
+
+\begin{exercise} \label
+{exerciseFor52EbayAuctionsToExamineMarioKartLessExpensiveThanAmazonConditions}
+During early October 2009, 52 Ebay auctions were recorded for \emph{Mario Kart}.\footnote{These data were collected by OpenIntro staff.} The total prices for the auctions are presented using a histogram in Figure~\ref{ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}, and we may like to apply the normal model to the sample mean. Check the three conditions required for applying the normal model: (1)~independence, (2)~at~least 30 observations, and (3)~the data are not strongly skewed.\footnote{(1) The independence condition is unclear. \emph{We will make the assumption that the observations are independent, which we should report with any final results.} (2) The sample size is sufficiently large: $n =52 \geq 30$. (3) The data distribution is not strongly skewed; it is approximately symmetric.}
+\end{exercise}
+
+\begin{figure}
+   \centering
+%   \includegraphics[width=0.77\textwidth]{ch_inference_foundations/figures/ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise/ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}
+   \caption{A histogram of the total auction prices for 52 Ebay auctions.}
+   \label{ebayMarioKartAuctionPriceHistogramFor3ConditionsExercise}
+\end{figure}
+
+\begin{example}{The average sale price of the 52 Ebay auctions for \emph{Wii Mario Kart} was \$44.17 with a standard deviation of \$4.15. Does this provide sufficient evidence to reject the null hypothesis in Guided Practice~\ref{ebayAmazonOneSidedTestExercise}? Use a significance level of $\alpha = 0.01$.}
+The hypotheses were set up and the conditions were checked in Exercises~\ref{ebayAmazonOneSidedTestExercise} and~\ref{exerciseFor52EbayAuctionsToExamineMarioKartLessExpensiveThanAmazonConditions}. The next step is to find the standard error of the sample mean and produce a sketch to help find the p-value.
+\begin{eqnarray*}
+SE_{\bar{x}} = s/\sqrt{n} = 4.15/\sqrt{52} = 0.5755
+\end{eqnarray*}
+\begin{center}
+%\includegraphics[height=35mm]{ch_inference_foundations/figures/pVForEbayAmazonComparison/pVForEbayAmazonComparison}
+\end{center}
+Because the alternative hypothesis says we are looking for a smaller mean, we shade the lower tail. We find this shaded area by using the Z-score and normal probability table: $Z = \frac{44.17 - 46.99}{0.5755} = -4.90$, which has area less than 0.0002. The area is so small we cannot really see it on the picture. This lower tail area corresponds to the p-value.
+
+Because the p-value is so small -- specifically, smaller than $\alpha = 0.01$ -- this provides sufficiently strong evidence to reject the null hypothesis in favor of the alternative. The data provide statistically significant evidence that the average price on Ebay is lower than Amazon's asking price.
+\index{data!mario\_kart|)}
+\end{example}
+
+\begin{termBox}{\tBoxTitle{What's so special about 0.05?}
+It's common to use a threshold of 0.05 to determine whether a result is statistically significant, but why is the most common value 0.05? Maybe the standard significance level should be bigger, or maybe it should be smaller. If you're a little puzzled, that probably means you're reading with a critical eye -- good job! We've made a 5-minute task to help clarify \emph{why 0.05}:
+\begin{center}
+\oiRedirect{textbook-why05}{www.openintro.org/why05}
+\end{center}
+Sometimes it's also a good idea to deviate from the standard. We'll discuss when to choose a threshold different than 0.05 in Section~\ref{significanceLevel}.\vspace{0.5mm}}
+\end{termBox}
+
+
+\subsection{Two-sided hypothesis testing with p-values}
+\label{twoSidedTestsWithPValues}
 
 
 
 
 
+
+\CalculatorVideos{hypothesis tests for a single proportion}
+
+\index{hypothesis testing|)}
 
 
 
