@@ -25,8 +25,9 @@ chapters.
 
 
 %__________________
-\section[Point estimates and sampling variability]{Point
-    estimates and sampling variability} %\sectionvideohref{youtube-DNIauUrRIEM&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-1}}
+\section[Point estimates and sampling variability]
+    {Point estimates and sampling \\ variability}
+    %\sectionvideohref{youtube-DNIauUrRIEM&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-1}}
 \label{pointEstimates}
 
 \index{data!solar survey|(}
@@ -1899,110 +1900,12 @@ of 10 for $np$ and $n (1 - p)$ as our guideline
 within this~book.
 
 
-
-
-
-To get a feel for whether a normal distribution is reasonable,
-it can be helpful to make your eyes go a little out of focus
-and see if the slightly blurred image of the plot looks normal.
-While that is not a scientific approach, it does give us
-some sense of when the sampling distribution of $\hat{p}$
-can be reasonably approximated a normal distribution.
-We recommend you take a moment to review
-Figures~\ref{}
-and~\ref{}.
-In each case, we've reported both $np$ and $n(1 - p)$,
-so you can evaluate for yourself what threshold,
-if not the standard of \emph{10}, you think makes
-the most sense.
-
-Completing this exercise may leave you wondering,
-\emph{is~10~enough?} To answer this question
+\subsection{Central Limit Theorem for other estimators}
 
 
 
 
 
-Once you go through this process,
-examine the 
-
-start by considering different sample sizes.
-Figure~\ref{sampling_X_prop_56p} shows the distribution of sample
-proportions when the sample size is 5, 25, and 100. There are
-two key takeaways:
-\begin{itemize}
-\item When the sample size is very small, the distribution has
-very discrete properties: it doesn't look very smooth. However,
-for larger sample sizes, the distribution looks smoother and
-more like a normal distribution.
-\item The bigger the sample size, the more often the estimate is
-close to the population proportion $p = 0.56$. This is intuitive:
-bigger samples will tend to produce more accurate estimates.
-\end{itemize}
-
-\begin{figure}[hb]
-   \centering
-   \includegraphics[width=0.67\textwidth]{ch_inference_for_props/figures/sampling_X_prop_56p/sampling_X_prop_56p}
-   \caption{Simulations of $\hat{p}$ when the population
-       proportion is $p = 0.56$ and for the following sample sizes:
-       $n = 5$, $n = 25$, and $n = 100$. The theoretical
-       mean~($\mu_{\hat{p}}$) and standard
-       deviation~($SE_{\hat{p}}$) is also provided for each plot.}
-   \label{sampling_X_prop_56p}
-\end{figure}
-
-%\begin{termBox}{\tBoxTitle{Law of Large Numbers for proportions}
-%  \hiddenterm{Law of Large Numbers!proportions}
-%  When the sample size is large, the sample proportion tends to be
-%  a more reliable estimate of the population proportion.}
-%\end{termBox}
-
-Next let's consider what happens when we use different proportions.
-For this exploration, let's use a sample size of $n = 100$ and
-proportions of 0.03, 0.20, 0.50 0.80, and 0.97. The distributions
-are shown in Figure~\ref{sampling_X_prop_56p}. Below are key
-takeaways from these simulations:
-\begin{itemize}
-\item When the population proportion $p$ is close to 0 or 1, the
-    distribution of sample proportions tends to be skewed. However,
-    for proportions relatively far from   gets larger, the
-    distribution becomes more symmetric
-\item The estimates tend to be less variable when the proportion
-    is near 0 or 1, as is shown by their lower variability listed
-    in the table.
-\end{itemize}
-
-\begin{figure}
-   \centering
-   \includegraphics[width=\textwidth]{ch_inference_for_props/figures/sampling_100_prop_X/sampling_100_prop_X_12}
-   \includegraphics[width=0.55\textwidth]{ch_inference_for_props/figures/sampling_100_prop_X/sampling_100_prop_X_3}
-   \includegraphics[width=\textwidth]{ch_inference_for_props/figures/sampling_100_prop_X/sampling_100_prop_X_45}
-   \caption{Simulations of $\hat{p}$ for different population
-       proportions when the sample size is $n = 100$. Each plot
-       is centered at the population proportion $p$, and the
-       theoretical standard deviation ($SE_{\hat{p}}$) is
-       also provided for each plot.}
-   \label{sampling_X_prop_56p}
-\end{figure}
-
-\Comment{Make sure the plots show $SE_{\hat{p}}$ rather than $\sigma_{\hat{p}}$.}
-
-
-\subsection{Sampling distributions and the Central Limit Theorem}
-
-In general, when we consider the distribution of a statistic, such as
-a sample proportion, we call it a \term{sampling distribution}.
-That is, the distribution shown in Figure~\ref{sampling_10k_prop_56p}
-is a \emph{sampling distribution} for a sample proportion when the
-sample size is 1000 and the population proportion is 0.56.
-
-\begin{termBox}{\tBoxTitle{Sampling distribution}
-  The sampling distribution represents the distribution of the point
-  estimates based on samples of a fixed size from a certain population.
-  It is useful to think of a particular point estimate as being drawn
-  from such a distribution. Understanding the concept of a sampling
-  distribution is central to understanding statistical inference.}
-\end{termBox}
 
 
 
