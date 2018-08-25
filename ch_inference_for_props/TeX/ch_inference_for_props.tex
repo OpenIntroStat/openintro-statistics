@@ -1947,38 +1947,59 @@ insufficient for the problem at hand.
 
 In Section~\ref{confidenceIntervals},
 we used the point estimate $\hat{p}$ with
-a~standard error $SE_{\hat{x}}$ to create
+a~standard error $SE_{\hat{p}}$ to create
 a 95\% confidence interval for the population
 proportion:
 \begin{align*}
 \hat{p}\ \pm\ 1.96 \times SE_{\hat{p}}
 %\label{95PercCIForPHatInGeneralizingSection}
 \end{align*}
-We constructed this interval by noting that the sample mean is within 1.96 standard errors of the actual mean about 95\% of the time. This same logic generalizes to any unbiased point estimate that is nearly normal. We may also generalize the confidence level by using a place-holder $z^{\star}$.
+We constructed this interval by noting that the
+sample proportion is within 1.96 standard errors
+of the actual proportion about 95\% of the time.
+This same logic generalizes to any unbiased point
+estimate that closely follows a normal distribution.
+We may also generalize the confidence level further
+by using a place-holder $z^{\star}$.
 
-\begin{termBox}{\tBoxTitle{General confidence interval for the normal sampling distribution case}\label{generalConfidenceIntervalTermBox}%
-A confidence interval based on an unbiased and nearly normal point estimate is
-\begin{eqnarray}
-\text{point estimate}\ \pm\ z^{\star}SE
-\label{95PercGeneralCIInGeneralizingSection}
-\end{eqnarray}
-where $z^{\star}$ is selected to correspond to the confidence level, and $SE$ represents the standard error. The value $z^{\star}SE$ is called the \emph{margin of error}\index{margin of error}.}
+\begin{termBox}{\tBoxTitle{General confidence interval
+    for the normal sampling distribution case}
+    \label{generalConfidenceIntervalTermBox}%
+  A confidence interval based on an unbiased and nearly
+  normal point estimate is
+  \begin{align}
+  \text{point estimate}\ \pm\ z^{\star}SE
+  \label{95PercGeneralCIInGeneralizingSection}
+  \end{align}
+  where $z^{\star}$ is selected to correspond to the
+  confidence level, and $SE$ represents the standard error
+  of the point estimate.
+  The value $z^{\star}SE$ is the
+  \hiddenterm{margin of error} of the point estimate.}
 \end{termBox}
 
-Generally the standard error for a point estimate is estimated from the data and computed using a formula. For example, the standard error for the sample mean is
-\begin{eqnarray*}
-SE_{\bar{x}} = \frac{s}{\sqrt{n}}
-\end{eqnarray*}
-In this section, we provide the computed standard error for each example and exercise without detailing where the values came from. In future chapters, you will learn to fill in these and other details for each situation.
+Generally the standard error for a point estimate is
+estimated from the data and computed using a formula.
+For example, the standard error for the sample
+proportion~is
+\begin{align*}
+SE_{\hat{p}} = \sqrt{\frac{p(1 - p)}{n}}
+\end{align*}
+In this section, we provide the computed standard error
+for each example and exercise without detailing where
+the values came from. In future chapters, you will learn
+to fill in these and other details for each situation.
+
+\Comment{This next example needs a proper introduction.}
 
 \begin{example}{In Guided Practice~\vref{peOfDiffActiveBetweenGender}, we computed a point estimate for the difference in the average days active per week between male and female students: $\bar{x}_{male}-\bar{x}_{female}=1.1$~days. This point estimate is associated with a nearly normal distribution with standard error $SE = 0.5$~days. What is a reasonable 95\% confidence interval for the difference in average days active per week?}
 \label{ciForDiffOfPhysActiveBetweenGenders}
 The normal approximation is said to be valid, so we apply Equation~\eqref{95PercGeneralCIInGeneralizingSection}:
-\begin{eqnarray*}
+\begin{align*}
 \text{point estimate}\ \pm\ z^{\star} SE
 	\quad\rightarrow\quad 1.1\ \pm\ 1.96\times 0.5
 	\quad\rightarrow\quad (0.12, 2.08)
-\end{eqnarray*}
+\end{align*}
 We are 95\% confident that the male students, on average, were physically active 0.12 to 2.08 days more than female students in YRBSS each week. That is, the actual average difference is plausibly between 0.12 and 2.08 days per week with 95\% confidence.
 \end{example}
 %library(openintro); library(xtable); data(yrbss); data(yrbss.samp); (x <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, mean)); diff(x); s <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, sd); n <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, length); sqrt(sum(s^2/n))
