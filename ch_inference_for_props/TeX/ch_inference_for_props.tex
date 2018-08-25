@@ -1899,7 +1899,216 @@ within this~book.
 
 
 
-\section{Inference for other estimators}
+
+
+%__________________
+\section[Inference for other estimators]
+    {Inference for other estimators
+    \sectionvideohref{youtube-PUMBNtVKr_g&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-5}}
+\label{aFrameworkForInference}
+
+The sample proportion is not the only point estimate
+for which the sampling distribution is nearly normal.
+For example, the sampling distribution of sample means
+closely resembles the normal distribution when the
+sample size is sufficiently large.
+In this section, we introduce a number of examples
+where the normal approximation is reasonable for
+the point estimate.
+Chapters~\ref{inferenceForCategoricalData}
+and~\ref{inferenceForNumericalData}
+revisit each of the point estimates you see in this
+section along with some other new statistics.
+
+We make another important assumption about each point
+estimate encountered in this section:
+the estimate is unbiased, meaning the sampling
+distribution of the estimate is centered at the
+parameter it estimates.
+That is, an unbiased estimate does not naturally
+over or underestimate the parameter.
+Rather, it tends to provide a ``good'' estimate.
+The sample proportion $\hat{p}$ is an example of
+an unbiased point estimate, as are each of the
+examples we introduce in this section.
+
+Finally, we will discuss the general case where
+a~point estimate may follow some distribution
+other than the normal distribution. We also provide
+guidance about how to handle scenarios where the
+statistical techniques you are familiar with are
+insufficient for the problem at hand.
+
+
+\subsection{Confidence intervals for nearly normal
+    point estimates}
+
+\index{confidence interval!using normal model|(}
+
+In Section~\ref{confidenceIntervals},
+we used the point estimate $\hat{p}$ with
+a~standard error $SE_{\hat{x}}$ to create
+a 95\% confidence interval for the population
+proportion:
+\begin{align*}
+\hat{p}\ \pm\ 1.96 \times SE_{\hat{p}}
+%\label{95PercCIForPHatInGeneralizingSection}
+\end{align*}
+We constructed this interval by noting that the sample mean is within 1.96 standard errors of the actual mean about 95\% of the time. This same logic generalizes to any unbiased point estimate that is nearly normal. We may also generalize the confidence level by using a place-holder $z^{\star}$.
+
+\begin{termBox}{\tBoxTitle{General confidence interval for the normal sampling distribution case}\label{generalConfidenceIntervalTermBox}%
+A confidence interval based on an unbiased and nearly normal point estimate is
+\begin{eqnarray}
+\text{point estimate}\ \pm\ z^{\star}SE
+\label{95PercGeneralCIInGeneralizingSection}
+\end{eqnarray}
+where $z^{\star}$ is selected to correspond to the confidence level, and $SE$ represents the standard error. The value $z^{\star}SE$ is called the \emph{margin of error}\index{margin of error}.}
+\end{termBox}
+
+Generally the standard error for a point estimate is estimated from the data and computed using a formula. For example, the standard error for the sample mean is
+\begin{eqnarray*}
+SE_{\bar{x}} = \frac{s}{\sqrt{n}}
+\end{eqnarray*}
+In this section, we provide the computed standard error for each example and exercise without detailing where the values came from. In future chapters, you will learn to fill in these and other details for each situation.
+
+\begin{example}{In Guided Practice~\vref{peOfDiffActiveBetweenGender}, we computed a point estimate for the difference in the average days active per week between male and female students: $\bar{x}_{male}-\bar{x}_{female}=1.1$~days. This point estimate is associated with a nearly normal distribution with standard error $SE = 0.5$~days. What is a reasonable 95\% confidence interval for the difference in average days active per week?}
+\label{ciForDiffOfPhysActiveBetweenGenders}
+The normal approximation is said to be valid, so we apply Equation~\eqref{95PercGeneralCIInGeneralizingSection}:
+\begin{eqnarray*}
+\text{point estimate}\ \pm\ z^{\star} SE
+	\quad\rightarrow\quad 1.1\ \pm\ 1.96\times 0.5
+	\quad\rightarrow\quad (0.12, 2.08)
+\end{eqnarray*}
+We are 95\% confident that the male students, on average, were physically active 0.12 to 2.08 days more than female students in YRBSS each week. That is, the actual average difference is plausibly between 0.12 and 2.08 days per week with 95\% confidence.
+\end{example}
+%library(openintro); library(xtable); data(yrbss); data(yrbss.samp); (x <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, mean)); diff(x); s <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, sd); n <- by(yrbss.samp$physically_active_7d, yrbss.samp$gender, length); sqrt(sum(s^2/n))
+
+
+\begin{example}{Does Example~\ref{ciForDiffOfPhysActiveBetweenGenders} guarantee that if a male and female student are selected at random from YRBSS, the male student would be active 0.12 to 2.08 days more than the female student?}
+Our confidence interval says absolutely nothing about individual observations. It {only} makes a statement about a plausible range of values for the \emph{average} difference between all male and female students who participated in YRBSS.
+\end{example}
+
+\begin{exercise} \label{findZFor99PercConfLevelInFrameworkForInf}
+What $z^{\star}$ would be appropriate for a 99\% confidence level? For help, see Figure~\vref{choosingZForCI}.\footnote{We seek $z^{\star}$ such that 99\% of the area under the normal curve will be between the Z-scores -$z^{\star}$ and $z^{\star}$. Because the remaining 1\% is found in the tails, each tail has area 0.5\%, and we can identify -$z^{\star}$ by looking up 0.0050 in the normal probability table: $z^{\star} = 2.58$. See also Figure~\vref{choosingZForCI}.}
+\end{exercise}
+
+\begin{exercise}
+The proportion of students who are male in the \data{yrbss\_samp} sample is $\hat{p} = 0.48$. This sample meets certain conditions that ensure $\hat{p}$ will be nearly normal, and the standard error of the estimate is $SE_{\hat{p}} = 0.05$. Create a 90\% confidence interval for the proportion of students in the 2013 YRBSS survey who are male.\footnote{We use $z^{\star}=1.65$ (see Guided Practice~~\vref{find90CIForYrbssAgeExercise}), and apply the general confidence interval formula:
+\begin{eqnarray*}
+\hat{p}\ \pm\ z^{\star}SE_{\hat{p}}
+	\quad\to\quad 0.48\ \pm\ 1.65\times 0.05
+	\quad\to\quad (0.3975, 0.5625)
+\end{eqnarray*}
+Thus, we are 90\% confident that between 40\% and 56\% of the YRBSS students were male.}
+\index{confidence interval!using normal model|)}
+\end{exercise}
+
+
+\subsection{Hypothesis testing for nearly normal point estimates}
+\index{hypothesis testing!using normal model|(}
+
+Just as the confidence interval method works with many other point estimates, we can generalize our hypothesis testing methods to new point estimates. Here we only consider the p-value approach, introduced in Section~\ref{pValue}, since it is the most commonly used technique and also extends to non-normal cases.
+
+\begin{termBox}{\tBoxTitle[]{Hypothesis testing using the normal model}
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item First write the hypotheses in plain language, then set them up in mathematical notation.
+\item Identify an appropriate point estimate of the parameter of interest.
+\item Verify conditions to ensure the standard error estimate is reasonable and the point estimate is nearly normal and unbiased.
+\item Compute the standard error. Draw a picture depicting the distribution of the estimate under the idea that $H_0$ is true. Shade areas representing the p-value.
+\item Using the picture and normal model, compute the \emph{test statistic} (Z-score) and identify the p-value to evaluate the hypotheses. Write a conclusion in plain language.
+\end{enumerate}}
+\end{termBox}
+
+\begin{exercise} \label{fdaHypSetupForSulph}
+A drug called sulphinpyrazone was under consideration for use in reducing the death rate in heart attack patients. To determine whether the drug was effective, a set of 1,475 patients were recruited into an experiment and randomly split into two groups: a control group that received a placebo and a treatment group that received the new drug. What would be an appropriate null hypothesis? And the alternative?\footnote{The skeptic's perspective is that the drug does not work at reducing deaths in heart attack patients ($H_0$), while the alternative is that the drug does work ($H_A$).}
+\end{exercise}
+
+We can formalize the hypotheses from Guided Practice~\ref{fdaHypSetupForSulph} by letting $p_{control}$ and $p_{treatment}$ represent the proportion of patients who died in the control and treatment groups, respectively. Then the hypotheses can be written as
+\begin{eqnarray*}
+&&H_0: p_{control} = p_{treatment} \quad\text{(the drug doesn't work)} \quad \\
+&&H_A: p_{control} > p_{treatment} \quad\text{(the drug works)}
+\end{eqnarray*}
+or equivalently,
+\begin{eqnarray*}
+&&H_0: p_{control} - p_{treatment} = 0 \quad\text{(the drug doesn't work)} \quad \\
+&&H_A: p_{control} - p_{treatment} > 0 \quad\text{(the drug works)}
+\end{eqnarray*}
+Strong evidence against the null hypothesis and in favor of the alternative would correspond to an observed difference in death rates,
+\begin{eqnarray*}
+\text{point estimate} = \hat{p}_{control} - \hat{p}_{treatment}
+\end{eqnarray*}
+being larger than we would expect from chance alone. This difference in sample proportions represents a point estimate that is useful in evaluating the hypotheses. 
+
+\begin{example}{We want to evaluate the hypothesis setup from Guided Practice~\ref{fdaHypSetupForSulph} using data from the actual study.\footnote{Anturane Reinfarction Trial Research Group. 1980. Sulfinpyrazone in the prevention of sudden death after myocardial infarction. New England Journal of Medicine 302(5):250-256.} In the control group, 60 of 742 patients died. In the treatment group, 41 of 733 patients died. The sample difference in death rates can be summarized as
+\begin{eqnarray*}
+\text{point estimate} = \hat{p}_{control} - \hat{p}_{treatment} = \frac{60}{742} - \frac{41}{733} = 0.025
+\end{eqnarray*}
+This point estimate is nearly normal and is an unbiased estimate of the actual difference in death rates. The standard error of this sample difference is $SE = 0.013$. Evaluate the hypothesis test at a 5\% significance level: $\alpha=0.05$.}
+We would like to identify the p-value to evaluate the hypotheses. If the null hypothesis is true, then the point estimate would have come from a nearly normal distribution, like the one shown in Figure~\ref{sulphStudyFindPValueUsingNormalApprox}. The distribution is centered at zero since $p_{control}-p_{treatment}=0$ under the null hypothesis. Because a large positive difference provides evidence against the null hypothesis and in favor of the alternative, the upper tail has been shaded to represent the p-value. We need not shade the lower tail since this is a one-sided test: an observation in the lower tail does not support the alternative hypothesis.
+
+\begin{figure}[bt]
+   \centering
+   \includegraphics[width=0.88\textwidth]{ch_inference_for_props/figures/sulphStudyFindPValueUsingNormalApprox/sulphStudyFindPValueUsingNormalApprox}
+   \caption{The distribution of the sample difference if the null hypothesis is true.}
+   \label{sulphStudyFindPValueUsingNormalApprox}
+\end{figure}
+
+The p-value can be computed by using the Z-score of the point estimate and the normal probability table.
+\begin{eqnarray}
+Z = \frac{\text{point estimate} - \text{null value}}{SE_{\text{point estimate}}}
+	= \frac{0.025 - 0}{0.013} = 1.92
+\label{zScoreOfPointEstimateForSulphinpyrazoneThisIsFirstTestStatReference}
+\end{eqnarray}
+Examining Z in the normal probability table, we find that the lower unshaded tail is about 0.973. Thus, the upper shaded tail representing the p-value is
+\begin{eqnarray*}
+\text{p-value} = 1-0.973 = 0.027
+\end{eqnarray*}
+Because the p-value is less than the significance level ($\alpha=0.05$), we say the null hypothesis is implausible. That is, we reject the null hypothesis in favor of the alternative and conclude that the drug is effective at reducing deaths in heart attack patients.
+\end{example}
+
+The Z-score in Equation~(\ref{zScoreOfPointEstimateForSulphinpyrazoneThisIsFirstTestStatReference}) is called a \term{test statistic}. In most hypothesis tests, a test statistic is a particular data summary that is especially useful for computing the p-value and evaluating the hypothesis test. In the case of point estimates that are nearly normal, the test statistic is the Z-score.
+
+\begin{termBox}{\tBoxTitle{Test statistic}
+A \emph{test statistic} is a summary statistic that is particularly useful for evaluating a hypothesis test or identifying the p-value. When a point estimate is nearly normal, we use the Z-score of the point estimate as the test statistic. In later chapters we encounter situations where other test statistics are helpful.}
+\index{hypothesis testing!using normal model|)}
+\end{termBox}
+
+
+\subsection{Non-normal point estimates}
+
+We may apply the ideas of confidence intervals and hypothesis testing to cases where the point estimate or test statistic is not necessarily normal. There are many reasons why such a situation may arise:
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item the sample size is too small for the normal approximation to be valid;
+\item the standard error estimate may be poor; or
+\item the point estimate tends towards some distribution that is not the normal distribution.
+\end{itemize}
+For each case where the normal approximation is not valid, our first task is always to understand and characterize the sampling distribution of the point estimate or test statistic. Next, we can apply the general frameworks for confidence intervals and hypothesis testing to these alternative distributions.
+
+
+\subsection{When to retreat}
+\label{whenToRetreat}
+
+Statistical tools rely on conditions. When the conditions are not met, these tools are unreliable and drawing conclusions from them is treacherous. The conditions for these tools typically come in two forms.
+\begin{itemize}
+\setlength{\itemsep}{0mm}
+\item \textbf{The individual observations must be independent.} A random sample from less than 10\% of the population ensures the observations are independent. In experiments, we generally require that subjects are randomized into groups. If independence fails, then advanced techniques must be used, and in some such cases, inference may not be possible.
+\item \textbf{Other conditions focus on sample size and skew.} For example, if the sample size is too small, the skew too strong, or extreme outliers are present, then the normal model for the sample mean will fail.
+\end{itemize}
+Verification of conditions for statistical tools is always necessary. Whenever conditions are not satisfied for a statistical technique, there are three options. The first is to learn new methods that are appropriate for the data. The second route is to consult a data scientist.\footnote{If you work at a university, then there may be campus consulting services to assist you. Alternatively, there are many private consulting firms that are also available for hire.} The third route is to ignore the failure of conditions. This last option effectively invalidates any analysis and may discredit novel and interesting findings.
+
+Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See Sections~\ref{overviewOfDataCollectionPrinciples}-\ref{experimentsSection} for basic principles of data collection.
+
+
+\subsection[Statistical significance versus practical significance]{Statistical significance versus practical significance~\sectionslideshref{gdoc_os3_slides_4-XB}}
+
+When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is \term{statistically significant}, it might not be \term{practically significant}.
+
+Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
+
+The role of a data scientist in conducting a study often includes planning the size of the study. The data scientist might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80\% or 90\%. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
+
 
 
 
