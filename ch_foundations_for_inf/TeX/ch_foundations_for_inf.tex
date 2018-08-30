@@ -1,5 +1,5 @@
-\chapter{Inference for categorical data}
-\label{inferenceForCategoricalData}
+\chapter{Foundations for inference}
+\label{foundationsForInference}
 
 Statistical inference is concerned primarily with understanding the
 accuracy of parameter estimates. While the equations and details change
@@ -7,8 +7,7 @@ depending on the setting, the foundations for inference are the same
 throughout all of statistics. We introduce these common themes in
 Sections~\ref{pointEstimates}-\ref{hypothesisTesting} by discussing
 inference about the population proportion, $p$.
-In Sections~\ref{}-\ref{}, we'll expand
-to the application of comparing two proportions against each other.
+In Sections~\ref{}-\ref{}, we explore new applications.
 Finally, we'll complete this chapter by analyzing categorical data
 where there are many levels.
 
@@ -415,6 +414,136 @@ situations.
 %for proportions that perform some correction for the substitution
 %approximation. However, we leave those proportion methods for
 %a future course.}
+
+
+\subsection[Better understanding the Central Limit Theorem
+    (special~topic)]
+  {Better understanding the Central Limit Theorem \\
+      \mbox{(special~topic)}}
+
+We've applied the Central Limit Theorem in numerous examples
+so far this chapter:
+\begin{quote}{\em
+When observations are independent and the sample size is
+sufficiently large, the distribution of $\hat{p}$ resembles
+a normal distribution with
+\begin{align*}
+  \mu_{\hat{p}} &= p
+  &SE_{\hat{p}} &= \sqrt{\frac{p (1 - p)}{n}}
+\end{align*}
+The sample size is considered sufficiently large
+when $n p \geq 10$ and $n (1 - p) \geq 10$.
+}\end{quote}
+In this section, we'll explore the success-failure
+condition and seek to better understand the
+Central Limit Theorem.
+
+An easier question to answer is, \emph{what happens when
+$np < 10$ or $n(1-p) < 10$?} As we did in
+Section~\ref{},
+we can simulate drawing a samples of different sizes where
+$P(yes) = 0.25$ and $P(no) = 0.75$. Here's a sample of
+size~10:
+\begin{center}
+% paste(sample(c("yes", "no"), 10, TRUE, c(.25, .75)), collapse = ", ")
+no, no, yes, yes, no, no, no, no, no, no
+\end{center}
+In this sample, we observe a sample proportion of yeses
+of $\hat{p} = \frac{2}{10} = 0.2$. We can simulate many such
+proportions to understand the sampling distribution of
+$\hat{p}$ when $n = 10$ and $p = 0.25$, which we've plotted
+in Figure~\ref{} alongside a normal distribution with the
+same mean and standard deviation. These distributions
+look nothing alike.
+
+\begin{center}
+\begin{tabular}{lccc}
+\hline
+    &  Unimodal?  &  Smooth?  &  Symmetric? \\
+\hline
+Normal  &  \highlightO{Yes}  &  \highlightO{Yes}  &
+    \highlightO{Yes} \\
+$n = 10$, $p = 0.25$  &  \highlightO{Yes}  &
+    \highlightT{No}  &  \highlightT{No} \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[hb]
+   \centering
+   %\includegraphics[width=0.67\textwidth]{ch_foundations_for_inf/figures/sampling_X_prop_56p/sampling_X_prop_56p}
+   \caption{Left: simulations of $\hat{p}$ when the sample size
+       is $n = 10$ and the population proportion is $p = 0.25$.
+       Right: a normal distribution with the same mean (0.25)
+       and standard deviation (0.137).}
+   \label{sampling_10_prop_25p}
+\end{figure}
+
+Notice that the success-failure condition
+was not satisfied when $n = 10$ and $p = 0.25$:
+\begin{align*}
+n p = 10 \times 0.25 = 2.5 &&
+    n (1 - p) = 10 \times 0.75 = 7.5
+\end{align*}
+This single sampling distribution does not show that
+the success-failure condition is the perfect guideline,
+but we have found that the guideline did correctly
+identify that the normal distribution was not appropriate.
+
+We can complete several additional simulations, which are
+shown in
+Figures~\ref{}
+and~\ref{}.
+As you review these cases, you'll notice a few things:
+\begin{enumerate}
+\item When either $np$ or $n(1 - p)$ is small, the
+    distribution will more \term{discrete}, which means
+    \emph{not continuous}.
+\item Additionally, when either value is smaller
+    than~10, there is evidence skew in the distribution.
+\item The larger both $np$ \emph{and} $n(1 - p)$ are,
+    the more normal the distribution will appear.
+\item When $np$ and $n(1 - p)$ are both very large,
+    the distribution discreteness basically disappears,
+    and the distribution looks almost perfectly
+    like a normal distribution.
+\end{enumerate}
+
+So far we've only focused on the symmetry, discreteness,
+and symmetry of the distributions. We haven't considered
+how the mean and standard error
+of the distributions change!
+Take a moment to look back at the graphs,
+and pay attention to three things:
+\begin{enumerate}
+\item The centers of the distribution are always at
+    the population proportion, $p$, that was used to
+    generate the simulation. Because the sampling
+    distribution of $\hat{p}$ is always centered at
+    the population parameter $p$, it means the sample
+    proportion $\hat{p}$ is \term{unbiased} when
+    the data are independent and drawn from such
+    a population.
+\item For a particular population proportion $p$,
+    the variability in the sampling distribution
+    decreases as the sample size~$n$ becomes larger.
+    This will likely align with your intuition:
+    an estimate based on a larger sample size will
+    tend to be more accurate.
+\item For a particular sample size, the variability
+    will be largest when $p = 0.5$. It will be
+    easiest to see this for the larger sample sizes.
+    This is why the proportion $p$ is used when we
+    compute the standard error in the formula:
+    $SE = \sqrt{\frac{p (1 - p)}{n}}$.
+\end{enumerate}
+
+At no point will the distribution of $\hat{p}$ look
+\emph{perfectly} normal.
+It is always a matter of degree, and we will use
+the standard success-failure condition with minimums
+of 10 for $np$ and $n (1 - p)$ as our guideline
+within this~book.
 
 
 
@@ -1762,138 +1891,6 @@ this book.
 %\end{exercise}
 
 \index{hypothesis testing|)}
-
-
-
-
-
-%__________________
-\section{Better understanding the Central Limit Theorem \mbox{(special~topic)}}
-
-We've applied the Central Limit Theorem in numerous examples
-so far this chapter:
-\begin{quote}{\em
-When observations are independent and the sample size is
-sufficiently large, the distribution of $\hat{p}$ resembles
-a normal distribution with
-\begin{align*}
-  \mu_{\hat{p}} &= p
-  &SE_{\hat{p}} &= \sqrt{\frac{p (1 - p)}{n}}
-\end{align*}
-The sample size is considered sufficiently large
-when $n p \geq 10$ and $n (1 - p) \geq 10$.
-}\end{quote}
-In this section, we'll explore the success-failure
-condition and seek to better understand the
-Central Limit Theorem.
-
-An easier question to answer is, \emph{what happens when
-$np < 10$ or $n(1-p) < 10$?} As we did in
-Section~\ref{},
-we can simulate drawing a samples of different sizes where
-$P(yes) = 0.25$ and $P(no) = 0.75$. Here's a sample of
-size~10:
-\begin{center}
-% paste(sample(c("yes", "no"), 10, TRUE, c(.25, .75)), collapse = ", ")
-no, no, yes, yes, no, no, no, no, no, no
-\end{center}
-In this sample, we observe a sample proportion of yeses
-of $\hat{p} = \frac{2}{10} = 0.2$. We can simulate many such
-proportions to understand the sampling distribution of
-$\hat{p}$ when $n = 10$ and $p = 0.25$, which we've plotted
-in Figure~\ref{} alongside a normal distribution with the
-same mean and standard deviation. These distributions
-look nothing alike.
-
-\begin{center}
-\begin{tabular}{lccc}
-\hline
-    &  Unimodal?  &  Smooth?  &  Symmetric? \\
-\hline
-Normal  &  \highlightO{Yes}  &  \highlightO{Yes}  &
-    \highlightO{Yes} \\
-$n = 10$, $p = 0.25$  &  \highlightO{Yes}  &
-    \highlightT{No}  &  \highlightT{No} \\
-\hline
-\end{tabular}
-\end{center}
-
-\begin{figure}[hb]
-   \centering
-   %\includegraphics[width=0.67\textwidth]{ch_foundations_for_inf/figures/sampling_X_prop_56p/sampling_X_prop_56p}
-   \caption{Left: simulations of $\hat{p}$ when the sample size
-       is $n = 10$ and the population proportion is $p = 0.25$.
-       Right: a normal distribution with the same mean (0.25)
-       and standard deviation (0.137).}
-   \label{sampling_10_prop_25p}
-\end{figure}
-
-Notice that the success-failure condition
-was not satisfied when $n = 10$ and $p = 0.25$:
-\begin{align*}
-n p = 10 \times 0.25 = 2.5 &&
-    n (1 - p) = 10 \times 0.75 = 7.5
-\end{align*}
-This single sampling distribution does not show that
-the success-failure condition is the perfect guideline,
-but we have found that the guideline did correctly
-identify that the normal distribution was not appropriate.
-
-We can complete several additional simulations, which are
-shown in
-Figures~\ref{}
-and~\ref{}.
-As you review these cases, you'll notice a few things:
-\begin{enumerate}
-\item When either $np$ or $n(1 - p)$ is small, the
-    distribution will more \term{discrete}, which means
-    \emph{not continuous}.
-\item Additionally, when either value is smaller
-    than~10, there is evidence skew in the distribution.
-\item The larger both $np$ \emph{and} $n(1 - p)$ are,
-    the more normal the distribution will appear.
-\item When $np$ and $n(1 - p)$ are both very large,
-    the distribution discreteness basically disappears,
-    and the distribution looks almost perfectly
-    like a normal distribution.
-\end{enumerate}
-
-So far we've only focused on the symmetry, discreteness,
-and symmetry of the distributions. We haven't considered
-how the mean and standard error
-of the distributions change!
-Take a moment to look back at the graphs,
-and pay attention to three things:
-\begin{enumerate}
-\item The centers of the distribution are always at
-    the population proportion, $p$, that was used to
-    generate the simulation. Because the sampling
-    distribution of $\hat{p}$ is always centered at
-    the population parameter $p$, it means the sample
-    proportion $\hat{p}$ is \term{unbiased} when
-    the data are independent and drawn from such
-    a population.
-\item For a particular population proportion $p$,
-    the variability in the sampling distribution
-    decreases as the sample size~$n$ becomes larger.
-    This will likely align with your intuition:
-    an estimate based on a larger sample size will
-    tend to be more accurate.
-\item For a particular sample size, the variability
-    will be largest when $p = 0.5$. It will be
-    easiest to see this for the larger sample sizes.
-    This is why the proportion $p$ is used when we
-    compute the standard error in the formula:
-    $SE = \sqrt{\frac{p (1 - p)}{n}}$.
-\end{enumerate}
-
-At no point will the distribution of $\hat{p}$ look
-\emph{perfectly} normal.
-It is always a matter of degree, and we will use
-the standard success-failure condition with minimums
-of 10 for $np$ and $n (1 - p)$ as our guideline
-within this~book.
-
 
 
 
