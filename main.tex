@@ -1,6 +1,13 @@
 \documentclass[10pt,openany]{book}
  
-\usepackage{geometry, graphicx, varioref, soul, verbatim, amsmath, calc, caption, wasysym, footmisc, makeidx, ifthen, subfigure, multicol, epstopdf, enumerate, wrapfig, textcomp, multirow, changepage, setspace, lscape, titlesec}
+\usepackage{
+  amsmath, calc, caption, changepage,
+  endnotes, enumerate, epstopdf, footmisc,
+  geometry, graphicx, ifthen, lscape,
+  makeidx, multicol, multirow, setspace,
+  soul, subfigure, textcomp, titlesec,
+  varioref, verbatim, wasysym, wrapfig
+}
 \usepackage[usenames,dvipsnames]{color}  
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
 \include{extraTeX/style/colorsV1}
@@ -46,6 +53,7 @@
 \includechapter{9}{ch_regr_mult_and_log}
 
 \appendix
+\theendnotes
 \include{extraTeX/eoceSolutions/eoceSolutions}
 \include{extraTeX/appendix/TeX/zTable}
 \include{extraTeX/appendix/TeX/tTable}

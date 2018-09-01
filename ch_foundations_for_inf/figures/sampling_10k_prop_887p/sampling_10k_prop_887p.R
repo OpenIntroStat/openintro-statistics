@@ -1,4 +1,4 @@
-set.seed(3)
+set.seed(4)
 library(openintro)
 data(COL)
 
@@ -16,7 +16,7 @@ myPDF('sampling_10k_prop_887p.pdf', 6.5, 3.2,
     mgp = c(2.3, 0.6, 0),
     yaxs = "i")
 histPlot(results,
-    col = COL[1], breaks = 25,
+    col = COL[1], breaks = 50,
     xlab = "Sample Proportions",
     ylab = "",
     axes = FALSE)
@@ -24,7 +24,7 @@ at <- seq(0, 1, 0.02)
 axis(1, at = seq(0, 1, 0.01), labels = rep("", 101))
 axis(1, at = at)
 # axis(2, at = seq(0, 1200, 100), label = rep("", 13))
-axis(2, at = seq(0, 1500, 500))
+axis(2, at = seq(0, 750, 250))
 # abline(v = 0.89, col = COL[4])
 
 dev.off()
