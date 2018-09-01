@@ -1119,22 +1119,76 @@ population parameters.
 
 \index{hypothesis testing|(}
 
-Warren Buffett is a legendary investor who has made a fortune
-of about \$85~billion in the stock market. His net worth is
-more than the gross domestic product of dozens of countries.
-As perhaps the most thoughtful investors of our time, Buffett
-has advised people to steer clear of hedge funds and instead
-invest directly in an index
-fund.\footnote{\oiRedirect{buffett-invest-in-index-fund}{www.cnbc.com/2018/01/03/why-warren-buffett-says-index-funds-are-the-best-investment.html}}
-\Comment{Make sure the URL link goes where it should.}
+Possible examples:
+\begin{enumerate}
+\item Hans Rosling questions where people do *worse* than expected from randomly guessing.
+\item 
+\item Retailer has their business credit card. The cards are profitable if they get at least X\% of customers to use their cards, while the overhead costs are larger if fewer than X\% of customers use their cards. They take a random sample of X,000 transactions and find that Y\% used the cards. What can the business conclude?
+\item Game show where half of the time people are supposed to win and half the time people are supposed to lose.
+\item A business is piloting tablets for their employees. They want to be sure at least XX\% of their employees will use the tablets.
+\end{enumerate}
 
-Buffett's suggestion is that hedge funds tend to give lower
-rates of return than index funds, and it is helpful to test
-that theory! We'll look at a sample of managed funds
-and see whether these funds tend to beat or fall behind a
-standard index fund.
+Hans Rosling was a world health education, and as part of his course, he would always ask each of the following questions:
+\begin{enumerate}
+\item Question 1.
+    \begin{enumerate}[a.]
+    \item Option a.
+    \item Option b.
+    \end{enumerate}
+\item Question 2.
+    \begin{enumerate}[a.]
+    \item Option a.
+    \item Option b.
+    \end{enumerate}
+\item Question 3.
+    \begin{enumerate}[a.]
+    \item Option a.
+    \item Option b.
+    \end{enumerate}
+\end{enumerate}
+Write down what your answers (or guesse) are to each question,
+and when you're ready to learn the answers, look in the
+footnote.\footnote{1 - X. 2 - X. 3 - X.}
+
+When looking at a larger sample of people who answer these questions,
+you'll find that some of these questions are harder than others:
+the fraction of people who get the correct answer varies dramatically
+from one question to the next.
+
+As we work through this question, we'll be exploring how people
+perform on these questions, and we'll aim to make conclusions
+about the general understanding of college educated individuals
+on these particular topics.
 
 
+
+
+Rosling has asked folks with a college degree these questions
+to see how they perform, and ultimately there are three scenarios.
+\begin{itemize}
+\item On the other hand, perhaps folks with college degrees
+    simply never learn these particular topics and their
+    responses are simply equivalent to random guesses.
+\item These folks have knowledge that helps them do better
+    than random guessing, or perhaps, they have false knowledge
+    that leads them to actually do worse than random guessing.
+\end{itemize}
+
+%Warren Buffett is a legendary investor who has made a fortune
+%of \$85~billion in the stock market. His net worth is
+%more than the gross domestic product of dozens of countries.
+%As perhaps the most thoughtful investor of our time, Buffett
+%has advised people to steer clear of hedge funds and instead
+%invest directly in an index
+%fund.\footnote{\oiRedirect{buffett-invest-in-index-fund}{www.cnbc.com/2018/01/03/why-warren-buffett-says-index-funds-are-the-best-investment.html}}
+%\Comment{Make sure the URL link goes where it should.}
+%
+%Buffett's suggestion is that hedge funds tend to give lower
+%rates of return than index funds.
+%It would be helpful to test that theory!
+%We'll look at a sample of managed funds
+%and see whether these funds tend to beat or fall behind a
+%standard index fund.
 
 
 
@@ -1182,20 +1236,18 @@ Many fund managers believe their knowledge about the market gives
 them a leg up and that they can get a higher return. While
 they may invest their own money, these fund managers
 find investors who are willing to bet on their skills,
-and for their trouble they get a cut any financial
-gains.\footnote{Getting even just an 8\% return over a 7\%
-return would be hugely valuable, since the gains compound over
-time. For example, \$1000 invested at 7\% will be be about
-\$7600 after 30 years while it would have been \$10,000 with
-an 8\% return.}
+and for their trouble they get a cut of any financial
+gains.
 
-We all would like to know: what fraction of fund managers
-outperform a simple index fund? We'll be using the S\&P~500
+We all would like to know: do a majority of fund managers
+outperform or underperform a simple index fund?
+We'll be using the S\&P~500
 index fund as our source of comparison.
 Ultimately, there are two possibilities:
 \begin{description}
 \item[$H_0$:] %$\mathbf{H_0}$: Even chance of beating S\&P~500.]
-  If we randomly picked a fund manager, there's a 50-50 chance
+  It's a flip of a coin:
+  if we randomly picked a fund manager, there's a 50-50 chance
   they'll beat the S\&P~500.
 \item[$H_A$:] %$\mathbf{H_A}$: Either fund managers or the S\&P~500 is better.]
   There's something more systematic: the proportion of fund
