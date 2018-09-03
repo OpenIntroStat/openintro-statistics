@@ -18,7 +18,7 @@ survey
 details,
 see\\
 \oiRedirect
-{textbook-pew_2018_poll_on_solar_and_wind_expansion}{http://www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient}
+{textbook-pew_2018_poll_on_solar_and_wind_expansion}{www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient}
 \@endanenote 
 \@doanenote {2}
 macro:->\oiRedirect

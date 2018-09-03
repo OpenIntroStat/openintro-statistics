@@ -66,7 +66,7 @@ They found that \pewsolarpollpercent{}\% of respondents
 favored expanding
 solar energy.\endnote{The full survey's sample size was 2541,
 and we've taken a subsample. To find the survey details, see\\
-\oiRedirect{textbook-pew_2018_poll_on_solar_and_wind_expansion}{http://www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient}}
+\oiRedirect{textbook-pew_2018_poll_on_solar_and_wind_expansion}{www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient}}
 A~natural question is,
 \Comment{The redirect link in the footnote needs to be confirmed as
 working.}
@@ -1119,76 +1119,63 @@ population parameters.
 
 \index{hypothesis testing|(}
 
-Possible examples:
-\begin{enumerate}
-\item Hans Rosling questions where people do *worse* than expected from randomly guessing.
-\item 
-\item Retailer has their business credit card. The cards are profitable if they get at least X\% of customers to use their cards, while the overhead costs are larger if fewer than X\% of customers use their cards. They take a random sample of X,000 transactions and find that Y\% used the cards. What can the business conclude?
-\item Game show where half of the time people are supposed to win and half the time people are supposed to lose.
-\item A business is piloting tablets for their employees. They want to be sure at least XX\% of their employees will use the tablets.
-\end{enumerate}
+%Possible examples:
+%\begin{enumerate}
+%\item Hans Rosling questions where people do *worse* than expected from randomly guessing.
+%\item 
+%\item Retailer has their business credit card. The cards are profitable if they get at least X\% of customers to use their cards, while the overhead costs are larger if fewer than X\% of customers use their cards. They take a random sample of X,000 transactions and find that Y\% used the cards. What can the business conclude?
+%\item Game show where half of the time people are supposed to win and half the time people are supposed to lose.
+%\item A business is piloting tablets for their employees. They want to be sure at least XX\% of their employees will use the tablets.
+%\end{enumerate}
 
-Hans Rosling was a world health education, and as part of his course, he would always ask each of the following questions:
-\begin{enumerate}
-\item Question 1.
-    \begin{enumerate}[a.]
-    \item Option a.
-    \item Option b.
-    \end{enumerate}
-\item Question 2.
-    \begin{enumerate}[a.]
-    \item Option a.
-    \item Option b.
-    \end{enumerate}
-\item Question 3.
-    \begin{enumerate}[a.]
-    \item Option a.
-    \item Option b.
-    \end{enumerate}
-\end{enumerate}
-Write down what your answers (or guesse) are to each question,
+The following three questions come from Hans Rosling's book
+\oiRedirect{amazon_factfulness}{Factfulness},
+which focuses on adjustin how we see the world:
+%a public health educator, who wrote a book
+%Hans Rosling was a world health education, and as part of his course, he would always ask each of the following questions:
+\begin{quote}{\em
+  In the last 20 years the proportion of the
+  world population living in extreme poverty has:
+  \begin{enumerate}[a.]
+  \item Almost doubled.
+  \item More or less stayed the same.
+  \item Almost halved.
+  \end{enumerate}
+}\end{quote}
+\begin{quote}{\em
+  Global climate experts believe that over the next
+  100 years the average temperature will on average?
+  \begin{enumerate}[a.]
+  \item Get warmer.
+  \item Get colder.
+  \item Remain the same.
+  \end{enumerate}
+}\end{quote}
+Write down what your answers (or guesses) for each question,
 and when you're ready to learn the answers, look in the
-footnote.\footnote{1 - X. 2 - X. 3 - X.}
-
+footnote.\footnote{1 - c. 2 - c. 3 - a.
+If you are a typical person, you got 1 and 2 wrong and 3 correct.}
 When looking at a larger sample of people who answer these questions,
-you'll find that some of these questions are harder than others:
+it's apparent that some of these questions are harder than others:
 the fraction of people who get the correct answer varies dramatically
 from one question to the next.
 
-As we work through this question, we'll be exploring how people
-perform on these questions, and we'll aim to make conclusions
-about the general understanding of college educated individuals
-on these particular topics.
+In this section,
+we'll be exploring how college-educated people perform
+on these questions,
+and we'll make conclusions about their knowledge
+of these global health topics.
+
+\newcommand{\roslingAsize}{65}
+\newcommand{\roslingAprop}{0.246}
+\newcommand{\roslingApropcomplement}{0.754}
+\newcommand{\roslingApercent}{24.6}
+\newcommand{\roslingApercentcomplement}{75.4}
+\newcommand{\roslingAcount}{16}
+\newcommand{\roslingAcountcomplement}{49}
+\newcommand{\roslingAse}{0.053}
 
 
-
-
-Rosling has asked folks with a college degree these questions
-to see how they perform, and ultimately there are three scenarios.
-\begin{itemize}
-\item On the other hand, perhaps folks with college degrees
-    simply never learn these particular topics and their
-    responses are simply equivalent to random guesses.
-\item These folks have knowledge that helps them do better
-    than random guessing, or perhaps, they have false knowledge
-    that leads them to actually do worse than random guessing.
-\end{itemize}
-
-%Warren Buffett is a legendary investor who has made a fortune
-%of \$85~billion in the stock market. His net worth is
-%more than the gross domestic product of dozens of countries.
-%As perhaps the most thoughtful investor of our time, Buffett
-%has advised people to steer clear of hedge funds and instead
-%invest directly in an index
-%fund.\footnote{\oiRedirect{buffett-invest-in-index-fund}{www.cnbc.com/2018/01/03/why-warren-buffett-says-index-funds-are-the-best-investment.html}}
-%\Comment{Make sure the URL link goes where it should.}
-%
-%Buffett's suggestion is that hedge funds tend to give lower
-%rates of return than index funds.
-%It would be helpful to test that theory!
-%We'll look at a sample of managed funds
-%and see whether these funds tend to beat or fall behind a
-%standard index fund.
 
 
 
@@ -1219,47 +1206,57 @@ to see how they perform, and ultimately there are three scenarios.
 
 \subsection{Hypothesis testing framework}
 
-%We took a sample of 50 actively managed funds in the
-%United States and compared their performance to that of the
-%S\&P 500 stock index. 
-%
-%Ultimately, we want to understand: which
-%has a better chance of outperforming the other, the actively
-%managed fund or the index fund?
-%The data for this study can be found in \data{active_fund},
-%and it is summarized in Table~\ref{}
-
-\Comment{When reviewing, make the discussion more clearly focused on the proportion of fund managers that beat the index fund.}
-
-The historical return rate in the stock market is about 7\%.
-Many fund managers believe their knowledge about the market gives
-them a leg up and that they can get a higher return. While
-they may invest their own money, these fund managers
-find investors who are willing to bet on their skills,
-and for their trouble they get a cut of any financial
-gains.
-
-We all would like to know: do a majority of fund managers
-outperform or underperform a simple index fund?
-We'll be using the S\&P~500
-index fund as our source of comparison.
-Ultimately, there are two possibilities:
+We're interested in understanding whether people know much
+about world health and development. If we take a multiple choice
+world health question, then we might like to understand if
 \begin{description}
-\item[$H_0$:] %$\mathbf{H_0}$: Even chance of beating S\&P~500.]
-  It's a flip of a coin:
-  if we randomly picked a fund manager, there's a 50-50 chance
-  they'll beat the S\&P~500.
-\item[$H_A$:] %$\mathbf{H_A}$: Either fund managers or the S\&P~500 is better.]
-  There's something more systematic: the proportion of fund
-  managers who beat the S\&P~500 isn't 50\%. That is, the
-  proportion is either less than 50\% or greater than 50\%.
-%  That is, it is  fund managers or the S\&P~500 is better.
-%  That said, we're not sure which it will be!
-%  While we don't know which will do better, we 
-%  We aren't sure which it might be, but one of
-%  these investment approaches is typically better than the
-%  other.
+\item[$\mathbf{H_0}$:]
+    People never learn these particular topics and their
+    responses are simply equivalent to random guesses.
+\item[$\mathbf{H_A}$:]
+    Folks have knowledge that helps them do better
+    than random guessing, or perhaps, they have false knowledge
+    that leads them to actually do worse than random guessing.
 \end{description}
+%Let's again consider the first question from Hans Rosling:
+%\begin{quote}
+%  In the last 20 years the proportion of the
+%  world population living in extreme poverty has:
+%  \begin{enumerate}[a.]
+%  \item Almost doubled.
+%  \item More or less stayed the same.
+%  \item Almost halved.
+%  \end{enumerate}
+%\end{quote}
+%The historical return rate in the stock market is about 7\%.
+%Many fund managers believe their knowledge about the market gives
+%them a leg up and that they can get a higher return. While
+%they may invest their own money, these fund managers
+%find investors who are willing to bet on their skills,
+%and for their trouble they get a cut of any financial
+%gains.
+%
+%We all would like to know: do a majority of fund managers
+%outperform or underperform a simple index fund?
+%We'll be using the S\&P~500
+%index fund as our source of comparison.
+%Ultimately, there are two possibilities:
+%\begin{description}
+%\item[$H_0$:] %$\mathbf{H_0}$: Even chance of beating S\&P~500.]
+%  It's a flip of a coin:
+%  if we randomly picked a fund manager, there's a 50-50 chance
+%  they'll beat the S\&P~500.
+%\item[$H_A$:] %$\mathbf{H_A}$: Either fund managers or the S\&P~500 is better.]
+%  There's something more systematic: the proportion of fund
+%  managers who beat the S\&P~500 isn't 50\%. That is, the
+%  proportion is either less than 50\% or greater than 50\%.
+%%  That is, it is  fund managers or the S\&P~500 is better.
+%%  That said, we're not sure which it will be!
+%%  While we don't know which will do better, we 
+%%  We aren't sure which it might be, but one of
+%%  these investment approaches is typically better than the
+%%  other.
+%\end{description}
 %Ultimately, we don't know which is true!
 These competing ideas are called \term{hypotheses}.
 We call $H_0$ the null hypothesis and $H_A$ the alternative
@@ -1274,25 +1271,28 @@ hypothesis.
 \end{termBox}
 
 The null hypothesis often represents a skeptical position
-or a perspective of no difference. This makes sense for our
-setup with the fund managers: we're basically saying that
-there's no difference and it's a flip of the coin on whether
-a fund manager beats the S\&P~500.
+or a perspective of ``no difference''.
+In our first example, we'll consider whether
+the typical person does any different than random guessing
+on the first question on how extreme poverty has changed
+in the last 20~years.
 
 The alternative hypothesis generally represents a new
-or stronger perspective. In the case of the fund managers,
-it would certainly be interesting to learn whether most fund
-managers beat the S\&P~500 index fund, since that would mean
-there are potential benefits to working with the typical fund
-manager. It would also be darn interesting if it were true
-that most fund managers don't beat the index fund, since
-that would mean the typical fund manager is effectively paid
-to \emph{lose} the money for their investors!
+or stronger perspective. In the case of the question
+about extreme poverty,
+it would certainly be interesting to learn whether
+people do better than random guessing, since that would
+mean that the typical person knows about public health
+trends. It would also be very interesting if we learned
+that people do \emph{worse} than random guessing,
+since that would suggest people have acquired
+incorrect information about world health.
 
 \begin{tipBox}{\tipBoxTitle{Be a skeptic of $\mathbf{H_A}$
     and require supporting evidence}
   The alternative hypothesis is generally an assertion of
-  something genuinely interesting or new. For this reason,
+  something genuinely interesting or~new.
+  For this reason,
   our job as data scientists is to play the role of a skeptic:
   before we buy into the alternative hypothesis, we need to
   see strong supporting evidence.}
@@ -1304,48 +1304,49 @@ The hypothesis testing framework is a very general tool, and we often use it wit
 A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?\footnote{The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt; in such a case, the jury rejects innocence (the null hypothesis) and concludes the defendant is guilty (alternative hypothesis).}
 \end{exercise}
 
-\begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
-In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
-\end{tipBox}
-
 Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. Even if the jurors leave unconvinced of guilt beyond a reasonable doubt, this does not mean they believe the defendant is innocent. This is also the case with hypothesis testing: \emph{even if we fail to reject the null hypothesis, we typically do not accept the null hypothesis as true}. Failing to find strong evidence for the alternative hypothesis is not equivalent to accepting the null hypothesis.
 
-In the fund manager example, the null hypothesis represents
-the notion that it's a flip of the coin whether any given
-fund manager will beat the S\&P~500. That is, the proportion
-$p$ of fund managers who beat the S\&P~500 is 50\%.
+When considering the first question posed by Rosling,
+the null hypothesis represents the notion that people
+are as good as random guessing on each of the questions.
+That is, the proportion
+$p$ of college-educated adults who pick the correct
+answer -- that extreme poverty has dropped over the
+last 20~years -- is about 33.3\% (or 1-in-3 if wanting to be
+perfectly precise).
 The alternative hypothesis is that this proportion is something
-other than 50\%. While it's helpful to write these hypotheses
+other than 33.3\%. While it's helpful to write these hypotheses
 in words, it can be simpler to write them using mathematical
 notation:
 \begin{description}
-\item[$H_0$:] $p = 0.50$
-\item[$H_A$:] $p \neq 0.50$
+\item[$H_0$:] $p = 0.333$
+\item[$H_A$:] $p \neq 0.333$
 \end{description}
 In this hypothesis setup, we want to make a conclusion about
 the population parameter $p$. The value we are comparing the
 parameter to is called the \term{null value}, which in this
-case is 0.50. It's common to label the null value with the
-same symbol as the parameter but with a subscript `0'.
-That is, in this case, the null value is $p_0 = 0.50$.
+case is 0.333. It's common to label the null value with the
+same symbol as the parameter but with a subscript~`0'.
+That is, in this case, the null value is $p_0 = 0.333$.
 
 \begin{example}{It may seem impossible that the
-    proportion of fund managers that beat the S\&P~500
-    is \emph{exactly} 50\%. If we don't believe the
+    proportion of people who get the correct answer
+    is \emph{exactly} 33.3\%. If we don't believe the
     null hypothesis, should we simply reject it?}
   \label{fund_managers_sp500_not_reject_H0_interpretation}
   No. While we may not buy into the notion that
-  the proportion is exactly 50\%, the hypothesis testing
+  the proportion is exactly 33.3\%, the hypothesis testing
   framework requires that there be strong evidence before
   we reject the null hypothesis and conclude something
   more interesting.
 
   After all, even if we don't believe the proportion is
-  \emph{exactly} 50\%, that doesn't really tell us anything
+  \emph{exactly} 33.3\%, that doesn't really tell us anything
   useful! We would still be stuck with the original question:
-  do fund managers tend to beat the S\&P~500 or vice-versa?
+  do people do better or worse than random guessing on
+  Rosling's question?
   Without data that strongly
-  points in one direction or the other, it is entirely
+  points in one direction or the other, it is both
   uninteresting and pointless to reject $H_0$.
 \end{example}
 
@@ -1355,7 +1356,9 @@ That is, in this case, the null value is $p_0 = 0.50$.
   What should we use for the null and alternative hypotheses in
   this case?\footnote{The null hypothesis ($H_0$) in this case
   is the declaration of \emph{no difference}: the drugs are equally
-  effective. The alternative hypothesis ($H_A$).}
+  effective. The alternative hypothesis ($H_A$) is that the
+  new drug performs differently than the original,
+  i.e. it could perform better or worse.}
 \end{exercise}
   
 %Suppose we collected data but the data didn't show strong
@@ -1373,31 +1376,34 @@ That is, in this case, the null value is $p_0 = 0.50$.
 \subsection{Testing hypotheses using confidence intervals}
 \label{utilizingOurCI}
 
-\Comment{Build the \data{fund\_managers} data set and put it
-in the R package. Only considering large-cap fund managers.
-See \href{https://us.spindices.com/documents/spiva/spiva-us-year-end-2016.pdf}{this report} as a reference.}
+\Comment{Build the \data{rosling\_responses} data set and put it
+in the R~package.}
 
-We will use the \data{fund\_managers} data set to evaluate
-the hypothesis test evaluating whether the proportion of fund
-managers who beat the S\&P~500 is different from 50\%. This
-data set summarizes the performance of 100 randomly sampled
-fund managers during the 2016 and evaluates whether each
-beat the S\&P~500 or not. Of those 100 managers,
-$\hat{p} = 0.36$ (36\%) beat the S\&P~500 while the other
-54\% did not.
+We will use the \data{rosling\_responses} data set to evaluate
+the hypothesis test evaluating whether college-educated adults
+who get the question about extreme poverty correct is different
+from 33.3\%.
+This data set summarizes the answers of \roslingAsize{}
+college-educated adults.
+Of these \roslingAsize{} adults, \roslingApercent{}\%~of
+respondents got the question correct that extreme poverty
+has dropped by~half in the last 20~years.
 
 Up until now, our discussion has been philosophical.
 However, now that we have data, we might ask ourselves:
 does the data provide strong evidence that the proportion
-of all fund managers is different than 50\%?
+of college-educated adults is different than 33.3\%?
 
 We learned in Section~\ref{pointEstimates} that there is
 fluctuation from one sample to another, and it is unlikely
-that $\hat{p}$ will exactly equal $p$, and we want to make
-a conclusion about $p$. So we are still left with a nagging
-concern: is this deviation of 36\% from 50\% simply due to
-chance, or does the data provide strong evidence that the
-population proportion is different from 50\%?
+that our sample proportion, $\hat{p}$,
+will exactly equal $p$, but we want to make
+a conclusion about $p$.
+So we are still left with a nagging
+concern: is this deviation of \roslingApercent{}\%
+from 33.3\% simply due to chance,
+or does the data provide strong evidence that the
+population proportion is different from 33.3\%?
 
 In Section~\ref{confidenceIntervals}, we learned how to
 quantify the uncertainty in our estimate using confidence
@@ -1405,75 +1411,173 @@ intervals. This can be useful for the hypothesis test.
 
 \begin{example}{Check whether it is reasonable to construct
     a confidence interval for $p$ using the sample data, and
-    if so, construct a 95\% confidence interval. Also use
-    the confidence interval to evaluate the hypothesis test.}
+    if so, construct a 95\% confidence interval.}
   The conditions are met for $\hat{p}$ to be approximately
   normal: the data come a simple random sample (satisfies
-  independence), and $n\hat{p} = 36$ and
-  $n(1 - \hat{p}) = 64$ are both greater than 10 (success-failure
-  condition).
+  independence), and $n\hat{p} = \roslingAcount$ and
+  $n(1 - \hat{p}) = \roslingAcountcomplement$ are both
+  at least 10 (success-failure condition).
 
   To construct the confidence interval, we will need to identify
-  the point estimate ($\hat{p} = 0.36$), the critical value for
+  the point estimate ($\hat{p} = \roslingAprop$), the critical value for
   the 95\% confidence level ($z^{\star} = 1.96$), and the standard
   error of $\hat{p}$
-  ($SE_{\hat{p}} = \sqrt{\hat{p}(1 - \hat{p}) / n} = 0.048$).
+  ($SE_{\hat{p}} = \sqrt{\hat{p}(1 - \hat{p}) / n} = \roslingAse$).
   With those items, we can construct a confidence interval for $p$:
   \begin{align*}
     &\hat{p} \pm z^{\star} \times SE_{\hat{p}} \\
-    &0.36 \pm 1.96 \times 0.048 \\
-    &(0.266, 0.454)
+    &\roslingAprop \pm 1.96 \times \roslingAse \\
+    &(0.142, 0.350)
   \end{align*}
-  We are 95\% confident that the proportion of all fund
-  managers who beat the S\&P~500 in 2016 was between 26.6\%
-  and 45.4\%.
-
-  The confidence interval falls entirely below the
-  null value, $p_0 = 0.50$, which gives us strong evidence
-  that the proportion is in fact not 50\%.
-  More importantly,
-  the confidence interval provides strong evidence that the
-  actual proportion of fund managers who beat the S\&P~500
-  is below 50\%.\footnote{You might be asking
-  yourself whether there was something special about 2016;
-  perhaps the fund managers perform better in other years.
-  If this question came to mind, then great job on being
-  a skeptic! This is an important question to ask,
-  and we looked at research on the topic:
-  the 2016 finding is consistent with other historical data.
-  For example, when tracking a 15-year period ending
-  in 2016, only about 8\% of fund managers beat the S\&P~500:
-  \oiRedirect{sp500-beats-fund-managers-report}{us.spindices.com/documents/spiva/spiva-us-year-end-2016.pdf}}
-  \Comment{Ensure the redirect in the footnote works.}
+  We are 95\% confident that the proportion of all
+  college-educated adults answer this particular question
+  about extreme poverty is between 14.2\%
+  and 35.0\%.
 \end{example}
 %At a first glance, it looks like it might be. After all,
 %36\% isn't that close to 50\%, so maybe this data constitutes
 %\emph{strong evidence}. We need to 
 
-Had the confidence interval contained the null value,
-in this case $p_0 = 0.5$, then the data would have been
-insufficient evidence to reject the null hypothesis.
-That is, had that been the case, the null value would
-have been in the \emph{range of plausible values}
-(at the 95\% confidence level), so we would not have
-had sufficient evidence to reject the notion that the
-proportion was actually 0.5.
-As discussed in
-Example~\ref{fund_managers_sp500_not_reject_H0_interpretation},
-failing to reject the
-null hypothesis does not necessarily mean we believe
-it is true, but it does mean we cannot conclude anything
-interesting (e.g. cannot differentiate whether the
-the proportion of fund managers that provides a better
-return on investment than index funds is smaller or
-larger than 0.5.
+Because the null value in the hypothesis test is $p_0 = 0.333$,
+which falls within the range of plausible values from the
+confidence interval, we cannot say the null value is implausible.
+That is, we fail to reject the null hypothesis, $H_0$,
+and the data do not provide sufficient evidence to reject
+the notion that the performance of adults was any different
+than random guessing.
 
-%You might wonder about what would happen if we had used
-%a higher confidence level, such as 99\% or 99.9\%. If we
-%use a high enough confidence level, the interval will end
-%up being wide enough.
+\begin{example}{Can we conclude that college-educated
+    adults simply guess on the extreme poverty question?}
+  No, and for two reasons.
 
-\Comment{Introduce and go through a second case study.}
+  First, when we fail to reject $H_0$, that does not
+  necessarily mean we are backing the null hypothesis
+  conclusion. Remember the US jury example? If they do not
+  find the defendant guilty, that does not mean the jury
+  is convinced of their innocence, but rather, they were
+  not convinced of the person's guilt.
+
+  Second, we are only evaluating the proportion, not what the
+  proportion represent. While 33.3\% represent random guessing,
+  perhaps adults had a guess based on their past knowledge,
+  but that past knowledge simply wasn't very useful on this
+  question and so most of them got it wrong. Some may have even
+  known the answer and got it right, while others may have
+  thought they knew the answer and got it wrong.
+\end{example}
+
+\begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
+In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
+\end{tipBox}
+
+\begin{exercise}\label{roslingB_hypothesis_setup}
+Let's move onto a second question posed by Hans Rosling:
+\begin{quote}{\em
+  There are 2 billion children in the world today
+  aged 0-15 years old, how many children will there
+  be in year 2100 according to the United Nations?
+  \begin{enumerate}[a.]
+  \item 4 billion.
+  \item 3 billion.
+  \item 2 billion.
+  \end{enumerate}
+}\end{quote}
+Set up appropriate hypotheses to evaluate whether
+college-educated adults are better than random guessing
+on this question.
+Also, see if you can guess the correct answer before checking
+the answer in the footnote!\footnote{%
+The correct answer is 2~billion. While the world population
+is projected to increase, the average age is also expected
+to rise. That is, the majority of the population growth will
+happen in older age groups, and people will tend to live
+longer in the future across much of the world.
+
+$H_0$: the proportion who get the answer correct is the same
+as random guessing: 1-in-3, or $p = 0.333$.
+
+$H_A$: the proportion who get the answer correct is different
+than random guessing, $p \neq 0.333$.}
+\end{exercise}
+
+% n <- 228; x <- 39; p <- x / n; n; p; 1 - p; x; n - x; sqrt(p*(1-p)/n)
+\newcommand{\roslingBsize}{228}
+\newcommand{\roslingBprop}{0.171}
+\newcommand{\roslingBpropcomplement}{0.829}
+\newcommand{\roslingBpercent}{17.1}
+\newcommand{\roslingBpercentcomplement}{82.9}
+\newcommand{\roslingBcount}{39}
+\newcommand{\roslingBcountcomplement}{189}
+\newcommand{\roslingBse}{0.025}
+
+\begin{exercise}\label{roslingB_normality}
+From a (new) random sample of 228 college-educated adults,
+\roslingBpercent{}\% selected the correct answer to the
+question in Guided
+Practice~\ref{roslingB_hypothesis_setup}: 2~billion.
+Can we apply the normal model to the sample proportion
+to construct a confidence interval in this
+case?\footnote{Check independence
+and the success-failure condition:
+\begin{description}
+\item[Independence.] Since the data are from a simple
+    random sample, the observations are independent.
+\item[Success-failure.] We'll use $\hat{p}$ in place of $p$
+    to check: $n\hat{p} = \roslingBcount$
+    and $n(1 - \hat{p}) = \roslingBcountcomplement$.
+    Both are greater than 10, so the success-failure condition
+    is satisfied.
+\end{description}
+Since both conditions are satisfied, it is reasonable to use
+the normal distribution for $\hat{p}$.}
+\end{exercise}
+
+\begin{example}{Compute a 95\% confidence interval for the
+    fraction of college-educated adults who answered the
+    children-in-2100 question correctly, and evaluate the
+    hypotheses in Guided
+    Practice~\ref{roslingB_hypothesis_setup}.\footnote{}}
+  To compute the standard error, we'll again use $\hat{p}$
+  in place of $p$ for the calculation:
+  \begin{align*}
+  SE_{\hat{p}}
+      = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}
+      = \sqrt{\frac{\roslingBprop{}(1 - \roslingBprop{})}
+          {\roslingBsize{}}}
+      = \roslingBse{}
+  \end{align*}
+  You showed in Guided Practice~\ref{roslingB_normality}
+  that the normal model may be applied to $\hat{p}$,
+  which ensures a 95\% confidence interval may be accurately
+  constructed as
+  \begin{align*}
+  \hat{p}~\pm~z^{\star}SE
+  \quad\to\quad
+  \roslingBprop{}~\pm~1.96 \times \roslingBse{}
+  \quad\to\quad
+  (0.122, 0.220)
+  \end{align*}
+  Because the null value, $p_0 = 0.333$, is not in the
+  confidence interval, a population proportion of 0.333
+  is implausible and we reject the null hypothesis.
+  That is, the data provide statistically significant
+  evidence that the actual proportion of college adults
+  who get the children-in-2100 question correct is
+  different from random guessing. Because the entire interval
+  is below 0.333, we can conclude college-educated adults
+  do \emph{worse} than random guessing on this question.
+\end{example}
+
+This last conclusion is not a fluke: Hans Rosling has
+an assortment of similar questions to those two we've so
+far discussed.
+On many of the questions, people actually do worse than
+random guessing.
+In general, the answers suggest that people tend to be
+more pessimistic about progress than reality suggests.
+This topic is discussed in much greater detail in
+Rosling's book,
+\oiRedirect{amazon_factfulness}{Factfulness}.
 
 
 
@@ -1481,11 +1585,18 @@ larger than 0.5.
 
 \index{hypothesis testing!decision errors|(}
 
-Hypothesis tests are not flawless, since we can make a wrong decision in statistical hypothesis tests based on the data. For example, in the court system innocent people are sometimes wrongly convicted and the guilty sometimes walk free. However, the difference is that in statistical hypothesis tests, we have the tools necessary to quantify how often we make such errors.
+Hypothesis tests are not flawless: we can make a wrong
+decision in a statistical hypothesis test based on the data.
+For example, in the court system innocent people are
+sometimes wrongly convicted and the guilty sometimes walk free.
+However, the difference is that in statistical hypothesis tests,
+we have the tools necessary to quantify how often we make
+such errors.
 
-% Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, we can make a wrong decision in statistical hypothesis tests. However, the difference is that we have the tools necessary to quantify how often we make such errors.
-
-There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios, which are summarized in Table~\ref{fourHTScenarios}.
+There are two competing hypotheses: the null and the alternative.
+In a hypothesis test, we make a statement about which one might
+be true, but we might choose incorrectly. There are four possible
+scenarios, which are summarized in Table~\ref{fourHTScenarios}.
 
 \begin{table}[ht]
 \centering
@@ -1504,42 +1615,110 @@ There are two competing hypotheses: the null and the alternative. In a hypothesi
 \label{fourHTScenarios}
 \end{table}
 
-A \term{Type~1 Error} is rejecting the null hypothesis when $H_0$ is actually true. A \term{Type~2 Error} is failing to reject the null hypothesis when the alternative is actually true.
+A \term{Type~1 Error} is rejecting the null hypothesis when
+$H_0$ is actually true. A \term{Type~2 Error} is failing to
+reject the null hypothesis when the alternative is actually
+true.
 
 \begin{exercise} \label{whatAreTheErrorTypesInUSCourts}
-In a US court, the defendant is either innocent ($H_0$) or  guilty ($H_A$). What does a Type~1 Error represent in this context? What does a Type~2 Error represent? Table~\ref{fourHTScenarios} may be useful.\footnote{If the court makes a Type~1 Error, this means the defendant is innocent ($H_0$ true) but wrongly convicted. A Type~2 Error means the court failed to reject $H_0$ (i.e. failed to convict the person) when she was in fact guilty ($H_A$ true).}
+In a US court, the defendant is either innocent ($H_0$) or
+guilty ($H_A$).
+What does a Type~1 Error represent in this context?
+What does a Type~2 Error represent?
+Table~\ref{fourHTScenarios} may be useful.\footnote{If
+  the court makes a Type~1 Error, this means the defendant
+  is innocent ($H_0$ true) but wrongly convicted.
+  A Type~2 Error means the court failed to reject $H_0$
+  (i.e. failed to convict the person) when she was
+  in fact guilty ($H_A$ true).}
 \end{exercise}
 
 \begin{exercise} \label{howToReduceType1ErrorsInUSCourts}
-How could we reduce the Type~1 Error rate in US courts? What influence would this have on the Type~2 Error rate?\footnote{To lower the Type~1 Error rate, we might raise our standard for conviction from ``beyond a reasonable doubt'' to ``beyond a conceivable doubt'' so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type~2 Errors.}
+How could we reduce the Type~1 Error rate in US courts?
+What influence would this have on the Type~2 Error
+rate?\footnote{To lower the Type~1 Error rate, we might
+  raise our standard for conviction from
+  ``beyond a reasonable doubt'' to
+  ``beyond a conceivable doubt'' so fewer people would
+  be wrongly convicted. However, this would also make
+  it more difficult to convict the people who are
+  actually guilty, so we would make more Type~2 Errors.}
 \end{exercise}
 
 \begin{exercise} \label{howToReduceType2ErrorsInUSCourts}
-How could we reduce the Type~2 Error rate in US courts? What influence would this have on the Type~1 Error rate?\footnote{To lower the Type~2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from ``beyond a reasonable doubt'' to ``beyond a little doubt''. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type~1 Error rate.}
+How could we reduce the Type~2 Error rate in US courts?
+What influence would this have on the Type~1 Error
+rate?\footnote{To lower the Type~2 Error rate, we want
+  to convict more guilty people. We could lower the
+  standards for conviction from ``beyond a reasonable
+  doubt'' to ``beyond a little doubt''. Lowering the bar
+  for guilt will also result in more wrongful convictions,
+  raising the Type~1 Error rate.}
 \end{exercise}
 
 \index{hypothesis testing!decision errors|)}
 
-Exercises~\ref{whatAreTheErrorTypesInUSCourts}-\ref{howToReduceType2ErrorsInUSCourts} provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.
+Exercises~\ref{whatAreTheErrorTypesInUSCourts}-\ref{howToReduceType2ErrorsInUSCourts} provide
+an important lesson: if we reduce how often we make
+ one type of error, we generally make more of the
+ other type.
 
-Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless we have strong evidence. But what precisely does \emph{strong evidence} mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5\% of the time. This corresponds to a \term{significance level}\index{hypothesis testing!significance level} of 0.05. We often write the significance level using $\alpha$ (the Greek letter \emph{alpha}\index{Greek!alpha@alpha ($\alpha$)}): $\alpha = 0.05$. We discuss the appropriateness of different significance levels in Section~\ref{significanceLevel}. \Comment{Get this ref is working.}
+Hypothesis testing is built around rejecting or failing
+to reject the null hypothesis.
+That is, we do not reject $H_0$ unless we have strong evidence.
+But what precisely does \emph{strong evidence} mean?
+As a general rule of thumb, for those cases where the null
+hypothesis is actually true, we do not want to incorrectly
+reject $H_0$ more than 5\% of the time.
+This corresponds to a
+\term{significance level}\index{hypothesis testing!significance level}
+of 0.05.
+We often write the significance level using $\alpha$
+(the Greek letter \emph{alpha}\index{Greek!alpha@alpha ($\alpha$)}):
+$\alpha = 0.05$.
+We discuss the appropriateness of different significance
+levels in Section~\ref{significanceLevel}.
 
-If we use a 95\% confidence interval to evaluate a hypothesis test where the null hypothesis is true, we will make an error whenever the point estimate is at least 1.96 standard errors away from the population parameter. This happens about 5\% of the time (2.5\% in each tail). Similarly, using a 99\% confidence interval to evaluate a hypothesis is equivalent to a significance level of $\alpha = 0.01$.
+If we use a 95\% confidence interval to evaluate a
+hypothesis test and the null hypothesis happens to be true,
+we will make an error whenever the point estimate is
+at least 1.96 standard errors away from the population
+parameter.
+This happens about 5\% of the time (2.5\% in each tail).
+Similarly, using a 99\% confidence interval to evaluate
+a hypothesis is equivalent to a significance level of
+$\alpha = 0.01$.
 
-A confidence interval is, in one sense, simplistic in the world of hypothesis tests. Consider the following two scenarios:
+A confidence interval is very helpful in determining
+whether or not to reject the null hypothesis.
+However, there are a couple reasons why we would like
+a more general tool:
 \begin{itemize}
-\setlength{\itemsep}{0mm}
-\item The null value (the parameter value under the null hypothesis) is in the 95\% confidence interval but just barely, so we would not reject $H_0$. However, we might like to somehow say, quantitatively, that it was a close decision.
-\item The null value is very far outside of the interval, so we reject $H_0$. However, we want to communicate that, not only did we reject the null hypothesis, but it wasn't even close. Such a case is depicted in Figure~\ref{whyWeWantPValue}.
+\item Suppose the null value is very far outside of the
+    interval, so we reject $H_0$.
+    However, we want to communicate that, not only did we
+    reject the null hypothesis, but it wasn't even close.
+    Such a case is depicted in Figure~\ref{whyWeWantPValue}.
+    It would be nice to quantify the strength of this
+    relationship.
+\item In several sections, we will encounter situations where
+    a confidence interval cannot be constructed.
+    For example, if we wanted to evaluate the hypothesis
+    that several proportions are equal, it isn't clear how
+    to construct and compare many confidence intervals
+    altogether.
 \end{itemize}
-In Section~\ref{pValue}, we introduce a tool called the \emph{p-value} that will be helpful in these cases. The p-value method also extends to hypothesis tests where confidence intervals cannot be easily constructed or applied.
+Next we will introduce a tool called the \emph{p-value}
+to help us expand our statistical toolkit, which will
+enable us to both better understand the strength of
+evidence and work in more complex data scenarios.
 
-\begin{figure}[hht]
-\centering
-\includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/whyWeWantPValue/whyWeWantPValueProp}
-\caption{It would be helpful to quantify the strength of the evidence against the null hypothesis. In this case, the evidence is extremely strong.}
-\label{whyWeWantPValue}
-\end{figure}
+%\begin{figure}[hht]
+%\centering
+%\includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/whyWeWantPValue/whyWeWantPValueProp}
+%\caption{It would be helpful to quantify the strength of the evidence against the null hypothesis. In this case, the evidence is extremely strong.}
+%\label{whyWeWantPValue}
+%\end{figure}
 
 
 
@@ -1549,21 +1728,30 @@ In Section~\ref{pValue}, we introduce a tool called the \emph{p-value} that will
 
 \index{hypothesis testing!p-value|(}
 
-The p-value is a way of quantifying the strength of the evidence against the null hypothesis and in favor of the alternative. Formally the \emph{p-value} is a conditional probability.
+The p-value is a way of quantifying the strength of the
+evidence against the null hypothesis and in favor of the
+alternative.
+Formally the \emph{p-value} is a conditional probability.
 
 \begin{termBox}{\tBoxTitle{p-value}
-The \term{p-value}\index{hypothesis testing!p-value|textbf} is the probability of observing data at least as favorable to the alternative hypothesis as our current data set, if the null hypothesis is true. We typically use a summary statistic of the data, in this section the sample proportion, to help compute the p-value and evaluate the hypotheses.}
+  The \term{p-value}\index{hypothesis testing!p-value|textbf}
+  is the probability of observing data at least as favorable
+  to the alternative hypothesis as our current data set,
+  if the null hypothesis were true. We typically use a summary
+  statistic of the data, in this section the sample proportion,
+  to help compute the p-value and evaluate the hypotheses.}
 \end{termBox}
 
-Statistical hypothesis testing almost always uses the p-value method rather than confidence intervals. In this formal space of hypothesis testing for proportions, we will slightly modify how we check the success-failure condition and compute the standard error. These changes aren't dramatic, but they will require paying a little more attention to how we use the null value, $p_0$.
+Statistical hypothesis testing almost always uses the
+p-value method rather than confidence intervals.
 
 %To apply the normal distribution framework in the context of a hypothesis test for a proportion, the independence and success-failure conditions must be satisfied. In a hypothesis test, the success-failure condition is checked using the null proportion: we verify $np_0$ and $n(1-p_0)$ are at least 10, where $p_0$ is the null value.
 
 \index{data!coal power support|(}
 
 \begin{example}{Pew Research asked a random sample of 1000 American
-    adults whether they supported the increased usage of
-    coal. Set up hypotheses to evaluate whether this represents
+    adults whether they supported the increased usage of coal.
+    Set up hypotheses to evaluate whether this represents
     a majority of Americans, one way or the other.}
   The uninteresting result is that there is no majority either way:
   half of Americans support and the other half oppose expanding the
@@ -1575,44 +1763,72 @@ Statistical hypothesis testing almost always uses the p-value method rather than
     \item[$H_0$:] $p = 0.5$
     \item[$H_A$:] $p \neq 0.5$
   \end{description}
-  In this case, the null value ($p_0$) is 0.5.
+  In this case, the null value is $p_0 = 0.5$.
 \end{example}
 
-Pew Research's sample found that 37\% of American adults support
-increased usage of coal. We now wonder, does 37\% represent a
-real difference from the null hypothesis of 50\%.
+\newcommand{\pewcoalpollsize}{1000}
+\newcommand{\pewcoalpollprop}{0.370}
+\newcommand{\pewcoalpollpropcomplement}{0.630}
+\newcommand{\pewcoalpollpercent}{37.0}
+\newcommand{\pewcoalpollpercentcomplement}{63.0}
+\newcommand{\pewcoalpollcount}{370}
+\newcommand{\pewcoalpollcountcomplement}{630}
+\newcommand{\pewcoalpollse}{0.0153}
+\newcommand{\pewcoalpollnullvalue}{0.5}
+\newcommand{\pewcoalpollnullse}{0.016}
 
-\begin{example}{What would the sampling distribution of $\hat{p}$
+When evaluating hypotheses for proportions using the
+p-value method,
+we will slightly modify how we check the success-failure
+condition and compute the standard error for the
+single proportion case.
+These changes aren't dramatic, but they will require paying
+a little more attention to how we use the null value, $p_0$.
+
+\begin{example}{Pew Research's sample found that
+    \pewcoalpollpercent{}\%
+    of American adults support increased usage of coal.
+    We now wonder, does \pewcoalpollpercent{}\% represent
+    a real difference from the null hypothesis of 50\%?
+    What would the sampling distribution of $\hat{p}$
     look like if the null hypothesis were true?}
   If the null hypothesis were true, the population proportion
-  would be the null value, 0.5. We previously learned that
+  would be the null value, 0.5.
+  We~previously learned that
   the sampling distribution of $\hat{p}$ will be normal when
-  two conditions are met:
-  \begin{itemize}
-    \item Independence is reasonable since this poll is based on
-        a simple random sample.
-    \item Based on the poll's sample size of $n = 1000$,
+  two conditions are~met:
+  \begin{description}
+    \item[Independence.]
+        The poll was based on a simple random sample,
+        so independence is satisfied.
+    \item[Success-failure.]
+        Based on the poll's sample size of
+        $n = \pewcoalpollsize{}$,
         the success-failure condition is met, since
         \begin{align*}
-        np \quad \stackrel{H_0}{=} \quad 1000 \times 0.5 = 500
+        np \quad \stackrel{H_0}{=}
+            \quad \pewcoalpollsize{} \times \pewcoalpollnullvalue{} = 500
         \qquad
         n (1 - p) \quad \stackrel{H_0}{=}
-        \quad 1000 \times (1 - 0.5) = 500
+            \quad \pewcoalpollsize{} \times (1 - \pewcoalpollnullvalue{}) = 500
         \end{align*}
-        are both greater than 10. Note that the success-failure
-        condition was checked using the null value, $p_0 = 0.5$;
-        this is the first procedural difference from confidence
-        intervals.
-  \end{itemize}
+        are both at least 10.
+        Note that the success-failure condition was checked
+        using the null value, $p_0 = 0.5$;
+        this is the first procedural difference from
+        confidence intervals.
+  \end{description}
   If the null hypothesis were true, the sampling distribution
-  indicates that a sample proportion based on $n = 1000$ observations
+  indicates that a sample proportion based on
+  $n = \pewcoalpollsize{}$ observations
   would be normally distributed. Next, we can compute the standard
   error, where we will again use the null value $p_0 = 0.5$ in the
   calculation:
   \begin{align*}
   SE = \sqrt{\frac{p (1 - p)}{n}}
-      \quad \stackrel{H_0}{=} \quad \sqrt{\frac{0.5 \times 0.5}{1000}}
-      = 0.016
+      \quad \stackrel{H_0}{=}
+          \quad \sqrt{\frac{\pewcoalpollnullvalue{} \times (1 - \pewcoalpollnullvalue{})}{\pewcoalpollsize{}}}
+      = \pewcoalpollnullse{}
   \end{align*}
   This marks the other procedural difference from confidence
   intervals: since the sampling distribution is determined
@@ -1620,8 +1836,10 @@ real difference from the null hypothesis of 50\%.
   the proportion in the calculation rather than $\hat{p}$.
 
   Ultimately, if the null hypothesis were true, then the sample
-  proportion should follow a normal distribution with mean 0.500
-  and standard error of 0.016. This distribution is shown in
+  proportion should follow a normal distribution with mean
+  \pewcoalpollnullvalue{}
+  and standard error of \pewcoalpollnullse{}.
+  This distribution is shown in
   Figure~\ref{normal_dist_mean_500_se_016}.
 \end{example}
 
@@ -1632,58 +1850,81 @@ real difference from the null hypothesis of 50\%.
   If the null hypothesis were true, this normal distribution
   describes the distribution of $\hat{p}$. It appears that,
   if $H_0$ were true, then it is very unlikely to observe
-  $\hat{p} = 0.36$. To say how unlikely, we use the tail area.}
+  $\hat{p} = \pewcoalpollprop{}$.
+  To say how unlikely, we use the tail area.}
 \label{normal_dist_mean_500_se_016}
 \end{figure}
 
+\begin{tipBox}{
+  \tipBoxTitle{Checking success-failure and computing
+      $SE_{\hat{p}}$ for a hypothesis test}
+  When using the p-value method to evaluate a hypothesis test,
+  we check the conditions for $\hat{p}$ and construct the
+  standard error using the null value, $p_0$, instead of using
+  the sample proportion.}
+\end{tipBox}
 
 When we identify the sampling distribution under the null hypothesis,
-it has a special name: the \term{null distribution}. The p-value
-represents the probability of the observed $\hat{p}$, or a $\hat{p}$
-that is more extreme, if the null hypothesis were true.
+it has a special name: the \term{null distribution}.
+The p-value represents the probability of the observed $\hat{p}$,
+or a $\hat{p}$ that is more extreme,
+if the null hypothesis were true.
+To find the p-value, we generally find the null distribution,
+and then we find a tail area in that distribution.
+%In some cases, as in this particular instance,
+%the null distribution is a normal distribution.
 
-\begin{example}{Compute the chance that $\hat{p} = 0.36$ or
-    further from 0.5 under the null distribution, which is a
-    normal distribution with mean 0.5 and $SE = 0.016$.}
-  This is a normal probability problem where $x = 0.36$.
+\begin{example}{If the null hypothesis were true,
+    determine the chance of finding $\hat{p}$ at least
+    as far into the tails \pewcoalpollprop{}
+    under the null distribution,
+    which is a normal distribution with mean
+    $\mu = \pewcoalpollnullvalue{}$
+    and $SE = \pewcoalpollnullse{}$.}
+  This is a normal probability problem where
+  $x = \pewcoalpollprop{}$.
   First, we draw a simple graph to represent the situation,
   similar to what is shown in
   Figure~\ref{normal_dist_mean_500_se_016}.
   Since $\hat{p}$ is so far out in the tail, we know the
   tail area is going to be very small. To find it, we start
   by computing the Z-score using the mean of 0.5 and the
-  standard error of 0.016:
+  standard error of \pewcoalpollnullse{}:
   \begin{align*}
-  Z = \frac{0.37 - 0.5}{0.016} = 8.125 
+  Z = \frac{\pewcoalpollprop{} - 0.5}{\pewcoalpollnullse{}} = -8.125 
   \end{align*}
   We can use the normal probability table or software to find
-  the tail area. If we use the probability table, we consider the
-  smallest Z-score shown, which in
-  Appendix~\ref{normalProbabilityTable}
-  corresponds to a tail area of 0.0002.
+  the tail area.
+  If using the probability table in
+  Appendix~\ref{normalProbabilityTable},
+  the Z-score $Z = -8.125$ is off the table, so we will
+  use the smallest area listed: 0.0002.
 
-  To get the p-value, we double this tail area, since observations
-  in the mirror-imaged tail
-  (Figure~\ref{normal_dist_mean_500_se_016_with_upper})
-  are also just as extreme
-  relative to 0.5 as those below 0.36.
-  This gives a p-value of 0.0004.
+  The potential $\hat{p}$'s in the upper tail beyond
+  \pewcoalpollpropcomplement{}, which are shown
+  in Figure~\ref{normal_dist_mean_500_se_016_with_upper},
+  also represent observations at least as extreme as
+  the observed value of \pewcoalpollprop{}.
+  To account for these values that are also more
+  extreme under the hypothesis setup,
+  we double the lower tail to get the p-value: 0.0004.
 
   Here, the p-value represents the probability of observing
-  such an extreme sample proportion by chance, if the null hypothesis
-  were true.
+  such an extreme sample proportion by chance, if the null
+  hypothesis were true.
 \end{example}
 
 \begin{figure}[hht]
 \centering
 \includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/normal_dist_mean_500_se_016/normal_dist_mean_500_se_016_with_upper}
 \caption{
-  If $H_0$ were true, then the values above 0.64 are just
-  as unlikely as values below 0.36.}
+  If $H_0$ were true, then the values above
+  \pewcoalpollpropcomplement{} are just
+  as unlikely as values below \pewcoalpollprop{}.}
   %, so we double the lower
   %tail to get the p-value. This represents the probability
   %of observing something at least as extreme as
-  %$\hat{p} = 0.36$, if the null hypothesis were true.}
+  %$\hat{p} = 0.37$, if the null hypothesis were true.}
 \label{normal_dist_mean_500_se_016_with_upper}
 \end{figure}
 
@@ -1693,23 +1934,31 @@ that is more extreme, if the null hypothesis were true.
 \begin{example}{How should we evaluate the hypotheses using the
     p-value of 0.0004? Use the standard significance level of
     $\alpha = 0.05$.}
-  If the null hypothesis were true, it's very unlikely that we would
-  observe such an extreme deviation of $\hat{p}$ from 0.5. This means
-  there are one of two possibilities:
+  If the null hypothesis were true, there's a smaller than 0.04\%
+  chance of observing such an extreme deviation of
+  $\hat{p}$ from 0.5.
+  This means one of the following must be true:
   \begin{enumerate}
-    \item The null hypothesis is true, and we just happened to get
-        really unlucky.
-    \item The alternative hypothesis is true, which would be consistent
+    \item The null hypothesis is true, and we just happened
+        to get really unlucky and observe a sample proportion
+        very far from the truth.
+    \item The alternative hypothesis is true,
+        which would be consistent
         with observing a sample proportion far from 0.5.
   \end{enumerate}
+  Ultimately, scenario \#2 seems more plausible.
   The p-value tells us that what we observed is so unusual
-  with respect to null hypothesis that it casts serious doubt on $H_0$.
-  Formally, we compare the p-value to the significance level
-  $\alpha = 0.05$. Since the p-value is less than $\alpha$,
+  with respect to null hypothesis that it casts serious doubt
+  on $H_0$.
+  Formally, when we evaluate a hypothesis test,
+  we compare the p-value to the significance level,
+  which in this case is $\alpha = 0.05$.
+  Since the p-value is less than $\alpha$,
   we reject the null hypothesis.
-  That is, the data provide strong evidence against $H_0$,
-  and we conclude that a majority of Americans do not support
-  expanding the use of coal.
+  That is, the data provide strong evidence against $H_0$.
+  The data indicate the direction of the difference:
+  a majority of Americans do not support
+  expanding the use of coal-powered energy.
 \end{example}
 
 \index{data!coal power support|)}
@@ -1736,48 +1985,103 @@ that is more extreme, if the null hypothesis were true.
 \index{data!nuclear arms reduction|(}
 
 \begin{exercise}
-Do a majority of American support or oppose nuclear arms reduction? Set up hypotheses to evaluate this question.\footnote{We would like to understand if a majority supports or opposes, or ultimately, if there is no difference. $H_0: p = 0.50$. $H_A: p > 0.50$.}
+Do a majority of American support or oppose nuclear arms
+reduction? Set up hypotheses to evaluate this
+question.\footnote{We would like to understand if a majority
+  supports or opposes, or ultimately, if there is no difference.
+  $H_0: p = 0.50$. $H_A: p \neq 0.50$.}
 \end{exercise}
 
-\begin{example}{A simple random sample of 1,028 US adults in March 2013 found that 56\% support nuclear arms reduction.\footnote{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}} Does this provide convincing evidence that a majority of Americans supported nuclear arms reduction at the 5\% significance level?} \label{NuclearArmsInferenceExample}
-The poll was of a simple random sample that includes fewer than 10\% of US adults, meaning the observations are independent. In a one-proportion hypothesis test, the success-failure condition is checked using the null proportion, which is $p_0 = 0.5$ in this context: $n p_0 = n (1 - p_0) = 1028 \times 0.5 = 514 > 10$. With these conditions verified, the normal model may be applied to $\hat{p}$.
+\newcommand{\gallupnucleararmspollsize}{1028}
+\newcommand{\gallupnucleararmspollprop}{0.56}
+\newcommand{\gallupnucleararmspollpropcomplement}{0.44}
+\newcommand{\gallupnucleararmspollpercent}{56}
+\newcommand{\gallupnucleararmspollpercentcomplement}{44}
+\newcommand{\gallupnucleararmspollnullcount}{514}
+\newcommand{\gallupnucleararmspollse}{0.0155}
+\newcommand{\gallupnucleararmspollnullvalue}{0.5}
+\newcommand{\gallupnucleararmspollnullse}{0.0156}
 
-Next the standard error can be computed. The null value $p_0$ is used again here, because this is a hypothesis test for a single proportion.
-\begin{align*}
-SE = \sqrt{\frac{p_0 (1 - p_0)}{n}} = \sqrt{\frac{0.5 (1 - 0.5)}{1028}} = 0.016
-\end{align*}
-A picture of the normal model is shown in Figure~\ref{nuclearArmsReductionPValue} with the p-value represented by the shaded region. Based on the normal model, the test statistic can be computed as the Z-score of the point estimate:
-\begin{align*}
-Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.56 - 0.50}{0.016} = 3.75
-\end{align*}
-The upper tail area, representing the p-value, is about 0.0001. Because the p-value is smaller than 0.05, we reject $H_0$. The poll provides convincing evidence that a majority of Americans supported nuclear arms reduction efforts in March 2013.
+\begin{example}{A simple random sample of
+    \gallupnucleararmspollsize{} US adults
+    in March 2013 found that
+    \gallupnucleararmspollpercent{}\% support nuclear arms
+    reduction.\footnote{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}}
+    Does this provide convincing evidence that a majority
+    of Americans supported nuclear arms reduction at the
+    5\% significance level?} \label{NuclearArmsInferenceExample}
+  First, check conditions:
+  \begin{description}
+  \item[Independence.] The poll was of a simple random sample
+      of US adults, meaning the observations are independent.
+  \item[Success-failure.] In a one-proportion hypothesis test,
+      the success-failure condition is checked using the null
+      proportion, which is $p_0 = \gallupnucleararmspollnullvalue{}$
+      in this context:
+      $n p_0 = n (1 - p_0)
+          = \gallupnucleararmspollsize{} \times
+              \gallupnucleararmspollnullvalue{}
+          = \gallupnucleararmspollnullcount{} \geq 10$.
+  \end{description}
+  With these conditions verified,
+  the normal model may be applied to $\hat{p}$.
+
+  Next the standard error can be computed.
+  The null value $p_0$ is used again here,
+  because this is a hypothesis test for a single proportion.
+  \begin{align*}
+  SE_{\hat{p}}
+      = \sqrt{\frac{p_0 (1 - p_0)}{n}}
+      = \sqrt{\frac{\gallupnucleararmspollnullvalue{}
+          (1 - \gallupnucleararmspollnullvalue{})}
+          {\gallupnucleararmspollsize{}}}
+      = \gallupnucleararmspollnullse{}
+  \end{align*}
+  Based on the normal model, the test statistic can be
+  computed as the Z-score of the point estimate:
+  \begin{align*}
+  Z = \frac{\text{point estimate} - \text{null value}}{SE}
+      = \frac{\gallupnucleararmspollprop{} - 0.50}
+          {\gallupnucleararmspollnullse{}}
+      = 3.75
+  \end{align*}
+  It's generally helpful to draw null distribution and
+  the tail areas of interest for computing the p-value:
+  \begin{center}
+  \includegraphics[width=0.48\textwidth]{ch_foundations_for_inf/figures/nuclearArmsReduction/nuclearArmsReductionPValue}
+  \end{center}
+  The upper tail area is 0.0002 or less,
+  and we double this tail area to get the p-value: 0.0004.
+  Because the p-value is smaller than 0.05, we reject $H_0$.
+  The poll provides convincing evidence that a majority
+  of Americans supported nuclear arms reduction efforts
+  in March 2013.
 \end{example}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.48\textwidth]{ch_foundations_for_inf/figures/nuclearArmsReduction/nuclearArmsReductionPValue}
-\caption{Sampling distribution for Example~\ref{NuclearArmsInferenceExample}.}
-\label{nuclearArmsReductionPValue}
-\end{figure}
-
-\begin{termBox}{\tBoxTitle{Hypothesis testing steps for a proportion}
-Once you've determined a one-proportion hypothesis test is the
-correct procedure, there are four steps to completing the
-test:
-\begin{description}
-\item[Choose.] Identify the parameter of interest,
-    select the method to apply
-    (e.g. confidence interval or hypothesis test),
-    list out hypotheses,
-    identify $\hat{p}$ and $n$.
-\item[Check.] Verify the conditions using the null value,
-    $p_0$, to ensure $\hat{p}$ is nearly normal under $H_0$.
-\item[Calculate.] If the conditions hold, compute the standard
-    error, again using $p_0$, and identify the p-value.
-\item[Conclude.] Evaluate the hypotheses by comparing the p-value
-    to $\alpha$, and provide a conclusion in the context of the
-    problem.
-\end{description}}
+\begin{termBox}{\tBoxTitle{Hypothesis testing
+    for a single proportion}
+  Once you've determined a one-proportion hypothesis test is the
+  correct procedure, there are four steps to completing the
+  test:
+  \begin{description}
+%  \item[Choose.]
+  \item[Setup.]
+      Identify the parameter of interest,
+%      select the method to apply
+%      (e.g. confidence interval or hypothesis test),
+      list out hypotheses,
+      and identify $\hat{p}$ and $n$.
+  \item[Check.] Verify the conditions
+      to ensure $\hat{p}$ is nearly normal under $H_0$.
+      For one-proportion hypothesis tests, use the null
+      value to check the success-failure condition.
+  \item[Calculate.] If the conditions hold, compute the standard
+      error, again using $p_0$, compute the Z-score,
+      and identify the p-value.
+  \item[Conclude.] Evaluate the hypotheses by comparing the p-value
+      to $\alpha$, and provide a conclusion in the context of the
+      problem.
+  \end{description}}
 \end{termBox}
 
 \index{data!nuclear arms reduction|)}
@@ -1792,7 +2096,6 @@ test:
 %\end{tipBox}
 
 \CalculatorVideos{hypothesis tests for a single proportion}
-
 
 
 \subsection{Choosing a significance level}
@@ -1819,33 +2122,49 @@ costly than a Type~1 Error, then we should choose a higher
 significance level (e.g. 0.10). Here we want to be cautious
 about failing to reject $H_0$ when the null is actually false.
 
+Additionally, if the cost of collecting data is small relative
+to the cost of a Type~2 Error, then it may also be a good
+strategy to collect more data.
+Under this strategy, the Type~2 Error can be reduced
+while not affecting the Type~1 Error rate.
+Of course, collecting extra data can be costly,
+so there is a cost-benefit analysis to be considered.
+We'll discuss this topic a bit more in
+Sections~\ref{} and~\ref{}.
+\Comment{Fix this reference.}
+
 \begin{tipBox}{\tipBoxTitle[]{Significance levels should
     reflect consequences of errors}
   The significance level selected for a test should reflect
   the consequences associated with Type~1 and Type~2 Errors.}
 \end{tipBox}
 
-\begin{example}{A car manufacturer is considering a higher
-    quality but more expensive supplier for window parts in
-    its vehicles. They sample a number of parts from their
-    current supplier and also parts from the new supplier.
-    They decide that if the high quality parts will last
-    more than 12\% longer, it makes financial sense to
-    switch to this more expensive supplier. Is there good
-    reason to modify the significance level in such a
-    hypothesis test?}
-  The null hypothesis is that the more expensive parts last
-  no more than 12\% longer while the alternative is that they
-  do last more than 12\% longer. This decision is just one of
-  the many regular factors that have a marginal impact on the
-  car and company. A significance level of 0.05 seems
-  reasonable since neither a Type~1 or Type~2 Error should
-  be dangerous or (relatively) much more expensive.
+\begin{example}{A car manufacturer is considering switching
+    to a new, higher quality piece of equipment that will
+    more reliably vehicle door hinges.
+    They figure that they will save money in the long run
+    through purchasing the equipment if it produces hinges
+    that flawed less than 0.5\% of the time.
+    However, if the hinges are flawed more than 0.5\% of
+    the time, they wouldn't get a good enough
+    return-on-investment from the new piece of equipment,
+    and they would lose money.
+    Is there good reason to modify the significance level
+    in such a hypothesis test?}
+  The null hypothesis would be that the rate of flawed
+  hinges is 1\%, while the alternative is that it the rate
+  is different than 1\%.
+  This decision is just one of many that have a marginal
+  impact on the car and company.
+  A significance level of 0.05 seems reasonable since
+  neither a Type~1 or Type~2 Error should be dangerous
+  or (relatively) much more expensive.
 \end{example}
 
 \begin{example}{The same car manufacturer is considering
     a slightly more expensive supplier for parts related
-    to safety, not windows. If the durability of these
+    to safety, not door hinges.
+    If the durability of these
     safety components is shown to be better than the
     current supplier, they will switch manufacturers.
     Is there good reason to modify the significance level
@@ -1868,16 +2187,16 @@ measurements.
 Identify appropriate hypotheses for this test
 (in plain language) and suggest an appropriate significance
 level.\footnote{Here
-the null hypothesis is that the part is not broken,
-and the alternative is that it is broken.
-If we don't have sufficient evidence to reject $H_0$,
-we would not replace the part.
-It sounds like failing to fix the part if it is broken
-($H_0$ false, $H_A$ true) is not very problematic,
-and replacing the part is expensive.
-Thus, we should require very strong evidence against
-$H_0$ before we replace the part.
-Choose a small significance level, such as $\alpha=0.01$.}
+  the null hypothesis is that the part is not broken,
+  and the alternative is that it is broken.
+  If we don't have sufficient evidence to reject $H_0$,
+  we would not replace the part.
+  It sounds like failing to fix the part if it is broken
+  ($H_0$ false, $H_A$ true) is not very problematic,
+  and replacing the part is expensive.
+  Thus, we should require very strong evidence against
+  $H_0$ before we replace the part.
+  Choose a small significance level, such as $\alpha=0.01$.}
 \end{exercise}
 
 \begin{termBox}{\tBoxTitle{Why is 0.05 the default?}
@@ -1888,11 +2207,9 @@ extra critical eye -- good job!
 We've made a 5-minute task to help clarify \emph{why 0.05}:
 \begin{center}
 \oiRedirect{textbook-why05}{www.openintro.org/why05}
-\end{center}
-Sometimes it's also a good idea to deviate from the
-standard, but often times $\alpha = 0.05$ is
-a reasonable choice.}
+\end{center}}
 \end{termBox}
+
 
 \index{significance level|)}
 \index{hypothesis testing!significance level|)}
@@ -1934,7 +2251,7 @@ the tail area to get the p-value, then the p-value is
 smaller and the level of evidence required to identify
 an interesting finding in the direction of the
 alternative hypothesis goes down.
-However, one-sided tests aren't all sunshines and rainbows:
+However, one-sided tests aren't all sunshine and rainbows:
 the heavy price paid is that any interesting findings
 in the opposite direction must be disregarded.
 
@@ -1962,10 +2279,44 @@ Example~\ref{basicExampleOfStentsAndStrokesOneSided}
 highlights that using a one-sided hypothesis creates
 a risk of overlooking data supporting the opposite
 conclusion.
+We could have made a similar error when reviewing
+the Hans Rosling question data this section;
+if we had such a pre-conceived notion that
+college-educated folks wouldn't do worse than random
+guessing and so used a one-sided test,
+we would have missed the really interesting finding
+that many people have incorrect knowledge about
+global public health.
+%Here are a few other situations where it has been,
+%or would have been, very useful to have an open mind
+%and consider the contrarian view:
+%\begin{itemize}
+%\item The 2008 financial crisis. There were warning signs,
+%    but few people recognized them.
+%    In fact, some financial firms essentially bought into
+%    the notion that housing prices could only rise, not fall.
+%\item 
+%    
+%\end{itemize}
 
-\Comment{This next example could be an EOCE instead
-    ... probably better as an odd-numbered one since
-    it is hard to draw a parallel to other EOCEs.}
+So when might a one-sided test be appropriate to use?
+\emph{Very rarely.}
+Should you ever find yourself considering using a
+one-sided test, carefully answer the following question:
+\begin{quote}{\em
+  What would I, or others, conclude if the data happens
+  to go clearly in the opposite direction than my
+  alternative hypothesis?
+}\end{quote}
+If you or others would find any value in making
+a conclusion about the data that goes in the opposite
+direction of a one-sided test, then a two-sided hypothesis
+test should actually be used.
+These considerations can be subtle, so exercise caution.
+We will only apply two-sided tests in the rest of
+this book.
+
+\Comment{Make this next example into an odd-numbered EOCE.}
 
 \begin{example}{Why can't we simply run a one-sided
     test that goes in the direction of the data?}
@@ -1993,29 +2344,14 @@ conclusion.
   \end{itemize}
   Then if $H_0$ were true, there's a 10\% chance of
   being in one of the two tails, so our testing error
-  is actually $\alpha = 0.10$, not 0.05. That is,
+  is actually $\alpha = 0.10$, not 0.05.
+  That is,
   not being careful about when to use one-sided tests
   effectively undermines the methods we're working
   so hard to develop and utilize.
 \end{example}
 
-So when might a one-sided test be appropriate to use?
-\emph{Almost never.} Should you ever find
-yourself considering using a one-sided test,
-carefully answer the following question:
-\begin{quote}{\em
-  What would I, or others, conclude if the data happens
-  to go in the opposite direction than my alternative
-  hypothesis?
-}\end{quote}
-If you or others would find any value in making
-a conclusion about the data that goes in the opposite
-direction of a one-sided test, then a two-sided hypothesis
-test should actually be used. These considerations can
-be subtle, so be cautious about any one-sided tests.
-Due to the rarity where one-sided tests are appropriate,
-we will only apply two-sided tests in the rest of
-this book.
+
 
 
 %\begin{example}{}
