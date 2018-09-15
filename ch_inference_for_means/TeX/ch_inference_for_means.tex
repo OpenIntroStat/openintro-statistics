@@ -266,21 +266,28 @@ Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions}
 \subsection{One sample $t$-tests}
 \label{oneSampleTTests}
 
+\newcommand{\cherryblossomn}{100}
+\newcommand{\cherryblossommean}{97.32}
+\newcommand{\cherryblossomnull}{93.29}
+\newcommand{\cherryblossomsd}{16.98}
+\newcommand{\cherryblossomse}{1.70}
+\newcommand{\cherryblossomz}{2.37}
+
 Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each~spring.\footnote{\oiRedirect{textbook-cherryblossom_org}{www.cherryblossom.org}}
 
-The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2012 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
+The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from \cherryblossomn{} participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
 
 \begin{exercise}
-What are appropriate hypotheses for this context?\footnote{$H_0$: The average 10 mile run time was the same for 2006 and 2012. $\mu = 93.29$ minutes. $H_A$: The average 10 mile run time for 2012 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.}
+What are appropriate hypotheses for this context?\footnote{$H_0$: The average 10 mile run time was the same for 2006 and 2017. $\mu = 93.29$ minutes. $H_A$: The average 10 mile run time for 2017 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.}
 \end{exercise}
 
 \begin{exercise}
-The data come from a simple random sample from less than 10\% of all participants, so the observations are independent. However, should we be worried about skew in the data? See Figure~\ref{run10SampTimeHistogram} for a histogram of the differences.\footnote{With a sample of 100, we should only be concerned if there is very strong skew. The histogram of the data suggests, at worst, slight skew.}
+The data come from a simple random sample from less than 10\% of all participants, so the observations are independent. However, should we be worried about skew in the data? See Figure~\ref{run10SampTimeHistogram} for a histogram of the differences.\footnote{With a sample of \cherryblossomn{}, we should only be concerned if there is very strong skew. The histogram of the data doesn't show any notable skew.}
 \end{exercise}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/run10SampTimeHistogram/run10SampTimeHistogram} 
+\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/run10SampTimeHistogram/run17SampTimeHistogram} 
 \caption{A histogram of \var{time} for the sample Cherry Blossom Race data.}
 \label{run10SampTimeHistogram}
 \end{figure}
@@ -288,7 +295,7 @@ The data come from a simple random sample from less than 10\% of all participant
 With independence satisfied and slight skew not a concern for this large of a sample, we can proceed with performing a hypothesis test using the $t$-distribution.
 
 \begin{exercise}
-The sample mean and sample standard deviation of the sample of 100 runners from the 2012 Cherry Blossom Race are 95.61 and 15.78 minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?\footnote{With the conditions satisfied for the $t$-distribution, we can compute the standard error ($SE = 15.78 / \sqrt{100} = 1.58$ and the \emph{T-score}: $T = \frac{95.61 - 93.29}{1.58} = 1.47$. (There is more on this after the guided practice, but a T-score and Z-score are calculated in the same way.) For $df = 100 - 1 = 99$, we would find $T = 1.47$ to fall between the first and second column, which means the p-value is between 0.10 and 0.20 (use $df = 90$ and consider two tails since the test is two-sided). The p-value could also have been calculated more precisely with statistical software: 0.1447. Because the p-value is greater than 0.05, we do not reject the null hypothesis. That is, the data do not provide strong evidence that the average run time for the Cherry Blossom Run in 2012 is any different than the 2006 average.}
+The sample mean and sample standard deviation of the sample of \cherryblossomn{} runners from the 2017 Cherry Blossom Race are \cherryblossommean{} and \cherryblossomsd{} minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?\footnote{With the conditions satisfied for the $t$-distribution, we can compute the standard error ($SE = \cherryblossomsd{} / \sqrt{\cherryblossomn{}} = \cherryblossomse{}$ and the \emph{T-score}: $T = \frac{\cherryblossommean{} - 93.29}{\cherryblossomse{}} = \cherryblossomz{}$. (There is more on this after the guided practice, but a T-score and Z-score are calculated in the same way.) For $df = \cherryblossomn{} - 1 = 99$, we would find $T = \cherryblossomz{}$ to falls right on the fourth column in the 90 degrees of freedom row, which corresponds to a two-tailed p-value of 0.02. The p-value could also have been calculated with statistical software and 99 degrees of freedom as 0.0195. Because the p-value is smaller than 0.05, we reject the null hypothesis. That is, the data provide strong evidence that the average run time for the Cherry Blossom Run in 2017 is different than the 2006 average. Since the observed value is above the null value and we have rejected the null hypothesis, we would conclude that runners in the race were slower on average in 2017 than in 2006.}
 \end{exercise}
 
 \begin{termBox}{\tBoxTitle{When using a $t$-distribution, we use a T-score (same as Z-score)}
@@ -1183,7 +1190,8 @@ There are three conditions we must check for an ANOVA analysis: all observations
 \end{caution}
 
 
-\subsection{Multiple comparisons and controlling Type~1 Error rate}
+\subsection[Multiple comparisons and controlling Type~1 Error rate]
+    {Multiple comparisons and controlling\\ Type~1 Error rate}
 \label{multipleComparisonsAndControllingTheType1ErrorRate}
 
 \index{significance level!multiple comparisons|(}

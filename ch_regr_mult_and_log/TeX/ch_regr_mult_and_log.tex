@@ -406,11 +406,25 @@ Examine Table~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\page
 
 While the adjusted $R^2$ and p-value approaches are similar, they sometimes lead to different models, with the adjusted $R^2$ approach tending to include more predictors in the final model. For example, if we had used the p-value approach with the auction data, we would not have included the \var{stock\_\hspace{0.3mm}photo} predictor in the final model.
 
-\begin{tipBox}{\tBoxTitle{When to use the adjusted $R^2$ and when to use the p-value approach}
-When the sole goal is to improve prediction accuracy, use adjusted $R^2$. This is commonly the case in machine learning applications.\\[-2mm]
-
-When we care about understanding which variables are statistically significant predictors of the response, or if there is interest in producing a simpler model at the potential cost of a little prediction accuracy, then the p-value approach is preferred.}
+\begin{tipBox}{\tBoxTitle{When to use the adjusted $R^2$}
+When the sole goal is to improve prediction accuracy, use adjusted $R^2$. This is commonly the case in machine learning applications.}
 \end{tipBox}
+
+\begin{tipBox}{\tBoxTitle{When to use the p-value approach}
+When we care about understanding which variables are statistically significant predictors of the response, or if there is interest in producing a simpler model at the potential cost of a little prediction accuracy, then the p-value approach is preferred.\\[-2mm]
+
+When there are many predictors of particular interested,
+it may be useful to use a
+\emph{multiple comparison}\index{multiple comparison}
+correction.
+This topic and one way to approach this situation
+is discussed in
+Section~\ref{multipleComparisonsAndControllingTheType1ErrorRate}.}
+\end{tipBox}
+
+\Comment{The two tip boxes above previously were one box,
+    and the discussion of multiple comparison correction
+    in the second box was added.}
 
 Regardless of whether you use adjusted $R^2$ or the p-value approach, or if you use the backward elimination of forward selection strategy, our job is not done after variable selection. We must still verify the model conditions are reasonable.
 
