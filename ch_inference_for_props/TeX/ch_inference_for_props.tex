@@ -20,8 +20,6 @@ The methods we learned in previous chapters will continue to be useful in these 
 In New York City on October 23rd, 2014, a doctor who had recently been treating Ebola patients in Guinea went to the hospital with a slight fever and was subsequently diagnosed with Ebola. Soon thereafter, an NBC 4 New York/The Wall Street Journal/Marist Poll found that 82\% of New Yorkers favored a ``mandatory 21-day quarantine for anyone who has come in contact with an Ebola patient''.\footnote{\oiRedirect{textbook-maristpoll_ebola_201410}{Poll ID NY141026 on maristpoll.marist.edu}.} This poll included responses of 1,042 New York adults between October 26th and 28th, 2014.
 
 
-\textC{\newpage}
-
 
 \subsection{Identifying when the sample proportion is nearly normal}
 
@@ -55,8 +53,6 @@ Typically we don't know the true proportion, $p$, so we substitute some value to
 If data come from a simple random sample and consist of less than 10\% of the population, then the independence assumption is reasonable. Alternatively, if the data come from a random process, we must evaluate the independence condition more carefully.}
 \end{tipBox}
 
-
-\textC{\newpage}
 
 
 \subsection{Confidence intervals for a proportion}
@@ -209,7 +205,6 @@ A sample size of 370 or more would be reasonable. (Reminder: always round up for
 
 
 
-\textC{\newpage}
 
 
 
@@ -323,7 +318,11 @@ Set up hypotheses to test whether there was a difference in breast cancer deaths
 
 In Example~\ref{condFormammogramStudySummaryTableNormalInference}, we will check the conditions for using the normal model to analyze the results of the study. The details are very similar to that of confidence intervals. However, this time we use a special proportion called the \term{pooled proportion} to check the success-failure condition:
 \begin{align*}
-\hat{p} &= \frac{\text{\# of patients who died from breast cancer in the entire study}}{\text{\# of patients in the entire study}} \\
+\hat{p}_{\textit{pooled}}
+    &= \frac
+        {\text{\# of patients who died from breast cancer in the
+            entire study}}
+        {\text{\# of patients in the entire study}} \\
 	&= \frac{500 + 505}{500 + \text{44,425} + 505 + \text{44,405}} \\
 	&= 0.0112
 \end{align*}
@@ -366,8 +365,12 @@ The point estimate of the difference in breast cancer death rates is
 \end{align*}
 The breast cancer death rate in the mammogram group was 0.012\% less than in the control group. Next, the standard error is calculated \emph{using the pooled proportion},~$\hat{p}$:
 \begin{align*}
-SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n_{mgm}}
-		+ \frac{\hat{p}(1-\hat{p})}{n_{ctrl}}}
+SE = \sqrt{
+      \frac{\hat{p}_{\textit{pooled}}(1-\hat{p}_{\textit{pooled}})}
+          {n_{mgm}}
+      + \frac{\hat{p}_{\textit{pooled}}(1-\hat{p}_{\textit{pooled}})}
+          {n_{ctrl}}
+    }
 	= 0.00070
 \end{align*}
 \end{example}
@@ -435,7 +438,10 @@ SE = \sqrt{\frac{0.958(1-0.958)}{1000} + \frac{0.899(1-0.899)}{1000}} = 0.0114
 In this hypothesis test, because the null is that $p_1 - p_2 = 0.03$, the sample proportions were used for the standard error calculation rather than a pooled proportion.
 
 Next, we compute the test statistic and use it to find the p-value, which is depicted in Figure~\ref{bladesTwoSampleHTPValueQC}.
-$$Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.059 - 0.03}{0.0114} = 2.54$$
+\begin{align*}
+Z = \frac{\text{point estimate} - \text{null value}}{SE}
+    = \frac{0.059 - 0.03}{0.0114} = 2.54
+\end{align*}
 Using the normal model for this test statistic, we identify the right tail area as 0.006. Since this is a one-sided test, this single tail area is also the p-value, and we reject the null hypothesis because 0.006 is less than 0.05. That is, we have statistically significant evidence that the higher-quality blades actually do pass inspection more than 3\% as often as the currently used blades. Based on these results, management will approve the switch to the new supplier.
 \end{example}
 
@@ -471,7 +477,9 @@ Using the normal model for this test statistic, we identify the right tail area 
 
 
 %__________________
-\section[Testing for goodness of fit using chi-square (special topic)]{Testing for goodness of fit using chi-square \\(special topic) \sectionvideohref{coursera_video-chisq_gof}~\sectionslideshref{gdoc_os3_slides_6-3}}
+\section[Testing for goodness of fit using chi-square (special topic)]{Testing for goodness of fit using\\
+    chi-square (special topic)
+    \sectionvideohref{coursera_video-chisq_gof}~\sectionslideshref{gdoc_os3_slides_6-3}}
 \label{oneWayChiSquare}
 
 In this section, we develop a method for assessing a null model when the data are binned.
@@ -636,8 +644,6 @@ df \hfill 2 & \footnotesize 2.41 & \footnotesize \highlightO{3.22} & \footnotesi
 \caption{A section of the chi-square table. A complete table is in Appendix~\vref{chiSquareProbabilityTable}.}
 \label{chiSquareProbabilityTableShort}
 \end{table}
-
-\textC{\pagebreak}
 
 \begin{example}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Table~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
 This distribution has three degrees of freedom, so only the row with 3 degrees of freedom (df) is relevant. This row has been italicized in the table. Next, we see that the value -- 6.25 -- falls in the column with upper tail area 0.1. That is, the shaded upper tail of Figure~\ref{chiSquareAreaAbove6Point25WithDF3} has area 0.1.
@@ -961,9 +967,6 @@ $$\text{Expected Count}_{\text{row }i,\text{ col }j} = \frac{(\text{row $i$ tota
 \end{termBox}
 
 
-\textC{\newpage}
-
-
 \subsection{The chi-square test for two-way tables}
 
 The chi-square test statistic for a two-way table is found the same way it is found for a one-way table. For each table count, compute
@@ -1002,8 +1005,6 @@ When analyzing 2-by-2 contingency tables, use the two-proportion methods introdu
 \caption{Computing the p-value for the Google hypothesis test.}
 \label{googleHTForDiffAlgPerformancePValue}
 \end{figure}
-
-\textC{\pagebreak}
 
 \begin{example}{Compute the p-value and draw a conclusion about whether the search algorithms have different performances.}
 Looking in Appendix~\ref{chiSquareProbabilityTable} on page~\pageref{chiSquareProbabilityTable}, we examine the row corresponding to 2 degrees of freedom. The test statistic, $\chi^2=6.120$, falls between the fourth and fifth columns, which means the p-value is between 0.02 and 0.05. Because we typically test at a significance level of $\alpha=0.05$ and the p-value is less than 0.05, the null hypothesis is rejected. That is, the data provide convincing evidence that there is some difference in performance among the algorithms.
@@ -1129,8 +1130,6 @@ Because the estimated p-value is 0.1222, which is larger than the significance l
 \index{data!medical consultant|)}
 \end{exercise}
 
-\textC{\newpage}
-
 \begin{exercise}
 Does the conclusion in Guided Practice~\ref{plainLanguageExplanationOfHTConclusionForLiverDonorSurgicalConsultant} imply there is no real association between the surgical consultant's work and the risk of complications? Explain.\footnote{No. It might be that the consultant's work is associated with a reduction but that there isn't enough data to convincingly show this connection.}
 \end{exercise}
@@ -1153,8 +1152,6 @@ P(k\text{ successes}) = {n\choose k} p^{k}(1-p)^{n-k} = \frac{n!}{k!(n-k)!} p^{k
 where $p$ is the true probability of success. The expression ${n\choose k}$ is read as \emph{$n$ choose $k$}, and the exclamation points represent factorials. For instance, $3!$ is equal to $3\times 2\times 1=6$, $4!$ is equal to $4\times 3\times 2\times 1 = 24$, and so on (see Section~\ref{binomialModel}).
 
 The tail area of the null distribution is computed by adding up the probability in Equation~\eqref{binomialEquationShownForFindingNullDistributionInSmallSamplePropTest} for each $k$ that provides at least as strong of evidence favoring the alternative hypothesis as the data. If the hypothesis test is one-sided, then the p-value is represented by a single tail area. If the test is two-sided, compute the single tail area and double it to get the p-value, just as we have done in the past.
-
-\textC{\pagebreak}
 
 \begin{example}{Compute the exact p-value to check the consultant's claim that her clients' complication rate is below 10\%.}
 Exactly $k=3$ complications were observed in the $n=62$ cases cited by the consultant. Since we are testing against the 10\% national average, our null hypothesis is $p=0.10$. We can compute the p-value by adding up the cases where there are 3 or fewer complications:
@@ -1237,7 +1234,7 @@ What is the observed survival rate in the control group? And in the treatment gr
 According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13\% survive when they are treated with blood thinners. However, this difference might be explainable by chance. We'd like to investigate this using a large sample framework, but we first need to check the conditions for such an approach.
 
 \begin{example}{Can the point estimate of the difference in survival proportions be adequately modeled using a normal distribution?}
-We will assume the patients are independent, which is probably reasonable. The success-failure condition is also satisfied. Since the proportions are equal under the null, we can compute the pooled proportion, $\hat{p} = (11+14)/(50+40) = 0.278$, for checking conditions. We find the expected number of successes (13.9, 11.1) and failures (36.1, 28.9) are above 10. The normal model is reasonable.
+We will assume the patients are independent, which is probably reasonable. The success-failure condition is also satisfied. Since the proportions are equal under the null, we can compute the pooled proportion, $\hat{p}_{\textit{pooled}} = (11+14)/(50+40) = 0.278$, for checking conditions. We find the expected number of successes (13.9, 11.1) and failures (36.1, 28.9) are above 10. The normal model is reasonable.
 \end{example}
 
 While we can apply a normal framework as an approximation to find a p-value, we might keep in mind that the expected number of successes is only 13.9 in one group and 11.1 in the other. Below we conduct an analysis relying on the large sample normal theory. We will follow up with a small sample analysis and compare the results.
@@ -1248,7 +1245,7 @@ We suppose the null distribution of the sample difference follows a normal distr
 SE = \sqrt{\frac{p(1-p)}{n_t} + \frac{p(1-p)}{n_c}}
 	\approx \sqrt{\frac{0.278(1-0.278)}{40} + \frac{0.278(1-0.278)}{50}} = 0.095
 \end{align*}
-where we have used the pooled estimate $\left( \hat{p} = \frac{11+14}{50 + 40} = 0.278 \right)$ in place of the true proportion, $p$.
+where we have used the pooled estimate $\left( \hat{p}_{\textit{pooled}} = \frac{11+14}{50 + 40} = 0.278 \right)$ in place of the true proportion, $p$.
 
 The null distribution with mean zero and standard deviation 0.095 is shown in Figure~\ref{pValueCPRStudyLargeSampleAnalysisInSmallSampleSection}. We compute the tail areas to identify the p-value. To do so, we use the Z-score of the point estimate:
 \begin{align*}
