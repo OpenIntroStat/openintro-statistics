@@ -160,9 +160,9 @@ In Guided Practice~\ref{exerExaminingDisjointSetsABD}, you confirmed $B$ and $D$
 
 \subsection{Probabilities when events are not disjoint}
 
-Let's consider calculations for two events that are not disjoint in the context of a \indexthis{regular deck of 52 cards}{deck of cards}, represented in Table~\ref{deckOfCards}. If you are unfamiliar with the cards in a regular deck, please see the footnote.\footnote{The 52 cards are split into four \term{suits}: $\clubsuit$ (club), {\color{redcards}$\diamondsuit$} (diamond), {\color{redcards}$\heartsuit$} (heart), $\spadesuit$ (spade). Each suit has its 13 cards labeled: \resp{2}, \resp{3}, ..., \resp{10}, \resp{J} (jack), \resp{Q} (queen), \resp{K} (king), and \resp{A} (ace). Thus, each card is a unique combination of a suit and a label, e.g. {\color{redcards}\resp{4$\heartsuit$}} and \resp{J$\clubsuit$}. The 12 cards represented by the jacks, queens, and kings are called \termsub{\resp{face cards}}{face card}. The cards that are {\color{redcards}$\diamondsuit$} or {\color{redcards}$\heartsuit$} are typically colored {\color{redcards}red} while the other two suits are typically colored black.}
+Let's consider calculations for two events that are not disjoint in the context of a \indexthis{regular deck of 52 cards}{deck of cards}, represented in Figure~\ref{deckOfCards}. If you are unfamiliar with the cards in a regular deck, please see the footnote.\footnote{The 52 cards are split into four \term{suits}: $\clubsuit$ (club), {\color{redcards}$\diamondsuit$} (diamond), {\color{redcards}$\heartsuit$} (heart), $\spadesuit$ (spade). Each suit has its 13 cards labeled: \resp{2}, \resp{3}, ..., \resp{10}, \resp{J} (jack), \resp{Q} (queen), \resp{K} (king), and \resp{A} (ace). Thus, each card is a unique combination of a suit and a label, e.g. {\color{redcards}\resp{4$\heartsuit$}} and \resp{J$\clubsuit$}. The 12 cards represented by the jacks, queens, and kings are called \termsub{\resp{face cards}}{face card}. The cards that are {\color{redcards}$\diamondsuit$} or {\color{redcards}$\heartsuit$} are typically colored {\color{redcards}red} while the other two suits are typically colored black.}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{lll lll lll lll l}
 \resp{2$\clubsuit$} & \resp{3$\clubsuit$} & \resp{4$\clubsuit$} & \resp{5$\clubsuit$} & \resp{6$\clubsuit$} & \resp{7$\clubsuit$} & \resp{8$\clubsuit$} & \resp{9$\clubsuit$} & \resp{10$\clubsuit$} & \resp{J$\clubsuit$} & \resp{Q$\clubsuit$} & \resp{K$\clubsuit$} & \resp{A$\clubsuit$}  \\
@@ -172,7 +172,7 @@ Let's consider calculations for two events that are not disjoint in the context 
 \end{tabular}
 \caption{Representations of the 52 unique cards in a deck.}
 \label{deckOfCards}
-\end{table}
+\end{figure}
 
 \begin{exercise}
 (a) What is the probability that a randomly selected card is a diamond? (b)~What is the probability that a randomly selected card is a face card?\footnote{(a) There are 52 cards and 13 diamonds. If the cards are thoroughly shuffled, each card has an equal chance of being drawn, so the probability that a randomly selected card is a diamond is $P({\color{redcards}\diamondsuit}) = \frac{13}{52} = 0.250$. (b)~Likewise, there are 12 face cards, so $P($face card$) = \frac{12}{52} = \frac{3}{13} = 0.231$.}
@@ -246,9 +246,9 @@ Both the counts and corresponding {\color{oiB}probabilities} (e.g. $2659/3921 = 
 \subsection{Probability distributions}
 
 
-A \term{probability distribution} is a table of all disjoint outcomes and their associated probabilities. Table~\ref{diceProb} shows the probability distribution for the sum of two dice. 
+A \term{probability distribution} is a table of all disjoint outcomes and their associated probabilities. Figure~\ref{diceProb} shows the probability distribution for the sum of two dice. 
 
-\begin{table}[h] \small
+\begin{figure}[h] \small
 \centering
 \begin{tabular}{l ccc ccc ccc cc}
   \hline
@@ -259,7 +259,7 @@ Probability & $\frac{1}{36}$ & $\frac{2}{36}$ & $\frac{3}{36}$ & $\frac{4}{36}$ 
 \end{tabular}
 \caption{Probability distribution for the sum of two dice.}
 \label{diceProb}
-\end{table}
+\end{figure}
 
 \begin{termBox}{\tBoxTitle{Rules for probability distributions}
 A probability distribution is a list of the possible outcomes with corresponding probabilities that satisfies three rules: \vspace{-2mm}
@@ -272,10 +272,10 @@ A probability distribution is a list of the possible outcomes with corresponding
 \end{termBox}
 
 \begin{exercise}\label{usHouseholdIncomeDistsExercise}
-Table~\ref{usHouseholdIncomeDists} suggests three distributions for household income in the United States. Only one is correct. Which one must it be? What is wrong with the other two?\footnote{The probabilities of (a) do not sum to 1. The second probability in (b) is negative. This leaves (c), which sure enough satisfies the requirements of a distribution. One of the three was said to be the actual distribution of US household incomes, so it must be (c).}
+Figure~\ref{usHouseholdIncomeDists} suggests three distributions for household income in the United States. Only one is correct. Which one must it be? What is wrong with the other two?\footnote{The probabilities of (a) do not sum to 1. The second probability in (b) is negative. This leaves (c), which sure enough satisfies the requirements of a distribution. One of the three was said to be the actual distribution of US household incomes, so it must be (c).}
 \end{exercise}
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{r | rr rr}
   \hline
@@ -288,10 +288,10 @@ Income range (\$1000s) & 0-25    & 25-50    & 50-100     & 100+    \\
 \end{tabular}
 \caption{Proposed distributions of US household incomes (Guided Practice~\ref{usHouseholdIncomeDistsExercise}).}
 \label{usHouseholdIncomeDists}
-\end{table}
+\end{figure}
 
 Chapter~\ref{introductionToData} emphasized the importance of plotting data to provide quick summaries. Probability distributions can also be summarized in a bar plot. For instance, the distribution of US household incomes is shown in Figure~\ref{usHouseholdIncomeDistBar} as a bar plot. %\footnote{It is also possible to construct a distribution plot when income is not artificially binned into four groups. \emph{Continuous} distributions are considered in Section~\ref{contDist}.}
-The probability distribution for the sum of two dice is shown in Table~\ref{diceProb} and plotted in Figure~\ref{diceSumDist}.
+The probability distribution for the sum of two dice is shown in Figure~\ref{diceProb} and plotted in Figure~\ref{diceSumDist}.
 
 \begin{figure}
 \centering
@@ -360,10 +360,10 @@ P(A) + P(A^c) = 1, \quad\text{i.e.}\quad P(A) = 1-P(A^c)
 In simple examples, computing $A$ or $A^c$ is feasible in a few steps. However, using the complement can save a lot of time as problems grow in complexity.
 
 \begin{exercise}
-Let $A$ represent the event where we roll two dice and their total is less than \resp{12}. (a) What does the event $A^c$ represent? (b) Determine $P(A^c)$ from Table~\ref{diceProb} on page~\pageref{diceProb}. (c) Determine $P(A)$.\footnote{(a)~The complement of $A$: when the total is equal to \resp{12}. (b)~$P(A^c) = 1/36$. (c)~Use the probability of the complement from part (b), $P(A^c) = 1/36$, and Equation~(\ref{complement}): $P($less than \resp{12}$) = 1 - P($\resp{12}$) = 1 - 1/36 = 35/36$.}
+Let $A$ represent the event where we roll two dice and their total is less than \resp{12}. (a) What does the event $A^c$ represent? (b) Determine $P(A^c)$ from Figure~\ref{diceProb} on page~\pageref{diceProb}. (c) Determine $P(A)$.\footnote{(a)~The complement of $A$: when the total is equal to \resp{12}. (b)~$P(A^c) = 1/36$. (c)~Use the probability of the complement from part (b), $P(A^c) = 1/36$, and Equation~(\ref{complement}): $P($less than \resp{12}$) = 1 - P($\resp{12}$) = 1 - 1/36 = 35/36$.}
 \end{exercise}
 
-\begin{exercise} Consider again the probabilities from Table~\ref{diceProb} and rolling two dice. Find the following probabilities: (a)~The sum of the dice is \emph{not} \resp{6}. (b)~The sum is at least \resp{4}. That is, determine the probability of the event $B=\{$\resp{4}, \resp{5}, ..., \resp{12}$\}$. (c) The sum is no more than \resp{10}. That is, determine the probability of the event $D=\{$\resp{2}, \resp{3}, ..., \resp{10}$\}$.\footnote{(a)~First find $P($\resp{6}$)=5/36$, then use the complement: $P($not \resp{6}$) = 1 - P($\resp{6}$) = 31/36$.
+\begin{exercise} Consider again the probabilities from Figure~\ref{diceProb} and rolling two dice. Find the following probabilities: (a)~The sum of the dice is \emph{not} \resp{6}. (b)~The sum is at least \resp{4}. That is, determine the probability of the event $B=\{$\resp{4}, \resp{5}, ..., \resp{12}$\}$. (c) The sum is no more than \resp{10}. That is, determine the probability of the event $D=\{$\resp{2}, \resp{3}, ..., \resp{10}$\}$.\footnote{(a)~First find $P($\resp{6}$)=5/36$, then use the complement: $P($not \resp{6}$) = 1 - P($\resp{6}$) = 31/36$.
 
 (b)~First find  the complement, which requires much less effort: $P($\resp{2} or \resp{3}$)=1/36+2/36=1/12$. Then calculate $P(B) = 1-P(B^c) = 1-1/12 = 11/12$.
 
@@ -474,9 +474,9 @@ Because the equation holds, the event that the card is a heart and the event tha
 
 \index{data!family\_college|(}
 
-The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized in Table~\ref{contTableOfParStCollege}.\footnote{A simulated data set based on real population summaries at \oiRedirect{textbook-student_parent_college_2001}{nces.ed.gov/pubs2001/2001126.pdf}.} The \var{teen} variable is either \resp{college} or \resp{not}, where the \var{college} label means the teen went to college immediately after high school. The~\var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
+The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized in Figure~\ref{contTableOfParStCollege}.\footnote{A simulated data set based on real population summaries at \oiRedirect{textbook-student_parent_college_2001}{nces.ed.gov/pubs2001/2001126.pdf}.} The \var{teen} variable is either \resp{college} or \resp{not}, where the \var{college} label means the teen went to college immediately after high school. The~\var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{ll rr r rr}
   && \multicolumn{2}{c}{\var{parents}} & \hspace{1cm} &  \\
@@ -490,7 +490,7 @@ The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases
 \end{tabular}
 \caption{Contingency table summarizing the \data{family\_\hspace{0.3mm}college} data set.}
 \label{contTableOfParStCollege}
-\end{table}
+\end{figure}
 %set.seed(5); n <- 792
 %parents <- sample(c("college", "not"), n, replace = TRUE, prob = c(0.35, 0.65))
 %p <- ifelse(parents == "college", 0.82, 0.45)
@@ -525,7 +525,7 @@ P(\text{\var{parents} \resp{degree} given \var{teen} \resp{not}}) = \frac{49}{34
 \index{marginal probability|(}
 \index{joint probability|(}
 
-Table~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without regard to any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
+Figure~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without regard to any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
 \begin{align*}
 P(\text{\var{teen} \resp{college}}) = \frac{445}{792} = 0.56
 \end{align*}
@@ -544,9 +544,9 @@ $P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}})$
 If a probability is based on a single variable, it is a \emph{\hiddenterm{marginal probability}}. The probability of outcomes for two or more variables or processes is called a \emph{\hiddenterm{joint probability}}.}
 \end{termBox}
 
-We use \term{table proportions} to summarize joint probabilities for the \data{family\_\hspace{0.3mm}college} sample. These proportions are computed by dividing each count in Table~\ref{contTableOfParStCollege} by the table's total, 792, to obtain the proportions in Table~\ref{familyCollegeProbTable}. The joint probability distribution of the \var{parents} and \var{teen} variables is shown in Table~\ref{familyCollegeDistribution}.
+We use \term{table proportions} to summarize joint probabilities for the \data{family\_\hspace{0.3mm}college} sample. These proportions are computed by dividing each count in Figure~\ref{contTableOfParStCollege} by the table's total, 792, to obtain the proportions in Figure~\ref{familyCollegeProbTable}. The joint probability distribution of the \var{parents} and \var{teen} variables is shown in Figure~\ref{familyCollegeDistribution}.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l rr r}
   \hline
@@ -560,9 +560,9 @@ Total & 0.35 & 0.65 & 1.00 \\
 \end{tabular}
 \caption{Probability table summarizing whether at least one parent had a college degree and the teenager attended college.}
 \label{familyCollegeProbTable}
-\end{table}
+\end{figure}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l c}
   \hline
@@ -578,10 +578,10 @@ Total & 1.00 \\
 \end{tabular}
 \caption{Joint probability distribution for the \data{family\_\hspace{0.3mm}college} data set.}
 \label{familyCollegeDistribution}
-\end{table}
+\end{figure}
 
 \begin{exercise}
-Verify Table~\ref{familyCollegeDistribution} represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to~1.\footnote{Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is $0.29 + 0.06 + 0.27 + 0.38 = 1.00$.}
+Verify Figure~\ref{familyCollegeDistribution} represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to~1.\footnote{Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is $0.29 + 0.06 + 0.27 + 0.38 = 1.00$.}
 \end{exercise}
 
 We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
@@ -628,7 +628,7 @@ We considered only those cases that met the condition, \var{parents} \resp{degre
 
 Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~\eqref{ratioOfBothToRatioOfConditionalForParentsAndStudent} as a template to understand this technique.
 
-We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Table~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 29\% or $0.29\times 1000 = 290$ to meet both the information criteria and represent our outcome of interest. Then the conditional probability can be computed as
+We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Figure~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 29\% or $0.29\times 1000 = 290$ to meet both the information criteria and represent our outcome of interest. Then the conditional probability can be computed as
 \begin{align}
 &P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
 	&= \frac{\text{\# (\var{teen} \resp{college} and \var{parents} \resp{degree})}}{\text{\# (\var{parents} \resp{degree})}} \notag \\
@@ -681,7 +681,7 @@ The \data{smallpox} data set provides a sample of 6,224 individuals from the yea
 
 Each case represents one person with two variables: \var{inoculated} and \var{result}. The variable \var{inoculated} takes two levels: \resp{yes} or \resp{no}, indicating whether the person was inoculated or not. The variable \var{result} has outcomes \resp{lived} or \resp{died}. These data are summarized in Tables~\ref{smallpoxContingencyTable} and~\ref{smallpoxProbabilityTable}.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll rr r}
 & & \multicolumn{2}{c}{inoculated} & \\
@@ -695,9 +695,9 @@ Each case represents one person with two variables: \var{inoculated} and \var{re
 \end{tabular}
 \caption{Contingency table for the \data{smallpox} data set.}
 \label{smallpoxContingencyTable}
-\end{table}
+\end{figure}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll rr r}
 & & \multicolumn{2}{c}{inoculated} & \\
@@ -711,7 +711,7 @@ Each case represents one person with two variables: \var{inoculated} and \var{re
 \end{tabular}
 \caption{Table proportions for the \data{smallpox} data, computed by dividing each count by the table total, 6224.}
 \label{smallpoxProbabilityTable}
-\end{table}
+\end{figure}
 
 \begin{exercise} \label{probDiedIfNotInoculated}
 Write out, in formal notation, the probability a randomly selected person who was not inoculated died from smallpox, and find this \mbox{probability.}\footnote{$P($\var{result} = \resp{died} $|$ \var{inoculated} = \resp{no}$) = \frac{P(\text{\var{result} = \resp{died} and \var{inoculated} = \resp{no}})}{P(\text{\var{inoculated} = \resp{no}})} = \frac{0.1356}{0.9608} = 0.1411$.}
@@ -739,7 +739,7 @@ It is useful to think of $A$ as the outcome of interest and $B$ as the condition
 This General Multiplication Rule is simply a rearrangement of the definition for conditional probability in Equation~(\ref{condProbEq}) on page~\pageref{condProbEq}.
 
 \begin{example}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
-We will compute our answer using the General Multiplication Rule and then verify it using Table~\ref{smallpoxProbabilityTable}. We want to determine
+We will compute our answer using the General Multiplication Rule and then verify it using Figure~\ref{smallpoxProbabilityTable}. We want to determine
 \begin{eqnarray*}
 P(\text{\var{result} = \resp{lived} and \var{inoculated} = \resp{no}})
 \end{eqnarray*}
@@ -752,11 +752,11 @@ Among the 96.08\% of people who were not inoculated, 85.88\% survived:
 \begin{eqnarray*}
 P(\text{\var{result} = \resp{lived} and \var{inoculated} = \resp{no}}) = 0.8588\times 0.9608 = 0.8251
 \end{eqnarray*}
-This is equivalent to the General Multiplication Rule. We can confirm this probability in Table~\ref{smallpoxProbabilityTable} at the intersection of \resp{no} and \resp{lived} (with a small rounding error).
+This is equivalent to the General Multiplication Rule. We can confirm this probability in Figure~\ref{smallpoxProbabilityTable} at the intersection of \resp{no} and \resp{lived} (with a small rounding error).
 \end{example}
 
 \begin{exercise}
-Use $P($\var{inoculated} = \resp{yes}$) = 0.0392$ and $P($\var{result} = \resp{lived} $|$ \var{inoculated} = \resp{yes}$) = 0.9754$ to determine the probability that a person was both inoculated and lived.\footnote{The answer is 0.0382, which can be verified using Table~\ref{smallpoxProbabilityTable}.}
+Use $P($\var{inoculated} = \resp{yes}$) = 0.0392$ and $P($\var{result} = \resp{lived} $|$ \var{inoculated} = \resp{yes}$) = 0.9754$ to determine the probability that a person was both inoculated and lived.\footnote{The answer is 0.0382, which can be verified using Figure~\ref{smallpoxProbabilityTable}.}
 \end{exercise}
 
 \begin{exercise}
@@ -1124,9 +1124,9 @@ We call a variable or process with a numerical outcome a \term{random variable},
 A random process or variable with a numerical outcome.}
 \end{termBox}
 
-The possible outcomes of $X$ are labeled with a corresponding lower case letter $x$ and subscripts. For example, we write $x_1=\$0$, $x_2=\$137$, and $x_3=\$170$, which occur with probabilities $0.20$, $0.55$, and $0.25$. The distribution of $X$ is summarized in Figure~\ref{bookCostDist} and Table~\ref{statSpendDist}.
+The possible outcomes of $X$ are labeled with a corresponding lower case letter $x$ and subscripts. For example, we write $x_1=\$0$, $x_2=\$137$, and $x_3=\$170$, which occur with probabilities $0.20$, $0.55$, and $0.25$. The distribution of $X$ is summarized in Figure~\ref{bookCostDist} and Figure~\ref{statSpendDist}.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l ccc r}
 \hline
@@ -1138,7 +1138,7 @@ $P(X=x_i)$ & 0.20 & 0.55 & 0.25 & 1.00 \\
 \end{tabular}
 \caption{The probability distribution for the random variable $X$, representing the bookstore's revenue from a single student.}
 \label{statSpendDist}
-\end{table}
+\end{figure}
 
 We computed the average outcome of $X$ as \$117.85 in Example~\ref{revFromStudent}. We call this average the \term{expected value} of $X$, denoted by $E(X)$\index{EX@$E(X)$}\marginpar[\raggedright\vspace{-3mm}
 
@@ -1341,9 +1341,9 @@ Quantifying the average outcome from a linear combination of random variables is
 \label{changeInLeonardsStockPortfolioFor36Months}
 \end{figure}
 
-Just as we have done in many previous cases, we use the variance and standard deviation to describe the uncertainty associated with Leonard's monthly returns. To do so, the variances of each stock's monthly return will be useful, and these are shown in Table~\ref{sumStatOfGOOGXOM}. The stocks' returns are nearly independent.
+Just as we have done in many previous cases, we use the variance and standard deviation to describe the uncertainty associated with Leonard's monthly returns. To do so, the variances of each stock's monthly return will be useful, and these are shown in Figure~\ref{sumStatOfGOOGXOM}. The stocks' returns are nearly independent.
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{lrrr}
 \hline
@@ -1355,7 +1355,7 @@ XOM & 0.0038		& 0.0519					&	0.0027	\\
 \end{tabular}
 \caption{The mean, standard deviation, and variance of the GOOG and XOM stocks. These statistics were estimated from historical stock data, so notation used for sample statistics has been used.}
 \label{sumStatOfGOOGXOM}
-\end{table}
+\end{figure}
 
 Here we use an equation from probability theory to describe the uncertainty of Leonard's monthly returns; we leave the proof of this method to a dedicated probability course. The variance of a linear combination of random variables can be computed by plugging in the variances of the individual random variables and squaring the coefficients of the random variables:
 \begin{align*}

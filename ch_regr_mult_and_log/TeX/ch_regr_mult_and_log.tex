@@ -18,9 +18,9 @@ Multiple regression extends simple two-variable regression to the case that stil
 
 We will consider Ebay auctions of a video game called \emph{Mario Kart} for the Nintendo Wii. The outcome variable of interest is the total price of an auction, which is the highest bid plus the shipping cost. We will try to determine how total price is related to each characteristic in an auction while simultaneously controlling for other variables. For instance, all other characteristics held constant, are longer auctions associated with higher or lower prices? And, on average, how much more do buyers tend to pay for additional Wii wheels (plastic steering wheels that attach to the Wii controller) in auctions? Multiple regression will help us answer these and other questions.
 
-The data set \data{mario\_\hspace{0.3mm}kart} includes results from 141 auctions.\footnote{Diez DM, Barr CD, \c{C}etinkaya-Rundel M. 2015. \texttt{openintro}: OpenIntro data sets and supplement functions. \oiRedirect{textbook-github_openintro}{github.com/OpenIntroOrg/openintro-r-package}.} Four observations from this data set are shown in Table~\ref{marioKartDataMatrix}, and descriptions for each variable are shown in Table~\ref{marioKartVariables}. Notice that the condition and stock photo variables are indicator variables\index{indicator variable}. For instance, the \var{cond\_\hspace{0.3mm}new} variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section~\ref{categoricalPredictorsWithTwoLevels} for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.
+The data set \data{mario\_\hspace{0.3mm}kart} includes results from 141 auctions.\footnote{Diez DM, Barr CD, \c{C}etinkaya-Rundel M. 2015. \texttt{openintro}: OpenIntro data sets and supplement functions. \oiRedirect{textbook-github_openintro}{github.com/OpenIntroOrg/openintro-r-package}.} Four observations from this data set are shown in Figure~\ref{marioKartDataMatrix}, and descriptions for each variable are shown in Figure~\ref{marioKartVariables}. Notice that the condition and stock photo variables are indicator variables\index{indicator variable}. For instance, the \var{cond\_\hspace{0.3mm}new} variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section~\ref{categoricalPredictorsWithTwoLevels} for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrlr}
   \hline
@@ -35,10 +35,10 @@ $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
 \end{tabular}
 \caption{Four observations from the \data{mario\_\hspace{0.3mm}kart} data set.}
 \label{marioKartDataMatrix}
-\end{table}
+\end{figure}
 %library(openintro); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; row.names(d) <- NULL; d
 
-\begin{table}
+\begin{figure}
 \centering\small
 \begin{tabular}{lp{9.5cm}}
 \hline
@@ -53,7 +53,7 @@ $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
 \end{tabular}
 \caption{Variables and their descriptions for the \data{mario\_\hspace{0.3mm}kart} data set.}
 \label{marioKartVariables}
-\end{table}
+\end{figure}
 
 \subsection{A single-variable model for the Mario Kart data}
 \label{twoSingleVariableModelsForMarioKartData}
@@ -62,9 +62,9 @@ Let's fit a linear regression model with the game's condition as a predictor of 
 \begin{align*}
 \widehat{price} &= 42.87 + 10.90\times cond\_\hspace{0.3mm}new
 \end{align*}
-Results of this model are shown in Table~\ref{singleVarModelsForPriceUsingCond} and a scatterplot for price versus game condition is shown in Figure~\ref{marioKartSingle}.
+Results of this model are shown in Figure~\ref{singleVarModelsForPriceUsingCond} and a scatterplot for price versus game condition is shown in Figure~\ref{marioKartSingle}.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -79,7 +79,7 @@ Results of this model are shown in Table~\ref{singleVarModelsForPriceUsingCond} 
 \end{tabular}
 \caption{Summary of a linear model for predicting auction price based on game condition.}
 \label{singleVarModelsForPriceUsingCond}
-\end{table}
+\end{figure}
 % library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); xtable(lm(d$totalPr ~ d$cond)); xtable(lm(d$totalPr ~ d$duration))
 
 \begin{figure}
@@ -94,7 +94,7 @@ Examine Figure~\ref{marioKartSingle}. Does the linear model seem reasonable?\foo
 \end{exercise}
 
 \begin{example}{Interpret the coefficient for the game's condition in the model. Is this coefficient significantly different from 0?}
-Note that \var{cond\_\hspace{0.3mm}new} is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra \$10.90 for those games that are new versus those that are used. (See Section~\ref{categoricalPredictorsWithTwoLevels} for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Table~\ref{singleVarModelsForPriceUsingCond}, we can see that the p-value for \var{cond\_\hspace{0.3mm}new} is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.
+Note that \var{cond\_\hspace{0.3mm}new} is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra \$10.90 for those games that are new versus those that are used. (See Section~\ref{categoricalPredictorsWithTwoLevels} for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Figure~\ref{singleVarModelsForPriceUsingCond}, we can see that the p-value for \var{cond\_\hspace{0.3mm}new} is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.
 \end{example}
 
 \subsection{Including and assessing many variables in a model}
@@ -122,9 +122,9 @@ SSE = e_1^2 + e_2^2 + \dots + e_{141}^2
 	= \sum_{i=1}^{141} e_i^2
 	 = \sum_{i=1}^{141} \left(y_i - \hat{y}_i\right)^2
 \end{align}
-Here there are 141 residuals, one for each observation. We typically use a computer to minimize the sum in Equation~\eqref{sumOfSqResInMultRegr} and compute point estimates, as shown in the sample output in Table~\ref{outputForMultipleRegrOutputForAllPredictors}. Using this output, we identify the point estimates $b_i$ of each $\beta_i$, just as we did in the one-predictor case.
+Here there are 141 residuals, one for each observation. We typically use a computer to minimize the sum in Equation~\eqref{sumOfSqResInMultRegr} and compute point estimates, as shown in the sample output in Figure~\ref{outputForMultipleRegrOutputForAllPredictors}. Using this output, we identify the point estimates $b_i$ of each $\beta_i$, just as we did in the one-predictor case.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -142,7 +142,7 @@ Here there are 141 residuals, one for each observation. We typically use a compu
 \end{tabular}
 \caption{Output for the regression model where \var{price} is the outcome and \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, \var{duration}, and \var{wheels} are the predictors.}
 \label{outputForMultipleRegrOutputForAllPredictors}
-\end{table}
+\end{figure}
 %library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); g <-lm(totalPr ~ cond + stockPhoto + duration + wheels, d)
 
 \begin{termBox}{\tBoxTitle{Multiple regression model}
@@ -154,7 +154,7 @@ when there are $k$ predictors. We often estimate the $\beta_i$ parameters using 
 \end{termBox}
 
 \begin{exercise} \label{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}
-Write out the model in Equation~\eqref{eqForMultipleRegrOfTotalPrForAllPredictors} using the point estimates from Table~\ref{outputForMultipleRegrOutputForAllPredictors}. How many predictors are there in this model?\footnote{$\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.}
+Write out the model in Equation~\eqref{eqForMultipleRegrOfTotalPrForAllPredictors} using the point estimates from Figure~\ref{outputForMultipleRegrOutputForAllPredictors}. How many predictors are there in this model?\footnote{$\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.}
 \end{exercise}
 
 \begin{exercise}
@@ -240,7 +240,7 @@ Adjusted $R^2$ describes the strength of a model fit, and it is a useful tool fo
 
 Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrOutputForAllPredictors2} and~\ref{marioKartMultipleRegressionModelAllButDuration}. The first table summarizes the full model since it includes all predictors, while the second does not include the \var{duration} variable.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -259,9 +259,9 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
 \end{tabular}
 \caption{The fit for the full regression model, including the adjusted $R^2$.}
 \label{outputForMultipleRegrOutputForAllPredictors2}
-\end{table}
+\end{figure}
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -279,7 +279,7 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
 \end{tabular}
 \caption{The fit for the regression model for predictors \var{cond\_new}, \var{stock\_photo}, and \var{wheels}.}
 \label{marioKartMultipleRegressionModelAllButDuration}
-\end{table}
+\end{figure}
 
 \begin{example}{Which of the two models is better?}
 We compare the adjusted $R^2$ of each model to determine which to choose. Since the first model has an $R^2_{adj}$ smaller than the $R^2_{adj}$ of the second model, we prefer the second model to the first.
@@ -294,7 +294,7 @@ Two common strategies for adding or removing variables in a multiple regression 
 
 \termsub{Backward elimination}{backward elimination} starts with the model that includes all potential predictor variables. Variables are eliminated one-at-a-time from the model until we cannot improve the adjusted $R^2$. The strategy within each elimination step is to eliminate the variable that leads to the largest improvement in adjusted $R^2$.
 
-\begin{example}{Results corresponding to the \emph{full model} for the \data{mario\_\hspace{0.3mm}kart} data are shown in Table~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
+\begin{example}{Results corresponding to the \emph{full model} for the \data{mario\_\hspace{0.3mm}kart} data are shown in Figure~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
 Our baseline adjusted $R^2$ from the full model is $R^2_{adj} = 0.7108$, and we need to determine whether dropping a predictor will improve the adjusted $R^2$. To check, we fit four models that each drop a different predictor, and we record the adjusted $R^2$ from each:
 \begin{center}
 \begin{tabular}{lllll}
@@ -325,7 +325,7 @@ Exclude \var{duration} and ... &
 	$R^2_{adj} = 0.3414$ \\
 \end{tabular}
 \end{center}
-None of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the remaining predictors. That is, after backward elimination, we are left with the model that keeps \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photos}, and \var{wheels}, which we can summarize using the coefficients from Table~\ref{marioKartMultipleRegressionModelAllButDuration}:
+None of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the remaining predictors. That is, after backward elimination, we are left with the model that keeps \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photos}, and \var{wheels}, which we can summarize using the coefficients from Figure~\ref{marioKartMultipleRegressionModelAllButDuration}:
 \begin{align*}
 \hat{y} \ &= \ b_0 + b_1x_1 + b_2x_2 + b_4x_4 \\
 \widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\_\hspace{0.3mm}new}} + 1.12 \times \text{\var{stock\_\hspace{0.3mm}photo}} + 7.30 \times \text{\var{wheels}}
@@ -401,7 +401,7 @@ In backward elimination, we would identify the predictor corresponding to the la
 In forward selection with p-values, we reverse the process. We begin with a model that has no predictors, then we fit a model for each possible predictor, identifying the model where the corresponding predictor's p-value is smallest. If that p-value is smaller than $\alpha = 0.05$, we add it to the model and repeat the process, considering whether to add more variables one-at-a-time. When none of the remaining predictors can be added to the model and have a p-value less than 0.05, then we stop adding variables and the current model would be our best-fitting model.
 
 \begin{exercise}
-Examine Table~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}, which considers the model including the \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnote{The \var{stock\_\hspace{0.3mm}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\_\hspace{0.3mm}photo} from the model.}
+Examine Figure~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}, which considers the model including the \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnote{The \var{stock\_\hspace{0.3mm}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\_\hspace{0.3mm}photo} from the model.}
 \end{exercise}
 
 While the adjusted $R^2$ and p-value approaches are similar, they sometimes lead to different models, with the adjusted $R^2$ approach tending to include more predictors in the final model. For example, if we had used the p-value approach with the auction data, we would not have included the \var{stock\_\hspace{0.3mm}photo} predictor in the final model.
@@ -534,9 +534,9 @@ In Section~\ref{logisticRegression} we will revisit the \data{email} data set fr
 
 \subsection{Email data}
 
-The \data{email} data set was first presented in Chapter~\ref{introductionToData} with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Table~\ref{emailVariables}. The \var{spam} variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.\footnote{Recall from Chapter~\ref{linRegrForTwoVar} that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter~\ref{introductionToData}. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.}
+The \data{email} data set was first presented in Chapter~\ref{introductionToData} with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Figure~\ref{emailVariables}. The \var{spam} variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.\footnote{Recall from Chapter~\ref{linRegrForTwoVar} that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter~\ref{introductionToData}. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.}
 
-\begin{table}
+\begin{figure}
 \centering\small
 \begin{tabular}{lp{10.5cm}}
 \hline
@@ -557,7 +557,7 @@ The \data{email} data set was first presented in Chapter~\ref{introductionToData
 \end{tabular}
 \caption{Descriptions for 11 variables in the \data{email} data set. Notice that all of the variables are indicator\index{indicator variable} variables, which take the value 1 if the specified characteristic is present and 0 otherwise.}
 \label{emailVariables}
-\end{table}
+\end{figure}
 
 
 \subsection{Modeling the probability of an event}
@@ -619,9 +619,9 @@ As with most applied data problems, we substitute the point estimates for the pa
 \end{align*}
 While the information about whether the email is addressed to multiple people is a helpful start in classifying email as spam or not, the probabilities of 11\% and 2\% are not dramatically different, and neither provides very strong evidence about which particular email messages are spam. To get more precise estimates, we'll need to include many more variables in the model.
 
-We used statistical software to fit the logistic regression model with all ten predictors described in Table~\ref{emailVariables}. Like multiple regression, the result may be presented in a summary table, which is shown in Table~\ref{emailLogisticModelResults}. The structure of this table is almost identical to that of multiple regression; the only notable difference is that the p-values are calculated using the normal distribution rather than the $t$-distribution.
+We used statistical software to fit the logistic regression model with all ten predictors described in Figure~\ref{emailVariables}. Like multiple regression, the result may be presented in a summary table, which is shown in Figure~\ref{emailLogisticModelResults}. The structure of this table is almost identical to that of multiple regression; the only notable difference is that the p-values are calculated using the normal distribution rather than the $t$-distribution.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -644,13 +644,13 @@ We used statistical software to fit the logistic regression model with all ten p
 \end{tabular}
 \caption{Summary table for the full logistic regression model for the spam filter example.}
 \label{emailLogisticModelResults}
-\end{table}
+\end{figure}
 % library(openintro); ?email # run example
 % library(xtable); xtable(g)
 
-Just like multiple regression, we could trim some variables from the model using the p-value. Using backward elimination with a p-value cutoff of 0.05 (start with the full model and trim the predictors with p-values greater than 0.05), we ultimately eliminate the \var{exclaim\_\hspace{0.3mm}subj}, \var{dollar}, \var{inherit}, and \var{cc} predictors. The remainder of this section will rely on this smaller model, which is summarized in Table~\ref{emailLogisticReducedModel}.
+Just like multiple regression, we could trim some variables from the model using the p-value. Using backward elimination with a p-value cutoff of 0.05 (start with the full model and trim the predictors with p-values greater than 0.05), we ultimately eliminate the \var{exclaim\_\hspace{0.3mm}subj}, \var{dollar}, \var{inherit}, and \var{cc} predictors. The remainder of this section will rely on this smaller model, which is summarized in Figure~\ref{emailLogisticReducedModel}.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -669,17 +669,17 @@ Just like multiple regression, we could trim some variables from the model using
 \end{tabular}
 \caption{Summary table for the logistic regression model for the spam filter, where variable selection has been performed.}
 \label{emailLogisticReducedModel}
-\end{table}
+\end{figure}
 % library(openintro); ?email # run example
 % g <- glm(spam ~ to_multiple + winner + format + re_subj + attach + password, data=e, family=binomial); xtable(g)
 
 \begin{exercise}
-Examine the summary of the reduced model in Table~\ref{emailLogisticReducedModel}, and in particular, examine the \var{to\_\hspace{0.3mm}multiple} row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.\footnote{The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.}
+Examine the summary of the reduced model in Figure~\ref{emailLogisticReducedModel}, and in particular, examine the \var{to\_\hspace{0.3mm}multiple} row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.\footnote{The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.}
 \end{exercise}
 
 Point estimates will generally change a little -- and sometimes a lot -- depending on which other variables are included in the model. This is usually due to colinearity in the predictor variables. We previously saw this in the Ebay auction example when we compared the coefficient of \var{cond\_\hspace{0.3mm}new} in a single-variable model and the corresponding coefficient in the multiple regression model that used three additional variables (see Sections~\ref{twoSingleVariableModelsForMarioKartData} and~\ref{includingAndAssessingManyVariablesInAModel}).
 
-\begin{example}{Spam filters are built to be automated, meaning a piece of software is written to collect information about emails as they arrive, and this information is put in the form of variables. These variables are then put into an algorithm that uses a statistical model, like the one we've fit, to classify the email. Suppose we write software for a spam filter using the reduced model shown in Table~\ref{emailLogisticReducedModel}. If an incoming email has the word ``winner'' in it, will this raise or lower the model's calculated probability that the incoming email is spam?} \label{exampleForSpamAndWinner}
+\begin{example}{Spam filters are built to be automated, meaning a piece of software is written to collect information about emails as they arrive, and this information is put in the form of variables. These variables are then put into an algorithm that uses a statistical model, like the one we've fit, to classify the email. Suppose we write software for a spam filter using the reduced model shown in Figure~\ref{emailLogisticReducedModel}. If an incoming email has the word ``winner'' in it, will this raise or lower the model's calculated probability that the incoming email is spam?} \label{exampleForSpamAndWinner}
 The estimated coefficient of \var{winner} is positive (1.7370). A positive coefficient estimate in logistic regression, just like in multiple regression, corresponds to a positive association between the predictor and response variables when accounting for the other variables in the model. Since the response variable takes value 1 if an email is spam and 0 otherwise, the positive coefficient indicates that the presence of ``winner'' in an email raises the model probability that the message is spam.
 \end{example}
 
@@ -765,9 +765,9 @@ Take a few minutes to think about additional variables that might be useful in i
 \end{enumerate}
 The variables described above take one of two approaches. Variable (1) is specially designed to capitalize on the fact that spam is rarely sent between individuals that have two-way communication. Variables~(2) and~(3) are specially designed to flag common spammers or spam messages. While we would have to verify using the data that each of the variables is effective, these seem like promising ideas.
 
-Table~\ref{emailTableOfSpamAnd} shows a contingency table for spam and also for the new variable described in~(1) above. If we look at the 1,090 emails where there was correspondence with the sender in the preceding 30 days, not one of these message was spam. This suggests variable~(1) would be very effective at accurately classifying some messages as not spam. With this single variable, we would be able to send about 28\% of messages through to the inbox with confidence that almost none are spam.
+Figure~\ref{emailTableOfSpamAnd} shows a contingency table for spam and also for the new variable described in~(1) above. If we look at the 1,090 emails where there was correspondence with the sender in the preceding 30 days, not one of these message was spam. This suggests variable~(1) would be very effective at accurately classifying some messages as not spam. With this single variable, we would be able to send about 28\% of messages through to the inbox with confidence that almost none are spam.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{lrrrr}
 & \multicolumn{3}{c}{prior correspondence} & \\
@@ -784,7 +784,7 @@ Total & 2831 & 1090 && 3921 \\
 \end{tabular}
 \caption{A contingency table for \var{spam} and a new variable that represents whether there had been correspondence with the sender in the preceding 30~days.}
 \label{emailTableOfSpamAnd}
-\end{table}
+\end{figure}
 %library(openintro); data(email); contTable(email[,c("spam", "sent_email")])
 
 The variables described in (2) and (3) would provide an excellent foundation for distinguishing messages coming from known spammers or messages that take a known form of spam. To utilize these variables, we would need to build databases: one holding email addresses of known spammers, and one holding URLs found in known spam messages. Our access to such information is limited, so we cannot implement these two variables in this textbook. However, if we were hired by an email service to build a spam filter, these would be important next steps.

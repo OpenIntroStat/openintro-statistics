@@ -254,9 +254,9 @@ In the setting of confidence intervals for a difference of two proportions, the 
 \begin{quote}
 As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
 \end{quote}
-\index{data!health care|(}For each randomly sampled respondent, the statements in brackets were randomized: either they were kept in the order given above, or the two statements were reversed. Table~\ref{pewPollResultsForRandomizedStatementOrdering} shows the results of this experiment. Create and interpret a 90\% confidence interval of the difference in approval.}
+\index{data!health care|(}For each randomly sampled respondent, the statements in brackets were randomized: either they were kept in the order given above, or the two statements were reversed. Figure~\ref{pewPollResultsForRandomizedStatementOrdering} shows the results of this experiment. Create and interpret a 90\% confidence interval of the difference in approval.}
 
-\begin{table}[t]
+\begin{figure}[t]
 \centering
 \begin{tabular}{p{50mm}c p{13mm}p{14mm}p{16.5mm}c}
 	&\ & Sample size ($n_i$) & Approve law (\%)	& Disapprove law (\%)	& Other \\
@@ -269,7 +269,7 @@ As you may know, by 2014 nearly all Americans will be required to have health in
 \end{tabular}
 \caption{Results for a Pew Research Center poll where the ordering of two statements in a question regarding healthcare were randomized.\vspaceB{-2mm}}
 \label{pewPollResultsForRandomizedStatementOrdering}
-\end{table}
+\end{figure}
 
 First the conditions must be verified. Because each group is a simple random sample from less than 10\% of the population, the observations are independent, both within the samples and between the samples. The success-failure condition also holds for each sample. Because all conditions are met, the normal model can be used for the point estimate of the difference in support, where $p_1$ corresponds to the original ordering and $p_2$ to the reversed ordering:
 $$\hat{p}_{1} - \hat{p}_{2} = 0.47 - 0.34 = 0.13$$
@@ -289,11 +289,11 @@ We are 90\% confident that the approval rating for the 2010 healthcare law chang
 
 A mammogram is an X-ray procedure used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it's the topic of our next example where we examine 2-proportion hypothesis test when $H_0$~is~$p_1 - p_2 = 0$ (or equivalently, $p_1 = p_2$).
 
-A 30-year study was conducted with nearly 90,000 female participants.\footnote{\oiRedirect{textbook-90k_mammogram_study_2014}{Miller AB. 2014. \emph{Twenty five year follow-up for breast cancer incidence and mortality of the Canadian National Breast Screening Study: randomised screening trial}. BMJ 2014;348:g366.}} During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Table~\ref{mammogramStudySummaryTable}.
+A 30-year study was conducted with nearly 90,000 female participants.\footnote{\oiRedirect{textbook-90k_mammogram_study_2014}{Miller AB. 2014. \emph{Twenty five year follow-up for breast cancer incidence and mortality of the Canadian National Breast Screening Study: randomised screening trial}. BMJ 2014;348:g366.}} During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure~\ref{mammogramStudySummaryTable}.
 
 If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On~the other hand, if mammograms are not as effective as regular breast cancer exams, we~would expect to see an increase in breast cancer deaths in the mammogram group.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{rrcc}
 	& \multicolumn{3}{c}{Death from breast cancer?} \\
@@ -306,7 +306,7 @@ Control && 505 & 44,405 \\
 \end{tabular}
 \caption{Summary results for breast cancer study.}
 \label{mammogramStudySummaryTable}
-\end{table}
+\end{figure}
 
 \begin{exercise}
 Is this study an experiment or an observational study?\footnote{This is an experiment. Patients were randomized to receive mammograms or a standard breast cancer exam. We will be able to make causal conclusions based on this study.}
@@ -493,9 +493,9 @@ Each of these scenarios can be addressed using the same statistical test: a chi-
 
 \index{data!racial make-up of jury|(}
 
-In the first case, we consider data from a random sample of 275 jurors in a small county. Jurors identified their racial group, as shown in Table~\ref{juryRepresentationAndCityRepresentationForRace}, and we would like to determine if these jurors are racially representative of the population.  If the jury is representative of the population, then the proportions in the sample should roughly reflect the population of eligible jurors, i.e. registered voters.
+In the first case, we consider data from a random sample of 275 jurors in a small county. Jurors identified their racial group, as shown in Figure~\ref{juryRepresentationAndCityRepresentationForRace}, and we would like to determine if these jurors are racially representative of the population.  If the jury is representative of the population, then the proportions in the sample should roughly reflect the population of eligible jurors, i.e. registered voters.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc c ll}
 \hline
@@ -507,7 +507,7 @@ Registered voters	 & 		& 0.72 & 0.07 & 0.12 & 0.09 & & 1.00 \\
 \end{tabular}
 \caption{Representation by race in a city's juries and population.}
 \label{juryRepresentationAndCityRepresentationForRace}
-\end{table}
+\end{figure}
 
 While the proportions in the juries do not precisely represent the population proportions, it is unclear whether these data provide convincing evidence that the sample is not representative. If the jurors really were randomly sampled from the registered voters, we might expect small differences due to chance. However, unusually large differences may provide convincing evidence that the juries were not representative.
 
@@ -525,10 +525,10 @@ Similarly, we would expect about 7\% of the jurors to be black, which would corr
 \end{example}
 
 \begin{exercise}
-Twelve percent of the population is Hispanic and 9\% represent other races. How many of the 275 jurors would we expect to be Hispanic or from another race? Answers can be found in Table~\ref{expectedJuryRepresentationIfNoBias}.
+Twelve percent of the population is Hispanic and 9\% represent other races. How many of the 275 jurors would we expect to be Hispanic or from another race? Answers can be found in Figure~\ref{expectedJuryRepresentationIfNoBias}.
 \end{exercise}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc c ll}
 \hline
@@ -540,7 +540,7 @@ Expected counts	 &	& 198 & 19.25 & 33 & 24.75 & & 275 \\
 \end{tabular}
 \caption{Actual and expected make-up of the jurors.}
 \label{expectedJuryRepresentationIfNoBias}
-\end{table}
+\end{figure}
 
 The sample proportion represented from each race among the 275 jurors was not a precise match for any ethnic group. While some sampling variation is expected, we would expect the sample proportions to be fairly similar to the population proportions if there is no bias on juries. We need to test whether the differences are strong enough to provide convincing evidence that the jurors are not a random sample. These ideas can be organized into hypotheses:
 \begin{itemize}
@@ -623,9 +623,9 @@ Figure~\ref{chiSquareDistributionWithInceasingDF} shows three chi-square distrib
 
 Figure~\ref{chiSquareDistributionWithInceasingDF} and Guided Practice~\ref{exerChiSquareDistributionDescriptionWithMoreDOF} demonstrate three general properties of chi-square distributions as the degrees of freedom increases: the distribution becomes more symmetric, the center moves to the right, and the variability inflates.
 
-Our principal interest in the chi-square distribution is the calculation of p-values, which (as we have seen before) is related to finding the relevant area in the tail of a distribution. To do so, a new table is needed: the \term{chi-square table}, partially shown in Table~\ref{chiSquareProbabilityTableShort}. A more complete table is presented in Appendix~\vref{chiSquareProbabilityTable}. This table is very similar to the $t$-table: we examine a particular row for distributions with different degrees of freedom, and we identify a range for the area. One important difference from the $t$-table is that the chi-square table only provides upper tail values.
+Our principal interest in the chi-square distribution is the calculation of p-values, which (as we have seen before) is related to finding the relevant area in the tail of a distribution. To do so, a new table is needed: the \term{chi-square table}, partially shown in Figure~\ref{chiSquareProbabilityTableShort}. A more complete table is presented in Appendix~\ref{chiSquareProbabilityTable}. This table is very similar to the $t$-table: we examine a particular row for distributions with different degrees of freedom, and we identify a range for the area. One important difference from the $t$-table is that the chi-square table only provides upper tail values.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{r | rrrr | rrrr |}
   \hline
@@ -641,11 +641,11 @@ df \hfill 2 & \footnotesize 2.41 & \footnotesize \highlightO{3.22} & \footnotesi
   7 & \footnotesize 8.38 & \footnotesize 9.80 & \footnotesize 12.02 & \footnotesize 14.07 & \footnotesize 16.62 & \footnotesize 18.48 & \footnotesize 20.28 & \footnotesize 24.32 \\ 
   \hline
 \end{tabular}
-\caption{A section of the chi-square table. A complete table is in Appendix~\vref{chiSquareProbabilityTable}.}
+\caption{A section of the chi-square table. A complete table is in Appendix~\ref{chiSquareProbabilityTable}.}
 \label{chiSquareProbabilityTableShort}
-\end{table}
+\end{figure}
 
-\begin{example}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Table~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
+\begin{example}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Figure~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
 This distribution has three degrees of freedom, so only the row with 3 degrees of freedom (df) is relevant. This row has been italicized in the table. Next, we see that the value -- 6.25 -- falls in the column with upper tail area 0.1. That is, the shaded upper tail of Figure~\ref{chiSquareAreaAbove6Point25WithDF3} has area 0.1.
 \end{example}
 
@@ -686,7 +686,7 @@ This distribution has three degrees of freedom, so only the row with 3 degrees o
 \label{arrayOfFigureAreasForChiSquareDistribution}
 \end{figure}
 
-\begin{example}{We rarely observe the \emph{exact} value in the table. For instance, Figure~\ref{chiSquareAreaAbove4Point3WithDF2} shows the upper tail of a chi-square distribution with 2 degrees of freedom. The bound for this upper tail is at 4.3, which does not fall in Table~\ref{chiSquareProbabilityTableShort}. Find the approximate tail area.}
+\begin{example}{We rarely observe the \emph{exact} value in the table. For instance, Figure~\ref{chiSquareAreaAbove4Point3WithDF2} shows the upper tail of a chi-square distribution with 2 degrees of freedom. The bound for this upper tail is at 4.3, which does not fall in Figure~\ref{chiSquareProbabilityTableShort}. Find the approximate tail area.}
 The cutoff 4.3 falls between the second and third columns in the 2 degrees of freedom row. Because these columns correspond to tail areas of 0.2 and 0.1, we can be certain that the area shaded in Figure~\ref{chiSquareAreaAbove4Point3WithDF2} is between 0.1 and 0.2.
 \end{example}
 
@@ -778,9 +778,9 @@ Outcome	 & \hspace{-1mm} &
 \footnotesize Days to Up & \hspace{-1mm} & 1 & - & 2 & - & 2 & 1 & - & - & - & 4 \\
 \end{tabular}
 \end{center}
-If the days really are independent, then the number of days until a positive trading day should follow a geometric distribution. The geometric distribution describes the probability of waiting for the $k^{th}$ trial to observe the first success. Here each up day (Up) represents a success, and down (D) days represent failures. In the data above, it took only one day until the market was up, so the first wait time was 1 day. It took two more days before we observed our next \resp{Up} trading day, and two more for the third \resp{Up} day. We would like to determine if these counts (1, 2, 2, 1, 4, and so on) follow the geometric distribution. Table~\ref{sAndP500For1990To2011TimeToPosTrade} shows the number of waiting days for a positive trading day during 1990-2011 for the S\&P500.
+If the days really are independent, then the number of days until a positive trading day should follow a geometric distribution. The geometric distribution describes the probability of waiting for the $k^{th}$ trial to observe the first success. Here each up day (Up) represents a success, and down (D) days represent failures. In the data above, it took only one day until the market was up, so the first wait time was 1 day. It took two more days before we observed our next \resp{Up} trading day, and two more for the third \resp{Up} day. We would like to determine if these counts (1, 2, 2, 1, 4, and so on) follow the geometric distribution. Figure~\ref{sAndP500For1990To2011TimeToPosTrade} shows the number of waiting days for a positive trading day during 1990-2011 for the S\&P500.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc ccc c ll}
 \hline
@@ -790,7 +790,7 @@ Observed &		& 1532 & 760 & 338 & 194 & 74 & 33 & 17 & & 2948 \\
 \end{tabular}
 \caption{Observed distribution of the waiting time until a positive trading day for the S\&P500, 1990-2011.}
 \label{sAndP500For1990To2011TimeToPosTrade}
-\end{table}
+\end{figure}
 
 We consider how many days one must wait until observing an \resp{Up} day on the S\&P500 stock index. If the stock activity was independent from one day to the next and the probability of a positive trading day was constant, then we would expect this waiting time to follow a \emph{geometric distribution}. We can organize this into a hypothesis framework:
 \begin{itemize}
@@ -799,9 +799,9 @@ We consider how many days one must wait until observing an \resp{Up} day on the 
 \end{itemize}
 There are important implications in our result for stock traders: if information from past trading days is useful in telling what will happen today, that information may provide an advantage over other traders.
 
-We consider data for the S\&P500 from 1990 to 2011 and summarize the waiting times in Table~\ref{sAndP500For1990To2011TimeToPosTrade2} and Figure~\ref{geomFitEvaluationForSP500For1990To2011}. The S\&P500 was positive on 53.2\% of those days.
+We consider data for the S\&P500 from 1990 to 2011 and summarize the waiting times in Figure~\ref{sAndP500For1990To2011TimeToPosTrade2} and Figure~\ref{geomFitEvaluationForSP500For1990To2011}. The S\&P500 was positive on 53.2\% of those days.
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{ll ccc ccc c ll}
 \hline
@@ -813,7 +813,7 @@ Geometric Model &		& 1569 & 734 & 343 & 161 & 75 & 35 & 31 & & 2948 \\
 \end{tabular}
 \caption{Distribution of the waiting time until a positive trading day. The expected counts based on the geometric model are shown in the last row. To find each expected count, we identify the probability of waiting $D$ days based on the geometric model ($P(D) = (1-0.532)^{D-1}(0.532)$) and multiply by the total number of streaks, 2948. For example, waiting for three days occurs under the geometric model about $0.468^2\times 0.532 = 11.65\%$ of the time, which corresponds to $0.1165\times 2948 = 343$ streaks.}
 \label{sAndP500For1990To2011TimeToPosTrade2}
-\end{table}
+\end{figure}
 
 \begin{figure}
 \centering
@@ -822,14 +822,14 @@ Geometric Model &		& 1569 & 734 & 343 & 161 & 75 & 35 & 31 & & 2948 \\
 \label{geomFitEvaluationForSP500For1990To2011}
 \end{figure}
 
-Because applying the chi-square framework requires expected counts to be at least~5, we have \emph{binned} together all the cases where the waiting time was at least 7 days to ensure each expected count is well above this minimum. The actual data, shown in the \emph{Observed} row in Table~\ref{sAndP500For1990To2011TimeToPosTrade2}, can be compared to the expected counts from the \emph{Geometric Model} row. The method for computing expected counts is discussed in Table~\ref{sAndP500For1990To2011TimeToPosTrade2}. In general, the expected counts are determined by (1) identifying the null proportion associated with each bin, then (2) multiplying each null proportion by the total count to obtain the expected counts. That is, this strategy identifies what proportion of the total count we would expect to be in each bin.
+Because applying the chi-square framework requires expected counts to be at least~5, we have \emph{binned} together all the cases where the waiting time was at least 7 days to ensure each expected count is well above this minimum. The actual data, shown in the \emph{Observed} row in Figure~\ref{sAndP500For1990To2011TimeToPosTrade2}, can be compared to the expected counts from the \emph{Geometric Model} row. The method for computing expected counts is discussed in Figure~\ref{sAndP500For1990To2011TimeToPosTrade2}. In general, the expected counts are determined by (1) identifying the null proportion associated with each bin, then (2) multiplying each null proportion by the total count to obtain the expected counts. That is, this strategy identifies what proportion of the total count we would expect to be in each bin.
 
 \begin{example}{Do you notice any unusually large deviations in the graph? Can you tell if these deviations are due to chance just by looking?}
-It is not obvious whether differences in the observed counts and the expected counts from the geometric distribution are significantly different. That is, it is not clear whether these deviations might be due to chance or whether they are so strong that the data provide convincing evidence against the null hypothesis. However, we can perform a chi-square test using the counts in Table~\ref{sAndP500For1990To2011TimeToPosTrade2}.
+It is not obvious whether differences in the observed counts and the expected counts from the geometric distribution are significantly different. That is, it is not clear whether these deviations might be due to chance or whether they are so strong that the data provide convincing evidence against the null hypothesis. However, we can perform a chi-square test using the counts in Figure~\ref{sAndP500For1990To2011TimeToPosTrade2}.
 \end{example}
 
 \begin{exercise}
-Table~\ref{sAndP500For1990To2011TimeToPosTrade2} provides a set of count data for waiting times ($O_1=1532$, $O_2=760$, ...) and expected counts under the geometric distribution ($E_1=1569$, $E_2=734$, ...). Compute the chi-square test statistic, $\chi^2$.\footnote{$\chi^2=\frac{(1532-1569)^2}{1569} + \frac{(760-734)^2}{734} + \cdots + \frac{(17-31)^2}{31} = 15.08$}
+Figure~\ref{sAndP500For1990To2011TimeToPosTrade2} provides a set of count data for waiting times ($O_1=1532$, $O_2=760$, ...) and expected counts under the geometric distribution ($E_1=1569$, $E_2=734$, ...). Compute the chi-square test statistic, $\chi^2$.\footnote{$\chi^2=\frac{(1532-1569)^2}{1569} + \frac{(760-734)^2}{734} + \cdots + \frac{(17-31)^2}{31} = 15.08$}
 \end{exercise}
 
 \begin{exercise}
@@ -862,9 +862,9 @@ Because the data provided strong evidence that the geometric distribution is not
 
 \index{data!search algorithm|(}
 
-Google is constantly running experiments to test new search algorithms. For example, Google might test three algorithms using a sample of 10,000 google.com search queries. Table~\ref{googleSearchAlgorithmByAlgorithmOnly} shows an example of 10,000 queries split into three algorithm groups.\footnote{Google regularly runs experiments in this manner to help improve their search engine. It is entirely possible that if you perform a search and so does your friend, that you will have different search results. While the data presented in this section resemble what might be encountered in a real experiment, these data are simulated.} The group sizes were specified before the start of the experiment to be 5000 for the current algorithm and 2500 for each test algorithm.
+Google is constantly running experiments to test new search algorithms. For example, Google might test three algorithms using a sample of 10,000 google.com search queries. Figure~\ref{googleSearchAlgorithmByAlgorithmOnly} shows an example of 10,000 queries split into three algorithm groups.\footnote{Google regularly runs experiments in this manner to help improve their search engine. It is entirely possible that if you perform a search and so does your friend, that you will have different search results. While the data presented in this section resemble what might be encountered in a real experiment, these data are simulated.} The group sizes were specified before the start of the experiment to be 5000 for the current algorithm and 2500 for each test algorithm.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc ll}
 \hline
@@ -874,7 +874,7 @@ Counts &		& 5000 & 2500 & 2500 & & 10000 \\
 \end{tabular}
 \caption{Google experiment breakdown of test subjects into three search groups.}
 \label{googleSearchAlgorithmByAlgorithmOnly}
-\end{table}
+\end{figure}
 
 \begin{example}{What is the ultimate goal of the Google experiment? What are the null and alternative hypotheses, in regular words?}
 The ultimate goal is to see whether there is a difference in the performance of the algorithms. The hypotheses can be described as the following:
@@ -886,9 +886,9 @@ The ultimate goal is to see whether there is a difference in the performance of 
 
 In this experiment, the explanatory variable is the search algorithm. However, an outcome variable is also needed. This outcome variable should somehow reflect whether the search results align with the user's interests. One possible way to quantify this is to determine whether (1)~the user clicked one of the links provided and did not try a new search, or (2)~the user performed a related search. Under scenario~(1), we might think that the user was satisfied with the search results. Under scenario~(2), the search results probably were not relevant, so the user tried a second search.
 
-Table~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals} provides the results from the experiment. These data are very similar to the count data in Section~\ref{oneWayChiSquare}. However, now the different combinations of two variables are binned in a \emph{two-way} table. In examining these data, we want to evaluate whether there is strong evidence that at least one algorithm is performing better than the others. To do so, we apply a chi-square test to this two-way table. The ideas of this test are similar to those ideas in the one-way table case. However, degrees of freedom and expected counts are computed a little differently than before.
+Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals} provides the results from the experiment. These data are very similar to the count data in Section~\ref{oneWayChiSquare}. However, now the different combinations of two variables are binned in a \emph{two-way} table. In examining these data, we want to evaluate whether there is strong evidence that at least one algorithm is performing better than the others. To do so, we apply a chi-square test to this two-way table. The ideas of this test are similar to those ideas in the one-way table case. However, degrees of freedom and expected counts are computed a little differently than before.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc ll}
 \hline
@@ -902,7 +902,7 @@ Total						   & & 5000    & 2500 & 2500 & 				& 10000 \\
 \end{tabular}
 \caption{Results of the Google search algorithm experiment.}
 \label{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals}
-\end{table}
+\end{figure}
 
 \begin{tipBox}{\tipBoxTitle[]{What is so different about one-way tables and two-way tables?}
 A one-way table describes counts for each outcome in a single variable. A two-way table describes counts for \emph{combinations} of outcomes for two variables. When we consider a two-way table, we often would like to know, are these variables related in any way? That is, are they dependent (versus independent)?}
@@ -923,9 +923,9 @@ That is, if there was no difference between the three groups, then we would expe
 Using the same rationale described in Example~\ref{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch}, about how many users in each test group would not perform a new search if the algorithms were equally helpful?\footnote{We would expect $0.7078*2500 = 1769.5$. It is okay that this is a fraction.}
 \end{exercise}
 
-We can compute the expected number of users who would perform a new search for each group using the same strategy employed in Example~\ref{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch} and Guided Practice~\ref{googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch}. These expected counts were used to construct Table~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts}, which is the same as Table~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals}, except now the expected counts have been added in parentheses.
+We can compute the expected number of users who would perform a new search for each group using the same strategy employed in Example~\ref{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch} and Guided Practice~\ref{googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch}. These expected counts were used to construct Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts}, which is the same as Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals}, except now the expected counts have been added in parentheses.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l lll lll lll l}
 \hline
@@ -945,7 +945,7 @@ Total				   & 5000 &&& 	2500 &&& 	2500 &&& 	10000 \\
 \end{tabular}
 \caption{The observed counts and the \highlightO{(expected counts)}.}
 \label{googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts}
-\end{table}
+\end{figure}
 
 The examples and exercises above provided some help in computing expected counts. In general, expected counts for a two-way table may be computed using the row totals, column totals, and the table total. For instance, if there was no difference between the groups, then about 70.78\% of each column should be in the first row:
 \begin{align*}
@@ -1018,14 +1018,14 @@ Looking in Appendix~\ref{chiSquareProbabilityTable} on page~\pageref{chiSquarePr
 %March 7-11, 2012
 %1503 adults
 
-\begin{example}{\index{data!approval ratings|(}Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} summarizes the results of a Pew Research poll.\footnote{See the Pew Research website: \oiRedirect{textbook-obama_and_congress_approval_2012}{www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama}. The counts in Table~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} are approximate.} We would like to determine if there are actually differences in the approval ratings of Barack Obama, Democrats in Congress, and Republicans in Congress. What are appropriate hypotheses for such a test?}\label{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}
+\begin{example}{\index{data!approval ratings|(}Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} summarizes the results of a Pew Research poll.\footnote{See the Pew Research website: \oiRedirect{textbook-obama_and_congress_approval_2012}{www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama}. The counts in Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} are approximate.} We would like to determine if there are actually differences in the approval ratings of Barack Obama, Democrats in Congress, and Republicans in Congress. What are appropriate hypotheses for such a test?}\label{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}
 \begin{itemize}
 \item[$H_0$:] There is no difference in approval ratings between the three groups.
 \item[$H_A$:] There is some difference in approval ratings between the three groups, e.g. perhaps Obama's approval differs from Democrats in Congress.
 \end{itemize}
 \end{example}
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{ll ccc ll}
 & & & \multicolumn{2}{c}{Congress} & \\
@@ -1040,7 +1040,7 @@ Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
 \end{tabular}
 \caption{Pew Research poll results of a March 2012 poll.}
 \label{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}
-\end{table}
+\end{figure}
 
 \begin{exercise}
 A chi-square test for a two-way table may be used to test the hypotheses in Example~\ref{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}. As a first step, compute the expected values for each of the six table cells.\footnote{The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{4223} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0.}
@@ -1209,9 +1209,9 @@ We are interested in whether the blood thinners are helpful or harmful, so a two
 
 \subsection{Large sample framework for a difference in two proportions}
 
-There were 50 patients in the experiment who did not receive the blood thinner and 40 patients who did. The study results are shown in Table~\ref{resultsForCPRStudyInSmallSampleSection}.
+There were 50 patients in the experiment who did not receive the blood thinner and 40 patients who did. The study results are shown in Figure~\ref{resultsForCPRStudyInSmallSampleSection}.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{lccccc}
 \hline
@@ -1225,7 +1225,7 @@ Total			&& 25		& 65		&& 90 \\
 \end{tabular}
 \caption{Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.}
 \label{resultsForCPRStudyInSmallSampleSection}
-\end{table}
+\end{figure}
 
 \begin{exercise}
 What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups: $\hat{p}_t - \hat{p}_c$.\footnote{Observed control survival rate: $p_c = \frac{11}{50} = 0.22$. Treatment survival rate: $p_t = \frac{14}{40} = 0.35$. Observed difference: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$.}
@@ -1268,8 +1268,8 @@ The ideas in this section were first introduced in the optional Section~\vref{ca
 
 Suppose the null hypothesis is true. Then the blood thinner has no impact on survival and the 13\% difference was due to chance. In this case, we can simulate \emph{null} differences that are due to chance using a \emph{randomization technique}.\footnote{The test procedure we employ in this section is formally called a \term{permutation test}.} By randomly assigning ``fake treatment'' and ``fake control'' stickers to the patients' files, we could get a new grouping -- one that is completely due to chance. The expected difference between the two proportions under this simulation is zero.
 
-We run this simulation by taking 40 \resp{treatment\_\hspace{0.3mm}fake} and 50 \resp{control\_\hspace{0.3mm}fake} labels and randomly assigning them to the patients. The label counts of 40 and 50 correspond to the number of treatment and control assignments in the actual study. We use a computer program to randomly assign these labels to the patients, and we organize the simulation results into Table~\ref{resultsForCPRStudyInSmallSampleSectionFake1}.
-\begin{table}[ht]
+We run this simulation by taking 40 \resp{treatment\_\hspace{0.3mm}fake} and 50 \resp{control\_\hspace{0.3mm}fake} labels and randomly assigning them to the patients. The label counts of 40 and 50 correspond to the number of treatment and control assignments in the actual study. We use a computer program to randomly assign these labels to the patients, and we organize the simulation results into Figure~\ref{resultsForCPRStudyInSmallSampleSectionFake1}.
+\begin{figure}[ht]
 \centering
 \begin{tabular}{lccccc}
 \hline
@@ -1283,10 +1283,10 @@ Total			&& 25		& 65		&& 90 \\
 \end{tabular}
 \caption{Simulated results for the CPR study under the null hypothesis. The labels were randomly assigned and are independent of the outcome of the patient.}
 \label{resultsForCPRStudyInSmallSampleSectionFake1}
-\end{table}
+\end{figure}
 
 \begin{exercise} \label{exerciseComputingDifferenceForCPRStudyInSmallSampleSectionFake1}
-What is the difference in survival rates between the two fake groups in Table~\ref{resultsForCPRStudyInSmallSampleSectionFake1}? How does this compare to the observed 13\% in the real groups?\footnote{The difference is $\hat{p}_{t, fake} - \hat{p}_{c, fake} = \frac{10}{40} - \frac{15}{50} = -0.05$, which is closer to the null value $p_0=0$ than what we observed.}
+What is the difference in survival rates between the two fake groups in Figure~\ref{resultsForCPRStudyInSmallSampleSectionFake1}? How does this compare to the observed 13\% in the real groups?\footnote{The difference is $\hat{p}_{t, fake} - \hat{p}_{c, fake} = \frac{10}{40} - \frac{15}{50} = -0.05$, which is closer to the null value $p_0=0$ than what we observed.}
 \end{exercise}
 
 The difference computed in Guided Practice~\ref{exerciseComputingDifferenceForCPRStudyInSmallSampleSectionFake1} represents a draw from the null distribution of the sample differences. Next we generate many more simulated experiments to build up the null distribution, much like we did in Section~\ref{generatingTheNullDistributionAndPValueBySimulationForOneProportion} to build a null distribution for a one sample proportion.
@@ -1297,7 +1297,7 @@ The difference computed in Guided Practice~\ref{exerciseComputingDifferenceForCP
 
 \subsection{Null distribution for the difference in two proportions}
 
-We build up an approximation to the null distribution by repeatedly creating tables like the one shown in Table~\ref{resultsForCPRStudyInSmallSampleSectionFake1} and computing the sample differences. The null distribution from 10,000 simulations is shown in Figure~\ref{pValueCPRStudySmallSampleAnalysisInSmallSampleSection}.
+We build up an approximation to the null distribution by repeatedly creating tables like the one shown in Figure~\ref{resultsForCPRStudyInSmallSampleSectionFake1} and computing the sample differences. The null distribution from 10,000 simulations is shown in Figure~\ref{pValueCPRStudySmallSampleAnalysisInSmallSampleSection}.
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{ch_inference_for_props/figures/pValueCPRStudySmallSampleAnalysisInSmallSampleSection/pValueCPRStudySmallSampleAnalysisInSmallSampleSection}

@@ -77,12 +77,12 @@ The degrees of freedom describe the shape of the $t$-distribution. The larger th
 
 When the degrees of freedom is about 30 or more, the $t$-distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we relate degrees of freedom to sample size.
 
-It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data. We use a \term{t-table}, partially shown in Table~\ref{tTableSample}, in place of the normal probability table. A larger $t$-table is in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. In~practice, it's more common to use statistical software instead of a table, and you can see some of these options at
+It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data. We use a \term{t-table}, partially shown in Figure~\ref{tTableSample}, in place of the normal probability table. A larger $t$-table is in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. In~practice, it's more common to use statistical software instead of a table, and you can see some of these options at
 \begin{center}
 \oiRedirect{textbook-prob_distribution_calculations}{www.openintro.org/stat/prob-tables}
 \end{center}
 
-\begin{table}[hht]
+\begin{figure}[hht]
 \centering
 \begin{tabular}{r | rrr rr}
 one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
@@ -103,9 +103,9 @@ $\infty$  &  {\normalsize  1.28} & {\normalsize  1.64} & {\normalsize  1.96} & {
 \end{tabular}
 \caption{An abbreviated look at the $t$-table. Each row represents a different $t$-distribution. The columns describe the cutoffs for specific tail areas. The row with $df=18$ has been \highlightO{highlighted}.}
 \label{tTableSample}
-\end{table}
+\end{figure}
 
-Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is highlighted in Table~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
+Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is highlighted in Figure~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
 
 \begin{example}{What proportion of the $t$-distribution with 18 degrees of freedom falls below -2.10?}
 Just like a normal probability problem, we first draw the picture in Figure~\ref{tDistDF18LeftTail2Point10} and shade the area below -2.10. To find this area, we identify the appropriate row: \mbox{$df=18$}. Then we identify the column containing the absolute value of -2.10; it~is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. About 2.5\% of the distribution falls below -2.10. In the next example we encounter a case where the exact $t$ value is not listed in the table.
@@ -180,9 +180,9 @@ Dolphins are at the top of the oceanic food chain, which causes dangerous substa
 \end{figure}
 \setlength{\captionwidth}{\mycaptionwidth}
 
-Here we identify a confidence interval for the average mercury content in dolphin muscle using a sample of 19 Risso's dolphins from the Taiji area in Japan.\footnote{Taiji was featured in the movie \emph{The Cove}, and it is a significant source of dolphin and whale meat in Japan. Thousands of dolphins pass through the Taiji area annually, and we will assume these 19 dolphins represent a simple random sample from those dolphins. Data reference: Endo T and Haraguchi K. 2009. High mercury levels in hair samples from residents of Taiji, a Japanese whaling town. Marine Pollution Bulletin 60(5):743-747.} The data are summarized in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. The minimum and maximum observed values can be used to evaluate whether or not there are obvious outliers or skew.
+Here we identify a confidence interval for the average mercury content in dolphin muscle using a sample of 19 Risso's dolphins from the Taiji area in Japan.\footnote{Taiji was featured in the movie \emph{The Cove}, and it is a significant source of dolphin and whale meat in Japan. Thousands of dolphins pass through the Taiji area annually, and we will assume these 19 dolphins represent a simple random sample from those dolphins. Data reference: Endo T and Haraguchi K. 2009. High mercury levels in hair samples from residents of Taiji, a Japanese whaling town. Marine Pollution Bulletin 60(5):743-747.} The data are summarized in Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. The minimum and maximum observed values can be used to evaluate whether or not there are obvious outliers or skew.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{ccc cc}
 \hline
@@ -192,10 +192,10 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
 \end{tabular}
 \caption{Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in $\mu$g/wet g (micrograms of mercury per wet gram of muscle).}
 \label{summaryStatsOfHgInMuscleOfRissosDolphins}
-\end{table}
+\end{figure}
 
 \begin{example}{Are the independence and normality conditions satisfied for this data~set?}
-The observations are a simple random sample and consist of less than 10\% of the population, therefore independence is reasonable. The summary statistics in Table~\ref{summaryStatsOfHgInMuscleOfRissosDolphins} do not suggest any skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, the normality assumption seems reasonable.
+The observations are a simple random sample and consist of less than 10\% of the population, therefore independence is reasonable. The summary statistics in Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins} do not suggest any skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, the normality assumption seems reasonable.
 \end{example}
 
 In the normal model, we used $z^{\star}$ and the standard error to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$-distribution:
@@ -315,9 +315,9 @@ To help us remember to use the $t$-distribution, we use a $T$ to represent the t
 \index{paired data|(}
 \index{data!textbooks|(}
 
-Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles' (UCLA's) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10\% of all UCLA courses.\footnote{When a class had multiple books, only the most expensive text was considered.} A portion of the data set is shown in Table~\ref{textbooksDF}.
+Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles' (UCLA's) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10\% of all UCLA courses.\footnote{When a class had multiple books, only the most expensive text was considered.} A portion of the data set is shown in Figure~\ref{textbooksDF}.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{rllrrr}
   \hline
@@ -334,7 +334,7 @@ $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
 \end{tabular}
 \caption{Six cases of the \data{textbooks} data set.}
 \label{textbooksDF}
-\end{table}
+\end{figure}
 %library(openintro); library(xtable); data(textbooks); xtable(textbooks[c(1:5, nrow(textbooks) - 1:0),])
 
 \subsection{Paired observations}
@@ -359,7 +359,7 @@ for each book. It is important that we always subtract using a consistent order;
 \end{figure}
 
 \begin{exercise}
-The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations~2 and~3.\footnote{Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.}
+The first difference shown in Figure~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations~2 and~3.\footnote{Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.}
 \end{exercise}
 
 
@@ -367,7 +367,7 @@ The first difference shown in Table~\ref{textbooksDF} is computed as $27.67-27.9
 
 To analyze a paired data set, we simply analyze the differences. We can use the same $t$-distribution techniques we applied in the last section.
 
-\begin{table}[hh]
+\begin{figure}[hh]
 \centering
 \begin{tabular}{ccccc}
 \hline
@@ -377,7 +377,7 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
 \end{tabular}
 \caption{Summary statistics for the price differences. There were 73 books, so there are 73 differences.}
 \label{textbooksSummaryStats}
-\end{table}
+\end{figure}
 
 \begin{example}{Set up and implement a hypothesis test to determine whether, on average, there is a difference between Amazon's price for a book and the UCLA bookstore's price.}
 \label{htForDiffInUCLAAndAmazonTextbookPrices}
@@ -434,14 +434,14 @@ We apply these methods in three contexts: determining whether stem cells can imp
 \index{data!stem cells, heart function|(}
 \index{point estimate!difference of means|(}
 
-Does treatment using embryonic stem cells (ESCs) help improve heart function following a heart attack? Table~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured in the study. A~positive value corresponds to increased pumping capacity, which generally suggests a stronger recovery. Our goal will be to identify a 95\% confidence interval for the effect of ESCs on the change in heart pumping capacity relative to the control group.
+Does treatment using embryonic stem cells (ESCs) help improve heart function following a heart attack? Figure~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured in the study. A~positive value corresponds to increased pumping capacity, which generally suggests a stronger recovery. Our goal will be to identify a 95\% confidence interval for the effect of ESCs on the change in heart pumping capacity relative to the control group.
 
 A point estimate of the difference in the heart pumping variable can be found using the difference in the sample means:
 \begin{eqnarray*}
 \bar{x}_{esc} - \bar{x}_{control}\ =\ 3.50 - (-4.33)\ =\ 7.83
 \end{eqnarray*}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{l rrrrr}
 \hline
@@ -453,7 +453,7 @@ control		& 9		& -4.33		& 2.76  	 \\
 \end{tabular}
 \caption{Summary statistics of the embryonic stem cell study.}
 \label{summaryStatsForSheepHeartDataWhoReceivedMiceESCs}
-\end{table}
+\end{figure}
 
 %\begin{example}{Set up hypotheses that will be used to test whether there is convincing evidence that ESCs actually increase the amount of blood the heart pumps. Also, check conditions for using the $t$-distribution for inference with the point estimate $\bar{x}_1 - \bar{x}_2$. To assist in this assessment, the data are presented in Figure~\ref{stemCellTherapyForHearts}.}\label{exampleToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}
 %We first setup the hypotheses:
@@ -536,9 +536,9 @@ We are 95\% confident that embryonic stem cells improve the heart's pumping func
 
 \index{data!baby\_smoke|(}
 
-A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Table~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
+A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Figure~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{rrrrrll}
   \hline
@@ -553,7 +553,7 @@ A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of
 \end{tabular}
 \caption{Four cases from the \data{baby\_\hspace{0.3mm}smoke} data set. The value ``NA'', shown for the first two entries of the first variable, indicates that piece of data is missing.}
 \label{babySmokeDF}
-\end{table}
+\end{figure}
 
 \begin{figure}[hhh]
 \centering
@@ -573,9 +573,9 @@ The null hypothesis represents the case of no difference between the groups.
 
 We check the two conditions necessary to apply the $t$-distribution to the difference in sample means. (1) Because the data come from a simple random sample and consist of less than 10\% of all such cases, the observations are independent. Additionally, while each distribution is strongly skewed, the sample sizes of 50 and 100 would make it reasonable to model each mean separately using a $t$-distribution. The skew is reasonable for these sample sizes of 50 and 100. (2) The independence reasoning applied in (1) also ensures the observations in each sample are independent. Since both conditions are satisfied, the difference in sample means may be modeled using a $t$-distribution.
 
-%Summary statistics are shown for each sample in Table~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}.
+%Summary statistics are shown for each sample in Figure~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}.
 
-\begin{table}[hhh]
+\begin{figure}[hhh]
 \centering
 \begin{tabular}{lrr}
 	& \resp{smoker} & \resp{nonsmoker} \\
@@ -587,10 +587,10 @@ samp. size & 50 & 100 \\
 \end{tabular}
 \caption{Summary statistics for the \data{baby\_\hspace{0.3mm}smoke} data set.}
 \label{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}
-\end{table}
+\end{figure}
 
 \begin{exercise}
-The summary statistics in Table~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers} may be useful for this exercise. (a)~What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b)~Compute the standard error of the point estimate from part (a).\footnote{(a)~The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b)~The standard error of the estimate can be estimated using Equation~(\ref{seOfDifferenceInMeans}):
+The summary statistics in Figure~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers} may be useful for this exercise. (a)~What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b)~Compute the standard error of the point estimate from part (a).\footnote{(a)~The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b)~The standard error of the estimate can be estimated using Equation~(\ref{seOfDifferenceInMeans}):
 \begin{eqnarray*}
 SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
 	\approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
@@ -639,9 +639,9 @@ Fact check: the babies from women who smoke are not actually as healthy as the b
 
 \index{data!two exam comparison|(}
 
-An instructor decided to run two slight variations of the same exam. Prior to passing out the exams, she shuffled the exams together to ensure each student received a random version. Summary statistics for how students performed on these two exams are shown in Table~\ref{summaryStatsForTwoVersionsOfExams}. Anticipating complaints from students who took Version~B, she would like to evaluate whether the difference observed in the groups is so large that it provides convincing evidence that Version~B was more difficult (on average) than Version~A.
+An instructor decided to run two slight variations of the same exam. Prior to passing out the exams, she shuffled the exams together to ensure each student received a random version. Summary statistics for how students performed on these two exams are shown in Figure~\ref{summaryStatsForTwoVersionsOfExams}. Anticipating complaints from students who took Version~B, she would like to evaluate whether the difference observed in the groups is so large that it provides convincing evidence that Version~B was more difficult (on average) than Version~A.
 
-\begin{table}[hht]
+\begin{figure}[hht]
 \centering
 \begin{tabular}{l rrrrr}
 \hline
@@ -653,7 +653,7 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 \end{tabular}
 \caption{Summary statistics of scores for each exam version.}
 \label{summaryStatsForTwoVersionsOfExams}
-\end{table}
+\end{figure}
 
 \begin{exercise} \label{htSetupForEvaluatingTwoExamVersions}
 Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.\footnote{Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
@@ -996,9 +996,9 @@ Any real difference in the means of groups I, II, and III is difficult to discer
 
 \index{data!MLB batting|(}
 
-We would like to discern whether there are real differences between the batting performance of baseball players according to their position: outfielder (\resp{OF}), infielder (\resp{IF}), designated hitter (\resp{DH}), and catcher (\resp{C}). We will use a data set called \data{bat10}, which includes batting records of 327 Major League Baseball (MLB) players from the 2010 season. Six of the 327 cases represented in \data{bat10} are shown in Table~\ref{mlbBat10DataMatrix}, and descriptions for each variable are provided in Table~\ref{mlbBat10Variables}. The measure we will use for the player batting performance (the outcome variable) is on-base percentage (\var{OBP}). The on-base percentage roughly represents the fraction of the time a player successfully gets on base or hits a home run.
+We would like to discern whether there are real differences between the batting performance of baseball players according to their position: outfielder (\resp{OF}), infielder (\resp{IF}), designated hitter (\resp{DH}), and catcher (\resp{C}). We will use a data set called \data{bat10}, which includes batting records of 327 Major League Baseball (MLB) players from the 2010 season. Six of the 327 cases represented in \data{bat10} are shown in Figure~\ref{mlbBat10DataMatrix}, and descriptions for each variable are provided in Figure~\ref{mlbBat10Variables}. The measure we will use for the player batting performance (the outcome variable) is on-base percentage (\var{OBP}). The on-base percentage roughly represents the fraction of the time a player successfully gets on base or hits a home run.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
 \begin{tabular}{rlllrrrrrr}
   \hline
@@ -1015,9 +1015,9 @@ We would like to discern whether there are real differences between the batting 
 \end{tabular}
 \caption{Six cases from the \data{bat10} data matrix.}
 \label{mlbBat10DataMatrix}
-\end{table}
+\end{figure}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering\small
 \begin{tabular}{lp{8.5cm}}
 \hline
@@ -1036,7 +1036,7 @@ We would like to discern whether there are real differences between the batting 
 \end{tabular}
 \caption{Variables and their descriptions for the \data{bat10} data set.}
 \label{mlbBat10Variables}
-\end{table}
+\end{figure}
 
 \begin{exercise} \label{nullHypForOBPAgainstPosition}
 The null hypothesis under consideration is the following: $\mu_{\resp{OF}} = \mu_{\resp{IF}} = \mu_{\resp{DH}} = \mu_{\resp{C}}$.
@@ -1047,9 +1047,9 @@ Write the null and corresponding alternative hypotheses in plain language.\footn
 A good estimate of the on-base percentage by outfielders would be the sample average of \var{OBP} for just those players whose position is outfield: $\bar{x}_{OF} = 0.334$.
 \end{example}
 
-Table~\ref{mlbHRPerABSummaryTable} provides summary statistics for each group. A side-by-side box plot for the on-base percentage is shown in Figure~\ref{mlbANOVABoxPlot}. Notice that the variability appears to be approximately constant across groups; nearly constant variance across groups is an important assumption that must be satisfied before we consider the ANOVA approach.
+Figure~\ref{mlbHRPerABSummaryTable} provides summary statistics for each group. A side-by-side box plot for the on-base percentage is shown in Figure~\ref{mlbANOVABoxPlot}. Notice that the variability appears to be approximately constant across groups; nearly constant variance across groups is an important assumption that must be satisfied before we consider the ANOVA approach.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering\small
 \begin{tabular}{lrrrr}
 \hline
@@ -1062,7 +1062,7 @@ Sample SD ($s_i$)	& 0.029 & 0.037 & 0.036 & 0.045 \\
 \end{tabular}
 \caption{Summary statistics of on-base percentage, split by player position.}
 \label{mlbHRPerABSummaryTable}
-\end{table}
+\end{figure}
 
 \begin{figure}
 \centering
@@ -1146,9 +1146,9 @@ The p-value is larger than 0.05, indicating the evidence is not strong enough to
 
 The calculations required to perform an ANOVA by hand are tedious and prone to human error. For these reasons, it is common to use statistical software to calculate the $F$ statistic and p-value.
 
-An ANOVA can be summarized in a table very similar to that of a regression summary, which we will see in \MultipleRegressionChapter{Chapters~\ref{linRegrForTwoVar} and~\ref{multipleAndLogisticRegression}}{Chapter~\ref{linRegrForTwoVar}}. Table~\ref{anovaSummaryTableForOBPAgainstPosition} shows an ANOVA summary to test whether the mean of on-base percentage varies by player positions in the MLB. Many of these values should look familiar; in particular, the $F$ test statistic and p-value can be retrieved from the last columns.
+An ANOVA can be summarized in a table very similar to that of a regression summary, which we will see in \MultipleRegressionChapter{Chapters~\ref{linRegrForTwoVar} and~\ref{multipleAndLogisticRegression}}{Chapter~\ref{linRegrForTwoVar}}. Figure~\ref{anovaSummaryTableForOBPAgainstPosition} shows an ANOVA summary to test whether the mean of on-base percentage varies by player positions in the MLB. Many of these values should look familiar; in particular, the $F$ test statistic and p-value can be retrieved from the last columns.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{lrrrrr}
   \hline
@@ -1160,7 +1160,7 @@ position & 3 & 0.0076 & 0.0025 & 1.9943 & 0.1147 \\
 \end{tabular}
 \caption{ANOVA summary for testing whether the average on-base percentage differs across player positions.}
 \label{anovaSummaryTableForOBPAgainstPosition}
-\end{table}
+\end{figure}
 
 
 \subsection{Graphical diagnostics for an ANOVA analysis}
@@ -1196,17 +1196,17 @@ There are three conditions we must check for an ANOVA analysis: all observations
 
 \index{significance level!multiple comparisons|(}
 
-When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample $t$-test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Table~\ref{anovaSummaryTableForOBPAgainstPosition}.
+When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample $t$-test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Figure~\ref{anovaSummaryTableForOBPAgainstPosition}.
 
-\begin{example}{Example~\vref{firstExampleForThreeStatisticsClassesAndANOVA} discussed three statistics lectures, all taught during the same semester. Table~\ref{summaryStatisticsForClassTestData} shows summary statistics for these three courses, and a side-by-side box plot of the data is shown in Figure~\ref{classDataSBSBoxPlot}. We would like to conduct an ANOVA for these data. Do you see any deviations from the three conditions for ANOVA?}
+\begin{example}{Example~\vref{firstExampleForThreeStatisticsClassesAndANOVA} discussed three statistics lectures, all taught during the same semester. Figure~\ref{summaryStatisticsForClassTestData} shows summary statistics for these three courses, and a side-by-side box plot of the data is shown in Figure~\ref{classDataSBSBoxPlot}. We would like to conduct an ANOVA for these data. Do you see any deviations from the three conditions for ANOVA?}
 In this case (like many others) it is difficult to check independence in a rigorous way. Instead, the best we can do is use common sense to consider reasons the assumption of independence may not hold. For instance, the independence assumption may not be reasonable if there is a star teaching assistant that only half of the students may access; such a scenario would divide a class into two subgroups. No such situations were evident for these particular data, and we believe that independence is acceptable.
 
 The distributions in the side-by-side box plot appear to be roughly symmetric and show no noticeable outliers.
 
-The box plots show approximately equal variability, which can be verified in Table~\ref{summaryStatisticsForClassTestData}, supporting the constant variance assumption.
+The box plots show approximately equal variability, which can be verified in Figure~\ref{summaryStatisticsForClassTestData}, supporting the constant variance assumption.
 \end{example}
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{lrrr}
   \hline
@@ -1219,7 +1219,7 @@ $s_i$		& 13.9	& 13.8	& 13.1 \\
 \end{tabular}
 \caption{Summary statistics for the first midterm scores in three different lectures of the same course.}
 \label{summaryStatisticsForClassTestData}
-\end{table}
+\end{figure}
 
 \begin{figure}
 \centering
@@ -1229,10 +1229,10 @@ $s_i$		& 13.9	& 13.8	& 13.1 \\
 \end{figure}
 
 \begin{exercise} \label{exerExaminingAnovaSummaryTableForMidtermData}
-An ANOVA was conducted for the midterm data, and summary results are shown in Table~\ref{anovaSummaryTableForMidtermData}. What should we conclude?\footnote{The p-value of the test is 0.0330, less than the default significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the difference in the average midterm scores are not due to chance.}
+An ANOVA was conducted for the midterm data, and summary results are shown in Figure~\ref{anovaSummaryTableForMidtermData}. What should we conclude?\footnote{The p-value of the test is 0.0330, less than the default significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the difference in the average midterm scores are not due to chance.}
 \end{exercise}
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{lrrrrr}
   \hline
@@ -1245,7 +1245,7 @@ lecture & 2 & 1290.11 & 645.06 & 3.48 & 0.0330 \\
 \end{tabular}
 \caption{ANOVA summary table for the midterm data.}
 \label{anovaSummaryTableForMidtermData}
-\end{table}
+\end{figure}
 
 There is strong evidence that the different means in each of the three classes is not simply due to chance. We might wonder, which of the classes are actually different? As discussed in earlier chapters, a two-sample $t$-test could be used to test for differences in each possible pair of groups. However, one pitfall was discussed in Example~\vref{multipleComparisonExampleThatIncludesDiscussionOfClassrooms}: when we run so many tests, the Type~1 Error rate increases. This issue is resolved by using a modified significance level.
 

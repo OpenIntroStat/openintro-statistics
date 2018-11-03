@@ -18,18 +18,49 @@ Imagine what a perfect linear relationship would mean: you would know the exact 
    \label{perfLinearModel}
 \end{figure}
 
-Linear regression assumes that the relationship between two variables, $x$ and $y$, can be modeled by a straight line:
+Linear regression assumes that the relationship between
+two variables, $x$ and $y$,
+can be modeled by a straight line with some error:
 \begin{eqnarray}
-y = \beta_0 + \beta_1x
+y = \beta_0 + \beta_1x + \varepsilon
 \label{genLinModelWNoErrorTerm}
 \end{eqnarray}
-\marginpar[\raggedright\vspace{-10mm}
+where $\beta_0$ and $\beta_1$ represent two model
+parameters\index{parameter}
+($\beta$ is the Greek letter
+  \emph{beta}\index{Greek!beta@beta ($\beta$)}),
+and the error is represented by $\varepsilon$
+(the Greek letter \emph{epsilon}\index{Greek!epsilon@epsilon ($\varepsilon$)}).
+The parameters are estimated using data,
+and we write their point estimates as $b_0$ and $b_1$.
+When we use $x$ to predict $y$,
+we usually call $x$ the explanatory
+or \term{predictor} variable,
+and we call $y$ the response.
 
-$\beta_0, \beta_1$\vspace{0.7mm}\\\footnotesize Linear model\\ parameters]{\raggedright\vspace{-10mm}
-
-$\beta_0, \beta_1$\vspace{0.7mm}\\\footnotesize Linear model\\ parameters}where $\beta_0$ and $\beta_1$ represent two model parameters\index{parameter} ($\beta$ is the Greek letter \emph{beta}\index{Greek!beta@beta ($\beta$)}). These parameters are estimated using data, and we write their point estimates as $b_0$ and $b_1$. When we use $x$ to predict $y$, we usually call $x$ the explanatory or \term{predictor} variable, and we call $y$ the response.
-
-It is rare for all of the data to fall on a straight line, as seen in the three scatterplots in Figure~\ref{imperfLinearModel}. In each case, the data fall around a straight line, even if none of the observations fall exactly on the line. The first plot shows a relatively strong downward linear trend, where the remaining variability in the data around the line is minor relative to the strength of the relationship between $x$ and $y$. The second plot shows an upward trend that, while evident, is not as strong as the first. The last plot shows a very weak downward trend in the data, so slight we can hardly notice it. In each of these examples, we will have some uncertainty regarding our estimates of the model parameters, $\beta_0$ and $\beta_1$. For instance, we might wonder, should we move the line up or down a little, or should we tilt it more or less? As we move forward in this chapter, we will learn different criteria for line-fitting, and we will also learn about the uncertainty associated with estimates of model parameters.
+It is rare for all of the data to fall on a straight line,
+as seen in the three scatterplots in
+Figure~\ref{imperfLinearModel}.
+In each case, the data fall around a straight line,
+even if none of the observations fall exactly on the line.
+The first plot shows a relatively strong downward
+linear trend,
+where the remaining variability in the data around the
+line is minor relative to the strength of the relationship
+between $x$ and $y$.
+The second plot shows an upward trend that,
+while evident, is not as strong as the first.
+The last plot shows a very weak downward trend in the data,
+so slight we can hardly notice it.
+In each of these examples,
+we will have some uncertainty regarding our estimates
+of the model parameters, $\beta_0$ and $\beta_1$.
+For instance, we might wonder, should we move the line
+up or down a little, or should we tilt it more or less?
+As we move forward in this chapter,
+we will learn different criteria for line-fitting,
+and we will also learn about the uncertainty associated
+with estimates of model parameters.
 
 \begin{figure}
    \centering
@@ -321,10 +352,10 @@ $b_0, b_1$\vspace{0.5mm}\\\footnotesize Sample\\estimates\\ of $\beta_0$, $\beta
 $b_0, b_1$\vspace{0.5mm}\\\footnotesize Sample\\estimates\\ of $\beta_0$, $\beta_1$}We use $b_0$ and $b_1$ to represent the point estimates of the parameters $\beta_0$ and $\beta_1$.
 
 \begin{exercise}
-Table~\ref{summaryStatsOfSATGPAData} shows the sample means for the family income and gift aid as \$101,800 and \$19,940, respectively. Plot the point $(101.8, 19.94)$ on Figure~\vref{elmhurstScatterW2Lines} to verify it falls on the least squares line (the solid line).\footnote{If you need help finding this location, draw a straight line up from the x-value of 100 (or thereabout). Then draw a horizontal line at 20 (or thereabout). These lines should intersect on the least squares line.}
+Figure~\ref{summaryStatsOfSATGPAData} shows the sample means for the family income and gift aid as \$101,800 and \$19,940, respectively. Plot the point $(101.8, 19.94)$ on Figure~\vref{elmhurstScatterW2Lines} to verify it falls on the least squares line (the solid line).\footnote{If you need help finding this location, draw a straight line up from the x-value of 100 (or thereabout). Then draw a horizontal line at 20 (or thereabout). These lines should intersect on the least squares line.}
 \end{exercise}
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{l rr}
 \hline
@@ -341,10 +372,10 @@ sd		& $s_x = 63.2$		& $s_y = 5.46$\vspace{0.4mm} \\
 \end{tabular}
 \caption{Summary statistics for family income and gift aid.}
 \label{summaryStatsOfSATGPAData}
-\end{table}
+\end{figure}
 
 \begin{exercise} \label{findingTheSlopeOfTheLSRLineForIncomeAndAid}
-Using the summary statistics in Table~\ref{summaryStatsOfSATGPAData}, compute the slope for the regression line of gift aid against family income.\footnote{Apply Equation~\eqref{slopeOfLSRLine} with the summary statistics from Table~\ref{summaryStatsOfSATGPAData} to compute the slope:
+Using the summary statistics in Figure~\ref{summaryStatsOfSATGPAData}, compute the slope for the regression line of gift aid against family income.\footnote{Apply Equation~\eqref{slopeOfLSRLine} with the summary statistics from Figure~\ref{summaryStatsOfSATGPAData} to compute the slope:
 \begin{eqnarray*}
 b_1 = \frac{s_y}{s_x} R = \frac{5.46}{63.2}(-0.499) = -0.0431
 \end{eqnarray*}\vspace{-3mm}}
@@ -379,9 +410,9 @@ $$ \widehat{aid} = 24.3 - 0.0431 \times family\_\hspace{0.3mm}income $$
 Here we have replaced $y$ with $\widehat{aid}$ and $x$ with $family\_\hspace{0.3mm}income$ to put the equation in context.
 \end{example}
 
-We mentioned earlier that a computer is usually used to compute the least squares line. A summary table based on computer output is shown in Table~\ref{rOutputForIncomeAidLSRLine} for the Elmhurst data. The first column of numbers provides estimates for ${b}_0$ and ${b}_1$, respectively. Compare these to the result from Example~\ref{exampleToFindLSRLineOfElmhurstData}.
+We mentioned earlier that a computer is usually used to compute the least squares line. A summary table based on computer output is shown in Figure~\ref{rOutputForIncomeAidLSRLine} for the Elmhurst data. The first column of numbers provides estimates for ${b}_0$ and ${b}_1$, respectively. Compare these to the result from Example~\ref{exampleToFindLSRLineOfElmhurstData}.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{l rrrr}
   \hline
@@ -395,9 +426,9 @@ family\_\hspace{0.3mm}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\
 \end{tabular}
 \caption{Summary of least squares fit for the Elmhurst data. Compare the parameter estimates in the first column to the results of Example~\ref{exampleToFindLSRLineOfElmhurstData}.}
 \label{rOutputForIncomeAidLSRLine}
-\end{table}
+\end{figure}
 
-\begin{example}{Examine the second, third, and fourth columns in Table~\ref{rOutputForIncomeAidLSRLine}. Can you guess what they represent?}
+\begin{example}{Examine the second, third, and fourth columns in Figure~\ref{rOutputForIncomeAidLSRLine}. Can you guess what they represent?}
 We'll describe the meaning of the columns using the second row, which corresponds to~$\beta_1$. The first column provides the point estimate for $\beta_1$, as we calculated in an earlier example: -0.0431. The second column is a standard error for this point estimate: 0.0108. The third column is a $t$-test statistic for the null hypothesis that $\beta_1 = 0$: $T=-3.98$. The last column is the p-value for the $t$-test statistic for the null hypothesis $\beta_1=0$ and a two-sided alternative hypothesis: 0.0002. We will get into more of these details in Section~\ref{inferenceForLinearRegression}.
 \end{example}
 
@@ -495,13 +526,13 @@ To incorporate the game condition variable into a regression equation, we must c
 \begin{align*}
 \widehat{price} = \beta_0 + \beta_1 \times \text{\var{cond\_\hspace{0.3mm}new}}
 \end{align*}
-The fitted model is summarized in Table~\ref{marioKartNewUsedRegrSummary}, and the model with its parameter estimates is given as
+The fitted model is summarized in Figure~\ref{marioKartNewUsedRegrSummary}, and the model with its parameter estimates is given as
 \begin{align*}
 \widehat{price} = 42.87 + 10.90 \times \text{\var{cond\_\hspace{0.3mm}new}}
 \end{align*}
 For categorical predictors with just two levels, the linearity assumption will always be satisfied. However, we must evaluate whether the residuals in each group are approximately normal and have approximately equal variance. As can be seen in Figure~\ref{marioKartNewUsed}, both of these conditions are reasonably satisfied by the auction data.
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -515,7 +546,7 @@ For categorical predictors with just two levels, the linearity assumption will a
 \end{tabular}
 \caption{Least squares regression summary for the final auction price against the condition of the game.}
 \label{marioKartNewUsedRegrSummary}
-\end{table}
+\end{figure}
 
 \begin{example}{Interpret the two parameters estimated in the model for the price of \emph{Mario Kart} in eBay auctions.}
 The intercept is the estimated price when \var{cond\_\hspace{0.3mm}new} takes value 0, i.e. when the game is in used condition. That is, the average selling price of a used version of the game is \$42.87.
@@ -622,9 +653,9 @@ We would reject $H_0$ in favor of $H_A$ if the data provide strong evidence that
 
 Just like other point estimates we have seen before, we can compute a standard error and test statistic for $b_1$. We will generally label the test statistic using a $T$, since it follows the $t$-distribution.
 
-We will rely on statistical software to compute the standard error and leave the explanation of how this standard error is determined to a second or third statistics course. Table~\ref{midtermElectionUnemploymentRRegressionOutput} shows software output for the least squares regression line in Figure~\ref{unemploymentAndChangeInHouse}. The row labeled \emph{unemp} represents the information for the slope, which is the coefficient of the unemployment variable.
+We will rely on statistical software to compute the standard error and leave the explanation of how this standard error is determined to a second or third statistics course. Figure~\ref{midtermElectionUnemploymentRRegressionOutput} shows software output for the least squares regression line in Figure~\ref{unemploymentAndChangeInHouse}. The row labeled \emph{unemp} represents the information for the slope, which is the coefficient of the unemployment variable.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -639,9 +670,9 @@ We will rely on statistical software to compute the standard error and leave the
 \end{tabular}
 \caption{Output from statistical software for the regression line modeling the midterm election losses for the President's party as a response to unemployment.}
 \label{midtermElectionUnemploymentRRegressionOutput}
-\end{table}
+\end{figure}
 
-\begin{example}{What do the first and second columns of Table~\ref{midtermElectionUnemploymentRRegressionOutput} represent?}
+\begin{example}{What do the first and second columns of Figure~\ref{midtermElectionUnemploymentRRegressionOutput} represent?}
 The entries in the first column represent the least squares estimates, $b_0$ and $b_1$, and the values in the second column correspond to the standard errors of each estimate.
 \end{example}
 
@@ -658,12 +689,12 @@ We can look for the one-sided p-value -- shown in Figure~\ref{oneSidedTailForMid
 \label{oneSidedTailForMidtermUnemploymentHT}
 \end{figure}
 
-\begin{example}{Table~\ref{midtermElectionUnemploymentRRegressionOutput} offers the degrees of freedom for the test statistic $T$: $df=25$. Identify the p-value for the hypothesis test.}
+\begin{example}{Figure~\ref{midtermElectionUnemploymentRRegressionOutput} offers the degrees of freedom for the test statistic $T$: $df=25$. Identify the p-value for the hypothesis test.}
 Looking in the 25 degrees of freedom row in Appendix~\ref{tDistributionTable}, we see that the absolute value of the test statistic is smaller than any value listed, which means the tail area and therefore also the p-value is larger than 0.100 (one tail!). Because the p-value is so large, we fail to reject the null hypothesis. That is, the data do not provide convincing evidence that a higher unemployment rate has any correspondence with smaller or larger losses for the President's party in the House of Representatives in midterm elections.
 \index{data!midterm elections|)}
 \end{example}
 
-We could have identified the $t$-test statistic from the software output in Table~\ref{midtermElectionUnemploymentRRegressionOutput}, shown in the second row (unemp) and third column (t value). The entry in the second row and last column in Table~\ref{midtermElectionUnemploymentRRegressionOutput} represents the p-value for the two-sided hypothesis test where the null value is zero. The corresponding one-sided test would have a p-value half of the listed value.
+We could have identified the $t$-test statistic from the software output in Figure~\ref{midtermElectionUnemploymentRRegressionOutput}, shown in the second row (unemp) and third column (t value). The entry in the second row and last column in Figure~\ref{midtermElectionUnemploymentRRegressionOutput} represents the p-value for the two-sided hypothesis test where the null value is zero. The corresponding one-sided test would have a p-value half of the listed value.
 
 \begin{termBox}{\tBoxTitle{Inference for regression}
 We usually rely on statistical software to identify point estimates and standard errors for parameters of a regression line. After verifying conditions hold for fitting a line, we can use the methods learned in Section~\ref{oneSampleMeansWithTDistribution} for the $t$-distribution to create confidence intervals for regression parameters or to evaluate hypothesis tests.}
@@ -677,10 +708,10 @@ While the relationship between the variables is not perfect, there is an evident
 \end{example}
 
 \begin{exercise}
-Table~\ref{rOutputForIncomeAidLSRLineInInferenceSection} shows statistical software output from fitting the least squares regression line shown in Figure~\ref{elmhurstScatterWLSROnly}. Use this output to formally evaluate the following hypotheses. $H_0$: The true coefficient for family income is zero. $H_A$: The true coefficient for family income is not zero.\footnote{We look in the second row corresponding to the family income variable. We see the point estimate of the slope of the line is -0.0431, the standard error of this estimate is 0.0108, and the $t$-test statistic is -3.98. The p-value corresponds exactly to the two-sided test we are interested in: 0.0002. The p-value is so small that we reject the null hypothesis and conclude that family income and financial aid at Elmhurst College for freshman entering in the year 2011 are negatively correlated and the true slope parameter is indeed less than 0, just as we believed in Example~\ref{overallAidIncomeInformalAssessmentOfRegressionLineSlope}.}
+Figure~\ref{rOutputForIncomeAidLSRLineInInferenceSection} shows statistical software output from fitting the least squares regression line shown in Figure~\ref{elmhurstScatterWLSROnly}. Use this output to formally evaluate the following hypotheses. $H_0$: The true coefficient for family income is zero. $H_A$: The true coefficient for family income is not zero.\footnote{We look in the second row corresponding to the family income variable. We see the point estimate of the slope of the line is -0.0431, the standard error of this estimate is 0.0108, and the $t$-test statistic is -3.98. The p-value corresponds exactly to the two-sided test we are interested in: 0.0002. The p-value is so small that we reject the null hypothesis and conclude that family income and financial aid at Elmhurst College for freshman entering in the year 2011 are negatively correlated and the true slope parameter is indeed less than 0, just as we believed in Example~\ref{overallAidIncomeInformalAssessmentOfRegressionLineSlope}.}
 \end{exercise}
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -695,7 +726,7 @@ family\_\hspace{0.3mm}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\
 \end{tabular}
 \caption{Summary of least squares fit for the Elmhurst College data.}
 \label{rOutputForIncomeAidLSRLineInInferenceSection}
-\end{table}
+\end{figure}
 
 \begin{tipBox}{\tipBoxTitle{Always check assumptions}
 If conditions for fitting the regression line do not hold, then the methods presented here should not be applied. The standard error or distribution assumption of the point estimate -- assumed to be normal when applying the $t$-test statistic -- may not be valid.}

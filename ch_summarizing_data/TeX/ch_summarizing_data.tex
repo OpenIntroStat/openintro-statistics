@@ -1,6 +1,9 @@
 \chapter{Summarizing data}
 \label{summarizingData}
 
+\Comment{Do a search for "email" to see if it still appears
+anywhere in this file. Do the same for the other chapters.}
+
 In this chapter we will be introduced to techniques for exploring
 and summarizing both numerical and categorical data.
 We will consider two data sets that we first encountered
@@ -19,6 +22,7 @@ for exploratory analyses.
 \section[Examining numerical data]{Examining numerical data \sectionvideohref{youtube-Xm0PPtci3JE&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-6}}
 \label{numericalData}
 
+\Comment{Replace the \var{pop2010} variable with another example here.}
 Outcomes of numerical variables are numbers on
 which it is reasonable to perform basic arithmetic operations.
 Below are the variables we will consider
@@ -37,75 +41,131 @@ but rather they are~categorical variables.
 
 \index{data!email50|(}
 
-A \term{scatterplot} provides a case-by-case view of data for two numerical variables. In Figure~\vref{county_fed_spendVsPoverty}, a scatterplot was used to examine how federal spending and poverty were related in the \data{county} data set. Another scatterplot is shown in Figure~\ref{email50LinesCharacters}, comparing the number of line breaks (\var{line\_\hspace{0.3mm}breaks}) and number of characters (\var{num\_\hspace{0.3mm}char}) in emails for the \data{email50} data set. In any scatterplot, each point represents a single case. Since there are 50 cases in \data{email50}, there are 50 points in Figure~\ref{email50LinesCharacters}.
+\Comment{Ensure the referenced image still applies. If not, update.}
+A \term{scatterplot} provides a case-by-case view of data
+for two numerical variables.
+In Figure~\vref{county_fed_spendVsPoverty}, a scatterplot
+was used to examine how federal spending and poverty were
+related in the \data{county} data set.
+Another scatterplot is shown in Figure~\ref{loan50_amt_vs_income},
+comparing the total income of a borrower (\var{total\_\hspace{0.3mm}income}) and the amount they borrowed
+(\var{loan\_\hspace{0.3mm}amount}) for the \data{loan50} data set.
+In any scatterplot, each point represents a single case.
+Since there are 50 cases in \data{loan50},
+there are 50 points in Figure~\ref{loan50_amt_vs_income}.
 
 %\textC{\setlength{\captionwidth}{0.9\textwidth}}
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/email50LinesCharacters/email50LinesCharacters}
-   \caption{A scatterplot of \var{line\_\hspace{0.3mm}breaks} versus \var{num\_\hspace{0.3mm}char} for the \data{email50} data.}
-   \label{email50LinesCharacters}
+   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/loan50_amt_vs_income/loan50_amt_vs_income}
+   \caption{A scatterplot of \var{total\_\hspace{0.3mm}income}
+       versus \var{loan\_\hspace{0.3mm}amount} for the
+       \data{loan50} data set.
+       A statistical model has also been fit to the data
+       and is shown is a dashed line.}
+   \label{loan50_amt_vs_income}
 \end{figure}
 
 %\textC{\setlength{\captionwidth}{\mycaptionwidth}}
 
-To put the number of characters in perspective, this paragraph has 363 characters. Looking at Figure~\ref{email50LinesCharacters}, it seems that some emails are incredibly verbose! Upon further investigation, we would actually find that most of the long emails use the HTML format, which means most of the characters in those emails are used to format the email rather than provide text.
+Looking at Figure~\ref{loan50_amt_vs_income},
+we see that there are many borrowers with an income below
+\$100k (\$100,000) on the left side of the graph,
+while there are a handful of borrowers with income above \$250k.
+Additionally, the relationship appears to be \term{nonlinear},
+where bigger loans seem to be associated with increased income,
+but that it appears to taper off,
+as shown by the dashed line.
 
 \begin{exercise}
-What do scatterplots reveal about the data, and how might they be useful?\footnote{Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.}
+What do scatterplots reveal about the data,
+and how might they be useful?\footnote{Answers may vary.
+Scatterplots are helpful in quickly spotting associations
+relating variables,
+whether those associations come in the form of simple
+trends or whether those relationships are more complex.}
 \end{exercise}
 
-\index{data!cars|(}
-\begin{example}{Consider a new data set of 54 cars with two variables: vehicle price and~weight.\footnote{Subset of data from \oiRedirect{textbook-1993_car_data}{www.amstat.org/publications/jse/v1n1/datasets.lock.html}} A scatterplot of vehicle price versus weight is shown in Figure~\ref{carsPriceVsWeight}. What can be said about the relationship between these variables?}
-The relationship is evidently nonlinear, as highlighted by the dashed line. This is different from previous scatterplots we've seen, such as Figure~\vref{county_fed_spendVsPoverty} and Figure~\ref{email50LinesCharacters}, which show relationships that are very linear.
+%This is different from previous scatterplots we've seen, such as Figure~\vref{county_fed_spendVsPoverty} and Figure~\ref{email50LinesCharacters}, which show relationships that are very linear.
 
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/carsPriceVsWeight/carsPriceVsWeight}
-   \caption{A scatterplot of \var{price} versus \var{weight} for 54 cars.}
-   \label{carsPriceVsWeight}
-\end{figure}
-\end{example}
-\index{data!cars|)}
+%\begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/carsPriceVsWeight/carsPriceVsWeight}
+%   \caption{A scatterplot of \var{price} versus \var{weight} for 54 cars.}
+%   \label{carsPriceVsWeight}
+%\end{figure}
 
 \begin{exercise}
-Describe two variables that would have a horseshoe shaped association in a scatterplot.\footnote{Consider the case where your vertical axis represents something ``good'' and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description since water becomes toxic when consumed in excessive quantities.}
+Describe two variables that would have a horseshoe-shaped
+association in a scatterplot.\footnote{Consider the case
+  where your vertical axis represents something ``good'' and
+  your horizontal axis represents something that is only good
+  in moderation.
+  Health and water consumption fit this description: we require
+  some water to survive, but consume too much and it becomes
+  toxic and can kill a person.}
 \end{exercise}
 
 \subsection{Dot plots and the mean}
 \label{dotPlot}
 
-Sometimes two variables are one too many: only one variable may be of interest. In these cases, a dot plot provides the most basic of displays. A~\term{dot plot} is a one-variable scatterplot; an example using the number of characters from 50 emails is shown in Figure~\ref{emailCharactersDotPlot}. A stacked version of this dot plot is shown in Figure~\ref{emailCharactersDotPlotStacked}.
+Sometimes two variables are one too many:
+only one variable may be of interest.
+In these cases, a dot plot provides the most basic of displays.
+A~\term{dot plot} is a one-variable scatterplot;
+an example using the loan amount of 50 loans
+is shown in Figure~\ref{loan_amount_dot_plot}.
+A stacked version of this dot plot is shown in
+Figure~\ref{loan_amount_dot_plot_stacked}.
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=\textwidth]{ch_summarizing_data/figures/emailCharactersDotPlot/emailCharactersDotPlot}
-   \caption{A dot plot of \var{num\_\hspace{0.3mm}char} for the \data{email50} data set.}
-   \label{emailCharactersDotPlot}
+   \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_amount_dot_plot/loan_amount_dot_plot}
+   \caption{A dot plot of \var{loan\_\hspace{0.3mm}amount}
+       for the \data{loan50} data set.
+       The distribution's mean is shown as a red triangle.}
+   \label{loan_amount_dot_plot}
 \end{figure}
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.72\textwidth]{ch_summarizing_data/figures/emailCharactersDotPlot/emailCharactersDotPlotStacked}
-   \caption{A stacked dot plot of \var{num\_\hspace{0.3mm}char} for the \data{email50} data set. The~values have been rounded to the nearest 2,000 in this plot.}
-   \label{emailCharactersDotPlotStacked}
+   \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_amount_dot_plot/loan_amount_dot_plot_stacked}
+   \caption{A stacked dot plot of \var{loan\_\hspace{0.3mm}amount}
+       for the \data{loan50} data set. The~loan amounts have been
+       rounded to the nearest \$1,000 in this plot, and the
+       distribution's mean is shown as a red triangle.}
+   \label{loan_amount_dot_plot_stacked}
 \end{figure}
 
-The \term{mean}, sometimes called the \indexthis{average}{mean!average}, is a common way to measure the center of a \term{distribution} of data. To find the mean number of characters in the 50 emails, we add up all the character counts and divide by the number of emails. For computational convenience, the number of characters is listed in the thousands and rounded to the first~decimal.
-\begin{eqnarray}
-\bar{x} = \frac{21.7 + 7.0 + \cdots + 15.8}{50} = 11.6
-\label{sampleMeanEquation}
-\end{eqnarray}
-The sample mean is often labeled $\bar{x}$\marginpar[\raggedright$\bar{x}$\\\footnotesize sample\\ mean]{\raggedright$\bar{x}$\\\footnotesize sample\\ mean}. The letter $x$ is being used as a generic placeholder for the variable of interest, \var{num\_\hspace{0.3mm}char}, and the bar over on the $x$ communicates that the average number of characters in the 50 emails was 11,600. It is useful to think of the mean as the balancing point of the distribution. The sample mean is shown as a triangle in Figures~\ref{emailCharactersDotPlot} and~\ref{emailCharactersDotPlotStacked}.
+The \term{mean}, sometimes called the
+\indexthis{average}{mean!average}, is a common way
+to measure the center of a \term{distribution} of data.
+To find the mean loan amount, we add up all the loan
+amounts and divide by the number of loans:
+\begin{align*}
+\bar{x}
+    = \frac{\text{\$7,500} + \text{\$25,000} +
+        \cdots + \text{\$3,000}}{50}
+    = \$17,083
+% library(openintro); loan50$loan_amount[c(1, 2, 50)]; mean(loan50$loan_amount)
+\end{align*}
+The sample mean is often labeled $\bar{x}$.
+The letter $x$ is being used as a generic placeholder
+for the variable of interest, \var{loan\_\hspace{0.3mm}amount},
+and the bar over on the $x$ communicates that the average
+loan amount in the 50 loans was \$17,083.
+It is useful to think of the mean as the balancing point
+of the distribution, and it is shown as a triangle in Figures~\ref{loan_amount_dot_plot}
+and~\ref{loan_amount_dot_plot_stacked}.
 
 \begin{termBox}{\tBoxTitle{Mean}%
-The sample mean of a numerical variable is computed as the sum of all of the observations divided by the number of observations:
-\begin{eqnarray}
-\bar{x} = \frac{x_1+x_2+\cdots+x_n}{n}
-\label{meanEquation}
-\end{eqnarray}
-where $x_1, x_2, \dots, x_n$ represent the $n$ observed values.}
+The sample mean of a numerical variable is computed as the sum
+of all of the observations divided by the number of observations:
+\begin{align*}
+\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n}
+\end{align*}
+where $x_1$, $x_2$, $\dots$, $x_n$ represent the $n$ observed values.}
 \end{termBox}\marginpar[\raggedright\vspace{-8mm}
 
 $n$\\\footnotesize sample size]{\raggedright\vspace{-8mm}
@@ -113,17 +173,49 @@ $n$\\\footnotesize sample size]{\raggedright\vspace{-8mm}
 $n$\\\footnotesize sample size}\vspace{-2mm}
 
 \begin{exercise}
-Examine Equations~\eqref{sampleMeanEquation} and~\eqref{meanEquation} above. What does $x_1$ correspond to? And $x_2$? Can you infer a general meaning to what $x_i$ might represent?\footnote{$x_1$ corresponds to the number of characters in the first email in the sample (21.7, in thousands), $x_2$ to the number of characters in the second email (7.0, in thousands), and $x_i$ corresponds to the number of characters in the $i^{th}$ email in the data set.}
+Examine the equation for the mean.
+What does $x_1$ correspond to? And $x_2$?
+Can you infer a general meaning to what $x_i$
+might represent?\footnote{$x_1$ corresponds to the
+  loan amount in the first loan in the sample (\$7,500),
+  $x_2$ to the second loan's amount (\$25,000),
+  and $x_i$ corresponds to the loan amount in the
+  $i^{th}$ loan in the data set.}
 \end{exercise}
 
 \begin{exercise}
-What was $n$ in this sample of emails?\footnote{The sample size was $n=50$.}
+What was $n$ in this sample of
+loans?\footnote{The sample size was $n = 50$.}
 \end{exercise}
 
-The \data{email50} data set represents a sample from a larger population of emails that were received in January and March. We could compute a mean for this population in the same way as the sample mean. However, the population mean has a special label: $\mu$\marginpar[\raggedright$\mu$\\\footnotesize population\\ mean]{\raggedright$\mu$\\\footnotesize population\\ mean}. \index{Greek!mu@mu ($\mu$)} The symbol $\mu$ is the Greek letter \emph{mu} and represents the average of all observations in the population. Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g. $\mu_x$.
+The \data{loan50} data set represents a sample from
+a larger population of loans that were \Comment{add details}.
+We could compute a mean for this population in the same way
+as the sample mean.
+However, the population mean has a special label: $\mu$.
+\index{Greek!mu@mu ($\mu$)}
+The symbol $\mu$ is the Greek letter \emph{mu} and represents
+the average of all observations in the population.
+Sometimes a subscript, such as $_x$,
+is used to represent which variable the population mean
+refers to, e.g. $\mu_x$.
 
-\begin{example}{The average number of characters across all emails can be estimated using the sample data. Based on the sample of 50 emails, what would be a reasonable estimate of $\mu_x$, the mean number of characters in all emails in the \data{email} data set? (Recall that \data{email50} is a sample from \data{email}.)}
-The sample mean, 11,600, may provide a reasonable estimate of $\mu_x$. While this number will not be perfect, it provides a \emph{point estimate} of the population mean. In Chapter~\ref{foundationsForInference} and beyond, we will develop tools to characterize the accuracy of point estimates, and we will find that point estimates based on larger samples tend to be more accurate than those based on smaller samples.
+\begin{example}{The average loan amount across all loans
+  in the population can be estimated using the sample data.
+  Based on the sample of 50 loans,
+  what would be a reasonable estimate of $\mu_x$,
+  the mean number of characters in all emails in the
+  \data{loan} data set?
+  (Recall that \data{loan50} is a sample from \data{loan}.)}
+The sample mean, \$17,083, may provide a reasonable estimate
+of $\mu_x$.
+While this number will not be perfect,
+it provides a \emph{point estimate} of the population mean.
+In Chapter~\ref{foundationsForInference} and beyond,
+we will develop tools to characterize the accuracy
+of point estimates, and we will find that point estimates
+based on larger samples tend to be more accurate than
+those based on smaller samples.
 \end{example}
 
 \begin{example}{We might like to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,143 counties in the \data{county} data set. What would be a better approach?} \label{wtdMeanOfIncome}
@@ -138,9 +230,9 @@ Example~\ref{wtdMeanOfIncome} used what is called a \term{weighted mean}\index{m
 \subsection{Histograms and shape}
 \label{histogramsAndShape}
 
-Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a \emph{bin}. For example, in the \data{email50} data set, we create a table of counts for the number of cases with character counts between 0 and 5,000, then the number of cases between 5,000 and 10,000, and so on. Observations that fall on the boundary of a bin (e.g. 5,000) are allocated to the lower bin. This tabulation is shown in Table~\ref{binnedNumCharTable}. These binned counts are plotted as bars in Figure~\ref{email50NumCharHist} into what is called a \term{histogram}, which resembles the stacked dot plot shown in Figure~\ref{emailCharactersDotPlotStacked}.
+Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a \emph{bin}. For example, in the \data{email50} data set, we create a table of counts for the number of cases with character counts between 0 and 5,000, then the number of cases between 5,000 and 10,000, and so on. Observations that fall on the boundary of a bin (e.g. 5,000) are allocated to the lower bin. This tabulation is shown in Figure~\ref{binnedNumCharTable}. These binned counts are plotted as bars in Figure~\ref{email50NumCharHist} into what is called a \term{histogram}, which resembles the stacked dot plot shown in Figure~\ref{loan_amount_dot_plot_stacked}.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering\small
 \begin{tabular}{l ccc ccc ccc c}
   \hline
@@ -152,7 +244,7 @@ Count & 19 & 12 & 6 & 2 & 3 & 5 & $\cdots$ & 0 & 1 \\
 \end{tabular}
 \caption{The counts for the binned \var{num\_\hspace{0.3mm}char} data.}
 \label{binnedNumCharTable}
-\end{table}
+\end{figure}
 
 \begin{figure}[bth]
    \centering
@@ -172,7 +264,7 @@ When data trail off in one direction, the distribution has a \term{long tail}. \
 \end{termBox}
 
 \begin{exercise}
-Take a look at the dot plots in Figures~\ref{emailCharactersDotPlot} and~\ref{emailCharactersDotPlotStacked}. Can you see the skew in the data? Is it easier to see the skew in this histogram or the dot plots?\footnote{The skew is visible in all three plots, though the flat dot plot is the least useful. The stacked dot plot and histogram are helpful visualizations for identifying skew.}
+Take a look at the dot plots in Figures~\ref{loan_amount_dot_plot} and~\ref{loan_amount_dot_plot_stacked}. Can you see the skew in the data? Is it easier to see the skew in this histogram or the dot plots?\footnote{The skew is visible in all three plots, though the flat dot plot is the least useful. The stacked dot plot and histogram are helpful visualizations for identifying skew.}
 \end{exercise}
 
 \begin{exercise}
@@ -331,7 +423,7 @@ Using Figure~\ref{boxPlotLayoutNumVar}, estimate the following values for \var{n
 
 \subsection{Robust statistics}
 
-How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\hspace{0.3mm}char} data set affected by the observation, 64,401? What would have happened if this email wasn't observed? What would happen to these \indexthis{summary statistics}{summary statistic} if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in Figure~\ref{email50NumCharDotPlotRobustEx}, and sample statistics are computed under each scenario in Table~\ref{robustOrNotTable}.
+How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\hspace{0.3mm}char} data set affected by the observation, 64,401? What would have happened if this email wasn't observed? What would happen to these \indexthis{summary statistics}{summary statistic} if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in Figure~\ref{email50NumCharDotPlotRobustEx}, and sample statistics are computed under each scenario in Figure~\ref{robustOrNotTable}.
 
 \begin{figure}[ht]
 \centering
@@ -340,7 +432,7 @@ How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\h
 \label{email50NumCharDotPlotRobustEx}
 \end{figure}
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{l c cc c cc}
   \hline
@@ -357,15 +449,15 @@ move 64,401 to 150,000		&& 6,890 & 12,875 && 13,310 & 22,434 \\
 \end{tabular}
 \caption{A comparison of how the median, IQR, mean ($\bar{x}$), and standard deviation ($s$) change when extreme observations are present.}
 \label{robustOrNotTable}
-\end{table}
+\end{figure}
 
 \begin{exercise} \label{numCharWhichIsMoreRobust}
-(a) Which is more affected by extreme observations, the mean or median? Table~\ref{robustOrNotTable} may be helpful. (b) Is the standard deviation or IQR more affected by extreme observations?\footnote{(a) Mean is affected more. (b) Standard deviation is affected more. Complete explanations are provided in the material following Guided Practice~\ref{numCharWhichIsMoreRobust}.}
+(a) Which is more affected by extreme observations, the mean or median? Figure~\ref{robustOrNotTable} may be helpful. (b) Is the standard deviation or IQR more affected by extreme observations?\footnote{(a) Mean is affected more. (b) Standard deviation is affected more. Complete explanations are provided in the material following Guided Practice~\ref{numCharWhichIsMoreRobust}.}
 \end{exercise}
 
 The median and IQR are called \term{robust estimates} because extreme observations have little effect on their values. The mean and standard deviation are much more affected by changes in extreme observations.
 
-\begin{example}{The median and IQR do not change much under the three scenarios in Table~\ref{robustOrNotTable}. Why might this be the case?}
+\begin{example}{The median and IQR do not change much under the three scenarios in Figure~\ref{robustOrNotTable}. Why might this be the case?}
 The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. Since values in these regions are relatively stable -- there aren't large jumps between observations -- the median and IQR estimates are also quite stable.
 \end{example}
 
@@ -466,11 +558,11 @@ Like numerical data, categorical data can also be organized and analyzed. In thi
 
 \subsection{Contingency tables and bar plots}
 
-Table~\ref{emailSpamNumberTableTotals} summarizes two variables: \var{spam} and \var{number}. Recall that \var{number} is a categorical variable that describes whether an email contains no numbers, only small numbers (values under 1 million), or at least one big number (a value of 1 million or more). A table that summarizes data for two categorical variables in this way is called a \term{contingency table}. Each value in the table represents the number of times a particular combination of variable outcomes occurred. For example, the value 149 corresponds to the number of emails in the data set that are spam \emph{and} had no number listed in the email. Row and column totals are also included. The \term{row totals} \index{contingency table!row totals} provide the total counts across each row (e.g. $149 + 168 + 50 = 367$), and \term{column totals} \index{contingency table!column totals} are total counts down each column.
+Figure~\ref{emailSpamNumberTableTotals} summarizes two variables: \var{spam} and \var{number}. Recall that \var{number} is a categorical variable that describes whether an email contains no numbers, only small numbers (values under 1 million), or at least one big number (a value of 1 million or more). A table that summarizes data for two categorical variables in this way is called a \term{contingency table}. Each value in the table represents the number of times a particular combination of variable outcomes occurred. For example, the value 149 corresponds to the number of emails in the data set that are spam \emph{and} had no number listed in the email. Row and column totals are also included. The \term{row totals} \index{contingency table!row totals} provide the total counts across each row (e.g. $149 + 168 + 50 = 367$), and \term{column totals} \index{contingency table!column totals} are total counts down each column.
 
-A table for a single variable is called a \term{frequency table}. Table~\ref{emailNumberTable} is a frequency table for the \var{number} variable. If we replaced the counts with percentages or proportions, the table would be called a \term{relative frequency table}.
+A table for a single variable is called a \term{frequency table}. Figure~\ref{emailNumberTable} is a frequency table for the \var{number} variable. If we replaced the counts with percentages or proportions, the table would be called a \term{relative frequency table}.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{ll  ccc  rr}
 & & \multicolumn{3}{c}{\bf \var{number}} & \\
@@ -487,9 +579,9 @@ A table for a single variable is called a \term{frequency table}. Table~\ref{ema
 \caption{A contingency table for \var{spam} and \var{number}.}
 \label{emailSpamNumberTableTotals}
 %library(openintro); library(xtable); data(email); tab <- table(email[,c("spam", "number")])[2:1,]; xtable(tab); rowSums(tab); colSums(tab); sum(tab)
-\end{table}
+\end{figure}
 
-\begin{table}[htb]
+\begin{figure}[htb]
 \centering
 \begin{tabular}{cccc}
   \hline
@@ -500,7 +592,7 @@ none & small & big & Total \\
 \end{tabular}
 \caption{A frequency table for the \var{number} variable.}
 \label{emailNumberTable}
-\end{table}
+\end{figure}
 %library(openintro); library(xtable); data(email); xtable(table(email[,c("html")]))
 
 A bar plot is a common way to display a single categorical variable. The left panel of Figure~\ref{emailNumberBarPlot} shows a \term{bar plot} for the \var{number} variable. In the right panel, the counts are converted into proportions (e.g. $549/3921=0.140$ for \resp{none}), showing the proportion of observations that are in each level (i.e. in each category).
@@ -515,9 +607,9 @@ A bar plot is a common way to display a single categorical variable. The left pa
 
 \subsection{Row and column proportions}
 
-Table~\ref{rowPropSpamNumber} shows the row proportions for Table~\ref{emailSpamNumberTableTotals}. The \termsub{row proportions}{contingency table!row proportions} are computed as the counts divided by their row totals. The value 149 at the intersection of \resp{spam} and \resp{none} is replaced by $149/367=0.406$, i.e. 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the proportion of spam emails in the sample that do not include any numbers in the message.
+Figure~\ref{rowPropSpamNumber} shows the row proportions for Figure~\ref{emailSpamNumberTableTotals}. The \termsub{row proportions}{contingency table!row proportions} are computed as the counts divided by their row totals. The value 149 at the intersection of \resp{spam} and \resp{none} is replaced by $149/367=0.406$, i.e. 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the proportion of spam emails in the sample that do not include any numbers in the message.
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{l rrr r}
   \hline
@@ -535,11 +627,11 @@ Total & $549/3921 = 0.140$ & $2827/3921 = 0.721$ &
 \caption{A contingency table with row proportions for the \var{spam} and \var{number} variables.}
 \label{rowPropSpamNumber}
 % library(openintro); data(email); g <- table(email$spam, email$number)[2:1,]; g / rep(rowSums(g), 3); rowSums(g)
-\end{table}
+\end{figure}
 
-A contingency table of the column proportions is computed in a similar way, where each \termsub{column proportion}{contingency table!column proportion} is computed as the count divided by the corresponding column total. Table~\ref{colPropSpamNumber} shows such a table, and here the value 0.271 indicates that 27.1\% of emails with no numbers were spam. This rate of spam is much higher compared to emails with only small numbers (5.9\%) or big numbers (9.2\%). Because these spam rates vary between the three levels of \var{number} (\resp{none}, \resp{small}, \resp{big}), this provides evidence that the \var{spam} and \var{number} variables are associated.
+A contingency table of the column proportions is computed in a similar way, where each \termsub{column proportion}{contingency table!column proportion} is computed as the count divided by the corresponding column total. Figure~\ref{colPropSpamNumber} shows such a table, and here the value 0.271 indicates that 27.1\% of emails with no numbers were spam. This rate of spam is much higher compared to emails with only small numbers (5.9\%) or big numbers (9.2\%). Because these spam rates vary between the three levels of \var{number} (\resp{none}, \resp{small}, \resp{big}), this provides evidence that the \var{spam} and \var{number} variables are associated.
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering\small
 \begin{tabular}{l rrr r}
   \hline
@@ -556,25 +648,25 @@ Total & 1.000 & 1.000 & 1.000 & 1.000 \\
 \caption{A contingency table with column proportions for the \var{spam} and \var{number} variables.}
 \label{colPropSpamNumber}
 % library(openintro); data(email); g <- table(email$spam, email$number)[2:1,]; g / rep(colSums(g), rep(2, 3)); g; colSums(g)
-\end{table}
+\end{figure}
 
-We could also have checked for an association between \var{spam} and \var{number} in Table~\ref{rowPropSpamNumber} using row proportions. When comparing these row proportions, we would look down columns to see if the fraction of emails with no numbers, small numbers, and big numbers varied from \resp{spam} to \resp{not~spam}.
+We could also have checked for an association between \var{spam} and \var{number} in Figure~\ref{rowPropSpamNumber} using row proportions. When comparing these row proportions, we would look down columns to see if the fraction of emails with no numbers, small numbers, and big numbers varied from \resp{spam} to \resp{not~spam}.
 
 \begin{exercise}
-What does 0.458 represent in Table~\ref{rowPropSpamNumber}? What does 0.059 represent in Table~\ref{colPropSpamNumber}?\footnote{0.458 represents the proportion of spam emails that had a small number. 0.059 represents the fraction of emails with small numbers that are spam.}
+What does 0.458 represent in Figure~\ref{rowPropSpamNumber}? What does 0.059 represent in Figure~\ref{colPropSpamNumber}?\footnote{0.458 represents the proportion of spam emails that had a small number. 0.059 represents the fraction of emails with small numbers that are spam.}
 \end{exercise}
 
 \begin{exercise}
-What does 0.139 at the intersection of \resp{not~spam} and \resp{big} represent in Table~\ref{rowPropSpamNumber}? What does 0.908 represent in the Table~\ref{colPropSpamNumber}?\footnote{0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.}
+What does 0.139 at the intersection of \resp{not~spam} and \resp{big} represent in Figure~\ref{rowPropSpamNumber}? What does 0.908 represent in the Figure~\ref{colPropSpamNumber}?\footnote{0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.}
 \end{exercise}
 
-\begin{example}{Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy. One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table for the \var{spam} and \var{format} variables from the \data{email} data set are shown in Table~\ref{emailSpamHTMLTableTotals}. Recall that an HTML email is an email with the capacity for special formatting, e.g. bold text. In Table~\ref{emailSpamHTMLTableTotals}, which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?} \label{weighingRowColumnProportions}
+\begin{example}{Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy. One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table for the \var{spam} and \var{format} variables from the \data{email} data set are shown in Figure~\ref{emailSpamHTMLTableTotals}. Recall that an HTML email is an email with the capacity for special formatting, e.g. bold text. In Figure~\ref{emailSpamHTMLTableTotals}, which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?} \label{weighingRowColumnProportions}
 Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails.
 
 If we generate the column proportions, we can see that a higher fraction of plain text emails are spam ($209/1195 = 17.5\%$) than compared to HTML emails ($158/2726 = 5.8\%$). This information on its own is insufficient to classify an email as spam or not spam, as over 80\% of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as \var{number} and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam. \GLMSection{This is a topic we will return to in Chapter~\ref{multipleRegressionAndANOVA}.}{}
 \end{example}
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{l cc r}
   \hline
@@ -589,12 +681,12 @@ Total & 1195 & 2726 & 3921 \\
 \caption{A contingency table for \var{spam} and \var{format}.}
 \label{emailSpamHTMLTableTotals}
 %library(openintro); library(xtable); data(email); tab <- table(email[,c("spam", "format")])[2:1,]; tab; colSums(tab); rowSums(tab)
-\end{table}
+\end{figure}
 
 Example~\ref{weighingRowColumnProportions} points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
 
 \begin{exercise}
-Look back to Tables~\ref{rowPropSpamNumber} and~\ref{colPropSpamNumber}. Which would be more useful to someone hoping to identify spam emails using the \var{number} variable?\footnote{The column proportions in Table~\ref{colPropSpamNumber} will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9\% of the time (relatively rare). We would also see that about 27.1\% of emails with no numbers are spam, and 9.2\% of emails with big numbers are spam.}
+Look back to Tables~\ref{rowPropSpamNumber} and~\ref{colPropSpamNumber}. Which would be more useful to someone hoping to identify spam emails using the \var{number} variable?\footnote{The column proportions in Figure~\ref{colPropSpamNumber} will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9\% of the time (relatively rare). We would also see that about 27.1\% of emails with no numbers are spam, and 9.2\% of emails with big numbers are spam.}
 \end{exercise}
 
 
@@ -603,7 +695,7 @@ Look back to Tables~\ref{rowPropSpamNumber} and~\ref{colPropSpamNumber}. Which w
 
 Contingency tables using row or column proportions are especially useful for examining how two categorical variables are related. Segmented bar and mosaic plots provide a way to visualize the information in these tables.
 
-A \termsub{segmented bar plot}{bar plot!segmented bar plot} is a graphical display of contingency table information. For example, a segmented bar plot representing Table~\ref{colPropSpamNumber} is shown in Figure~\ref{emailSpamNumberSegBar}, where we have first created a bar plot using the \var{number} variable and then divided each group by the levels of \var{spam}. The column proportions of Table~\ref{colPropSpamNumber} have been translated into a standardized segmented bar plot in Figure~\ref{emailSpamNumberSegBarSta}, which is a helpful visualization of the fraction of spam emails in each level of \var{number}.
+A \termsub{segmented bar plot}{bar plot!segmented bar plot} is a graphical display of contingency table information. For example, a segmented bar plot representing Figure~\ref{colPropSpamNumber} is shown in Figure~\ref{emailSpamNumberSegBar}, where we have first created a bar plot using the \var{number} variable and then divided each group by the levels of \var{spam}. The column proportions of Figure~\ref{colPropSpamNumber} have been translated into a standardized segmented bar plot in Figure~\ref{emailSpamNumberSegBarSta}, which is a helpful visualization of the fraction of spam emails in each level of \var{number}.
 
 \begin{figure}[h]
 \centering
@@ -653,7 +745,7 @@ A \term{mosaic plot} is a graphical display of contingency table information tha
 This one-variable mosaic plot is further divided into pieces in Figure~\ref{emailSpamNumberMosaic} using the \var{spam} variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
 As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the \var{spam} and \var{number} variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.
 
-In a similar way, a mosaic plot representing row proportions of Table~\ref{emailSpamNumberTableTotals} could be constructed, as shown in Figure~\ref{emailSpamNumberMosaicRev}. However, because it is more insightful for this application to consider the fraction of spam in each category of the \var{number} variable, we prefer Figure~\ref{emailSpamNumberMosaic}.
+In a similar way, a mosaic plot representing row proportions of Figure~\ref{emailSpamNumberTableTotals} could be constructed, as shown in Figure~\ref{emailSpamNumberMosaicRev}. However, because it is more insightful for this application to consider the fraction of spam in each category of the \var{number} variable, we prefer Figure~\ref{emailSpamNumberMosaic}.
 
 \subsection{The only pie chart you will see in this book}
 
@@ -677,9 +769,9 @@ Some of the more interesting investigations can be considered by examining numer
 
 We will take a look again at the \data{county} data set and compare the median household income for counties that gained population from 2000 to 2010 versus counties that had no gain. While we might like to make a causal connection here, remember that these are observational data and so such an interpretation would be unjustified.
 
-There were 2,041 counties where the population increased from 2000 to 2010, and there were 1,099 counties with no gain (all but one were a loss). A~random sample of 100 counties from the first group and 50 from the second group are shown in Table~\ref{countyIncomeSplitByPopGainTable} to give a better sense of some of the raw data.
+There were 2,041 counties where the population increased from 2000 to 2010, and there were 1,099 counties with no gain (all but one were a loss). A~random sample of 100 counties from the first group and 50 from the second group are shown in Figure~\ref{countyIncomeSplitByPopGainTable} to give a better sense of some of the raw data.
 
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{ ccc ccc c ccc }
 \multicolumn{6}{c}{\bf population gain} && \multicolumn{3}{c}{\bf no gain} \\ 
@@ -705,7 +797,7 @@ There were 2,041 counties where the population increased from 2000 to 2010, and 
 \end{tabular}
 \caption{In this table, median household income (in \$1000s) from a random sample of 100 counties that gained population over 2000-2010 are shown on the left. Median incomes from a random sample of 50 counties that had no population gain are shown on the right.}
 \label{countyIncomeSplitByPopGainTable}
-\end{table}
+\end{figure}
 
 The \term{side-by-side box plot} \index{box plot!side-by-side box plot} is a traditional tool for comparing across groups. An example is shown in the left panel of Figure~\ref{countyIncomeSplitByPopGain}, where there are two box plots, one for each group, placed into one plotting window and drawn on the same scale.
 
@@ -754,9 +846,9 @@ The participants in this study are 48 male bank supervisors attending a manageme
 Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?\footnote{The study is an experiment, as subjects were randomly assigned a male file or a female file. Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.}
 \end{exercise}
 
-For each supervisor we record the gender associated with the assigned file and the promotion decision. Using the results of the study summarized in Table~\ref{discriminationResults}, we would like to evaluate if females are unfairly discriminated against in promotion decisions. In this study, a smaller proportion of females are promoted than males (0.583 versus 0.875), but it is unclear whether the difference provides \emph{convincing evidence} that females are unfairly discriminated against.
+For each supervisor we record the gender associated with the assigned file and the promotion decision. Using the results of the study summarized in Figure~\ref{discriminationResults}, we would like to evaluate if females are unfairly discriminated against in promotion decisions. In this study, a smaller proportion of females are promoted than males (0.583 versus 0.875), but it is unclear whether the difference provides \emph{convincing evidence} that females are unfairly discriminated against.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{l l cc rr}
 & & \multicolumn{2}{c}{\var{decision}} \\
@@ -771,13 +863,13 @@ For each supervisor we record the gender associated with the assigned file and t
 \end{tabular}
 \caption{Summary results for the gender discrimination study.}
 \label{discriminationResults}
-\end{table}
+\end{figure}
 
 \begin{example}{Data scientists are sometimes called upon to evaluate the strength of evidence. When looking at the rates of promotion for males and females in this study, what comes to mind as we try to determine whether the data show convincing evidence of a real difference?} \label{discriminationResultsWhatIsConvincingEvidence}
 The observed promotion rates (58.3\% for females versus 87.5\% for males) suggest there might be discrimination against women in promotion decisions. However, we cannot be sure if the observed difference represents discrimination or is just from random chance. Generally there is a little bit of fluctuation in sample data, and we wouldn't expect the sample proportions to be \emph{exactly} equal, even if the truth was that the promotion decisions were independent of gender.
 \end{example}
 
-Example~\ref{discriminationResultsWhatIsConvincingEvidence} is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population. Table~\ref{discriminationResults} shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2\% $\left( \frac{21}{24} - \frac{14}{24} = 0.292 \right)$. This difference is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. We label these two competing claims, $H_0$ and $H_A$:
+Example~\ref{discriminationResultsWhatIsConvincingEvidence} is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population. Figure~\ref{discriminationResults} shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2\% $\left( \frac{21}{24} - \frac{14}{24} = 0.292 \right)$. This difference is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. We label these two competing claims, $H_0$ and $H_A$:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[$H_0$:] \textbf{Independence model.} The variables \var{gender} and \var{decision} are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2\%, was due to chance.
@@ -793,11 +885,11 @@ We choose between these two competing claims by assessing if the data conflict s
 \subsection{Simulating the study}
 \label{simulatingTheStudy}
 
-Table~\ref{discriminationResults} shows that 35 bank supervisors recommended promotion and 13 did not. Now, suppose the bankers' decisions were independent of gender. Then, if we conducted the experiment again with a different random arrangement of files, differences in promotion rates would be based only on random fluctuation. We can actually perform this \term{randomization}, which simulates what would have happened if the bankers' decisions had been independent of gender but we had distributed the files differently.
+Figure~\ref{discriminationResults} shows that 35 bank supervisors recommended promotion and 13 did not. Now, suppose the bankers' decisions were independent of gender. Then, if we conducted the experiment again with a different random arrangement of files, differences in promotion rates would be based only on random fluctuation. We can actually perform this \term{randomization}, which simulates what would have happened if the bankers' decisions had been independent of gender but we had distributed the files differently.
 
-In this \term{simulation}, we thoroughly shuffle 48 personnel files, 24 labeled \resp{male\_\hspace{0.3mm}sim} and 24 labeled \resp{female\_\hspace{0.3mm}sim}, and deal these files into two stacks. We will deal 35 files into the first stack, which will represent the 35 supervisors who recommended promotion. The second stack will have 13 files, and it will represent the 13 supervisors who recommended against promotion. Then, as we did with the original data, we tabulate the results and determine the fraction of \resp{male\_\hspace{0.3mm}sim} and \resp{female\_\hspace{0.3mm}sim} who were promoted. The randomization of files in this simulation is independent of the promotion decisions, which means any difference in the two fractions is entirely due to chance. Table~\ref{discriminationRand1} show the results of such a simulation.
+In this \term{simulation}, we thoroughly shuffle 48 personnel files, 24 labeled \resp{male\_\hspace{0.3mm}sim} and 24 labeled \resp{female\_\hspace{0.3mm}sim}, and deal these files into two stacks. We will deal 35 files into the first stack, which will represent the 35 supervisors who recommended promotion. The second stack will have 13 files, and it will represent the 13 supervisors who recommended against promotion. Then, as we did with the original data, we tabulate the results and determine the fraction of \resp{male\_\hspace{0.3mm}sim} and \resp{female\_\hspace{0.3mm}sim} who were promoted. The randomization of files in this simulation is independent of the promotion decisions, which means any difference in the two fractions is entirely due to chance. Figure~\ref{discriminationRand1} show the results of such a simulation.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{l l cc rr}
 & & \multicolumn{2}{c}{\var{decision}} \\
@@ -811,10 +903,10 @@ In this \term{simulation}, we thoroughly shuffle 48 personnel files, 24 labeled 
 \end{tabular}
 \caption{Simulation results, where any difference in promotion rates between \resp{male\_\hspace{0.3mm}sim} and \resp{female\_\hspace{0.3mm}sim} is purely due to chance.}
 \label{discriminationRand1}
-\end{table}
+\end{figure}
 
 \begin{exercise} \label{sampleDifferenceInMaleAndFemaleDiscrimination}
-What is the difference in promotion rates between the two simulated groups in Table~\ref{discriminationRand1}? How does this compare to the observed 29.2\% in the actual groups?\footnote{$18/24 - 17/24=0.042$ or about 4.2\% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.}
+What is the difference in promotion rates between the two simulated groups in Figure~\ref{discriminationRand1}? How does this compare to the observed 29.2\% in the actual groups?\footnote{$18/24 - 17/24=0.042$ or about 4.2\% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.}
 \end{exercise}
 
 
