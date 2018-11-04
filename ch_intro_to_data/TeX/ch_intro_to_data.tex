@@ -1,5 +1,6 @@
 \chapter{Introduction to data}
 \label{introductionToData}
+\label{ch_intro_to_data}
 
 %\begin{tipBox}{\tipBoxTitle[Chapter Goal:]{Thinking about data}
 %Understand basics about data organization, data types, numerical summaries of data, graphical summaries of data, and foundational techniques for data collection. We begin and end the chapter with case studies.}
@@ -143,29 +144,30 @@ each variable means and the units of measurement.
 Descriptions of the \data{loan50} variables are described
 in Figure~\ref{loan50Variables}.
 
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 {\small
-\begin{tabular}{ccc ccc ccc}
+\begin{tabular}{ccc ccc cc} %c}
   \hline
    & loan\_amount & interest\_rate & term & grade & state
-       & total\_income & verified\_income & home\_ownership \\ 
+       & total\_income & home\_ownership \\ % & verified\_income \\ 
   \hline
-  1 & 7500 & 7.34 & 36 & A & MD & 70000 & Source Verified & RENT \\ 
-  2 & 25000 & 9.43 & 60 & B & OH & 254000 & Not Verified & MORTGAGE \\ 
-  3 & 14500 & 6.08 & 36 & A & MO & 80000 & Not Verified & MORTGAGE \\ 
+  1 & 7500 & 7.34 & 36.00 & A & MD & 70000.00 & RENT \\ % & Source Verified \\ 
+  2 & 25000 & 9.43 & 60.00 & B & OH & 254000.00 & MORTGAGE \\ % & Not Verified \\ 
+  3 & 14500 & 6.08 & 36.00 & A & MO & 80000.00 & MORTGAGE \\ % & Not Verified \\ 
   $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
-      & $\vdots$ & $\vdots$ & $\vdots$ \\
-  50 & 3000 & 7.96 & 36 & A & CA & 34000 & Not Verified & RENT \\ 
+      & $\vdots$ & $\vdots$ \\ % & $\vdots$ \\
+  50 & 3000 & 7.96 & 36.00 & A & CA & 34000.00 & RENT \\ % & Not Verified \\ 
    \hline
 \end{tabular}
 }
 \caption{Four rows from the \data{loan50} data matrix.}
 \label{loan50DF}
 \end{figure}
-% library(openintro); vars <- c("loan_amount", "interest_rate", "term", "grade", "state", "total_income", "verified_income", "home_ownership"); library(xtable); data(loan50); loan50[c(1,2,3,50), vars]; xtable(loan50[c(1,2,3,50), vars])
+% Dropped: state, verified_income
+% library(openintro); vars <- c("loan_amount", "interest_rate", "term", "grade", "total_income", "home_ownership", "loan_status"); library(xtable); data(loan50); loan50[c(1,2,3,50), vars]; xtable(loan50[c(1,2,3,50), vars])
 
-\begin{figure}[t]
+\begin{figure}[h]
 \centering\small
 \begin{tabular}{lp{10.5cm}}
 \hline
@@ -183,11 +185,11 @@ in Figure~\ref{loan50Variables}.
 \var{state} & US state where the borrower resides. \\
 \var{total\_\hspace{0.3mm}income} & Borrower's total income,
     including any second income, in US dollars.   \\
-\var{verified\_\hspace{0.3mm}income} & Indicates whether the
-    income is verified, its source is verified but not the amount,
-    or it is not verified.   \\
 \var{home\_\hspace{0.3mm}ownership} & Indicates whether the
     person owns, owns but has a mortgage, or rents.  \\
+%\var{verified\_\hspace{0.3mm}income} & Indicates whether the
+%    income is verified, its source is verified but not the amount,
+%    or it is not verified.   \\
 \hline
 \end{tabular}
 \caption{Variables and their descriptions for the \data{email50} data set.}
@@ -212,98 +214,101 @@ a very good reason to use a different structure.
 By using this structure, it is easy to add new cases
 as new rows or new variables as new columns.
 
-\Comment{We could drop the \data{county} data set from
-    this section and use other examples.}
-
-\index{data!county|(}
-
-\begin{exercise}\label{desc_county_as_data_matrix}
-We consider data for 3,143 counties in the United States,
-which includes each county's name,
-the state where it resides, its population in 2000 and 2010,
-per capita federal spending, poverty rate,
-and five additional characteristics.
-How might these data be organized in
-a data matrix?\footnote{Each county may be viewed as a case,
-  and there are eleven pieces of information recorded for
-  each case.
-  A table with 3,143 rows and 11 columns could hold these data,
-  where each row represents a county and each column represents
-  a particular piece of information.}
+\begin{exercise}
+The grades for assignments, quizzes, and exams in a course are
+often recorded in a gradebook that takes the form of a data matrix.
+What is an efficient way to store organize the data
+matrix?\footnote{There are multiple strategies that can be followed.
+  One common strategy is to have each student represented by a row,
+  and then add a column for each assignment, quiz, or exam.
+  Under this setup, it is easy to review a single line to understand
+  a student's grade history.
+  Note that it is also necessary to include additional columns to
+  list student information, such as one column to list each student's
+  name.}
 \end{exercise}
 
-\noindent The data described in Guided
-Practice~\ref{desc_county_as_data_matrix} represents the
-\data{county} data set, which is shown as a data matrix
-in Figure~\ref{countyDF}.
-The variables are summarized in Figure~\ref{countyVariables}.
-\Comment{These data were collected from the US Census website. Move this reference to an appendix.}\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
-
-\begin{landscape}
-\begin{figure}
-\centering\small
-\begin{tabular}{ccc ccc ccc ccc}
-\hline
-& \var{name} & \var{state} & \var{pop2000} & \var{pop2010} &
-   \var{fed\_\hspace{0.3mm}spend} & \var{poverty} & \var{homeownership} & \var{multiunit} &
-   \var{income} & \var{med\_\hspace{0.3mm}income} & \var{smoking\_\hspace{0.3mm}ban} \\
-\hline
-  1 & Autauga & AL & 43671 & 54571 & 6.068 & 10.6 & 77.5 & 7.2 & 24568 & 53255 & none \\
-  2 & Baldwin & AL & 140415 & 182265 & 6.140 & 12.2 & 76.7 & 22.6 & 26469 & 50147 & none \\ 
-  3 & Barbour & AL & 29038 & 27457 & 8.752 & 25.0 & 68.0 & 11.1 & 15875 & 33219 & none \\ 
-  4 & Bibb & AL & 20826 & 22915 & 7.122 & 12.6 & 82.9 & 6.6 & 19918 & 41770 & none \\ 
-  5 & Blount & AL & 51024 & 57322 & 5.131 & 13.4 & 82.0 & 3.7 & 21070 & 45549 & none \\ 
-  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-  3142 & Washakie & WY & 8289 & 8533 & 8.714 & 5.6 & 70.9 & 10.0 & 28557 & 48379 & none \\ 
-  3143 & Weston & WY & 6644 & 7208 & 6.695 & 7.9 & 77.9 & 6.5 & 28463 & 53853 & none \\ 
-\hline
-\end{tabular}
-\caption{Seven rows from the \data{county} data set.}
-\label{countyDF}
-% library(openintro); county <- countyComplete[,c("name", "state", "pop2000", "pop2010", "fed_spending", "poverty", "home_ownership", "housing_multi_unit", "per_capita_income", "median_household_income")]; colnames(county) <- c("name", "state", "pop2000", "pop2010", "fed_spend", "poverty", "homeownership", "multiunit", "income", "med_income"); county$fed_spend <- county$fed_spend / county$pop2010
-
-% library(openintro); library(xtable); cc <- countyComplete; xtable(cc[c(1:5,nrow(cc) - (1:0)), c("name", "state", "pop2000", "pop2010", "fed_spend", "poverty", "homeownership", "multiunit", "income", "med_income")], digits=1)
-\end{figure}
-
-\begin{figure}
-\centering\small
-\begin{tabular}{lp{11cm}}
-\hline
-{\bf variable} & {\bf description} \\
-\hline
-\var{name} & County name \\
-\var{state} & State where the county resides (also including the District of Columbia) \\
-\var{pop2000} & Population in 2000 \\
-\var{pop2010} & Population in 2010 \\
-\var{fed\_\hspace{0.3mm}spend} & Federal spending per capita \\
-\var{poverty}  &  Percent of the population in poverty \\
-\var{homeownership}  &  Percent of the population that lives in their own home or lives with the owner (e.g. children living with parents who own the home) \\
-\var{multiunit}  &  Percent of living units that are in multi-unit structures (e.g. apartments) \\
-\var{income} & Income per capita \\
-\var{med\_\hspace{0.3mm}income} & Median household income for the county, where a household's income equals the total income of its occupants who are 15 years or older \\
-\var{smoking\_\hspace{0.3mm}ban}  &  Type of county-wide smoking ban in place at the end of 2011, which takes
-			one of three values: \resp{none}, \resp{partial}, or \resp{comprehensive},
-			where a \resp{comprehensive} ban means smoking
-			was not permitted in restaurants, bars, or workplaces, and \resp{partial}
-			means smoking was banned in at least one of those three locations \\
-\hline
-\end{tabular}
-\centering
-\caption{Variables and their descriptions for the \data{county} data set.}
-\label{countyVariables}
-\end{figure}
-\end{landscape}
+%\index{data!county|(}
+%
+%\begin{exercise}\label{desc_county_as_data_matrix}
+%We consider data for 3,143 counties in the United States,
+%which includes each county's name,
+%the state where it resides, its population in 2000 and 2010,
+%per capita federal spending, poverty rate,
+%and five additional characteristics.
+%How might these data be organized in
+%a data matrix?\footnote{Each county may be viewed as a case,
+%  and there are eleven pieces of information recorded for
+%  each case.
+%  A table with 3,143 rows and 11 columns could hold these data,
+%  where each row represents a county and each column represents
+%  a particular piece of information.}
+%\end{exercise}
+%
+%\noindent The data described in Guided
+%Practice~\ref{desc_county_as_data_matrix} represents the
+%\data{county} data set, which is shown as a data matrix
+%in Figure~\ref{countyDF}.
+%The variables are summarized in Figure~\ref{countyVariables}.
+%\Comment{These data were collected from the US Census website. Move this reference to an appendix.}\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
+%
+%\begin{landscape}
+%\begin{figure}
+%\centering\small
+%\begin{tabular}{ccc ccc ccc ccc}
+%\hline
+%& \var{name} & \var{state} & \var{pop2000} & \var{pop2010} &
+%   \var{fed\_\hspace{0.3mm}spend} & \var{poverty} & \var{homeownership} & \var{multiunit} &
+%   \var{income} & \var{med\_\hspace{0.3mm}income} & \var{smoking\_\hspace{0.3mm}ban} \\
+%\hline
+%  1 & Autauga & AL & 43671 & 54571 & 6.068 & 10.6 & 77.5 & 7.2 & 24568 & 53255 & none \\
+%  2 & Baldwin & AL & 140415 & 182265 & 6.140 & 12.2 & 76.7 & 22.6 & 26469 & 50147 & none \\ 
+%  3 & Barbour & AL & 29038 & 27457 & 8.752 & 25.0 & 68.0 & 11.1 & 15875 & 33219 & none \\ 
+%  4 & Bibb & AL & 20826 & 22915 & 7.122 & 12.6 & 82.9 & 6.6 & 19918 & 41770 & none \\ 
+%  5 & Blount & AL & 51024 & 57322 & 5.131 & 13.4 & 82.0 & 3.7 & 21070 & 45549 & none \\ 
+%  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+%  3142 & Washakie & WY & 8289 & 8533 & 8.714 & 5.6 & 70.9 & 10.0 & 28557 & 48379 & none \\ 
+%  3143 & Weston & WY & 6644 & 7208 & 6.695 & 7.9 & 77.9 & 6.5 & 28463 & 53853 & none \\ 
+%\hline
+%\end{tabular}
+%\caption{Seven rows from the \data{county} data set.}
+%\label{countyDF}
+%% library(openintro); county <- countyComplete[,c("name", "state", "pop2000", "pop2010", "fed_spending", "poverty", "home_ownership", "housing_multi_unit", "per_capita_income", "median_household_income")]; colnames(county) <- c("name", "state", "pop2000", "pop2010", "fed_spend", "poverty", "homeownership", "multiunit", "income", "med_income"); county$fed_spend <- county$fed_spend / county$pop2010
+%
+%% library(openintro); library(xtable); cc <- countyComplete; xtable(cc[c(1:5,nrow(cc) - (1:0)), c("name", "state", "pop2000", "pop2010", "fed_spend", "poverty", "homeownership", "multiunit", "income", "med_income")], digits=1)
+%\end{figure}
+%
+%\begin{figure}
+%\centering\small
+%\begin{tabular}{lp{11cm}}
+%\hline
+%{\bf variable} & {\bf description} \\
+%\hline
+%\var{name} & County name \\
+%\var{state} & State where the county resides (also including the District of Columbia) \\
+%\var{pop2000} & Population in 2000 \\
+%\var{pop2010} & Population in 2010 \\
+%\var{fed\_\hspace{0.3mm}spend} & Federal spending per capita \\
+%\var{poverty}  &  Percent of the population in poverty \\
+%\var{homeownership}  &  Percent of the population that lives in their own home or lives with the owner (e.g. children living with parents who own the home) \\
+%\var{multiunit}  &  Percent of living units that are in multi-unit structures (e.g. apartments) \\
+%\var{income} & Income per capita \\
+%\var{med\_\hspace{0.3mm}income} & Median household income for the county, where a household's income equals the total income of its occupants who are 15 years or older \\
+%\var{smoking\_\hspace{0.3mm}ban}  &  Type of county-wide smoking ban in place at the end of 2011, which takes
+%			one of three values: \resp{none}, \resp{partial}, or \resp{comprehensive},
+%			where a \resp{comprehensive} ban means smoking
+%			was not permitted in restaurants, bars, or workplaces, and \resp{partial}
+%			means smoking was banned in at least one of those three locations \\
+%\hline
+%\end{tabular}
+%\centering
+%\caption{Variables and their descriptions for the \data{county} data set.}
+%\label{countyVariables}
+%\end{figure}
+%\end{landscape}
 
 \subsection{Types of variables}
 \label{variableTypes}
-
-\Comment{Move to using the \data{loan50} data set here, then use the \data{county} data set as example / practice.}
-
-% For 'county' Guided Practice:
-% \var{fed\_\hspace{0.3mm}spend}
-% \var{pop2010}
-% \var{state}
-% \var{smoking\_\hspace{0.3mm}ban}
 
 Examine the \var{interest\_\hspace{0.3mm}rate}, \var{term},
 \var{home\_\hspace{0.3mm}ownership}, and \var{grade} variables
@@ -395,12 +400,14 @@ Someone evaluating a loan may like to answer
 some of the following questions:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item[(1)]\label{interest_rate_vs_loan_size}
-    Does the interest rate tend to be lower or higher
-    for smaller loans?
+\item[(1)]\label{loan_size_vs_total_income}
+    What is the relationship between loan amount and total income?
 \item[(2)]\label{interest_rate_vs_income}
     If someone's income is above the average, will their
     interest rate tend to be above or below the average?
+%\item[(2)]\label{interest_rate_vs_loan_size}
+%    Does the interest rate tend to be lower or higher
+%    for smaller loans?
 \item[(3)]\label{interest_rate_vs_rent-mortgage_question}
     Who has a higher interest rate: those who rent
     or those with a mortgage?
@@ -416,42 +423,107 @@ provide insights for each of the three questions about counties.
 Additionally, graphs can be used to visually summarize data
 and are useful for answering such questions as well.
 
-\indexthis{Scatterplots}{scatterplot} are one type of graph used to study the relationship between two numerical variables. Figure~\ref{county_fed_spendVsPoverty} compares the variables \var{fed\_\hspace{0.3mm}spend} and \var{poverty}. Each point on the plot represents a single county. For instance, the highlighted dot corresponds to County~1088 in the \data{county} data set: Owsley County, Kentucky, which had a poverty rate of 41.5\% and federal spending of \$21.50 per capita. The scatterplot suggests a relationship between the two variables: counties with a high poverty rate also tend to have slightly more federal spending. We might brainstorm as to why this relationship exists and investigate each idea to determine which is the most reasonable explanation.
+%\indexthis{Scatterplots}{scatterplot} are one type of graph
+%used to study the relationship between two numerical variables.
+%Figure~\ref{interest_rate_vs_income} compares the variables
+%\var{interest\_\hspace{0.3mm}rate}
+%and \var{total\_\hspace{0.3mm}income}.
+%Each point on the plot represents a single loan.
+%For instance, the highlighted dot corresponds to
+%Loan~40 in the \data{loan50} data set: a borrower
+%who had an income of \$160,000 and received an interest
+%rate of 12.62\%.
+%Other details of the loan include that it was for \$38,000,
+%the borrower has a mortgage, and the loan received a grade of C.
+
+\indexthis{Scatterplots}{scatterplot} are one type of graph
+used to study the relationship between two numerical variables.
+Figure~\ref{loan_amount_vs_income} compares the variables
+\var{interest\_\hspace{0.3mm}rate}
+and \var{total\_\hspace{0.3mm}income}.
+Each point on the plot represents a single loan.
+For instance, the highlighted dot corresponds to
+Loan~35, which represents a borrower who had an
+income of \$45,000 and received a loan of \$9,000.
+Other details of the loan interest rate was 15.04\%,
+the borrower owns their home,
+and the loan received a grade of C.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/county_fed_spendVsPoverty/county_fed_spendVsPoverty}
-\caption{A scatterplot showing \var{fed\_\hspace{0.3mm}spend} against \var{poverty}. Owsley County of Kentucky, with a poverty rate of 41.5\% and federal spending of \$21.50 per capita, is highlighted.}
-\label{county_fed_spendVsPoverty}
+\includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/loan_amount_vs_income/loan_amount_vs_income}
+\caption{A scatterplot showing \var{loan\_\hspace{0.3mm}amount}
+  against \var{total\_\hspace{0.3mm}income}. Loan~35 is highlighted,
+  where the borrower had a total income of \$45,000 and received
+  a loan of \$9,000.}
+\label{loan_amount_vs_income}
 \end{figure}
 
 \begin{exercise}
-Examine the variables in the \data{email50} data set, which are described in Table~\vref{email50Variables}. Create two questions about the relationships between these variables that are of interest to you.\footnote{Two sample questions: (1) Intuition suggests that if there are many line breaks in an email then there also would tend to be many characters: does this hold true? (2)~Is there a connection between whether an email format is plain text (versus HTML) and whether it is a spam message?}
+Examine the variables in the \data{loan50} data set,
+which are described in Table~\vref{loan50Variables}.
+Create two additional questions about the relationships
+between these variables that are of interest to
+you.\footnote{Two more example questions:
+  (1) How closely tied is the loan grade to the interest rate?
+  (2) What is the relationship between interest rate and the
+      income of the person requesting the loan?}
 \end{exercise}
 
-The \var{fed\_\hspace{0.3mm}spend} and \var{poverty} variables are said to be associated because the plot shows a discernible pattern. When two variables show some connection with one another, they are called \term{associated} variables. Associated variables can also be called \term{dependent} variables and vice-versa.
+Figure~\ref{loan_amount_vs_income}
+shows a positive trend, where the loan amount
+tends to be larger for people with larger incomes.
+When two variables show some connection with one another,
+they are called \term{associated} variables.
+Associated variables can also be called \term{dependent}
+variables and vice-versa.
+When the variables increase together,
+as they do in Figure~\ref{loan_amount_vs_income},
+they are said to be \term{positively associated}.
+When the trend in the scatterplot goes down to the right,
+then they are described as \term{negatively correlated}.
 
-\begin{example}{This example examines the relationship between homeownership and the percent of units in multi-unit structures (e.g. apartments, condos), which is visualized using a scatterplot in Figure~\ref{multiunitsVsOwnership}. Are these variables associated?}
-It appears that the larger the fraction of units in multi-unit structures, the lower the homeownership rate. Since there is some relationship between the variables, they are associated.
+While we may find it interesting to consider the relationship
+between two variables such as those in the scatterplot,
+the relationship between those variables can be more complex.
+For example, interest rates on loans tend to be chosen based
+on the riskiness of the loan, i.e. how likely it is to be
+paid back, and that is likely to depend on a variety of
+details, such as what the loan is for, the person's
+creditworthiness, whether their income is verified, etc.
+We will begin exploring some of these more complex relationships
+in graphs in Chapter~\ref{ch_summarizing_data} and beyond.
+\Comment{Revise if we don't add these more rich plots...}
+
+\begin{example}{Figure~\ref{interest_rate_vs_loan_amount}
+    features a scatterplot of interest rate against loan amount.
+    Are these variables associated?}
+  There isn't an evident trend in the data,
+  so we would say these two variables are not associated.
 \end{example}
-
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/multiunitsVsOwnership/multiunitsVsOwnership}
-   \caption{A scatterplot of homeownership versus the percent of units that are in multi-unit structures for all 3,143 counties. Interested readers may find an image of this plot with an additional third variable, county population, presented at \oiRedirect{textbook-homeownership_vs_multi_unit_structures}{www.openintro.org/stat/down/MHP.png}.}
-   \label{multiunitsVsOwnership}
+   \includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/interest_rate_vs_loan_amount/interest_rate_vs_loan_amount}
+   \caption{A scatterplot of interest rate against loan amount.}
+   \label{interest_rate_vs_loan_amount}
 \end{figure}
 
-Because there is a downward trend in Figure~\ref{multiunitsVsOwnership} -- counties with more units in multi-unit structures are associated with lower homeownership -- these variables are said to be \termsub{negatively associated}{negative association}. A \term{positive association} is shown in the relationship between the \var{poverty} and \var{fed\_\hspace{0.3mm}spend} variables represented in Figure~\ref{county_fed_spendVsPoverty}, where counties with higher poverty rates tend to receive more federal spending per capita.
+%Because there is a slight downward trend in
+%Figure~\ref{interest_rate_vs_income} -- counties with more units in multi-unit structures are associated with lower homeownership -- these variables are said to be \termsub{negatively associated}{negative association}. A \term{positive association} is shown in the relationship between the \var{poverty} and \var{fed\_\hspace{0.3mm}spend} variables represented in Figure~\ref{interest_rate_vs_income}, where counties with higher poverty rates tend to receive more federal spending per capita.
 
-If two variables are not associated, then they are said to be \term{independent}. That is, two variables are independent if there is no evident relationship between the two.
+When two variables are not evidently associated,
+as is the case between interest rate and loan amount,
+they are said to be \term{independent}.
+That is, two variables are independent if there is
+no evident relationship between them.
 
 \begin{termBox}{\tBoxTitle{Associated or independent, not both}
 A pair of variables are either related in some way (associated) or not (independent). No pair of variables is both associated and independent.}
 \end{termBox}
 
 \index{data!county|)}
+
 
 %%%%%
 \section[Overview of data collection principles]{Overview of data collection principles \sectionvideohref{youtube-2N_bkiyTiXU&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8} \sectionslideshref{gdoc_os3_slides_1-3}}
@@ -560,32 +632,51 @@ We can easily access ratings for products, sellers, and companies through websit
 \subsection{Explanatory and response variables}
 \label{explanatoryAndResponse}
 
-\index{data!county|(}
+\index{data!loan50|(}
 
-Consider the following question from page~\pageref{fedSpendingPovertyQuestion} for the \data{county} data set:
+Consider the following question from
+page~\pageref{interest_rate_vs_income}
+for the \data{loan50} data set:
 \begin{enumerate}
-\item[(1)] 
-	Is federal spending, on average, higher or lower in counties with high rates of poverty?
+\item[(2)]
+    If someone's income is above the average, will their
+    interest rate tend to be above or below the average?
 \end{enumerate}
-If we suspect poverty might affect spending in a county, then poverty is the \term{explanatory} variable and federal spending is the \term{response} variable in the relationship.\footnote{Sometimes the explanatory variable is called the \term{independent} variable and the response variable is called the \term{dependent} variable. However, this becomes confusing since a \emph{pair} of variables might be independent or dependent, so we avoid this language.} If there are many variables, it may be possible to consider a number of them as explanatory variables.
+If we suspect a person's income might affect the
+interest rate they receive on a loan,
+then income is the \termsub{explanatory}{explanatory variable}
+variable and interest rate is the
+\termsub{response}{response variable} variable in the
+relationship.\footnote{Sometimes the term
+\term{independent variable} is used for
+the explanatory variable and \term{dependent variable} for
+the response variable.
+However, because this is confusing since a \emph{pair} of
+variables might be independent or dependent, we avoid this
+particular terminology.}
+If there are many variables, it is possible to consider
+a number of them as explanatory variables.
 
-\begin{tipBox}{\tipBoxTitle{Explanatory and response variables}
-To identify the explanatory variable in a pair of variables, identify which of the two is suspected of affecting the other and plan an appropriate analysis.
+\index{data!loan50|)}
 
-\hspace{10mm}\includegraphics[height=0.34in]{ch_intro_to_data/figures/expResp/expResp}}
-\end{tipBox}
+\begin{termBox}{\tBoxTitle{Explanatory and response variables}
+When we suspect one variable might causally affect another,
+we label the first variable the explanatory variable and the
+second the response variable.
+\vspace{1mm}
 
-\begin{caution}{association does not imply causation}{Labeling variables as \emph{explanatory} and \emph{response} does not guarantee the relationship between the two is actually causal, even if there is an association identified between the two variables. We use these labels only to keep track of which variable we suspect affects the other.}
-\end{caution}
+\hspace{10mm}\includegraphics[height=0.34in]{ch_intro_to_data/figures/expResp/expResp}
 
-In some cases, there is no explanatory or response variable. Consider the following question from page~\pageref{ownershipMultiUnitQuestion}:
-\begin{enumerate}
-\item[(2)] 
-	If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?
-\end{enumerate}
-It is difficult to decide which of these variables should be considered the explanatory and response variable, i.e. the direction is ambiguous, so no explanatory or response labels are suggested here.
+Some pairs of variables do not imply any causal relationship,
+in which case these labels should not be applied.}
+\end{termBox}
 
-\index{data!county|)}
+The explanatory and response labels only considers
+a \emph{suspected} causal relationship, and it does not guarantee
+that such a causal relationship exists.
+Evaluating whether the relationship is in fact causal
+requires an experiment.
+
 
 \subsection{Introducing observational studies and experiments}
 
@@ -601,7 +692,7 @@ In general, association does not imply causation, and causation can only be infe
 
 
 %%%%%
-\section[Observational studies and sampling strategies]{Observational studies and sampling strategies \sectionvideohref{youtube-KyuaX10l3GQ&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-4}}
+\section[Observational studies and sampling strategies]{Observational studies \\and sampling strategies \sectionvideohref{youtube-KyuaX10l3GQ&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-4}}
 
 \subsection{Observational studies}
 
