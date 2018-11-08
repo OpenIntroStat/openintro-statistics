@@ -152,12 +152,12 @@ in Figure~\ref{loan50Variables}.
    & loan\_amount & interest\_rate & term & grade & state
        & total\_income & home\_ownership \\ % & verified\_income \\ 
   \hline
-  1 & 7500 & 7.34 & 36.00 & A & MD & 70000.00 & RENT \\ % & Source Verified \\ 
-  2 & 25000 & 9.43 & 60.00 & B & OH & 254000.00 & MORTGAGE \\ % & Not Verified \\ 
-  3 & 14500 & 6.08 & 36.00 & A & MO & 80000.00 & MORTGAGE \\ % & Not Verified \\ 
+  1 & 7500 & 7.34 & 36 & A & MD & 70000 & RENT \\ % & Source Verified \\ 
+  2 & 25000 & 9.43 & 60 & B & OH & 254000 & MORTGAGE \\ % & Not Verified \\ 
+  3 & 14500 & 6.08 & 36 & A & MO & 80000 & MORTGAGE \\ % & Not Verified \\ 
   $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
       & $\vdots$ & $\vdots$ \\ % & $\vdots$ \\
-  50 & 3000 & 7.96 & 36.00 & A & CA & 34000.00 & RENT \\ % & Not Verified \\ 
+  50 & 3000 & 7.96 & 36 & A & CA & 34000 & RENT \\ % & Not Verified \\ 
    \hline
 \end{tabular}
 }
@@ -217,7 +217,7 @@ as new rows or new variables as new columns.
 \begin{exercise}
 The grades for assignments, quizzes, and exams in a course are
 often recorded in a gradebook that takes the form of a data matrix.
-What is an efficient way to store organize the data
+How might you organize grade data using a data
 matrix?\footnote{There are multiple strategies that can be followed.
   One common strategy is to have each student represented by a row,
   and then add a column for each assignment, quiz, or exam.
@@ -228,87 +228,109 @@ matrix?\footnote{There are multiple strategies that can be followed.
   name.}
 \end{exercise}
 
-%\index{data!county|(}
-%
-%\begin{exercise}\label{desc_county_as_data_matrix}
-%We consider data for 3,143 counties in the United States,
-%which includes each county's name,
-%the state where it resides, its population in 2000 and 2010,
-%per capita federal spending, poverty rate,
-%and five additional characteristics.
-%How might these data be organized in
-%a data matrix?\footnote{Each county may be viewed as a case,
-%  and there are eleven pieces of information recorded for
-%  each case.
-%  A table with 3,143 rows and 11 columns could hold these data,
-%  where each row represents a county and each column represents
-%  a particular piece of information.}
-%\end{exercise}
-%
-%\noindent The data described in Guided
-%Practice~\ref{desc_county_as_data_matrix} represents the
-%\data{county} data set, which is shown as a data matrix
-%in Figure~\ref{countyDF}.
-%The variables are summarized in Figure~\ref{countyVariables}.
-%\Comment{These data were collected from the US Census website. Move this reference to an appendix.}\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
-%
-%\begin{landscape}
-%\begin{figure}
-%\centering\small
-%\begin{tabular}{ccc ccc ccc ccc}
-%\hline
-%& \var{name} & \var{state} & \var{pop2000} & \var{pop2010} &
-%   \var{fed\_\hspace{0.3mm}spend} & \var{poverty} & \var{homeownership} & \var{multiunit} &
-%   \var{income} & \var{med\_\hspace{0.3mm}income} & \var{smoking\_\hspace{0.3mm}ban} \\
-%\hline
-%  1 & Autauga & AL & 43671 & 54571 & 6.068 & 10.6 & 77.5 & 7.2 & 24568 & 53255 & none \\
-%  2 & Baldwin & AL & 140415 & 182265 & 6.140 & 12.2 & 76.7 & 22.6 & 26469 & 50147 & none \\ 
-%  3 & Barbour & AL & 29038 & 27457 & 8.752 & 25.0 & 68.0 & 11.1 & 15875 & 33219 & none \\ 
-%  4 & Bibb & AL & 20826 & 22915 & 7.122 & 12.6 & 82.9 & 6.6 & 19918 & 41770 & none \\ 
-%  5 & Blount & AL & 51024 & 57322 & 5.131 & 13.4 & 82.0 & 3.7 & 21070 & 45549 & none \\ 
-%  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-%  3142 & Washakie & WY & 8289 & 8533 & 8.714 & 5.6 & 70.9 & 10.0 & 28557 & 48379 & none \\ 
-%  3143 & Weston & WY & 6644 & 7208 & 6.695 & 7.9 & 77.9 & 6.5 & 28463 & 53853 & none \\ 
-%\hline
-%\end{tabular}
-%\caption{Seven rows from the \data{county} data set.}
-%\label{countyDF}
-%% library(openintro); county <- countyComplete[,c("name", "state", "pop2000", "pop2010", "fed_spending", "poverty", "home_ownership", "housing_multi_unit", "per_capita_income", "median_household_income")]; colnames(county) <- c("name", "state", "pop2000", "pop2010", "fed_spend", "poverty", "homeownership", "multiunit", "income", "med_income"); county$fed_spend <- county$fed_spend / county$pop2010
-%
-%% library(openintro); library(xtable); cc <- countyComplete; xtable(cc[c(1:5,nrow(cc) - (1:0)), c("name", "state", "pop2000", "pop2010", "fed_spend", "poverty", "homeownership", "multiunit", "income", "med_income")], digits=1)
-%\end{figure}
-%
-%\begin{figure}
-%\centering\small
-%\begin{tabular}{lp{11cm}}
-%\hline
-%{\bf variable} & {\bf description} \\
-%\hline
-%\var{name} & County name \\
-%\var{state} & State where the county resides (also including the District of Columbia) \\
-%\var{pop2000} & Population in 2000 \\
-%\var{pop2010} & Population in 2010 \\
-%\var{fed\_\hspace{0.3mm}spend} & Federal spending per capita \\
-%\var{poverty}  &  Percent of the population in poverty \\
-%\var{homeownership}  &  Percent of the population that lives in their own home or lives with the owner (e.g. children living with parents who own the home) \\
-%\var{multiunit}  &  Percent of living units that are in multi-unit structures (e.g. apartments) \\
-%\var{income} & Income per capita \\
-%\var{med\_\hspace{0.3mm}income} & Median household income for the county, where a household's income equals the total income of its occupants who are 15 years or older \\
-%\var{smoking\_\hspace{0.3mm}ban}  &  Type of county-wide smoking ban in place at the end of 2011, which takes
-%			one of three values: \resp{none}, \resp{partial}, or \resp{comprehensive},
-%			where a \resp{comprehensive} ban means smoking
-%			was not permitted in restaurants, bars, or workplaces, and \resp{partial}
-%			means smoking was banned in at least one of those three locations \\
-%\hline
-%\end{tabular}
-%\centering
-%\caption{Variables and their descriptions for the \data{county} data set.}
-%\label{countyVariables}
-%\end{figure}
-%\end{landscape}
+\index{data!county|(}
+
+\begin{exercise}\label{desc_county_as_data_matrix}
+We consider data for 3,139 counties in the United States,
+which includes each county's name,
+the state where it resides, its population,
+how its population changed from 2010 to 2017,
+poverty rate,
+and six additional characteristics.
+How might these data be organized in
+a data matrix?\footnote{Each county may be viewed as a case,
+  and there are eleven pieces of information recorded for
+  each case.
+  A table with 3,139 rows and 11 columns could hold these data,
+  where each row represents a county and each column represents
+  a particular piece of information.}
+\end{exercise}
+
+\noindent The data described in Guided
+Practice~\ref{desc_county_as_data_matrix} represents the
+\data{county} data set, which is shown as a data matrix
+in Figure~\ref{countyDF}.
+The variables are summarized in Figure~\ref{countyVariables}.
+\Comment{These data were collected from the US Census website. Move this reference to an appendix.}\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
+
+\begin{landscape}
+\begin{figure}
+\centering\small
+\begin{tabular}{ccc ccc ccc ccc}
+  \hline
+ & \var{name} & \var{state} & \var{pop} & \var{pop\_\hspace{0.3mm}change} & \var{poverty} & \var{home\_\hspace{0.3mm}ownership} & \var{multi\_\hspace{0.3mm}unit} & \var{unemp\_\hspace{0.3mm}rate} & \var{metro} & \var{median\_\hspace{0.3mm}edu} & \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income} \\ 
+  \hline
+  1 & Autauga  & Alabama &  55504 &  1.48 & 13.5 & 77.5 &  7.2 & 3.86 & yes & some\_college & 54487 \\ 
+  2 & Baldwin  & Alabama & 212628 &  9.19 & 11.7 & 76.7 & 22.6 & 3.99 & yes & some\_college & 56460 \\ 
+  3 & Barbour  & Alabama &  25270 & -6.22 & 29.9 & 68.0 & 11.1 & 5.90 & no  & hs\_diploma   & 32884 \\ 
+  4 & Bibb     & Alabama &  22668 &  0.73 & 20.1 & 82.9 &  6.6 & 4.39 & yes & hs\_diploma   & 43079 \\ 
+  5 & Blount   & Alabama &  58013 &  0.68 & 14.1 & 82.0 &  3.7 & 4.02 & yes & hs\_diploma   & 47213 \\ 
+  6 & Bullock  & Alabama &  10309 & -2.28 & 32.6 & 76.9 &  9.9 & 4.93 & no  & hs\_diploma   & 34278 \\ 
+  7 & Butler   & Alabama &  19825 & -2.69 & 24.8 & 69.0 & 13.7 & 5.49 & no  & hs\_diploma   & 35409 \\ 
+  8 & Calhoun  & Alabama & 114728 & -1.51 & 17.1 & 70.7 & 14.3 & 4.93 & yes & some\_college & 41778 \\ 
+  9 & Chambers & Alabama &  33713 & -1.20 & 19.9 & 71.4 &  8.7 & 4.08 & no  & hs\_diploma   & 39530 \\ 
+  10 & Cherokee & Alabama &  25857 & -0.60 & 16.8 & 77.5 &  4.3 & 4.05 & no  & hs\_diploma   & 41456 \\ 
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  3143 & Weston & Wyoming &  &  & 10.7 & 77.9 & 6.5 & 3.98 & no & some\_college & 56582 \\ 
+   \hline
+\end{tabular}
+\caption{Eleven rows from the \data{county} data set.}
+\label{countyDF}
+% library(openintro); data(county); county$name <- gsub(" County$", "", county$name); county$pop <- county$pop2017; county$unemp_rate = county$unemployment_rate; these <- c("name", "state", "pop", "pop_change", "poverty", "home_ownership", "multi_unit", "unemp_rate", "metro", "median_edu", "median_hh_income"); county <- county[, these]; library(xtable); xtable(as.data.frame(lapply(rbind.data.frame(head(county, 10), tail(county, 1)), function(x) { format(x) })))
+\end{figure}
+
+\begin{figure}
+\centering\small
+\begin{tabular}{lp{11cm}}
+\hline
+{\bf variable} & {\bf description} \\
+\hline
+\var{name} & County name \\
+\var{state} & State where the county resides,
+    or the District of Columbia \\
+\var{pop} & Population in 2017 \\
+\var{pop\_\hspace{0.3mm}change} & Population change from 2010 to 2017 \\
+\var{poverty}  &  Percent of the population in poverty \\
+\var{home\_\hspace{0.3mm}ownership}  &
+    Percent of the population that lives in their own home
+    or lives with the owner, e.g. children living with parents
+    who own the home \\
+\var{multi\_\hspace{0.3mm}unit}  &
+    Percent of living units that are in multi-unit structures,
+    e.g. apartments \\
+\var{unemp\_\hspace{0.3mm}rate} & Unemployment rate \\
+\var{metro} & Whether the county contains a metropolitan area \\
+\var{median\_\hspace{0.3mm}edu} & Median education level, which
+    can take a value among
+    \resp{below\_\hspace{0.3mm}hs},
+    \resp{hs\_\hspace{0.3mm}diploma},
+    \resp{some\_\hspace{0.3mm}college},
+    and \resp{bachelors} \\
+\var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income} &
+    Median household income for the county, where a household's
+    income equals the total income of its occupants who are
+    15~years or older \\
+\hline
+\end{tabular}
+\centering
+\caption{Variables and their descriptions for the \data{county} data set.}
+\label{countyVariables}
+\end{figure}
+\end{landscape}
 
 \subsection{Types of variables}
 \label{variableTypes}
+
+Examine the \var{unemp\_\hspace{0.3mm}rate}, \var{pop}, \var{state},
+and \var{median\_\hspace{0.3mm}edu} variables in the \data{county}
+data set. Each of these variables is inherently different from the
+other three, yet some share certain characteristics.
+
+First consider \var{unemp\_\hspace{0.3mm}rate}, which is said to be a \term{numerical} variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values. On the other hand, we would not classify a variable reporting telephone area codes as numerical since their average, sum, and difference have no clear meaning.
+
+The \var{pop2010} variable is also numerical, although it seems to be a little different than \var{fed\_\hspace{0.3mm}spend}. This variable of the population count can only take whole non-negative numbers (\resp{0}, \resp{1}, \resp{2}, ...). For this reason, the population variable is said to be \term{discrete} since it can only take numerical values with jumps. On the other hand, the federal spending variable is said to be \term{continuous}.
+
+The variable \var{state} can take up to 51 values after accounting for Washington, DC: \resp{AL}, ..., and \resp{WY}. Because the responses themselves are categories, \var{state} is called a \term{categorical} variable, and the possible values are called the variable's \term{levels}.
 
 Examine the \var{interest\_\hspace{0.3mm}rate}, \var{term},
 \var{home\_\hspace{0.3mm}ownership}, and \var{grade} variables
@@ -338,8 +360,7 @@ The loan term is always given in a whole number of months
 (e.g. \resp{1}, \resp{2}, \resp{3}, ...).
 For this reason, the term is said to be \term{discrete}
 since it can only take numerical values with jumps.
-Most often, discrete numerical variables are those where
-only whole numbers are possible.
+Often times, discrete numerical variables are counts.
 On the other hand, the interest rate variable is said to
 be \term{continuous}.
 
@@ -382,7 +403,8 @@ A \var{group} variable is used to indicate which group a patient
 has been assigned to the treatment or control group,
 and \var{num\_\hspace{0.3mm}migraines} represents the number of migraines the
 patient experienced during a 3-month period.
-Are these numerical or categorical variables?\footnote{There
+Classify each variable as either numerical or
+categorical?\footnote{There
   \var{group} variable can take just one of two group names,
   making it categorical.
   The \var{num\_\hspace{0.3mm}migraines} variable describes
@@ -393,6 +415,19 @@ Are these numerical or categorical variables?\footnote{There
 
 \subsection{Relationships between variables}
 \label{variableRelations}
+
+Many analyses are motivated by a researcher looking
+for a relationship between two or more variables.
+A social scientist may like to answer some of the
+following questions:
+\begin{enumerate}
+\setlength{\itemsep}{0mm}
+\item[(1)]\label{fedSpendingPovertyQuestion} Is federal spending, on average, higher or lower in counties with high rates of poverty?
+\item[(2)]\label{ownershipMultiUnitQuestion} If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?
+\item[(3)]\label{isAverageIncomeAssociatedWithSmokingBans} Which counties have a higher average income: those that enact one or more smoking bans or those that do not?
+\end{enumerate}
+
+
 
 Many analyses are motivated by a researcher looking for
 a relationship between two or more variables.
