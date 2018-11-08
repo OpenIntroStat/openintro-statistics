@@ -21,20 +21,21 @@ plot(x, y,
 AxisInPercent(1, pretty(c(0, x)))
 AxisInDollars(2, pretty(c(0, y)))
 box()
-points(x, y, pch = ".")
+points(x, y, pch = ".", col = COL[5, 4])
 mtext("Poverty Rate (Percent)", 1, 1.9)
 par(las = 0)
 mtext("Median Household Income", 2, 3.5)
 t1 <- x[ind]
 t2 <- y[ind]
-lines(c(t1, t1), c(-1e5, t2),
-      lty = 2,
-      col = COL[4])
-lines(c(-1e5, t1), c(t2, t2),
-      lty = 2,
-      col = COL[4])
-points(t1, t2,
-       col = COL[4])
+# lines(c(t1, t1), c(-1e5, t2), lty = 2, col = COL[4])
+# lines(c(-1e5, t1), c(t2, t2), lty = 2, col = COL[4])
+# points(t1, t2, col = COL[4])
+m <- lm(y ~ I(1 / x))
+x. <- seq(0.1, 100, 0.1)
+y. <- m$coef[1] + m$coef[2] / x.
+lines(x., y., lty = 2, lwd = 2, col = "white")
+lines(x., y., lty = 2, lwd = 1, col = COL[5])
+
 dev.off()
 
 county[ind, ]

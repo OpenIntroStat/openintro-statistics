@@ -49,14 +49,16 @@ but rather they are categorical variables.
 
 \index{data!email50|(}
 
-\Comment{Ensure the referenced image still applies. If not, update.}
 A \term{scatterplot} provides a case-by-case view of data
 for two numerical variables.
-In Figure~\vref{county_fed_spendVsPoverty}, a scatterplot
-was used to examine how federal spending and poverty were
-related in the \data{county} data set.
+In Figure~\vref{multiunitsVsOwnership} on
+page~\pageref{multiunitsVsOwnership}, a scatterplot
+was used to examine the rate of homeownership against
+the fraction of units that were part of multi-unit properties
+(e.g. apartments) in the \data{county} data set.
 Another scatterplot is shown in Figure~\ref{loan50_amt_vs_income},
-comparing the total income of a borrower (\var{total\_\hspace{0.3mm}income}) and the amount they borrowed
+comparing the total income of a borrower
+(\var{total\_\hspace{0.3mm}income}) and the amount they borrowed
 (\var{loan\_\hspace{0.3mm}amount}) for the \data{loan50} data set.
 In any scatterplot, each point represents a single case.
 Since there are 50 cases in \data{loan50},
@@ -85,6 +87,29 @@ Additionally, the relationship appears to be \term{nonlinear},
 where bigger loans seem to be associated with increased income,
 but that it appears to taper off,
 as shown by the dashed line.
+
+\begin{example}{Figure~\ref{medianHHIncomePoverty}
+    shows a plot of median household income
+    against the poverty rate for 3,143 counties.
+    What can be said about the relationship between
+    these variables?}
+  The relationship is evidently nonlinear,
+  as highlighted by the dashed line.
+  This is different from previous scatterplots we've seen,
+  which show relationships that do not show much, if any,
+  curvature in the trend.
+\end{example}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/medianHHIncomePoverty/medianHHIncomePoverty}
+   \caption{A scatterplot of the median household income
+       against the poverty rate for the
+       \data{county} data set.
+       A statistical model has also been fit to the data
+       and is shown as a dashed line.}
+   \label{medianHHIncomePoverty}
+\end{figure}
 
 \begin{exercise}
 What do scatterplots reveal about the data,

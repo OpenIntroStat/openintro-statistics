@@ -26,7 +26,7 @@ mtext("Loan Amount", 2, 3, las = 0)
 x. <- seq(min(x), max(x), length.out = 300)
 m <- lm(y ~ log(x))
 y. <- predict(m, newdata = data.frame(x = x.))
-lines(x., y., lty = 2, col = COL[5, 3])
+# lines(x., y., lty = 2, col = COL[5, 3])
 dev.off()
 
 # library(ggplot2); qplot(x, y, geom = c("point", "smooth"))
