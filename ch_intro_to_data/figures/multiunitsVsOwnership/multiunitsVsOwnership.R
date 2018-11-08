@@ -4,6 +4,7 @@ cc <- countyComplete
 data(COL)
 
 w3  <- 1 == 0
+ind <- 413
 
 if(w3){
   myPNG("MHP.png", 1200, 800,
@@ -16,7 +17,7 @@ if(w3){
         mgp = c(2.4, 0.4, 0))
 }
 pch    <- 1
-cex    <- sqrt(cc$pop2010 / 1e6)
+cex    <- sqrt(cc$pop2017 / 1e6)
 colPop <- fadeColor(ifelse(cex > 0.35, COL[4], COL[1]),
                     substr(gray(0.6 + cex * 0.1), 2, 3))
 colSm  <- colPop
@@ -29,22 +30,23 @@ if(!w3){
   colPop <- COL[1, 3]
   cexF   <- 1
 }
-plot(cc$housing_multi_unit[gp1],
-     cc$home_ownership[gp1],
+x <- cc$housing_multi_unit
+y <- cc$home_ownership
+plot(x[gp1], y[gp1],
      pch = pch,
      col = colSm,
      xlab = "",
      ylab = "Percent of Homeownership",
      axes = FALSE,
      cex = ifelse(cex < 0.32, 0.32, cex)[gp1],
-     xlim = range(cc$housing_multi_unit),
-     ylim = range(cc$home_ownership))
+     xlim = c(0, 100), # range(x, na.rm = TRUE),
+     ylim = range(y, na.rm = TRUE))
 at  =  seq(0, 100, 20)
 axis(1, at, paste0(at, "%"))
 axis(2, at, paste0(at, "%"))
+abline(h = at, v = at, col = COL[7, 2])
 box()
-points(cc$housing_multi_unit[!gp1],
-       cc$home_ownership[!gp1],
+points(x[!gp1], y[!gp1],
        pch = pch,
        col = colPop,
        xlab = "",
@@ -53,6 +55,16 @@ points(cc$housing_multi_unit[!gp1],
 points(cc$housing_multi_unit[!gp1],
        cc$home_ownership[!gp1],
        pch = '.')
+t1 <- x[ind]
+t2 <- y[ind]
+lines(c(t1, t1), c(-1e5, t2),
+      lty = 2,
+      col = COL[4])
+lines(c(-1e5, t1), c(t2, t2),
+      lty = 2,
+      col = COL[4])
+points(t1, t2,
+       col = COL[4])
 mtext("Percent of Units in Multi-Unit Structures",
       1,
       1.9,
@@ -82,3 +94,4 @@ if(w3){
 
 dev.off()
 
+county[ind, ]

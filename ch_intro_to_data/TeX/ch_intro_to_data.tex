@@ -149,8 +149,11 @@ in Figure~\ref{loan50Variables}.
 {\small
 \begin{tabular}{ccc ccc cc} %c}
   \hline
-   & loan\_amount & interest\_rate & term & grade & state
-       & total\_income & home\_ownership \\ % & verified\_income \\ 
+   & \var{loan\_\hspace{0.3mm}amount}
+   & \var{interest\_\hspace{0.3mm}rate}
+   & \var{term} & \var{grade} & \var{state}
+   & \var{total\_\hspace{0.3mm}income}
+   & \var{homeownership} \\ % & verified\_income \\ 
   \hline
   1 & 7500 & 7.34 & 36 & A & MD & 70000 & RENT \\ % & Source Verified \\ 
   2 & 25000 & 9.43 & 60 & B & OH & 254000 & MORTGAGE \\ % & Not Verified \\ 
@@ -185,7 +188,7 @@ in Figure~\ref{loan50Variables}.
 \var{state} & US state where the borrower resides. \\
 \var{total\_\hspace{0.3mm}income} & Borrower's total income,
     including any second income, in US dollars.   \\
-\var{home\_\hspace{0.3mm}ownership} & Indicates whether the
+\var{homeownership} & Indicates whether the
     person owns, owns but has a mortgage, or rents.  \\
 %\var{verified\_\hspace{0.3mm}income} & Indicates whether the
 %    income is verified, its source is verified but not the amount,
@@ -258,7 +261,7 @@ The variables are summarized in Figure~\ref{countyVariables}.
 \centering\small
 \begin{tabular}{ccc ccc ccc ccc}
   \hline
- & \var{name} & \var{state} & \var{pop} & \var{pop\_\hspace{0.3mm}change} & \var{poverty} & \var{home\_\hspace{0.3mm}ownership} & \var{multi\_\hspace{0.3mm}unit} & \var{unemp\_\hspace{0.3mm}rate} & \var{metro} & \var{median\_\hspace{0.3mm}edu} & \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income} \\ 
+ & \var{name} & \var{state} & \var{pop} & \var{pop\_\hspace{0.3mm}change} & \var{poverty} & \var{homeownership} & \var{multi\_\hspace{0.3mm}unit} & \var{unemp\_\hspace{0.3mm}rate} & \var{metro} & \var{median\_\hspace{0.3mm}edu} & \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income} \\ 
   \hline
   1 & Autauga  & Alabama &  55504 &  1.48 & 13.5 & 77.5 &  7.2 & 3.86 & yes & some\_college & 54487 \\ 
   2 & Baldwin  & Alabama & 212628 &  9.19 & 11.7 & 76.7 & 22.6 & 3.99 & yes & some\_college & 56460 \\ 
@@ -291,7 +294,7 @@ The variables are summarized in Figure~\ref{countyVariables}.
 \var{pop} & Population in 2017 \\
 \var{pop\_\hspace{0.3mm}change} & Population change from 2010 to 2017 \\
 \var{poverty}  &  Percent of the population in poverty \\
-\var{home\_\hspace{0.3mm}ownership}  &
+\var{homeownership}  &
     Percent of the population that lives in their own home
     or lives with the owner, e.g. children living with parents
     who own the home \\
@@ -326,50 +329,43 @@ and \var{median\_\hspace{0.3mm}edu} variables in the \data{county}
 data set. Each of these variables is inherently different from the
 other three, yet some share certain characteristics.
 
-First consider \var{unemp\_\hspace{0.3mm}rate}, which is said to be a \term{numerical} variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values. On the other hand, we would not classify a variable reporting telephone area codes as numerical since their average, sum, and difference have no clear meaning.
-
-The \var{pop2010} variable is also numerical, although it seems to be a little different than \var{fed\_\hspace{0.3mm}spend}. This variable of the population count can only take whole non-negative numbers (\resp{0}, \resp{1}, \resp{2}, ...). For this reason, the population variable is said to be \term{discrete} since it can only take numerical values with jumps. On the other hand, the federal spending variable is said to be \term{continuous}.
-
-The variable \var{state} can take up to 51 values after accounting for Washington, DC: \resp{AL}, ..., and \resp{WY}. Because the responses themselves are categories, \var{state} is called a \term{categorical} variable, and the possible values are called the variable's \term{levels}.
-
-Examine the \var{interest\_\hspace{0.3mm}rate}, \var{term},
-\var{home\_\hspace{0.3mm}ownership}, and \var{grade} variables
-in the \data{loan50} data set.
-Each of these variables is inherently different from the
-other three yet some of them share certain characteristics.
-
-First consider \var{interest\_\hspace{0.3mm}rate},
+First consider \var{unemp\_\hspace{0.3mm}rate},
 which is said to be a \term{numerical} variable since
-it's always recorded as a number, and importantly, it is
-sensible to add, subtract, or take averages with those values.
+it can take a wide range of numerical values,
+and it is sensible to add, subtract, or take averages
+with those values.
 On the other hand, we would not classify a variable
-reporting telephone area codes as numerical since the
-average, sum, or difference of these values would not have
-a clear meaning.
+reporting telephone area codes as numerical since their
+average, sum, and difference have no clear meaning.
 
-\Comment{This is a little hacky for discrete, since a loan
-  could in theory be set on a weekly, daily, or other basis
-  than whole months.}
+The \var{pop} variable is also numerical, although it seems
+to be a little different than \var{unemp\_\hspace{0.3mm}rate}.
+This variable of the population count can only take whole
+non-negative numbers (\resp{0}, \resp{1}, \resp{2}, ...).
+For this reason, the population variable is said to be
+\term{discrete} since it can only take numerical values
+with jumps.
+On the other hand, the poverty rate variable is said
+to be \term{continuous}.
 
-The \var{term} variable represents the length of the loan,
-in months.
-This variable is also numerical,
-although it seems to be a little different than
-\var{interest\_\hspace{0.3mm}rate}.
-The loan term is always given in a whole number of months
-(e.g. \resp{1}, \resp{2}, \resp{3}, ...).
-For this reason, the term is said to be \term{discrete}
-since it can only take numerical values with jumps.
-Often times, discrete numerical variables are counts.
-On the other hand, the interest rate variable is said to
-be \term{continuous}.
-
-The variable \var{home\_\hspace{0.3mm}ownership} can take
-one of three values: \resp{MORTGAGE}, \resp{OWN}, or \resp{RENT}.
+The variable \var{state} can take up to 51 values after
+accounting for Washington, DC: \resp{AL}, ..., and \resp{WY}.
 Because the responses themselves are categories,
-\var{home\_\hspace{0.3mm}ownership} is called
-a \term{categorical} variable,
+\var{state} is called a \term{categorical} variable,
 and the possible values are called the variable's \term{levels}.
+
+Finally, consider the \var{median\_\hspace{0.3mm}edu} variable,
+which describes the type of county-wide smoking ban and takes values
+\resp{below\_\hspace{0.3mm}hs}, \resp{hs\_\hspace{0.3mm}diploma},
+\resp{some\_\hspace{0.3mm}college}, or \resp{bachelors}
+in each county.
+This variable seems to be a hybrid: it is a categorical variable
+but the levels have a natural ordering.
+A variable with these properties is called an \term{ordinal}
+variable, while a regular categorical variable without this
+type of special ordering is called a \term{nominal} variable.
+To simplify analyses, any ordinal variables in this book will
+be treated as categorical variables.
 
 \begin{figure}
 \centering
@@ -422,136 +418,165 @@ A social scientist may like to answer some of the
 following questions:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item[(1)]\label{fedSpendingPovertyQuestion} Is federal spending, on average, higher or lower in counties with high rates of poverty?
-\item[(2)]\label{ownershipMultiUnitQuestion} If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?
-\item[(3)]\label{isAverageIncomeAssociatedWithSmokingBans} Which counties have a higher average income: those that enact one or more smoking bans or those that do not?
+\item[(1)]\label{ownershipMultiUnitQuestion}
+    If homeownership is lower than the national average
+    in one county, will the percent of multi-unit structures
+    in that county tend to be above or below the national average?
+\item[(2)]\label{pop_change_v_median_hh_income_question}
+    Does county population tend to increase or decrease
+    for counties with higher median household incomes?
+%\item[(1)]\label{fedSpendingPovertyQuestion}
+%    Is federal spending, on average,
+%    higher or lower in counties with high rates of poverty?
+%\item[(2)]\label{medianHHIncomePovertyQuestion}
+%    How does median household income change with
+%    the poverty rate?
+\item[(3)]\label{isAverageIncomeAssociatedWithSmokingBans}
+    How useful a predictor is median education level
+    for the median household income for US counties?
 \end{enumerate}
 
-
-
-Many analyses are motivated by a researcher looking for
-a relationship between two or more variables.
-Someone evaluating a loan may like to answer
-some of the following questions:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item[(1)]\label{loan_size_vs_total_income}
-    What is the relationship between loan amount and total income?
-\item[(2)]\label{interest_rate_vs_income}
-    If someone's income is above the average, will their
-    interest rate tend to be above or below the average?
-%\item[(2)]\label{interest_rate_vs_loan_size}
-%    Does the interest rate tend to be lower or higher
-%    for smaller loans?
-\item[(3)]\label{interest_rate_vs_rent-mortgage_question}
-    Who has a higher interest rate: those who rent
-    or those with a mortgage?
-%\item[(1)]\label{fedSpendingPovertyQuestion} Is federal spending, on average, higher or lower in counties with high rates of poverty?
-%\item[(2)]\label{ownershipMultiUnitQuestion} If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?
-%\item[(3)]\label{isAverageIncomeAssociatedWithSmokingBans} Which counties have a higher average income: those that enact one or more smoking bans or those that do not?
-\end{enumerate}
-
-To answer these questions, data must be collected, such as
-the \data{loan50} data set shown in Figure~\ref{loan50DF}.
+To answer these questions, data must be collected, such
+as the \data{county} data set shown in Table~\ref{countyDF}.
 Examining summary statistics \index{summary statistic} could
 provide insights for each of the three questions about counties.
-Additionally, graphs can be used to visually summarize data
-and are useful for answering such questions as well.
-
-%\indexthis{Scatterplots}{scatterplot} are one type of graph
-%used to study the relationship between two numerical variables.
-%Figure~\ref{interest_rate_vs_income} compares the variables
-%\var{interest\_\hspace{0.3mm}rate}
-%and \var{total\_\hspace{0.3mm}income}.
-%Each point on the plot represents a single loan.
-%For instance, the highlighted dot corresponds to
-%Loan~40 in the \data{loan50} data set: a borrower
-%who had an income of \$160,000 and received an interest
-%rate of 12.62\%.
-%Other details of the loan include that it was for \$38,000,
-%the borrower has a mortgage, and the loan received a grade of C.
+Additionally, graphs can be used to visually exploring the data.
 
 \indexthis{Scatterplots}{scatterplot} are one type of graph
 used to study the relationship between two numerical variables.
-Figure~\ref{loan_amount_vs_income} compares the variables
-\var{interest\_\hspace{0.3mm}rate}
-and \var{total\_\hspace{0.3mm}income}.
-Each point on the plot represents a single loan.
+Figure~\ref{multiunitsVsOwnership} compares the variables
+\var{homeownership} and
+\var{multi\_\hspace{0.3mm}unit},
+which is the percent of units in multi-unit structures
+(e.g. apartments, condos).
+Each point on the plot represents a single county.
 For instance, the highlighted dot corresponds to
-Loan~35, which represents a borrower who had an
-income of \$45,000 and received a loan of \$9,000.
-Other details of the loan interest rate was 15.04\%,
-the borrower owns their home,
-and the loan received a grade of C.
+County~413 in the \data{county} data set:
+Chattahoochee County, Georgia, which has 39.4\% of
+units in multi-unit structures and a homeownership rate
+of 31.3\%.
+The scatterplot suggests a relationship between the
+two variables: counties with a higher rate of multi-units
+tend to have lower homeownership rates.
+We might brainstorm as to why this relationship exists
+and investigate each idea to determine which is the most
+reasonable explanation.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/loan_amount_vs_income/loan_amount_vs_income}
-\caption{A scatterplot showing \var{loan\_\hspace{0.3mm}amount}
-  against \var{total\_\hspace{0.3mm}income}. Loan~35 is highlighted,
-  where the borrower had a total income of \$45,000 and received
-  a loan of \$9,000.}
-\label{loan_amount_vs_income}
+  \centering
+  \includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/multiunitsVsOwnership/multiunitsVsOwnership}
+  \caption{A scatterplot of homeownership versus the percent
+      of units that are in multi-unit structures for US counties.
+      The highlighted dot represents Chattahoochee County, Georgia,
+      which has a multi-unit rate of 39.4\% and a homeownership rate
+      of 31.3\%.}
+  \label{multiunitsVsOwnership}
 \end{figure}
 
 \begin{exercise}
 Examine the variables in the \data{loan50} data set,
 which are described in Table~\vref{loan50Variables}.
-Create two additional questions about the relationships
-between these variables that are of interest to
-you.\footnote{Two more example questions:
-  (1) How closely tied is the loan grade to the interest rate?
-  (2) What is the relationship between interest rate and the
-      income of the person requesting the loan?}
+Create two questions about possible relationships
+between variables in this data set that are of interest
+to you.\footnote{Two example questions: \\
+  (1)~What is the relationship between loan amount and total income? \\
+  (2)~If someone's income is above the average, will their
+    interest rate tend to be above or below the average?}
 \end{exercise}
 
-Figure~\ref{loan_amount_vs_income}
-shows a positive trend, where the loan amount
-tends to be larger for people with larger incomes.
+The multi-unit and homeownership rates are said to be
+associated because the plot shows a discernible pattern.
 When two variables show some connection with one another,
 they are called \term{associated} variables.
 Associated variables can also be called \term{dependent}
 variables and vice-versa.
-When the variables increase together,
-as they do in Figure~\ref{loan_amount_vs_income},
-they are said to be \term{positively associated}.
-When the trend in the scatterplot goes down to the right,
-then they are described as \term{negatively correlated}.
 
-While we may find it interesting to consider the relationship
-between two variables such as those in the scatterplot,
-the relationship between those variables can be more complex.
-For example, interest rates on loans tend to be chosen based
-on the riskiness of the loan, i.e. how likely it is to be
-paid back, and that is likely to depend on a variety of
-details, such as what the loan is for, the person's
-creditworthiness, whether their income is verified, etc.
-We will begin exploring some of these more complex relationships
-in graphs in Chapter~\ref{ch_summarizing_data} and beyond.
-\Comment{Revise if we don't add these more rich plots...}
-
-\begin{example}{Figure~\ref{interest_rate_vs_loan_amount}
-    features a scatterplot of interest rate against loan amount.
+\begin{example}{This example examines the relationship
+    between population change over a 7~year period and
+    median household income,
+    which is visualized as a scatterplot in
+    Figure~\ref{pop_change_v_med_income}.
     Are these variables associated?}
-  There isn't an evident trend in the data,
-  so we would say these two variables are not associated.
+  The larger the median household income for a county,
+  the higher the population growth observed for the county.
+  While this trend isn't true for every county,
+  the trend in the plot is evident.
+  Since there is some relationship between the variables,
+  they are associated.
 \end{example}
 
+%When two variables show some connection with one another,
+%they are called \term{associated} variables.
+%Associated variables can also be called \term{dependent}
+%variables and vice-versa.
+%When the variables increase together,
+%as they do in Figure~\ref{loan_amount_vs_income},
+%they are said to be \term{positively associated}.
+%When the trend in the scatterplot goes down to the right,
+%then they are described as \term{negatively correlated}.
+
+%While we may find it interesting to consider the relationship
+%between two variables such as those in the scatterplot,
+%the relationship between those variables can be more complex.
+%For example, interest rates on loans tend to be chosen based
+%on the riskiness of the loan, i.e. how likely it is to be
+%paid back, and that is likely to depend on a variety of
+%details, such as what the loan is for, the person's
+%creditworthiness, whether their income is verified, etc.
+%We will begin exploring some of these more complex relationships
+%in graphs in Chapter~\ref{ch_summarizing_data} and beyond.
+%\Comment{Revise if we don't add these more rich plots...}
+
+%\begin{example}{Figure~\ref{interest_rate_vs_loan_amount}
+%    features a scatterplot of interest rate against loan amount.
+%    Are these variables associated?}
+%  There isn't an evident trend in the data,
+%  so we would say these two variables are not associated.
+%\end{example}
+
 \begin{figure}
-   \centering
-   \includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/interest_rate_vs_loan_amount/interest_rate_vs_loan_amount}
-   \caption{A scatterplot of interest rate against loan amount.}
-   \label{interest_rate_vs_loan_amount}
+\centering
+\includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/pop_change_v_med_income/pop_change_v_med_income}
+\caption{A scatterplot showing
+    \var{pop\_\hspace{0.3mm}change}
+    against \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income}.
+    Owsley County of Kentucky, with a poverty rate of 45.2\%
+    and median household income of \$23,115, is highlighted.}
+\label{pop_change_v_med_income}
 \end{figure}
+
+Because there is a downward trend in
+Figure~\ref{multiunitsVsOwnership} --
+counties with more units in multi-unit structures
+are associated with lower homeownership --
+these variables are said to be
+\termsub{negatively associated}{negative association}.
+A~\term{positive association} is shown in the relationship
+between the
+\var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income}
+and \var{pop\_\hspace{0.3mm}change}
+variables represented in Figure~\ref{pop_change_v_med_income},
+where counties with higher median household income tend
+to have higher rates of population growth.
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/medianHHIncomePoverty/medianHHIncomePoverty}
+%\caption{A scatterplot showing
+%    \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income}
+%    against \var{poverty}.
+%    Owsley County of Kentucky, with a poverty rate of 45.2\%
+%    and median household income of \$23,115, is highlighted.}
+%\label{medianHHIncomePoverty}
+%\end{figure}
 
 %Because there is a slight downward trend in
 %Figure~\ref{interest_rate_vs_income} -- counties with more units in multi-unit structures are associated with lower homeownership -- these variables are said to be \termsub{negatively associated}{negative association}. A \term{positive association} is shown in the relationship between the \var{poverty} and \var{fed\_\hspace{0.3mm}spend} variables represented in Figure~\ref{interest_rate_vs_income}, where counties with higher poverty rates tend to receive more federal spending per capita.
 
-When two variables are not evidently associated,
-as is the case between interest rate and loan amount,
-they are said to be \term{independent}.
-That is, two variables are independent if there is
-no evident relationship between them.
+If two variables are not associated,
+then they are said to be \term{independent}.
+That is, two variables are independent if there
+is no evident relationship between the two.
 
 \begin{termBox}{\tBoxTitle{Associated or independent, not both}
 A pair of variables are either related in some way (associated) or not (independent). No pair of variables is both associated and independent.}
