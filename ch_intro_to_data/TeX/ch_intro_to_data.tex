@@ -105,7 +105,9 @@ Effective presentation and description of data is a first step in most analyses.
 
 \subsection{Observations, variables, and data matrices}
 
-\Comment{The \data{email50} data set has been swapped out here for the \data{loan50} data set.}
+\Comment{This entire section and its data were overhauled.
+  The most prominent conspicuous change was removing the
+  \data{email50} data set for the \data{loan50} data set.}
 
 \index{data!loan50|(}
 
@@ -423,8 +425,8 @@ following questions:
     in one county, will the percent of multi-unit structures
     in that county tend to be above or below the national average?
 \item[(2)]\label{pop_change_v_median_hh_income_question}
-    Does county population tend to increase or decrease
-    for counties with higher median household incomes?
+    Does county population change tend to correspond to an increase
+    or decrease for counties with higher median household incomes?
 %\item[(1)]\label{fedSpendingPovertyQuestion}
 %    Is federal spending, on average,
 %    higher or lower in counties with high rates of poverty?
@@ -692,20 +694,23 @@ We can easily access ratings for products, sellers, and companies through websit
 \subsection{Explanatory and response variables}
 \label{explanatoryAndResponse}
 
-\index{data!loan50|(}
+\Comment{This subsection was significantly updated.}
+
+\index{data!county|(}
 
 Consider the following question from
-page~\pageref{interest_rate_vs_income}
-for the \data{loan50} data set:
+page~\pageref{pop_change_v_median_hh_income_question}
+for the \data{county} data set:
 \begin{enumerate}
 \item[(2)]
-    If someone's income is above the average, will their
-    interest rate tend to be above or below the average?
+    Does county population change tend to correspond to an increase
+    or decrease for counties with higher median household incomes?
 \end{enumerate}
-If we suspect a person's income might affect the
-interest rate they receive on a loan,
-then income is the \termsub{explanatory}{explanatory variable}
-variable and interest rate is the
+If we suspect a county's median household income might affect
+its growth rate,
+then median household income is the
+\termsub{explanatory}{explanatory variable}
+variable and the change in the population is the
 \termsub{response}{response variable} variable in the
 relationship.\footnote{Sometimes the term
 \term{independent variable} is used for
@@ -717,7 +722,7 @@ particular terminology.}
 If there are many variables, it is possible to consider
 a number of them as explanatory variables.
 
-\index{data!loan50|)}
+\index{data!county|)}
 
 \begin{termBox}{\tBoxTitle{Explanatory and response variables}
 When we suspect one variable might causally affect another,
@@ -727,7 +732,7 @@ second the response variable.
 
 \hspace{10mm}\includegraphics[height=0.34in]{ch_intro_to_data/figures/expResp/expResp}
 
-Some pairs of variables do not imply any causal relationship,
+Often times it doesn't seem that one variable might affect the other,
 in which case these labels should not be applied.}
 \end{termBox}
 
