@@ -537,51 +537,114 @@ set?\footnote{There might be two height groups visible
 \subsection{Variance and standard deviation}
 \label{variability}
 
-The mean was introduced as a method to describe the center of a data set, but the \indexthis{variability}{variability} in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though their formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to understand, and it roughly describes how far away the typical observation is from the mean.
+The mean was introduced as a method to describe the center of a data set, and \indexthis{variability}{variability} in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though their formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to understand, and it roughly describes how far away the typical observation is from the mean.
 
-We call the distance of an observation from its mean its \term{deviation}. Below are the deviations for the $1^{st}_{}$, $2^{nd}_{}$, $3^{rd}$, and $50^{th}_{}$ observations in the \var{num\_\hspace{0.3mm}char} variable. For computational convenience, the number of characters is listed in the thousands and rounded to the first decimal.
+We call the distance of an observation from its mean its \term{deviation}. Below are the deviations for the $1^{st}_{}$, $2^{nd}_{}$, $3^{rd}$, and $50^{th}_{}$ observations in the \var{loan\_\hspace{0.3mm}amount} variable.
+For computational convenience, we'll perform the calculations
+in thousands of dollars rounded to the nearest \$100:
 \begin{align*}
-x_1^{}-\bar{x} &= 21.7 - 11.6 = 10.1 \hspace{5mm}\text{ } \\
-x_2^{}-\bar{x} &= 7.0 - 11.6 = -4.6 \\
-x_3^{}-\bar{x} &= 0.6 - 11.6 = -11.0 \\
+x_1^{}-\bar{x} &= 7.5 - 17.1 = -9.6 \hspace{5mm}\text{ } \\
+x_2^{}-\bar{x} &= 25.0 - 17.1 = 7.9 \\
+x_3^{}-\bar{x} &= 14.5 - 17.1 = -2.6 \\
 			&\ \vdots \\
-x_{50}^{}-\bar{x} &= 15.8 - 11.6 = 4.2
+x_{50}^{}-\bar{x} &= 3.0 - 17.1 = -14.1
 \end{align*}
-% library(openintro); d <- email50$num_char; round(mean(d),1); d[c(1,2,3,50)]; d[c(1,2,3,50)] - round(mean(d),1); (d[c(1,2,3,50)] - round(mean(d)))^2; sum((d - round(mean(d)))^2)/49; sqrt(sum((d - round(mean(d)))^2)/49); var(d); sd(d)
-If we square these deviations and then take an average, the result is about equal to the sample \term{variance}\label{varianceIsDefined}, denoted by $s_{}^2$\marginpar[\raggedright$s^2_{}$\\\footnotesize sample variance]{\raggedright$s^2_{}$\\\footnotesize sample variance}:
+% library(openintro); d. <- loan50$loan_amount; d <- round(d. / 1000, 1); (m <- round(mean(d), 1)); d[c(1,2,3,50)]; (dev <- d - m)[c(1,2,3,50)]; (dev2 <- dev^2)[c(1,2,3,50)]; (s2 <- sum(dev2) / 49); (s <- sqrt(s2)); var(d); sd(d)
+\Comment{Next sentence says ``average'' even though
+  it is dividing by $n - 1$.
+  Same change in the term box below. Thoughts?}
+If we square these deviations and then take an average,
+the result is equal to the sample
+\term{variance}\label{varianceIsDefined},
+denoted by $s_{}^2$:
 \begin{align*}
-s_{}^2 &= \frac{10.1_{}^2 + (-4.6)_{}^2 + (-11.0)_{}^2 + \cdots + 4.2_{}^2}{50-1} \\
-	&= \frac{102.01 + 21.16 + 121.00 + \cdots + 17.64}{49} \\
-	&= 172.44
+s_{}^2 &= \frac{(-9.6)_{}^2 + (7.9)_{}^2 + (-2.6)_{}^2 + \cdots + (-14.1)_{}^2}{50-1} \\
+	&= \frac{92.16 + 62.41 + 6.76 + \cdots + 198.81}{49} \\
+	&= 109.33
 \end{align*}
-We divide by $n-1$, rather than dividing by $n$, when computing the variance; you need not worry about this mathematical nuance for the material in this textbook. Notice that squaring the deviations does two things. First, it makes large values much larger, seen by comparing $10.1^2$, $(-4.6)^2$, $(-11.0)^2$, and $4.2^2$. Second, it gets rid of any negative signs.
+We divide by $n - 1$, rather than dividing by $n$,
+when computing the variance;
+you need not worry about this mathematical nuance
+for the material in this textbook.
+Notice that squaring the deviations does two things.
+First, it makes large values relatively much larger,
+seen by comparing $(-9.6)^2$, $(7.9)^2$, $(-2.6)^2$,
+and $(-14.1)^2$.
+Second, it gets rid of any negative signs.
 
 The \term{standard deviation} is defined as the square root of the variance:
-$$s=\sqrt{172.44} = 13.13$$
-\marginpar[\raggedright\vspace{-10mm}
+\begin{align*}
+s = \sqrt{109.33} = 10.456
+\end{align*}
+When computed more precisely to the nearest dollar,
+the standard deviation of loan amounts is \$10,455.
 
-$s$\\\footnotesize sample standard deviation]{\raggedright\vspace{-10mm}
-
-$s$\\\footnotesize sample standard deviation
-}\index{s@$s$}The standard deviation of the number of characters in an email is about 13.13 thousand. A subscript of $_x$ may be added to the variance and standard deviation, i.e. $s_x^2$ and $s_x^{}$, as a reminder that these are the variance and standard deviation of the observations represented by $x_1^{}$, $x_2^{}$, ..., $x_n^{}$. The $_{x}$ subscript is usually omitted when it is clear which data the variance or standard deviation is referencing.
+A subscript of $_x$ may be added to the variance
+and standard deviation,
+i.e. $s_x^2$ and $s_x^{}$, as a reminder that these
+are the variance and standard deviation of the observations
+represented by $x_1^{}$, $x_2^{}$, ..., $x_n^{}$.
+The $_{x}$ subscript is usually omitted when it is clear
+which data is being referenced.
 
 \begin{termBox}{\tBoxTitle{Variance and standard deviation}
-The variance is roughly the average squared distance from the mean. The standard deviation is the square root of the variance. The standard deviation is useful when considering how close the data are to the mean.}
+  The variance is the average squared distance from the mean.
+  The standard deviation is the square root of the variance.
+  The standard deviation is useful when considering how far
+  the data are distributed from the mean.}
 \end{termBox}
 
-Formulas and methods used to compute the variance and standard deviation for a population are similar to those used for a sample.\footnote{The only difference is that the population variance has a division by $n$ instead of $n-1$.} However, like the mean, the population values have special symbols: $\sigma_{}^2$\marginpar[\raggedright$\sigma_{}^2$\\\footnotesize population variance\\ \hspace{2mm}]{\raggedright$\sigma_{}^2$\\\footnotesize population variance\\ \hspace{2mm}} for the variance and $\sigma$\marginpar[\raggedright$\sigma$\\\footnotesize population standard deviation\\ \hspace{2mm}]{\raggedright$\sigma$\\\footnotesize population standard deviation\\ \hspace{2mm}} for the standard deviation. The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)} is the Greek letter \emph{sigma}.
-
+\Comment{This paragraph has been shortened to focus
+  exclusively on the notation for the population and
+  omits the $n - 1$ and $n$ distinction.}
+%The formula for computing a population's variance
+%and standard deviation are similar
+%to those used for a sample.\footnote{The only difference
+%  is that the population variance has a division by $n$
+%  instead of $n-1$.}
+%However, like the mean, the population values have
+%special symbols:
+%$\sigma_{}^2$ for the variance and $\sigma$ for the
+%standard deviation.
+%The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)}
+%is the Greek letter \emph{sigma}.
+Like the mean, the population values for variance
+and standard deviation have special symbols:
+$\sigma_{}^2$ for the variance and $\sigma$ for the
+standard deviation.
+The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)}
+is the Greek letter \emph{sigma}.
 
 \begin{figure}
 \centering
-\includegraphics[width=\mycaptionwidth]{ch_summarizing_data/figures/sdAsRuleForEmailNumChar/sdAsRuleForEmailNumChar}
-\caption{In the \var{num\_\hspace{0.3mm}char} data, 41 of the 50 emails (82\%) are within 1~standard deviation of the mean, and 47 of the 50 emails (94\%) are within 2 standard deviations. Usually about 70\% of the data are within 1 standard deviation of the mean and 95\% are within 2 standard deviations, though this rule of thumb is less accurate for skewed data, as shown in this example.}
-\label{sdAsRuleForEmailNumChar}
+\includegraphics[width=\mycaptionwidth]{ch_summarizing_data/figures/sdRuleForLoanAmount/sdRuleForLoanAmount}
+\caption{In the \var{num\_\hspace{0.3mm}char} data,
+  29 of the 50 loans (58\%) are within 1~standard deviation
+  of the mean, and 47 of the 50 loans (94\%) are within
+  2~standard deviations.
+  Usually about 70\% of the data are within 1~standard
+  deviation of the mean and 95\% are within 2~standard
+  deviations, though this rule of thumb is less accurate
+  for skewed data, as shown in this example.}
+\label{sdRuleForLoanAmount}
 \end{figure}
 
-\begin{tipBox}{\tipBoxTitle{standard deviation describes variability}
-Focus on the conceptual meaning of the standard deviation as a descriptor of variability rather than the formulas. Usually 70\% of the data will be within one standard deviation of the mean and about 95\% will be within two standard deviations. However, as seen in Figures~\ref{sdAsRuleForEmailNumChar} and~\ref{severalDiffDistWithSdOf1}, these percentages are not strict rules.}
-\end{tipBox}
+\Comment{The following box was changed from a Tip Box
+  to a Term Box since the design of OS4 will not distinguish
+  between the two.
+  The title was also updated}
+
+\begin{termBox}{
+  \tBoxTitle{How to think about the standard deviation}
+  The standard deviation represents the typical deviation
+  of observations from the mean.
+  Usually about 70\% of the data will be within one standard
+  deviation of the mean and about 95\% will be within two
+  standard deviations.
+  However, as seen in Figures~\ref{sdRuleForLoanAmount}
+  and~\ref{severalDiffDistWithSdOf1}, these percentages are
+  not strict rules.}
+\end{termBox}
 
 \begin{figure}
 \centering
@@ -591,11 +654,41 @@ Focus on the conceptual meaning of the standard deviation as a descriptor of var
 \end{figure}
 
 \begin{exercise}
-On page~\pageref{shapeFirstDiscussed}, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using Figure~\ref{severalDiffDistWithSdOf1} as an example, explain why such a description is important.\footnote{Figure~\ref{severalDiffDistWithSdOf1} shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a~distribution.}
+On page~\pageref{shapeFirstDiscussed}, the concept of
+shape of a distribution was introduced.
+A good description of the shape of a distribution should
+include modality and whether the distribution is symmetric
+or skewed to one side.
+Using Figure~\ref{severalDiffDistWithSdOf1} as an example,
+explain why such a description is
+important.\footnote{Figure~\ref{severalDiffDistWithSdOf1}
+  shows three distributions that look quite different,
+  but all have the same mean, variance,
+  and standard deviation.
+  Using modality, we can distinguish between the
+  first plot (bimodal) and the last two (unimodal).
+  Using skewness, we can distinguish between the
+  last plot (right skewed) and the first two.
+  While a picture, like a histogram, tells a more
+  complete story, we can use modality and shape
+  (symmetry/skew) to characterize basic information
+  about a~distribution.}
 \end{exercise}
 
-\begin{example}{Describe the distribution of the \var{num\_\hspace{0.3mm}char} variable using the histogram in Figure~\ref{loan50LoanAmountHist}. The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context: the number of characters in emails. Also note any especially unusual cases.}
-The distribution of email character counts is unimodal and very strongly skewed to the high end. Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.
+\begin{example}{Describe the distribution of the
+    \var{loan\_\hspace{0.3mm}amount} variable using
+    the histogram in Figure~\ref{loan50LoanAmountHist}.
+    The description should incorporate the center,
+    variability, and shape of the distribution,
+    and it should also be placed in context.
+    Also note any especially unusual cases.}
+  The distribution of loan amounts is unimodal
+  and skewed to the high end.
+  Many of the loans fall near the mean at \$17,083,
+  and most fall within one standard deviation (\$10,455)
+  of the mean.
+  There is one exceptionally long email
+  with about 65,000 characters.
 \end{example}
 
 In practice, the variance and standard deviation are sometimes used as a means to an end, where the ``end'' is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter~\ref{foundationsForInference} we will use the variance and standard deviation to assess how close the sample mean is to the population mean.
