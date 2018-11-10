@@ -1,14 +1,14 @@
 library(openintro)
 data(COL)
 
-myPDF("singleBiMultiModalPlots.pdf", 5.8, 2)
+myPDF("singleBiMultiModalPlots.pdf", 6.5, 2)
 
 set.seed(51)
 x1 <- rchisq(65, 6)
 x2 <- c(rchisq(22, 5.8),
         rnorm(40, 16.5, 2))
-x3 <- c(rchisq(20, 3),
-        rnorm(35, 12),
+x3 <- c(rchisq(25, 3),
+        rnorm(35, 11.7),
         rnorm(42, 18, 1.5))
 
 par(mfrow=c(1, 3),

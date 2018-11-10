@@ -5,18 +5,16 @@
 \Comment{Do a search for "email" to see if it still appears
 anywhere in this file. Do the same for the other chapters.}
 
-In this chapter we will be introduced to techniques for exploring
-and summarizing both numerical and categorical data.
-We will consider two data sets that we first encountered
-in Section~\ref{dataBasics}:
-\begin{description}
-\item[\data{loans}] We will consider loan data from
-    10,000 Lending Club loans.
-\item[\data{county}] We will consider several variables
-    from the United States counties.
-\end{description}
-Each of these data sets provides several opportunities
-for exploratory analyses.
+\Comment{This intro was rewritten.}
+
+This chapter focuses on the mechanics and construction
+of summary statistics and graphs.
+However, don't be fooled into thinking that the formulas
+or graphing rules are a mathematical exercise.
+These tools are applied throughout the rest of this book,
+and to attain statistical excellence,
+it's important to understand how these basic tools
+are constructed.
 
 
 %%%%%
@@ -28,6 +26,9 @@ summarizing numerical variables.
 The \data{loan50} and \data{county} data sets from
 Section~\ref{dataBasics} provide rich opportunities
 for examples.
+\Comment{Figures~\ref{} and~\ref{} show example entries of the
+variables that we'll consider from those tables along
+with a reminder on what each variable represents.}
 If you'd like to refresh yourself on these two data
 sets, see pages~\pageref{loan50DF} and~\pageref{countyDF}.
 Recall that outcomes of numerical variables are numbers
@@ -53,8 +54,9 @@ A \term{scatterplot} provides a case-by-case view of data
 for two numerical variables.
 In Figure~\vref{multiunitsVsOwnership} on
 page~\pageref{multiunitsVsOwnership}, a scatterplot
-was used to examine the rate of homeownership against
-the fraction of units that were part of multi-unit properties
+was used to examine the homeownership rate against
+the fraction of housing units that were part of
+multi-unit properties
 (e.g. apartments) in the \data{county} data set.
 Another scatterplot is shown in Figure~\ref{loan50_amt_vs_income},
 comparing the total income of a borrower
@@ -71,9 +73,7 @@ there are 50 points in Figure~\ref{loan50_amt_vs_income}.
    \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/loan50_amt_vs_income/loan50_amt_vs_income}
    \caption{A scatterplot of \var{total\_\hspace{0.3mm}income}
        versus \var{loan\_\hspace{0.3mm}amount} for the
-       \data{loan50} data set.
-       A statistical model has also been fit to the data
-       and is shown is a dashed line.}
+       \data{loan50} data set.}
    \label{loan50_amt_vs_income}
 \end{figure}
 
@@ -81,19 +81,19 @@ there are 50 points in Figure~\ref{loan50_amt_vs_income}.
 
 Looking at Figure~\ref{loan50_amt_vs_income},
 we see that there are many borrowers with an income below
-\$100k (\$100,000) on the left side of the graph,
-while there are a handful of borrowers with income above \$250k.
-Additionally, the relationship appears to be \term{nonlinear},
-where bigger loans seem to be associated with increased income,
-but that it appears to taper off,
-as shown by the dashed line.
+\$100,000 on the left side of the graph,
+while there are a handful of borrowers with income above~\$250,000.
+%Additionally, the relationship appears to be \term{nonlinear},
+%where bigger loans seem to be associated with increased income,
+%but that it appears to taper off,
+%as shown by the dashed line.
 
 \begin{example}{Figure~\ref{medianHHIncomePoverty}
     shows a plot of median household income
     against the poverty rate for 3,143 counties.
     What can be said about the relationship between
     these variables?}
-  The relationship is evidently nonlinear,
+  The relationship is evidently \term{nonlinear},
   as highlighted by the dashed line.
   This is different from previous scatterplots we've seen,
   which show relationships that do not show much, if any,
@@ -113,7 +113,7 @@ as shown by the dashed line.
 
 \begin{exercise}
 What do scatterplots reveal about the data,
-and how might they be useful?\footnote{Answers may vary.
+and how are they useful?\footnote{Answers may vary.
 Scatterplots are helpful in quickly spotting associations
 relating variables,
 whether those associations come in the form of simple
@@ -166,7 +166,7 @@ Figure~\ref{loan_amount_dot_plot_stacked}.
    \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_amount_dot_plot/loan_amount_dot_plot_stacked}
    \caption{A stacked dot plot of \var{loan\_\hspace{0.3mm}amount}
        for the \data{loan50} data set. The~loan amounts have been
-       rounded to the nearest \$1,000 in this plot, and the
+       rounded to the nearest \$2,000 in this plot, and the
        distribution's mean is shown as a red triangle.}
    \label{loan_amount_dot_plot_stacked}
 \end{figure}
@@ -174,7 +174,7 @@ Figure~\ref{loan_amount_dot_plot_stacked}.
 The \term{mean}, sometimes called the
 \indexthis{average}{mean!average}, is a common way
 to measure the center of a \term{distribution} of data.
-To find the mean loan amount, we add up all the loan
+To compute the mean loan size, we add up all the loan
 amounts and divide by the number of loans:
 \begin{align*}
 \bar{x}
@@ -186,24 +186,21 @@ amounts and divide by the number of loans:
 The sample mean is often labeled $\bar{x}$.
 The letter $x$ is being used as a generic placeholder
 for the variable of interest, \var{loan\_\hspace{0.3mm}amount},
-and the bar over on the $x$ communicates that the average
-loan amount in the 50 loans was \$17,083.
+and the bar over the $x$ communicates we're looking at the
+average loan amount, which for these 50 loans was \$17,083.
 It is useful to think of the mean as the balancing point
 of the distribution, and it is shown as a triangle in Figures~\ref{loan_amount_dot_plot}
 and~\ref{loan_amount_dot_plot_stacked}.
 
 \begin{termBox}{\tBoxTitle{Mean}%
-The sample mean of a numerical variable is computed as the sum
-of all of the observations divided by the number of observations:
+The sample mean can be computed as the sum of the
+observed values divided by the number of observations:
 \begin{align*}
 \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n}
 \end{align*}
-where $x_1$, $x_2$, $\dots$, $x_n$ represent the $n$ observed values.}
-\end{termBox}\marginpar[\raggedright\vspace{-8mm}
-
-$n$\\\footnotesize sample size]{\raggedright\vspace{-8mm}
-
-$n$\\\footnotesize sample size}\vspace{-2mm}
+where $x_1$, $x_2$, $\dots$, $x_n$ represent
+the $n$ observed values.}
+\end{termBox}
 
 \begin{exercise}
 Examine the equation for the mean.
@@ -222,7 +219,7 @@ loans?\footnote{The sample size was $n = 50$.}
 \end{exercise}
 
 The \data{loan50} data set represents a sample from
-a larger population of loans that were \Comment{add details}.
+a larger population of loans made through Lending Club.
 We could compute a mean for this population in the same way
 as the sample mean.
 However, the population mean has a special label: $\mu$.
@@ -232,6 +229,8 @@ the average of all observations in the population.
 Sometimes a subscript, such as $_x$,
 is used to represent which variable the population mean
 refers to, e.g. $\mu_x$.
+Often times it is too expensive to estimate the population mean,
+so we often estimate $\mu$ using the sample mean, $\bar{x}$.
 
 \begin{example}{The average loan amount across all loans
   in the population can be estimated using the sample data.
@@ -243,7 +242,8 @@ refers to, e.g. $\mu_x$.
 The sample mean, \$17,083, may provide a reasonable estimate
 of $\mu_x$.
 While this number will not be perfect,
-it provides a \emph{point estimate} of the population mean.
+it provides a \emph{point estimate} \index{point estimate}
+of the population mean.
 In Chapter~\ref{foundationsForInference} and beyond,
 we will develop tools to characterize the accuracy
 of point estimates, and we will find that point estimates
@@ -251,81 +251,287 @@ based on larger samples tend to be more accurate than
 those based on smaller samples.
 \end{example}
 
-\begin{example}{We might like to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,143 counties in the \data{county} data set. What would be a better approach?} \label{wtdMeanOfIncome}
-The \data{county} data set is special in that each county actually represents many individual people. If we were to simply average across the \var{income} variable, we would be treating counties with 5,000 and 5,000,000 residents equally in the calculations. Instead, we should compute the total income for each county, add up all the counties' totals, and then divide by the number of people in all the counties. If we completed these steps with the \data{county} data, we would find that the per capita income for the US is \$27,348.43. Had we computed the \emph{simple} mean of per capita income across counties, the result would have been just \$22,504.70!
+\Comment{Next example is new and tries to highlight
+\emph{why} the mean is so useful.}
+
+The mean is useful because it allows us to
+rescale or standardize a metric to something more easily
+interpretable and comparable.
+
+\begin{example}{Provide a couple examples where the mean
+  is a useful tool for making comparisons.}
+
+  1. We would like to understand if a drug is effective
+  at treating asthma attacks.
+  A trial of 1500 adults is set up,
+  where 500 receive the new drug in the treatment group,
+  and 1000 receive a standard drug in the control group.
+  Suppose we observe 200 asthma attacks in the treatment
+  group and 300 asthma attacks in the control group.
+  It wouldn't be reasonable to compare 200 to 300,
+  since the group sizes are different.
+  However, we can control for the imbalanced group sizes
+  by computing the average number of asthma attacks per
+  patient in each group:
+  the standard drug has a lower
+  average number of asthma attacks per patient % (0.3 per patient)
+  than the average in the treatment group: % (0.4 per patient).
+  \begin{align*}
+  & \text{Control Group: }\frac{300}{1000} = 0.3
+      && \text{Treatment Group: } \frac{200}{500} = 0.4 % \\
+  % &     &&  %\\
+  % & = 0.3\text{ asthma attacks per patient}
+  %     && = 0.4\text{ asthma attacks per patient}
+  \end{align*}
+
+  2. Emilio opened a food truck last year where he sells burritos,
+  and his business has stabilized over the last 3 months.
+  Over that 3 month period, he has made \$11,000 while
+  working 625 hours.
+  Computing Emilio's average hourly earnings provides
+  a useful statistic for evaluating whether his venture is,
+  at least from a financial perspective, worth it:
+  \begin{align*}
+  \frac{\$11000}{625\text{ hours}} = \$17.60\text{ per hour}
+  \end{align*}
+  By knowing his average hourly wage,
+  Emilio now has put his earnings into a standard unit that
+  is easier to compare with many other jobs that he could
+  apply for.
 \end{example}
 
-Example~\ref{wtdMeanOfIncome} used what is called a \term{weighted mean}\index{mean!weighted mean}, which will not be a key topic in this textbook. However, we have provided an online supplement on weighted means for interested readers:
-\begin{center}
-\oiRedirect{textbook-weighted_mean_supplement}{www.openintro.org/d?f=wtdmean}
-\end{center}
+%\begin{example}{What are some contexts that highlight
+%    the value of the mean?}
+%  Here are a few scenarios highlighting why the mean can be
+%  particularly useful.
+%  \begin{itemize}
+%  \item If a waitress makes an average of \$3.20 per table,
+%      then she can get a reasonable estimate of how much
+%      money she will make if she knows she'll turn over
+%      about 15 tables in a night:
+%      \begin{align*}
+%      total &= average \times count
+%          = \$3.20 \times 15
+%          = \$48.00
+%      \begin{align*}
+%      The estimate won't be perfect, but it will still
+%      be a useful reference of what she can expect.
+%  \item For every \$1 played on roulette,
+%      a gambler will lose, on average, 2.7 cents.
+%      If she plays 1000 games and bets \$1 each time,
+%      her expected loss is
+%      \begin{align*}
+%      total = average \times count
+%          = 2.7 \cents \times 1000
+%          = \$27
+%      \begin{align*}
+%  \end{itemize}
+%  The average provides us a sensible value to think
+%  about scaling gains and losses.
+%\end{example}
+
+\begin{example}{We might like to compute the average income
+    per person in the US. To do so, we might first think to take
+    the mean of the per capita incomes across the 3,143 counties
+    in the \data{county} data set. What would be a better approach?}
+    \label{wtdMeanOfIncome}
+  The \data{county} data set is special in that each county
+  actually represents many individual people.
+  If we were to simply average across the \var{income}
+  variable, we would be treating counties with 5,000 and
+  5,000,000 residents equally in the calculations.
+  Instead, we should compute the total income for each county,
+  add up all the counties' totals, and then divide by the number
+  of people in all the counties.
+  If we completed these steps with the \data{county} data,
+  we would find that the per capita income for the US is
+  \$27,348.43.
+  Had we computed the \emph{simple} mean of per capita income
+  across counties, the result would have been just \$22,504.70!
+\end{example}
+
+Example~\ref{wtdMeanOfIncome} used what is called
+a \term{weighted mean}\index{mean!weighted mean},
+which will not be a key topic in this textbook.
+However, we have provided an online supplement on
+weighted means for interested readers under
+\Comment{Extra Content at
+\oiRedirect{os}{openintro.org/os}}.
 
 \subsection{Histograms and shape}
 \label{histogramsAndShape}
 
-Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a \emph{bin}. For example, in the \data{email50} data set, we create a table of counts for the number of cases with character counts between 0 and 5,000, then the number of cases between 5,000 and 10,000, and so on. Observations that fall on the boundary of a bin (e.g. 5,000) are allocated to the lower bin. This tabulation is shown in Figure~\ref{binnedNumCharTable}. These binned counts are plotted as bars in Figure~\ref{email50NumCharHist} into what is called a \term{histogram}, which resembles the stacked dot plot shown in Figure~\ref{loan_amount_dot_plot_stacked}.
+Dot plots show the exact value for each observation.
+This is useful for small data sets, but they can become
+hard to read with larger samples. Rather than showing the
+value of each observation, we prefer to think of the value
+as belonging to a \emph{bin}.
+For example, in the \data{loan50} data set, we create
+a table of counts for the number of loans between
+\$0 and \$5,000, then the number of loans between
+\$5,000 and \$10,000, and so on.
+Observations that fall on the boundary of a bin
+(e.g. \$5,000) are allocated to the lower bin.
+This tabulation is shown in Figure~\ref{binnedLoanAmountTable}.
+These binned counts are plotted as bars in
+Figure~\ref{loan50LoanAmountHist} into what is called
+a \term{histogram}, which resembles a more heavily binned
+version of the stacked dot plot shown in
+Figure~\ref{loan_amount_dot_plot_stacked}.
 
 \begin{figure}[ht]
 \centering\small
-\begin{tabular}{l ccc ccc ccc c}
+\begin{tabular}{l ccc ccc ccc} % c}
   \hline
-Characters & \\
-(in thousands) & \raisebox{1.5ex}[0pt]{0-5} & \raisebox{1.5ex}[0pt]{5-10} & \raisebox{1.5ex}[0pt]{10-15} & \raisebox{1.5ex}[0pt]{15-20} & \raisebox{1.5ex}[0pt]{20-25} & \raisebox{1.5ex}[0pt]{25-30} & \raisebox{1.5ex}[0pt]{$\cdots$} & \raisebox{1.5ex}[0pt]{55-60} & \raisebox{1.5ex}[0pt]{60-65} \\
+Loan Amount & \\
+in \$1000's & \raisebox{1.5ex}[0pt]{0-5} & \raisebox{1.5ex}[0pt]{5-10} & \raisebox{1.5ex}[0pt]{10-15} & \raisebox{1.5ex}[0pt]{15-20} & \raisebox{1.5ex}[0pt]{20-25} & \raisebox{1.5ex}[0pt]{25-30} & \raisebox{1.5ex}[0pt]{30-35} & \raisebox{1.5ex}[0pt]{35-40} \\ %& \raisebox{1.5ex}[0pt]{40-45} \\
   \hline
-Count & 19 & 12 & 6 & 2 & 3 & 5 & $\cdots$ & 0 & 1 \\
+Count & 5 &  12 &   8 &  10 &   6 &   3 &   3 &   3 \\
   \hline
 \end{tabular}
-\caption{The counts for the binned \var{num\_\hspace{0.3mm}char} data.}
-\label{binnedNumCharTable}
+\caption{The counts for the binned \var{loan\_\hspace{0.3mm}amount} data.}
+\label{binnedLoanAmountTable}
 \end{figure}
+% library(openintro); library(xtable); max(loan50$loan_amount); t1 <- table(cut(loan50$loan_amount, seq(0, 40e3, 5000), right = TRUE)); t1; xtable(rbind(t1))
 
 \begin{figure}[bth]
    \centering
-   \includegraphics[width=0.82\textwidth]{ch_summarizing_data/figures/email50NumCharHist/email50NumCharHist}
+   \includegraphics[width=0.82\textwidth]{ch_summarizing_data/figures/loan50LoanAmountHist/loan50LoanAmountHist}
    \caption{A histogram of \var{num\_\hspace{0.3mm}char}. This distribution is very strongly skewed to the right.\index{skew!example: very strong}}
-   \label{email50NumCharHist}
+   \label{loan50LoanAmountHist}
 \end{figure}
 
-Histograms provide a view of the \term{data density}. Higher bars represent where the data are relatively more common. For instance, there are many more emails with fewer than 20,000 characters than emails with at least 20,000 in the data set. The bars make it easy to see how the density of the data changes relative to the number of characters.
+Histograms provide a view of the \term{data density}.
+Higher bars represent where the data are relatively more common.
+For instance, there are many more loans less than or equal to
+\$20,000 than loans more than \$20,000 in the data set.
+The bars make it easy to see how the density of the data
+changes relative to the number of characters.
 
-Histograms are especially convenient for describing the shape of the data distribution\label{shapeFirstDiscussed}. Figure~\ref{email50NumCharHist} shows that most emails have a relatively small number of characters, while fewer emails have a very large number of characters. When data trail off to the right in this way and have a longer right \hiddenterm{tail}\index{skew!tail}, the shape is said to be \termsub{right skewed}{skew!right skewed}.\footnote{Other ways to describe data that are skewed to the right: \termni{skewed to the right}, \termni{skewed to the high end}, or \termni{skewed to the positive end}.}
+Histograms are especially convenient for describing the
+shape of the data distribution\label{shapeFirstDiscussed}.
+Figure~\ref{loan50LoanAmountHist} suggests that most loans
+made through Lending Club are under \$20,000, while a handful
+of loans are closer to \$30,000 or \$40,000.
+When data trail off to the right in this way
+and has a longer right \hiddenterm{tail}\index{skew!tail},
+the shape is said to be
+\termsub{right skewed}{skew!right skewed}.\footnote{Other
+  ways to describe data that are skewed to the right:
+  \termni{skewed to the right},
+  \termni{skewed to the high end},
+  or \termni{skewed to the positive end}.}
 
-Data sets with the reverse characteristic -- a long, thin tail to the left -- are said to be \termsub{left skewed}{skew!left skewed}. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called \term{symmetric}.\index{skew!symmetric}
+Data sets with the reverse characteristic --
+a long, thinner tail to the left --
+are said to be \termsub{left skewed}{skew!left skewed}.
+We also say that such a distribution has a long left tail.
+Data sets that show roughly equal trailing off in both
+directions are called \term{symmetric}.\index{skew!symmetric}
 
 \begin{termBox}{\tBoxTitle{Long tails to identify skew}%
-When data trail off in one direction, the distribution has a \term{long tail}. \index{skew!long tail|textbf} If a distribution has a long left tail, it is left skewed. If a distribution has a long right tail, it is right skewed.}
+  When data trail off in one direction, the distribution
+  has a \term{long tail}. \index{skew!long tail|textbf}
+  If a distribution has a long left tail, it is left skewed.
+  If a distribution has a long right tail, it is right skewed.}
 \end{termBox}
 
 \begin{exercise}
-Take a look at the dot plots in Figures~\ref{loan_amount_dot_plot} and~\ref{loan_amount_dot_plot_stacked}. Can you see the skew in the data? Is it easier to see the skew in this histogram or the dot plots?\footnote{The skew is visible in all three plots, though the flat dot plot is the least useful. The stacked dot plot and histogram are helpful visualizations for identifying skew.}
+Take a look at the dot plots in
+Figures~\ref{loan_amount_dot_plot}
+and~\ref{loan_amount_dot_plot_stacked}.
+Can you see the skew in the data? Is it easier to see the
+skew in this histogram or the dot plots?\footnote{The skew
+  is visible in all three plots, though the flat dot plot
+  is the least useful.
+  The stacked dot plot and histogram are helpful
+  visualizations for identifying skew.}
 \end{exercise}
 
 \begin{exercise}
-Besides the mean (since it was labeled), what can you see in the dot plots that you cannot see in the histogram?\footnote{Character counts for individual emails.}
+Besides the mean (since it was labeled), what can you see
+in the dot plots that you cannot see in the
+histogram?\footnote{The amounts of individual loans.}
 \end{exercise}
 
-In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A \term{mode} is represented by a prominent peak in the distribution.\footnote{Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have \emph{no} observations with the same value in a data set, which makes this other definition useless for many real data sets.} There is only one prominent peak in the histogram of \var{num\_\hspace{0.3mm}char}.
+In addition to looking at whether a distribution is skewed
+or symmetric, histograms can be used to identify modes.
+A \term{mode} is represented by a prominent peak in the
+distribution.\footnote{A definition of \emph{mode} sometimes
+  taught in math classes is that it is the value with the
+  most occurrences in the data set.
+  However, for many real-world data sets, it is common to have
+  \emph{no} observations with the same value in a data set,
+  making this definition less practical in data analysis.}
+There is only one prominent peak in the histogram of
+\var{loan\_\hspace{0.3mm}amount}.
 
-Figure~\ref{singleBiMultiModalPlots} shows histograms that have one, two, or three prominent peaks. Such distributions are called \termsub{unimodal}{modality!unimodal}, \termsub{bimodal}{modality!bimodal}, and \termsub{multimodal}{modality!multimodal}, respectively. Any distribution with more than 2 prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.
+Figure~\ref{singleBiMultiModalPlots} shows histograms that
+have one, two, or three prominent peaks.
+Such distributions are called
+\termsub{unimodal}{modality!unimodal},
+\termsub{bimodal}{modality!bimodal}, and
+\termsub{multimodal}{modality!multimodal}, respectively.
+Any distribution with more than 2~prominent peaks is
+called multimodal.
+Notice that there was one prominent peak in the unimodal
+distribution with a second less prominent peak that was
+not counted since it only differs from its neighboring
+bins by a few observations.
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.9\textwidth]{ch_summarizing_data/figures/singleBiMultiModalPlots/singleBiMultiModalPlots}
+   \includegraphics[width=0.98\textwidth]{ch_summarizing_data/figures/singleBiMultiModalPlots/singleBiMultiModalPlots}
    \caption{Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that we've said the left plot is unimodal intentionally. This is because we are counting \emph{prominent} peaks, not just any peak. See the Tip box for more thoughts.}
    \label{singleBiMultiModalPlots}
 \end{figure}
 
-\begin{exercise}
-Figure~\ref{email50NumCharHist} reveals only one prominent mode in the number of characters. Is the distribution unimodal, bimodal, or multimodal?\footnote{Unimodal. Remember that \emph{uni} stands for 1 (think \emph{uni}cycles). Similarly, \emph{bi} stands for~2 (think \emph{bi}cycles). (We're hoping a \emph{multicycle} will be invented to complete this analogy.)}
-\end{exercise}
+\begin{example}{Figure~\ref{loan50LoanAmountHist}
+    reveals only one prominent mode in the number
+    of characters.
+    Is the distribution unimodal, bimodal, or multimodal?}
+  Unimodal.
+  Remember that \emph{uni} stands for 1 (think \emph{uni}cycles).
+  Similarly, \emph{bi} stands for~2 (think \emph{bi}cycles).
+  (We're hoping a \emph{multicycle} will be invented to complete
+  this analogy.)
+\end{example}
 
-\begin{exercise}
-Height measurements of young students and adult teachers at a K-3 elementary school were taken. How many modes would you anticipate in this height data set?\footnote{There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.}
-\end{exercise}
+\begin{example}{Looking back the stacked dot plot in
+    Figure~\ref{loan_amount_dot_plot_stacked},
+    it would be reasonable to wonder if the distribution
+    of loan amounts is actually bimodal or even multimodal.
+    In fact, we wondered the same thing -- so we investigated!}
+  What we found is that the bumps evident in the dot plot
+  tend to happen at \$5,000 increments.
+  That is, people made loan requests in round amounts.
+  While that is interesting, we often are more interested
+  in understanding the general shape of a data set rather
+  than characterizing some special property like this,
+  and for this reason, we think the data set is better
+  described as unimodal.
+  However, this example highlights that there isn't
+  always one ``correct'' answer for the number of modes.
+
+  There's a broader lesson to take away
+  from this example:
+  when we plot data in multiple ways,
+  we learn about different properties of the data
+  that no one plot would reveal all on its own.
+\end{example}
 
 \begin{tipBox}{\tipBoxTitle{Looking for modes}
-Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why \emph{prominent} is not rigorously defined in this book. The important part of this examination is to better understand your data and how it might be structured.}
+Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why \emph{prominent} is not rigorously defined in this book. The important part of this examination is to better understand your data.}
 \end{tipBox}
+
+\begin{exercise}
+Height measurements of young students and adult teachers
+at a K-3 elementary school were taken.
+How many modes would you expect in this height data
+set?\footnote{There might be two height groups visible
+  in the data set: one of the students and one of the adults.
+  That is, the data are probably bimodal.}
+\end{exercise}
 
 
 \subsection{Variance and standard deviation}
@@ -388,7 +594,7 @@ Focus on the conceptual meaning of the standard deviation as a descriptor of var
 On page~\pageref{shapeFirstDiscussed}, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using Figure~\ref{severalDiffDistWithSdOf1} as an example, explain why such a description is important.\footnote{Figure~\ref{severalDiffDistWithSdOf1} shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a~distribution.}
 \end{exercise}
 
-\begin{example}{Describe the distribution of the \var{num\_\hspace{0.3mm}char} variable using the histogram in Figure~\ref{email50NumCharHist}. The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context: the number of characters in emails. Also note any especially unusual cases.}
+\begin{example}{Describe the distribution of the \var{num\_\hspace{0.3mm}char} variable using the histogram in Figure~\ref{loan50LoanAmountHist}. The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context: the number of characters in emails. Also note any especially unusual cases.}
 The distribution of email character counts is unimodal and very strongly skewed to the high end. Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.
 \end{example}
 
