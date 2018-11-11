@@ -21,6 +21,34 @@ are constructed.
 \section[Examining numerical data]{Examining numerical data \sectionvideohref{youtube-Xm0PPtci3JE&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-6}}
 \label{numericalData}
 
+% library(openintro); ind <- c(1:5, 50); d <- loan50$interest_rate; (m <- round(mean(d), 2)); d[ind]; (dev <- d - m)[ind]; (dev2 <- dev^2)[ind]; (s2 <- sum(dev2) / 49); (s <- sqrt(s2)); var(d); sd(d); median(d); IQR(d); quantile(d, c(0.25, 0.75))
+\newcommand{\loanA}{10.90}
+\newcommand{\loanB}{9.92}
+\newcommand{\loanC}{26.30}
+\newcommand{\loanD}{9.92}
+\newcommand{\loanY}{9.43}
+\newcommand{\loanZ}{6.08}
+\newcommand{\loanAvg}{11.57}
+\newcommand{\loanVar}{25.52}
+\newcommand{\loanSD}{5.05}
+\newcommand{\loanN}{50}
+\newcommand{\loanMedianBelow}{9.93}
+\newcommand{\loanMedianAbove}{9.93}
+\newcommand{\loanMedian}{9.93}
+\newcommand{\loanQA}{7.96}
+\newcommand{\loanQC}{13.72}
+\newcommand{\loanIQR}{5.76}
+\newcommand{\loanAdev}{-0.67}
+\newcommand{\loanBdev}{-1.65}
+\newcommand{\loanCdev}{14.73}
+\newcommand{\loanDdev}{-1.65}
+\newcommand{\loanYdev}{-2.14}
+\newcommand{\loanZdev}{-5.49}
+\newcommand{\loanSmallestValue}{5.31}
+\newcommand{\loanLargestValue}{26.30}
+
+
+
 In this section we will explore techniques for
 summarizing numerical variables.
 The \data{loan50} and \data{county} data sets from
@@ -48,7 +76,7 @@ but rather they are categorical variables.
 \subsection{Scatterplots for paired data}
 \label{scatterPlots}
 
-\index{data!email50|(}
+\index{data!loan50|(}
 
 A \term{scatterplot} provides a case-by-case view of data
 for two numerical variables.
@@ -63,8 +91,8 @@ comparing the total income of a borrower
 (\var{total\_\hspace{0.3mm}income}) and the amount they borrowed
 (\var{loan\_\hspace{0.3mm}amount}) for the \data{loan50} data set.
 In any scatterplot, each point represents a single case.
-Since there are 50 cases in \data{loan50},
-there are 50 points in Figure~\ref{loan50_amt_vs_income}.
+Since there are \loanN{} cases in \data{loan50},
+there are \loanN{} points in Figure~\ref{loan50_amt_vs_income}.
 
 %\textC{\setlength{\captionwidth}{0.9\textwidth}}
 
@@ -147,50 +175,52 @@ Sometimes two variables are one too many:
 only one variable may be of interest.
 In these cases, a dot plot provides the most basic of displays.
 A~\term{dot plot} is a one-variable scatterplot;
-an example using the loan amount of 50 loans
-is shown in Figure~\ref{loan_amount_dot_plot}.
+an example using the interest rate of \loanN{} loans
+is shown in Figure~\ref{loan_int_rate_dot_plot}.
 A stacked version of this dot plot is shown in
-Figure~\ref{loan_amount_dot_plot_stacked}.
+Figure~\ref{loan_int_rate_dot_plot_stacked}.
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_amount_dot_plot/loan_amount_dot_plot}
-   \caption{A dot plot of \var{loan\_\hspace{0.3mm}amount}
+   \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_int_rate_dot_plot/loan_int_rate_dot_plot}
+   \caption{A dot plot of \var{interest\_\hspace{0.3mm}rate}
        for the \data{loan50} data set.
        The distribution's mean is shown as a red triangle.}
-   \label{loan_amount_dot_plot}
+   \label{loan_int_rate_dot_plot}
 \end{figure}
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_amount_dot_plot/loan_amount_dot_plot_stacked}
-   \caption{A stacked dot plot of \var{loan\_\hspace{0.3mm}amount}
-       for the \data{loan50} data set. The~loan amounts have been
-       rounded to the nearest \$2,000 in this plot, and the
+   \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_int_rate_dot_plot/loan_int_rate_dot_plot_stacked}
+   \caption{A stacked dot plot of
+       \var{interest\_\hspace{0.3mm}rate}
+       for the \data{loan50} data set.
+       The~rates have been rounded to the nearest
+       percent in this plot, and the
        distribution's mean is shown as a red triangle.}
-   \label{loan_amount_dot_plot_stacked}
+   \label{loan_int_rate_dot_plot_stacked}
 \end{figure}
 
 The \term{mean}, sometimes called the
 \indexthis{average}{mean!average}, is a common way
 to measure the center of a \term{distribution} of data.
-To compute the mean loan size, we add up all the loan
-amounts and divide by the number of loans:
+To compute the mean interest rate, we add up all the interest
+rates and divide by the number of observations:
 \begin{align*}
 \bar{x}
-    = \frac{\text{\$7,500} + \text{\$25,000} +
-        \cdots + \text{\$3,000}}{50}
-    = \$17,083
-% library(openintro); loan50$loan_amount[c(1, 2, 50)]; mean(loan50$loan_amount)
+    = \frac{\text{\loanA\%} + \text{\loanB\%} + \text{\loanC\%} +
+        \cdots + \text{\loanZ\%}}{\loanN{}}
+    = \loanAvg{}\%
+% library(openintro); loan50$interest_rate[c(1:3, 50)]; mean(loan50$interest_rate)
 \end{align*}
 The sample mean is often labeled $\bar{x}$.
 The letter $x$ is being used as a generic placeholder
-for the variable of interest, \var{loan\_\hspace{0.3mm}amount},
+for the variable of interest, \var{interest\_\hspace{0.3mm}rate},
 and the bar over the $x$ communicates we're looking at the
-average loan amount, which for these 50 loans was \$17,083.
+average interest rate, which for these 50 loans was \loanAvg{}\%.
 It is useful to think of the mean as the balancing point
-of the distribution, and it is shown as a triangle in Figures~\ref{loan_amount_dot_plot}
-and~\ref{loan_amount_dot_plot_stacked}.
+of the distribution, and it is shown as a triangle in Figures~\ref{loan_int_rate_dot_plot}
+and~\ref{loan_int_rate_dot_plot_stacked}.
 
 \begin{termBox}{\tBoxTitle{Mean}%
 The sample mean can be computed as the sum of the
@@ -207,9 +237,9 @@ Examine the equation for the mean.
 What does $x_1$ correspond to? And $x_2$?
 Can you infer a general meaning to what $x_i$
 might represent?\footnote{$x_1$ corresponds to the
-  loan amount in the first loan in the sample (\$7,500),
-  $x_2$ to the second loan's amount (\$25,000),
-  and $x_i$ corresponds to the loan amount in the
+  interest rate for the first loan in the sample (\loanA\%),
+  $x_2$ to the second loan's interest rate (\loanB\%),
+  and $x_i$ corresponds to the interest rate for the
   $i^{th}$ loan in the data set.}
 \end{exercise}
 
@@ -229,21 +259,22 @@ the average of all observations in the population.
 Sometimes a subscript, such as $_x$,
 is used to represent which variable the population mean
 refers to, e.g. $\mu_x$.
-Often times it is too expensive to estimate the population mean,
-so we often estimate $\mu$ using the sample mean, $\bar{x}$.
+Often times it is too expensive to measure the
+population mean precisely, so we often estimate
+$\mu$ using the sample mean, $\bar{x}$.
 
-\begin{example}{The average loan amount across all loans
+\begin{example}{The average interest rate across all loans
   in the population can be estimated using the sample data.
   Based on the sample of 50 loans,
   what would be a reasonable estimate of $\mu_x$,
-  the mean number of characters in all emails in the
-  \data{loan} data set?
-  (Recall that \data{loan50} is a sample from \data{loan}.)}
-The sample mean, \$17,083, may provide a reasonable estimate
+  the mean interest rate for all loans in the
+  full data set?}
+The sample mean, \loanAvg{}\%, may provide a reasonable estimate
 of $\mu_x$.
 While this number will not be perfect,
 it provides a \emph{point estimate} \index{point estimate}
-of the population mean.
+of the average interest rate of all the loans in the
+population under study.
 In Chapter~\ref{foundationsForInference} and beyond,
 we will develop tools to characterize the accuracy
 of point estimates, and we will find that point estimates
@@ -261,19 +292,20 @@ interpretable and comparable.
 \begin{example}{Provide a couple examples where the mean
   is a useful tool for making comparisons.}
 
-  1. We would like to understand if a drug is effective
-  at treating asthma attacks.
+  1. We would like to understand if a new drug is more
+  effective at treating asthma attacks than the standard
+  treatment.
   A trial of 1500 adults is set up,
   where 500 receive the new drug in the treatment group,
   and 1000 receive a standard drug in the control group.
   Suppose we observe 200 asthma attacks in the treatment
   group and 300 asthma attacks in the control group.
-  It wouldn't be reasonable to compare 200 to 300,
+  We cannot reasonably compare 200 to 300
   since the group sizes are different.
   However, we can control for the imbalanced group sizes
   by computing the average number of asthma attacks per
-  patient in each group:
-  the standard drug has a lower
+  patient in each group.
+  The standard drug has a lower
   average number of asthma attacks per patient % (0.3 per patient)
   than the average in the treatment group: % (0.4 per patient).
   \begin{align*}
@@ -288,7 +320,7 @@ interpretable and comparable.
   and his business has stabilized over the last 3 months.
   Over that 3 month period, he has made \$11,000 while
   working 625 hours.
-  Computing Emilio's average hourly earnings provides
+  Emilio's average hourly earnings provides
   a useful statistic for evaluating whether his venture is,
   at least from a financial perspective, worth it:
   \begin{align*}
@@ -366,53 +398,57 @@ This is useful for small data sets, but they can become
 hard to read with larger samples. Rather than showing the
 value of each observation, we prefer to think of the value
 as belonging to a \emph{bin}.
-For example, in the \data{loan50} data set, we create
-a table of counts for the number of loans between
-\$0 and \$5,000, then the number of loans between
-\$5,000 and \$10,000, and so on.
+For example, in the \data{loan50} data set, we created
+a table of counts for the number of loans with interest
+rates between 5.0\% and 7.5\%, then the number of loans
+with rates between 7.5\% and 10.0\%, and so on.
 Observations that fall on the boundary of a bin
-(e.g. \$5,000) are allocated to the lower bin.
-This tabulation is shown in Figure~\ref{binnedLoanAmountTable}.
+(e.g. 10.00\%) are allocated to the lower bin.
+This tabulation is shown in Figure~\ref{binnedIntRateAmountTable}.
 These binned counts are plotted as bars in
-Figure~\ref{loan50LoanAmountHist} into what is called
+Figure~\ref{loan50IntRateHist} into what is called
 a \term{histogram}, which resembles a more heavily binned
 version of the stacked dot plot shown in
-Figure~\ref{loan_amount_dot_plot_stacked}.
+Figure~\ref{loan_int_rate_dot_plot_stacked}.
 
 \begin{figure}[ht]
 \centering\small
 \begin{tabular}{l ccc ccc ccc} % c}
   \hline
-Loan Amount & \\
-in \$1000's & \raisebox{1.5ex}[0pt]{0-5} & \raisebox{1.5ex}[0pt]{5-10} & \raisebox{1.5ex}[0pt]{10-15} & \raisebox{1.5ex}[0pt]{15-20} & \raisebox{1.5ex}[0pt]{20-25} & \raisebox{1.5ex}[0pt]{25-30} & \raisebox{1.5ex}[0pt]{30-35} & \raisebox{1.5ex}[0pt]{35-40} \\ %& \raisebox{1.5ex}[0pt]{40-45} \\
+  % cat(paste0(gsub(" ", "", format(a)), "\\% - ", gsub(" ", "", format(b)), "\\%", collapse = " & "))
+  % cat(paste0(gsub(" ", "", format(a)), "-", gsub(" ", "", format(b)), collapse = " & "))
+Interest Rate & 5.0\% - 7.5\% & 7.5\% - 10.0\% & 10.0\% - 12.5\% & 12.5\% - 15.0\% & $\cdots$ & 25.0\% - 27.5\% \\
+%in \$1000's & \raisebox{1.5ex}[0pt]{0-5} & \raisebox{1.5ex}[0pt]{5-10} & \raisebox{1.5ex}[0pt]{10-15} & \raisebox{1.5ex}[0pt]{15-20} & \raisebox{1.5ex}[0pt]{20-25} & \raisebox{1.5ex}[0pt]{25-30} & \raisebox{1.5ex}[0pt]{30-35} & \raisebox{1.5ex}[0pt]{35-40} \\
   \hline
-Count & 5 &  12 &   8 &  10 &   6 &   3 &   3 &   3 \\
+Count & 11 &  15 &   8 &   4 &   $\cdots$ &   1 \\
   \hline
 \end{tabular}
-\caption{The counts for the binned \var{loan\_\hspace{0.3mm}amount} data.}
-\label{binnedLoanAmountTable}
+\caption{Counts for the binned
+    \var{interest\_\hspace{0.3mm}rate} data.}
+\label{binnedIntRateAmountTable}
 \end{figure}
-% library(openintro); library(xtable); max(loan50$loan_amount); t1 <- table(cut(loan50$loan_amount, seq(0, 40e3, 5000), right = TRUE)); t1; xtable(rbind(t1))
+% library(openintro); library(xtable); d <- loan50$interest_rate; max(d); t1 <- table(cut(d, seq(5, 27.5, 2.5), right = TRUE)); t1; xtable(rbind(t1))
 
 \begin{figure}[bth]
    \centering
-   \includegraphics[width=0.82\textwidth]{ch_summarizing_data/figures/loan50LoanAmountHist/loan50LoanAmountHist}
+   \includegraphics[width=0.82\textwidth]{ch_summarizing_data/figures/loan50IntRateHist/loan50IntRateHist}
    \caption{A histogram of \var{num\_\hspace{0.3mm}char}. This distribution is very strongly skewed to the right.\index{skew!example: very strong}}
-   \label{loan50LoanAmountHist}
+   \label{loan50IntRateHist}
 \end{figure}
 
 Histograms provide a view of the \term{data density}.
 Higher bars represent where the data are relatively more common.
-For instance, there are many more loans less than or equal to
-\$20,000 than loans more than \$20,000 in the data set.
+For instance, there are many more loans with rates between
+5\%~and~10\% than loans with rates between 20\% and~25\%
+in the data set.
 The bars make it easy to see how the density of the data
 changes relative to the number of characters.
 
 Histograms are especially convenient for describing the
 shape of the data distribution\label{shapeFirstDiscussed}.
-Figure~\ref{loan50LoanAmountHist} suggests that most loans
-made through Lending Club are under \$20,000, while a handful
-of loans are closer to \$30,000 or \$40,000.
+Figure~\ref{loan50IntRateHist} suggests that most loans
+have rates under 15\%, while only a handful
+of loans have rates above 20\%.
 When data trail off to the right in this way
 and has a longer right \hiddenterm{tail}\index{skew!tail},
 the shape is said to be
@@ -438,8 +474,8 @@ directions are called \term{symmetric}.\index{skew!symmetric}
 
 \begin{exercise}
 Take a look at the dot plots in
-Figures~\ref{loan_amount_dot_plot}
-and~\ref{loan_amount_dot_plot_stacked}.
+Figures~\ref{loan_int_rate_dot_plot}
+and~\ref{loan_int_rate_dot_plot_stacked}.
 Can you see the skew in the data? Is it easier to see the
 skew in this histogram or the dot plots?\footnote{The skew
   is visible in all three plots, though the flat dot plot
@@ -451,14 +487,14 @@ skew in this histogram or the dot plots?\footnote{The skew
 \begin{exercise}
 Besides the mean (since it was labeled), what can you see
 in the dot plots that you cannot see in the
-histogram?\footnote{The amounts of individual loans.}
+histogram?\footnote{The interest rates for individual loans.}
 \end{exercise}
 
 In addition to looking at whether a distribution is skewed
 or symmetric, histograms can be used to identify modes.
 A \term{mode} is represented by a prominent peak in the
 distribution.\footnote{A definition of \emph{mode} sometimes
-  taught in math classes is that it is the value with the
+  taught in math classes is the value with the
   most occurrences in the data set.
   However, for many real-world data sets, it is common to have
   \emph{no} observations with the same value in a data set,
@@ -486,9 +522,8 @@ bins by a few observations.
    \label{singleBiMultiModalPlots}
 \end{figure}
 
-\begin{example}{Figure~\ref{loan50LoanAmountHist}
-    reveals only one prominent mode in the number
-    of characters.
+\begin{example}{Figure~\ref{loan50IntRateHist}
+    reveals only one prominent mode in the interest rate.
     Is the distribution unimodal, bimodal, or multimodal?}
   Unimodal.
   Remember that \emph{uni} stands for 1 (think \emph{uni}cycles).
@@ -497,32 +532,28 @@ bins by a few observations.
   this analogy.)
 \end{example}
 
-\begin{example}{Looking back the stacked dot plot in
-    Figure~\ref{loan_amount_dot_plot_stacked},
-    it would be reasonable to wonder if the distribution
-    of loan amounts is actually bimodal or even multimodal.
-    In fact, we wondered the same thing -- so we investigated!}
-  What we found is that the bumps evident in the dot plot
-  tend to happen at \$5,000 increments.
-  That is, people made loan requests in round amounts.
-  While that is interesting, we often are more interested
-  in understanding the general shape of a data set rather
-  than characterizing some special property like this,
-  and for this reason, we think the data set is better
-  described as unimodal.
-  However, this example highlights that there isn't
-  always one ``correct'' answer for the number of modes.
-
-  There's a broader lesson to take away
-  from this example:
-  when we plot data in multiple ways,
-  we learn about different properties of the data
-  that no one plot would reveal all on its own.
-\end{example}
-
-\begin{tipBox}{\tipBoxTitle{Looking for modes}
-Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why \emph{prominent} is not rigorously defined in this book. The important part of this examination is to better understand your data.}
-\end{tipBox}
+%\begin{example}{Looking back the stacked dot plot in
+%    Figure~\ref{loan_int_rate_dot_plot_stacked},
+%    it would be reasonable to wonder if the distribution
+%    of loan amounts is actually bimodal or even multimodal.
+%    In fact, we wondered the same thing -- so we investigated!}
+%  What we found is that the bumps evident in the dot plot
+%  tend to happen at \$5,000 increments.
+%  That is, people made loan requests in round amounts.
+%  While that is interesting, we often are more interested
+%  in understanding the general shape of a data set rather
+%  than characterizing some special property like this,
+%  and for this reason, we think the data set is better
+%  described as unimodal.
+%  However, this example highlights that there isn't
+%  always one ``correct'' answer for the number of modes.
+%
+%  There's a broader lesson to take away
+%  from this example:
+%  when we plot data in multiple ways,
+%  we learn about different properties of the data
+%  that no one plot would reveal all on its own.
+%\end{example}
 
 \begin{exercise}
 Height measurements of young students and adult teachers
@@ -532,6 +563,14 @@ set?\footnote{There might be two height groups visible
   in the data set: one of the students and one of the adults.
   That is, the data are probably bimodal.}
 \end{exercise}
+
+Looking for modes isn't about finding a clear and correct
+answer about the number of modes in a distribution,
+which is why \emph{prominent}\index{prominent} is not
+rigorously defined in this book.
+The important part of this examination is to better
+understand your data.
+
 
 
 \subsection{Variance and standard deviation}
@@ -543,13 +582,12 @@ We call the distance of an observation from its mean its \term{deviation}. Below
 For computational convenience, we'll perform the calculations
 in thousands of dollars rounded to the nearest \$100:
 \begin{align*}
-x_1^{}-\bar{x} &= 7.5 - 17.1 = -9.6 \hspace{5mm}\text{ } \\
-x_2^{}-\bar{x} &= 25.0 - 17.1 = 7.9 \\
-x_3^{}-\bar{x} &= 14.5 - 17.1 = -2.6 \\
+x_1^{}-\bar{x} &= \loanA - \loanAvg{} = \loanAdev \hspace{5mm}\text{ } \\
+x_2^{}-\bar{x} &= \loanB - \loanAvg{} = \loanBdev \\
+x_3^{}-\bar{x} &= \loanC - \loanAvg{} = \loanCdev \\
 			&\ \vdots \\
-x_{50}^{}-\bar{x} &= 3.0 - 17.1 = -14.1
+x_{50}^{}-\bar{x} &= \loanZ - \loanAvg{} = \loanZdev
 \end{align*}
-% library(openintro); d. <- loan50$loan_amount; d <- round(d. / 1000, 1); (m <- round(mean(d), 1)); d[c(1,2,3,50)]; (dev <- d - m)[c(1,2,3,50)]; (dev2 <- dev^2)[c(1,2,3,50)]; (s2 <- sum(dev2) / 49); (s <- sqrt(s2)); var(d); sd(d)
 \Comment{Next sentence says ``average'' even though
   it is dividing by $n - 1$.
   Same change in the term box below. Thoughts?}
@@ -558,9 +596,9 @@ the result is equal to the sample
 \term{variance}\label{varianceIsDefined},
 denoted by $s_{}^2$:
 \begin{align*}
-s_{}^2 &= \frac{(-9.6)_{}^2 + (7.9)_{}^2 + (-2.6)_{}^2 + \cdots + (-14.1)_{}^2}{50-1} \\
-	&= \frac{92.16 + 62.41 + 6.76 + \cdots + 198.81}{49} \\
-	&= 109.33
+s_{}^2 &= \frac{(\loanAdev)_{}^2 + (\loanBdev)_{}^2 + (\loanCdev)_{}^2 + \cdots + (\loanZdev)_{}^2}{\loanN{}-1} \\
+	&= \frac{0.45 + 2.72 + 216.97 + \cdots + 30.14}{49} \\
+	&= \loanVar{}
 \end{align*}
 We divide by $n - 1$, rather than dividing by $n$,
 when computing the variance;
@@ -568,17 +606,14 @@ you need not worry about this mathematical nuance
 for the material in this textbook.
 Notice that squaring the deviations does two things.
 First, it makes large values relatively much larger,
-seen by comparing $(-9.6)^2$, $(7.9)^2$, $(-2.6)^2$,
-and $(-14.1)^2$.
+seen by comparing $(\loanAdev)^2$, $(\loanBdev)^2$, $(\loanCdev)^2$,
+and $(\loanZdev)^2$.
 Second, it gets rid of any negative signs.
 
 The \term{standard deviation} is defined as the square root of the variance:
 \begin{align*}
-s = \sqrt{109.33} = 10.456
+s = \sqrt{\loanVar{}} = \loanSD{}
 \end{align*}
-When computed more precisely to the nearest dollar,
-the standard deviation of loan amounts is \$10,455.
-
 A subscript of $_x$ may be added to the variance
 and standard deviation,
 i.e. $s_x^2$ and $s_x^{}$, as a reminder that these
@@ -617,16 +652,16 @@ is the Greek letter \emph{sigma}.
 
 \begin{figure}
 \centering
-\includegraphics[width=\mycaptionwidth]{ch_summarizing_data/figures/sdRuleForLoanAmount/sdRuleForLoanAmount}
-\caption{In the \var{num\_\hspace{0.3mm}char} data,
-  29 of the 50 loans (58\%) are within 1~standard deviation
-  of the mean, and 47 of the 50 loans (94\%) are within
+\includegraphics[width=\mycaptionwidth]{ch_summarizing_data/figures/sdRuleForIntRate/sdRuleForIntRate}
+\caption{For the \var{interest\_\hspace{0.3mm}rate} variable,
+  34 of the 50 loans (68\%) had interest rates within
+  1~standard deviation of the mean,
+  and 48 of the 50 loans (96\%) had rates within
   2~standard deviations.
   Usually about 70\% of the data are within 1~standard
-  deviation of the mean and 95\% are within 2~standard
-  deviations, though this rule of thumb is less accurate
-  for skewed data, as shown in this example.}
-\label{sdRuleForLoanAmount}
+  deviation of the mean and 95\% within 2~standard
+  deviations, though this is far from a hard rule.}
+\label{sdRuleForIntRate}
 \end{figure}
 
 \Comment{The following box was changed from a Tip Box
@@ -649,7 +684,8 @@ is the Greek letter \emph{sigma}.
 \begin{figure}
 \centering
 \includegraphics[width=0.64\textwidth]{ch_summarizing_data/figures/severalDiffDistWithSdOf1/severalDiffDistWithSdOf1}
-\caption{Three very different population distributions with the same mean $\mu=0$ and standard deviation $\sigma=1$.}
+\caption{Three very different population distributions
+  with the same mean $\mu=0$ and standard deviation $\sigma=1$.}
 \label{severalDiffDistWithSdOf1}
 \end{figure}
 
@@ -676,78 +712,186 @@ important.\footnote{Figure~\ref{severalDiffDistWithSdOf1}
 \end{exercise}
 
 \begin{example}{Describe the distribution of the
-    \var{loan\_\hspace{0.3mm}amount} variable using
-    the histogram in Figure~\ref{loan50LoanAmountHist}.
+    \var{interest\_\hspace{0.3mm}rate} variable using
+    the histogram in Figure~\ref{loan50IntRateHist}.
     The description should incorporate the center,
     variability, and shape of the distribution,
     and it should also be placed in context.
     Also note any especially unusual cases.}
-  The distribution of loan amounts is unimodal
+  The distribution of interest rates is unimodal
   and skewed to the high end.
-  Many of the loans fall near the mean at \$17,083,
-  and most fall within one standard deviation (\$10,455)
+  Many of the rates fall near the mean at 11.57\%,
+  and most fall within one standard deviation (5.05\%)
   of the mean.
-  There is one exceptionally long email
-  with about 65,000 characters.
+  There are a few exceptionally large interest rates
+  in the sample that are above 20\%.
 \end{example}
 
-In practice, the variance and standard deviation are sometimes used as a means to an end, where the ``end'' is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter~\ref{foundationsForInference} we will use the variance and standard deviation to assess how close the sample mean is to the population mean.
+In practice, the variance and standard deviation are sometimes
+used as a means to an end, where the ``end'' is being able to
+accurately estimate the uncertainty associated with a sample
+statistic.
+For example, in Chapter~\ref{foundationsForInference}
+the standard deviation is used in calculations that help us
+understand how much a sample mean varies from one sample
+to the next.
+
 
 \subsection{Box plots, quartiles, and the median}
 
-A \term{box plot} summarizes a data set using five statistics while also plotting unusual observations. Figure~\ref{boxPlotLayoutNumVar} provides a vertical dot plot alongside a box plot of the \var{num\_\hspace{0.3mm}char} variable from the \data{email50} data set.
+A \term{box plot} summarizes a data set using five
+statistics while also plotting unusual observations.
+Figure~\ref{loan_int_rate_box_plot_layout} provides
+a vertical dot plot alongside a box plot of the
+\var{interest\_\hspace{0.3mm}rate} variable from
+the \data{loan50} data set.
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.86\mycaptionwidth]{ch_summarizing_data/figures/boxPlotLayoutNumVar/boxPlotLayoutNumVar}
-   \caption{A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6,890), splits the data into the bottom 50\% and the top 50\%.}
-   \label{boxPlotLayoutNumVar}
+   \includegraphics[width=0.86\mycaptionwidth]{ch_summarizing_data/figures/loan_int_rate_box_plot_layout/loan_int_rate_box_plot_layout}
+   \caption{A vertical dot plot next to a labeled box plot
+       for the interest rates of the \loanN{} loans.
+       The median (\loanMedian{}), splits the data into the
+       bottom 50\% and the top 50\%.}
+   \label{loan_int_rate_box_plot_layout}
 \end{figure}
 
-The first step in building a box plot is drawing a dark line denoting the \term{median}, which splits the data in half. Figure~\ref{boxPlotLayoutNumVar} shows 50\% of the data falling below the median and other 50\% falling above the median. There are 50 character counts in the data set (an even number) so the data are perfectly split into two groups of~25. We take the median in this case to be the average of the two observations closest to the $50^{th}$ percentile: $(\text{6,768} + \text{7,012}) / 2 = \text{6,890}$. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in such a case that observation is the median (no average needed).
+The first step in building a box plot is drawing a dark line
+denoting the \term{median}, which splits the data in half.
+Figure~\ref{loan_int_rate_box_plot_layout} shows 50\% of the
+data falling below the median and other 50\% falling above
+the median.
+There are \loanN{} character counts in the data set
+(an even number) so the data are perfectly split into two
+groups of~25.
+We take the median in this case to be the average of the
+two observations closest to the $50^{th}$ percentile,
+which happen to be the same value in this data set:
+$(\text{\loanMedianAbove{}} + \text{\loanMedianBelow{}}) / 2
+  = \text{\loanMedian{}}$.
+When there are an odd number of observations,
+there will be exactly one observation that splits the data
+into two halves, and in such a case that observation
+is the median (no average needed).
 
 \begin{termBox}{\tBoxTitle{Median: the number in the middle}
-If the data are ordered from smallest to largest, the \term{median} is the observation right in the middle. If there are an even number of observations, there will be two values in the middle, and the median is taken as their average.}
+  If the data are ordered from smallest to largest,
+  the \term{median} is the observation right in the middle.
+  If there are an even number of observations,
+  there will be two values in the middle,
+  and the median is taken as their average.}
 \end{termBox}
 
-The second step in building a box plot is drawing a rectangle to represent the middle 50\% of the data. The total length of the box, shown vertically in Figure~\ref{boxPlotLayoutNumVar}, is called the \term{interquartile range} (\hiddenterm{IQR}, for short). It, like the standard deviation, is a measure of \indexthis{variability}{variability} in data. The more variable the data, the larger the standard deviation and~IQR. The two boundaries of the box are called the \term{first quartile} \index{quartile!first quartile} (the $25^{th}$ \hiddenterm{percentile}, i.e. 25\% of the data fall below this value) and the \term{third quartile} \index{quartile!third quartile} (the $75^{th}$ percentile), and these are often labeled $Q_1$ \index{Q$_1$} and $Q_3$\index{Q$_3$}, respectively.
+The second step in building a box plot is drawing
+a rectangle to represent the middle 50\% of the data.
+The total length of the box, shown vertically in
+Figure~\ref{loan_int_rate_box_plot_layout},
+is called the \term{interquartile range} (\hiddenterm{IQR},
+for short).
+It, like the standard deviation, is a measure
+of \indexthis{variability}{variability} in data.
+The more variable the data, the larger the standard
+deviation and~IQR tend to be.
+The two boundaries of the box are called the
+\term{first quartile} \index{quartile!first quartile}
+(the $25^{th}$ \hiddenterm{percentile},
+i.e. 25\% of the data fall below this value)
+and the \term{third quartile} \index{quartile!third quartile}
+(the $75^{th}$ percentile), and these are often labeled $Q_1$
+\index{Q$_1$} and $Q_3$\index{Q$_3$}, respectively.
 
 \begin{termBox}{\tBoxTitle{Interquartile range (IQR)}
-The IQR\index{interquartile range} is the length of the box in a box plot. It is computed as
-\begin{eqnarray*}
-IQR = Q_3 - Q_1
-\end{eqnarray*}
-where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles.}
+  The IQR\index{interquartile range} is the length
+  of the box in a box plot.
+  It is computed as
+  \begin{eqnarray*}
+  IQR = Q_3 - Q_1
+  \end{eqnarray*}
+  where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$
+  percentiles.}
 \end{termBox}
 
 \begin{exercise}
-What percent of the data fall between $Q_1$ and the median? What percent is between the median and $Q_3$?\footnote{Since $Q_1$ and $Q_3$ capture the middle 50\% of the data and the median splits the data in the middle, 25\% of the data fall between $Q_1$ and the median, and another 25\% falls between the median and $Q_3$.}
+What percent of the data fall between $Q_1$ and the median?
+What percent is between the median and $Q_3$?\footnote{Since
+  $Q_1$ and $Q_3$ capture the middle 50\% of the data and
+  the median splits the data in the middle, 25\% of the data
+  fall between $Q_1$ and the median, and another 25\% falls
+  between the median and $Q_3$.}
 \end{exercise}
 
-Extending out from the box, the \term{whiskers} attempt to capture the data outside of the box, however, their reach is never allowed to be more than $1.5\times IQR$.\footnote{While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.} They capture everything within this reach. In Figure~\ref{boxPlotLayoutNumVar}, the upper whisker does not extend to the last three points, which is beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach; the lower whisker's limit is not shown in the figure because the plot does not extend down to $Q_1 - 1.5\times IQR$. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
+Extending out from the box, the \term{whiskers} attempt
+to capture the data outside of the box.
+However, their reach is never allowed to be more than
+$1.5\times IQR$.
+They capture everything within this reach.
+In Figure~\ref{loan_int_rate_box_plot_layout},
+the upper whisker does not extend to the last two points,
+which is beyond $Q_3 + 1.5\times IQR$,
+and so it extends only to the last point below this limit.
+The lower whisker stops at the lowest value,
+\loanSmallestValue{}\%,
+since there is no additional data to reach;
+the lower whisker's limit is not shown in the figure because
+the plot does not extend down to $Q_1 - 1.5\times IQR$.
+In a sense, the box is like the body of the box plot
+and the whiskers are like its arms trying to reach the
+rest of the data.
 
-Any observation that lies beyond the whiskers is labeled with a dot. The purpose of labeling these points -- instead of just extending the whiskers to the minimum and maximum observed values -- is to help identify any observations that appear to be unusually distant from the rest of the data. Unusually distant observations are called \termsub{outliers}{outlier}. In this case, it would be reasonable to classify the emails with character counts of 41,623, 42,793, and 64,401 as outliers since they are numerically distant from most of the data.
+Any observation lying beyond the whiskers is labeled with a dot.
+The purpose of labeling these points --
+instead of extending the whiskers to the minimum
+and maximum observed values --
+is to help identify any observations that appear to be
+unusually distant from the rest of the data.
+Unusually distant observations are called
+\termsub{outliers}{outlier}.
+In this case, it would be reasonable to classify the
+interest rates of 24.85\% and \loanLargestValue{}\%
+as outliers since they are numerically distant from
+most of the data.
 
 \begin{termBox}{\tBoxTitle{Outliers are extreme}
-An \term{outlier} is an observation that appears extreme relative to the rest of the data.}
+  An \term{outlier} is an observation that appears
+  extreme relative to the rest of the data. \vspace{3mm}
+  
+  Examining data for outliers serves
+  many useful purposes, including\vspace{-1mm}
+  \begin{enumerate}
+  \setlength{\itemsep}{0mm}
+  \item Identifying
+      \indexthis{strong skew}{skew!example: strong}
+      in the distribution.
+  \item Identifying possible data collection or entry
+      errors.
+  \item Providing insight into interesting properties
+      of the data.\vspace{-1mm}
+  \end{enumerate}}
 \end{termBox}
 
-
-\begin{tipBox}{\tipBoxTitle{Why it is important to look for outliers}
-Examination of data for possible outliers serves many useful purposes, including\vspace{-2mm}
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Identifying \indexthis{strong skew}{skew!example: strong} in the distribution.
-\item Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64,401 characters to ensure this value was accurate.
-\item Providing insight into interesting properties of the data.\vspace{0.5mm}
-\end{enumerate}}
-\end{tipBox}
+%\begin{exercise}
+%The observation \loanLargestValue{}\%, a suspected outlier,
+%was found to be an accurate observation.
+%What would such an observation suggest about the nature
+%of interest rates through Lending Club?\footnote{That
+%  occasionally there may be very long emails.}
+%\end{exercise}
 
 \begin{exercise}
-The observation 64,401, a suspected outlier, was found to be an accurate observation. What would such an observation suggest about the nature of character counts in emails?\footnote{That occasionally there may be very long emails.}\end{exercise}
-
-\begin{exercise}
-Using Figure~\ref{boxPlotLayoutNumVar}, estimate the following values for \var{num\_\hspace{0.3mm}char} in the \data{email50} data set: (a) $Q_1$, (b) $Q_3$, and (c) IQR.\footnote{These visual estimates will vary a little from one person to the next: $Q_1=$ 3,000, $Q_3=$ 15,000, $\text{IQR}=Q_3 - Q_1 = $ 12,000. (The true values: $Q_1=$ 2,536, $Q_3=$ 15,411, $\text{IQR} = $ 12,875.)}
+Using Figure~\ref{loan_int_rate_box_plot_layout},
+estimate the following values for
+\var{interest\_\hspace{0.3mm}rate} in the
+\data{loan50} data set:
+(a) $Q_1$,
+(b) $Q_3$, and
+(c) IQR.\footnote{These
+  visual estimates will vary a little from one person
+  to the next:
+  $Q_1=$ 8\%,
+  $Q_3=$ 14\%,
+  $\text{IQR} = Q_3 - Q_1 = 6\%$.
+  (The true values: $Q_1= \loanQA{}\%$, $Q_3 = \loanQC{}\%$,
+  $\text{IQR} = \loanIQR{}\%$.)}
 \end{exercise}
 
 \CalculatorVideos{how to create statistical summaries and box plots}
@@ -840,7 +984,7 @@ Transformations can also be applied to one or both variables in a scatterplot. A
 
 Transformations other than the logarithm can be useful, too. For instance, the square root ($\sqrt{\text{original observation}}$) and inverse ($\frac{1}{\text{original observation}}$) are used by data scientists. Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.
 
-\index{data!email50|)}
+\index{data!loan50|)}
 
 \subsection{Mapping data (special topic)}
 
