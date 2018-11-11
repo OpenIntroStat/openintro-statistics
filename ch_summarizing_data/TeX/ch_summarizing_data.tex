@@ -899,46 +899,99 @@ estimate the following values for
 
 \subsection{Robust statistics}
 
-How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\hspace{0.3mm}char} data set affected by the observation, 64,401? What would have happened if this email wasn't observed? What would happen to these \indexthis{summary statistics}{summary statistic} if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in Figure~\ref{email50NumCharDotPlotRobustEx}, and sample statistics are computed under each scenario in Figure~\ref{robustOrNotTable}.
+How are the \indexthis{sample statistics}{sample statistic}
+of the \data{interest\_\hspace{0.3mm}rate} data set affected
+by the observation, 26.30\%?
+What would have happened if this loan had instead
+been only 15.00\%?
+What would happen to these
+\indexthis{summary statistics}{summary statistic}
+if the observation at 26.30\% had been even larger,
+say 35.00\%? These scenarios are plotted alongside the
+original data in Figure~\ref{loan_int_rate_robust_ex},
+and sample statistics are computed under each scenario in
+Figure~\ref{robustOrNotTable}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{ch_summarizing_data/figures/email50NumCharDotPlotRobustEx/email50NumCharDotPlotRobustEx}
-\caption{Dot plots of the original character count data and two modified data sets.}
-\label{email50NumCharDotPlotRobustEx}
+\includegraphics[width=\textwidth]{ch_summarizing_data/figures/loan_int_rate_robust_ex/loan_int_rate_robust_ex}
+\caption{Dot plots of the original interest rate data
+  and two modified data sets.}
+\label{loan_int_rate_robust_ex}
 \end{figure}
 
+% See `loan_int_rate_robust_ex` figure code for calculations.
 \begin{figure}[ht]
 \centering
 \begin{tabular}{l c cc c cc}
-  \hline
-& \hspace{0mm} & \multicolumn{2}{c}{\bf robust} & \hspace{2mm} & \multicolumn{2}{c}{\bf not robust} \\
+% \cline{3-4} \cline{6-7}
+& \hspace{0mm} & \multicolumn{2}{c}{\bf robust} &
+    \hspace{2mm} & \multicolumn{2}{c}{\bf not robust} \\
+\hline
 scenario && median & IQR && $\bar{x}$ & $s$ \\ 
-  \hline
-original \var{num\_\hspace{0.3mm}char} data 	&& 6,890 & 12,875 && 11,600 & 13,130 \\
-% library(openintro); data(email50); d <- email50$num_char; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d)
-drop 64,401 observation		&& 6,768 & 11,702 && 10,521 & 10,798 \\
-% library(openintro); data(email50); d <- email50$num_char; d <- d[-which.max(d)]; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d)
-move 64,401 to 150,000		&& 6,890 & 12,875 && 13,310 & 22,434 \\
-% library(openintro); data(email50); d <- email50$num_char; d[which.max(d)] <- 100000; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d)
+\hline
+%   & & \multicolumn{2}{c|} & & \multicolumn{2}{c|} \\
+original \var{num\_\hspace{0.3mm}char} data
+    && 9.93\% & 5.76\% && 11.57\% & 5.05\% \\
+move 26.30\% $\to$ 15.00\%
+    && 9.93\% & 5.76\% && 11.34\% & 4.61\% \\
+move 26.30\% $\to$ 35.00\%
+    && 9.93\% & 5.76\% && 11.74\% & 5.68\% \\
    \hline
 \end{tabular}
-\caption{A comparison of how the median, IQR, mean ($\bar{x}$), and standard deviation ($s$) change when extreme observations are present.}
+\caption{A comparison of how the median, IQR,
+  mean ($\bar{x}$), and standard deviation ($s$) change
+  when an extreme observations is shifted.}
 \label{robustOrNotTable}
 \end{figure}
 
-\begin{exercise} \label{numCharWhichIsMoreRobust}
-(a) Which is more affected by extreme observations, the mean or median? Figure~\ref{robustOrNotTable} may be helpful. (b) Is the standard deviation or IQR more affected by extreme observations?\footnote{(a) Mean is affected more. (b) Standard deviation is affected more. Complete explanations are provided in the material following Guided Practice~\ref{numCharWhichIsMoreRobust}.}
+\begin{exercise} \label{interestRateWhichIsMoreRobust}
+(a)~Which is more affected by extreme observations,
+the mean or median?
+Figure~\ref{robustOrNotTable} may be helpful.
+(b)~Is the standard deviation or IQR more affected by
+extreme observations?\footnote{(a)~Mean is affected more.
+(b)~Standard deviation is affected more.
+  Complete explanations are provided in the material
+  following Guided Practice~\ref{interestRateWhichIsMoreRobust}.}
 \end{exercise}
 
-The median and IQR are called \term{robust estimates} because extreme observations have little effect on their values. The mean and standard deviation are much more affected by changes in extreme observations.
+The median and IQR are called \term{robust statistics} because
+extreme observations have little effect on their values:
+moving the most extreme value generally has little influence
+on these statistics.
+On the other hand, the mean and standard deviation
+are more heavily influenced by changes in extreme observations.
 
-\begin{example}{The median and IQR do not change much under the three scenarios in Figure~\ref{robustOrNotTable}. Why might this be the case?}
-The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. Since values in these regions are relatively stable -- there aren't large jumps between observations -- the median and IQR estimates are also quite stable.
+\begin{example}{The median and IQR did not change under the
+    three scenarios in Figure~\ref{robustOrNotTable}.
+    Why might this be the case?}
+  The median and IQR are only sensitive to numbers
+  near $Q_1$, the median, and $Q_3$.
+  Since values in these regions are stable in the three
+  data sets, the median and IQR estimates are also stable.
 \end{example}
 
+\Comment{The next exercise hits on one possible distinction
+  between median / mean: use the median if we care about
+  understanding the typical individual case.
+  However, if we care about something that scales
+  or will be more impactful to a full business,
+  then the mean is probably more useful.}
+
 \begin{exercise}
-The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?\footnote{Buyers of a ``regular car'' should be concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.}
+The distribution of loan amounts in \data{loan50}
+is right skewed, with a few large loans lingering
+out into the right tail.
+If you were wanting to understand the typical loan size,
+should you be more interested in the mean
+or median?\footnote{Answers will vary!
+  If looking to simply understand what a typical individual
+  loan looks like, the median is probably more useful.
+  However, if the goal is to understand something that
+  scales well, such as the total amount of money we might
+  need to have on hand if we were to offer 1,000 loans,
+  then the mean would be more useful.}
 \end{exercise}
 
 \subsection{Transforming data (special topic)}
