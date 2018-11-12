@@ -9,15 +9,14 @@ myPDF("medianHHIncomePoverty.pdf", 6, 3.5,
       mgp = c(2.4, 0.5, 0))
 x <- county$poverty
 y <- county$median_hh_income
-plot(x, y,
-     pch = 20,
-     cex = 0.7,
-     col = COL[1, 3],
+plot(x, y, type = "n",
      xlim = c(0, max(x, na.rm = TRUE)),
      ylim = c(0, max(y, na.rm = TRUE)),
      xlab = "",
      ylab = "",
      axes = FALSE)
+abline(h = pretty(c(0, y)), v = pretty(c(0, x)), col = COL[7, 3])
+points(x, y, pch = 20, cex = 0.7, col = COL[1, 3])
 AxisInPercent(1, pretty(c(0, x)))
 AxisInDollars(2, pretty(c(0, y)))
 box()

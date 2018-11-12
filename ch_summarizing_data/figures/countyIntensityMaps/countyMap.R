@@ -9,8 +9,7 @@ countyMap <- function(values, FIPS,
   }
   
   # _____ Drop NAs _____ #
-  FIPS   <- FIPS[!is.na(values)]
-  values <- values[!is.na(values)]
+  values[is.na(values)] <- median(values, na.rm = TRUE)
   
   # _____ Scale Values _____ #
   MI  <- min(values)
@@ -58,11 +57,13 @@ countyMap <- function(values, FIPS,
     col <- rgb(val.941, val.318, val.200)
     COL <- rgb(Leg.941, Leg.318, Leg.200)
   } else if(col[1] == "green"){
-    col <- rgb(val.298, val.447, val.114)
-    COL <- rgb(Leg.298, Leg.447, Leg.114)
+    col <- rgb(val.298, val.941, val.114)
+    COL <- rgb(Leg.298, Leg.941, Leg.114)
+    # col <- rgb(val.298, val.447, val.114)
+    # COL <- rgb(Leg.298, Leg.447, Leg.114)
   } else if(col[1] == "bg"){
-    col <- rgb(val.337, val.608, val.741)
-    COL <- rgb(Leg.337, Leg.608, Leg.741)
+    col <- rgb(val.337, val.741, val.957)
+    COL <- rgb(Leg.337, Leg.741, Leg.957)
   } else if(col[1] == "ye"){
     col <- rgb(val.957, val.863, val.000)
     COL <- rgb(Leg.957, Leg.863, Leg.000)

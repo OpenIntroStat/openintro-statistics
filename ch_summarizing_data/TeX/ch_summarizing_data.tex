@@ -994,63 +994,127 @@ or median?\footnote{Answers will vary!
   then the mean would be more useful.}
 \end{exercise}
 
+\index{data!loan50|)}
+
+
 \subsection{Transforming data (special topic)}
 \label{transformingDataSubsection}
 
-When data are very strongly skewed, we sometimes transform them so they are easier to model. Consider the histogram of salaries for Major League Baseball players' salaries from 2010, which is shown in Figure~\ref{histMLBSalariesReg}.
+When data are very strongly skewed, we sometimes transform
+them so they are easier to model.
 
 \begin{figure}[ht]
 \centering
 \subfigure[]{
-\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/histMLBSalaries/histMLBSalariesReg}
-\label{histMLBSalariesReg}
+\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/county_pop_transformed/county_pop_transformed_i}
+\label{county_pop_transformed_i}
 }
 \subfigure[]{
-\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/histMLBSalaries/histMLBSalariesLog}
-\label{histMLBSalariesLog}
+\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/county_pop_transformed/county_pop_transformed_log}
+\label{county_pop_transformed_log}
 }
-\caption{\subref{histMLBSalariesReg} Histogram of MLB player salaries for 2010, in millions of dollars. \subref{histMLBSalariesLog} Histogram of the log-transformed MLB player salaries for 2010.}
-\label{histMLBSalaries}
+\caption{\subref{county_pop_transformed_i} A histogram of
+  the populations of all US counties.
+  \subref{county_pop_transformed_log} A histogram of
+  log$_{10}$-transformed county populations.
+  For this plot, the x-value corresponds to the power
+  of 10, e.g. ``4'' on the x-axis corresponds to $10^4 =$ 10,000.}
+\label{county_pop_transformed}
 \end{figure}
 
-\begin{example}{The histogram of MLB player salaries is useful in that we can see the data are extremely skewed\index{skew!example: extreme} and centered (as gauged by the median) at about \$1 million. What isn't useful about this plot?}
-Most of the data are collected into one bin in the histogram and the data are so strongly skewed that many details in the data are obscured.
+\begin{example}{Consider the histogram of county populations
+    shown in Figure~\ref{county_pop_transformed_i},
+    which shows extreme skew\index{skew!example: extreme}.
+    What isn't useful about this plot?}
+  Nearly all of the data fall into the left-most bin,
+  and the extreme skew obscures many of the potentially
+  interesting details in the data.
 \end{example}
 
-There are some standard transformations that are often applied when much of the data cluster near zero (relative to the larger values in the data set) and all observations are positive. A \term{transformation} is a rescaling of the data using a function. For instance, a plot of the natural logarithm\footnote{Data scientists often write the natural logarithm as $\log$. You might be more familiar with it being written as $\ln$.} of player salaries results in a new histogram in Figure~\ref{histMLBSalariesLog}. Transformed data are sometimes easier to work with when applying statistical models because the transformed data are much less skewed and outliers are usually less extreme.
+There are some standard transformations that may be
+useful for strongly right skewed data where much of the
+data is positive but clustered near zero.
+A \term{transformation} is a rescaling of the data
+using a function.
+For instance, a plot of the logarithm (base 10) of
+county populations results in the new histogram in
+Figure~\ref{county_pop_transformed_log}.
+This data is symmetric, and any potential outliers
+appear much less extreme than in the original data set.
+By reigning in the outliers and extreme skew,
+transformations like this often make it easier to build
+statistical models against the data.
 
-Transformations can also be applied to one or both variables in a scatterplot. A scatterplot of the \var{line\_\hspace{0.3mm}breaks} and \var{num\_\hspace{0.3mm}char} variables is shown in Figure~\ref{email50LinesCharactersMod}, which was earlier shown in Figure~\ref{email50LinesCharacters}. We can see a positive association between the variables and that many observations are clustered near zero. In Chapter~\ref{linRegrForTwoVar}, we might want to use a straight line to model the data. However, we'll find that the data in their current state cannot be modeled very well. Figure~\ref{email50LinesCharactersModLog} shows a scatterplot where both the \var{line\_\hspace{0.3mm}breaks} and \var{num\_\hspace{0.3mm}char} variables have been transformed using a log (base $e$) transformation. While there is a positive association in each plot, the transformed data show a steadier trend, which is easier to model than the untransformed data.
+Transformations can also be applied to one or both
+variables in a scatterplot.
+A scatterplot of the the population change from 2010 to 2017
+against the population in 2010 is shown in Figure~\ref{county_pop_change_v_pop_transform_i}.
+In this first scatterplot, it's hard to decipher any
+interesting patterns because the population variable
+is so strongly skewed.
+However, if we apply a log$_{10}$ transformation to
+the population variable, as shown in
+Figure~\ref{county_pop_change_v_pop_transform_log},
+a positive association between the variables is revealed.
+In fact, we may be interested in fitting a trend line to
+the data when we explore methods around fitting regression
+lines in Chapter~\ref{linRegrForTwoVar}.
 
 \begin{figure}
 \centering
 \subfigure[]{
-\includegraphics[width=0.47\textwidth]{ch_summarizing_data/figures/email50LinesCharactersMod/email50LinesCharactersMod}
-\label{email50LinesCharactersMod}
+\includegraphics[width=0.47\textwidth]{ch_summarizing_data/figures/county_pop_change_v_pop_transform/county_pop_change_v_pop_transform_i}
+\label{county_pop_change_v_pop_transform_i}
 }
 \subfigure[]{
-\includegraphics[width=0.47\textwidth]{ch_summarizing_data/figures/email50LinesCharactersMod/email50LinesCharactersModLog}
-\label{email50LinesCharactersModLog}
+\includegraphics[width=0.47\textwidth]{ch_summarizing_data/figures/county_pop_change_v_pop_transform/county_pop_change_v_pop_transform_log}
+\label{county_pop_change_v_pop_transform_log}
 }
-\caption{\subref{email50LinesCharactersMod} Scatterplot of \var{line\_\hspace{0.3mm}breaks} against \var{num\_\hspace{0.3mm}char} for 50 emails. \subref{email50LinesCharactersModLog} A scatterplot of the same data but where each variable has been log-transformed.}
-\label{email50LinesCharactersModMain}
+\caption{\subref{county_pop_change_v_pop_transform_i} Scatterplot of \var{line\_\hspace{0.3mm}breaks} against \var{num\_\hspace{0.3mm}char} for 50 emails. \subref{county_pop_change_v_pop_transform_log} A scatterplot of the same data but where each variable has been log-transformed.}
+\label{county_pop_change_v_pop_transform_main}
 \end{figure}
 
-Transformations other than the logarithm can be useful, too. For instance, the square root ($\sqrt{\text{original observation}}$) and inverse ($\frac{1}{\text{original observation}}$) are used by data scientists. Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.
+Transformations other than the logarithm can be useful, too.
+For instance, the square root
+($\sqrt{\text{original observation}}$) and inverse
+($\frac{1}{\text{original observation}}$) are commonly used
+by data scientists.
+Common goals in transforming data are to see the data
+structure differently, reduce skew, assist in modeling,
+or straighten a nonlinear relationship in a scatterplot.
 
-\index{data!loan50|)}
+\index{data!county|)}
+
 
 \subsection{Mapping data (special topic)}
 
 \index{data!county|(}
 \index{intensity map|(}
 
-The \data{county} data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data. Rather, when we encounter geographic data, we should map it using an \term{intensity map}, where colors are used to show higher and lower values of a variable. Figures~\ref{countyIntensityMaps1} and~\ref{countyIntensityMaps2} shows intensity maps for federal spending per capita (\var{fed\_\hspace{0.3mm}spend}), poverty rate in percent (\var{poverty}), homeownership rate in percent (\var{homeownership}), and median household income (\var{med\_\hspace{0.3mm}income}). The color key indicates which colors correspond to which values. Note that the intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions.
+The \data{county} data set offers many numerical variables
+that we could plot using dot plots, scatterplots,
+or box plots, but these miss the true nature of the data.
+Rather, when we encounter geographic data, we should map
+it using an \term{intensity map}, where colors are used
+to show higher and lower values of a variable.
+Figures~\ref{countyIntensityMaps1}
+and~\ref{countyIntensityMaps2} shows intensity maps for
+poverty rate in percent (\var{poverty}),
+unemployment rate (\var{unemployment\_\hspace{0.3mm}rate}),
+homeownership rate in percent (\var{homeownership}),
+and median household income
+(\var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income}).
+The color key indicates which colors correspond to which values.
+The intensity maps are not generally very helpful
+for getting precise values in any given county,
+but they are very helpful for seeing geographic trends
+and generating interesting research questions or hypotheses.
 
 \begin{figure}
 \centering
-\subfigure[]{\includegraphics[width=\textwidth]{ch_summarizing_data/figures/countyIntensityMaps/countyFedSpendMap}\label{countyFedSpendMap}}
 \subfigure[]{\includegraphics[width=\textwidth]{ch_summarizing_data/figures/countyIntensityMaps/countyPovertyMap}\label{countyPovertyMap}}
-\caption{\subref{countyFedSpendMap} Map of federal spending (dollars per capita). \subref{countyPovertyMap} Intensity map of poverty rate (percent).}
+\subfigure[]{\includegraphics[width=\textwidth]{ch_summarizing_data/figures/countyIntensityMaps/countyUnemploymentRateMap}\label{countyUnemploymentRateMap}}
+\caption{\subref{countyPovertyMap} Intensity map of poverty rate (percent). \subref{countyUnemploymentRateMap} Map of the unemployment rate (percent).}
 \label{countyIntensityMaps1}
 \end{figure}
 
@@ -1062,14 +1126,30 @@ The \data{county} data set offers many numerical variables that we could plot us
 \label{countyIntensityMaps2}
 \end{figure}
 
-\begin{example}{What interesting features are evident in the \var{fed\_\hspace{0.3mm}spend} and \var{poverty} intensity maps?}
-The federal spending intensity map shows substantial spending in the Dakotas and along the central-to-western part of the Canadian border, which may be related to the oil boom in this region. There are several other patches of federal spending, such as a vertical strip in eastern Utah and Arizona and the area where Colorado, Nebraska, and Kansas meet. There are also seemingly random counties with very high federal spending relative to their neighbors. If we did not cap the federal spending range at \$18 per capita, we would actually find that some counties have extremely high federal spending while there is almost no federal spending in the neighboring counties. These high-spending counties might contain military bases, companies with large government contracts, or other government facilities with many employees.
+\begin{example}{What interesting features are evident in the
+    \var{poverty} and \var{unemployment\_\hspace{0.3mm}rate}
+    intensity maps?}
+  Poverty rates are evidently higher in a few locations.
+  Notably, the deep south shows higher poverty rates,
+  as does the southwest border of Texas.
+  The vertical strip of eastern Utah and Arizona
+  appears to have higher rates of poverty.
+  High poverty rates are evident in the Mississippi
+  flood plains a little north of New Orleans and
+  also in a large section of Kentucky and West Virginia.
 
-Poverty rates are evidently higher in a few locations. Notably, the deep south shows higher poverty rates, as does the southwest border of Texas. The vertical strip of eastern Utah and Arizona, noted above for its higher federal spending, also appears to have higher rates of poverty (though generally little correspondence is seen between the two variables).  High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky and West Virginia.
+  The unemployment rate follows similar trends,
+  and we can see correspondence between the two
+  variables. In fact, it makes sense for higher rates
+  of unemployment to be closely related to poverty rates.
+  One observation that stand out when comparing the two maps:
+  the poverty rate is much higher than the unemployment
+  rate, meaning while many people may be working,
+  they are not making enough to break out of poverty.
 \end{example}
 
 \begin{exercise}
-What interesting features are evident in the \var{med\_\hspace{0.3mm}income} intensity map in Figure~\ref{countyMedIncomeMap}?\footnote{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.}
+What interesting features are evident in the \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income} intensity map in Figure~\ref{countyMedIncomeMap}?\footnote{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.}
 \end{exercise}
 
 \index{intensity map|)}

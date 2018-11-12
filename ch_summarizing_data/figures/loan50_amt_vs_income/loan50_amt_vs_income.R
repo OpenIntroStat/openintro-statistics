@@ -11,14 +11,14 @@ myPDF("loan50_amt_vs_income.pdf",
       xaxs = "i", yaxs = "i")
 x <- d$total_income
 y <- d$loan_amount
-plot(x, y,
+plot(x, y, type = "n",
      xlim = c(0, 1.05 * max(x)),
      ylim = c(0, 1.05 * max(y)),
      xlab = "Total Income",
      ylab = "",
-     axes = FALSE,
-     pch = 19,
-     col = COL[1, 2])
+     axes = FALSE)
+abline(h = pretty(c(0, y)), v = pretty(c(0, x)), col = COL[7, 3])
+points(x, y, pch = 19, col = COL[1, 2])
 AxisInDollars(1, pretty(c(0, x)))
 AxisInDollars(2, pretty(c(0, y)))
 mtext("Loan Amount", 2, 3, las = 0)
