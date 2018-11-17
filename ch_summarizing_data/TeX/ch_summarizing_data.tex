@@ -1160,63 +1160,109 @@ What interesting features are evident in the \var{median\_\hspace{0.3mm}hh\_\hsp
 \section[Considering categorical data]{Considering categorical data \sectionvideohref{youtube-7NhNeADL8fA&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-7}}
 \label{categoricalData}
 
-\index{data!email|(}
+\index{data!loans|(}
 
-Like numerical data, categorical data can also be organized and analyzed. In this section, we will introduce tables and other basic tools for categorical data that are used throughout this book. The \data{email50} data set represents a sample from a larger email data set called \data{email}. This larger data set contains information on 3,921 emails. In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
-% library(openintro); data(email); dim(email)
+Like numerical data, categorical data can also be organized
+and analyzed.
+In this section, we will introduce tables and other basic tools
+for categorical data that are used throughout this book.
+The \data{loan50} data set represents a sample from a larger
+email data set called \data{loans}.
+This larger data set contains information on 10,000 loans made
+through Lending Club.
+In this section we will examine the relationship between
+\var{homeownership}, which for the \data{loans} data can take
+a value of \resp{rent}, \resp{mortgage}
+(owns but has a mortgage), or \resp{own},
+and \var{app\_\hspace{0.3mm}type},
+which indicates whether the borrower reported joint income
+with a partner or whether that reported income was
+individual only.
+% library(openintro); dim(loans_full_schema)
+
 
 \subsection{Contingency tables and bar plots}
 
-Figure~\ref{emailSpamNumberTableTotals} summarizes two variables: \var{spam} and \var{number}. Recall that \var{number} is a categorical variable that describes whether an email contains no numbers, only small numbers (values under 1 million), or at least one big number (a value of 1 million or more). A table that summarizes data for two categorical variables in this way is called a \term{contingency table}. Each value in the table represents the number of times a particular combination of variable outcomes occurred. For example, the value 149 corresponds to the number of emails in the data set that are spam \emph{and} had no number listed in the email. Row and column totals are also included. The \term{row totals} \index{contingency table!row totals} provide the total counts across each row (e.g. $149 + 168 + 50 = 367$), and \term{column totals} \index{contingency table!column totals} are total counts down each column.
+Figure~\ref{loan_home_app_type_totals} summarizes two variables:
+\var{app\_\hspace{0.3mm}type} and \var{homeownership}.
+A table that summarizes data for two categorical variables in
+this way is called a \term{contingency table}.
+Each value in the table represents the number of times
+a particular combination of variable outcomes occurred.
+For example, the value 3496 corresponds to the number of
+loans in the data set where the borrower rents their home
+and the application type was by an individual.
+Row and column totals are also included.
+The \term{row totals} \index{contingency table!row totals}
+provide the total counts across each row
+(e.g. $3496 + 3839 + 1170 = 8505$),
+and \term{column totals} \index{contingency table!column totals}
+are total counts down each column.
 
-A table for a single variable is called a \term{frequency table}. Figure~\ref{emailNumberTable} is a frequency table for the \var{number} variable. If we replaced the counts with percentages or proportions, the table would be called a \term{relative frequency table}.
+A table for a single variable is called a \term{frequency table}.
+Figure~\ref{loan_homeownership_totals} is a frequency table for
+the \var{homeownership} variable.
+If we replaced the counts with percentages or proportions,
+the table would be called a \term{relative frequency table}.
 
 \begin{figure}[ht]
 \centering
 \begin{tabular}{ll  ccc  rr}
-& & \multicolumn{3}{c}{\bf \var{number}} & \\
+& & \multicolumn{3}{c}{\bf \var{homeownership}} & \\
   \cline{3-5}
-& & none & small & big & Total & \hspace{2mm}\  \\ 
+& & rent & mortgage & own & Total & \hspace{2mm}\  \\ 
   \cline{2-6}
-	 & spam &  149 & 168 &  50 & 367 \\ 
-\raisebox{1.5ex}[0pt]{\var{spam}} 
-	& not spam &  400 & 2659 & 495 & 3554 \\ 
+  & individual & 3496 & 3839 & 1170 & 8505 \\ 
+  
+\raisebox{1.5ex}[0pt]{\var{app\_\hspace{0.3mm}type}}
+	& joint & 362 & 950 & 183 & 1495 \\ 
   \cline{2-6}
-& Total & 549 & 2827 & 545 & 3921 \\
+& Total & 3858 & 4789 & 1353 & 10000 \\
   \cline{2-6}
 \end{tabular}
-\caption{A contingency table for \var{spam} and \var{number}.}
-\label{emailSpamNumberTableTotals}
-%library(openintro); library(xtable); data(email); tab <- table(email[,c("spam", "number")])[2:1,]; xtable(tab); rowSums(tab); colSums(tab); sum(tab)
+\caption{A contingency table for \var{app\_\hspace{0.3mm}type} and \var{homeownership}.}
+\label{loan_home_app_type_totals}
+%library(openintro); library(xtable); tab <- table(loans_full_schema[,c("application_type", "homeownership")])[, c("RENT", "MORTGAGE", "OWN")]; xtable(tab); rowSums(tab); colSums(tab); sum(tab)
 \end{figure}
 
 \begin{figure}[htb]
 \centering
-\begin{tabular}{cccc}
+\begin{tabular}{lc}
   \hline
-none & small & big & Total \\ 
- % \hline
- 549 & 2827 & 545 & 3921 \\
+\var{homeownership} & Count \\
+   \hline
+rent & 3858 \\
+mortgage & 4789 \\
+own & 1353 \\
+\hline
+Total & 10000 \\ 
    \hline
 \end{tabular}
-\caption{A frequency table for the \var{number} variable.}
-\label{emailNumberTable}
+\caption{A frequency table for the \var{homeownership} variable.}
+\label{loan_homeownership_totals}
 \end{figure}
 %library(openintro); library(xtable); data(email); xtable(table(email[,c("html")]))
 
-A bar plot is a common way to display a single categorical variable. The left panel of Figure~\ref{emailNumberBarPlot} shows a \term{bar plot} for the \var{number} variable. In the right panel, the counts are converted into proportions (e.g. $549/3921=0.140$ for \resp{none}), showing the proportion of observations that are in each level (i.e. in each category).
+A bar plot is a common way to display a single
+categorical variable.
+The left panel of Figure~\ref{loan_homeownership_bar_plot}
+shows a \term{bar plot} for the \var{homeownership} variable.
+In the right panel, the counts are converted into proportions
+(e.g. $3858/10000=0.3858$ for \resp{rent}),
+showing the proportion of observations that are in each level
+(i.e. in each category).
 
 \begin{figure}[bht]
    \centering
-   \includegraphics[width=0.9\textwidth]{ch_summarizing_data/figures/emailNumberBarPlot/emailNumberBarPlot}
+   \includegraphics[width=0.9\textwidth]{ch_summarizing_data/figures/loan_homeownership_bar_plot/loan_homeownership_bar_plot}
    \caption{Two bar plots of \var{number}. The left panel shows the counts, and the right panel shows the proportions in each group.}
-   \label{emailNumberBarPlot}
+   \label{loan_homeownership_bar_plot}
 \end{figure}
 
 
 \subsection{Row and column proportions}
 
-Figure~\ref{rowPropSpamNumber} shows the row proportions for Figure~\ref{emailSpamNumberTableTotals}. The \termsub{row proportions}{contingency table!row proportions} are computed as the counts divided by their row totals. The value 149 at the intersection of \resp{spam} and \resp{none} is replaced by $149/367=0.406$, i.e. 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the proportion of spam emails in the sample that do not include any numbers in the message.
+Figure~\ref{rowPropSpamNumber} shows the row proportions for Figure~\ref{loan_home_app_type_totals}. The \termsub{row proportions}{contingency table!row proportions} are computed as the counts divided by their row totals. The value 149 at the intersection of \resp{spam} and \resp{none} is replaced by $149/367=0.406$, i.e. 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the proportion of spam emails in the sample that do not include any numbers in the message.
 
 \begin{figure}
 \centering
@@ -1304,57 +1350,61 @@ Look back to Tables~\ref{rowPropSpamNumber} and~\ref{colPropSpamNumber}. Which w
 
 Contingency tables using row or column proportions are especially useful for examining how two categorical variables are related. Segmented bar and mosaic plots provide a way to visualize the information in these tables.
 
-A \termsub{segmented bar plot}{bar plot!segmented bar plot} is a graphical display of contingency table information. For example, a segmented bar plot representing Figure~\ref{colPropSpamNumber} is shown in Figure~\ref{emailSpamNumberSegBar}, where we have first created a bar plot using the \var{number} variable and then divided each group by the levels of \var{spam}. The column proportions of Figure~\ref{colPropSpamNumber} have been translated into a standardized segmented bar plot in Figure~\ref{emailSpamNumberSegBarSta}, which is a helpful visualization of the fraction of spam emails in each level of \var{number}.
+A \termsub{segmented bar plot}{bar plot!segmented bar plot} is a graphical display of contingency table information. For example, a segmented bar plot representing Figure~\ref{colPropSpamNumber} is shown in Figure~\ref{loan_app_type_home_seg_bar}, where we have first created a bar plot using the \var{number} variable and then divided each group by the levels of \var{spam}. The column proportions of Figure~\ref{colPropSpamNumber} have been translated into a standardized segmented bar plot in Figure~\ref{loan_app_type_home_seg_bar_standardized}, which is a helpful visualization of the fraction of individual loan applications for borrowers in each level of \var{homeownership}.
 
 \begin{figure}[h]
 \centering
 \subfigure[]{
-\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/emailSpamNumberSegBar/emailSpamNumberSegBar}
-\label{emailSpamNumberSegBar}
+\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/loan_app_type_home_seg_bar/loan_app_type_home_seg_bar}
+\label{loan_app_type_home_seg_bar}
 }
 \subfigure[]{
-\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/emailSpamNumberSegBar/emailSpamNumberSegBarSta}
-\label{emailSpamNumberSegBarSta}
+\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/loan_app_type_home_seg_bar/loan_app_type_home_seg_bar_standardized}
+\label{loan_app_type_home_seg_bar_standardized}
 }
-\caption{\subref{emailSpamNumberSegBar} Segmented bar plot for numbers found in emails, where the counts have been further broken down by \var{spam}. \subref{emailSpamNumberSegBarSta} Standardized version of Figure~\subref{emailSpamNumberSegBar}.}
-\label{emailSpamNumberSegBarPlot}
+\caption{\subref{loan_app_type_home_seg_bar} Segmented bar plot for numbers found in emails, where the counts have been further broken down by \var{spam}. \subref{loan_app_type_home_seg_bar_standardized} Standardized version of Figure~\subref{loan_app_type_home_seg_bar}.}
+\label{loan_app_type_home_seg_bar_plot}
 \end{figure}
 
 \begin{example}{Examine both of the segmented bar plots. Which is more useful?}
-Figure~\ref{emailSpamNumberSegBar} contains more information, but Figure~\ref{emailSpamNumberSegBarSta} presents the information more clearly. This second plot makes it clear that emails with no number have a relatively high rate of spam email -- about 27\%! On the other hand, less than 10\% of email with small or big numbers are spam.
+Figure~\ref{loan_app_type_home_seg_bar} contains more information, but Figure~\ref{loan_app_type_home_seg_bar_standardized} makes it easier to see whether the distributions differ across groups. This second plot makes it clear that joint applications are relatively more common when the applicant has a mortgage than if they rent or own.
 \end{example}
 
-Since the proportion of spam changes across the groups in Figure~\ref{emailSpamNumberSegBarSta}, we can conclude the variables are dependent, which is something we were also able to discern using table proportions. Because both the \resp{none} and \resp{big} groups have relatively few observations compared to the \resp{small} group, the association is more difficult to see in Figure~\ref{emailSpamNumberSegBar}.
+Since the proportion of spam changes across the groups in Figure~\ref{loan_app_type_home_seg_bar_standardized}, we can conclude the variables are dependent, which is something we were also able to discern using table proportions. Because both the \resp{none} and \resp{big} groups have relatively few observations compared to the \resp{small} group, the association is more difficult to see in Figure~\ref{loan_app_type_home_seg_bar}.
 
 In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.
 
 \begin{figure}
 \centering
 \subfigure[]{
-\includegraphics[width=0.3934\textwidth]{ch_summarizing_data/figures/emailSpamNumberMosaicPlot/emailNumberMosaic}
-\label{emailNumberMosaic}
+\includegraphics[width=0.3934\textwidth]{ch_summarizing_data/figures/loan_app_type_home_mosaic_plot/loan_home_mosaic}
+\label{loan_home_mosaic}
 }
 \subfigure[]{
-\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/emailSpamNumberMosaicPlot/emailSpamNumberMosaic}
-\label{emailSpamNumberMosaic}
+\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/loan_app_type_home_mosaic_plot/loan_app_type_home_mosaic}
+\label{loan_app_type_home_mosaic}
 }
-\caption{The one-variable mosaic plot for \var{number} and the two-variable mosaic plot for both \var{number} and \var{spam}.}
-\label{emailSpamNumberMosaicPlot}
+\caption{\subref{loan_home_mosaic}~The one-variable mosaic
+    plot for \var{homeownership}.
+    \subref{loan_app_type_home_mosaic}~Two-variable mosaic
+    plot for both \var{homeownership}
+    and \var{app\_\hspace{0.3mm}type}.}
+\label{loan_app_type_home_mosaic_plot}
 \end{figure}
 
-A \term{mosaic plot} is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure~\ref{emailNumberMosaic} shows a mosaic plot for the \var{number} variable. Each column represents a level of \var{number}, and the column widths correspond to the proportion of emails for each number~type. For~instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box \emph{areas} to represent the number of observations that box represents.
+A \term{mosaic plot} is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure~\ref{loan_home_mosaic} shows a mosaic plot for the \var{number} variable. Each column represents a level of \var{number}, and the column widths correspond to the proportion of emails for each number~type. For~instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box \emph{areas} to represent the number of observations that box represents.
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.44\textwidth]{ch_summarizing_data/figures/emailSpamNumberMosaicPlot/emailSpamNumberMosaicRev}
-   \caption{Mosaic plot where emails are grouped by the \var{number} variable after they've been divided into \resp{spam} and \resp{not spam}.}
-   \label{emailSpamNumberMosaicRev}
+   \includegraphics[width=0.44\textwidth]{ch_summarizing_data/figures/loan_app_type_home_mosaic_plot/loan_app_type_home_mosaic_rev}
+   \caption{Mosaic plot where emails are grouped by the \var{homeownership} variable after they've been divided into the \resp{individual} and \resp{joint} application types.}
+   \label{loan_app_type_home_mosaic_rev}
 \end{figure}
 
-This one-variable mosaic plot is further divided into pieces in Figure~\ref{emailSpamNumberMosaic} using the \var{spam} variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
+This one-variable mosaic plot is further divided into pieces in Figure~\ref{loan_app_type_home_mosaic} using the \var{spam} variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
 As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the \var{spam} and \var{number} variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.
 
-In a similar way, a mosaic plot representing row proportions of Figure~\ref{emailSpamNumberTableTotals} could be constructed, as shown in Figure~\ref{emailSpamNumberMosaicRev}. However, because it is more insightful for this application to consider the fraction of spam in each category of the \var{number} variable, we prefer Figure~\ref{emailSpamNumberMosaic}.
+In a similar way, a mosaic plot representing row proportions of Figure~\ref{loan_home_app_type_totals} could be constructed, as shown in Figure~\ref{loan_app_type_home_mosaic_rev}. However, because it is more insightful for this application to consider the fraction of spam in each category of the \var{number} variable, we prefer Figure~\ref{loan_app_type_home_mosaic}.
 
 \subsection{The only pie chart you will see in this book}
 
@@ -1367,7 +1417,7 @@ While pie charts are well known, they are not typically as useful as other chart
    \label{emailNumberPieChart}
 \end{figure}
 
-\index{data!email|)}
+\index{data!loans|)}
 
 \subsection{Comparing numerical data across groups}
 \label{comparingAcrossGroups}
