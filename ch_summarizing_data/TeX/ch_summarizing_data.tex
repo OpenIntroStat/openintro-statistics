@@ -1183,19 +1183,34 @@ individual only.
 
 \subsection{Contingency tables and bar plots}
 
+\newcommand{\loanapphomeAA}{3496}
+\newcommand{\loanapphomeAB}{3839}
+\newcommand{\loanapphomeAC}{1170}
+\newcommand{\loanapphomeAD}{8505}
+\newcommand{\loanapphomeBA}{362}
+\newcommand{\loanapphomeBB}{950}
+\newcommand{\loanapphomeBC}{183}
+\newcommand{\loanapphomeBD}{1495}
+\newcommand{\loanapphomeDA}{3858}
+\newcommand{\loanapphomeDB}{4789}
+\newcommand{\loanapphomeDC}{1353}
+\newcommand{\loanapphomeDD}{10000}
+\newcommand{\loanapphomeN}{\loanapphomeDD{}}
+
 Figure~\ref{loan_home_app_type_totals} summarizes two variables:
 \var{app\_\hspace{0.3mm}type} and \var{homeownership}.
 A table that summarizes data for two categorical variables in
 this way is called a \term{contingency table}.
 Each value in the table represents the number of times
 a particular combination of variable outcomes occurred.
-For example, the value 3496 corresponds to the number of
+For example, the value \loanapphomeAA{} corresponds to the number of
 loans in the data set where the borrower rents their home
 and the application type was by an individual.
 Row and column totals are also included.
 The \term{row totals} \index{contingency table!row totals}
 provide the total counts across each row
-(e.g. $3496 + 3839 + 1170 = 8505$),
+(e.g. $\loanapphomeAA{} + \loanapphomeAB{} +
+  \loanapphomeAC{} = \loanapphomeAD{}$),
 and \term{column totals} \index{contingency table!column totals}
 are total counts down each column.
 
@@ -1212,12 +1227,15 @@ the table would be called a \term{relative frequency table}.
   \cline{3-5}
 & & rent & mortgage & own & Total & \hspace{2mm}\  \\ 
   \cline{2-6}
-  & individual & 3496 & 3839 & 1170 & 8505 \\ 
+& individual & \loanapphomeAA{} & \loanapphomeAB{} &
+      \loanapphomeAC{} & \loanapphomeAD{} \\ 
   
 \raisebox{1.5ex}[0pt]{\var{app\_\hspace{0.3mm}type}}
-	& joint & 362 & 950 & 183 & 1495 \\ 
+& joint & \loanapphomeBA{} & \loanapphomeBB{} &
+	    \loanapphomeBC{} & \loanapphomeBD{} \\ 
   \cline{2-6}
-& Total & 3858 & 4789 & 1353 & 10000 \\
+& Total & \loanapphomeDA{} & \loanapphomeDB{} &
+    \loanapphomeDC{} & \loanapphomeDD{} \\
   \cline{2-6}
 \end{tabular}
 \caption{A contingency table for \var{app\_\hspace{0.3mm}type} and \var{homeownership}.}
@@ -1231,11 +1249,11 @@ the table would be called a \term{relative frequency table}.
   \hline
 \var{homeownership} & Count \\
    \hline
-rent & 3858 \\
-mortgage & 4789 \\
-own & 1353 \\
+rent & \loanapphomeDA{} \\
+mortgage & \loanapphomeDB{} \\
+own & \loanapphomeDC{} \\
 \hline
-Total & 10000 \\ 
+Total & \loanapphomeDD{} \\ 
    \hline
 \end{tabular}
 \caption{A frequency table for the \var{homeownership} variable.}
@@ -1248,7 +1266,8 @@ categorical variable.
 The left panel of Figure~\ref{loan_homeownership_bar_plot}
 shows a \term{bar plot} for the \var{homeownership} variable.
 In the right panel, the counts are converted into proportions
-(e.g. $3858/10000=0.3858$ for \resp{rent}),
+(e.g. $\loanapphomeDA{} / \loanapphomeDD{} = 0.3858$ for
+  \resp{rent}),
 showing the proportion of observations that are in each level
 (i.e. in each category).
 
