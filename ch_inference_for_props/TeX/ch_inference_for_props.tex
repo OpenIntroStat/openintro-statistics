@@ -857,11 +857,30 @@ Because the data provided strong evidence that the geometric distribution is not
 
 
 %__________________
-\section[Testing for independence in two-way tables (sp. topic)]{Testing for independence in two-way tables (special topic)}
+\section%[Testing for independence in two-way tables (sp. topic)]
+{Testing for independence in two-way tables (special topic)}
 %\sectionvideohref{coursera_video-chisq_2way}~\sectionslideshref{gdoc_os3_slides_6-4}}
 \label{twoWayTablesAndChiSquare}
 
 \index{data!iPod|(}
+
+\newcommand{\iPodAA}{2}
+\newcommand{\iPodAB}{23}
+\newcommand{\iPodAC}{36}
+\newcommand{\iPodAD}{61}
+\newcommand{\iPodAFraction}{0.2785}
+\newcommand{\iPodAExpected}{20.33}
+\newcommand{\iPodBA}{71}
+\newcommand{\iPodBB}{50}
+\newcommand{\iPodBC}{37}
+\newcommand{\iPodBD}{158}
+\newcommand{\iPodBFraction}{0.7215}
+\newcommand{\iPodBExpected}{52.67}
+\newcommand{\iPodDA}{73}
+\newcommand{\iPodDB}{73}
+\newcommand{\iPodDC}{73}
+\newcommand{\iPodDD}{219}
+\newcommand{\iPodN}{\iPodDD}
 
 We all buy used products --
 cars, computers, textbooks, and so on --
@@ -869,7 +888,7 @@ and we sometimes assume the sellers of those products
 will be forthright about any underlying problems with
 what they're selling.
 This is not something we should take for granted.
-Researchers recruited 219 participants in a study where they
+Researchers recruited \iPodN{} participants in a study where they
 would sell a used iPod\footnote{For readers not as old as
   the authors, an iPod is basically an iPhone without
   any cellular service.}
@@ -910,16 +929,21 @@ are more effective for getting at the truth?
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrr}
+\begin{tabular}{l ccc l}
   \hline
-  & general & pos\_\hspace{0.3mm}assumption &
-      neg\_\hspace{0.3mm}assumption \\ 
+  & General & Positive Assumption &
+      Negative Assumption & Total \\ 
   \hline
-  disclose &   2 &  23 &  36 \\ 
-  hide &  71 &  50 &  37 \\ 
+  Disclose Problem & \iPodAA{} &  \iPodAB{} &
+      \iPodAC{} & \iPodAD{} \\ 
+  Hide Problem &  \iPodBA{} &  \iPodBB{} &
+      \iPodBC{} & \iPodBD{} \\ 
+  \hline
+  Total & \iPodDA{} & \iPodDB{} &
+      \iPodDC{} & \iPodDD{} \\
   \hline
 \end{tabular}
-\caption{Summary of the iPod study where a question was
+\caption{Summary of the iPod study, where a question was
   posed to the study participant who acted}
 \label{ipod_ask_data_summary}
 \end{table}
@@ -948,57 +972,105 @@ a problem.
 
 \subsection{Expected counts in two-way tables}
 
-\begin{example}{From the experiment, we estimate the proportion of users who were satisfied with their initial search (no new search) as $7078/10000 = 0.7078$. If there really is no difference among the algorithms and 70.78\% of people are satisfied with the search results, how many of the 5000 people in the ``current algorithm'' group would be expected to not perform a new search?} \label{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch}
-About 70.78\% of the 5000 would be satisfied with the initial search:
-$$ 0.7078\times 5000 = 3539\text{ users} $$
-That is, if there was no difference between the three groups, then we would expect 3539 of the current algorithm users not to perform a new search.
+\begin{example}{From the experiment,
+    we can compute the proportion of all sellers who disclosed
+    the freezing problem as $\iPodAD{}/\iPodDD = \iPodAFraction{}$.
+    If there really is no difference among the questions
+    and 27.85\% of sellers were going to disclose the freezing
+    problem no matter the question that was put to them,
+    how many of the \iPodDA{} people in the \resp{General}
+    group would we have expected to disclose the freezing
+    problem?} \label{iPodExComputeExpAA}
+  We would predict that $\iPodAFraction{} \times \iPodDA{} = \iPodAExpected{}$
+  sellers would disclose the problem.
+  Obviously we observed fewer than this, though it is not
+  yet clear if that is due to chance variation or whether
+  that is because the questions vary in how effective they
+  are at getting to the truth.
 \end{example}
 
-\begin{exercise}\label{googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch}
-Using the same rationale described in Example~\ref{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch}, about how many users in each test group would not perform a new search if the algorithms were equally helpful?\footnote{We would expect $0.7078*2500 = 1769.5$. It is okay that this is a fraction.}
+\begin{exercise}\label{iPodExComputeExpBB}
+If the questions were actually equally effective,
+meaning about 27.85\% of respondents would disclose the
+freezing issue regardless of what question they were asked,
+about how many sellers would we expect to \emph{hide} the
+freezing problem from the Positive Assumption
+group?\footnote{We would expect
+  $(1 - \iPodAFraction{}) \times \iPodDA{} = \iPodBExpected{}$.
+  It is okay that this result,
+  like the result from Example~\ref{iPodExComputeExpAA},
+  is a fraction.}
 \end{exercise}
 
-We can compute the expected number of users who would perform a new search for each group using the same strategy employed in Example~\ref{googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch} and Guided Practice~\ref{googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch}. These expected counts were used to construct Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts}, which is the same as Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals}, except now the expected counts have been added in parentheses.
+We can compute the expected number of sellers who we would
+expect to disclose or hide the freezing issue for all groups,
+if the questions had no impact on what they disclosed,
+using the same strategy employed in
+Example~\ref{iPodExComputeExpAA} and
+Guided Practice~\ref{iPodExComputeExpBB}.
+These expected counts were used to construct Figure~\ref{ipod_ask_data_summary_expected},
+which is the same as Figure~\ref{ipod_ask_data_summary},
+except now the expected counts have been added in parentheses.
 
 \begin{figure}[h]
 \centering
-\begin{tabular}{l lll lll lll l}
-\hline
-Search algorithm\hspace{2mm} & \multicolumn{2}{l}{current} &&
-					\multicolumn{2}{l}{test 1} &&
-					\multicolumn{2}{l}{test 2} & \hspace{0mm} & Total \\
-\hline
-No new search		   & 3511 &\highlightO{\footnotesize(3539)}    &&
-					1749 &\highlightO{\footnotesize(1769.5)}	&&
-					1818 &\highlightO{\footnotesize(1769.5)} &	& 7078 \\
-New search		   & 1489 &\highlightO{\footnotesize(1461)}    && 
-					751 &\highlightO{\footnotesize(730.5)}	&& 
-					682 &\highlightO{\footnotesize(730.5)}    &		& 2922 \\
-\hline
-Total				   & 5000 &&& 	2500 &&& 	2500 &&& 	10000 \\
-\hline
+\begin{tabular}{l lll l}
+  \hline
+  & General & Positive Assumption &
+      Negative Assumption & Total \\ 
+  \hline
+  Disclose Problem &
+      \iPodAA{} \ \highlightO{\footnotesize(\iPodAExpected{})} &
+      \iPodAB{} \highlightO{\footnotesize(\iPodAExpected{})} &
+      \iPodAC{} \highlightO{\footnotesize(\iPodAExpected{})} &
+      \iPodAD{} \\ 
+  Hide Problem &
+      \iPodBA{} \highlightO{\footnotesize(\iPodBExpected{})} &
+      \iPodBB{} \highlightO{\footnotesize(\iPodBExpected{})} &
+      \iPodBC{} \highlightO{\footnotesize(\iPodBExpected{})} &
+      \iPodBD{} \\ 
+  \hline
+  Total & \iPodDA{} & \iPodDB{} &
+      \iPodDC{} & \iPodDD{} \\
+  \hline
 \end{tabular}
-\caption{The observed counts and the \highlightO{(expected counts)}.}
-\label{googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts}
+\caption{The observed counts and the
+    \highlightO{(expected counts)}.}
+\label{ipod_ask_data_summary_expected}
 \end{figure}
 
-The examples and exercises above provided some help in computing expected counts. In general, expected counts for a two-way table may be computed using the row totals, column totals, and the table total. For instance, if there was no difference between the groups, then about 70.78\% of each column should be in the first row:
+The examples and exercises above provided some help
+in computing expected counts.
+In general, expected counts for a two-way table may
+be computed using the row totals, column totals,
+and the table total.
+For instance, if there was no difference between the groups,
+then about 27.85\% of each column should be in the first row:
 \begin{align*}
-0.7078\times (\text{column 1 total}) &= 3539 \\
-0.7078\times (\text{column 2 total}) &= 1769.5 \\
-0.7078\times (\text{column 3 total}) &= 1769.5
+\iPodAFraction{}\times (\text{column 1 total}) &= \iPodAExpected{} \\
+\iPodAFraction{}\times (\text{column 2 total}) &= \iPodAExpected{} \\
+\iPodAFraction{}\times (\text{column 3 total}) &= \iPodAExpected{}
 \end{align*}
-Looking back to how the fraction 0.7078 was computed -- as the fraction of users who did not perform a new search ($7078/10000$) -- these three expected counts could have been computed as
+Looking back to how \iPodAFraction{} was computed --
+as the fraction of sellers who disclosed the freezing issue
+($\iPodBD{}/\iPodDD{}$) --
+these three expected counts could have been computed as
 \begin{align*}
-\left(\frac{\text{row 1 total}}{\text{table total}}\right)\text{(column 1 total)} &= 3539 \\
-\left(\frac{\text{row 1 total}}{\text{table total}}\right)\text{(column 2 total)} &= 1769.5 \\
-\left(\frac{\text{row 1 total}}{\text{table total}}\right)\text{(column 3 total)} &= 1769.5
+\left(\frac{\text{row 1 total}}{\text{table total}}\right)\text{(column 1 total)} &= \iPodAExpected{} \\
+\left(\frac{\text{row 1 total}}{\text{table total}}\right)\text{(column 2 total)} &= \iPodAExpected{} \\
+\left(\frac{\text{row 1 total}}{\text{table total}}\right)\text{(column 3 total)} &= \iPodAExpected{}
 \end{align*}
 This leads us to a general formula for computing expected counts in a two-way table when we would like to test whether there is strong evidence of an association between the column variable and row variable.
 
-\begin{termBox}{\tBoxTitle{Computing expected counts in a two-way table}
-To identify the expected count for the $i^{th}$ row and $j^{th}$ column, compute
-$$\text{Expected Count}_{\text{row }i,\text{ col }j} = \frac{(\text{row $i$ total}) \times  (\text{column $j$ total})}{\text{table total}}\vspace{2mm}$$}
+\begin{termBox}{\tBoxTitle{Computing expected counts
+    in a two-way table}
+  To identify the expected count for the $i^{th}$ row
+  and $j^{th}$ column, compute
+  \begin{align*}
+  \text{Expected Count}_{\text{row }i,\text{ col }j}
+  = \frac{(\text{row $i$ total}) \times
+      (\text{column $j$ total})}{\text{table total}}\vspace{2mm}
+  \end{align*}}
 \end{termBox}
 
 
