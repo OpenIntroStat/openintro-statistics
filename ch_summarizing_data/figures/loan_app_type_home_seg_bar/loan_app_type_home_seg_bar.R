@@ -7,36 +7,49 @@ rp <- prop.table(tab, 1)
 cp <- prop.table(tab, 2)
 
 myPDF("loan_app_type_home_seg_bar.pdf",
-      4.5,
-      3.5,
-      mar = c(2, 3, 0.5, 0.5),
-      mgp = c(2.2, 0.6, 0))
+    4.5, 3.5,
+    mar = c(2, 3, 0.5, 0.5),
+    mgp = c(2.2, 0.6, 0))
+ylim <- c(0, max(apply(tab, 1, sum)))
 barplot(apply(tab, 1, sum),
-        col = COL[3])
+    col = COL[3],
+    ylim = ylim)
 tabTemp <- tab[,1]
 names(tabTemp) <- NULL
 barplot(tabTemp,
-        col = COL[1],
-        add = TRUE,
-        axes = FALSE)
+    col = COL[1],
+    add = TRUE,
+    axes = FALSE)
 abline(h = 0)
 legend("topright",
-       fill = COL[c(3,1)],
-       legend = c("joint", "individual"))
+    fill = COL[c(3,1)],
+    legend = c("joint", "individual"))
+dev.off()
+
+myPDF("loan_app_type_home_sbs_bar.pdf",
+    4.5, 3.5,
+    mar = c(2, 3, 0.5, 0.5),
+    mgp = c(2.2, 0.6, 0))
+barplot(t(tab),
+    ylim = ylim,
+    col = COL[c(1, 3)], beside = TRUE)
+abline(h = 0)
+legend("topright",
+    fill = COL[c(3,1)],
+    legend = c("joint", "individual"))
 dev.off()
 
 myPDF("loan_app_type_home_seg_bar_standardized.pdf",
-      4.5,
-      3.5,
-      mar = c(2, 2.5, 0.5, 0.5),
-      mgp = c(2.2, 0.6, 0))
+    4.5, 3.5,
+    mar = c(2, 2.5, 0.5, 0.5),
+    mgp = c(2.2, 0.6, 0))
 barplot(apply(tab, 1, sum) / apply(tab, 1, sum), col = COL[3])
 tabTemp <- rp[, 1]
 names(tabTemp) <- NULL
 barplot(tabTemp,
-        col = COL[1],
-        add = TRUE,
-        axes = FALSE)
+    col = COL[1],
+    add = TRUE,
+    axes = FALSE)
 abline(h = 0)
 dev.off()
 

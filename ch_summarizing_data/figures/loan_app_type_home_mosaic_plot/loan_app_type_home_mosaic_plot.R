@@ -30,8 +30,8 @@ MosaicPlot(homeownership ~ application_type, loans_full_schema,
 dev.off()
 
 myPDF("loan_app_type_home_mosaic_rev.pdf",
-      3,
-      2.25,
+      3 / 1.2,
+      2.25 / 1.5,
       mar = rep(1, 4) / 4)
 # colnames(tab)[1] <- "not spam"
 mosaicplot(t(tab),
