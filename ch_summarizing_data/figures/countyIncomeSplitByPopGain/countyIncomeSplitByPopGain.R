@@ -2,9 +2,10 @@ library(openintro)
 data(countyComplete)
 data(COL)
 
-cc  <- countyComplete
-pop <- sign(cc$pop2010 - cc$pop2000 - 0.5)
-pov <- cc$median_household_income / 1000
+cc  <- county
+pop <- sign(cc$pop2017 - cc$pop2010 - 0.5)
+sum(is.na(pop))
+pov <- cc$median_hh_income
 
 set.seed(1)
 these <- sample(sum(pop == -1, na.rm = TRUE), 50)
@@ -26,43 +27,51 @@ for(i in 1:nrow(M)){
   }
   cat("\n")
 }
-pop[pop == 1] <- "gain"
-pop[pop == -1] <- "no gain"
+pop[pop == 1] <- "Gain"
+pop[pop == -1] <- "No Gain"
 
 
 myPDF("countyIncomeSplitByPopGain.pdf", 7.5, 4,
-      mar = c(3.6, 3.6, 1, 0.5),
+      mar = c(3.6, 4.6, 1, 0.5),
       mgp = c(2.4, 0.7, 0),
       mfrow = 1:2)
 boxPlot(pov, pop,
+        axes = FALSE,
+        xlim = c(0.5, 2.5),
         xlab = 'Change in Population',
-        ylab = 'Median Income ($1000s)',
+        ylab = '',
         lcol = "#00000000",
         col = "#00000000")
-boxPlot(pov[pop == "gain"],
+axis(1, at = 1:2, c("Gain", "No Gain"))
+AxisInDollars(2, at = pretty(pov))
+par(las = 0)
+mtext("Median Household Income", 2, 3.6)
+par(las = 1)
+boxPlot(pov[pop == "Gain"],
         lcol = COL[1],
         col = COL[1,3],
         add = 1)
-boxPlot(pov[pop == "no gain"],
+boxPlot(pov[pop == "No Gain"],
         lcol = COL[4],
         col = COL[4,3],
         add = 2)
 
 par(mar = c(3.6, 0.5, 1, 1))
 
-histPlot(pov[pop == 'no gain'],
+xlim <- range(pov[pop == 'No Gain'], na.rm = TRUE)
+histPlot(pov[pop == 'No Gain'],
          breaks = 50,
          col = '#ffffff00',
          border = COL[4],
          probability = TRUE,
-         xlab = 'Median Income ($1000s)',
+         xlim = xlim,
+         xlab = 'Median Household Income',
          ylab = '',
          hollow = TRUE,
          axes = FALSE,
          lty = 3,
-         lwd = 4,
-         xlim = range(pov))
-histPlot(pov[pop == 'no gain'],
+         lwd = 4)
+histPlot(pov[pop == 'No Gain'],
          breaks = 50,
          col = '#ffffff00',
          border = COL[4],
@@ -71,7 +80,7 @@ histPlot(pov[pop == 'no gain'],
          hollow = TRUE,
          lty = 3,
          lwd = 2)
-histPlot(pov[pop == 'no gain'],
+histPlot(pov[pop == 'No Gain'],
          breaks = 50,
          col = '#ffffff00',
          border = COL[4],
@@ -80,7 +89,7 @@ histPlot(pov[pop == 'no gain'],
          hollow = TRUE,
          lty = 3,
          lwd = 1)
-histPlot(pov[pop == 'gain'],
+histPlot(pov[pop == 'Gain'],
          breaks = 50,
          col = '#ffffff00',
          border = COL[1],
@@ -89,17 +98,17 @@ histPlot(pov[pop == 'gain'],
          hollow = TRUE,
          lty = 1,
          lwd = 2)
-axis(1)
+AxisInDollars(1, at = pretty(xlim))
 legend('topright',
        col = COL[c(1,4)],
        lty = c(1,3),
        lwd = c(2,2.8),
-       legend = c('gain', 'no gain'))
+       legend = c('Gain', 'No Gain'))
 legend('topright',
        col = c(rgb(0,0,0,0), COL[4]),
        lty = c(1, 3),
        lwd = c(2,1.4),
-       legend = c('gain', 'no gain'),
+       legend = c('Gain', 'No Gain'),
        bg = rgb(0,0,0,0),
        box.col = rgb(0,0,0,0),
        text.col = rgb(0,0,0,0))
@@ -107,7 +116,7 @@ legend('topright',
        col = c(rgb(0,0,0,0), COL[4]),
        lty = c(1, 3),
        lwd = c(2,0.7),
-       legend = c('gain', 'no gain'),
+       legend = c('Gain', 'No Gain'),
        bg = rgb(0,0,0,0),
        box.col = rgb(0,0,0,0),
        text.col = rgb(0,0,0,0))
