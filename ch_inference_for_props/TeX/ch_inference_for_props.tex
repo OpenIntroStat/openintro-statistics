@@ -857,58 +857,93 @@ Because the data provided strong evidence that the geometric distribution is not
 
 
 %__________________
-\section[Testing for independence in two-way tables (sp. topic)]{Testing for independence in two-way tables\\(special topic) \sectionvideohref{coursera_video-chisq_2way}~\sectionslideshref{gdoc_os3_slides_6-4}}
+\section[Testing for independence in two-way tables (sp. topic)]{Testing for independence in two-way tables (special topic)}
+%\sectionvideohref{coursera_video-chisq_2way}~\sectionslideshref{gdoc_os3_slides_6-4}}
 \label{twoWayTablesAndChiSquare}
 
-\index{data!search algorithm|(}
+\index{data!iPod|(}
 
-Google is constantly running experiments to test new search algorithms. For example, Google might test three algorithms using a sample of 10,000 google.com search queries. Figure~\ref{googleSearchAlgorithmByAlgorithmOnly} shows an example of 10,000 queries split into three algorithm groups.\footnote{Google regularly runs experiments in this manner to help improve their search engine. It is entirely possible that if you perform a search and so does your friend, that you will have different search results. While the data presented in this section resemble what might be encountered in a real experiment, these data are simulated.} The group sizes were specified before the start of the experiment to be 5000 for the current algorithm and 2500 for each test algorithm.
+We all buy used products --
+cars, computers, textbooks, and so on --
+and we sometimes assume the sellers of those products
+will be forthright about any underlying problems with
+what they're selling.
+This is not something we should take for granted.
+Researchers recruited 219 participants in a study where they
+would sell a used iPod\footnote{For readers not as old as
+  the authors, an iPod is basically an iPhone without
+  any cellular service.}
+that was known to have frozen twice in the past.
+The participants were incentivized to get as much money
+as they could for the iPod since they would receive a 5\%
+cut of the sale on top of \$10 for participating.
+The researchers wanted to understand what types of questions
+would elicit the seller to disclose the freezing issue.
 
-\begin{figure}[h]
-\centering
-\begin{tabular}{ll ccc ll}
-\hline
-Search algorithm	 & \hspace{1mm} & current & test 1 & test 2 & \hspace{1mm} & Total \\
-Counts &		& 5000 & 2500 & 2500 & & 10000 \\
-\hline
-\end{tabular}
-\caption{Google experiment breakdown of test subjects into three search groups.}
-\label{googleSearchAlgorithmByAlgorithmOnly}
-\end{figure}
-
-\begin{example}{What is the ultimate goal of the Google experiment? What are the null and alternative hypotheses, in regular words?}
-The ultimate goal is to see whether there is a difference in the performance of the algorithms. The hypotheses can be described as the following:
+Unbeknownst to the participants who were the sellers
+in the study,
+the buyers were collaborating with the researchers
+to evaluate the influence of different questions
+on the likelihood of getting the sellers to disclose
+the past issues with the iPod.
+The scripted buyers started with
+``Okay, I guess I'm supposed to go first.
+  So you've had the iPod for 2 years ...''
+and ended with one of three questions:
 \begin{itemize}
-\item[$H_0$:] The algorithms each perform equally well.
-\item[$H_A$:] The algorithms do not perform equally well.
+\item General: What can you tell me about it?
+\item Positive Assumption: It doesn't have any problems, does it?
+\item Negative Assumption: What problems does it have?
 \end{itemize}
-\end{example}
+The question is the treatment given to the sellers,
+and the response is whether the question prompted them
+to disclose the freezing issue with the iPod.
+The results are shown in Figure~\ref{ipod_ask_data_summary},
+and the data suggest that asking the,
+\emph{What problems does it have?},
+was the most effective at getting the seller to disclose
+the past freezing issues.
+However, you should also be asking yourself:
+could we see these results due to chance alone,
+or is this in fact evidence that some questions
+are more effective for getting at the truth?
 
-In this experiment, the explanatory variable is the search algorithm. However, an outcome variable is also needed. This outcome variable should somehow reflect whether the search results align with the user's interests. One possible way to quantify this is to determine whether (1)~the user clicked one of the links provided and did not try a new search, or (2)~the user performed a related search. Under scenario~(1), we might think that the user was satisfied with the search results. Under scenario~(2), the search results probably were not relevant, so the user tried a second search.
-
-Figure~\ref{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals} provides the results from the experiment. These data are very similar to the count data in Section~\ref{oneWayChiSquare}. However, now the different combinations of two variables are binned in a \emph{two-way} table. In examining these data, we want to evaluate whether there is strong evidence that at least one algorithm is performing better than the others. To do so, we apply a chi-square test to this two-way table. The ideas of this test are similar to those ideas in the one-way table case. However, degrees of freedom and expected counts are computed a little differently than before.
-
-\begin{figure}[h]
+\begin{table}[ht]
 \centering
-\begin{tabular}{ll ccc ll}
-\hline
-Search algorithm & \hspace{1mm} & current & test 1 & test 2 & \hspace{1mm} & Total \\
-\hline
-No new search				   & & 3511    & 1749 & 1818 & 				& 7078 \\
-New search				   & & 1489    & 751	& 682    &				& 2922 \\
-\hline
-Total						   & & 5000    & 2500 & 2500 & 				& 10000 \\
-\hline
+\begin{tabular}{rrrr}
+  \hline
+  & general & pos\_\hspace{0.3mm}assumption &
+      neg\_\hspace{0.3mm}assumption \\ 
+  \hline
+  disclose &   2 &  23 &  36 \\ 
+  hide &  71 &  50 &  37 \\ 
+  \hline
 \end{tabular}
-\caption{Results of the Google search algorithm experiment.}
-\label{googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals}
-\end{figure}
+\caption{Summary of the iPod study where a question was
+  posed to the study participant who acted}
+\label{ipod_ask_data_summary}
+\end{table}
 
-\begin{tipBox}{\tipBoxTitle[]{What is so different about one-way tables and two-way tables?}
-A one-way table describes counts for each outcome in a single variable. A two-way table describes counts for \emph{combinations} of outcomes for two variables. When we consider a two-way table, we often would like to know, are these variables related in any way? That is, are they dependent (versus independent)?}
-\end{tipBox}
+\index{data!iPod|)}
 
-The hypothesis test for this Google experiment is really about assessing whether there is statistically significant evidence that the choice of the algorithm affects whether a user performs a second search. In other words, the goal is to check whether the \var{search} variable is independent of the \var{algorithm} variable.
+\begin{termBox}{
+  \tBoxTitle{Differences of one-way tables vs two-way tables}
+  A one-way table describes counts for each outcome in a single
+  variable.
+  A two-way table describes counts for \emph{combinations}
+  of outcomes for two variables.
+  When we consider a two-way table, we often would like to know,
+  are these variables related in any way?
+  That is, are they dependent (versus independent)?}
+\end{termBox}
+
+The hypothesis test for the iPod experiment is really about
+assessing whether there is statistically significant evidence
+that the success each question had on getting the participant
+to disclose the problem with the iPod.
+In other words, the goal is to check whether the buyer's
+question was independent of whether the seller disclosed
+a problem.
 
 
 \subsection{Expected counts in two-way tables}
