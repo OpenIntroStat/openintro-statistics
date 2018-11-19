@@ -588,14 +588,10 @@ Squaring each standardized difference before adding them together does two thing
 \item Any standardized difference that is squared will now be positive.
 \item Differences that already look unusual -- e.g. a standardized difference of 2.5 -- will become much larger after being squared.
 \end{itemize}
-The test statistic $\chi^2$\marginpar[\raggedright\vspace{9mm}
-
-$\chi^2$\vspace{0.5mm}\\\footnotesize chi-square\\test statistic]{\raggedright\vspace{9mm}
-
-$\chi^2$\vspace{0.5mm}\\\footnotesize chi-square\\test statistic},\index{chi-square statistic} which is the sum of the $Z^2$ values, is generally used for these reasons. We can also write an equation for $\chi^2$ using the observed counts and null counts:
+The test statistic $X^2$,\index{chi-square statistic} which is the sum of the $Z^2$ values, is generally used for these reasons. We can also write an equation for $X^2$ using the observed counts and null counts:
 \index{data!racial make-up of jury|)}
-{\begin{align*}
-\chi^2 &=
+\begin{align*}
+X^2 &=
 	\frac
 	{\text{\footnotesize$(\text{observed count}_1 - \text{null count}_1)^2$}}
 	{\text{\footnotesize$\text{null count}_1$}}
@@ -603,7 +599,7 @@ $\chi^2$\vspace{0.5mm}\\\footnotesize chi-square\\test statistic},\index{chi-squ
 	{\text{\footnotesize$(\text{observed count}_4 - \text{null count}_4)^2$}}
 	{\text{\footnotesize$\text{null count}_4$}}
 \end{align*}
-}The final number $\chi^2$ summarizes how strongly the observed counts tend to deviate from the null counts. In Section~\ref{pValueForAChiSquareTest}, we will see that if the null hypothesis is true, then $\chi^2$ follows a new distribution called a \emph{chi-square distribution}. Using this distribution, we will be able to obtain a p-value to evaluate the hypotheses.
+The final number $X^2$ summarizes how strongly the observed counts tend to deviate from the null counts. In Section~\ref{pValueForAChiSquareTest}, we will see that if the null hypothesis is true, then $X^2$ follows a new distribution called a \emph{chi-square distribution}. Using this distribution, we will be able to obtain a p-value to evaluate the hypotheses.
 
 
 \subsection{The chi-square distribution and finding areas}
@@ -711,17 +707,17 @@ Figure~\ref{chiSquareAreaAbove9Point21WithDF3} shows a cutoff of 9.21 with a chi
 \label{pValueForAChiSquareTest}
 
 \index{data!racial make-up of jury|(}
-In Section~\ref{chiSquareTestStatistic}, we identified a new test statistic ($\chi^2$) within the context of assessing whether there was evidence of racial bias in how jurors were sampled. The null hypothesis represented the claim that jurors were randomly sampled and there was no racial bias. The alternative hypothesis was that there was racial bias in how the jurors were sampled.
+In Section~\ref{chiSquareTestStatistic}, we identified a new test statistic ($X^2$) within the context of assessing whether there was evidence of racial bias in how jurors were sampled. The null hypothesis represented the claim that jurors were randomly sampled and there was no racial bias. The alternative hypothesis was that there was racial bias in how the jurors were sampled.
 
-We determined that a large $\chi^2$ value would suggest strong evidence favoring the alternative hypothesis: that there was racial bias. However, we could not quantify what the chance was of observing such a large test statistic ($\chi^2=5.89$) if the null hypothesis actually was true. This is where the chi-square distribution becomes useful. If the null hypothesis was true and there was no racial bias, then $\chi^2$ would follow a chi-square distribution, with three degrees of freedom in this case. Under certain conditions, the statistic $\chi^2$ follows a chi-square distribution with $k - 1$ degrees of freedom, where $k$ is the number of bins.
+We determined that a large $X^2$ value would suggest strong evidence favoring the alternative hypothesis: that there was racial bias. However, we could not quantify what the chance was of observing such a large test statistic ($X^2=5.89$) if the null hypothesis actually was true. This is where the chi-square distribution becomes useful. If the null hypothesis was true and there was no racial bias, then $X^2$ would follow a chi-square distribution, with three degrees of freedom in this case. Under certain conditions, the statistic $X^2$ follows a chi-square distribution with $k - 1$ degrees of freedom, where $k$ is the number of bins.
 
-\begin{example}{How many categories were there in the juror example? How many degrees of freedom should be associated with the chi-square distribution used for $\chi^2$?}
-In the jurors example, there were $k=4$ categories: white, black, Hispanic, and other. According to the rule above, the test statistic $\chi^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
+\begin{example}{How many categories were there in the juror example? How many degrees of freedom should be associated with the chi-square distribution used for $X^2$?}
+In the jurors example, there were $k=4$ categories: white, black, Hispanic, and other. According to the rule above, the test statistic $X^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
 \end{example}
 
-Just like we checked sample size conditions to use the normal model in earlier sections, we must also check a sample size condition to safely apply the chi-square distribution for $\chi^2$. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above~5, so we can apply the chi-square model to the test statistic, $\chi^2=5.89$.
+Just like we checked sample size conditions to use the normal model in earlier sections, we must also check a sample size condition to safely apply the chi-square distribution for $X^2$. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above~5, so we can apply the chi-square model to the test statistic, $X^2=5.89$.
 
-\begin{example}{If the null hypothesis is true, the test statistic $\chi^2=5.89$ would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value.}
+\begin{example}{If the null hypothesis is true, the test statistic $X^2=5.89$ would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value.}
 The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueShown}. Because larger chi-square values correspond to stronger evidence against the null hypothesis, we shade the upper tail to represent the p-value. Using the chi-square table in Appendix~\ref{chiSquareProbabilityTable} or the short table on page~\pageref{chiSquareProbabilityTableShort}, we can determine that the area is between 0.1 and 0.2. That is, the p-value is larger than 0.1 but smaller than 0.2. Generally we do not reject the null hypothesis with such a large p-value. In other words, the data do not provide convincing evidence of racial bias in the juror selection.
 \index{data!racial make-up of jury|)}
 \end{example}
@@ -736,9 +732,9 @@ The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueSh
 \begin{termBox}{\tBoxTitle{Chi-square test for one-way table}
 Suppose we are to evaluate whether there is convincing evidence that a set of observed counts $O_1$, $O_2$, ..., $O_k$ in $k$ categories are unusually different from what might be expected under a null hypothesis. Call the \emph{expected counts} that are based on the null hypothesis $E_1$, $E_2$, ..., $E_k$. If each expected count is at least 5 and the null hypothesis is true, then the test statistic below follows a chi-square distribution with $k-1$ degrees of freedom:
 \begin{align*}
-\chi^2 = \frac{(O_1 - E_1)^2}{E_1} + \frac{(O_2 - E_2)^2}{E_2} + \cdots + \frac{(O_k - E_k)^2}{E_k}
+X^2 = \frac{(O_1 - E_1)^2}{E_1} + \frac{(O_2 - E_2)^2}{E_2} + \cdots + \frac{(O_k - E_k)^2}{E_k}
 \end{align*}
-The p-value for this test statistic is found by looking at the upper tail of this chi-square distribution. We consider the upper tail because larger values of $\chi^2$ would provide greater evidence against the null hypothesis.}
+The p-value for this test statistic is found by looking at the upper tail of this chi-square distribution. We consider the upper tail because larger values of $X^2$ would provide greater evidence against the null hypothesis.}
 \end{termBox}
 
 \begin{tipBox}{\tipBoxTitle{Conditions for the chi-square test}
@@ -829,15 +825,15 @@ It is not obvious whether differences in the observed counts and the expected co
 \end{example}
 
 \begin{exercise}
-Figure~\ref{sAndP500For1990To2011TimeToPosTrade2} provides a set of count data for waiting times ($O_1=1532$, $O_2=760$, ...) and expected counts under the geometric distribution ($E_1=1569$, $E_2=734$, ...). Compute the chi-square test statistic, $\chi^2$.\footnote{$\chi^2=\frac{(1532-1569)^2}{1569} + \frac{(760-734)^2}{734} + \cdots + \frac{(17-31)^2}{31} = 15.08$}
+Figure~\ref{sAndP500For1990To2011TimeToPosTrade2} provides a set of count data for waiting times ($O_1=1532$, $O_2=760$, ...) and expected counts under the geometric distribution ($E_1=1569$, $E_2=734$, ...). Compute the chi-square test statistic, $X^2$.\footnote{$X^2=\frac{(1532-1569)^2}{1569} + \frac{(760-734)^2}{734} + \cdots + \frac{(17-31)^2}{31} = 15.08$}
 \end{exercise}
 
 \begin{exercise}
-Because the expected counts are all at least~5, we can safely apply the chi-square distribution to $\chi^2$. However, how many degrees of freedom should we~use?\footnote{There are $k=7$ groups, so we use $df=k-1=6$.}
+Because the expected counts are all at least~5, we can safely apply the chi-square distribution to $X^2$. However, how many degrees of freedom should we~use?\footnote{There are $k=7$ groups, so we use $df=k-1=6$.}
 \end{exercise}
 
-\begin{example}{If the observed counts follow the geometric model, then the chi-square test statistic $\chi^2=15.08$ would closely follow a chi-square distribution with $df=6$. Using this information, compute a p-value.} \label{RejectGeomModelForSP500StockDataFor1990To2011}
-Figure~\ref{geomFitPValueForSP500For1990To2011} shows the chi-square distribution, cutoff, and the shaded p-value. If we look up the statistic $\chi^2=15.08$ in Appendix~\ref{chiSquareProbabilityTable}, we find that the p-value is between 0.01 and 0.02. In other words, we have sufficient evidence to reject the notion that the wait times follow a geometric distribution, i.e. trading days are not independent and past days may help predict what the stock market will do today.
+\begin{example}{If the observed counts follow the geometric model, then the chi-square test statistic $X^2 = 15.08$ would closely follow a chi-square distribution with $df = 6$. Using this information, compute a p-value.} \label{RejectGeomModelForSP500StockDataFor1990To2011}
+Figure~\ref{geomFitPValueForSP500For1990To2011} shows the chi-square distribution, cutoff, and the shaded p-value. If we look up the statistic $X^2=15.08$ in Appendix~\ref{chiSquareProbabilityTable}, we find that the p-value is between 0.01 and 0.02. In other words, we have sufficient evidence to reject the notion that the wait times follow a geometric distribution, i.e. trading days are not independent and past days may help predict what the stock market will do today.
 \end{example}
 
 \begin{figure}[h]
@@ -947,8 +943,6 @@ are more effective for getting at the truth?
   posed to the study participant who acted}
 \label{ipod_ask_data_summary}
 \end{table}
-
-\index{data!iPod|)}
 
 \begin{termBox}{
   \tBoxTitle{Differences of one-way tables vs two-way tables}
@@ -1076,16 +1070,26 @@ This leads us to a general formula for computing expected counts in a two-way ta
 
 \subsection{The chi-square test for two-way tables}
 
-The chi-square test statistic for a two-way table is found the same way it is found for a one-way table. For each table count, compute
+The chi-square test statistic for a two-way table is found
+the same way it is found for a one-way table.
+For each table count, compute
 \begin{align*}
-&\text{General formula}& &\frac{(\text{observed count } - \text{ expected count})^2}{\text{expected count}} \\
-&\text{Row 1, Col 1}& &\frac{(3511 - 3539)^2}{3539} = 0.222 \\
-&\text{Row 1, Col 2}& &\frac{(1749 - 1769.5)^2}{1769.5} = 0.237 \\
-& \hspace{9mm}\vdots & &\hspace{13mm}\vdots \\
-&\text{Row 2, Col 3}& &\frac{(682 - 730.5)^2}{730.5} = 3.220
+&\text{General formula} &&
+    \frac{(\text{observed count } - \text{expected count})^2}
+        {\text{expected count}} \\
+&\text{Row 1, Col 1} &&
+    \frac{(\iPodAA - \iPodAExpected)^2}{\iPodAExpected} = 16.53 \\
+&\text{Row 1, Col 2} &&
+    \frac{(\iPodAB - \iPodAExpected)^2}{\iPodAExpected} = 0.35 \\
+& \hspace{9mm}\vdots &&
+    \hspace{13mm}\vdots \\
+&\text{Row 2, Col 3} &&
+    \frac{(\iPodBC - \iPodBExpected)^2}{\iPodBExpected} = 4.66
 \end{align*}
-Adding the computed value for each cell gives the chi-square test statistic $\chi^2$:
-$$\chi^2 = 0.222 + 0.237 + \dots + 3.220 = 6.120$$
+Adding the computed value for each cell gives the chi-square test statistic $X^2$:
+\begin{align*}
+X^2 = 16.53 + 0.35 + \dots + 4.66 = 40.13
+\end{align*}
 Just like before, this test statistic follows a chi-square distribution. However, the degrees of freedom are computed a little differently for a two-way table.\footnote{Recall: in the one-way table, the degrees of freedom was the number of cells minus 1.} For two way tables, the degrees of freedom is equal to
 \begin{align*}
 df = \text{(number of rows minus 1)}\times \text{(number of columns minus 1)}
@@ -1094,75 +1098,141 @@ In our example, the degrees of freedom parameter is
 \begin{align*}
 df = (2-1)\times (3-1) = 2
 \end{align*}
-If the null hypothesis is true (i.e. the algorithms are equally useful), then the test statistic $\chi^2 = 6.12$ closely follows a chi-square distribution with 2 degrees of freedom. Using this information, we can compute the p-value for the test, which is depicted in Figure~\ref{googleHTForDiffAlgPerformancePValue}.
+If the null hypothesis is true
+(i.e. the questions had no impact on the sellers in
+    the experiment),
+then the test statistic $X^2 = 40.13$ closely follows
+a chi-square distribution with 2 degrees of freedom.
+Using this information, we can compute the p-value for
+the test, which is depicted in
+Figure~\ref{iPodChiSqTail}.
 
-\begin{termBox}{\tBoxTitle{Computing degrees of freedom for a two-way table}
-When applying the chi-square test to a two-way table, we use
-$$ df = (R-1)\times (C-1) $$
-where $R$ is the number of rows in the table and $C$ is the number of columns.}
+\begin{termBox}{
+  \tBoxTitle{Computing degrees of freedom for a two-way table}
+  When applying the chi-square test to a two-way table,
+  we use
+  \begin{align*}
+  df = (R-1)\times (C-1)
+  \end{align*}
+  where $R$ is the number of rows in the table
+  and $C$ is the number of columns.}
 \end{termBox}
 
-\begin{tipBox}{\tipBoxTitle{Use two-proportion methods for 2-by-2 contingency tables}
-When analyzing 2-by-2 contingency tables, use the two-proportion methods introduced in Section~\ref{differenceOfTwoProportions}.}
-\end{tipBox}
+When analyzing 2-by-2 contingency tables, one guideline
+is to use the two-proportion methods introduced in
+Section~\ref{differenceOfTwoProportions}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_inference_for_props/figures/googleHTForDiffAlgPerformancePValue/googleHTForDiffAlgPerformancePValue}
-\caption{Computing the p-value for the Google hypothesis test.}
-\label{googleHTForDiffAlgPerformancePValue}
+\includegraphics[width=0.65\textwidth]{ch_inference_for_props/figures/iPodChiSqTail/iPodChiSqTail}
+\caption{Visualization of the p-value for $X^2 = 40.13$
+    when $df = 2$.}
+\label{iPodChiSqTail}
 \end{figure}
 
-\begin{example}{Compute the p-value and draw a conclusion about whether the search algorithms have different performances.}
-Looking in Appendix~\ref{chiSquareProbabilityTable} on page~\pageref{chiSquareProbabilityTable}, we examine the row corresponding to 2 degrees of freedom. The test statistic, $\chi^2=6.120$, falls between the fourth and fifth columns, which means the p-value is between 0.02 and 0.05. Because we typically test at a significance level of $\alpha=0.05$ and the p-value is less than 0.05, the null hypothesis is rejected. That is, the data provide convincing evidence that there is some difference in performance among the algorithms.
-\index{data!search algorithm|)}
+\begin{example}{Find the p-value and draw a conclusion
+    about whether the question affects the sellers likelihood
+    of reporting the freezing problem.}
+  Looking in Appendix~\ref{chiSquareProbabilityTable}
+  on page~\pageref{chiSquareProbabilityTable},
+  we examine the row corresponding to 2 degrees of freedom.
+  The test statistic, $X^2 = 40.13$,
+  is larger than the value in the last column,
+  meaning the tail area and p-value are smaller than 0.001.
+  Using a computer, we can compute a more precise value:
+  0.000000002.
+  Using a significance level of $\alpha=0.05$,
+  the null hypothesis is rejected since the p-value is smaller.
+  That is, the data provide convincing evidence that the
+  question asked did affect a seller's likelihood to tell
+  the truth about problems with the iPod.
 \end{example}
 
-%	Approve	Disapprove
-%Obama	56%	41%
-%Dem	49%	43%
-%Rep	36%	56%
-%March 7-11, 2012
-%1503 adults
+\index{data!iPod|)}
 
-\begin{example}{\index{data!approval ratings|(}Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} summarizes the results of a Pew Research poll.\footnote{See the Pew Research website: \oiRedirect{textbook-obama_and_congress_approval_2012}{www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama}. The counts in Figure~\ref{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises} are approximate.} We would like to determine if there are actually differences in the approval ratings of Barack Obama, Democrats in Congress, and Republicans in Congress. What are appropriate hypotheses for such a test?}\label{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}
-\begin{itemize}
-\item[$H_0$:] There is no difference in approval ratings between the three groups.
-\item[$H_A$:] There is some difference in approval ratings between the three groups, e.g. perhaps Obama's approval differs from Democrats in Congress.
-\end{itemize}
+\index{data!diabetes|(}
+
+\begin{example}{Figure~\ref{diabetes2ExpMetRosiLifestyleSummary}
+    summarizes the results of an experiment evaluating
+    three treatments for Type~2 Diabetes in patients
+    aged 10-17 who were being treated with metformin.
+    Each patient had a primary outcome, which was either lacked
+    glycemic control (failure)
+    or did not lack that control (success).
+    What are appropriate hypotheses for this test?}
+  \label{diabetes2ExpMetRosiLifestyleIntroExample}
+  \begin{itemize}
+  \item[$H_0$:] There is no difference in the effectiveness
+      of the three treatments.
+  \item[$H_A$:] There is some difference in effectiveness
+      between the three treatments, e.g. perhaps the
+      \resp{rosi} treatment performed better than
+      \resp{lifestyle}.
+  \end{itemize}
 \end{example}
 
 \begin{figure}
 \centering
-\begin{tabular}{ll ccc ll}
-& & & \multicolumn{2}{c}{Congress} & \\
-\cline{4-5}
- & \hspace{1mm} & Obama & Democrats & Republicans & \hspace{1mm} & Total \\
+\begin{tabular}{l ccc l}
 \hline
-Approve				   & & 842    & 736 & 541   & 				& 2119 \\
-Disapprove			   & & 616    & 646 & 842   &				& 2104 \\
+ & Failure & Success & Total \\ 
 \hline
-Total					   & & 1458    & 1382 & 1383 & 				& 4223 \\
+\resp{lifestyle} & 109 & 125 & 234 \\ 
+\resp{met} & 120 & 112 & 232 \\ 
+\resp{rosi} &  90 & 143 & 233 \\ 
+\hline
+Total & 319 & 380 & 699 \\
 \hline
 \end{tabular}
-\caption{Pew Research poll results of a March 2012 poll.}
-\label{pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises}
+\caption{Results for the Type~2 Diabetes study.}
+\label{diabetes2ExpMetRosiLifestyleSummary}
 \end{figure}
 
 \begin{exercise}
-A chi-square test for a two-way table may be used to test the hypotheses in Example~\ref{hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection}. As a first step, compute the expected values for each of the six table cells.\footnote{The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{4223} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0.}
-% R <- c(2119, 2104); C <- c(1458, 1382, 1383); R*C[1]/sum(C); R*C[2]/sum(C); R*C[3]/sum(C)
+A chi-square test for a two-way table may be used to test
+the hypotheses in
+Example~\ref{diabetes2ExpMetRosiLifestyleIntroExample}.
+As a first step, compute the expected values for each of the
+six table cells.\footnote{The expected count for
+    row one / column one is found by multiplying the
+    row one total (234) and column one total (319),
+    then dividing by the table total (699):
+    $\frac{234\times 319}{699} = 106.8$.
+    Similarly for the second column and the first row:
+    $\frac{234\times 380}{699} = 127.2$.
+    Row 2: 105.9 and 126.1.
+    Row 3: 106.3 and 126.7.}
 \end{exercise}
 
 \begin{exercise}
-Compute the chi-square test statistic.\footnote{For each cell, compute $\frac{(\text{obs} - \text{exp})^2}{exp}$. For instance, the first row and first column: $\frac{(842-731.6)^2}{731.6} = 16.7$. Adding the results of each cell gives the chi-square test statistic: {\scriptsize$\chi^2 = 16.7 + \cdots + 34.0 = 106.4$}.}
-%R <- c(2119, 2104); C <- c(1458, 1382, 1383); CC <- c(842, 616, 736, 646, 541, 842); EE <- round(c(R*C[1]/sum(C), R*C[2]/sum(C), R*C[3]/sum(C)), 1); (CC-EE)^2/EE; sum((CC-EE)^2/EE)
+Compute the chi-square test statistic.\footnote{For each cell,
+    compute $\frac{(\text{obs} - \text{exp})^2}{exp}$.
+    For instance, the first row and first column:
+    $\frac{(109-106.8)^2}{106.8} = 0.05$.
+    Adding the results of each cell gives the
+    chi-square test statistic:
+    {\scriptsize$X^2 = 0.05 + \cdots + 2.11 = 8.16$}.}
 \end{exercise}
 
 \begin{exercise}
-Because there are 2 rows and 3 columns, the degrees of freedom for the test is $df=(2-1)\times (3-1) = 2$. Use $\chi^2=106.4$, $df=2$, and the chi-square table on page~\pageref{chiSquareProbabilityTable} to evaluate whether to reject the null hypothesis.\footnote{The test statistic is larger than the right-most column of the $df=2$ row of the chi-square table, meaning the p-value is less than 0.001. That is, we reject the null hypothesis because the p-value is less than 0.05, and we conclude that Americans' approval has differences among Democrats in Congress, Republicans in Congress, and the president.}
-\index{data!approval ratings|)}
+Because there are 2 rows and 3 columns,
+the degrees of freedom for the test is
+$df = (2 - 1) \times (3 - 1) = 2$.
+Use $X^2 = 8.16$, $df = 2$, and the chi-square table on
+page~\pageref{chiSquareProbabilityTable} to evaluate whether
+to reject the null hypothesis.\footnote{The test statistic
+    falls between the 5th and 6th columns, which corresponds
+    to a p-value between 0.01 and 0.02.
+    If using a computer, we'd obtain a more precise p-value
+    of 0.017.
+    That is, we reject the null hypothesis because
+    the p-value is less than 0.05, and we conclude
+    that at least one of the treatments is more or
+    less effective than the others at treating
+    Type~2 Diabetes for glycemic control.}
 \end{exercise}
+
+\index{data!diabetes|)}
 
 \CalculatorVideos{the chi-square test for independence}
 
@@ -1281,7 +1351,7 @@ If it were plotted, the exact null distribution would look almost identical to t
 
 \subsection{Using simulation for goodness of fit tests}
 
-Simulation methods may also be used to test goodness of fit. In short, we simulate a new sample based on the purported bin probabilities, then compute a chi-square test statistic $X_{sim}^2$. We do this many times (e.g. 10,000 times), and then examine the distribution of these simulated chi-square test statistics. This distribution will be a very precise null distribution for the test statistic $\chi^2$ if the probabilities are accurate, and we can find the upper tail of this null distribution, using a cutoff of the observed test statistic, to calculate the p-value.
+Simulation methods may also be used to test goodness of fit. In short, we simulate a new sample based on the purported bin probabilities, then compute a chi-square test statistic $X_{sim}^2$. We do this many times (e.g. 10,000 times), and then examine the distribution of these simulated chi-square test statistics. This distribution will be a very precise null distribution for the test statistic $X^2$ if the probabilities are accurate, and we can find the upper tail of this null distribution, using a cutoff of the observed test statistic, to calculate the p-value.
 
 \begin{example}{\index{data!racial make-up of jury|(}Section~\ref{oneWayChiSquare} introduced an example where we considered whether jurors were racially representative of the population. Would our findings differ if we used a simulation technique?}
 Since the minimum bin count condition was satisfied, the chi-square distribution is an excellent approximation of the null distribution, meaning the results should be very similar. Figure~\ref{jurorChiSquareSimulated} shows the simulated null distribution using 100,000 simulated $X_{sim}^2$ values with an overlaid curve of the chi-square distribution. The distributions are almost identical, and the p-values are essentially indistinguishable: 0.115 for the simulated null distribution and 0.117 for the theoretical null distribution.
