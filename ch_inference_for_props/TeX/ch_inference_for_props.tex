@@ -209,80 +209,173 @@ A sample size of 370 or more would be reasonable. (Reminder: always round up for
 
 
 %__________________
-\section[Difference of two proportions]{Difference of two proportions \sectionvideohref{youtube-_iFAZgpWsx0&feature=youtu.be&t=517&list=PLkIselvEzpM5Gn-sHTw1NF0e8IvMxwHDW}~\sectionslideshref{gdoc_os3_slides_6-2}}
+\section%[Difference of two proportions]
+{Difference of two proportions}% \sectionvideohref{youtube-_iFAZgpWsx0&feature=youtu.be&t=517&list=PLkIselvEzpM5Gn-sHTw1NF0e8IvMxwHDW}~\sectionslideshref{gdoc_os3_slides_6-2}}
 \label{differenceOfTwoProportions}
 
-We would like to make conclusions about the difference in two population proportions: \mbox{$p_1 - p_2$}. We consider three examples. In the first, we compare the approval of the 2010 healthcare law under two different question phrasings. In the second application, we examine the efficacy of mammograms in reducing deaths from breast cancer. In the last example, a quadcopter company weighs whether to switch to a higher quality manufacturer of rotor blades.
+We would like to make conclusions about the difference
+in two population proportions: \mbox{$p_1 - p_2$}.
+We consider three examples.
+In the first, we compare the utility of a blood thinner
+for heart attack patients.
+In the second application, we examine the efficacy of
+mammograms in reducing deaths from breast cancer.
+In the last example, a quadcopter company weighs whether
+to switch to a higher quality manufacturer of rotor blades.
 
-In our investigations, we first identify a reasonable point estimate of $p_1 - p_2$ based on the sample. You may have already guessed its form: $\hat{p}_1 - \hat{p}_2$\index{point estimate!difference of proportions}. Next, in each example we verify that the point estimate follows the normal model by checking certain conditions. Finally, we compute the estimate's standard error and apply our inferential framework.
+In our investigations, we first identify a reasonable
+point estimate of $p_1 - p_2$ based on the sample.
+You may have already guessed its form:
+$\hat{p}_1 - \hat{p}_2$.
+\index{point estimate!difference of proportions}
+Next, in each example we verify that the point estimate
+follows the normal model by checking certain conditions.
+Finally, we compute the estimate's standard error and
+apply our inferential framework.
 
 
 \subsection{Sample distribution of the difference of two proportions}
 
-We must check two conditions before applying the normal model to $\hat{p}_1 - \hat{p}_2$. First, the sampling distribution for each sample proportion must be nearly normal, and secondly, the samples must be independent. Under these two conditions, the sampling distribution of $\hat{p}_1 - \hat{p}_2$ may be well approximated using the normal model.
+We must check two conditions before applying the
+normal model to $\hat{p}_1 - \hat{p}_2$.
+First, the sampling distribution for each sample
+proportion must be nearly normal, and secondly,
+the samples must be independent.
+Under these two conditions, the sampling distribution
+of $\hat{p}_1 - \hat{p}_2$ may be well approximated
+using the normal model.
 
-\begin{termBox}{\tBoxTitle{Conditions for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be normal}
-The difference $\hat{p}_1 - \hat{p}_2$ tends to follow a normal model when
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item each proportion separately follows a normal model, and
-\item the two samples are independent of each other.
-\end{itemize}
-The standard error of the difference in sample proportions is
-\index{standard error (SE)!difference in proportions}
-\begin{eqnarray}
-SE_{\hat{p}_1 - \hat{p}_2}
-	= \sqrt{SE_{\hat{p}_1}^2 + SE_{\hat{p}_2}^2}
-	= \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
-\label{seForDiffOfProp}
-\end{eqnarray}
-where $p_1$ and $p_2$ represent the population proportions, and $n_1$ and $n_2$ represent the sample sizes.}
+\begin{termBox}{\tBoxTitle{Conditions for the
+    sampling distribution of $\hat{p}_1 - \hat{p}_2$
+    to be normal}
+  The difference $\hat{p}_1 - \hat{p}_2$ tends to
+  follow a normal model when
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item each proportion separately follows a normal model, and
+  \item the two samples are independent of each other.
+  \end{itemize}
+  The standard error of the difference in sample proportions is
+  \index{standard error (SE)!difference in proportions}
+  \begin{eqnarray*}
+  SE_{\hat{p}_1 - \hat{p}_2}
+    = \sqrt{SE_{\hat{p}_1}^2 + SE_{\hat{p}_2}^2}
+    = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+  \label{seForDiffOfProp}
+  \end{eqnarray*}
+  where $p_1$ and $p_2$ represent the population proportions,
+  and $n_1$ and $n_2$ represent the sample sizes.}
 \end{termBox}
 
-For the difference in two means, the standard error formula took the following form:
-\begin{eqnarray*}
-SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
-\end{eqnarray*}
-The standard error for the difference in two proportions takes a similar form. The reasons behind this similarity are rooted in the probability theory of Section~\ref{randomVariablesSection}, which is described for this context in Guided Practice~\vref{derivingSEForDiffOfTwoMeansExercise}.
+%For the difference in two means, the standard error formula took the following form:
+%\begin{eqnarray*}
+%SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
+%\end{eqnarray*}
+%The standard error for the difference in two proportions takes a similar form. The reasons behind this similarity are rooted in the probability theory of Section~\ref{randomVariablesSection}, which is described for this context in Guided Practice~\vref{derivingSEForDiffOfTwoMeansExercise}.
 
 
 \subsection{Confidence intervals for $p_1 -p_2$}
 
-In the setting of confidence intervals for a difference of two proportions, the two sample proportions are used to verify the success-failure condition and also compute the standard error, just as was the case with a single proportion.
+\index{data!CPR and blood thinner|(}
 
-\begin{example}{The way a question is phrased can influence a person's response. For example, Pew Research Center conducted a survey with the following question:\footnote{\oiRedirect{textbook-health_care_bill_2012}{www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate}. Sample sizes for each polling group are approximate.}
-\begin{quote}
-As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
-\end{quote}
-\index{data!health care|(}For each randomly sampled respondent, the statements in brackets were randomized: either they were kept in the order given above, or the two statements were reversed. Figure~\ref{pewPollResultsForRandomizedStatementOrdering} shows the results of this experiment. Create and interpret a 90\% confidence interval of the difference in approval.}
+In the setting of confidence intervals for a difference
+of two proportions, the two sample proportions are used
+to verify the success-failure condition and also compute
+the standard error, just as was the case with a single
+proportion.
+The generic formula of a confidence interval will apply
+in this case, just as it did in the one-proportion case:
+\begin{align*}
+\text{point estimate} \pm Z^{\star} SE
+\end{align*}
 
-\begin{figure}[t]
+\begin{example}{We consider an experiment for patients
+    who underwent CPR for a heart attack and were
+    subsequently admitted to a
+    hospital.\footnote{\emph{Efficacy and safety of
+      thrombolytic therapy after initially unsuccessful
+      cardiopulmonary resuscitation: a prospective
+      clinical trial}, by B$\ddot{\text{o}}$ttiger et al.,
+      The Lancet, 2001.}
+    These patients were randomly divided into a treatment
+    group where they received a blood thinner or the control
+    group where they did not receive a blood thinner.
+    The outcome variable of interest was whether the
+    patients survived for at least 24 hours.
+    The results are shown in
+    Figure~\ref{resultsForCPRStudyInSmallSampleSection}.
+    Create and interpret a 90\% confidence interval of the
+    difference in the survival rates.}
+
+\begin{figure}[ht]
 \centering
-\begin{tabular}{p{50mm}c p{13mm}p{14mm}p{16.5mm}c}
-	&\ & Sample size ($n_i$) & Approve law (\%)	& Disapprove law (\%)	& Other \\
+\begin{tabular}{lccccc}
 \hline
-``people who cannot afford it will receive financial help from the government'' is given second \vspace{2.5mm}
-	& & 771	& 47	& 49	& 3 \\
-``people who do not buy it will pay a penalty'' is given second
-	& & 732	& 34	& 63	& 3 \\
+			&& Survived 	& Died 	&& Total \\
+\hline
+Control		&& 11		& 39		&& 50 \\
+Treatment		&& 14		& 26		&& 40 \\
+\hline
+Total			&& 25		& 65		&& 90 \\
 \hline
 \end{tabular}
-\caption{Results for a Pew Research Center poll where the ordering of two statements in a question regarding healthcare were randomized.\vspaceB{-2mm}}
-\label{pewPollResultsForRandomizedStatementOrdering}
+\caption{Results for the CPR study.
+    Patients in the treatment group were given
+    a blood thinner, and patients in the control
+    group were not.}
+\label{resultsForCPRStudyInSmallSampleSection}
 \end{figure}
 
-First the conditions must be verified. Because each group is a simple random sample from less than 10\% of the population, the observations are independent, both within the samples and between the samples. The success-failure condition also holds for each sample. Because all conditions are met, the normal model can be used for the point estimate of the difference in support, where $p_1$ corresponds to the original ordering and $p_2$ to the reversed ordering:
-$$\hat{p}_{1} - \hat{p}_{2} = 0.47 - 0.34 = 0.13$$
-The standard error may be computed from Equation~\eqref{seForDiffOfProp} using the sample proportions:
-$$SE \approx \sqrt{\frac{0.47(1-0.47)}{771} + \frac{0.34(1-0.34)}{732}} = 0.025$$
-For a 90\% confidence interval, we use $z^{\star} = 1.65$:
-$$\text{point estimate} \ \pm\ z^{\star}SE \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.025 \quad \to \quad (0.09, 0.17)$$
-We are 90\% confident that the approval rating for the 2010 healthcare law changes between 9\% and 17\% due to the ordering of the two statements in the survey question. The Pew Research Center reported that this modestly large difference suggests that the opinions of much of the public are still fluid on the health insurance mandate.
-\index{data!health care|)}
+  First the conditions must be verified.
+  Because the patients were randomized to their groups
+  and one heart attack patient is unlikely to influence
+  the next that was in the study, the observations are
+  independent, both within the samples and between the
+  samples.
+  The success-failure condition also holds for each group,
+  where we have at least 10 successes and 10 failures in
+  each experiment arm.
+  With these conditions met, the normal model can be used
+  for the point estimate of the difference in survival
+  rates, where we'll use $p_t$ corresponds to the survival
+  rate in the treatment group and $p_c$ for the control
+  group:
+  \begin{align*}
+  \hat{p}_{t} - \hat{p}_{c}
+    = \frac{14}{40} - \frac{11}{50}
+    = 0.35 - 0.22
+    = 0.13
+  \end{align*}
+  The standard error may be computed from
+  We use the standard error formula provided on
+  page~\pageref{seForDiffOfProp}.
+  As with the one-sample proportion case,
+  we use our best estimates of each proportion in the formula:
+  \begin{align*}
+  SE \approx \sqrt{\frac{0.35 (1 - 0.35)}{40} +
+      \frac{0.22 (1 - 0.22)}{50}}
+    = 0.095
+  \end{align*}
+  For a 90\% confidence interval, we use $z^{\star} = 1.65$:
+  \begin{align*}
+  \text{point estimate} \ \pm\ z^{\star}SE
+    \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.095
+    \quad \to \quad (-0.027, 0.287)
+  \end{align*}
+  We are 90\% confident that that blood thinners have
+  a difference of -2.7\% to +28.7\% percentage point
+  impact on survival rate for patients like those in
+  the study.
+  That is, we do not have enough information to say
+  with confidence whether blood thinners help or harm
+  heart attack patients who have been admitted after
+  they have undergone CPR.
 \end{example}
 
+\index{data!CPR and blood thinner|)}
 
-\subsection{Hypothesis tests for $p_1 -p_2$}
+
+\subsection{Hypothesis tests for $p_1 - p_2$}
 
 \index{data!mammography|(}
 \index{data!breast cancer|(}
@@ -1235,142 +1328,3 @@ to reject the null hypothesis.\footnote{The test statistic
 \index{data!diabetes|)}
 
 \CalculatorVideos{the chi-square test for independence}
-
-
-
-
-%%__________________
-%\section%[Randomization test (special topic)]
-%    {Randomization test (special topic)} %~\sectionslideshref{gdoc_os3_slides_6-6}}
-%\label{smallSampleHTForTwoOrMoreProportion}
-%
-%\index{data!CPR and blood thinner|(}
-%
-%Cardiopulmonary resuscitation (CPR) is a procedure commonly used on individuals suffering a heart attack when other emergency resources are not available. This procedure is helpful in maintaining some blood circulation, but the chest compressions involved can also cause internal injuries. Internal bleeding and other injuries complicate additional treatment efforts following arrival at a hospital. For example, blood thinners may be used to release a clot responsible for a heart attack. However, the blood thinner would negatively affect internal bleeding.
-%
-%We consider an experiment for patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.\footnote{\emph{Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial}, by B$\ddot{\text{o}}$ttiger et al., The Lancet, 2001.} These patients were randomly divided into a treatment group where they received a blood thinner or the control group where they did not receive a blood thinner. The outcome variable of interest was whether the patients survived for at least 24 hours.
-%
-%\begin{example}{What is an appropriate set of hypotheses for this study? Let $p_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $p_t$ represent the survival rate for people receiving a blood thinner (corresponding to the treatment group).} \label{hypothesesForCPRStudyInSmallSampleSection}
-%We are interested in whether the blood thinners are helpful or harmful, so a two-sided test is appropriate.
-%\begin{itemize}
-%\item[$H_0$:] Blood thinners do not have an overall survival effect, i.e. the survival proportions are the same in each group. $p_t - p_c = 0$.
-%\item[$H_A$:] Blood thinners do have an impact on survival. $p_t - p_c \neq 0$.
-%\end{itemize}
-%\end{example}
-%
-%\subsection{Large sample framework for a difference in two proportions}
-%
-%There were 50 patients in the experiment who did not receive the blood thinner and 40 patients who did. The study results are shown in Figure~\ref{resultsForCPRStudyInSmallSampleSection}.
-%
-%\begin{figure}[ht]
-%\centering
-%\begin{tabular}{lccccc}
-%\hline
-%			&& Survived 	& Died 	&& Total \\
-%\hline
-%Control		&& 11		& 39		&& 50 \\
-%Treatment		&& 14		& 26		&& 40 \\
-%\hline
-%Total			&& 25		& 65		&& 90 \\
-%\hline
-%\end{tabular}
-%\caption{Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.}
-%\label{resultsForCPRStudyInSmallSampleSection}
-%\end{figure}
-%
-%\begin{exercise}
-%What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups: $\hat{p}_t - \hat{p}_c$.\footnote{Observed control survival rate: $p_c = \frac{11}{50} = 0.22$. Treatment survival rate: $p_t = \frac{14}{40} = 0.35$. Observed difference: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$.}
-%\end{exercise}
-%
-%According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13\% survive when they are treated with blood thinners. However, this difference might be explainable by chance. We'd like to investigate this using a large sample framework, but we first need to check the conditions for such an approach.
-%
-%\begin{example}{Can the point estimate of the difference in survival proportions be adequately modeled using a normal distribution?}
-%We will assume the patients are independent, which is probably reasonable. The success-failure condition is also satisfied. Since the proportions are equal under the null, we can compute the pooled proportion, $\hat{p}_{\textit{pooled}} = (11+14)/(50+40) = 0.278$, for checking conditions. We find the expected number of successes (13.9, 11.1) and failures (36.1, 28.9) are above 10. The normal model is reasonable.
-%\end{example}
-%
-%While we can apply a normal framework as an approximation to find a p-value, we might keep in mind that the expected number of successes is only 13.9 in one group and 11.1 in the other. Below we conduct an analysis relying on the large sample normal theory. We will follow up with a small sample analysis and compare the results.
-%
-%\begin{example}{Assess the hypotheses presented in Example~\ref{hypothesesForCPRStudyInSmallSampleSection} using a large sample framework. Use a significance level of $\alpha=0.05$.}
-%We suppose the null distribution of the sample difference follows a normal distribution with mean 0 (the null value) and a standard deviation equal to the standard error of the estimate. The null hypothesis in this case would be that the two proportions are the same, so we compute the standard error using the pooled proportion:
-%\begin{align*}
-%SE = \sqrt{\frac{p(1-p)}{n_t} + \frac{p(1-p)}{n_c}}
-%	\approx \sqrt{\frac{0.278(1-0.278)}{40} + \frac{0.278(1-0.278)}{50}} = 0.095
-%\end{align*}
-%where we have used the pooled estimate $\left( \hat{p}_{\textit{pooled}} = \frac{11+14}{50 + 40} = 0.278 \right)$ in place of the true proportion, $p$.
-%
-%The null distribution with mean zero and standard deviation 0.095 is shown in Figure~\ref{pValueCPRStudyLargeSampleAnalysisInSmallSampleSection}. We compute the tail areas to identify the p-value. To do so, we use the Z-score of the point estimate:
-%\begin{align*}
-%Z = \frac{(\hat{p}_t - \hat{p}_c) - \text{null value}}{SE} = \frac{0.13 - 0}{0.095} = 1.37
-%\end{align*}
-%If we look this Z-score up in Appendix~\ref{normalProbabilityTable}, we see that the right tail has area 0.0853. The p-value is twice the single tail area: 0.1706. This p-value does not provide convincing evidence that the blood thinner helps. Thus, there is insufficient evidence to conclude whether or not the blood thinner helps or hurts. (Remember, we never ``accept'' the null hypothesis -- we can only reject or fail to reject.)
-%\end{example}
-%\begin{figure}[ht]
-%\centering
-%\includegraphics[width=0.67\textwidth]{ch_inference_for_props/figures/pValueCPRStudyLargeSampleAnalysisInSmallSampleSection/pValueCPRStudyLargeSampleAnalysisInSmallSampleSection}
-%\caption{The null distribution of the point estimate $\hat{p}_t - \hat{p}_c$ under the large sample framework is a normal distribution with mean $0$ and standard deviation equal to the standard error, in this case $SE=0.095$. The p-value is represented by the shaded areas.}
-%\label{pValueCPRStudyLargeSampleAnalysisInSmallSampleSection}
-%\end{figure}
-%
-%The p-value 0.176 relies on the normal approximation. We know that when the samples sizes are large, this approximation is quite good. However, when the sample sizes are relatively small as in this example, the approximation may only be adequate. Next we develop a simulation technique, apply it to these data, and compare our results. In general, the small sample method we develop may be used for any size sample, small or large, and should be considered as more accurate than the corresponding large sample technique.
-%
-%\subsection{Simulating a difference under the null distribution}
-%
-%The ideas in this section were first introduced in the optional Section~\vref{caseStudyGenderDiscrimination}. For the interested reader, this earlier section provides a more in-depth discussion.
-%
-%Suppose the null hypothesis is true. Then the blood thinner has no impact on survival and the 13\% difference was due to chance. In this case, we can simulate \emph{null} differences that are due to chance using a \emph{randomization technique}.\footnote{The test procedure we employ in this section is formally called a \term{permutation test}.} By randomly assigning ``fake treatment'' and ``fake control'' stickers to the patients' files, we could get a new grouping -- one that is completely due to chance. The expected difference between the two proportions under this simulation is zero.
-%
-%We run this simulation by taking 40 \resp{treatment\_\hspace{0.3mm}fake} and 50 \resp{control\_\hspace{0.3mm}fake} labels and randomly assigning them to the patients. The label counts of 40 and 50 correspond to the number of treatment and control assignments in the actual study. We use a computer program to randomly assign these labels to the patients, and we organize the simulation results into Figure~\ref{resultsForCPRStudyInSmallSampleSectionFake1}.
-%\begin{figure}[ht]
-%\centering
-%\begin{tabular}{lccccc}
-%\hline
-%			&& Survived 	& Died 	&& Total \\
-%\hline
-%\resp{control\_\hspace{0.3mm}fake}		&& 15		& 35		&& 50 \\
-%\resp{treatment\_\hspace{0.3mm}fake}	&& 10		& 30		&& 40 \\
-%\hline
-%Total			&& 25		& 65		&& 90 \\
-%\hline
-%\end{tabular}
-%\caption{Simulated results for the CPR study under the null hypothesis. The labels were randomly assigned and are independent of the outcome of the patient.}
-%\label{resultsForCPRStudyInSmallSampleSectionFake1}
-%\end{figure}
-%
-%\begin{exercise} \label{exerciseComputingDifferenceForCPRStudyInSmallSampleSectionFake1}
-%What is the difference in survival rates between the two fake groups in Figure~\ref{resultsForCPRStudyInSmallSampleSectionFake1}? How does this compare to the observed 13\% in the real groups?\footnote{The difference is $\hat{p}_{t, fake} - \hat{p}_{c, fake} = \frac{10}{40} - \frac{15}{50} = -0.05$, which is closer to the null value $p_0=0$ than what we observed.}
-%\end{exercise}
-%
-%The difference computed in Guided Practice~\ref{exerciseComputingDifferenceForCPRStudyInSmallSampleSectionFake1} represents a draw from the null distribution of the sample differences. Next we generate many more simulated experiments to build up the null distribution, much like we did in Section~\ref{generatingTheNullDistributionAndPValueBySimulationForOneProportion} to build a null distribution for a one sample proportion.
-%
-%\begin{caution}{Simulation in the two proportion case requires that the null difference is zero}
-%{The technique described here to simulate a difference from the null distribution relies on an important condition in the null hypothesis: there is no connection between the two variables considered. In some special cases, the null difference might not be zero, and more advanced methods (or a large sample approximation, if appropriate) would be necessary.}
-%\end{caution}
-%
-%\subsection{Null distribution for the difference in two proportions}
-%
-%We build up an approximation to the null distribution by repeatedly creating tables like the one shown in Figure~\ref{resultsForCPRStudyInSmallSampleSectionFake1} and computing the sample differences. The null distribution from 10,000 simulations is shown in Figure~\ref{pValueCPRStudySmallSampleAnalysisInSmallSampleSection}.
-%\begin{figure}
-%\centering
-%\includegraphics[width=\textwidth]{ch_inference_for_props/figures/pValueCPRStudySmallSampleAnalysisInSmallSampleSection/pValueCPRStudySmallSampleAnalysisInSmallSampleSection}
-%\caption{An approximation of the null distribution of the point estimate, $\hat{p}_t - \hat{p}_c$. The p-value is twice the right tail area.}
-%\label{pValueCPRStudySmallSampleAnalysisInSmallSampleSection}
-%\end{figure}
-%
-%\begin{example}{Compare Figures~\ref{pValueCPRStudyLargeSampleAnalysisInSmallSampleSection} and~\ref{pValueCPRStudySmallSampleAnalysisInSmallSampleSection}. How are they similar? How are they different?}
-%The shapes are similar, but the simulated results show that the continuous approximation of the normal distribution is not very good. We might wonder, how close are the p-values?
-%\end{example}
-%
-%\begin{exercise} \label{comparisonOfLargeSampleAndSmallSamplePValueInCPRStudy}
-%The right tail area is about 0.13. (It is only a coincidence that we also have $\hat{p}_t - \hat{p}_c=0.13$.) The p-value is computed by doubling the right tail area: 0.26. How does this value compare with the large sample approximation for the p-value?\footnote{The approximation in this case is fairly poor (p-values: 0.174 vs. 0.26), though we come to the same conclusion. The data do not provide convincing evidence showing the blood thinner helps or hurts patients.}
-%\index{data!CPR and blood thinner|)}
-%\end{exercise}
-%
-%In general, small sample methods produce more accurate results since they rely on fewer assumptions. However, they often require some extra work or simulations. For this reason, many statisticians use small sample methods only when conditions for large sample methods are not satisfied.
-%
-%
-%\subsection{Randomization for two-way tables and chi-square}
-%
-%Randomization methods may also be used for the contingency tables. In short, we create a randomized contingency table, then compute a chi-square test statistic $X_{sim}^2$. We repeat this many times using a computer, and then we examine the distribution of these simulated test statistics. This randomization approach is valid for any sized sample, and it will be more accurate for cases where one or more expected bin counts do not meet the minimum threshold of~5. When the minimum threshold is met, the simulated null distribution will very closely resemble the chi-square distribution. As before, we use the upper tail of the null distribution to calculate the p-value.
-
-
-
