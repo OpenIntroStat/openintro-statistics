@@ -1352,62 +1352,132 @@ a\times E(X) + b\times E(Y)
 Recall that the expected value is the same as the mean, e.g. $E(X) = \mu_X$.}
 \end{termBox}
 
-\begin{example}{Leonard has invested \$6000 in Google Inc. (stock ticker: GOOG) and \$2000 in Exxon Mobil Corp. (XOM). If $X$ represents the change in Google's stock next month and $Y$ represents the change in Exxon Mobil stock next month, write an equation that describes how much money will be made or lost in Leonard's stocks for the month.}
-For simplicity, we will suppose $X$ and $Y$ are not in percents but are in decimal form (e.g. if Google's stock increases 1\%, then $X=0.01$; or if it loses 1\%, then $X=-0.01$). Then we can write an equation for Leonard's gain as
-\begin{align*}
-\$6000\times X + \$2000\times Y
-\end{align*}
-If we plug in the change in the stock value for $X$ and $Y$, this equation gives the change in value of Leonard's stock portfolio for the month. A positive value represents a gain, and a negative value represents a loss.
+\begin{example}{Leonard has invested \$6000 in Caterpillar Inc
+    (stock ticker: CAT) and \$2000 in Exxon Mobil Corp (XOM).
+    If $X$ represents the change in Caterpillar's stock next month
+    and $Y$ represents the change in Exxon Mobil's stock
+    next month, write an equation that describes how much
+    money will be made or lost in Leonard's stocks for the
+    month.}
+  For simplicity, we will suppose $X$ and $Y$ are not
+  in percents but are in decimal form
+  (e.g. if Caterpillar's stock increases 1\%, then $X=0.01$;
+  or if it loses 1\%, then $X=-0.01$).
+  Then we can write an equation for Leonard's gain as
+  \begin{align*}
+  \$6000\times X + \$2000\times Y
+  \end{align*}
+  If we plug in the change in the stock value for $X$ and $Y$,
+  this equation gives the change in value of Leonard's stock
+  portfolio for the month. A positive value represents a gain,
+  and a negative value represents a loss.
 \end{example}
 
 \begin{exercise}\label{expectedChangeInLeonardsStockPortfolio}
-Suppose Google and Exxon Mobil stocks have recently been rising 2.1\% and 0.4\% per month, respectively. Compute the expected change in Leonard's stock portfolio for next month.\footnote{$E(\$6000\times X + \$2000\times Y) = \$6000\times 0.021 + \$2000\times 0.004 = \$134$.}
-% library(stockPortfolio); gr <- getReturns(c("GOOG", "XOM"), start="2006-01-01"); gr
+Caterpillar stock has recently been rising
+at 2.0\% and Exxon Mobil's at 0.2\% per month, respectively.
+Compute the expected change in Leonard's stock portfolio
+for next month.\footnote{%
+  $E(\$6000\times X + \$2000\times Y) =
+    \$6000\times 0.020 + \$2000\times 0.002 = \$124$.}
 \end{exercise}
+% library(openintro); d <- stocks_18; cols <- 2:4; apply(d[, cols], 2, mean); apply(d[, cols], 2, sd)
 
 \begin{exercise}
-You should have found that Leonard expects a positive gain in Guided Practice~\ref{expectedChangeInLeonardsStockPortfolio}. However, would you be surprised if he actually had a loss this month?\footnote{No. While stocks tend to rise over time, they are often volatile in the short term.}
+You should have found that Leonard expects a positive gain
+in Guided Practice~\ref{expectedChangeInLeonardsStockPortfolio}.
+However, would you be surprised if he actually had
+a loss this month?\footnote{No.
+  While stocks tend to rise over time, they are often
+  volatile in the short term.}
 \end{exercise}
 
 \subsection{Variability in linear combinations of random variables}
 
-Quantifying the average outcome from a linear combination of random variables is helpful, but it is also important to have some sense of the uncertainty associated with the total outcome of that combination of random variables. The expected net gain or loss of Leonard's stock portfolio was considered in Guided Practice~\ref{expectedChangeInLeonardsStockPortfolio}. However, there was no quantitative discussion of the volatility of this portfolio. For instance, while the average monthly gain might be about \$134 according to the data, that gain is not guaranteed. Figure~\ref{changeInLeonardsStockPortfolioFor36Months} shows the monthly changes in a portfolio like Leonard's during the 36 months from 2009 to 2011. The gains and losses vary widely, and quantifying these fluctuations is important when investing in stocks.
+Quantifying the average outcome from a linear combination
+of random variables is helpful, but it is also important
+to have some sense of the uncertainty associated with
+the total outcome of that combination of random variables.
+The expected net gain or loss of Leonard's stock portfolio
+was considered in Guided Practice~\ref{expectedChangeInLeonardsStockPortfolio}.
+However, there was no quantitative discussion of the
+volatility of this portfolio.
+For instance, while the average monthly gain might be
+about \$124 according to the data, that gain is not guaranteed.
+Figure~\ref{changeInLeonardsStockPortfolioFor36Months}
+shows the monthly changes in a portfolio like Leonard's during
+a three year period.
+The gains and losses vary widely, and quantifying these
+fluctuations is important when investing in stocks.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_probability/figures/changeInLeonardsStockPortfolioFor36Months/changeInLeonardsStockPortfolioFor36Months}
-\caption{The change in a portfolio like Leonard's for the 36 months from 2009 to 2011, where \$6000 is in Google's stock and \$2000 is in Exxon Mobil's.}
+\includegraphics[width=0.6\textwidth]{ch_probability/figures/changeInLeonardsStockPortfolioFor36Months/changeInLeonardsStockPortfolioFor36Months}
+\caption{The change in a portfolio like Leonard's for 36 months,
+    where \$6000 is in Caterpillar's stock and \$2000 is in
+    Exxon Mobil's.}
 \label{changeInLeonardsStockPortfolioFor36Months}
 \end{figure}
 
-Just as we have done in many previous cases, we use the variance and standard deviation to describe the uncertainty associated with Leonard's monthly returns. To do so, the variances of each stock's monthly return will be useful, and these are shown in Figure~\ref{sumStatOfGOOGXOM}. The stocks' returns are nearly independent.
+Just as we have done in many previous cases,
+we use the variance and standard deviation to describe
+the uncertainty associated with Leonard's monthly returns.
+To do so, the variances of each stock's monthly return
+will be useful, and these are shown in
+Figure~\ref{sumStatOfCATXOM}.
+The stocks' returns are nearly independent.
 
 \begin{figure}
 \centering
 \begin{tabular}{lrrr}
 \hline
-	& Mean ($\bar{x}$) & Standard deviation ($s$) & Variance ($s^2$) \\
+    & Mean ($\bar{x}$) & Standard deviation ($s$) &
+	    Variance ($s^2$) \\
 \hline
-GOOG & 0.0210	& 0.0846					&	0.0072	\\
-XOM & 0.0038		& 0.0519					&	0.0027	\\
+CAT & 0.0204  & 0.0757  & 0.0057 \\
+XOM & 0.0025  & 0.0455  & 0.0021 \\
 \hline
 \end{tabular}
-\caption{The mean, standard deviation, and variance of the GOOG and XOM stocks. These statistics were estimated from historical stock data, so notation used for sample statistics has been used.}
-\label{sumStatOfGOOGXOM}
+\caption{The mean, standard deviation, and variance of the
+    CAT and XOM stocks.
+    These statistics were estimated from historical
+    stock data, so notation used for sample statistics
+    has been used.}
+\label{sumStatOfCATXOM}
 \end{figure}
 
-Here we use an equation from probability theory to describe the uncertainty of Leonard's monthly returns; we leave the proof of this method to a dedicated probability course. The variance of a linear combination of random variables can be computed by plugging in the variances of the individual random variables and squaring the coefficients of the random variables:
+Here we use an equation from probability theory to
+describe the uncertainty of Leonard's monthly returns;
+we leave the proof of this method to a dedicated
+probability course.
+The variance of a linear combination of random variables
+can be computed by plugging in the variances of the
+individual random variables and squaring the coefficients
+of the random variables:
 \begin{align*}
 Var(aX + bY) = a^2\times Var(X) + b^2\times Var(Y)
 \end{align*}
-It is important to note that this equality assumes the random variables are independent; if independence doesn't hold, then more advanced methods are necessary. This equation can be used to compute the variance of Leonard's monthly return:
+It is important to note that this equality assumes the
+random variables are independent;
+\Comment{Updating this...}
+if independence doesn't hold, then a modification to
+this equation would be required that we leave as a topic
+for a future course to cover.
+This equation can be used to compute the variance of
+Leonard's monthly return:
 \begin{align*}
 Var(6000\times X + 2000\times Y)
 	&= 6000^2\times Var(X) + 2000^2\times Var(Y) \\
-	&= 36,000,000\times 0.0072 + 4,000,000\times 0.0027 \\
-	&= 270,000
+	&= 36,000,000\times 0.0057 + 4,000,000\times 0.0021 \\
+	&\approx 213,600
+% sum(c(36e6, 4e6) * c(0.0057, 0.0021))
 \end{align*}
-The standard deviation is computed as the square root of the variance: $\sqrt{270,000} = \$520$. While an average monthly return of \$134 on an \$8000 investment is nothing to scoff at, the monthly returns are so volatile that Leonard should not expect this income to be very stable.
+The standard deviation is computed as the square root
+of the variance: $\sqrt{213,600} = \$463$.
+While an average monthly return of \$124 on an
+\$8000 investment is nothing to scoff at,
+the monthly returns are so volatile that Leonard should
+not expect this income to be very stable.
 
 \begin{termBox}{\tBoxTitle{Variability of linear combinations of random variables}
 The variance of a linear combination of random variables may be computed by squaring the constants, substituting in the variances for the random variables, and computing the result:

@@ -1,20 +1,23 @@
 library(openintro)
-data(COL)
-library(stockPortfolio)
 
-t <- c("GOOGL", "XOM")
-g <- getReturns(t, start = "2008-12-01", end = "2012-01-08")
-s <- stockModel(g)
-sum(s$R*c(6000, 2000))
-sum(c(6000, 2000)^2 * s$sigma^2)
-ret <- apply(t(g$R[1:36, ]) * c(6000, 2000), 2, sum)
+t <- c("cat", "xom")
+s <- stocks_18[t]
+apply(s, 2, mean)
+apply(s, 2, sd)
+apply(s, 2, var)
+cor(s)
+summary(lm(s))
+ret <- 6000 * s$cat + 2000 * s$xom
+# baselines <- c(cat = 65.39, goog = 742.60, xom = 72.33)
+# dates <- stocks_18$date
+
 
 myPDF("changeInLeonardsStockPortfolioFor36Months.pdf", 5, 2.15,
       mar = c(3.5, 0.5, 0.5, 0.5),
       mgp = c(2.3, 0.6, 0))
 boxPlot(ret,
         main = "",
-        xlab = "Monthly returns (2009-2011)",
+        xlab = "Monthly Returns Over 3 Years",
         ylab = "",
         horiz = TRUE,
         axes = FALSE,
