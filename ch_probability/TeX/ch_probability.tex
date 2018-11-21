@@ -121,11 +121,30 @@ P(A_1) + P(A_2) + \cdots + P(A_k)
 We are interested in the probability of rolling a \resp{1}, \resp{4}, or \resp{5}. (a) Explain why the outcomes \resp{1}, \resp{4}, and \resp{5} are disjoint. (b) Apply the Addition Rule for disjoint outcomes to determine $P($\resp{1} or \resp{4} or \resp{5}$)$.\footnote{(a) The random process is a die roll, and at most one of these outcomes can come up. This means they are disjoint outcomes. (b)~$P($\resp{1} or \resp{4} or \resp{5}$) = P($\resp{1}$)+P($\resp{4}$)+P($\resp{5}$) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2}$}
 \end{exercise}
 
-\index{data!email|(}
+\Comment{The next Guided Practice is new, replacing one that had
+    used the \data{email} data set.}
+
+\index{data!loans|(}
 \begin{exercise}
-In the \data{email} data set in Chapter~\ref{introductionToData}, the \var{number} variable described whether no number (labeled \resp{none}), only one or more small numbers (\resp{small}), or whether at least one big number appeared in an email (\resp{big}). Of the 3,921 emails, 549 had no numbers, 2,827 had only one or more small numbers, and 545 had at least one big number. (a) Are the outcomes \resp{none}, \resp{small}, and \resp{big} disjoint? (b) Determine the proportion of emails with value \resp{small} and \resp{big} separately. (c) Use the Addition Rule for disjoint outcomes to compute the probability a randomly selected email from the data set has a number in it, small or big.\footnote{(a) Yes. Each email is categorized in only one level of \var{number}. (b) Small: $\frac{2827}{3921} = 0.721$. Big: $\frac{545}{3921} = 0.139$. (c) $P($\resp{small} or \resp{big}$) = P($\resp{small}$) + P($\resp{big}$) = 0.721 + 0.139 = 0.860$.}
+In the \data{loans} data set in Chapter~\ref{ch_summarizing_data},
+the \var{homeownership} variable described whether the borrower
+rents, has a mortgage, or owns her property.
+Of the 10,000 borrowers, 3858 rented, 4789 had a mortgage,
+and 1353 owned her home.
+(a)~Are the outcomes \resp{rent}, \resp{mortgage},
+and \resp{own} disjoint?
+(b)~Determine the proportion of loans with value \resp{mortgage}
+and \resp{own} separately.
+(c)~Use the Addition Rule for disjoint outcomes to compute
+the probability a randomly selected loan from the data set
+is for someone who has a mortgage or owns her
+home.\footnote{(a)~Yes. Each loan is categorized in only one
+level of \var{homeownership}.
+(b)~Mortgage: $\frac{4789}{10000} = 0.479$.
+Own: $\frac{1353}{10000} = 0.135$.
+(c)~$P($\resp{mortgage} or \resp{own}$) = P($\resp{mortgage}$) + P($\resp{own}$) = 0.479 + 0.135 = 0.614$.}
 \end{exercise}
-\index{data!email|)}
+\index{data!loans|)}
 
 \index{event|(}
 
@@ -224,24 +243,43 @@ When we write ``or'' in statistics, we mean ``and/or'' unless we explicitly stat
 (a) If $A$ and $B$ are disjoint, describe why this implies $P(A$ and $B) = 0$. (b) Using part (a), verify that the General Addition Rule simplifies to the simpler Addition Rule for disjoint events if $A$ and $B$ are disjoint.\footnote{(a) If $A$ and $B$ are disjoint, $A$ and $B$ can never occur simultaneously. (b) If $A$ and $B$ are disjoint, then the last term of Equation~(\ref{generalAdditionRule}) is 0 (see part (a)) and we are left with the Addition Rule for disjoint events.}
 \end{exercise}
 
-\index{data!email|(}
+\index{data!loans|(}
 
 \begin{exercise}\label{emailSpamNumberVennExer}
-% library(openintro); data(email); table(email[,c("spam", "number")]); table(email[,c("number")]); table(email[,c("spam")])
-In the \data{email} data set with 3,921 emails, 367 were spam, 2,827 contained some small numbers but no big numbers, and 168 had both characteristics. Create a Venn diagram for this setup.\footnote{%
-\begin{minipage}[t]{0.65\textwidth}
-Both the counts and corresponding {\color{oiB}probabilities} (e.g. $2659/3921 = 0.678$) are shown. Notice that the number of emails represented in the left circle corresponds to $2659 + 168 = 2827$, and the number represented in the right circle is $168 + 199 = 367$.
-\end{minipage}\ %
-\begin{minipage}[c]{0.3\textwidth}
-\hfill\includegraphics[height=13mm]{ch_probability/figures/emailSpamNumberVenn/emailSpamNumberVenn} \vspace{-13mm}
-\end{minipage}
-}
+% library(openintro); d <- loans_full_schema; table(d[,c("application_type", "homeownership")]); table(d[,c("application_type")]); table(d[,c("homeownership")])
+In the \data{loans} data set describing 10,000 loans,
+1495 loans were from joint applications
+(e.g. a couple applied together),
+4789 applicants had a mortgage,
+and 950 had both of these characteristics.
+Create a Venn diagram for this setup.\footnote{%
+  \begin{minipage}[t]{0.65\textwidth}
+  Both the counts and corresponding {\color{oiB}probabilities}
+  (e.g. $3839/10000 = 0.384$) are shown.
+  Notice that the number of loans represented in the left
+  circle corresponds to $3839 + 950 = 4789$, and the number
+  represented in the right circle is $950 + 545 = 1495$.
+  \end{minipage}\ %
+  \begin{minipage}[c]{0.3\textwidth}
+  \hfill\includegraphics[height=13mm]{ch_probability/figures/loans_app_type_home_venn/loans_app_type_home_venn} \vspace{-13mm}
+  \end{minipage}}
 \end{exercise}
 
 \begin{exercise}
-(a) Use your Venn diagram from Guided Practice~\ref{emailSpamNumberVennExer} to determine the probability a randomly drawn email from the \data{email} data set is spam and had small numbers (but not big numbers). (b)~What is the probability that the email had either of these attributes?\footnote{(a)~The solution is represented by the intersection of the two circles: 0.043. (b)~This is the sum of the three disjoint probabilities shown in the circles: $0.678 + 0.043 + 0.051 = 0.772$.}
-\index{data!email|)}
+(a)~Use your Venn diagram from Guided Practice~\ref{emailSpamNumberVennExer} to determine the
+probability a randomly drawn loan from the \data{loans}
+data set is from a joint application where the couple had
+a mortgage.
+(b)~What is the probability that the loan had either of
+these attributes?\footnote{%
+  (a)~The solution is represented by the intersection of
+  the two circles: 0.095.
+  (b)~This is the sum of the three disjoint probabilities shown
+  in the circles: $0.384 + 0.095 + 0.055 = 0.534$
+  (off by 0.001 due to a rounding error).}
 \end{exercise}
+
+\index{data!loans|)}
 
 
 \subsection{Probability distributions}
