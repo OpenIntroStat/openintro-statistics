@@ -312,67 +312,116 @@ To help us remember to use the $t$-distribution, we use a $T$ to represent the t
 \index{paired data|(}
 \index{data!textbooks|(}
 
-Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles' (UCLA's) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10\% of all UCLA courses.\footnote{When a class had multiple books, only the most expensive text was considered.} A portion of the data set is shown in Figure~\ref{textbooksDF}.
+In earlier editions of this textbook,
+we found that Amazon prices were, on average,
+lower than those of the UCLA Bookstore for UCLA courses.
+It's been several years, and many stores have adapted
+to the online market, so we wondered,
+how is the UCLA Bookstore doing today?
+
+We examined 100 courses, and of those,
+34 required books that could be found on Amazon.
+A portion of the data set from these courses
+is shown in Figure~\ref{textbooksDF}.
 
 \begin{figure}[h]
 \centering
-\begin{tabular}{rllrrr}
+\begin{tabular}{r ll ccc}
   \hline
- & dept & course & ucla & amazon & diff \\ 
+ & subject &
+     course\_\hspace{0.3mm}num &
+     bookstore\_\hspace{0.3mm}new &
+     amazon\_\hspace{0.3mm}new &
+     price\_\hspace{0.3mm}diff \\ 
   \hline
-1 & Am Ind &  C170 & 27.67 & 27.95 & -0.28 \\ 
-  2 & Anthro & 9 & 40.59 & 31.14 & 9.45 \\ 
-  3 & Anthro & 135T & 31.68 & 32.00 & -0.32 \\ 
-  4 & Anthro & 191HB & 16.00 & 11.52 & 4.48 \\ 
-$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-  72 & Wom Std & M144 & 23.76 & 18.72 & 5.04 \\ 
-  73 & Wom Std & 285 & 27.70 & 18.22 & 9.48 \\ 
-   \hline
+  1 & American Indian Studies & M10 & 47.97 & 47.45 & 0.52 \\ 
+  2 & Anthropology & 2 & 14.26 & 13.55 & 0.71 \\ 
+  3 & Arts and Architecture & 10 & 13.50 & 12.53 & 0.97 \\ 
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  33 & Theater & 35A & 19.99 & 17.00 & 2.99 \\ 
+  34 & World Arts and Cultures & M23 & 47.97 & 47.45 & 0.52 \\ 
+  \hline
 \end{tabular}
-\caption{Six cases of the \data{textbooks} data set.}
+\caption{Five cases of the
+    \data{ucla\_\hspace{0.3mm}textbooks} data set.}
 \label{textbooksDF}
 \end{figure}
-%library(openintro); library(xtable); data(textbooks); xtable(textbooks[c(1:5, nrow(textbooks) - 1:0),])
+% library(openintro); library(xtable); library(dplyr); d <- select(ucla_textbooks_f18, subject, course_num, bookstore_new, amazon_new); d$price_diff <- d$bookstore_new - d$amazon_new; d <- subset(d, !is.na(bookstore_new) & !is.na(amazon_new)); rownames(d) <- NULL; xtable(d[c(1:3, nrow(d) - 1:0),])
 
 \subsection{Paired observations}
 
-Each textbook has two corresponding prices in the data set: one for the UCLA bookstore and one for Amazon. Therefore, each textbook price from the UCLA bookstore has a natural correspondence with a textbook price from Amazon. When two sets of observations have this special correspondence, they are said to be \term{paired}.
+Each textbook has two corresponding prices in the data set:
+one for the UCLA Bookstore and one for Amazon.
+Therefore, each textbook price from the UCLA bookstore
+has a natural correspondence with a textbook price from
+Amazon.
+When two sets of observations have this special
+correspondence, they are said to be \term{paired}.
 
 \begin{termBox}{\tBoxTitle{Paired data}
-Two sets of observations are \emph{paired} if each observation in one set has a special correspondence or connection with exactly one observation in the other data set.}
+  Two sets of observations are \emph{paired} if each
+  observation in one set has a special correspondence
+  or connection with exactly one observation in the other
+  data set.}
 \end{termBox}
 
-To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In the \data{textbook} data set, we look at the differences in prices, which is represented as the \var{diff} variable in the \data{textbooks} data. Here the differences are taken as
+To analyze paired data, it is often useful to look
+at the difference in outcomes of each pair of observations.
+In the \data{textbook} data set, we look at the differences
+in prices, which is represented as the \var{diff} variable
+in the \data{textbooks} data.
+Here the differences are taken as
 \begin{eqnarray*}
-\text{UCLA price} - \text{Amazon price}
+\text{UCLA Bookstore price} - \text{Amazon price}
 \end{eqnarray*}
-for each book. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices. A histogram of these differences is shown in Figure~\ref{diffInTextbookPricesS10}. Using differences between paired observations is a common and useful way to analyze paired data.
+for each book.
+It is important that we always subtract using
+a consistent order;
+here Amazon prices are always subtracted from UCLA prices.
+A histogram of these differences is shown in
+Figure~\ref{diffInTextbookPricesF18}.
+Using differences between paired observations
+is a common and useful way to analyze paired data.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
-\caption{Histogram of the difference in price for each book sampled. These data are strongly skewed.\index{skew!example: strong}}
-\label{diffInTextbookPricesS10}
+\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/textbooksF18/diffInTextbookPricesF18}
+\caption{Histogram of the difference in price for
+    each book sampled.
+    These data are very strongly skewed.
+    \index{skew!example: very strong}}
+\label{diffInTextbookPricesF18}
 \end{figure}
 
 \begin{exercise}
-The first difference shown in Figure~\ref{textbooksDF} is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations~2 and~3.\footnote{Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.}
+The first difference shown in Figure~\ref{textbooksDF}
+is computed as $47.97 - 47.45 = 0.52$.
+Verify the differences are calculated correctly for
+observations~2 and~3.\footnote{Observation~2:
+  $14.26 - 13.55 = 0.71$.
+  Observation~3: $13.50 - 12.53 = 0.97$.}
 \end{exercise}
 
 
+% \newpage
+
 \subsection{Inference for paired data}
 
-To analyze a paired data set, we simply analyze the differences. We can use the same $t$-distribution techniques we applied in the last section.
+To analyze a paired data set,
+we simply analyze the differences.
+We can use the same $t$-distribution techniques
+we applied in the last section.
 
 \begin{figure}[hh]
 \centering
 \begin{tabular}{ccccc}
 \hline
 $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $s_{_{\text{\emph{diff}}}}$ \vspace{1mm}\\
-73			&& 12.76				&& 14.26 \\
+34			&& 2.98				&& 16.63 \\
 \hline
 \end{tabular}
-\caption{Summary statistics for the price differences. There were 73 books, so there are 73 differences.}
+\caption{Summary statistics for the price differences.
+    There were 34 books, so there are 34 differences.}
 \label{textbooksSummaryStats}
 \end{figure}
 
@@ -385,35 +434,111 @@ We are considering two scenarios: there is no difference or there is some differ
 \item[$H_A$:] $\mu_{\text{\emph{diff}}} \neq 0$. There is a difference in average prices.
 \end{itemize}
 
-Can the $t$-distribution be used for this application? The observations are based on a simple random sample from less than 10\% of all books sold at the bookstore, so independence is reasonable. While the distribution is strongly skewed, the sample is reasonably large ($n=73$), so we can proceed. Because the conditions are reasonably satisfied, we can apply the $t$-distribution to this setting.
+Can the $t$-distribution be used for this application?
+The observations are based on a simple random sample,
+so independence is reasonable.
+While the distribution is very strongly skewed.
+In fact, the data are so strongly skewed that
+we should make a note in our final result,
+even though the sample is larger than 30 ($n = 34$).
+\Comment{This is tricky to get the wording right.
+  We'd probably want to be a bit doubtful of any
+  statistically significant results given the degree
+  of the skew.
+  The best solution is probably to double the
+  sample size...}
+Because the conditions are reasonably satisfied,
+we can apply the $t$-distribution to this setting.
 
-We compute the standard error associated with $\bar{x}_{\text{\emph{diff}}}$ using the standard deviation of the differences ($s_{_{\text{\emph{diff}}}}=14.26$) and the number of differences ($n_{_{\text{\emph{diff}}}}=73$):
-$$SE_{\bar{x}_{\text{\emph{diff}}}} = \frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}} = \frac{14.26}{\sqrt{73}} = 1.67$$
-To visualize the p-value, the sampling distribution of $\bar{x}_{\text{\emph{diff}}}$ is drawn as though $H_0$ is true, which is shown in Figure~\ref{textbooksS10HTTails}. The p-value is represented by the two (very) small tails.
-
-To find the tail areas, we compute the test statistic, which is the T-score of $\bar{x}_{\text{\emph{diff}}}$ under the null condition that the actual mean difference is 0:
+We compute the standard error associated with
+$\bar{x}_{\text{\emph{diff}}}$ using the standard
+deviation of the differences
+($s_{_{\text{\emph{diff}}}} = 16.63$)
+and the number of differences
+($n_{_{\text{\emph{diff}}}} = 34$):
 \begin{align*}
-T = \frac{\bar{x}_{\text{\emph{diff}}} - 0}{SE_{x_{\text{\emph{diff}}}}} = \frac{12.76 - 0}{1.67} = 7.65
+SE_{\bar{x}_{\text{\emph{diff}}}}
+  = \frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}}
+  = \frac{16.63}{\sqrt{34}} = 2.85
 \end{align*}
-The degrees of freedom are $df = 73 - 1 = 72$. If we examined Appendix~\vref{tDistributionTable}, we would see that this value is larger than any in the 70 df row (we round down for $df$ when using the table), meaning the two-sided p-value is less than 0.01. If we used statistical software, we would find the p-value is less than 1-in-10 billion! Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon was, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
+To visualize the p-value, the sampling distribution
+of $\bar{x}_{\text{\emph{diff}}}$ is drawn as though
+$H_0$ is true, which is shown in
+Figure~\ref{textbooksF18HTTails}.
+The p-value is represented by the two shaded tails.
+
+To find the tail areas, we compute the test statistic,
+which is the T-score of $\bar{x}_{\text{\emph{diff}}}$
+under the null condition that the actual mean
+difference is~0:
+\begin{align*}
+T
+  = \frac{\bar{x}_{\text{\emph{diff}}} - 0}
+      {SE_{x_{\text{\emph{diff}}}}}
+  = \frac{2.98 - 0}{2.85} = 1.05
+\end{align*}
+The degrees of freedom are $df = 34 - 1 = 33$.
+If we examined Appendix~\vref{tDistributionTable},
+we would see that this value is smaller than the left row,
+which indicates that the two-tail area and p-value is
+greater than 0.20.
+If we used statistical software, we would find the p-value
+is about 0.301.
+Because the p-value is greater than 0.05,
+we do not reject the null hypothesis.
+We have not found convincing evidence that
+Amazon prices are, on average, lower than the
+UCLA Bookstore prices for UCLA courses.
 \end{example}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/textbooksS10/textbooksS10HTTails}
+\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/textbooksF18/textbooksF18HTTails}
 \caption{Sampling distribution for the mean difference in book prices, if the true average difference is zero.}
-\label{textbooksS10HTTails}
+\label{textbooksF18HTTails}
 \end{figure}
 
+%We (the authors) found this result interesting.
+%Amazon prices were almost uniformly lower than those
+%of the UCLA bookstore's in a 2010 sample we collected.
+%Today, the UCLA bookstore is about even with Amazon
+%on the vast majority of titles, and there is no
+%statistical difference in the sample.
+%If we examine the data, we do see that there are
+%occasions where Amazon is much better than the
+%UCLA Bookstore.
+%However, those cases are uncommon.
+%Additionally, today there are many instances where
+%the UCLA Bookstore has lower prices than those
+%offered by Amazon, which was rare in our previous
+%data set from 2010.
+
+
 \begin{exercise}
-Create a 95\% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon.\footnote{Conditions have already verified and the standard error computed in Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}. To find the interval, identify $t^{\star}_{72}$ (use $df=70$ in the table, $t^{\star}_{70} = 1.99$) and plug it, the point estimate, and the standard error into the confidence interval formula:
-$$\text{point estimate} \ \pm\ z^{\star}SE \quad\to\quad 12.76 \ \pm\ 1.99\times 1.67 \quad\to\quad (9.44, 16.08)$$
-We are 95\% confident that Amazon is, on average, between \$9.44 and \$16.08 cheaper than the UCLA bookstore for UCLA course books.}
+Create a 95\% confidence interval for the average
+price difference between books at the UCLA bookstore
+and books on Amazon.\footnote{Conditions
+  have already verified and the standard error
+  computed in
+  Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}.
+  To find the interval,
+  identify $t^{\star}_{33}$
+  (use $df = 33$ in the table, $t^{\star}_{33} = 2.03$)
+  and plug it, the point estimate,
+  and the standard error into the confidence
+  interval formula:
+  \begin{align*}
+  \text{point estimate} \ \pm\ z^{\star}SE
+      \quad\to\quad 2.98 \ \pm\ 2.03 \times 2.85
+      \quad\to\quad (-2.81 8.77)
+  \end{align*}
+  We are 95\% confident that Amazon is, on average,
+  between \$2.81 more expensive and \$8.81 less expensive
+  than the UCLA Bookstore for UCLA course books.}
+\end{exercise}
 
 \index{data!textbooks|)}
 \index{paired data|)}
-
-\end{exercise}
 
 
 
