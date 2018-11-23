@@ -14,7 +14,7 @@ Chapter~\ref{foundationsForInference} introduced a framework for statistical inf
 
 %__________________
 %\section{One-sample means with the $t$-distribution}
-\section[One-sample means with the $t$-distribution]{One-sample means with the $t$-distribution \sectionvideohref{coursera_video-t_distribution}~\sectionvideohref{coursera_video-inf_for_mean}~\sectionslideshref{gdoc_os3_slides_5-1}}
+\section[One-sample means with the $t$-distribution]{One-sample means with the\\$t$-distribution} % \sectionvideohref{coursera_video-t_distribution}~\sectionvideohref{coursera_video-inf_for_mean}~\sectionslideshref{gdoc_os3_slides_5-1}}
 \label{oneSampleMeansWithTDistribution}
 
 We required a large sample in Chapter~\ref{foundationsForInference} for two reasons:
@@ -203,11 +203,7 @@ In the normal model, we used $z^{\star}$ and the standard error to determine the
 \begin{eqnarray*}
 \bar{x} \ \pm\  t^{\star}_{df}SE
 \end{eqnarray*}
-\marginpar[\raggedright\vspace{-9mm}
-
-$t^{\star}_{df}$\vspace{1mm}\\\footnotesize Multiplication\\factor for\\$t$ conf. interval]{\raggedright\vspace{-9mm}
-
-$t^{\star}_{df}$\vspace{1mm}\\\footnotesize Multiplication\\factor for\\$t$ conf. interval}The sample mean and estimated standard error are computed just as before ($\bar{x} = 4.4$ and $SE = s/\sqrt{n} = 0.528$). The value $t^{\star}_{df}$ is a cutoff we obtain based on the confidence level and the $t$-distribution with $df$ degrees of freedom. Before determining this cutoff, we will first need the degrees of freedom.
+The sample mean and estimated standard error are computed just as before ($\bar{x} = 4.4$ and $SE = s/\sqrt{n} = 0.528$). The value $t^{\star}_{df}$ is a cutoff we obtain based on the confidence level and the $t$-distribution with $df$ degrees of freedom. Before determining this cutoff, we will first need the degrees of freedom.
 
 \begin{termBox}{\tBoxTitle{Degrees of freedom for a single sample}
 If the sample has $n$ observations and we are examining a single mean, then we use the $t$-distribution with $df=n-1$ degrees of freedom.}
@@ -310,7 +306,7 @@ To help us remember to use the $t$-distribution, we use a $T$ to represent the t
 
 
 %__________________
-\section[Paired data]{Paired data \sectionvideohref{coursera_video-inf_paired_means}~\sectionslideshref{gdoc_os3_slides_5-2}}
+\section[Paired data]{Paired data}% \sectionvideohref{coursera_video-inf_paired_means}~\sectionslideshref{gdoc_os3_slides_5-2}}
 \label{pairedData}
 
 \index{paired data|(}
@@ -354,7 +350,7 @@ for each book. It is important that we always subtract using a consistent order;
 
 \begin{figure}
 \centering
-\includegraphics[width=0.93\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
+\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/textbooksS10/diffInTextbookPricesS10}
 \caption{Histogram of the difference in price for each book sampled. These data are strongly skewed.\index{skew!example: strong}}
 \label{diffInTextbookPricesS10}
 \end{figure}
@@ -422,7 +418,7 @@ We are 95\% confident that Amazon is, on average, between \$9.44 and \$16.08 che
 
 
 %__________________
-\section[Difference of two means]{Difference of two means \sectionvideohref{coursera_video-inf_two_means}~\sectionslideshref{gdoc_os3_slides_5-3}}
+\section[Difference of two means]{Difference of two means}% \sectionvideohref{coursera_video-inf_two_means}~\sectionslideshref{gdoc_os3_slides_5-3}}
 \label{differenceOfTwoMeans}
 
 {
@@ -769,7 +765,7 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 
 
 %__________________
-\section[Power calculations for a difference of means (special topic)]{Power calculations for a difference of means\\ (special topic) \sectionvideohref{coursera_video-power}~\sectionslideshref{gdoc_os3_slides_5-4}}
+\section[Power calculations for a difference of means (special topic)]{Power calculations for a difference \\of means (special topic)}% \sectionvideohref{coursera_video-power}~\sectionslideshref{gdoc_os3_slides_5-4}}
 \label{PowerForDifferenceOfTwoMeans}
 
 Often times in experiment planning, there are two competing considerations:
@@ -941,6 +937,10 @@ Figure~\ref{power_curve_neg-3} shows the power for sample sizes from 20~patients
 \label{power_curve_neg-3}
 \end{figure}
 
+\begin{exercise}
+
+\end{exercise}
+
 Power calculations for expensive or risky experiments are critical. However, what about experiments that are inexpensive and where the ethical considerations are minimal? For example, if we are doing final testing on a new feature on a popular website, how would our sample size considerations change? As before, we'd want to make sure the sample is big enough. However, if the feature has undergone some testing and is known to perform well (i.e. not frustrate many site users), then we may run a much larger experiment than is necessary to detect the minimum effects of interest. The reason is that there may be additional benefits to having an even more precise estimate of the effect of the new feature. We may even conduct a large experiment as part of the rollout of the new feature.
 
 
@@ -948,7 +948,7 @@ Power calculations for expensive or risky experiments are critical. However, wha
 
 
 %__________________
-\section[Comparing many means with ANOVA (special topic)]{Comparing many means with ANOVA\\(special topic) \sectionvideohref{coursera_video-anova_intro} \sectionvideohref{coursera_video-anova_conditions} \sectionvideohref{coursera_video-mult_comparison}~\sectionslideshref{gdoc_os3_slides_5-5}}
+\section[Comparing many means with ANOVA (special topic)]{Comparing many means with ANOVA\\(special topic)}% \sectionvideohref{coursera_video-anova_intro} \sectionvideohref{coursera_video-anova_conditions} \sectionvideohref{coursera_video-mult_comparison}~\sectionslideshref{gdoc_os3_slides_5-5}}
 \label{anovaAndRegrWithCategoricalVariables}
 
 \index{analysis of variance (ANOVA)|(}

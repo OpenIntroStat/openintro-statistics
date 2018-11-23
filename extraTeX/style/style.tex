@@ -15,10 +15,13 @@
 % 1 Page Parameters
 % 1.1 Amazon
 \setlength\paperheight{11in}
-\setlength\textheight{9.25in}
+\newcommand{\officialtextheight}{9.7in}
+\setlength\textheight{\officialtextheight}
 \setlength\paperwidth{8.5in}
-\setlength\textwidth{6in}
-\setlength\voffset{-10mm}
+\newcommand{\officialtextwidth}{6in}
+\setlength\textwidth{\officialtextwidth}
+\newcommand{\officialvoffset}{-0.6in}
+\setlength\voffset{\officialvoffset}
 % 1.2 Margin Size
 % 1.2.1 Slim
 %\setlength\hoffset{0.25in}
@@ -43,10 +46,18 @@
 % 1.4 Margin Spacing
 \setlength{\marginparsep}{5mm}
 \setlength{\marginparwidth}{20mm}
+% 1.5 Page Header
+\pagestyle{fancy}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\fancyfoot[c]{}
+\fancyheadoffset[RO,LE]{0.9in}
+
 
 
 % Tablet Version
-%\setlength\paperheight{8.82in}\setlength\textheight{8.25in}\setlength\paperwidth{5.7in}\setlength\textwidth{5.45in}\setlength\voffset{-23.5mm}\setlength\hoffset{-27mm}\setlength\oddsidemargin{5mm}\setlength\evensidemargin{5mm}\setlength{\marginparsep}{5mm}\setlength{\marginparwidth}{35mm}
+%\setlength\paperheight{8.82in}\setlength\textheight{8.25in}\setlength\paperwidth{5.7in}\setlength\textwidth{5.45in}\setlength\voffset{-23.5mm}\setlength\hoffset{-27mm}\setlength\oddsidemargin{5mm}\setlength\evensidemargin{5mm}\setlength{\marginparsep}{5mm}\setlength{\marginparwidth}{35mm}\fancyheadoffset[RO,LE]{0.2in}
 
 
 
@@ -120,7 +131,7 @@
 {\color{oiB}\thesection}{1em}{}
 % 5.3 Subsection
 \titleformat{\subsection}
-{\color{oiB}\normalfont\large\bfseries\Large}
+{\color{oiB}\normalfont\large\bfseries\Large}%\MakeUppercase}
 {\color{oiB}\thesubsection}{1em}{}
 
 

@@ -160,22 +160,33 @@ Here's how we might simulate it:
 Any volunteers to conduct this simulation? Probably not. Running
 this simulation with 250 million pieces of paper would be
 time-consuming and very costly, but we can simulate it
-using computer code; we've written a short program in the
-footnote.
-\Comment{Put this into a figure.}\footnote{Code using the statistical software called \R: \\
-\texttt{\# 1. Create a set of 250 million entries,
-where 89\% of them are "support" and 11\% are "not". \\
-possible\_entries <- rep(c("support", "not"),
-    c(\pewsolarpollprop{}, \pewsolarpollpropcomplement{}) * 250e6)\\
-\# 2. Sample \pewsolarpollsize{} of the entries. \\
-sampled\_entries <- sample(possible\_entries, \pewsolarpollsize{}) \\
-\# 3. Count the number that are "justified", then divide
-by the sample size. \\
-sum(sampled\_entries == "justified") / \pewsolarpollsize{}}}
+using computer code; we've written a short program in
+Figure~\ref{solarPollSimulationCodeR}.
 In this simulation, the sample gave a point estimate of
 $\hat{p}_1 = 0.901$. We~know the population proportion
 for the simulation was $p = \pewsolarpollprop{}$, so we know
 the estimate had an error of +0.014.
+
+%\setlength\textwidth{\officialtextwidth-10mm}
+\begin{figure}
+\texttt{\# 1.\ Create a set of 250 million entries,
+where 89\% of them are "support" \\
+\#\ \ \ \ and 11\% are "not". \\
+possible\_entries <- rep(c("support", "not"),
+    c(\pewsolarpollprop{}, \pewsolarpollpropcomplement{}) * 250e6)\\
+\# 2.\ Sample \pewsolarpollsize{} of the entries. \\
+sampled\_entries <- sample(possible\_entries, \pewsolarpollsize{}) \\
+\# 3.\ Count the number that are "justified", then divide
+by the sample size. \\
+sum(sampled\_entries == "justified") / \pewsolarpollsize{}}
+\caption{Code for a simulation using the
+    statistical software called \R\index{R}.
+    Each line that starts with \texttt{\#} is a \term{code comment},
+    which is used to describe in regular language what the
+    code is doing.}
+\label{solarPollSimulationCodeR}
+\end{figure}
+% \setlength\textwidth{\officialtextwidth}
 
 One simulation isn't enough to get a great sense of the
 distribution of estimates we might expect in the simulation,
