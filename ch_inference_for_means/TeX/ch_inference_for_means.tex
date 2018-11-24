@@ -309,20 +309,31 @@ To help us remember to use the $t$-distribution, we use a $T$ to represent the t
 \section[Paired data]{Paired data}% \sectionvideohref{coursera_video-inf_paired_means}~\sectionslideshref{gdoc_os3_slides_5-2}}
 \label{pairedData}
 
+\newcommand{\uclabookN}{68}
+\newcommand{\uclabookM}{3.58}
+\newcommand{\uclabookSD}{13.42}
+\newcommand{\uclabookSE}{1.63}
+
 \index{paired data|(}
 \index{data!textbooks|(}
 
+\Comment{The data here has been updated,
+  and meaningful updates to the text have been made.}
+
 In earlier editions of this textbook,
 we found that Amazon prices were, on average,
-lower than those of the UCLA Bookstore for UCLA courses.
+lower than those of the UCLA Bookstore for UCLA courses
+in 2010.
 It's been several years, and many stores have adapted
 to the online market, so we wondered,
 how is the UCLA Bookstore doing today?
 
-We examined 100 courses, and of those,
-34 required books that could be found on Amazon.
-A portion of the data set from these courses
-is shown in Figure~\ref{textbooksDF}.
+We sampled 201 UCLA courses.
+Of those, \uclabookN{}
+required books that could be found on Amazon.
+A~portion of the data set from these courses
+is shown in Figure~\ref{textbooksDF},
+where prices are in US dollars.
 
 \begin{figure}[h]
 \centering
@@ -334,16 +345,15 @@ is shown in Figure~\ref{textbooksDF}.
      amazon\_\hspace{0.3mm}new &
      price\_\hspace{0.3mm}diff \\ 
   \hline
-  1 & American Indian Studies & M10 & 47.97 & 47.45 & 0.52 \\ 
-  2 & Anthropology & 2 & 14.26 & 13.55 & 0.71 \\ 
-  3 & Arts and Architecture & 10 & 13.50 & 12.53 & 0.97 \\ 
+  1 & African American Studies & 19 & 6.97 & 7.94 & -0.97 \\ 
+  2 & American Indian Studies & M10 & 47.97 & 47.45 & 0.52 \\ 
+  3 & Anthropology & 2 & 14.26 & 13.55 & 0.71 \\ 
   $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-  33 & Theater & 35A & 19.99 & 17.00 & 2.99 \\ 
-  34 & World Arts and Cultures & M23 & 47.97 & 47.45 & 0.52 \\ 
+  67 & Theater & 35A & 19.99 & 17.00 & 2.99 \\ 
+  68 & World Arts and Cultures & M23 & 47.97 & 47.45 & 0.52 \\
   \hline
 \end{tabular}
-\caption{Five cases of the
-    \data{ucla\_\hspace{0.3mm}textbooks} data set.}
+\caption{Five cases of the \data{textbooks} data set.}
 \label{textbooksDF}
 \end{figure}
 % library(openintro); library(xtable); library(dplyr); d <- select(ucla_textbooks_f18, subject, course_num, bookstore_new, amazon_new); d$price_diff <- d$bookstore_new - d$amazon_new; d <- subset(d, !is.na(bookstore_new) & !is.na(amazon_new)); rownames(d) <- NULL; xtable(d[c(1:3, nrow(d) - 1:0),])
@@ -395,15 +405,15 @@ is a common and useful way to analyze paired data.
 
 \begin{exercise}
 The first difference shown in Figure~\ref{textbooksDF}
-is computed as $47.97 - 47.45 = 0.52$.
+is computed as $6.97 - 7.94 = -0.97$.
 Verify the differences are calculated correctly for
 observations~2 and~3.\footnote{Observation~2:
-  $14.26 - 13.55 = 0.71$.
-  Observation~3: $13.50 - 12.53 = 0.97$.}
+  $47.97 - 47.45 = 0.52$.
+  Observation~3: $14.26 - 13.55 = 0.71$.}
 \end{exercise}
 
 
-% \newpage
+\newpage
 
 \subsection{Inference for paired data}
 
@@ -417,11 +427,12 @@ we applied in the last section.
 \begin{tabular}{ccccc}
 \hline
 $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $s_{_{\text{\emph{diff}}}}$ \vspace{1mm}\\
-34			&& 2.98				&& 16.63 \\
+\uclabookN{}  && \uclabookM{}  && \uclabookSD{} \\
 \hline
 \end{tabular}
 \caption{Summary statistics for the price differences.
-    There were 34 books, so there are 34 differences.}
+    There were 34 books, so there are \uclabookN{}
+    differences.}
 \label{textbooksSummaryStats}
 \end{figure}
 
@@ -437,29 +448,22 @@ We are considering two scenarios: there is no difference or there is some differ
 Can the $t$-distribution be used for this application?
 The observations are based on a simple random sample,
 so independence is reasonable.
-While the distribution is very strongly skewed.
-In fact, the data are so strongly skewed that
-we should make a note in our final result,
-even though the sample is larger than 30 ($n = 34$).
-\Comment{This is tricky to get the wording right.
-  We'd probably want to be a bit doubtful of any
-  statistically significant results given the degree
-  of the skew.
-  The best solution is probably to double the
-  sample size...}
+While the distribution is very strongly skewed,
+we do have $n = \uclabookN{}$ observations,
+and it's reasonable to move forward here.
 Because the conditions are reasonably satisfied,
 we can apply the $t$-distribution to this setting.
 
 We compute the standard error associated with
 $\bar{x}_{\text{\emph{diff}}}$ using the standard
 deviation of the differences
-($s_{_{\text{\emph{diff}}}} = 16.63$)
+($s_{_{\text{\emph{diff}}}} = \uclabookSD{}$)
 and the number of differences
-($n_{_{\text{\emph{diff}}}} = 34$):
+($n_{_{\text{\emph{diff}}}} = \uclabookN{}$):
 \begin{align*}
 SE_{\bar{x}_{\text{\emph{diff}}}}
   = \frac{s_{\text{\emph{diff}}}}{\sqrt{n_{\text{\emph{diff}}}}}
-  = \frac{16.63}{\sqrt{34}} = 2.85
+  = \frac{\uclabookSD{}}{\sqrt{\uclabookN{}}} = \uclabookSE{}
 \end{align*}
 To visualize the p-value, the sampling distribution
 of $\bar{x}_{\text{\emph{diff}}}$ is drawn as though
@@ -475,18 +479,16 @@ difference is~0:
 T
   = \frac{\bar{x}_{\text{\emph{diff}}} - 0}
       {SE_{x_{\text{\emph{diff}}}}}
-  = \frac{2.98 - 0}{2.85} = 1.05
+  = \frac{\uclabookM{} - 0}{\uclabookSE{}} = 2.20
 \end{align*}
-The degrees of freedom are $df = 34 - 1 = 33$.
+The degrees of freedom are $df = \uclabookN{} - 1 = 67$.
 If we examined Appendix~\vref{tDistributionTable},
-we would see that this value is smaller than the left row,
-which indicates that the two-tail area and p-value is
-greater than 0.20.
-If we used statistical software, we would find the p-value
-is about 0.301.
-Because the p-value is greater than 0.05,
-we do not reject the null hypothesis.
-We have not found convincing evidence that
+we would see that this value corresponds to
+a two-tail area and p-value between 0.025 and 0.05.
+If we used statistical software, we would find the
+p-value is about 0.0312.
+Because the p-value is less than 0.05,
+we reject the null hypothesis.
 Amazon prices are, on average, lower than the
 UCLA Bookstore prices for UCLA courses.
 \end{example}
@@ -498,22 +500,6 @@ UCLA Bookstore prices for UCLA courses.
 \label{textbooksF18HTTails}
 \end{figure}
 
-%We (the authors) found this result interesting.
-%Amazon prices were almost uniformly lower than those
-%of the UCLA bookstore's in a 2010 sample we collected.
-%Today, the UCLA bookstore is about even with Amazon
-%on the vast majority of titles, and there is no
-%statistical difference in the sample.
-%If we examine the data, we do see that there are
-%occasions where Amazon is much better than the
-%UCLA Bookstore.
-%However, those cases are uncommon.
-%Additionally, today there are many instances where
-%the UCLA Bookstore has lower prices than those
-%offered by Amazon, which was rare in our previous
-%data set from 2010.
-
-
 \begin{exercise}
 Create a 95\% confidence interval for the average
 price difference between books at the UCLA bookstore
@@ -522,19 +508,53 @@ and books on Amazon.\footnote{Conditions
   computed in
   Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}.
   To find the interval,
-  identify $t^{\star}_{33}$
-  (use $df = 33$ in the table, $t^{\star}_{33} = 2.03$)
+  identify $t^{\star}_{67}$
+  (use $df = 67$ in the table, $t^{\star}_{67} = 2.00$)
   and plug it, the point estimate,
   and the standard error into the confidence
   interval formula:
   \begin{align*}
   \text{point estimate} \ \pm\ z^{\star}SE
-      \quad\to\quad 2.98 \ \pm\ 2.03 \times 2.85
-      \quad\to\quad (-2.81 8.77)
+      \quad\to\quad
+          \uclabookM{} \ \pm\ 2.00 \times \uclabookSE{}
+      \quad\to\quad (0.32 6.84)
   \end{align*}
   We are 95\% confident that Amazon is, on average,
-  between \$2.81 more expensive and \$8.81 less expensive
+  between \$0.32 and \$6.84 less expensive
   than the UCLA Bookstore for UCLA course books.}
+\end{exercise}
+
+\begin{exercise}
+We have strong evidence to conclude Amazon is,
+on average, less expensive.
+How should this conclusion affect UCLA students'
+buying habits?
+Should UCLA students always buy their books
+on Amazon?\footnote{The average price difference
+  is only mildly useful for this question.
+  Examine the distribution shown in
+  Figure~\ref{diffInTextbookPricesF18}.
+  There are certainly a handful of cases where
+  Amazon prices are much below the UCLA Bookstore's,
+  which suggests it is worth checking Amazon
+  or other online sites before purchasing.
+  However, in many cases the Amazon price is
+  above what the UCLA Bookstore charges,
+  and most of the time the price isn't that different.
+  Ultimately, if getting a book immediately from
+  the bookstore is notably more convenient,
+  e.g. to get started on homework,
+  it's likely a good idea to go with the UCLA
+  Bookstore unless the price difference on a
+  specific book happens to be quite large.
+
+  For reference, this is a very different result
+  from what we (the authors) had seen in a similar
+  data set from 2010.
+  At that time, Amazon prices were almost uniformly
+  lower than those of the UCLA Bookstore's and by
+  a large margin, making the case to use Amazon over
+  the UCLA Bookstore quite compelling at that time.}
 \end{exercise}
 
 \index{data!textbooks|)}
