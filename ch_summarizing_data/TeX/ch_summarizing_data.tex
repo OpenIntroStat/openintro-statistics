@@ -1789,10 +1789,9 @@ What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you f
 
 
 %___________________________________________
-\section[Case study: gender discrimination (special topic)]{Case study: gender discrimination \sectionvideohref{youtube-2pHhjx9hyM4&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-8} \\(special topic)}
+\section[Case study: malaria vaccine (special topic)]
+  {Case study: malaria vaccine\\(special topic)}% \sectionvideohref{youtube-2pHhjx9hyM4&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-8} \\(special topic)}
 \label{caseStudyGenderDiscrimination}
-
-\index{data!discrimination|(}
 
 \begin{example}{Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not {exactly} equal $\hat{p}_{_R}$?}\label{classRightLeftSideApple}
 While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to {chance}.
@@ -1805,49 +1804,146 @@ If we don't think the side of the room a person sits on in class is related to w
 \subsection{Variability within data}
 \label{variabilityWithinData}
 
-We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.\footnote{Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel decisions. Journal of Applied Psychology 59(1):9-14.} The research question we hope to answer is, ``Are females unfairly discriminated against in promotion decisions made by male managers?"
+\index{data!malaria vaccine|(}
 
-The participants in this study are 48 male bank supervisors attending a management institute at the University of North Carolina in 1972. They were asked to assume the role of the personnel director of a bank and were given a personnel file to judge whether the person should be promoted to a branch manager position. The files given to the participants were identical, except that half of them indicated the candidate was male and the other half indicated the candidate was female. These files were randomly assigned to the subjects.
-
-\begin{exercise}
-Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?\footnote{The study is an experiment, as subjects were randomly assigned a male file or a female file. Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.}
-\end{exercise}
-
-For each supervisor we record the gender associated with the assigned file and the promotion decision. Using the results of the study summarized in Figure~\ref{discriminationResults}, we would like to evaluate if females are unfairly discriminated against in promotion decisions. In this study, a smaller proportion of females are promoted than males (0.583 versus 0.875), but it is unclear whether the difference provides \emph{convincing evidence} that females are unfairly discriminated against.
+We consider a study from 2017 on a new malaria vaccine
+called PfSPZ.\footnote{Lyke et al. 2017.
+  PfSPZ vaccine induces strain-transcending T cells
+  and durable protection against heterologous controlled
+  human malaria infection.
+  PNAS 114(10):2711-2716.}
+In this study, volunteer patients were randomized
+into one of two experiment groups:
+14 patients received an experimental vaccine
+or 6 patients received a placebo vaccine.
+Nineteen weeks later, all 20 patients were exposed
+to a drug-sensitive malaria virus strain;
+the motivation of using a drug-sensitive strain
+of virus here is for ethical considerations,
+allowing any infections to be treated effectively.
+The results are summarized in
+Figure~\ref{malaria_vaccine_20_exp_summary},
+where 9 of the 14 treatment patients remained free
+of signs of infection while all of the~6 patients
+in the control group patients showed some baseline
+signs of infection.
 
 \begin{figure}[ht]
 \centering
 \begin{tabular}{l l cc rr}
-& & \multicolumn{2}{c}{\var{decision}} \\
+& & \multicolumn{2}{c}{\var{treatment}} \\
   \cline{3-4}
-		&			& 	{promoted} 	& {not promoted} & Total & \hspace{3mm}  \\ 
+  &  &  {vaccine} & {placebo} & Total & \hspace{3mm}  \\ 
+  \cline{2-5} & {infection} & 5 & 6 & 11 \\ 
+  \raisebox{1.5ex}[0pt]{\var{outcome}}
+      & {no infection} & 9 & 0 & 9 \\ 
   \cline{2-5}
-		&	{male} 			& 21    		& 3   & 24  	 \\ 
-  \raisebox{1.5ex}[0pt]{\var{gender}}		&	{female} 	& 14    		& 10     & 24	 \\ 
-  \cline{2-5}
-  		&	Total		& 35	& 13	&  48 \\
+      & Total & 14 & 6 & 20 \\
   \cline{2-5}
 \end{tabular}
-\caption{Summary results for the gender discrimination study.}
-\label{discriminationResults}
+\caption{Summary results for the malaria vaccine experiment.}
+\label{malaria_vaccine_20_exp_summary}
 \end{figure}
 
-\begin{example}{Data scientists are sometimes called upon to evaluate the strength of evidence. When looking at the rates of promotion for males and females in this study, what comes to mind as we try to determine whether the data show convincing evidence of a real difference?} \label{discriminationResultsWhatIsConvincingEvidence}
-The observed promotion rates (58.3\% for females versus 87.5\% for males) suggest there might be discrimination against women in promotion decisions. However, we cannot be sure if the observed difference represents discrimination or is just from random chance. Generally there is a little bit of fluctuation in sample data, and we wouldn't expect the sample proportions to be \emph{exactly} equal, even if the truth was that the promotion decisions were independent of gender.
+\begin{exercise}
+Is this an observational study or an experiment?
+What implications does the study type have on what can
+be inferred from the results?\footnote{The
+  study is an experiment, as patients were randomly
+  assigned an experiment group.
+  Since this is an experiment, the results can be used
+  to evaluate a causal relationship between the malaria
+  vaccine and whether patients showed signs
+  of an infection.}
+\end{exercise}
+
+In this study, a smaller proportion of patients
+who received the vaccine showed signs of an infection
+(0.357 versus 1.000).
+However, the sample is very small,
+and it is unclear whether the difference provides
+\emph{convincing evidence} that the vaccine is
+effective.
+
+\begin{example}{Data scientists are sometimes called
+    upon to evaluate the strength of evidence.
+    When looking at the rates of infection for patients
+    in the two groups in this study,
+    what comes to mind as we try to determine whether
+    the data show convincing evidence of a real difference?}
+  \label{malaria_vaccine_20_what_is_convincing}
+  The observed infection rates
+  (35.7\% for the treatment group versus
+  100.0\% for the control group)
+  suggest the vaccine may be effective.
+  However, we cannot be sure if the observed difference
+  represents the vaccine's efficacy or is just from
+  random chance.
+  Generally there is a little bit of fluctuation
+  in sample data, and we wouldn't expect the sample
+  proportions to be \emph{exactly} equal,
+  even if the truth was that the promotion decisions
+  were independent of gender.
+  Additionally, with such small samples,
+  perhaps it's common to observe such large differences
+  when we randomly split a group due to chance alone!
 \end{example}
 
-Example~\ref{discriminationResultsWhatIsConvincingEvidence} is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population. Figure~\ref{discriminationResults} shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2\% $\left( \frac{21}{24} - \frac{14}{24} = 0.292 \right)$. This difference is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. We label these two competing claims, $H_0$ and $H_A$:
+Example~\ref{malaria_vaccine_20_what_is_convincing}
+is a reminder that the observed outcomes in the data
+sample may not perfectly reflect the true relationships
+between variables since there is \term{random noise}.
+While the observed difference in rates of infection
+is large, the sample size for the study is small,
+making it unclear if this observed difference represents
+efficacy of the vaccine or whether it is simply due to
+chance.
+We label these two competing claims, $H_0$ and $H_A$:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item[$H_0$:] \textbf{Independence model.} The variables \var{gender} and \var{decision} are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2\%, was due to chance.
-\item[$H_A$:] \textbf{Alternative model.} The variables \var{gender} and \var{decision} are \emph{not} independent. The difference in promotion rates of 29.2\% was not due to chance, and equally qualified females are less likely to be promoted than males.
+\item[$H_0$:] \textbf{Independence model.}
+    The variables \var{treatment} and \var{outcome}
+    are independent.
+    They have no relationship, and the observed difference
+    between the proportion of patients who developed
+    an infection in the two groups, 64.3\%, was due to chance.
+\item[$H_A$:] \textbf{Alternative model.}
+    The variables \var{treatment} and \var{outcome}
+    are \emph{not} independent.
+    The difference in infection rates of 64.3\%
+    was not due to chance,
+    and vaccine affected the rate of infection.
 \end{itemize}
 
-What would it mean if the independence model, which says the variables \var{gender} and \var{decision} are unrelated, is true? It would mean each banker was going to decide whether to promote the candidate without regard to the gender indicated on the file. That~is, the difference in the promotion percentages was due to the way the files were randomly divided to the bankers, and the randomization just happened to give rise to a relatively large difference of 29.2\%.
+What would it mean if the independence model,
+which says the vaccine had no influence on the
+rate of infection, is true?
+It would mean 11~patients were going to develop
+develop an infection \emph{no matter which group
+they were randomized into},
+and 9~patients would not develop an infection
+\emph{no matter which group they were randomized
+into}.
+That~is, if the vaccine did not affect the rate
+of infection, the difference in the infection rates
+was due to chance alone in how the patients were
+randomized.
 
-Consider the alternative model: bankers were influenced by which gender was listed on the personnel file. If this was true, and especially if this influence was substantial, we would expect to see some difference in the promotion rates of male and female candidates. If this gender bias was against females, we would expect a smaller fraction of promotion decisions for female personnel files relative to the male files.
+Now consider the alternative model:
+infection rates were influenced by whether a patient
+received the vaccine or not.
+If this was true, and especially if this influence
+was substantial, we would expect to see some difference
+in the infection rates of patients in the groups.
 
-We choose between these two competing claims by assessing if the data conflict so much with $H_0$ that the independence model cannot be deemed reasonable. If this is the case, and the data support $H_A$, then we will reject the notion of independence and conclude there was discrimination.
+We choose between these two competing claims
+by assessing if the data conflict so much with
+$H_0$ that the independence model cannot be deemed
+reasonable.
+If this is the case, and the data support $H_A$,
+then we will reject the notion of independence
+and conclude there was discrimination.
+
 
 \subsection{Simulating the study}
 \label{simulatingTheStudy}
@@ -1902,6 +1998,6 @@ The difference of 29.2\% being a rare event suggests two possible interpretation
 \end{itemize}
 Based on the simulations, we have two options. (1)~We conclude that the study results do not provide strong evidence against the independence model. That is, we do not have sufficiently strong evidence to conclude there was gender discrimination. (2)~We conclude the evidence is sufficiently strong to reject $H_0$ and assert that there was gender discrimination. When we conduct formal studies, usually we reject the notion that we just happened to observe a rare event.\footnote{This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, \emph{any set of numbers we could have observed would ultimately be incredibly rare}. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.} So in this case, we reject the independence model in favor of the alternative. That is, we are concluding the data provide strong evidence of gender discrimination against women by the supervisors.
 
-\index{data!discrimination|)}
+\index{data!malaria vaccine|)}
 
 One field of statistics, statistical inference, is built on evaluating whether such differences are due to chance. In statistical inference, data scientists evaluate which model is most reasonable given the data. Errors do occur, just like rare events, and we might choose the wrong model. While we do not always choose correctly, statistical inference gives us tools to control and evaluate how often these errors occur. In Chapter~\ref{foundationsForInference}, we give a formal introduction to the problem of model selection. We spend the next two chapters building a foundation of probability and theory necessary to make that discussion rigorous.
