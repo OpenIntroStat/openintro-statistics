@@ -1831,14 +1831,14 @@ signs of infection.
 \begin{figure}[ht]
 \centering
 \begin{tabular}{l l cc rr}
-& & \multicolumn{2}{c}{\var{treatment}} \\
+& & \multicolumn{2}{c}{\var{outcome}} \\
   \cline{3-4}
-  &  &  {vaccine} & {placebo} & Total & \hspace{3mm}  \\ 
-  \cline{2-5} & {infection} & 5 & 6 & 11 \\ 
-  \raisebox{1.5ex}[0pt]{\var{outcome}}
-      & {no infection} & 9 & 0 & 9 \\ 
+  &  &  {infection} & {no infection} & Total & \hspace{3mm}  \\ 
+  \cline{2-5} & {vaccine} & 5 & 9 & 14 \\ 
+  \raisebox{1.5ex}[0pt]{\var{treatment}}
+      & {placebo} & 6 & 0 & 6 \\ 
   \cline{2-5}
-      & Total & 14 & 6 & 20 \\
+      & Total & 11 & 9 & 20 \\
   \cline{2-5}
 \end{tabular}
 \caption{Summary results for the malaria vaccine experiment.}
@@ -1948,34 +1948,77 @@ and conclude there was discrimination.
 \subsection{Simulating the study}
 \label{simulatingTheStudy}
 
-Figure~\ref{discriminationResults} shows that 35 bank supervisors recommended promotion and 13 did not. Now, suppose the bankers' decisions were independent of gender. Then, if we conducted the experiment again with a different random arrangement of files, differences in promotion rates would be based only on random fluctuation. We can actually perform this \term{randomization}, which simulates what would have happened if the bankers' decisions had been independent of gender but we had distributed the files differently.
+We're going to implement
+\termsub{simulations}{simulation},
+where we will pretend we know that the malaria
+vaccine being tested does \emph{not} work.
+Ultimately, we want to understand if the large
+difference we observed is common in these
+simulations.
+If it is common, then maybe the difference
+we observed was purely due to chance.
+If it is very uncommon, then the possibility
+that the vaccine was helpful seems more plausible.
 
-In this \term{simulation}, we thoroughly shuffle 48 personnel files, 24 labeled \resp{male\_\hspace{0.3mm}sim} and 24 labeled \resp{female\_\hspace{0.3mm}sim}, and deal these files into two stacks. We will deal 35 files into the first stack, which will represent the 35 supervisors who recommended promotion. The second stack will have 13 files, and it will represent the 13 supervisors who recommended against promotion. Then, as we did with the original data, we tabulate the results and determine the fraction of \resp{male\_\hspace{0.3mm}sim} and \resp{female\_\hspace{0.3mm}sim} who were promoted. The randomization of files in this simulation is independent of the promotion decisions, which means any difference in the two fractions is entirely due to chance. Figure~\ref{discriminationRand1} show the results of such a simulation.
+Figure~\ref{malaria_vaccine_20_exp_summary}
+shows that 11 patients developed infections and 9 did not.
+For our simulation, we will suppose the infections
+were independent of the vaccine and we were able to
+\emph{rewind} back to when the researchers randomized
+the patients in the study.
+If we happened to randomize the patients differently,
+we may get a different result in this hypothetical
+world where the vaccine doesn't influence the infection.
+Let's complete another \term{randomization} using
+a simulation.
+
+In this \term{simulation}, we take 20 notecards to
+represent the 20 patients, where we write down ``infection''
+on 11 cards and ``no infection'' on 9 cards.
+In this hypothetical world, we believe each patient
+that got an infection was going to get it regardless
+of which group they were in, so let's see what happens
+if we randomly assign the patients to the treatment
+and control groups again.
+We thoroughly shuffle the notecards and deal 14 into
+a \resp{vaccine} pile and 6 into a \resp{placebo} pile.
+Finally, we tabulate the results, which are shown in
+Figure~\ref{malaria_vaccine_20_exp_summary_rand_1}.
 
 \begin{figure}[ht]
 \centering
 \begin{tabular}{l l cc rr}
-& & \multicolumn{2}{c}{\var{decision}} \\
+& & \multicolumn{2}{c}{\var{outcome}} \\
   \cline{3-4}
-		&			& 	{promoted} 	& {not promoted} & Total & \hspace{3mm}  \\ 
+  &  &  {infection} & {no infection} & Total & \hspace{3mm}  \\ 
   \cline{2-5}
-		&	\resp{male\_\hspace{0.3mm}sim} 					& 18    		& 6    & 24 	 \\ 
-  \raisebox{1.5ex}[0pt]{\var{gender\_\hspace{0.3mm}sim}}		&	\resp{female\_\hspace{0.3mm}sim} 	& 17    		& 7 & 24    	 \\ 
+   treatment & {vaccine} & 7 & 7 & 14 \\ 
+   (simulated) & {placebo} & 4 & 2 & 6 \\ 
   \cline{2-5}
-  & Total	& 35 & 13 & 48
+      & Total & 11 & 9 & 20 \\
+  \cline{2-5}
 \end{tabular}
-\caption{Simulation results, where any difference in promotion rates between \resp{male\_\hspace{0.3mm}sim} and \resp{female\_\hspace{0.3mm}sim} is purely due to chance.}
-\label{discriminationRand1}
+\caption{Simulation results, where any difference
+    in infection rates is purely due to chance.}
+\label{malaria_vaccine_20_exp_summary_rand_1}
 \end{figure}
 
-\begin{exercise} \label{sampleDifferenceInMaleAndFemaleDiscrimination}
-What is the difference in promotion rates between the two simulated groups in Figure~\ref{discriminationRand1}? How does this compare to the observed 29.2\% in the actual groups?\footnote{$18/24 - 17/24=0.042$ or about 4.2\% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.}
+\begin{exercise}
+\label{malaria_vaccine_20_exp_summary_rand_1_diff}
+What is the difference in infection rates between
+the two simulated groups in
+Figure~\ref{malaria_vaccine_20_exp_summary_rand_1}?
+How does this compare to the observed 64.3\% difference
+in the actual data?\footnote{$4 / 6 - 7 / 14 = 0.167$
+or about 16.7\% in favor of the vaccine.
+This difference due to chance is much smaller than the
+difference observed in the actual groups.}
 \end{exercise}
 
 
 \subsection{Checking for independence}
 
-We computed one possible difference under the independence model in Guided Practice~\ref{sampleDifferenceInMaleAndFemaleDiscrimination}, which represents one difference due to chance. While in this first simulation, we physically dealt out files, it is more efficient to perform this simulation using a computer. Repeating the simulation on a computer, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the \emph{distribution of differences from chance alone}. Figure~\ref{discRandDotPlot} shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files that were recommended for promotion.
+We computed one possible difference under the independence model in Guided Practice~\ref{malaria_vaccine_20_exp_summary_rand_1_diff}, which represents one difference due to chance. While in this first simulation, we physically dealt out files, it is more efficient to perform this simulation using a computer. Repeating the simulation on a computer, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the \emph{distribution of differences from chance alone}. Figure~\ref{discRandDotPlot} shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files that were recommended for promotion.
 
 \begin{figure}[ht]
 \centering
