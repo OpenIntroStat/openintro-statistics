@@ -1,6 +1,7 @@
 \chapter{Summarizing data}
 \label{summarizingData}
 \label{ch_summarizing_data}
+\renewcommand{\chapterfolder}{ch_summarizing_data}
 
 \Comment{Do a search for "email" to see if it still appears
 anywhere in this file. Do the same for the other chapters.}
@@ -97,12 +98,12 @@ there are \loanN{} points in Figure~\ref{loan50_amt_vs_income}.
 %\textC{\setlength{\captionwidth}{0.9\textwidth}}
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/loan50_amt_vs_income/loan50_amt_vs_income}
-   \caption{A scatterplot of \var{total\_\hspace{0.3mm}income}
-       versus \var{loan\_\hspace{0.3mm}amount} for the
-       \data{loan50} data set.}
-   \label{loan50_amt_vs_income}
+  \centering
+  \Figure{0.8}{loan50_amt_vs_income}
+  \caption{A scatterplot of \var{total\_\hspace{0.3mm}income}
+      versus \var{loan\_\hspace{0.3mm}amount} for the
+      \data{loan50} data set.}
+  \label{loan50_amt_vs_income}
 \end{figure}
 
 %\textC{\setlength{\captionwidth}{\mycaptionwidth}}
@@ -129,14 +130,14 @@ while there are a handful of borrowers with income above~\$250,000.
 \end{example}
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/medianHHIncomePoverty/medianHHIncomePoverty}
-   \caption{A scatterplot of the median household income
-       against the poverty rate for the
-       \data{county} data set.
-       A statistical model has also been fit to the data
-       and is shown as a dashed line.}
-   \label{medianHHIncomePoverty}
+  \centering
+  \Figure{0.8}{medianHHIncomePoverty}
+  \caption{A scatterplot of the median household income
+      against the poverty rate for the
+      \data{county} data set.
+      A statistical model has also been fit to the data
+      and is shown as a dashed line.}
+  \label{medianHHIncomePoverty}
 \end{figure}
 
 \begin{exercise}
@@ -147,15 +148,6 @@ relating variables,
 whether those associations come in the form of simple
 trends or whether those relationships are more complex.}
 \end{exercise}
-
-%This is different from previous scatterplots we've seen, such as Figure~\vref{county_fed_spendVsPoverty} and Figure~\ref{email50LinesCharacters}, which show relationships that are very linear.
-
-%\begin{figure}[h]
-%   \centering
-%   \includegraphics[width=0.8\textwidth]{ch_summarizing_data/figures/carsPriceVsWeight/carsPriceVsWeight}
-%   \caption{A scatterplot of \var{price} versus \var{weight} for 54 cars.}
-%   \label{carsPriceVsWeight}
-%\end{figure}
 
 \begin{exercise}
 Describe two variables that would have a horseshoe-shaped
@@ -181,24 +173,26 @@ A stacked version of this dot plot is shown in
 Figure~\ref{loan_int_rate_dot_plot_stacked}.
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_int_rate_dot_plot/loan_int_rate_dot_plot}
-   \caption{A dot plot of \var{interest\_\hspace{0.3mm}rate}
-       for the \data{loan50} data set.
-       The distribution's mean is shown as a red triangle.}
-   \label{loan_int_rate_dot_plot}
+  \centering
+  \Figure{0.76}{loan_int_rate_dot_plot}
+  \caption{A dot plot of \var{interest\_\hspace{0.3mm}rate}
+      for the \data{loan50} data set.
+      The distribution's mean is shown as a red triangle.}
+  \label{loan_int_rate_dot_plot}
 \end{figure}
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=0.76\textwidth]{ch_summarizing_data/figures/loan_int_rate_dot_plot/loan_int_rate_dot_plot_stacked}
-   \caption{A stacked dot plot of
-       \var{interest\_\hspace{0.3mm}rate}
-       for the \data{loan50} data set.
-       The~rates have been rounded to the nearest
-       percent in this plot, and the
-       distribution's mean is shown as a red triangle.}
-   \label{loan_int_rate_dot_plot_stacked}
+  \centering
+  \Figures{0.76}
+      {loan_int_rate_dot_plot}
+      {loan_int_rate_dot_plot_stacked}
+  \caption{A stacked dot plot of
+      \var{interest\_\hspace{0.3mm}rate}
+      for the \data{loan50} data set.
+      The~rates have been rounded to the nearest
+      percent in this plot, and the
+      distribution's mean is shown as a red triangle.}
+  \label{loan_int_rate_dot_plot_stacked}
 \end{figure}
 
 The \term{mean}, sometimes called the
@@ -413,14 +407,17 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
 
 \begin{figure}[ht]
 \centering\small
-\begin{tabular}{l ccc ccc ccc} % c}
+\begin{tabular}{l ccc ccc ccc}
   \hline
-  % cat(paste0(gsub(" ", "", format(a)), "\\% - ", gsub(" ", "", format(b)), "\\%", collapse = " & "))
-  % cat(paste0(gsub(" ", "", format(a)), "-", gsub(" ", "", format(b)), collapse = " & "))
-Interest Rate & 5.0\% - 7.5\% & 7.5\% - 10.0\% & 10.0\% - 12.5\% & 12.5\% - 15.0\% & $\cdots$ & 25.0\% - 27.5\% \\
-%in \$1000's & \raisebox{1.5ex}[0pt]{0-5} & \raisebox{1.5ex}[0pt]{5-10} & \raisebox{1.5ex}[0pt]{10-15} & \raisebox{1.5ex}[0pt]{15-20} & \raisebox{1.5ex}[0pt]{20-25} & \raisebox{1.5ex}[0pt]{25-30} & \raisebox{1.5ex}[0pt]{30-35} & \raisebox{1.5ex}[0pt]{35-40} \\
+  Interest Rate &
+      5.0\% - 7.5\% &
+      7.5\% - 10.0\% &
+      10.0\% - 12.5\% &
+      12.5\% - 15.0\% &
+      $\cdots$ &
+      25.0\% - 27.5\% \\
   \hline
-Count & 11 &  15 &   8 &   4 &   $\cdots$ &   1 \\
+  Count & 11 & 15 & 8 & 4 & $\cdots$ & 1 \\
   \hline
 \end{tabular}
 \caption{Counts for the binned
@@ -430,10 +427,12 @@ Count & 11 &  15 &   8 &   4 &   $\cdots$ &   1 \\
 % library(openintro); library(xtable); d <- loan50$interest_rate; max(d); t1 <- table(cut(d, seq(5, 27.5, 2.5), right = TRUE)); t1; xtable(rbind(t1))
 
 \begin{figure}[bth]
-   \centering
-   \includegraphics[width=0.82\textwidth]{ch_summarizing_data/figures/loan50IntRateHist/loan50IntRateHist}
-   \caption{A histogram of \var{num\_\hspace{0.3mm}char}. This distribution is very strongly skewed to the right.\index{skew!example: very strong}}
-   \label{loan50IntRateHist}
+  \centering
+  \Figure{0.76}{loan50IntRateHist}
+  \caption{A histogram of \var{interest\_\hspace{0.3mm}rate}.
+      This distribution is strongly skewed to the right.
+      \index{skew!example: strong}}
+  \label{loan50IntRateHist}
 \end{figure}
 
 Histograms provide a view of the \term{data density}.
@@ -516,10 +515,16 @@ not counted since it only differs from its neighboring
 bins by a few observations.
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=0.98\textwidth]{ch_summarizing_data/figures/singleBiMultiModalPlots/singleBiMultiModalPlots}
-   \caption{Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that we've said the left plot is unimodal intentionally. This is because we are counting \emph{prominent} peaks, not just any peak. See the Tip box for more thoughts.}
-   \label{singleBiMultiModalPlots}
+  \centering
+  \Figure{0.76}{singleBiMultiModalPlots}
+  \caption{Counting only prominent peaks, the
+      distributions are (left to right) unimodal,
+      bimodal, and multimodal.
+      Note that we've said the left plot is unimodal
+      intentionally.
+      This is because we are counting \emph{prominent}
+      peaks, not just any peak.}
+  \label{singleBiMultiModalPlots}
 \end{figure}
 
 \begin{example}{Figure~\ref{loan50IntRateHist}
@@ -651,17 +656,17 @@ The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)}
 is the Greek letter \emph{sigma}.
 
 \begin{figure}
-\centering
-\includegraphics[width=\mycaptionwidth]{ch_summarizing_data/figures/sdRuleForIntRate/sdRuleForIntRate}
-\caption{For the \var{interest\_\hspace{0.3mm}rate} variable,
-  34 of the 50 loans (68\%) had interest rates within
-  1~standard deviation of the mean,
-  and 48 of the 50 loans (96\%) had rates within
-  2~standard deviations.
-  Usually about 70\% of the data are within 1~standard
-  deviation of the mean and 95\% within 2~standard
-  deviations, though this is far from a hard rule.}
-\label{sdRuleForIntRate}
+  \centering
+  \Figure{0.75}{sdRuleForIntRate}
+  \caption{For the \var{interest\_\hspace{0.3mm}rate} variable,
+      34 of the 50 loans (68\%) had interest rates within
+      1~standard deviation of the mean,
+      and 48 of the 50 loans (96\%) had rates within
+      2~standard deviations.
+      Usually about 70\% of the data are within 1~standard
+      deviation of the mean and 95\% within 2~standard
+      deviations, though this is far from a hard rule.}
+  \label{sdRuleForIntRate}
 \end{figure}
 
 \Comment{The following box was changed from a Tip Box
@@ -682,11 +687,12 @@ is the Greek letter \emph{sigma}.
 \end{termBox}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.64\textwidth]{ch_summarizing_data/figures/severalDiffDistWithSdOf1/severalDiffDistWithSdOf1}
-\caption{Three very different population distributions
-  with the same mean $\mu=0$ and standard deviation $\sigma=1$.}
-\label{severalDiffDistWithSdOf1}
+  \centering
+  \Figure{0.64}{severalDiffDistWithSdOf1}
+  \caption{Three very different population distributions
+      with the same mean $\mu=0$ and standard deviation
+      $\sigma=1$.}
+  \label{severalDiffDistWithSdOf1}
 \end{figure}
 
 \begin{exercise}
@@ -747,13 +753,13 @@ a vertical dot plot alongside a box plot of the
 the \data{loan50} data set.
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=0.86\mycaptionwidth]{ch_summarizing_data/figures/loan_int_rate_box_plot_layout/loan_int_rate_box_plot_layout}
-   \caption{A vertical dot plot next to a labeled box plot
-       for the interest rates of the \loanN{} loans.
-       The median (\loanMedian{}), splits the data into the
-       bottom 50\% and the top 50\%.}
-   \label{loan_int_rate_box_plot_layout}
+  \centering
+  \Figure{0.86}{loan_int_rate_box_plot_layout}
+  \caption{A vertical dot plot next to a labeled box plot
+      for the interest rates of the \loanN{} loans.
+      The median (\loanMedian{}), splits the data into the
+      bottom 50\% and the top 50\%.}
+  \label{loan_int_rate_box_plot_layout}
 \end{figure}
 
 The first step in building a box plot is drawing a dark line
@@ -913,11 +919,11 @@ and sample statistics are computed under each scenario in
 Figure~\ref{robustOrNotTable}.
 
 \begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{ch_summarizing_data/figures/loan_int_rate_robust_ex/loan_int_rate_robust_ex}
-\caption{Dot plots of the original interest rate data
-  and two modified data sets.}
-\label{loan_int_rate_robust_ex}
+  \centering
+  \Figure{1.00}{loan_int_rate_robust_ex}
+  \caption{Dot plots of the original interest rate data
+      and two modified data sets.}
+  \label{loan_int_rate_robust_ex}
 \end{figure}
 
 % See `loan_int_rate_robust_ex` figure code for calculations.
@@ -1004,22 +1010,27 @@ When data are very strongly skewed, we sometimes transform
 them so they are easier to model.
 
 \begin{figure}[ht]
-\centering
-\subfigure[]{
-\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/county_pop_transformed/county_pop_transformed_i}
-\label{county_pop_transformed_i}
-}
-\subfigure[]{
-\includegraphics[width=0.46\textwidth]{ch_summarizing_data/figures/county_pop_transformed/county_pop_transformed_log}
-\label{county_pop_transformed_log}
-}
-\caption{\subref{county_pop_transformed_i} A histogram of
-  the populations of all US counties.
-  \subref{county_pop_transformed_log} A histogram of
-  log$_{10}$-transformed county populations.
-  For this plot, the x-value corresponds to the power
-  of 10, e.g. ``4'' on the x-axis corresponds to $10^4 =$ 10,000.}
-\label{county_pop_transformed}
+  \centering
+  \subfigure[]{
+    \Figures{0.46}
+        {county_pop_transformed}
+        {county_pop_transformed_i}
+    \label{county_pop_transformed_i}
+  }
+  \subfigure[]{
+    \Figures{0.46}
+        {county_pop_transformed}
+        {county_pop_transformed_log}
+  \label{county_pop_transformed_log}
+  }
+  \caption{\subref{county_pop_transformed_i} A histogram of
+      the populations of all US counties.
+      \subref{county_pop_transformed_log} A histogram of
+      log$_{10}$-transformed county populations.
+      For this plot, the x-value corresponds to the power
+      of 10, e.g. ``4'' on the x-axis corresponds to
+      $10^4 =$ 10,000.}
+    \label{county_pop_transformed}
 \end{figure}
 
 \begin{example}{Consider the histogram of county populations
@@ -1061,17 +1072,26 @@ the data when we explore methods around fitting regression
 lines in Chapter~\ref{linRegrForTwoVar}.
 
 \begin{figure}
-\centering
-\subfigure[]{
-\includegraphics[width=0.47\textwidth]{ch_summarizing_data/figures/county_pop_change_v_pop_transform/county_pop_change_v_pop_transform_i}
-\label{county_pop_change_v_pop_transform_i}
-}
-\subfigure[]{
-\includegraphics[width=0.47\textwidth]{ch_summarizing_data/figures/county_pop_change_v_pop_transform/county_pop_change_v_pop_transform_log}
-\label{county_pop_change_v_pop_transform_log}
-}
-\caption{\subref{county_pop_change_v_pop_transform_i} Scatterplot of \var{line\_\hspace{0.3mm}breaks} against \var{num\_\hspace{0.3mm}char} for 50 emails. \subref{county_pop_change_v_pop_transform_log} A scatterplot of the same data but where each variable has been log-transformed.}
-\label{county_pop_change_v_pop_transform_main}
+  \centering
+  \subfigure[]{
+    \Figures{0.47}
+        {county_pop_change_v_pop_transform}
+        {county_pop_change_v_pop_transform_i}
+    \label{county_pop_change_v_pop_transform_i}
+  }
+  \subfigure[]{
+    \Figures{0.47}
+        {county_pop_change_v_pop_transform}
+        {county_pop_change_v_pop_transform_log}
+    \label{county_pop_change_v_pop_transform_log}
+  }
+  \caption{\subref{county_pop_change_v_pop_transform_i}
+      Scatterplot of \var{line\_\hspace{0.3mm}breaks}
+      against \var{num\_\hspace{0.3mm}char} for 50 emails.
+      \subref{county_pop_change_v_pop_transform_log}~A~scatterplot
+      of the same data but where each variable
+      has been log-transformed.}
+  \label{county_pop_change_v_pop_transform_main}
 \end{figure}
 
 Transformations other than the logarithm can be useful, too.
@@ -1111,18 +1131,44 @@ but they are very helpful for seeing geographic trends
 and generating interesting research questions or hypotheses.
 
 \begin{figure}
-\centering
-\subfigure[]{\includegraphics[width=\textwidth]{ch_summarizing_data/figures/countyIntensityMaps/countyPovertyMap}\label{countyPovertyMap}}
-\subfigure[]{\includegraphics[width=\textwidth]{ch_summarizing_data/figures/countyIntensityMaps/countyUnemploymentRateMap}\label{countyUnemploymentRateMap}}
-\caption{\subref{countyPovertyMap} Intensity map of poverty rate (percent). \subref{countyUnemploymentRateMap} Map of the unemployment rate (percent).}
-\label{countyIntensityMaps1}
+  \centering
+  \subfigure[]{
+    \Figures{1.00}
+        {countyIntensityMaps}
+        {countyPovertyMap}
+    \label{countyPovertyMap}
+  }
+  \subfigure[]{
+    \Figures{1.00}
+        {countyIntensityMaps}
+        {countyUnemploymentRateMap}
+    \label{countyUnemploymentRateMap}
+  }
+  \caption{\subref{countyPovertyMap} Intensity map of
+      poverty rate (percent).
+      \subref{countyUnemploymentRateMap}~Map of the
+      unemployment rate (percent).}
+  \label{countyIntensityMaps1}
 \end{figure}
 
 \begin{figure}
-\centering
-\subfigure[]{\includegraphics[width=\textwidth]{ch_summarizing_data/figures/countyIntensityMaps/countyHomeownershipMap}\label{countyHomeownershipMap}}
-\subfigure[]{\includegraphics[width=\textwidth]{ch_summarizing_data/figures/countyIntensityMaps/countyMedIncomeMap}\label{countyMedIncomeMap}}
-\caption{\subref{countyHomeownershipMap} Intensity map of homeownership rate (percent). \subref{countyMedIncomeMap} Intensity map of median household income (\$1000s).}
+  \centering
+  \subfigure[]{
+    \Figures{1.00}
+        {countyIntensityMaps}
+        {countyHomeownershipMap}
+    \label{countyHomeownershipMap}
+  }
+  \subfigure[]{
+    \Figures{1.00}
+        {countyIntensityMaps}
+        {countyMedIncomeMap}
+    \label{countyMedIncomeMap}
+  }
+  \caption{\subref{countyHomeownershipMap} Intensity map
+      of homeownership rate (percent).
+      \subref{countyMedIncomeMap}~Intensity map of median
+      household income (\$1000s).}
 \label{countyIntensityMaps2}
 \end{figure}
 
@@ -1167,7 +1213,7 @@ and analyzed.
 In this section, we will introduce tables and other basic tools
 for categorical data that are used throughout this book.
 The \data{loan50} data set represents a sample from a larger
-email data set called \data{loans}.
+loan data set called \data{loans}.
 This larger data set contains information on 10,000 loans made
 through Lending Club.
 In this section we will examine the relationship between
@@ -1224,22 +1270,31 @@ the table would be called a \term{relative frequency table}.
 \begin{figure}[ht]
 \centering
 \begin{tabular}{ll  ccc  rr}
-& & \multicolumn{3}{c}{\bf \var{homeownership}} & \\
+  & & \multicolumn{3}{c}{\bf \var{homeownership}} & \\
   \cline{3-5}
-& & rent & mortgage & own & Total & \hspace{2mm}\  \\ 
+  & & rent & mortgage & own & Total & \hspace{2mm}\  \\ 
   \cline{2-6}
-& individual & \loanapphomeAA{} & \loanapphomeAB{} &
-      \loanapphomeAC{} & \loanapphomeAD{} \\ 
-  
-\raisebox{1.5ex}[0pt]{\var{app\_\hspace{0.3mm}type}}
-& joint & \loanapphomeBA{} & \loanapphomeBB{} &
-	    \loanapphomeBC{} & \loanapphomeBD{} \\ 
+  & individual &
+      \loanapphomeAA{} &
+      \loanapphomeAB{} &
+      \loanapphomeAC{} &
+      \loanapphomeAD{} \\
+  \raisebox{1.5ex}[0pt]{\var{app\_\hspace{0.3mm}type}} &
+  joint &
+      \loanapphomeBA{} &
+      \loanapphomeBB{} &
+	  \loanapphomeBC{} &
+	  \loanapphomeBD{} \\
   \cline{2-6}
-& Total & \loanapphomeDA{} & \loanapphomeDB{} &
-    \loanapphomeDC{} & \loanapphomeDD{} \\
+  & Total &
+      \loanapphomeDA{} &
+      \loanapphomeDB{} &
+      \loanapphomeDC{} &
+      \loanapphomeDD{} \\
   \cline{2-6}
 \end{tabular}
-\caption{A contingency table for \var{app\_\hspace{0.3mm}type} and \var{homeownership}.}
+\caption{A contingency table for
+    \var{app\_\hspace{0.3mm}type} and \var{homeownership}.}
 \label{loan_home_app_type_totals}
 %library(openintro); library(xtable); tab <- table(loans_full_schema[,c("application_type", "homeownership")])[, c("RENT", "MORTGAGE", "OWN")]; xtable(tab); rowSums(tab); colSums(tab); sum(tab)
 \end{figure}
@@ -1248,19 +1303,19 @@ the table would be called a \term{relative frequency table}.
 \centering
 \begin{tabular}{lc}
   \hline
-\var{homeownership} & Count \\
-   \hline
-rent & \loanapphomeDA{} \\
-mortgage & \loanapphomeDB{} \\
-own & \loanapphomeDC{} \\
-\hline
-Total & \loanapphomeDD{} \\ 
-   \hline
+  \var{homeownership} & Count \\
+  \hline
+  rent & \loanapphomeDA{} \\
+  mortgage & \loanapphomeDB{} \\
+  own & \loanapphomeDC{} \\
+  \hline
+  Total & \loanapphomeDD{} \\ 
+  \hline
 \end{tabular}
-\caption{A frequency table for the \var{homeownership} variable.}
+\caption{A frequency table for the \var{homeownership}
+    variable.}
 \label{loan_homeownership_totals}
 \end{figure}
-%library(openintro); library(xtable); data(email); xtable(table(email[,c("html")]))
 
 A bar plot is a common way to display a single
 categorical variable.
@@ -1273,44 +1328,60 @@ showing the proportion of observations that are in each level
 (i.e. in each category).
 
 \begin{figure}[bht]
-   \centering
-   \includegraphics[width=0.9\textwidth]{ch_summarizing_data/figures/loan_homeownership_bar_plot/loan_homeownership_bar_plot}
-   \caption{Two bar plots of \var{number}. The left panel shows the counts, and the right panel shows the proportions in each group.}
-   \label{loan_homeownership_bar_plot}
+  \centering
+  \Figure{0.9}{loan_homeownership_bar_plot}
+  \caption{Two bar plots of \var{number}.
+      The left panel shows the counts, and the right panel
+      shows the proportions in each group.}
+  \label{loan_homeownership_bar_plot}
 \end{figure}
 
 
 \subsection{Row and column proportions}
 
-Figure~\ref{rowPropAppTypeHomeownership} shows the row proportions for Figure~\ref{loan_home_app_type_totals}. The \termsub{row proportions}{contingency table!row proportions} are computed as the counts divided by their row totals. The value \loanapphomeAA{} at the intersection of \resp{individual} and \resp{rent} is replaced by $\loanapphomeAA{}/\loanapphomeAD{}=0.411$, i.e. \loanapphomeAA{} divided by its row total, \loanapphomeAD{}. So what does 0.411 represent? It corresponds to the proportion of individual applicants who rent.
+Figure~\ref{rowPropAppTypeHomeownership}
+shows the row proportions for
+Figure~\ref{loan_home_app_type_totals}.
+The \termsub{row proportions}{contingency table!row proportions}
+are computed as the counts divided by their row totals.
+The value \loanapphomeAA{} at the intersection of
+\resp{individual} and \resp{rent} is replaced by
+$\loanapphomeAA{}/\loanapphomeAD{} = 0.411$,
+i.e. \loanapphomeAA{} divided by its row total,
+\loanapphomeAD{}.
+So what does 0.411 represent?
+It corresponds to the proportion of individual
+applicants who rent.
 
 \begin{figure}
 \centering
 \begin{tabular}{l rrr r}
   \hline
- & rent & mortgage & own & Total \\
+  & rent & mortgage & own & Total \\
   \hline
-individual & 
-    $\loanapphomeAA{}/\loanapphomeAD{} = 0.411$ &
-    $\loanapphomeAB{}/\loanapphomeAD{} = 0.451$ &
-    $\loanapphomeAC{}/\loanapphomeAD{} = 0.138$ &
-    1.000 \\
-joint &
-    $\loanapphomeBA{}/\loanapphomeBD{} = 0.242$ &
-    $\loanapphomeBB{}/\loanapphomeBD{} = 0.635$ &
-    $\loanapphomeBC{}/\loanapphomeBD{} = 0.122$ &
-    1.000 \\
-   \hline
-Total &
-    $\loanapphomeDA{}/\loanapphomeDD{} = 0.386$ &
-    $\loanapphomeDB{}/\loanapphomeDD{} = 0.479$ &
-    $\loanapphomeDC{}/\loanapphomeDD{} = 0.135$ &
-    1.000 \\
+  individual & 
+      $\loanapphomeAA{}/\loanapphomeAD{} = 0.411$ &
+      $\loanapphomeAB{}/\loanapphomeAD{} = 0.451$ &
+      $\loanapphomeAC{}/\loanapphomeAD{} = 0.138$ &
+      1.000 \\
+  joint &
+      $\loanapphomeBA{}/\loanapphomeBD{} = 0.242$ &
+      $\loanapphomeBB{}/\loanapphomeBD{} = 0.635$ &
+      $\loanapphomeBC{}/\loanapphomeBD{} = 0.122$ &
+      1.000 \\
+  \hline
+  Total &
+      $\loanapphomeDA{}/\loanapphomeDD{} = 0.386$ &
+      $\loanapphomeDB{}/\loanapphomeDD{} = 0.479$ &
+      $\loanapphomeDC{}/\loanapphomeDD{} = 0.135$ &
+      1.000 \\
   \hline
 \end{tabular}
-\caption{A contingency table with row proportions for the
-  \var{app\_\hspace{0.3mm}type} and \var{homeownership} variables.
-  The totals for some rows are off by 0.001 due to rounding errors.}
+\caption{A contingency table with row proportions
+    for the \var{app\_\hspace{0.3mm}type} and
+    \var{homeownership} variables.
+    The totals for some rows are off by 0.001
+    due to rounding errors.}
 \label{rowPropAppTypeHomeownership}
 \end{figure}
 
@@ -1320,26 +1391,27 @@ A contingency table of the column proportions is computed in a similar way, wher
 \centering\small
 \begin{tabular}{l rrr r}
   \hline
- & rent & mortgage & own & Total \\
+  & rent & mortgage & own & Total \\
   \hline
-individual &
-    $\loanapphomeAA{}/\loanapphomeDA{} = 0.906$ &
-    $\loanapphomeAB{}/\loanapphomeDB{} = 0.802$ &
-    $\loanapphomeAC{}/\loanapphomeDC{} = 0.865$ &
-    $\loanapphomeAD{}/\loanapphomeDD{} = 0.851$ \\
-joint &
-    $\loanapphomeBA{}/\loanapphomeDA{} = 0.094$ &
-    $\loanapphomeBB{}/\loanapphomeDB{} = 0.198$ &
-    $\loanapphomeBC{}/\loanapphomeDC{} = 0.135$ &
-    $\loanapphomeBD{}/\loanapphomeDD{} = 0.150$ \\
-   \hline
-Total & 1.000 & 1.000 & 1.000 & 1.000 \\
-   \hline
+  individual &
+      $\loanapphomeAA{}/\loanapphomeDA{} = 0.906$ &
+      $\loanapphomeAB{}/\loanapphomeDB{} = 0.802$ &
+      $\loanapphomeAC{}/\loanapphomeDC{} = 0.865$ &
+      $\loanapphomeAD{}/\loanapphomeDD{} = 0.851$ \\
+  joint &
+      $\loanapphomeBA{}/\loanapphomeDA{} = 0.094$ &
+      $\loanapphomeBB{}/\loanapphomeDB{} = 0.198$ &
+      $\loanapphomeBC{}/\loanapphomeDC{} = 0.135$ &
+      $\loanapphomeBD{}/\loanapphomeDD{} = 0.150$ \\
+  \hline
+  Total & 1.000 & 1.000 & 1.000 & 1.000 \\
+  \hline
 \end{tabular}
 \caption{A contingency table with column proportions for the
-  \var{app\_\hspace{0.3mm}type} and \var{homeownership} variables.
-  The total for the last column is off by 0.001 due
-  to a rounding error.}
+    \var{app\_\hspace{0.3mm}type} and \var{homeownership}
+    variables.
+    The total for the last column is off by 0.001 due
+    to a rounding error.}
 \label{colPropAppTypeHomeownership}
 \end{figure}
 
@@ -1356,56 +1428,54 @@ What does 0.122 at the intersection of \resp{joint} and \resp{own} represent in 
 \end{exercise}
 
 \begin{example}{
-%To evaluate the riskiness of a loan, brokers take into account many variables. However, sometimes those pieces of information are very closely associated, meaning their information is somewhat redundant. Do the 
-Data scientists use statistics to filter spam from incoming
-email messages.
-By noting specific characteristics of an email,
-a data scientist may be able to classify some emails as spam
-or not spam with high accuracy.
-One of those characteristics is whether the email
-contains no numbers, small numbers, or big numbers.
-Another characteristic is whether or not an email
-has any HTML content.
-A contingency table for the \var{spam} and \var{format}
-variables from the \data{email} data set are shown in
-Figure~\ref{emailSpamHTMLTableTotals}.
-For reference, an HTML email is an email with the capacity
-for special formatting, e.g. bold text.
-In Figure~\ref{emailSpamHTMLTableTotals},
-which would be more helpful to someone hoping to classify
-email as spam or regular email: row or column proportions?} \label{weighingRowColumnProportions}
-A data scientist would be interested in how the proportion
-of spam changes within each email format.
-This corresponds to column proportions:
-the proportion of spam in plain text emails
-and the proportion of spam in HTML emails.
+    Data scientists use statistics to filter spam from incoming
+    email messages.
+    By noting specific characteristics of an email,
+    a data scientist may be able to classify some emails as spam
+    or not spam with high accuracy.
+    One of those characteristics is whether the email
+    contains no numbers, small numbers, or big numbers.
+    Another characteristic is whether or not an email
+    has any HTML content.
+    A contingency table for the \var{spam} and \var{format}
+    variables from the \data{email} data set are shown in
+    Figure~\ref{emailSpamHTMLTableTotals}.
+    For reference, an HTML email is an email with the capacity
+    for special formatting, e.g. bold text.
+    In Figure~\ref{emailSpamHTMLTableTotals},
+    which would be more helpful to someone hoping to classify
+    email as spam or regular email: row or column proportions?}
+  \label{weighingRowColumnProportions}
+  A data scientist would be interested in how the proportion
+  of spam changes within each email format.
+  This corresponds to column proportions:
+  the proportion of spam in plain text emails
+  and the proportion of spam in HTML emails.
 
-If we generate the column proportions, we can see
-that a higher fraction of plain text emails are
-spam ($209/1195 = 17.5\%$)
-than compared to HTML emails ($158/2726 = 5.8\%$).
-This information on its own is insufficient to classify
-an email as spam or not spam, as over 80\% of plain text
-emails are not spam.
-Yet, when we carefully combine this information with many
-other characteristics, such as \var{number} and other variables,
-we stand a reasonable chance of being able to classify some
-email as spam or not spam.
-%\GLMSection{This is a topic we will return to in
-%Chapter~\ref{multipleRegressionAndANOVA}.}{}
+  If we generate the column proportions, we can see
+  that a higher fraction of plain text emails are
+  spam ($209/1195 = 17.5\%$)
+  than compared to HTML emails ($158/2726 = 5.8\%$).
+  This information on its own is insufficient to classify
+  an email as spam or not spam, as over 80\% of plain text
+  emails are not spam.
+  Yet, when we carefully combine this information with many
+  other characteristics, such as \var{number} and other variables,
+  we stand a reasonable chance of being able to classify some
+  email as spam or not spam.
 \end{example}
 
 \begin{figure}[ht]
 \centering
 \begin{tabular}{l cc r}
   \hline
- & text & HTML & Total \\ 
+  & text & HTML & Total \\ 
   \hline
-spam & 209 & 158 & 367 \\ 
-not spam & 986 & 2568 & 3554 \\ 
-   \hline
-Total & 1195 & 2726 & 3921 \\
-   \hline
+  spam & 209 & 158 & 367 \\ 
+  not spam & 986 & 2568 & 3554 \\ 
+  \hline
+  Total & 1195 & 2726 & 3921 \\
+  \hline
 \end{tabular}
 \caption{A contingency table for \var{spam} and \var{format}.}
 \label{emailSpamHTMLTableTotals}
@@ -1483,29 +1553,35 @@ or joint loan applications for borrowers in each level of
 
 \newcommand{\loanapptypehomesegbarplotwidth}{0.48\textwidth}
 \begin{figure}[h]
-\centering
-\subfigure[]{
-\includegraphics[width=\loanapptypehomesegbarplotwidth]{ch_summarizing_data/figures/loan_app_type_home_seg_bar/loan_app_type_home_seg_bar}
-\label{loan_app_type_home_seg_bar}
-}
-\subfigure[]{
-\includegraphics[width=\loanapptypehomesegbarplotwidth]{ch_summarizing_data/figures/loan_app_type_home_seg_bar/loan_app_type_home_sbs_bar}
-\label{loan_app_type_home_sbs_bar}
-}
-\subfigure[]{
-\includegraphics[width=\loanapptypehomesegbarplotwidth]{ch_summarizing_data/figures/loan_app_type_home_seg_bar/loan_app_type_home_seg_bar_standardized}
-\label{loan_app_type_home_seg_bar_standardized}
-}
-\caption{\subref{loan_app_type_home_seg_bar} Stacked
-  bar plot for \var{homeownership},
-  where the counts have been further broken down
-  by \var{app\_\hspace{0.3mm}type}.
-  \subref{loan_app_type_home_sbs_bar}~Side-by-side
-  bar plot for \var{homeownership}
-  and \var{app\_\hspace{0.3mm}type}.
-  \subref{loan_app_type_home_seg_bar_standardized}~Standardized
-  version of the stacked bar plot.}
-\label{loan_app_type_home_seg_bar_plot}
+  \centering
+  \subfigure[]{
+    \Figuress{\loanapptypehomesegbarplotwidth}
+        {loan_app_type_home_seg_bar}
+        {loan_app_type_home_seg_bar}
+    \label{loan_app_type_home_seg_bar}
+  }
+  \subfigure[]{
+    \Figuress{\loanapptypehomesegbarplotwidth}
+        {loan_app_type_home_seg_bar}
+        {loan_app_type_home_sbs_bar}
+    \label{loan_app_type_home_sbs_bar}
+  }
+  \subfigure[]{
+    \Figuress{\loanapptypehomesegbarplotwidth}
+        {loan_app_type_home_seg_bar}
+        {loan_app_type_home_seg_bar_standardized}
+    \label{loan_app_type_home_seg_bar_standardized}
+  }
+  \caption{\subref{loan_app_type_home_seg_bar} Stacked
+      bar plot for \var{homeownership},
+      where the counts have been further broken down
+      by \var{app\_\hspace{0.3mm}type}.
+      \subref{loan_app_type_home_sbs_bar}~Side-by-side
+      bar plot for \var{homeownership}
+      and \var{app\_\hspace{0.3mm}type}.
+      \subref{loan_app_type_home_seg_bar_standardized}~Standardized
+      version of the stacked bar plot.}
+  \label{loan_app_type_home_seg_bar_plot}
 \end{figure}
 
 \begin{example}{Examine the three bar plots in
@@ -1574,21 +1650,25 @@ In general, mosaic plots use box \emph{areas}
 to represent the number of cases in each category.
 
 \begin{figure}[h]
-\centering
-\subfigure[]{
-\includegraphics[width=0.36\textwidth]{ch_summarizing_data/figures/loan_app_type_home_mosaic_plot/loan_home_mosaic}
-\label{loan_home_mosaic}
-}
-\subfigure[]{
-\includegraphics[width=0.44\textwidth]{ch_summarizing_data/figures/loan_app_type_home_mosaic_plot/loan_app_type_home_mosaic}
-\label{loan_app_type_home_mosaic}
-}
-\caption{\subref{loan_home_mosaic}~The one-variable mosaic
-    plot for \var{homeownership}.
-    \subref{loan_app_type_home_mosaic}~Two-variable mosaic
-    plot for both \var{homeownership}
-    and \var{app\_\hspace{0.3mm}type}.}
-\label{loan_app_type_home_mosaic_plot}
+  \centering
+  \subfigure[]{
+    \Figures{0.36}
+        {loan_app_type_home_mosaic_plot}
+        {loan_home_mosaic}
+    \label{loan_home_mosaic}
+  }
+  \subfigure[]{
+    \Figures{0.44}
+        {loan_app_type_home_mosaic_plot}
+        {loan_app_type_home_mosaic}
+    \label{loan_app_type_home_mosaic}
+  }
+  \caption{\subref{loan_home_mosaic}~The one-variable mosaic
+      plot for \var{homeownership}.
+      \subref{loan_app_type_home_mosaic}~Two-variable mosaic
+      plot for both \var{homeownership}
+      and \var{app\_\hspace{0.3mm}type}.}
+  \label{loan_app_type_home_mosaic_plot}
 \end{figure}
 
 To create a completed mosaic plot, the single-variable
@@ -1626,10 +1706,15 @@ and then for the response to break
 up each level of the explanatory variable.
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=0.37\textwidth]{ch_summarizing_data/figures/loan_app_type_home_mosaic_plot/loan_app_type_home_mosaic_rev}
-   \caption{Mosaic plot where emails are grouped by the \var{homeownership} variable after they've been divided into the \resp{individual} and \resp{joint} application types.}
-   \label{loan_app_type_home_mosaic_rev}
+  \centering
+  \Figures{0.37}
+      {loan_app_type_home_mosaic_plot}
+      {loan_app_type_home_mosaic_rev}
+  \caption{Mosaic plot where loans are grouped by
+      the \var{homeownership} variable after they've
+      been divided into the \resp{individual} and
+      \resp{joint} application types.}
+  \label{loan_app_type_home_mosaic_rev}
 \end{figure}
 
 %In a similar way, a mosaic plot representing row proportions of Figure~\ref{loan_home_app_type_totals} could be constructed, as shown in Figure~\ref{loan_app_type_home_mosaic_rev}. However, because it is more insightful for this application to consider the fraction of spam in each category of the \var{number} variable, we prefer Figure~\ref{loan_app_type_home_mosaic}.
@@ -1656,10 +1741,10 @@ while this detail is very obvious in the bar plot.
 %  a large number of categories for this point to make sense}.
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=\textwidth]{ch_summarizing_data/figures/loan_homeownership_pie_chart/loan_homeownership_pie_chart}
-   \caption{A pie chart and bar plot of \var{homeownership}.}
-   \label{loan_homeownership_pie_chart}
+  \centering
+  \Figure{1.00}{loan_homeownership_pie_chart}
+  \caption{A pie chart and bar plot of \var{homeownership}.}
+  \label{loan_homeownership_pie_chart}
 \end{figure}
 
 \index{data!loans|)}
@@ -1744,14 +1829,14 @@ where there are two box plots, one for each group,
 placed into one plotting window and drawn on the same scale.
 
 \begin{figure}
-   \centering
-   \includegraphics[width=\textwidth]{ch_summarizing_data/figures/countyIncomeSplitByPopGain/countyIncomeSplitByPopGain}
-   \caption{Side-by-side box plot (left panel)
-       and hollow histograms (right panel) for
-       \var{med\_\hspace{0.3mm}hh\_\hspace{0.3mm}income},
-       where the counties are split by whether there was
-       a population gain or loss.}
-   \label{countyIncomeSplitByPopGain}
+  \centering
+  \Figure{1.00}{countyIncomeSplitByPopGain}
+  \caption{Side-by-side box plot (left panel)
+      and hollow histograms (right panel) for
+      \var{med\_\hspace{0.3mm}hh\_\hspace{0.3mm}income},
+      where the counties are split by whether there was
+      a population gain or loss.}
+  \label{countyIncomeSplitByPopGain}
 \end{figure}
 
 Another useful plotting method uses \termsub{hollow histograms}{hollow histogram} to compare numerical data across groups. These are just the outlines of histograms of each group put on the same plot, as shown in the right panel of Figure~\ref{countyIncomeSplitByPopGain}.
@@ -1791,7 +1876,7 @@ What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you f
 %___________________________________________
 \section[Case study: malaria vaccine (special topic)]
   {Case study: malaria vaccine\\(special topic)}% \sectionvideohref{youtube-2pHhjx9hyM4&list=PLkIselvEzpM6pZ76FD3NoCvvgkj_p-dE8}~\sectionslideshref{gdoc_os3_slides_1-8} \\(special topic)}
-\label{caseStudyGenderDiscrimination}
+%\label{caseStudyMalariaVaccine}
 
 \begin{example}{Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not {exactly} equal $\hat{p}_{_R}$?}\label{classRightLeftSideApple}
 While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to {chance}.
@@ -1828,17 +1913,43 @@ of signs of infection while all of the~6 patients
 in the control group patients showed some baseline
 signs of infection.
 
+\newcommand{\malariaAA}{5}
+\newcommand{\malariaAB}{9}
+\newcommand{\malariaAD}{14}
+\newcommand{\malariaBA}{6}
+\newcommand{\malariaBB}{0}
+\newcommand{\malariaBD}{6}
+\newcommand{\malariaDA}{11}
+\newcommand{\malariaDB}{9}
+\newcommand{\malariaDD}{20}
+\newcommand{\malariaVIR}{0.357}
+\newcommand{\malariaVIRPerc}{35.7\%}
+\newcommand{\malariaPIR}{1.000}
+\newcommand{\malariaPIRPerc}{100\%}
+\newcommand{\malariaIRDiff}{0.643}
+\newcommand{\malariaIRDiffPerc}{64.3\%}
+
 \begin{figure}[ht]
 \centering
 \begin{tabular}{l l cc rr}
-& & \multicolumn{2}{c}{\var{outcome}} \\
+  & & \multicolumn{2}{c}{\var{outcome}} \\
   \cline{3-4}
   &  &  {infection} & {no infection} & Total & \hspace{3mm}  \\ 
-  \cline{2-5} & {vaccine} & 5 & 9 & 14 \\ 
-  \raisebox{1.5ex}[0pt]{\var{treatment}}
-      & {placebo} & 6 & 0 & 6 \\ 
   \cline{2-5}
-      & Total & 11 & 9 & 20 \\
+  & {vaccine} &
+      \malariaAA{} &
+      \malariaAB{} &
+      \malariaAD{} \\ 
+  \raisebox{1.5ex}[0pt]{\var{treatment}}
+  & {placebo} & 
+      \malariaBA{} &
+      \malariaBB{} &
+      \malariaBD{} \\ 
+  \cline{2-5}
+  & Total & 
+      \malariaDA{} &
+      \malariaDB{} &
+      \malariaDD{} \\ 
   \cline{2-5}
 \end{tabular}
 \caption{Summary results for the malaria vaccine experiment.}
@@ -1859,7 +1970,7 @@ be inferred from the results?\footnote{The
 
 In this study, a smaller proportion of patients
 who received the vaccine showed signs of an infection
-(0.357 versus 1.000).
+(\malariaVIR{} versus \malariaPIRPerc{}).
 However, the sample is very small,
 and it is unclear whether the difference provides
 \emph{convincing evidence} that the vaccine is
@@ -1873,8 +1984,8 @@ effective.
     the data show convincing evidence of a real difference?}
   \label{malaria_vaccine_20_what_is_convincing}
   The observed infection rates
-  (35.7\% for the treatment group versus
-  100.0\% for the control group)
+  (\malariaVIRPerc{} for the treatment group versus
+  \malariaPIRPerc{} for the control group)
   suggest the vaccine may be effective.
   However, we cannot be sure if the observed difference
   represents the vaccine's efficacy or is just from
@@ -1882,8 +1993,8 @@ effective.
   Generally there is a little bit of fluctuation
   in sample data, and we wouldn't expect the sample
   proportions to be \emph{exactly} equal,
-  even if the truth was that the promotion decisions
-  were independent of gender.
+  even if the truth was that the infection rates
+  were independent of getting the vaccine.
   Additionally, with such small samples,
   perhaps it's common to observe such large differences
   when we randomly split a group due to chance alone!
@@ -1906,10 +2017,12 @@ We label these two competing claims, $H_0$ and $H_A$:
     are independent.
     They have no relationship, and the observed difference
     between the proportion of patients who developed
-    an infection in the two groups, 64.3\%, was due to chance.
+    an infection in the two groups, \malariaIRDiffPerc{},
+    was due to chance.
 \item[$H_A$:] \textbf{Alternative model.}
     The variables are \emph{not} independent.
-    The difference in infection rates of 64.3\%
+    The difference in infection rates of
+    \malariaIRDiffPerc{}
     was not due to chance,
     and vaccine affected the rate of infection.
 \end{itemize}
@@ -1987,14 +2100,14 @@ Figure~\ref{malaria_vaccine_20_exp_summary_rand_1}.
 \begin{figure}[ht]
 \centering
 \begin{tabular}{l l cc rr}
-& & \multicolumn{2}{c}{\var{outcome}} \\
+  & & \multicolumn{2}{c}{\var{outcome}} \\
   \cline{3-4}
   &  &  {infection} & {no infection} & Total & \hspace{3mm}  \\ 
   \cline{2-5}
-   treatment & {vaccine} & 7 & 7 & 14 \\ 
-   (simulated) & {placebo} & 4 & 2 & 6 \\ 
+  treatment & {vaccine} & 7 & 7 & 14 \\ 
+  (simulated) & {placebo} & 4 & 2 & 6 \\ 
   \cline{2-5}
-      & Total & 11 & 9 & 20 \\
+  & Total & 11 & 9 & 20 \\
   \cline{2-5}
 \end{tabular}
 \caption{Simulation results, where any difference
@@ -2007,7 +2120,8 @@ Figure~\ref{malaria_vaccine_20_exp_summary_rand_1}.
 What is the difference in infection rates between
 the two simulated groups in
 Figure~\ref{malaria_vaccine_20_exp_summary_rand_1}?
-How does this compare to the observed 64.3\% difference
+How does this compare to the observed
+\malariaIRDiffPerc{} difference
 in the actual data?\footnote{$4 / 6 - 7 / 14 = 0.167$
 or about 16.7\% in favor of the vaccine.
 This difference due to chance is much smaller than the
@@ -2017,29 +2131,133 @@ difference observed in the actual groups.}
 
 \subsection{Checking for independence}
 
-We computed one possible difference under the independence model in Guided Practice~\ref{malaria_vaccine_20_exp_summary_rand_1_diff}, which represents one difference due to chance. While in this first simulation, we physically dealt out files, it is more efficient to perform this simulation using a computer. Repeating the simulation on a computer, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the \emph{distribution of differences from chance alone}. Figure~\ref{discRandDotPlot} shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files that were recommended for promotion.
+We computed one possible difference under the
+independence model in Guided
+Practice~\ref{malaria_vaccine_20_exp_summary_rand_1_diff},
+which represents one difference due to chance.
+While in this first simulation, we physically dealt
+out notecards to represent the patients,
+it is more efficient to perform this simulation
+using a computer.
+Repeating the simulation on a computer, we get another
+difference due to chance:
+\begin{align*}
+\frac{2}{\malariaBD{}} - \frac{9}{\malariaAD{}} = -0.310
+\end{align*}
+And another:
+\begin{align*}
+\frac{3}{\malariaBD{}} - \frac{8}{\malariaAD{}} = -0.071
+\end{align*}
+And so on until we repeat the simulation enough times
+that we have a good idea of what represents the
+\emph{distribution of differences from chance alone}.
+Figure~\ref{malaria_rand_dot_plot} shows a stacked plot
+of the differences found from 100 simulations,
+where each dot represents a simulated difference between
+the infection rates (control rate minus treatment rate).
 
 \begin{figure}[ht]
-\centering
-\includegraphics[width=0.85\textwidth]{ch_summarizing_data/figures/discRandDotPlot/discRandDotPlot}
-\caption{A stacked dot plot of differences from 100 simulations produced under the independence model, $H_0$, where \var{gender\_\hspace{0.3mm}sim} and \var{decision} are independent. Two of the 100 simulations had a difference of at least 29.2\%, the difference observed in the study.}
-\label{discRandDotPlot}
+  \centering
+  \Figure{0.85}{malaria_rand_dot_plot}
+  \caption{A stacked dot plot of differences from
+      100 simulations produced under the independence model,
+      $H_0$, where in these simulations infections are
+      unaffected by the vaccine.
+      Two of the 100 simulations had a difference of
+      at least \malariaIRDiffPerc{}, the difference observed
+      in the study.}
+  \label{malaria_rand_dot_plot}
 \end{figure}
 
-Note that the distribution of these simulated differences is centered around 0. We simulated these differences assuming that the independence model was true, and under this condition, we expect the difference to be zero with some random fluctuation. We would generally be surprised to see a difference of \emph{exactly} 0: sometimes, just by chance, the difference is higher than 0, and other times it is lower than zero.
+Note that the distribution of these simulated differences
+is centered around 0.
+We simulated these differences assuming that the independence
+model was true, and under this condition,
+we expect the difference to be near zero with some random
+fluctuation, where \emph{near} is pretty generous in this
+case since the sample sizes are so small in this study.
 
-\begin{example}{How often would you observe a difference of at least 29.2\% (0.292) according to Figure~\ref{discRandDotPlot}? Often, sometimes, rarely, or never?}
-It appears that a difference of at least 29.2\% due to chance alone would only happen about 2\% of the time according to Figure~\ref{discRandDotPlot}. Such a low probability indicates a rare event.
+\begin{example}{How often would you observe a difference
+    of at least \malariaIRDiffPerc{} (\malariaIRDiff{})
+    according to Figure~\ref{malaria_rand_dot_plot}?
+    Often, sometimes, rarely, or never?}
+  It appears that a difference of at least
+  \malariaIRDiffPerc{} due to chance alone would only
+  happen about 2\% of the time according to
+  Figure~\ref{malaria_rand_dot_plot}.
+  Such a low probability indicates a rare event.
 \end{example}
 
-The difference of 29.2\% being a rare event suggests two possible interpretations of the results of the study:
+The difference of \malariaIRDiffPerc{} being
+a rare event suggests two possible interpretations
+of the results of the study:
 \begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$] \textbf{Independence model.} Gender has no effect on promotion decision, and we observed a difference that would only happen rarely.
-\item[$H_A$] \textbf{Alternative model.} Gender has an effect on promotion decision, and what we observed was actually due to equally qualified women being discriminated against in promotion decisions, which explains the large difference of 29.2\%.
+  \setlength{\itemsep}{0mm}
+  \item[$H_0$] \textbf{Independence model.}
+      The vaccine has no effect on infection rate,
+      and we just happened to observe a difference
+      that would only occur on a rare occasion.
+  \item[$H_A$] \textbf{Alternative model.}
+      The vaccine has an effect on infection rate,
+      and the difference we observed was actually due to
+      the vaccine being effective at combatting malaria,
+      which explains the large difference
+      of~\malariaIRDiffPerc{}.
 \end{itemize}
-Based on the simulations, we have two options. (1)~We conclude that the study results do not provide strong evidence against the independence model. That is, we do not have sufficiently strong evidence to conclude there was gender discrimination. (2)~We conclude the evidence is sufficiently strong to reject $H_0$ and assert that there was gender discrimination. When we conduct formal studies, usually we reject the notion that we just happened to observe a rare event.\footnote{This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, \emph{any set of numbers we could have observed would ultimately be incredibly rare}. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.} So in this case, we reject the independence model in favor of the alternative. That is, we are concluding the data provide strong evidence of gender discrimination against women by the supervisors.
+Based on the simulations, we have two options.
+(1)~We conclude that the study results do not provide
+strong evidence against the independence model.
+That is, we do not have sufficiently strong evidence
+to conclude the vaccine had an effect in this
+clinical setting.
+(2)~We conclude the evidence is sufficiently strong
+to reject $H_0$ and assert that the vaccine was useful.
+When we conduct formal studies, usually we reject the
+notion that we just happened to observe a rare
+event.\footnote{This reasoning does not generally extend
+    to anecdotal observations.
+    Each of us observes incredibly rare events every day,
+    events we could not possibly hope to predict.
+    However, in the non-rigorous setting of anecdotal
+    evidence, almost anything may appear to be a rare event,
+    so the idea of looking for rare events in day-to-day
+    activities is treacherous.
+    For example, we might look at the lottery:
+    there was only a 1 in 292 million chance that the
+    Powerball numbers for the largest jackpot in history
+    (January 13th, 2016) would be (04, 08, 19, 27, 34)
+    with a Powerball of (10),
+    but nonetheless those numbers came up!
+    However, no matter what numbers had turned up,
+    they would have had the same incredibly rare odds.
+    That is, \emph{any set of numbers we could have
+    observed would ultimately be incredibly rare}.
+    This type of situation is typical of our daily lives:
+    each possible event in itself seems incredibly rare,
+    but if we consider every alternative, those outcomes
+    are also incredibly rare.
+    We should be cautious not to misinterpret such
+    anecdotal evidence.}
+So in this case, we reject the independence model in favor
+of the alternative.
+That is, we are concluding the data provide strong evidence
+that the vaccine provides some protection against malaria
+in this clinical setting.
 
 \index{data!malaria vaccine|)}
 
-One field of statistics, statistical inference, is built on evaluating whether such differences are due to chance. In statistical inference, data scientists evaluate which model is most reasonable given the data. Errors do occur, just like rare events, and we might choose the wrong model. While we do not always choose correctly, statistical inference gives us tools to control and evaluate how often these errors occur. In Chapter~\ref{foundationsForInference}, we give a formal introduction to the problem of model selection. We spend the next two chapters building a foundation of probability and theory necessary to make that discussion rigorous.
+One field of statistics, statistical inference, is built
+on evaluating whether such differences are due to chance.
+In statistical inference, data scientists evaluate which
+model is most reasonable given the data.
+Errors do occur, just like rare events, and we might choose
+the wrong model.
+While we do not always choose correctly, statistical
+inference gives us tools to control and evaluate how
+often these errors occur.
+In Chapter~\ref{foundationsForInference},
+we give a formal introduction to the problem of model
+selection.
+We spend the next two chapters building a foundation
+of probability and theory necessary to make that
+discussion rigorous.
