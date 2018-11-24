@@ -209,7 +209,9 @@ Videos covering #1 using TI and Casio graphing calculators are available at \mbo
 \newcommand{\excolor}[1]{{\color{excolor}#1}}
 \newenvironment{exercise}
 {
-\begin{itemize}\item[\color{oiB}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{oiB}Guided Practice \theexercise}\hspace{3mm}}
+\begin{itemize}\item[\color{oiB}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{oiB}Guided Practice \theexercise}%\hspace{3mm}
+
+}
 {\normalsize
 
 \addvspace{3mm}
@@ -221,7 +223,10 @@ Videos covering #1 using TI and Casio graphing calculators are available at \mbo
 \newcommand\theexample{\thechapter.\arabic{equation}}
 \newenvironment{example}[1]
 {\begin{itemize}
-\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Example \theexample}\hspace{0.3cm}#1\vspace{\exampleAboveBar}
+\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Example \theexample}%\hspace{0.3cm}
+
+
+#1\vspace{\exampleAboveBar}
 
 {\color{examplegray}\rule{20mm}{0.1mm}}
 
