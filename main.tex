@@ -1,15 +1,25 @@
-\documentclass[10pt,openany]{book}
+\documentclass[10pt,openany]%,oneside]
+{book}
  
 \usepackage{
-  amsmath, calc, caption, changepage,
-  endnotes, enumerate, epstopdf,
+  amsmath, calc,
+  caption, changepage,
+  endnotes, enumerate,
+  epstopdf,
   fancyhdr, footmisc,
-  geometry, graphicx, ifthen, lscape,
-  makeidx, multicol, multirow, setspace,
-  soul, subfigure, textcomp, titlesec,
-  varioref, verbatim, wasysym, wrapfig
+  geometry, graphicx,
+  ifthen, lscape,
+  makeidx, manfnt,
+  marginnote,
+  mdframed,
+  multicol, multirow,
+  setspace, soul, subfigure,
+  tabto,
+  textcomp, titlesec,
+  varioref, verbatim,
+  wasysym, wrapfig
 }
-\usepackage[usenames,dvipsnames]{color}  
+%\usepackage[usenames,dvipsnames]{color}  
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
 \include{extraTeX/style/colorsV1}
 
@@ -44,21 +54,21 @@
 \normalsize
 
 \includechapter{1}{ch_intro_to_data}
-\includechapter{2}{ch_summarizing_data}
-\includechapter{3}{ch_probability}
-\includechapter{4}{ch_distributions}
-\includechapter{5}{ch_foundations_for_inf}
-\includechapter{6}{ch_inference_for_props}
-\includechapter{7}{ch_inference_for_means}
-\includechapter{8}{ch_regr_simple_linear}
-\includechapter{9}{ch_regr_mult_and_log}
-
-\appendix
-\theendnotes
-\include{extraTeX/eoceSolutions/eoceSolutions}
-\include{extraTeX/appendix/TeX/zTable}
-\include{extraTeX/appendix/TeX/tTable}
-\include{extraTeX/appendix/TeX/chiSquareTable}
+%\includechapter{2}{ch_summarizing_data}
+%\includechapter{3}{ch_probability}
+%\includechapter{4}{ch_distributions}
+%\includechapter{5}{ch_foundations_for_inf}
+%\includechapter{6}{ch_inference_for_props}
+%\includechapter{7}{ch_inference_for_means}
+%\includechapter{8}{ch_regr_simple_linear}
+%\includechapter{9}{ch_regr_mult_and_log}
+%
+%\appendix
+%\theendnotes
+%\include{extraTeX/eoceSolutions/eoceSolutions}
+%\include{extraTeX/appendix/TeX/zTable}
+%\include{extraTeX/appendix/TeX/tTable}
+%\include{extraTeX/appendix/TeX/chiSquareTable}
 
 \include{extraTeX/index/index}
 \printindex

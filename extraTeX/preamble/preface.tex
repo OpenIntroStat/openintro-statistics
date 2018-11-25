@@ -39,15 +39,27 @@ The \videohref[4mm]{textbook-openintro_videos} icon indicates that a section or 
 
 \subsection*{Examples, exercises, and appendices}
 
-Examples and Guided Practice throughout the textbook may be identified by their distinctive bullets:
+Examples and Guided Practice throughout the textbook may be
+identified as follows:
 
-\begin{example}{Large filled bullets signal the start of an example.}
-Full solutions to examples are provided and may include an accompanying table or figure.
- \end{example}
+\begin{examplewrap}[8mm]
+\begin{nexample}{This is the example setting.}
+  Full solutions to examples are provided and may include
+  an accompanying table or figure.
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercise}
-Large empty bullets signal to readers that an exercise has been inserted into the text for additional practice and guidance. Students may find it useful to fill in the bullet after understanding or successfully completing the exercise. Solutions are provided for all Guided Practice in footnotes.\footnote{Full solutions are located down here in the footnote!}
-\end{exercise}
+\begin{exercisewrap}[8mm]
+\begin{nexercise}
+We list a Guided Practice problem when we think the reader
+should be ready to try something out.
+This does not guarantee the reader will (or should)
+know the answer, so we provide solutions for all Guided
+Practice in footnotes.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Full solutions are located down here
+    in the footnote!}
 
 There are exercises at the end of each chapter for practice or homework assignments. Odd-numbered exercise solutions are in Appendix~\ref{eoceSolutions}. Probability tables for the normal, $t$, and chi-square distributions are in Appendix~\ref{distributionTables}.
 
