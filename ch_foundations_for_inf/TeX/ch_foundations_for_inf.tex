@@ -1,5 +1,6 @@
 \chapter{Foundations for inference}
 \label{foundationsForInference}
+\renewcommand{\chapterfolder}{ch_foundations_for_inf}
 
 Statistical inference is concerned primarily with understanding the
 accuracy of parameter estimates. While the equations and details change
@@ -44,9 +45,7 @@ throughout all of statistics.
 
 
 %__________________
-\section[Point estimates and sampling variability]
-    {Point estimates \\ and sampling variability}
-    %\sectionvideohref{youtube-DNIauUrRIEM&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-1}}
+\section{Point estimates and sampling variability}
 \label{pointEstimates}
 
 \index{data!solar survey|(}
@@ -64,7 +63,7 @@ Pew Research conducted a poll of 1000
 American adults' support of different forms of energy.
 They found that \pewsolarpollpercent{}\% of respondents
 favored expanding
-solar energy.\endnote{The full survey's sample size was 2541,
+solar energy.\footnote{The full survey's sample size was 2541,
 and we've taken a subsample. To find the survey details, see\\
 \oiRedirect{textbook-pew_2018_poll_on_solar_and_wind_expansion}{www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient}}
 A~natural question is,
@@ -200,15 +199,6 @@ and created a histogram of the results from all 10,000 simulations
 in Figure~\ref{sampling_10k_prop_887p}. This
 distribution of sample proportions is called a
 \term{sampling distribution}.
-%\footnote{Here is the code for 10,000 simulations: \\
-%\texttt{people <- rep(c("justified", "not"), c(0.56, 0.44) * 247e6) \\
-%sim.results <- c() \\
-%for (i in 1:10000) \{ \\
-%\ \hspace{5mm}sampled.people <- sample(people, 1000) \\
-%\ \hspace{5mm}sim.results[i] <- mean(sampled.people == "justified") \\
-%\} \\
-%hist(sim.results, 20)} \\
-%(There's actually a more efficient way to write this code, but we have provided you the long version!)}
 We can characterize this sampling distribution as follows:
 \begin{description}
 \item[Center.] The center of the distribution is
@@ -245,17 +235,18 @@ that the histogram resembles a normal distribution.
    \label{sampling_10k_prop_887p}
 \end{figure}
 
-\begin{tipBox}{\tBoxTitle{Sampling distributions are
+\begin{onebox}{Sampling distributions are
     never observed, but we keep them in mind}
   In real-world applications, we never actually observe the
   sampling distribution, yet it is useful to always think of
   the sample proportion as coming from such a distribution.
   Understanding the sampling distribution will help us
   characterize and make sense of the individual point
-  estimate that we do observe.}
-\end{tipBox}
+  estimate that we do observe.
+\end{onebox}
 
-\begin{example}{If we used a much smaller sample size of $n = 50$,
+\begin{examplewrap}
+\begin{nexample}{If we used a much smaller sample size of $n = 50$,
 would you guess that the standard error for $\hat{p}$ would be larger
 or smaller than when we used $n = \pewsolarpollsize{}$?}
 \label{smallerSampleWhatHappensToPropErrorExercise}
@@ -263,7 +254,8 @@ Intuitively, it seems like more data is better
 than less data, and generally that is correct! The typical error
 when $p = \pewsolarpollprop{}$ and $n = 50$ would be larger
 than the error we would expect when $n = \pewsolarpollsize{}$.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 %\noindent
 Example~\ref{smallerSampleWhatHappensToPropErrorExercise}
@@ -281,22 +273,19 @@ a normal distribution. That is no anomaly; it~is the result
 of a general principle called the \term{Central Limit Theorem}.
 \index{Central Limit Theorem!proportion|textbf}
 
-\begin{termBox}{\tBoxTitle{Central Limit Theorem for proportions
-    \& the success-failure condition}
-When observations are independent and the sample size is
-sufficiently large, the sample proportion $\hat{p}$ will tend
-to follow a normal distribution with the following mean and
-standard error:
-\begin{align*}
-  \mu_{\hat{p}} &= p
-  &SE_{\hat{p}} &= \sqrt{\frac{p (1 - p)}{n}}
-\end{align*}
-The sample size is typically considered sufficiently large when
-$np \geq 10$ and $n(1-p) \geq 10$, which is called the
-\term{success-failure condition}.} %since $np$ represents the
-%number of expected \emph{successes} and $n(1-p)$ the expected
-%number of \emph{failures}.}
-\end{termBox}
+\begin{onebox}{Central Limit Theorem and the success-failure condition}
+  When observations are independent and the sample size is
+  sufficiently large, the sample proportion $\hat{p}$ will tend
+  to follow a normal distribution with the following mean and
+  standard error:
+  \begin{align*}
+    \mu_{\hat{p}} &= p
+    &SE_{\hat{p}} &= \sqrt{\frac{p (1 - p)}{n}}
+  \end{align*}
+  The sample size is typically considered sufficiently large when
+  $np \geq 10$ and $n(1-p) \geq 10$, which is called the
+  \term{success-failure condition}.
+\end{onebox}
 
 The Central Limit Theorem is incredibly important, and it provides
 a foundation for much of this statistics. As we begin applying
@@ -304,7 +293,8 @@ this principle, be mindful of the two requirements:
 the observations must be independent, and the the sample size must
 be sufficiently large such that $np \geq 10$ and $n(1-p) \geq 10$.
 
-\begin{example}{Earlier we estimated the mean and standard
+\begin{examplewrap}
+\begin{nexample}{Earlier we estimated the mean and standard
 error of the $\hat{p}$'s using simulated data when
 $p = \pewsolarpollprop{}$ and $n = \pewsolarpollsize{}$.
 Confirm that the distribution is approximately
@@ -334,23 +324,28 @@ normal.}\label{sample_p887_n1000_confirm_normal}
 Both of the independence and success-failure conditions are
 satisfied, so the Central Limit Theorem applies and the normal
 distribution is reasonable in this context.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{tipBox}{\tipBoxTitle[]{How to verify sample observations
-    are independent}
-  Subjects in an experiment are considered independent if they undergo
-      random assignment to the treatment groups. \\[2mm]
-  If the observations are from a simple random sample and consist
-      of fewer than 10\% of the population, then they are independent.
-      Even if the sample is bigger than 10\%, assuming independence
-      will lead to more conservative results. \\[2mm]
+\begin{onebox}{How to verify sample observations are independent}
+  Subjects in an experiment are considered independent
+  if they undergo random assignment to the treatment
+  groups.\vspace{3mm}
+
+  If the observations are from a simple random sample and
+  consist of fewer than 10\% of the population, then they
+  are independent.
+  Even if the sample is bigger than 10\%, assuming independence
+  will lead to more conservative results.\vspace{3mm}
+
   If a sample is from a seemingly random process,
-      e.g. an occasional error on an assembly line,
-      checking independence is more difficult. In~this case,
-      use your best judgement.}
-\end{tipBox}
+  e.g. an occasional error on an assembly line,
+  checking independence is more difficult. In~this case,
+  use your best judgement.
+\end{onebox}
 
-\begin{example}{Compute the theoretical mean and standard error
+\begin{examplewrap}
+\begin{nexample}{Compute the theoretical mean and standard error
 of the $\hat{p}$'s when
 $p = \pewsolarpollprop{}$ and $n = \pewsolarpollsize{}$,
 according to the
@@ -366,9 +361,11 @@ SE_{\hat{p}}
     = \sqrt{\frac{\pewsolarpollprop{} (1 - \pewsolarpollprop{})}{1000}}
     = \pewsolarpollse{}
 \end{align*}
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{example}{Estimate how frequently the sample proportion
+\begin{examplewrap}
+\begin{nexample}{Estimate how frequently the sample proportion
 $\hat{p}$ should be within 0.02 (2\%) of the population value,
 $p = \pewsolarpollprop{}$. Based on
 Examples~\ref{sample_p887_n1000_confirm_normal}
@@ -396,30 +393,24 @@ $2 \times 0.0228 = 0.0456$, which leaves the shaded area of
 0.9544. That is, about 95.44\% of the sampling distribution
 in Figure~\ref{sampling_10k_prop_887p} is within $\pm0.02$
 of the simulation population proportion, $p = \pewsolarpollprop{}$.
-%of these
-%cutoffs and compute the difference of these areas
-%to get the central area:
-%\begin{center}
-%\includegraphics[width=60mm]{ch_foundations_for_inf/figures/p-hat_from_53_and_59_computation/p-hat_from_53_and_59_computation}
-%\end{center}
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 In Example~\ref{smallerSampleWhatHappensToPropErrorExercise}
 we discussed how a smaller sample would tend
 to produce a less reliable estimate. Explain how this intuition
 is reflected in the formula for
-$SE_{\hat{p}} = \sqrt{\frac{p (1 - p)}{n}}$.\footnote{Since the
-sample size $n$ is in the denominator of the fraction (on the
-bottom of the fraction), a bigger sample size means the entire
-expression when calculated will tend to be smaller. That is,
-a larger sample size would correspond to a smaller standard error.}
-\end{exercise}
-
-%In Example~\ref{sampling_10k_prop_56p}, we applied a general
-%principle called the \term{Central Limit Theorem}
-%\hiddenterm{Central Limit Theorem!proportions} when
-%we used the normal distribution as an approximation.
+$SE_{\hat{p}} = \sqrt{\frac{p (1 - p)}{n}}$.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Since the
+    sample size $n$ is in the denominator of the fraction (on the
+    bottom of the fraction), a bigger sample size means the entire
+    expression when calculated will tend to be smaller. That is,
+    a larger sample size would correspond to a smaller standard
+    error.}
 
 
 \subsection{Applying the Central Limit Theorem to a real-world setting}
@@ -465,10 +456,6 @@ SE_{\hat{p}}
 \end{align*}
 This substitution approximation technique is useful in many
 situations.
-%\footnote{There are additional methods
-%for proportions that perform some correction for the substitution
-%approximation. However, we leave those proportion methods for
-%a future course.}
 
 
 \subsection[Better understanding the Central Limit Theorem
@@ -637,9 +624,7 @@ within this~book.
 
 
 %__________________
-\section[Confidence intervals for a sample proportion]
-    {Confidence intervals\\for a sample proportion}
-    % \sectionvideohref{youtube-FUaXoKdCre4&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-2}}
+\section{Confidence intervals for a sample proportion}
 \label{confidenceIntervals}
 
 \index{confidence interval|(}
@@ -668,15 +653,18 @@ other hand, if we report a range of plausible values,
 representing a confidence interval,
 we have a good shot at capturing the parameter.
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 If we want to be very certain we capture the population
 proportion in an interval, should we use a wider interval
-or a smaller interval?\footnote{If we want to be more
-certain we will capture the fish, we might use a
-wider net. Likewise, we use a wider confidence interval
-if we want to be more certain that we capture the
-parameter.}
-\end{exercise}
+or a smaller interval?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{If we want to be more
+    certain we will capture the fish, we might use a
+    wider net. Likewise, we use a wider confidence interval
+    if we want to be more certain that we capture the
+    parameter.}
 
 \subsection{An approximate 95\% confidence interval}
 
@@ -726,7 +714,8 @@ $p = \pewsolarpollprop{}$, and one interval does not.
    \label{95PercentConfidenceInterval}
 \end{figure}
 
-\begin{example}{In Figure~\ref{95PercentConfidenceInterval},
+\begin{examplewrap}
+\begin{nexample}{In Figure~\ref{95PercentConfidenceInterval},
 one interval does not contain $p = \pewsolarpollprop{}$.
 Does this imply that the population proportion cannot be
 $p = \pewsolarpollprop{}$?}
@@ -736,7 +725,8 @@ from the mean, some point estimates will be more than
 A confidence interval only provides a plausible range
 of values. While we might say other values are implausible
 based on the data, this does not mean they are impossible.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 While about 95\% of the data is within 2 standard deviations
 in a normal distribution, it would be more precise to use
@@ -744,8 +734,7 @@ a value of 1.96 standard deviations. This more precise value
 is typically what is used to construct a
 95\% confidence interval.
 
-\begin{termBox}{\tBoxTitle{95\% confidence interval for
-    a parameter}
+\begin{onebox}{95\% confidence interval for a parameter}
   \index{confidence interval!95\%}
   When a point estimate qualifies for the Central Limit
   Theorem and closely follows a normal distribution,
@@ -753,12 +742,10 @@ is typically what is used to construct a
   \begin{align*}
   \text{point estimate} &\pm 1.96 \times SE
   \end{align*}
-  % For the context of a proportion, a 95\% confidence interval
-  % would be $\hat{p} \pm 1.96 \times SE_{\hat{p}}$.
-  }
-\end{termBox}
+\end{onebox}
 
-\begin{example}{In Section~\ref{pointEstimates} we learned about
+\begin{examplewrap}
+\begin{nexample}{In Section~\ref{pointEstimates} we learned about
     a poll where \pewsolarpollpercent{}\% of a random sample of
     \pewsolarpollsize{} American adults
     supported expanding the role of solar power. Compute and
@@ -780,7 +767,8 @@ is typically what is used to construct a
   We are 95\% confident that the actual proportion of
   American adults who support expanding solar power is
   between 86.74\% and 90.66\%.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 
 \subsection{Changing the confidence level}
@@ -809,19 +797,21 @@ based on capturing 95\% of the data since the estimate is within
 1.96 standard errors of the parameter about 95\% of the time.
 The choice of 1.96 corresponds to a 95\% confidence level. 
 
-\begin{exercise} \label{leadInForMakingA99PercentCIExercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{leadInForMakingA99PercentCIExercise}
 If $X$ is a normally distributed random variable, how often will $X$
-be within 2.58 standard deviations of the mean?\footnote{This is
-equivalent to asking how often the Z-score will be larger than -2.58
-but less than 2.58.
-For a picture, see Figure~\ref{choosingZForCI}.
-To determine this probability, we can use statistical software,
-a calculator, or a table to look up -2.58 and 2.58 for the normal
-distribution: 0.0049 and 0.9951. Thus, there is a
-$0.9951-0.0049 \approx 0.99$ probability that
-an unobserved normal random variable
-$X$ will be within 2.58 standard deviations of $\mu$.}
-\end{exercise}
+be within 2.58 standard deviations of the mean?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{This is equivalent to asking how often the
+    Z-score will be larger than -2.58 but less than 2.58.
+    For a picture, see Figure~\ref{choosingZForCI}.
+    To determine this probability, we can use statistical software,
+    a calculator, or a table to look up -2.58 and 2.58 for
+    the normal distribution: 0.0049 and 0.9951.
+    Thus, there is a $0.9951-0.0049 \approx 0.99$ probability
+    that an unobserved normal random variable
+    $X$ will be within 2.58 standard deviations of $\mu$.}
 
 Guided Practice~\ref{leadInForMakingA99PercentCIExercise} highlights
 that 99\% of the time a normal random variable will be within
@@ -859,29 +849,30 @@ For some other point estimates, the normal model is not a good fit;
 in these cases, we'll use alternative distributions that better
 represent the sampling distribution.
 
-\begin{termBox}{\tBoxTitle{Confidence interval
-    using any confidence level}
-  If a point estimate closely follows the normal model with
-  standard error $SE$, then a confidence interval
+\begin{onebox}{Confidence interval using any confidence level}
+  If a point estimate closely follows the normal model
+  with standard error $SE$, then a confidence interval
   for the population parameter is
   \begin{align*}
   \text{point estimate}\ \pm\ z^{\star} SE
   \end{align*}
-  where $z^{\star}$ corresponds to the confidence level selected.}
-\end{termBox}
+  where $z^{\star}$ corresponds to the confidence
+  level selected.
+\end{onebox}
 
 Figure~\ref{choosingZForCI} provides a picture of how to identify
 $z^{\star}$ based on a confidence level. We~select $z^{\star}$
 so that the area between -$z^{\star}$ and $z^{\star}$ in the normal
 distribution corresponds to the confidence level. 
 
-\begin{termBox}{\tBoxTitle{Margin of error}
-\label{marginOfErrorTermBox}
-In a confidence interval, $z^{\star}\times SE$ is called the
-\term{margin of error}.}
-\end{termBox}
+\begin{onebox}{Margin of error}
+  \label{marginOfErrorTermBox}%
+  In a confidence interval, $z^{\star}\times SE$ is called the
+  \term{margin of error}.
+\end{onebox}
 
-\begin{example}{Use the data in
+\begin{examplewrap}
+\begin{nexample}{Use the data in
     Example~\ref{95p_ci_for_pew_solar_support} to
     create a 90\% confidence interval for the proportion of American
     adults that support expanding solar power students.
@@ -899,7 +890,8 @@ In a confidence interval, $z^{\star}\times SE$ is called the
   \end{align*}
   That is, we are 90\% confident that 87.1\% to 90.4\% of American
   adults supported the expansion of solar power in 2018.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 
 
@@ -924,7 +916,7 @@ and was subsequently diagnosed with Ebola. Soon thereafter,
 an NBC~4 New York/The Wall Street Journal/Marist Poll found that
 \wsjebolapollpercent{}\% of New Yorkers favored a ``mandatory 21-day
 quarantine for anyone who has come in contact with an Ebola
-patient''.\endnote{\oiRedirect{textbook-maristpoll_ebola_201410}{Poll
+patient''.\footnote{\oiRedirect{textbook-maristpoll_ebola_201410}{Poll
 ID NY141026 on maristpoll.marist.edu}.} This poll included responses
 of \wsjebolapollsizecomma{} New York adults between
 Oct 26th and~28th, 2014.
@@ -932,7 +924,8 @@ Oct 26th and~28th, 2014.
 %adults who favored a mandatory quarantine of anyone who had been in
 %contact with an Ebola patient.
 
-\begin{example}{What is the point estimate in this case,
+\begin{examplewrap}
+\begin{nexample}{What is the point estimate in this case,
     and is it reasonable to
     use the normal distribution to model that point estimate?}
   The point estimate, based on a sample of size $n = \wsjebolapollsize{}$,
@@ -946,9 +939,11 @@ Oct 26th and~28th, 2014.
   both easily greater than~10). With the conditions met, we are assured
   that the sampling distribution of $\hat{p}$ can be modeled using
   a normal distribution.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{example}{Estimate the standard error of
+\begin{examplewrap}
+\begin{nexample}{Estimate the standard error of
     $\hat{p} = \wsjebolapollprop{}$ from the Ebola survey.}
   We'll use the substitution approximation of
   $p \approx \hat{p} = \wsjebolapollprop{}$ to compute the standard error:
@@ -958,9 +953,11 @@ Oct 26th and~28th, 2014.
         (1 - \wsjebolapollprop{})}{\wsjebolapollsize{}}}
     = \wsjebolapollse{}
   \end{align*}
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{example}{Construct a 95\% confidence interval for $p$,
+\begin{examplewrap}
+\begin{nexample}{Construct a 95\% confidence interval for $p$,
     the proportion of New York adults who supported a quarantine
     for anyone who has come into contact with an Ebola patient.}
   Using the standard error $SE = 0.012$ from
@@ -976,17 +973,21 @@ Oct 26th and~28th, 2014.
   in October 2014 who supported a quarantine for anyone who had come
   into contact with an Ebola patient was between 0.796 and 0.844.
 \index{data!Ebola poll|)}
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Do you think the confidence interval is still valid for the opinions
-of New Yorkers today?\footnote{Not necessarily. The poll was taken at a
+of New Yorkers today?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Not necessarily. The poll was taken at a
 time where there was a huge public safety concern. Now that people
 have had some time to step back, they may have changed their opinions.
 We would need to run a new poll if we wanted to get an estimate of the
 current proportion of New York adults who would support such a
 quarantine period.}
-\end{exercise}
 
 \index{data!wind turbine survey|(}
 
@@ -1005,8 +1006,12 @@ In this next case study, we examine the support for expanding wind
 turbines, which received support from \pewwindpollpercent{}\%
 of the \pewwindpollsize{} respondents.
 
-\begin{exercise}\label{pew_wind_turbine_support_normal_dist_gp}
-Is the normal approximation reasonable in this case?\footnote{We
+\begin{exercisewrap}
+\begin{nexercise}\label{pew_wind_turbine_support_normal_dist_gp}
+Is the normal approximation reasonable in this case?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We
 check independence, which is okay since this survey was a simple
 random sample, and also the success-failure condition
 ($\pewwindpollsize{} \times \pewwindpollprop{} = \pewwindpollcount{}$
@@ -1015,14 +1020,17 @@ and $\pewwindpollsize{} \times \pewwindpollpropcomplement{}
 Since both conditions are satisfied,
 $\hat{p} = \pewwindpollprop{}$ can be
 modeled using the normal distribution.}
-\end{exercise}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Using the Pew Research survey where $n = \pewwindpollsize{}$ and
 $\hat{p} = \pewwindpollprop{}$, create a 99\% confidence interval
 for the level of American support for expanding the use of wind
 turbines for power
-generation.\footnote{Guided
+generation.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Guided
 Practice~\ref{pew_wind_turbine_support_normal_dist_gp}
 confirmed that that $\hat{p}$ closely follows a normal distribution,
 so we can use the confidence interval formula:
@@ -1042,36 +1050,6 @@ It is also important to \emph{always} provide an interpretation
 for the interval: we are 99\% confident the proportion of
 American adults that support expanding the use of wind
 turbines is between 81.9\% and 87.7\% in 2018.}
-\end{exercise}
-
-%\begin{example}{How did the polls get the 2016 US Presidential
-%    Election so wrong?}
-%  We wanted to touch on this point, since misperceptions around
-%  the 2016 elections may otherwise undermine your confidence in
-%  statistical methods.
-%
-%  Looking back at the projections prior to election night,
-%  the polls actually got the popular vote correct within 1-2\%,
-%  which is closer than many election forecasters typically expect.
-%  The final 
-%  Hillary Clinton was projected to win XX\% to XX\% of the vote,
-%  meaning a clear majority. Once all results were tallied,
-%  she did in fact win XX\% of the popular vote. That is,
-%  the popular vote projection was within the confidence interval.
-%
-%  \Comment{Cite fivethirtyeight.com}
-%  % https://fivethirtyeight.com/features/the-real-story-of-2016/
-%  
-%  However, the
-%  United States does not elect presidents based on popular vote.
-%  Rather, US presidents are elected by the
-%  \emph{\hiddenterm{electoral college}}, which is a system
-%  where each states gets a certain weight in the presidential
-%  selection; in this system, votes in smaller states tend to
-%  carry more weight than votes in larger states.
-%
-%\Comment{}
-%\end{example}
 
 
 \subsection{Interpreting confidence intervals}
@@ -1124,25 +1102,13 @@ population parameters.
 
 
 %__________________
-%\section[Hypothesis testing]{Hypothesis testing \sectionvideohref{youtube-NVbPE1_Cbx8&list=PLkIselvEzpM7Pjo94m1e7J5jkIZkbQAl4}~\sectionslideshref{gdoc_os3_slides_4-3}}
 \section{Hypothesis testing for a proportion}
 \label{hypothesisTesting}
 
 \index{hypothesis testing|(}
 
-%Possible examples:
-%\begin{enumerate}
-%\item Hans Rosling questions where people do *worse* than expected from randomly guessing.
-%\item 
-%\item Retailer has their business credit card. The cards are profitable if they get at least X\% of customers to use their cards, while the overhead costs are larger if fewer than X\% of customers use their cards. They take a random sample of X,000 transactions and find that Y\% used the cards. What can the business conclude?
-%\item Game show where half of the time people are supposed to win and half the time people are supposed to lose.
-%\item A business is piloting tablets for their employees. They want to be sure at least XX\% of their employees will use the tablets.
-%\end{enumerate}
-
 The following question comes from Hans Rosling's book
 \emph{\oiRedirect{amazon_factfulness}{Factfulness}}:
-%a public health educator, who wrote a book
-%Hans Rosling was a world health education, and as part of his course, he would always ask each of the following questions:
 \begin{quote}{\em
   In the last 20 years the proportion of the
   world population living in extreme poverty has:
@@ -1152,21 +1118,11 @@ The following question comes from Hans Rosling's book
   \item Almost halved.
   \end{enumerate}
 }\end{quote}
-%\begin{quote}{\em
-%  Global climate experts believe that over the next
-%  100 years the average temperature will on average?
-%  \begin{enumerate}[a.]
-%  \item Get warmer.
-%  \item Get colder.
-%  \item Remain the same.
-%  \end{enumerate}
-%}\end{quote}
 Write down what your answer (or guess),
 and when you're ready, find the answer in the
 footnote.\footnote{The correct answer is (c):
 extreme poverty has been nearly cut in half in the last 20~years.}
 
-% A lot of people get this question wrong.
 In this section,
 we'll be exploring how people with a 4-year college
 degree perform on this and other world health questions.
@@ -1180,11 +1136,6 @@ degree perform on this and other world health questions.
 \newcommand{\roslingAcountcomplement}{38}
 \newcommand{\roslingAse}{0.060}
 % n <- 50; x <- 12; (p <- x/n); (se <- sqrt(p * (1 - p) / n)); p + c(-1, 1) * 1.96 * se
-
-
-
-
-
 
 %There's an adage in United States financial markets that
 %it is better to get out of investments during the six ``summer''
@@ -1268,13 +1219,18 @@ These competing ideas are called \term{hypotheses}.
 We call $H_0$ the null hypothesis and $H_A$ the alternative
 hypothesis.
 
-\begin{termBox}{\tBoxTitle{Null and alternative hypotheses}
+\begin{onebox}{Null and alternative hypotheses}
   The \term{null hypothesis ($H_0$)} often represents
   a skeptical perspective or a claim to be tested.
   The \term{alternative hypothesis ($H_A$)} represents an
   alternative claim under consideration and is often
-  represented by a range of possible parameter values.}
-\end{termBox}
+  represented by a range of possible parameter values.
+  \vspace{3mm}
+  
+  Our job as data scientists is to play the role of a skeptic:
+  before we buy into the alternative hypothesis, we need to
+  see strong supporting evidence.
+\end{onebox}
 
 The null hypothesis often represents a skeptical position
 or a perspective of ``no difference''.
@@ -1295,21 +1251,19 @@ that people do \emph{worse} than random guessing,
 which would suggest people believe
 incorrect information about world health.
 
-\begin{tipBox}{\tipBoxTitle{Be a skeptic of $\mathbf{H_A}$
-    and require supporting evidence}
-  The alternative hypothesis is generally an assertion of
-  something genuinely interesting or~new.
-  For this reason,
-  our job as data scientists is to play the role of a skeptic:
-  before we buy into the alternative hypothesis, we need to
-  see strong supporting evidence.}
-\end{tipBox}
-
 The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if~there is sufficient evidence that supports the claim, we set aside our skepticism and reject the null hypothesis in favor of the alternative. The hallmarks of hypothesis testing are also found in the US~court system. 
 
-\begin{exercise} \label{hypTestCourtExample}
-A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?\footnote{The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt; in such a case, the jury rejects innocence (the null hypothesis) and concludes the defendant is guilty (alternative hypothesis).}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{hypTestCourtExample}
+A US court considers two possible claims about a defendant: she is either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The jury considers whether the evidence is so
+    convincing (strong) that there is no reasonable doubt
+    regarding the person's guilt;
+    in such a case, the jury rejects innocence
+    (the null hypothesis) and concludes the defendant
+    is guilty (alternative hypothesis).}
 
 Jurors examine the evidence to see whether it convincingly
 shows a defendant is guilty.
@@ -1347,7 +1301,8 @@ case is 0.333. It's common to label the null value with the
 same symbol as the parameter but with a subscript~`0'.
 That is, in this case, the null value is $p_0 = 0.333$.
 
-\begin{example}{It may seem impossible that the
+\begin{examplewrap}
+\begin{nexample}{It may seem impossible that the
     proportion of people who get the correct answer
     is \emph{exactly} 33.3\%. If we don't believe the
     null hypothesis, should we simply reject it?}
@@ -1366,30 +1321,23 @@ That is, in this case, the null value is $p_0 = 0.333$.
   Without data that strongly
   points in one direction or the other, it is both
   uninteresting and pointless to reject $H_0$.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
   Another example of a real-world hypothesis testing situation
   is evaluating whether a new drug is better or worse
   than an existing drug at treating a particular disease.
   What should we use for the null and alternative hypotheses in
-  this case?\footnote{The null hypothesis ($H_0$) in this case
-  is the declaration of \emph{no difference}: the drugs are equally
-  effective. The alternative hypothesis ($H_A$) is that the
-  new drug performs differently than the original,
-  i.e. it could perform better or worse.}
-\end{exercise}
-  
-%Suppose we collected data but the data didn't show strong
-%evidence that the new drug performs better or worse than the
-%old drug. That doesn't mean the new drugs have the exact same
-%effectiveness. However, that does not mean the drugs perform
-%equally; it may be that we simply were unable to detect which
-%drug was in fact better than the other.
-
-
-
-
+  this case?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The null hypothesis ($H_0$) in this case is
+    the declaration of \emph{no difference}: the drugs are equally
+    effective. The alternative hypothesis ($H_A$) is that the
+    new drug performs differently than the original,
+    i.e. it could perform better or worse.}
 
 
 \subsection{Testing hypotheses using confidence intervals}
@@ -1428,7 +1376,8 @@ In Section~\ref{confidenceIntervals}, we learned how to
 quantify the uncertainty in our estimate using confidence
 intervals. This can be useful for the hypothesis test.
 
-\begin{example}{Check whether it is reasonable to construct
+\begin{examplewrap}
+\begin{nexample}{Check whether it is reasonable to construct
     a confidence interval for $p$ using the sample data, and
     if so, construct a 95\% confidence interval.}
   The conditions are met for $\hat{p}$ to be approximately
@@ -1453,7 +1402,8 @@ intervals. This can be useful for the hypothesis test.
   college-educated adults answer this particular question
   about extreme poverty is between 12.2\%
   and 35.8\%.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 %At a first glance, it looks like it might be. After all,
 %36\% isn't that close to 50\%, so maybe this data constitutes
 %\emph{strong evidence}. We need to 
@@ -1466,7 +1416,8 @@ the notion that the performance of college-educated
 adults was different than random guessing,
 and we do not reject the null hypothesis,~$H_0$.
 
-\begin{example}{Explain why we cannot conclude that
+\begin{examplewrap}
+\begin{nexample}{Explain why we cannot conclude that
     college-educated adults simply guessed on the extreme
     poverty question.}
   First, while we failed to reject $H_0$, that does not
@@ -1483,13 +1434,21 @@ and we do not reject the null hypothesis,~$H_0$.
   And of those who didn't guess,
   their past knowledge simply wasn't very useful on this
   question and so most of them still got it wrong.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{tipBox}{\tipBoxTitle{Double negatives can sometimes be used in statistics}
-In many statistical explanations, we use double negatives. For instance, we might say that the null hypothesis is \emph{not implausible} or we \emph{failed to reject} the null hypothesis. Double negatives are used to communicate that while we are not rejecting a position, we are also not saying it is correct.}
-\end{tipBox}
+\begin{onebox}{Double negatives can sometimes be used in statistics}
+  In many statistical explanations, we use double negatives.
+  For instance, we might say that the null hypothesis is
+  \emph{not implausible} or we \emph{failed to reject}
+  the null hypothesis.
+  Double negatives are used to communicate that while we
+  are not rejecting a position, we are also not saying it
+  is correct.
+\end{onebox}
 
-\begin{exercise}\label{roslingB_hypothesis_setup}
+\begin{exercisewrap}
+\begin{nexercise}\label{roslingB_hypothesis_setup}
 Let's move onto a second question posed by Hans Rosling:
 \begin{quote}{\em
   There are 2 billion children in the world today
@@ -1505,7 +1464,10 @@ Set up appropriate hypotheses to evaluate whether
 college-educated adults are better than random guessing
 on this question.
 Also, see if you can guess the correct answer before checking
-the answer in the footnote!\footnote{%
+the answer in the footnote!\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{%
 The appropriate hypotheses are:
 
 $H_0$: the proportion who get the answer correct is the same
@@ -1520,7 +1482,6 @@ the average age is also expected to rise.
 That is, the majority of the population growth will
 happen in older age groups, and people will tend to live
 longer in the future across much of the world.}
-\end{exercise}
 
 % n <- 228; x <- 39; p <- x / n; n; p; 1 - p; x; n - x; sqrt(p*(1-p)/n)
 \newcommand{\roslingBsize}{228}
@@ -1533,7 +1494,8 @@ longer in the future across much of the world.}
 \newcommand{\roslingBse}{0.024}
 % n <- 228; x <- 34; (p <- x/n); (se <- sqrt(p * (1 - p) / n)); p + c(-1, 1) * 1.96 * se
 
-\begin{exercise}\label{roslingB_normality}
+\begin{exercisewrap}
+\begin{nexercise}\label{roslingB_normality}
 This time we took a larger sample of
 \roslingBsize{} college-educated adults,
 \roslingBpercent{}\% selected the correct answer to the
@@ -1541,7 +1503,10 @@ question in Guided
 Practice~\ref{roslingB_hypothesis_setup}: 2~billion.
 Can we apply the normal model to the sample proportion
 to construct a confidence interval in this
-case?\footnote{We check both conditions, which are satisfied,
+case?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We check both conditions, which are satisfied,
 so it is reasonable to use
 the normal distribution for $\hat{p}$: \\
 \textbf{Independence.} Since the data are from a simple
@@ -1551,9 +1516,9 @@ the normal distribution for $\hat{p}$: \\
     and $n(1 - \hat{p}) = \roslingBcountcomplement$.
     Both are greater than 10, so the success-failure condition
     is satisfied.}
-\end{exercise}
 
-\begin{example}{Compute a 95\% confidence interval for the
+\begin{examplewrap}
+\begin{nexample}{Compute a 95\% confidence interval for the
     fraction of college-educated adults who answered the
     children-in-2100 question correctly, and evaluate the
     hypotheses in Guided
@@ -1587,7 +1552,8 @@ the normal distribution for $\hat{p}$: \\
   different from random guessing. Because the entire interval
   is below 0.333, we can conclude college-educated adults
   do \emph{worse} than random guessing on this question.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 This data from this second question is not a fluke:
 Hans Rosling has several such questions
@@ -1640,41 +1606,50 @@ $H_0$ is actually true. A \term{Type~2 Error} is failing to
 reject the null hypothesis when the alternative is actually
 true.
 
-\begin{exercise} \label{whatAreTheErrorTypesInUSCourts}
+\begin{exercisewrap}
+\begin{nexercise} \label{whatAreTheErrorTypesInUSCourts}
 In a US court, the defendant is either innocent ($H_0$) or
 guilty ($H_A$).
 What does a Type~1 Error represent in this context?
 What does a Type~2 Error represent?
-Table~\ref{fourHTScenarios} may be useful.\footnote{If
+Table~\ref{fourHTScenarios} may be useful.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{If
   the court makes a Type~1 Error, this means the defendant
   is innocent ($H_0$ true) but wrongly convicted.
   A Type~2 Error means the court failed to reject $H_0$
   (i.e. failed to convict the person) when she was
   in fact guilty ($H_A$ true).}
-\end{exercise}
 
-\begin{exercise} \label{howToReduceType1ErrorsInUSCourts}
+\begin{exercisewrap}
+\begin{nexercise} \label{howToReduceType1ErrorsInUSCourts}
 How could we reduce the Type~1 Error rate in US courts?
 What influence would this have on the Type~2 Error
-rate?\footnote{To lower the Type~1 Error rate, we might
+rate?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{To lower the Type~1 Error rate, we might
   raise our standard for conviction from
   ``beyond a reasonable doubt'' to
   ``beyond a conceivable doubt'' so fewer people would
   be wrongly convicted. However, this would also make
   it more difficult to convict the people who are
   actually guilty, so we would make more Type~2 Errors.}
-\end{exercise}
 
-\begin{exercise} \label{howToReduceType2ErrorsInUSCourts}
+\begin{exercisewrap}
+\begin{nexercise} \label{howToReduceType2ErrorsInUSCourts}
 How could we reduce the Type~2 Error rate in US courts?
 What influence would this have on the Type~1 Error
-rate?\footnote{To lower the Type~2 Error rate, we want
+rate?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{To lower the Type~2 Error rate, we want
   to convict more guilty people. We could lower the
   standards for conviction from ``beyond a reasonable
   doubt'' to ``beyond a little doubt''. Lowering the bar
   for guilt will also result in more wrongful convictions,
   raising the Type~1 Error rate.}
-\end{exercise}
 
 \index{hypothesis testing!decision errors|)}
 
@@ -1725,13 +1700,6 @@ enable us to both better understand the strength of
 evidence and work in more complex data scenarios in
 later sections.
 
-%\begin{figure}[hht]
-%\centering
-%\includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/whyWeWantPValue/whyWeWantPValueProp}
-%\caption{It would be helpful to quantify the strength of the evidence against the null hypothesis. In this case, the evidence is extremely strong.}
-%\label{whyWeWantPValue}
-%\end{figure}
-
 
 
 \subsection{Formal testing using p-values}
@@ -1747,20 +1715,21 @@ alternative hypothesis.
 Statistical hypothesis testing almost always uses the
 p-value method rather than confidence intervals.
 
-\begin{termBox}{\tBoxTitle{p-value}
+\begin{onebox}{p-value}
   The \term{p-value}\index{hypothesis testing!p-value|textbf}
   is the probability of observing data at least as favorable
   to the alternative hypothesis as our current data set,
   if the null hypothesis were true. We typically use a summary
   statistic of the data, in this section the sample proportion,
-  to help compute the p-value and evaluate the hypotheses.}
-\end{termBox}
+  to help compute the p-value and evaluate the hypotheses.
+\end{onebox}
 
 %To apply the normal distribution framework in the context of a hypothesis test for a proportion, the independence and success-failure conditions must be satisfied. In a hypothesis test, the success-failure condition is checked using the null proportion: we verify $np_0$ and $n(1-p_0)$ are at least 10, where $p_0$ is the null value.
 
 \index{data!coal power support|(}
 
-\begin{example}{Pew Research asked a random sample of 1000 American
+\begin{examplewrap}
+\begin{nexample}{Pew Research asked a random sample of 1000 American
     adults whether they supported the increased usage of coal to
     produce energy.
     Set up hypotheses to evaluate whether
@@ -1777,7 +1746,8 @@ p-value method rather than confidence intervals.
     \item[$H_A$:] $p \neq 0.5$
   \end{description}
   In this case, the null value is $p_0 = 0.5$.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 \newcommand{\pewcoalpollsize}{1000}
 \newcommand{\pewcoalpollprop}{0.370}
@@ -1798,7 +1768,8 @@ single proportion case.
 These changes aren't dramatic, but pay close attention
 to how we use the null value, $p_0$.
 
-\begin{example}{Pew Research's sample found that
+\begin{examplewrap}
+\begin{nexample}{Pew Research's sample found that
     \pewcoalpollpercent{}\%
     of American adults support increased usage of coal.
     We now wonder, does \pewcoalpollpercent{}\% represent
@@ -1854,9 +1825,10 @@ to how we use the null value, $p_0$.
   and a standard error of \pewcoalpollnullse{}.
   This distribution is shown in
   Figure~\ref{normal_dist_mean_500_se_016}.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{figure}[hht]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/normal_dist_mean_500_se_016/normal_dist_mean_500_se_016}
 \caption{
@@ -1865,14 +1837,13 @@ to how we use the null value, $p_0$.
 \label{normal_dist_mean_500_se_016}
 \end{figure}
 
-\begin{tipBox}{
-  \tipBoxTitle{Checking success-failure and computing
+\begin{onebox}{Checking success-failure and computing
       $\mathbf{SE_{\hat{p}}}$ for a hypothesis test}
   When using the p-value method to evaluate a hypothesis test,
   we check the conditions for $\hat{p}$ and construct the
   standard error using the null value, $p_0$, instead of using
-  the sample proportion.}
-\end{tipBox}
+  the sample proportion.
+\end{onebox}
 
 When we identify the sampling distribution under the null hypothesis,
 it has a special name: the \term{null distribution}.
@@ -1885,7 +1856,8 @@ to our point estimate.
 %In some cases, as in this particular instance,
 %the null distribution is a normal distribution.
 
-\begin{example}{If the null hypothesis were true,
+\begin{examplewrap}
+\begin{nexample}{If the null hypothesis were true,
     determine the chance of finding $\hat{p}$ at least
     as far into the tails as \pewcoalpollprop{}
     under the null distribution,
@@ -1927,9 +1899,10 @@ to our point estimate.
   The p-value represents the probability of observing
   such an extreme sample proportion by chance, if the null
   hypothesis were true.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{figure}[hht]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/normal_dist_mean_500_se_016/normal_dist_mean_500_se_016_with_upper}
 \caption{
@@ -1946,7 +1919,8 @@ to our point estimate.
 
 
 
-\begin{example}{How should we evaluate the hypotheses using the
+\begin{examplewrap}
+\begin{nexample}{How should we evaluate the hypotheses using the
     p-value of 0.0004? Use the standard significance level of
     $\alpha = 0.05$.}
   If the null hypothesis were true, there's a smaller than 0.04\%
@@ -1975,12 +1949,12 @@ to our point estimate.
   The data indicate the direction of the difference:
   a majority of Americans do not support
   expanding the use of coal-powered energy.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 \index{data!coal power support|)}
 
-\begin{tipBox}{
-  \tipBoxTitle{Compare the p-value to $\mathbf{\alpha}$ to
+\begin{onebox}{Compare the p-value to $\mathbf{\alpha}$ to
       evaluate $\mathbf{H_0}$}
   When the p-value is less than the significance level, $\alpha$,
   reject $H_0$. We would report a conclusion that the data provide
@@ -1989,8 +1963,8 @@ to our point estimate.
   and report that we do not have sufficient evidence to reject the
   null hypothesis. \\[2mm]
   In either case, it is important to describe the conclusion
-  in the context of the data.}
-\end{tipBox}
+  in the context of the data.
+\end{onebox}
 
 
 
@@ -2000,13 +1974,16 @@ to our point estimate.
 
 \index{data!nuclear arms reduction|(}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Do a majority of American support or oppose nuclear arms
 reduction? Set up hypotheses to evaluate this
-question.\footnote{We would like to understand if a majority
+question.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We would like to understand if a majority
   supports or opposes, or ultimately, if there is no difference.
   $H_0: p = 0.50$. $H_A: p \neq 0.50$.}
-\end{exercise}
 
 \newcommand{\gallupnucleararmspollsize}{1028}
 \newcommand{\gallupnucleararmspollprop}{0.56}
@@ -2018,11 +1995,12 @@ question.\footnote{We would like to understand if a majority
 \newcommand{\gallupnucleararmspollnullvalue}{0.5}
 \newcommand{\gallupnucleararmspollnullse}{0.0156}
 
-\begin{example}{A simple random sample of
+\begin{examplewrap}
+\begin{nexample}{A simple random sample of
     \gallupnucleararmspollsize{} US adults
     in March 2013 found that
     \gallupnucleararmspollpercent{}\% support nuclear arms
-    reduction.\footnote{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}}
+    reduction.\footnotemark
     Does this provide convincing evidence that a majority
     of Americans supported nuclear arms reduction at the
     5\% significance level?} \label{NuclearArmsInferenceExample}
@@ -2072,21 +2050,19 @@ question.\footnote{We would like to understand if a majority
   The poll provides convincing evidence that a majority
   of Americans supported nuclear arms reduction efforts
   in March 2013.
-\end{example}
+\end{nexample}
+\end{examplewrap}
+\footnotetext{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}}
 
 \index{data!nuclear arms reduction|)}
 
-\begin{termBox}{\tBoxTitle{Hypothesis testing
-    for a single proportion}
+\begin{onebox}{Hypothesis testing for a single proportion}
   Once you've determined a one-proportion hypothesis test is the
   correct procedure, there are four steps to completing the
   test:
   \begin{description}
-%  \item[Choose.]
   \item[Prepare.]
       Identify the parameter of interest,
-%      select the method to apply
-%      (e.g. confidence interval or hypothesis test),
       list out hypotheses,
       and identify $\hat{p}$ and $n$.
   \item[Check.] Verify the conditions
@@ -2099,21 +2075,12 @@ question.\footnote{We would like to understand if a majority
   \item[Conclude.] Evaluate the hypotheses by comparing the p-value
       to $\alpha$, and provide a conclusion in the context of the
       problem.
-  \end{description}}
-\end{termBox}
+  \end{description}
+\end{onebox}
 
 \Comment{If the box above seems useful,
     more of these can be added to draw connections across
     different methods.}
-
-%\begin{termBox}{\tBoxTitle{p-value as a tool in hypothesis testing}
-%The smaller the p-value, the stronger the data favor $H_A$ over $H_0$. A small p-value (usually $<0.05$) corresponds to sufficient evidence to reject $H_0$ in favor of $H_A$.}
-%\index{hypothesis testing!p-value|)}
-%\end{termBox}
-
-%\begin{tipBox}{\tipBoxTitle{It is useful to first draw a picture to find the p-value}
-%It is useful to draw a picture of the distribution of $\bar{x}$ as though $H_0$ was true (i.e.~$\mu$~equals the null value), and shade the region (or regions) of sample means that are at least as favorable to the alternative hypothesis. These shaded regions represent the p-value.}
-%\end{tipBox}
 
 \CalculatorVideos{hypothesis tests for a single proportion}
 
@@ -2154,15 +2121,10 @@ We'll discuss this topic a bit more in
 Sections~\ref{} and~\ref{}.
 \Comment{Fix this reference.}
 
-\begin{tipBox}{\tipBoxTitle[]{Significance levels should
-    reflect consequences of errors}
-  The significance level selected for a test should reflect
-  the consequences associated with Type~1 and Type~2 Errors.}
-\end{tipBox}
-
 \newcommand{\doorhingeflawrate}{0.2}
 
-\begin{example}{A car manufacturer is considering switching
+\begin{examplewrap}
+\begin{nexample}{A car manufacturer is considering switching
     to a new, higher quality piece of equipment that constructs
     vehicle door hinges.
     They figure that they will save money in the long run
@@ -2185,9 +2147,11 @@ Sections~\ref{} and~\ref{}.
   A significance level of 0.05 seems reasonable since
   neither a Type~1 or Type~2 Error should be dangerous
   or (relatively) much more expensive.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{example}{The same car manufacturer is considering
+\begin{examplewrap}
+\begin{nexample}{The same car manufacturer is considering
     a slightly more expensive supplier for parts related
     to safety, not door hinges.
     If the durability of these
@@ -2202,9 +2166,11 @@ Sections~\ref{} and~\ref{}.
   evidence of increased safety is only moderately strong.
   A slightly larger significance level,
   such as $\alpha=0.10$, might be appropriate.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 A part inside of a machine is very expensive to replace.
 However, the machine usually functions properly even if
 this part is broken, so the part is replaced only if we
@@ -2212,7 +2178,10 @@ are extremely certain it is broken based on a series of
 measurements.
 Identify appropriate hypotheses for this test
 (in plain language) and suggest an appropriate significance
-level.\footnote{Here
+level.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Here
   the null hypothesis is that the part is not broken,
   and the alternative is that it is broken.
   If we don't have sufficient evidence to reject $H_0$,
@@ -2223,18 +2192,17 @@ level.\footnote{Here
   Thus, we should require very strong evidence against
   $H_0$ before we replace the part.
   Choose a small significance level, such as $\alpha=0.01$.}
-\end{exercise}
 
-\begin{termBox}{\tBoxTitle{Why is 0.05 the default?}
-The $\alpha = 0.05$ threshold is most common. But why?
-Maybe the standard level should be smaller, or perhaps larger.
-If you're a little puzzled, you're reading with an
-extra critical eye -- good job!
-We've made a 5-minute task to help clarify \emph{why 0.05}:
-\begin{center}
-\oiRedirect{textbook-why05}{www.openintro.org/why05}
-\end{center}}
-\end{termBox}
+\begin{onebox}{Why is 0.05 the default?}
+  The $\alpha = 0.05$ threshold is most common. But why?
+  Maybe the standard level should be smaller, or perhaps larger.
+  If you're a little puzzled, you're reading with an
+  extra critical eye -- good job!
+  We've made a 5-minute task to help clarify \emph{why 0.05}:
+  \begin{center}
+  \oiRedirect{textbook-why05}{www.openintro.org/why05}
+  \end{center}
+\end{onebox}
 
 
 \index{significance level|)}
@@ -2281,7 +2249,8 @@ However, one-sided tests aren't all sunshine and rainbows:
 the heavy price paid is that any interesting findings
 in the opposite direction must be disregarded.
 
-\begin{example}{
+\begin{examplewrap}
+\begin{nexample}{
     In Section~\ref{basicExampleOfStentsAndStrokes},
     we encountered an example where doctors were interested
     in determining whether stents would help people who had
@@ -2299,7 +2268,8 @@ in the opposite direction must be disregarded.
   test in this situation, and had they done this,
   they would have limited their ability to identify
   potential harm to patients.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 Example~\ref{basicExampleOfStentsAndStrokesOneSided}
 highlights that using a one-sided hypothesis creates
@@ -2344,11 +2314,12 @@ this book. \Comment{If planning to add some EOCEs
 that touch on this topic, then will want to tweak the
 text here.}
 
-\begin{example}{
-    \Comment{The current plan is to cut this example.
-        @Mine, what do you think about making this
-        example into an odd-numbered EOCE?}
+\Comment{The current plan is to cut this example.
+    @Mine, what do you think about making this
+    example into an odd-numbered EOCE?}
 
+\begin{examplewrap}
+\begin{nexample}{
     Why can't we simply run a one-sided
     test that goes in the direction of the data?}
   We've been building a careful framework that
@@ -2380,41 +2351,8 @@ text here.}
   not being careful about when to use one-sided tests
   effectively undermines the methods we're working
   so hard to develop and utilize.
-\end{example}
-
-
-
-
-%\begin{example}{}
-%\end{example}
-
-%While it is easy to identify many situations where
-%a one-sided test is tempting,
-%%it really is only
-%%appropriate in situations where a single direction
-%%is possible.
-%it is more difficult
-%to evaluate if it is actually appropriate to use in
-%any given situation.
-
-
-%\subsection{OLD CONTENT TO PULL FROM}
-%
-%The ideas below review the process of evaluating hypothesis tests with p-values:
-%\begin{itemize}
-%\setlength{\itemsep}{0mm}
-%\item The null hypothesis represents a skeptic's position or a position of no difference. We reject this position only if the evidence strongly favors $H_A$.
-%\item A small p-value means that if the null hypothesis is true, there is a low probability of seeing a point estimate at least as extreme as the one we saw. We interpret this as strong evidence in favor of the alternative.
-%\item We reject the null hypothesis if the p-value is smaller than the significance level, $\alpha$, which is usually 0.05. Otherwise, we fail to reject $H_0$.
-%\item We should always state the conclusion of the hypothesis test in plain language so folks who aren't data scientists can also understand the results.
-%\end{itemize}
-%
-%The p-value is constructed in such a way that we can directly compare it to the significance level ($\alpha$) to determine whether or not to reject $H_0$. This method ensures that the Type~1 Error rate does not exceed the significance level standard. 
-%
-%\begin{exercise}
-%If the null hypothesis is true, how often should the p-value be less than 0.05?\footnote{About 5\% of the time. If the null hypothesis is true, then the data only has a 5\% chance of being in the 5\% of data most favorable to $H_A$.}
-%\end{exercise}
+\end{nexample}
+\end{examplewrap}
 
 \index{hypothesis testing|)}
-
 

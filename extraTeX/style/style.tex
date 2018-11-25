@@ -13,7 +13,7 @@
 
 %-------------------------------------------------------------
 % 1 Page Parameters
-% 1.1 Amazon
+% 1.1
 \setlength\paperheight{11in}
 \newcommand{\officialtextheight}{9.7in}
 \setlength\textheight{\officialtextheight}
@@ -22,6 +22,7 @@
 \setlength\textwidth{\officialtextwidth}
 \newcommand{\officialvoffset}{-0.6in}
 \setlength\voffset{\officialvoffset}
+\renewcommand{\baselinestretch}{1.0}
 % 1.2 Margin Size
 % 1.2.1 Slim
 %\setlength\hoffset{0.25in}
@@ -110,7 +111,7 @@
 \newlength{\nexampleAboveBar}
 \newlength{\nexampleBelowBar}
 \setlength{\nexampleAboveBar}{-1mm}
-\setlength{\nexampleBelowBar}{1mm}
+\setlength{\nexampleBelowBar}{-1mm}
 % 4.3 Chapter Declarations
 \newcommand\includechapter[2]{
   \setcounter{chapter}{#1}
@@ -122,7 +123,7 @@
 
 
 %-------------------------------------------------------------
-% 5 Section Coloring
+% 5 Section Headers
 % 5.1 Chapter
 \titleformat{\chapter}[display]
 {\color{oiB}\normalfont\Huge\bfseries\raggedright}{\chaptertitlename\
@@ -131,12 +132,32 @@
 \let\oldsection\section
 \renewcommand\section{\clearpage\oldsection}
 \titleformat{\section}
-{\color{oiB}\normalfont\huge\bfseries}
-{\color{oiB}\thesection}{1em}{}
-% 5.3 Subsection
+    {{\color{oiR}\titlerule[1mm]}\addvspace{1mm}\color{oiB}\normalfont\LARGE\bfseries%
+        \fontfamily{phv}%
+        \selectfont}
+    {\color{oiB}\thesection \quad #1}
+    {1em}
+    {}
+    [{\color{oiR}\titlerule[1mm]}]
+\titlespacing{\section}
+   {0pt}% left
+   {0pt}% before sep
+   {\baselineskip}% after sep% 5.3 Subsection
 \titleformat{\subsection}
-{\color{oiB}\normalfont\large\bfseries\Large}%\MakeUppercase}
-{\color{oiB}\thesubsection}{1em}{}
+    {{\color{grayDark}\titlerule[0.1mm]}\vspace{2mm}\color{oiB}\normalfont\large%
+        \bfseries\fontfamily{phv}%
+        \selectfont}
+    {\color{oiB}\thesubsection}
+    {1em}
+    {#1}
+\titlespacing{\subsection}
+   {0pt}% left
+   {8mm}% before sep
+   {\baselineskip}% after sep% 5.3 Subsection
+% 5.4 Section Introduction
+\newcommand{\sectionintro}[1]{\begin{spacing}{1.1}\large
+#1
+\end{spacing}}
 
 
 %-------------------------------------------------------------
@@ -173,9 +194,9 @@
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
 \newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=os3_pdf}{#2}}
 \newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera}~}
-\newcommand{\CalculatorVideos}[1]{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
-Videos covering #1 using TI and Casio graphing calculators are available at \mbox{\oiRedirect{textbook-openintro_videos}{openintro.org/videos}}.}
-\end{tipBox}}
+\newcommand{\CalculatorVideos}[1]{}%{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
+%Videos covering #1 using TI and Casio graphing calculators are available at \mbox{\oiRedirect{textbook-openintro_videos}{openintro.org/videos}}.}
+%\end{tipBox}}
 \newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
 \newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
 \newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
@@ -231,8 +252,7 @@ Videos covering #1 using TI and Casio graphing calculators are available at \mbo
 \newcommand\theexample{\thechapter.\arabic{equation}}
 \newenvironment{example}[1]
 {\begin{itemize}
-\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Example \theexample}%\hspace{0.3cm}
-
+\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Example \theexample}
 
 #1\vspace{\exampleAboveBar}
 
@@ -250,24 +270,24 @@ Videos covering #1 using TI and Casio graphing calculators are available at \mbo
 \def\warningsymbol{\protect\marginsymbolhelper}
 \def\marginsymbolhelper{\tabto*{0mm} {\dbend} \tabto*{0mm}}
 \newcommand{\exampleicon}[1]{\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example}\hspace{2mm}\ }
-\newenvironment{gpewrapper}[2][5mm]{\addvspace{4mm}
+\newenvironment{gpewrapper}[1]{\addvspace{4mm}
 
-%\ifthenelse{\isodd{\value{page}}}{\reversemarginpar}{\normalmarginpar}
-
-%\marginpar[\exampleicon{#1}]{\exampleicon{#1}}
-\noindent\hspace{-4.2mm}\begin{minipage}[b]{\textwidth+7.75mm}\begin{mdframed}[%
+\noindent\hspace{-12.45mm}\begin{minipage}[c]{\textwidth+8mm}
+\begin{minipage}[c]{8.4mm}
+\hspace{0.5mm}\includegraphics[width=5mm]{extraTeX/icons/#1}
+\end{minipage}\begin{minipage}[c]{\textwidth-0.45mm}\begin{mdframed}[%
     topline=false,
     rightline=false,
     bottomline=false,
     linewidth=0.5mm,
-    linecolor=oiB]}{\end{mdframed}\end{minipage}
+    linecolor=oiB]}{\end{mdframed}\end{minipage}\end{minipage}
 
     \addvspace{4mm}}
-\newenvironment{examplewrap}[1][5mm]
-    {\begin{gpewrapper}[#1]{}}
+\newenvironment{examplewrap}
+    {\begin{gpewrapper}{example}}
     {\end{gpewrapper}}
-\newenvironment{exercisewrap}[1][5mm]
-    {\begin{gpewrapper}[#1]{}}
+\newenvironment{exercisewrap}
+    {\begin{gpewrapper}{guided_practice}}
     {\end{gpewrapper}}
 % 9.2.3 Example Title
 \newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
@@ -284,7 +304,9 @@ Videos covering #1 using TI and Casio graphing calculators are available at \mbo
 
 {\color{examplegray}\rule{20mm}{0.1mm}}
 
-\addvspace{\nexampleBelowBar}}{}
+\addvspace{\nexampleBelowBar}
+
+\setlength{\parskip}{2mm}}{}
 \newenvironment{nexercise}{\addvspace{6mm}
 
 \refstepcounter{equation}\exercisetitle{\theexample}}{}

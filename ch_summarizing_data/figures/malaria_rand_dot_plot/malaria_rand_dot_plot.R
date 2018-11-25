@@ -1,7 +1,7 @@
 library(openintro)
 library(dplyr)
 
-set.seed(4)
+set.seed(3)
 
 exp_gp  <- rep(c("vaccine", "placebo"), c(14, 6))
 outcome <- c(rep(c('infection', 'no infection'), c(5, 9)),
