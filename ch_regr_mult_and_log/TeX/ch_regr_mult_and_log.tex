@@ -86,18 +86,23 @@ Results of this model are shown in Figure~\ref{singleVarModelsForPriceUsingCond}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.725\textwidth]{ch_regr_mult_and_log/figures/marioKartSingle/marioKartSingle}
+\Figure{0.725}{marioKartSingle}
 \caption{Scatterplot of the total auction price against the game's condition. The least squares line is also shown.}
 \label{marioKartSingle}
 \end{figure}
 
-\begin{exercise}
-Examine Figure~\ref{marioKartSingle}. Does the linear model seem reasonable?\footnote{Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+Examine Figure~\ref{marioKartSingle}. Does the linear model seem reasonable?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.}
 
-\begin{example}{Interpret the coefficient for the game's condition in the model. Is this coefficient significantly different from 0?}
+\begin{examplewrap}
+\begin{nexample}{Interpret the coefficient for the game's condition in the model. Is this coefficient significantly different from 0?}
 Note that \var{cond\_\hspace{0.3mm}new} is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra \$10.90 for those games that are new versus those that are used. (See Section~\ref{categoricalPredictorsWithTwoLevels} for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Figure~\ref{singleVarModelsForPriceUsingCond}, we can see that the p-value for \var{cond\_\hspace{0.3mm}new} is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 \subsection{Including and assessing many variables in a model}
 \label{includingAndAssessingManyVariablesInAModel}
@@ -147,35 +152,49 @@ Here there are 141 residuals, one for each observation. We typically use a compu
 \end{figure}
 %library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); g <-lm(totalPr ~ cond + stockPhoto + duration + wheels, d)
 
-\begin{termBox}{\tBoxTitle{Multiple regression model}
+\begin{onebox}{Multiple regression model}
 A multiple regression model is a linear model with many predictors. In general, we write the model as
 \begin{align*}
 \hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k %+ \epsilon
 \end{align*}
-when there are $k$ predictors. We often estimate the $\beta_i$ parameters using a computer.\vspace{1mm}}
-\end{termBox}
+when there are $k$ predictors. We often estimate the $\beta_i$ parameters using a computer.
+\end{onebox}
 
-\begin{exercise} \label{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}
-Write out the model in Equation~\eqref{eqForMultipleRegrOfTotalPrForAllPredictors} using the point estimates from Figure~\ref{outputForMultipleRegrOutputForAllPredictors}. How many predictors are there in this model?\footnote{$\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}
+Write out the model in Equation~\eqref{eqForMultipleRegrOfTotalPrForAllPredictors} using the point estimates from Figure~\ref{outputForMultipleRegrOutputForAllPredictors}. How many predictors are there in this model?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.}
 
-\begin{exercise}
-What does $\beta_4$, the coefficient of variable $x_4$ (Wii wheels), represent? What is the point estimate of $\beta_4$?\footnote{It is the average difference in auction price for each additional Wii wheel included when holding the other variables constant. The point estimate is $b_4 = 7.29$.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+What does $\beta_4$, the coefficient of variable $x_4$ (Wii wheels), represent? What is the point estimate of $\beta_4$?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{It is the average difference in auction price for each additional Wii wheel included when holding the other variables constant. The point estimate is $b_4 = 7.29$.}
 
-\begin{exercise} \label{computeMultipleRegressionResidualForMarioKart}
-Compute the residual of the first observation in Table~\ref{marioKartDataMatrix} on page~\pageref{marioKartDataMatrix} using the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.\footnote{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{computeMultipleRegressionResidualForMarioKart}%
+Compute the residual of the first observation in Table~\ref{marioKartDataMatrix} on page~\pageref{marioKartDataMatrix} using the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.}
 
-\begin{example}{We estimated a coefficient for \var{cond\_\hspace{0.3mm}new} in Section~\ref{twoSingleVariableModelsForMarioKartData} of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?} \label{colinearityOfCondNewAndStockPhoto}
+\begin{examplewrap}
+\begin{nexample}{We estimated a coefficient for \var{cond\_\hspace{0.3mm}new} in Section~\ref{twoSingleVariableModelsForMarioKartData} of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?} \label{colinearityOfCondNewAndStockPhoto}
 If we examined the data carefully, we would see that some predictors are correlated. For instance, when we estimated the connection of the outcome \var{price} and predictor \var{cond\_\hspace{0.3mm}new} using simple linear regression, we were unable to control for other variables like the number of Wii wheels included in the auction. That model was biased by the confounding variable \var{wheels}. When we use both variables, this particular underlying and unintentional bias is reduced or eliminated (though bias from other confounding variables may still remain).
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 Example~\ref{colinearityOfCondNewAndStockPhoto} describes a common issue in multiple regression: correlation among predictor variables. We say the two predictor variables are \term{collinear} (pronounced as \emph{co-linear}) when they are correlated, and this collinearity complicates model estimation. While it is impossible to prevent collinearity from arising in observational data, experiments are usually designed to prevent predictors from being collinear.
 
-\begin{exercise}
-The estimated value of the intercept is 36.21, and one might be tempted to make some interpretation of this coefficient, such as, it is the model's predicted price when each of the variables take value zero: the game is used, the primary image is not a stock photo, the auction duration is zero days, and there are no wheels included. Is there any value gained by making this interpretation?\footnote{Three of the variables (\var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels}) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+The estimated value of the intercept is 36.21, and one might be tempted to make some interpretation of this coefficient, such as, it is the model's predicted price when each of the variables take value zero: the game is used, the primary image is not a stock photo, the auction duration is zero days, and there are no wheels included. Is there any value gained by making this interpretation?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Three of the variables (\var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels}) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.}
 
 
 \subsection{Adjusted $R^2$ as a better estimate of explained variance}
@@ -189,30 +208,39 @@ R^2 = 1 - \frac{\text{variability in residuals}}{\text{variability in the outcom
 \end{align*}
 where $e_i$ represents the residuals of the model and $y_i$ the outcomes. This equation remains valid in the multiple regression framework, but a small enhancement can often be even more informative.
 
-\begin{exercise} \label{computeUnadjustedR2ForAllPredictorsInMarioKart}
-The variance of the residuals for the model given in Guided Practice~\ref{computeMultipleRegressionResidualForMarioKart} is 23.34, and the variance of the total price in all the auctions is 83.06. Calculate $R^2$ for this model.\footnote{$R^2 = 1 - \frac{23.34}{83.06} = 0.719$.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{computeUnadjustedR2ForAllPredictorsInMarioKart}
+The variance of the residuals for the model given in Guided Practice~\ref{computeMultipleRegressionResidualForMarioKart} is 23.34, and the variance of the total price in all the auctions is 83.06. Calculate $R^2$ for this model.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$R^2 = 1 - \frac{23.34}{83.06} = 0.719$.}
 
 This strategy for estimating $R^2$ is acceptable when there is just a single variable. However, it becomes less helpful when there are many variables. The regular $R^2$ is a less estimate of the amount of variability explained by the model. To get a better estimate, we use the adjusted $R^2$.
 
-\begin{termBox}{\tBoxTitle{Adjusted $\mathbf{R^2}$ as a tool for model assessment}
+\begin{onebox}{Adjusted $\mathbf{R^2}$ as a tool for model assessment}
 The \termsub{adjusted $\mathbf{R^2}$}{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)} is computed as
 \begin{align*}
 R_{adj}^{2} = 1-\frac{Var(e_i) / (n-k-1)}{Var(y_i) / (n-1)}
 	= 1-\frac{Var(e_i)}{Var(y_i)} \times \frac{n-1}{n-k-1}
 \end{align*}
-where $n$ is the number of cases used to fit the model and $k$ is the number of predictor variables in the model.}
-\end{termBox}
+where $n$ is the number of cases used to fit the model and $k$ is the number of predictor variables in the model.
+\end{onebox}
 
 Because $k$ is never negative, the adjusted $R^2$ will be smaller -- often times just a little smaller -- than the unadjusted $R^2$. The reasoning behind the adjusted $R^2$ lies in the \termsub{degrees of freedom}{degrees of freedom (df)!regression} associated with each variance.\footnote{In multiple regression, the degrees of freedom associated with the variance of the estimate of the residuals is $n-k-1$, not $n-1$. For instance, if we were to make predictions for new data using our current model, we would find that the unadjusted $R^2$ is an overly optimistic estimate of the reduction in variance in the response, and using the degrees of freedom in the adjusted $R^2$ formula helps correct this bias.}
 
-\begin{exercise}
-There were $n=141$ auctions in the \data{mario\_\hspace{0.3mm}kart} data set and $k=4$ predictor variables in the model. Use $n$, $k$, and the variances from Guided Practice~\ref{computeUnadjustedR2ForAllPredictorsInMarioKart} to calculate $R_{adj}^2$ for the Mario Kart model.\footnote{$R_{adj}^2 = 1 - \frac{23.34}{83.06}\times \frac{141-1}{141-4-1} = 0.711$.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+There were $n=141$ auctions in the \data{mario\_\hspace{0.3mm}kart} data set and $k=4$ predictor variables in the model. Use $n$, $k$, and the variances from Guided Practice~\ref{computeUnadjustedR2ForAllPredictorsInMarioKart} to calculate $R_{adj}^2$ for the Mario Kart model.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$R_{adj}^2 = 1 - \frac{23.34}{83.06}\times \frac{141-1}{141-4-1} = 0.711$.}
 
-\begin{exercise}
-Suppose you added another predictor to the model, but the variance of the errors $Var(e_i)$ didn't go down. What would happen to the $R^2$? What would happen to the adjusted $R^2$?\hspace{0.7mm}\footnote{The unadjusted $R^2$ would stay the same and the adjusted $R^2$ would go down.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+Suppose you added another predictor to the model, but the variance of the errors $Var(e_i)$ didn't go down. What would happen to the $R^2$? What would happen to the adjusted $R^2$?\hspace{0.7mm}\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The unadjusted $R^2$ would stay the same and the adjusted $R^2$ would go down.}
 
 Adjusted $R^2$ could have been used in Chapter~\ref{linRegrForTwoVar}. However, when there is only $k = 1$ predictors, adjusted $R^2$ is very close to regular $R^2$, so this nuance isn't typically important when considering only one predictor.
 
@@ -283,9 +311,11 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
 \label{marioKartMultipleRegressionModelAllButDuration}
 \end{figure}
 
-\begin{example}{Which of the two models is better?}
+\begin{examplewrap}
+\begin{nexample}{Which of the two models is better?}
 We compare the adjusted $R^2$ of each model to determine which to choose. Since the first model has an $R^2_{adj}$ smaller than the $R^2_{adj}$ of the second model, we prefer the second model to the first.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 Will the model without \var{duration} be better than the model with \var{duration}? We~cannot know for sure, but based on the adjusted $R^2$, this is our best assessment.
 
@@ -296,7 +326,8 @@ Two common strategies for adding or removing variables in a multiple regression 
 
 \termsub{Backward elimination}{backward elimination} starts with the model that includes all potential predictor variables. Variables are eliminated one-at-a-time from the model until we cannot improve the adjusted $R^2$. The strategy within each elimination step is to eliminate the variable that leads to the largest improvement in adjusted $R^2$.
 
-\begin{example}{Results corresponding to the \emph{full model} for the \data{mario\_\hspace{0.3mm}kart} data are shown in Figure~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
+\begin{examplewrap}
+\begin{nexample}{Results corresponding to the \emph{full model} for the \data{mario\_\hspace{0.3mm}kart} data are shown in Figure~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
 Our baseline adjusted $R^2$ from the full model is $R^2_{adj} = 0.7108$, and we need to determine whether dropping a predictor will improve the adjusted $R^2$. To check, we fit four models that each drop a different predictor, and we record the adjusted $R^2$ from each:
 \begin{center}
 \begin{tabular}{lllll}
@@ -332,11 +363,13 @@ None of these models lead to an improvement in adjusted $R^2$, so we do not elim
 \hat{y} \ &= \ b_0 + b_1x_1 + b_2x_2 + b_4x_4 \\
 \widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\_\hspace{0.3mm}new}} + 1.12 \times \text{\var{stock\_\hspace{0.3mm}photo}} + 7.30 \times \text{\var{wheels}}
 \end{align*}
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 The \term{forward selection} strategy is the reverse of the backward elimination technique. Instead of eliminating variables one-at-a-time, we add variables one-at-a-time until we cannot find any variables that improve the model (as measured by adjusted $R^2$).
 
-\begin{example}{Construct a model for the \data{mario\_\hspace{0.3mm}kart} data set using the forward selection strategy.}\label{forwardEliminationExampleWMarioKartData}
+\begin{examplewrap}
+\begin{nexample}{Construct a model for the \data{mario\_\hspace{0.3mm}kart} data set using the forward selection strategy.}\label{forwardEliminationExampleWMarioKartData}
 We start with the model that includes no variables. Then we fit each of the possible models with just one variable. That is, we fit the model including just \var{cond\_\hspace{0.3mm}new}, then the model including just \var{stock\_\hspace{0.3mm}photo}, then a model with just \var{duration}, and a model with just \var{wheels}. Each of the four models provides an adjusted $R^2$ value:
 \begin{center}
 \begin{tabular}{lllll}
@@ -384,11 +417,12 @@ The model adding \var{stock\_\hspace{0.3mm}photo} improved adjusted $R^2$ (0.712
 
 Because we have again added a predictor, we check whether adding the last variable, \var{duration}, will improve adjusted $R^2$. We compare the adjusted $R^2$ for the model with \var{duration} and the other three predictors (0.7108) to the model that only considers \var{wheels}, \var{cond\_\hspace{0.3mm}new}, and \var{stock\_\hspace{0.3mm}photo} (0.7128). Adding \var{duration} does not improve the adjusted $R^2$, so we do not add it to the model, and we have arrived at the same model that we identified from backward elimination.
 
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{termBox}{\tBoxTitle{Model selection strategies}
-Backward elimination begins with the largest model and eliminates variables one-by-one until we are satisfied that all remaining variables are important to the model. Forward selection starts with no variables included in the model, then it adds in variables according to their importance until no other important variables are found.}
-\end{termBox}
+\begin{onebox}{Model selection strategies}
+Backward elimination begins with the largest model and eliminates variables one-by-one until we are satisfied that all remaining variables are important to the model. Forward selection starts with no variables included in the model, then it adds in variables according to their importance until no other important variables are found.
+\end{onebox}
 
 There is no guarantee that backward elimination and forward selection will arrive at the same final model. If both techniques are tried and they arrive at different models, we choose the model with the larger $R_{adj}^2$; other tie-break options exist but are beyond the scope of this book.
 
@@ -402,31 +436,20 @@ In backward elimination, we would identify the predictor corresponding to the la
 
 In forward selection with p-values, we reverse the process. We begin with a model that has no predictors, then we fit a model for each possible predictor, identifying the model where the corresponding predictor's p-value is smallest. If that p-value is smaller than $\alpha = 0.05$, we add it to the model and repeat the process, considering whether to add more variables one-at-a-time. When none of the remaining predictors can be added to the model and have a p-value less than 0.05, then we stop adding variables and the current model would be our best-fitting model.
 
-\begin{exercise}
-Examine Figure~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}, which considers the model including the \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnote{The \var{stock\_\hspace{0.3mm}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\_\hspace{0.3mm}photo} from the model.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+Examine Figure~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}, which considers the model including the \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The \var{stock\_\hspace{0.3mm}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\_\hspace{0.3mm}photo} from the model.}
 
 While the adjusted $R^2$ and p-value approaches are similar, they sometimes lead to different models, with the adjusted $R^2$ approach tending to include more predictors in the final model. For example, if we had used the p-value approach with the auction data, we would not have included the \var{stock\_\hspace{0.3mm}photo} predictor in the final model.
 
-\begin{tipBox}{\tBoxTitle{When to use the adjusted $R^2$}
-When the sole goal is to improve prediction accuracy, use adjusted $R^2$. This is commonly the case in machine learning applications.}
-\end{tipBox}
+\begin{onebox}{Adjusted $\mathbf{R^2}$ vs p-value approach}
+When the sole goal is to improve prediction accuracy, use adjusted $R^2$. This is commonly the case in machine learning applications.\vspace{3mm}
 
-\begin{tipBox}{\tBoxTitle{When to use the p-value approach}
-When we care about understanding which variables are statistically significant predictors of the response, or if there is interest in producing a simpler model at the potential cost of a little prediction accuracy, then the p-value approach is preferred.\\[-2mm]
-
-When there are many predictors of particular interested,
-it may be useful to use a
-\emph{multiple comparison}\index{multiple comparison}
-correction.
-This topic and one way to approach this situation
-is discussed in
-Section~\ref{multipleComparisonsAndControllingTheType1ErrorRate}.}
-\end{tipBox}
-
-\Comment{The two tip boxes above previously were one box,
-    and the discussion of multiple comparison correction
-    in the second box was added.}
+When we care about understanding which variables are statistically significant predictors of the response, or if there is interest in producing a simpler model at the potential cost of a little prediction accuracy, then the p-value approach is preferred.
+\end{onebox}
 
 Regardless of whether you use adjusted $R^2$ or the p-value approach, or if you use the backward elimination of forward selection strategy, our job is not done after variable selection. We must still verify the model conditions are reasonable.
 
@@ -461,26 +484,30 @@ generally depend on the following four assumptions:
 \item[Normal probability plot.] A normal probability plot of the residuals is shown in Figure~\ref{mkDiagnosticNormalQuantilePlot}. While the plot exhibits some minor irregularities, there are no outliers that might be cause for concern. In a normal probability plot for residuals, we tend to be most worried about residuals that appear to be outliers, since these indicate long tails in the distribution of residuals.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.71\textwidth]{ch_regr_mult_and_log/figures/marioKartDiagnostics/mkDiagnosticNormalQuantilePlot}
-\caption{A normal probability plot of the residuals is helpful in identifying observations that might be outliers.}
-\label{mkDiagnosticNormalQuantilePlot}
+  \centering
+  \Figures{0.71}
+      {marioKartDiagnostics}
+      {mkDiagnosticNormalQuantilePlot}
+  \caption{A normal probability plot of the residuals is helpful in identifying observations that might be outliers.}
+  \label{mkDiagnosticNormalQuantilePlot}
 \end{figure}
 
 \item[Absolute values of residuals against fitted values.] A plot of the absolute value of the residuals against their corresponding fitted values ($\hat{y}_i$) is shown in Figure~\ref{mkDiagnosticEvsAbsF}. This plot is helpful to check the condition that the variance of the residuals is approximately constant. We don't see any obvious deviations from constant variance in this example.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{ch_regr_mult_and_log/figures/marioKartDiagnostics/mkDiagnosticEvsAbsF}
-\caption{Comparing the absolute value of the residuals against the fitted values ($\hat{y}_i$) is helpful in identifying deviations from the constant variance assumption.}
-\label{mkDiagnosticEvsAbsF}
+  \centering
+  \Figures{0.7}
+      {marioKartDiagnostics}
+      {mkDiagnosticEvsAbsF}
+  \caption{Comparing the absolute value of the residuals against the fitted values ($\hat{y}_i$) is helpful in identifying deviations from the constant variance assumption.}
+  \label{mkDiagnosticEvsAbsF}
 \end{figure}
 
 \item[Residuals in order of their data collection.] A plot of the residuals in the order their corresponding auctions were observed is shown in Figure~\ref{mkDiagnosticInOrder}. Such a plot is helpful in identifying any connection between cases that are close to one another, e.g. we could look for declining prices over time or if there was a time of the day when auctions tended to fetch a higher price. Here we see no structure that indicates a problem.\footnote{An especially rigorous check would use \term{time series} methods. For instance, we could check whether consecutive residuals are correlated. Doing so with these residuals yields no statistically significant correlations.}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.72\textwidth]{ch_regr_mult_and_log/figures/marioKartDiagnostics/mkDiagnosticInOrder}
+\Figures{0.72}{marioKartDiagnostics}{mkDiagnosticInOrder}
 \caption{Plotting residuals in the order that their corresponding observations were collected helps identify connections between successive observations. If it seems that consecutive observations tend to be close to each other, this indicates the independence assumption of the observations would fail.}
 \label{mkDiagnosticInOrder}
 \end{figure}
@@ -489,7 +516,7 @@ generally depend on the following four assumptions:
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{ch_regr_mult_and_log/figures/marioKartDiagnostics/mkDiagnosticEvsVariables}
+\Figures{}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
 \caption{For the condition and stock photo variables, we check for differences in the distribution shape or variability of the residuals. In the case of the stock photos variable, we see a little less variability in the unique photo group than the stock photo group. For numerical predictors, we also check for trends or other structure. We see some slight bowing in the residuals against the \var{wheels} variable in the bottom plot.}
 \label{mkDiagnosticEvsVariables}
 \end{figure}
@@ -498,26 +525,24 @@ generally depend on the following four assumptions:
 
 It is necessary to summarize diagnostics for any model fit. If the diagnostics support the model assumptions, this would improve credibility in the findings. If the diagnostic assessment shows remaining underlying structure in the residuals, we should try to adjust the model to account for that structure. If we are unable to do so, we may still report the model but must also note its shortcomings. In the case of the auction data, we report that there appears to be non-constant variance in the stock photo variable and that there may be a nonlinear relationship between the total price and the number of wheels included for an auction. This information would be important to buyers and sellers who may review the analysis, and omitting this information could be a setback to the very people who the model might assist.
 
-\begin{tipBox}{\tipBoxTitle[]{``All models are wrong, but some are useful'' -George E.P. Box}
-The truth is that no model is perfect. However, even imperfect models can be useful. Reporting a flawed model can be reasonable so long as we are clear and report the model's shortcomings.}
-\end{tipBox}
+\begin{onebox}{``All models are wrong, but some are useful''~~~-George E.P. Box}
+The truth is that no model is perfect. However, even imperfect models can be useful. Reporting a flawed model can be reasonable so long as we are clear and report the model's shortcomings.
+\end{onebox}
 
-\begin{caution}
-{Don't report results when assumptions are grossly violated}
-{While there is a little leeway in model assumptions, don't go too far. If model assumptions are very clearly violated, consider a new model, even if it means learning more statistical methods or hiring someone who can help.}
-\end{caution}
+Don't report results when assumptions are grossly violated.
+While there is a little leeway in model assumptions, don't go too far. If model assumptions are very clearly violated, consider a new model, even if it means learning more statistical methods or hiring someone who can help.
 
-\begin{tipBox}{\tipBoxTitle{Confidence intervals in multiple regression}
-\index{confidence interval}
+\begin{onebox}{Confidence intervals in multiple regression}
+\index{confidence interval}%
 Confidence intervals for coefficients in multiple regression can be computed using the same formula as in the single predictor model:
 \begin{align*}
 b_i \ \pm\ t_{df}^{\star}SE_{b_{i}}
 \end{align*}
-where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confidence level and model degrees of freedom, $df=n-k-1$.}
+where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confidence level and model degrees of freedom, $df=n-k-1$.
 \index{multiple regression!model assumptions|)}
 \index{data!mario\_kart|)}
 \index{multiple regression|)}
-\end{tipBox}
+\end{onebox}
 
 
 %__________________
@@ -536,9 +561,11 @@ In Section~\ref{logisticRegression} we will revisit the \data{email} data set fr
 
 \subsection{Email data}
 
+\Comment{Planning to replace this data set. If do not get to this, then this section will need to be revised, e.g. email data set is no longer discussed in Chapter~1.}
+
 The \data{email} data set was first presented in Chapter~\ref{introductionToData} with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Figure~\ref{emailVariables}. The \var{spam} variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.\footnote{Recall from Chapter~\ref{linRegrForTwoVar} that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter~\ref{introductionToData}. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.}
 
-\begin{figure}
+\begin{figure}[h]
 \centering\small
 \begin{tabular}{lp{10.5cm}}
 \hline
@@ -565,11 +592,11 @@ The \data{email} data set was first presented in Chapter~\ref{introductionToData
 \subsection{Modeling the probability of an event}
 \label{modelingTheProbabilityOfAnEvent}
 
-\begin{tipBox}{\tipBoxTitle{Notation for a logistic regression model}
+\begin{onebox}{Notation for a logistic regression model}
 The outcome variable for a GLM is denoted by $Y_i$, where the index $i$ is used to represent observation $i$. In the email application, $Y_i$ will be used to represent whether email $i$ is spam ($Y_i=1$) or not ($Y_i=0$). \vspace{3mm}
 
-The predictor variables are represented as follows: $x_{1,i}$ is the value of variable 1 for observation $i$, $x_{2,i}$ is the value of variable 2 for observation $i$, and so on.}
-\end{tipBox}
+The predictor variables are represented as follows: $x_{1,i}$ is the value of variable 1 for observation $i$, $x_{2,i}$ is the value of variable 2 for observation $i$, and so on.
+\end{onebox}
 
 Logistic regression is a generalized linear model where the outcome is a two-level categorical variable. The outcome, $Y_i$, takes the value 1 (in our application, this represents a spam message) with probability $p_i$ and the value 0 with probability $1-p_i$. It~is the probability $p_i$ that we model in relation to the predictor variables.
 
@@ -591,12 +618,13 @@ In our spam example, there are 10 predictor variables, so $k = 10$. This model i
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{ch_regr_mult_and_log/figures/logitTransformationFigureHoriz/logitTransformationFigureHoriz}
+\Figure{}{logitTransformationFigureHoriz}
 \caption{Values of $p_i$ against values of $logit(p_i)$.}
 \label{logitTransformationFigureHoriz}
 \end{figure}
 
-\begin{example}{Here we create a spam filter with a single predictor: \var{to\_\hspace{0.3mm}multiple}. This variable indicates whether more than one email address was listed in the \emph{To} field of the email. The following logistic regression model was fit using statistical software:
+\begin{examplewrap}
+\begin{nexample}{Here we create a spam filter with a single predictor: \var{to\_\hspace{0.3mm}multiple}. This variable indicates whether more than one email address was listed in the \emph{To} field of the email. The following logistic regression model was fit using statistical software:
 \begin{align*}
 \log\left( \frac{p_i}{1-p_i} \right) = -2.12 - 1.81\times\text{\var{to\_\hspace{0.3mm}multiple}}
 \end{align*}
@@ -607,7 +635,8 @@ If there is only one email in the \emph{To} field, then \var{to\_\hspace{0.3mm}m
 If there is more than one address listed in the \emph{To} field, then the right side of the model equation is $-2.12 - 1.81\times1 = -3.93$, which corresponds to a probability $\hat{p}_i = 0.02$.
 
 Notice that we could examine -2.12 and -3.93 in Figure~\ref{logitTransformationFigureHoriz} to estimate the probability before formally calculating the value.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 To convert from values on the regression-scale (e.g. -2.12 and -3.93 in Example~\ref{logisticExampleWithToMultiple}), use the following formula, which is the result of solving for $p_i$ in the regression model:
 \begin{align*}
@@ -675,19 +704,26 @@ Just like multiple regression, we could trim some variables from the model using
 % library(openintro); ?email # run example
 % g <- glm(spam ~ to_multiple + winner + format + re_subj + attach + password, data=e, family=binomial); xtable(g)
 
-\begin{exercise}
-Examine the summary of the reduced model in Figure~\ref{emailLogisticReducedModel}, and in particular, examine the \var{to\_\hspace{0.3mm}multiple} row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.\footnote{The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+Examine the summary of the reduced model in Figure~\ref{emailLogisticReducedModel}, and in particular, examine the \var{to\_\hspace{0.3mm}multiple} row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.}
 
 Point estimates will generally change a little -- and sometimes a lot -- depending on which other variables are included in the model. This is usually due to colinearity in the predictor variables. We previously saw this in the Ebay auction example when we compared the coefficient of \var{cond\_\hspace{0.3mm}new} in a single-variable model and the corresponding coefficient in the multiple regression model that used three additional variables (see Sections~\ref{twoSingleVariableModelsForMarioKartData} and~\ref{includingAndAssessingManyVariablesInAModel}).
 
-\begin{example}{Spam filters are built to be automated, meaning a piece of software is written to collect information about emails as they arrive, and this information is put in the form of variables. These variables are then put into an algorithm that uses a statistical model, like the one we've fit, to classify the email. Suppose we write software for a spam filter using the reduced model shown in Figure~\ref{emailLogisticReducedModel}. If an incoming email has the word ``winner'' in it, will this raise or lower the model's calculated probability that the incoming email is spam?} \label{exampleForSpamAndWinner}
+\begin{examplewrap}
+\begin{nexample}{Spam filters are built to be automated, meaning a piece of software is written to collect information about emails as they arrive, and this information is put in the form of variables. These variables are then put into an algorithm that uses a statistical model, like the one we've fit, to classify the email. Suppose we write software for a spam filter using the reduced model shown in Figure~\ref{emailLogisticReducedModel}. If an incoming email has the word ``winner'' in it, will this raise or lower the model's calculated probability that the incoming email is spam?} \label{exampleForSpamAndWinner}
 The estimated coefficient of \var{winner} is positive (1.7370). A positive coefficient estimate in logistic regression, just like in multiple regression, corresponds to a positive association between the predictor and response variables when accounting for the other variables in the model. Since the response variable takes value 1 if an email is spam and 0 otherwise, the positive coefficient indicates that the presence of ``winner'' in an email raises the model probability that the message is spam.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{example}{Suppose the same email from Example~\ref{exampleForSpamAndWinner} was in HTML format, meaning the \var{format} variable took value 1. Does this characteristic increase or decrease the probability that the email is spam according to the model?}\label{exampleForSpamAndFormat}
+\begin{examplewrap}
+\begin{nexample}{Suppose the same email from Example~\ref{exampleForSpamAndWinner} was in HTML format, meaning the \var{format} variable took value 1. Does this characteristic increase or decrease the probability that the email is spam according to the model?}\label{exampleForSpamAndFormat}
 Since HTML corresponds to a value of 1 in the \var{format} variable and the coefficient of this variable is negative (-1.5569), this would lower the probability estimate returned from the model.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 \subsection{Practical decisions in the email application}
 
@@ -701,35 +737,41 @@ If we were to implement a spam filter using the model we have fit, then each fut
 \end{enumerate}
 If we were managing an email service, we would have to think about what should be done in each of these three instances. In an email application, there are usually just two possibilities: filter the email out from the regular inbox and put it in a ``spambox'', or let the email go to the regular inbox.
 
-\begin{exercise}
-The first and second scenarios are intuitive. If the evidence strongly suggests a message is not spam, send it to the inbox. If the evidence strongly suggests the message is spam, send it to the spambox. How should we handle emails in the third category?\footnote{In this particular application, we should err on the side of sending more mail to the inbox rather than mistakenly putting good messages in the spambox. So, in summary: emails in the first and last categories go to the regular inbox, and those in the second scenario go to the spambox.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+The first and second scenarios are intuitive. If the evidence strongly suggests a message is not spam, send it to the inbox. If the evidence strongly suggests the message is spam, send it to the spambox. How should we handle emails in the third category?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{In this particular application, we should err on the side of sending more mail to the inbox rather than mistakenly putting good messages in the spambox. So, in summary: emails in the first and last categories go to the regular inbox, and those in the second scenario go to the spambox.}
 
-\begin{exercise}
-Suppose we apply the logistic model we have built as a spam filter and that 100 messages are placed in the spambox over 3 months. If we used the guidelines above for putting messages into the spambox, about how many legitimate (non-spam) messages would you expect to find among the 100 messages?\footnote{First, note that we proposed a cutoff for the predicted probability of 0.95 for spam. In a worst case scenario, all the messages in the spambox had the minimum probability equal to about 0.95. Thus, we should expect to find about 5 or fewer legitimate messages among the 100 messages placed in the spambox.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+Suppose we apply the logistic model we have built as a spam filter and that 100 messages are placed in the spambox over 3 months. If we used the guidelines above for putting messages into the spambox, about how many legitimate (non-spam) messages would you expect to find among the 100 messages?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{First, note that we proposed a cutoff for the predicted probability of 0.95 for spam. In a worst case scenario, all the messages in the spambox had the minimum probability equal to about 0.95. Thus, we should expect to find about 5 or fewer legitimate messages among the 100 messages placed in the spambox.}
 
 Almost any classifier will have some error. In the spam filter guidelines above, we have decided that it is okay to allow up to 5\% of the messages in the spambox to be real messages. If we wanted to make it a little harder to classify messages as spam, we could use a cutoff of 0.99. This would have two effects. Because it raises the standard for what can be classified as spam, it reduces the number of good emails that are classified as spam. However, it will also fail to correctly classify an increased fraction of spam messages. No matter the complexity and the confidence we might have in our model, these practical considerations are absolutely crucial to making a helpful spam filter. Without them, we could actually do more harm than good by using our statistical model.
 
 
 \subsection{Diagnostics for the email classifier}
 
-\begin{termBox}{\tBoxTitle{Logistic regression conditions}
-There are two key conditions for fitting a logistic regression model: \vspace{-1.5mm}
+\begin{onebox}{Logistic regression conditions}
+There are two key conditions for fitting a logistic regression model:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item Each predictor $x_i$ is linearly related to logit$(p_i)$ if all other predictors are held constant.
 %\item The model relating the parameter $p_i$ to the predictors $x_{1,i}$, $x_{2,i}$, ..., $x_{k,i}$ closely resembles the true relationship between the parameter and the predictors.
 \item Each outcome $Y_i$ is independent of the other outcomes.
-\end{enumerate}}
-\end{termBox}
+\end{enumerate}
+\end{onebox}
 
 The first condition of the logistic regression model is not easily checked without a fairly sizable amount of data. Luckily, we have 3,921 emails in our data set! Let's first visualize these data by plotting the true classification of the emails against the model's fitted probabilities, as shown in Figure~\ref{logisticModelPredict}. The vast majority of emails (spam or not) still have fitted probabilities below 0.5.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{ch_regr_mult_and_log/figures/logisticModel/logisticModelPredict}
-\caption{The predicted probability that each of the 3,912 emails is spam is classified by their grouping, spam or not. Noise (small, random vertical shifts) have been added to each point so that points with nearly identical values aren't plotted exactly on top of one another. This makes it possible to see more observations.}
+  \centering
+  \Figures{}{logisticModel}{logisticModelPredict}
+  \caption{The predicted probability that each of the 3,912 emails is spam is classified by their grouping, spam or not. Noise (small, random vertical shifts) have been added to each point so that points with nearly identical values aren't plotted exactly on top of one another. This makes it possible to see more observations.}
 \label{logisticModelPredict}
 \end{figure}
 
@@ -741,7 +783,7 @@ The curve fit using natural splines is shown in Figure~\ref{logisticModelSpline}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{ch_regr_mult_and_log/figures/logisticModel/logisticModelSpline}
+\Figures{}{logisticModel}{logisticModelSpline}
 \caption{The solid black line provides the empirical estimate of the probability for observations based on their predicted probabilities (confidence bounds are also shown for this line), which is fit using natural splines. A small amount of noise was added to the observations in the plot to allow more observations to be seen.}
 \label{logisticModelSpline}
 \end{figure}

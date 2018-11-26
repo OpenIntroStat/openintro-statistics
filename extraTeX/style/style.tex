@@ -127,7 +127,7 @@
 % 5.1 Chapter
 \titleformat{\chapter}[display]
 {\color{oiB}\normalfont\Huge\bfseries\raggedright}{\chaptertitlename\
-\thechapter}{20pt}{\Huge}
+\thechapter}{20pt}{{\Huge #1}}
 % 5.2 Section
 \let\oldsection\section
 \renewcommand\section{\clearpage\oldsection}
