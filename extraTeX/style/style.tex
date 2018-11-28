@@ -9,6 +9,8 @@
 % 9 Examples and Exercises
 % 10 Special Boxes
 
+\raggedbottom
+
 
 
 %-------------------------------------------------------------
@@ -132,7 +134,7 @@
 \let\oldsection\section
 \renewcommand\section{\clearpage\oldsection}
 \titleformat{\section}
-    {{\color{oiR}\titlerule[1mm]}\addvspace{1mm}\color{oiB}\normalfont\LARGE\bfseries%
+    {{\color{oiR}\titlerule[1mm]}\addvspace{0mm}\color{oiB}\normalfont\LARGE\bfseries%
         \fontfamily{phv}%
         \selectfont}
     {\color{oiB}\thesection \quad #1}
