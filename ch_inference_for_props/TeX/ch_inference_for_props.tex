@@ -393,6 +393,67 @@ Total			&& 25		& 65		&& 90 \\
 
 \index{data!CPR and blood thinner|)}
 
+\begin{exercisewrap}
+\begin{nexercise}
+A 5-year experiment\footnote{Manson JE, et al. 2018.
+    Marine n?3 Fatty Acids and Prevention of
+    Cardiovascular Disease and Cancer. NEJMoa1811403.}
+was conducted to evaluate the effectiveness
+of fish oils on reducing cardiovascular events,
+where each subject was randomized into one of two
+treatment groups.
+We'll consider heart attack outcomes in these patients:
+\begin{center}
+\begin{tabular}{l ccc}
+  \hline
+  & heart\_\hspace{0.3mm}attack &
+      no\_\hspace{0.3mm}event & Total \\
+  \hline
+  fish\_\hspace{0.3mm}oil & 145 & 12788 & 12933 \\
+  placebo & 200 & 12738 & 12938 \\
+  \hline
+\end{tabular}
+\end{center}
+% library(openintro); library(xtable); xtable(fish_oil_18[[3]], digits = 0)
+Create a 95\% confidence interval for the effect of fish oils
+on heart attacks for patients who are well-represented by
+those in the study.
+Also interpret the interval in the context of the
+study.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The experiment randomized,
+  subjects are unlikely to interact with each other,
+  the observations are independent.
+  The success-failure condition is also met for both
+  groups as all counts are at least~10.
+  Compute the sample proportions
+  ($\hat{p}_{fishoil} = 0.0112$,
+    $\hat{p}_{placebo} = 0.0155$),
+  point estimate of the difference ($0.0112 - 0.0155 = -0.0043$),
+  and standard error
+  ($SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} +
+      \frac{0.0155 \times 0.9845}{12938}}
+    = 0.00145$).
+  Next, plug the values into the general formula for
+  a confidence interval, where we'll use a 95\%
+  confidence level with $z^{\star} = 1.96$:
+  \begin{align*}
+  -0.0043 \pm 1.96 \times 0.00145
+      \quad \to \quad
+      (-0.0071, -0.0015)
+  \end{align*}
+  We are 95\% confident that fish oils decreases
+  heart attacks by
+  0.15 to 0.71 percentage points
+  (off of a baseline of about 1.55\%)
+  over a 5-year period for subjects who are similar
+  to those in the study.
+  Because the interval is entirely below 0,
+  the data provide strong evidence
+  that fish oil supplements reduce heart attacks
+  in patients like those in the study.}
+
 
 \subsection{Hypothesis tests for $p_1 - p_2$}
 
