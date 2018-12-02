@@ -502,7 +502,7 @@ alongside a normal distribution with the
 same mean and standard deviation. These distributions
 look nothing alike.
 
-\begin{figure}[t]
+\begin{figure}[h]
    \centering
    \includegraphics[width=0.97\textwidth]{ch_foundations_for_inf/figures/sampling_10_prop_25p/sampling_10_prop_25p}
    \caption{Left: simulations of $\hat{p}$ when the sample size
@@ -553,7 +553,7 @@ the success-failure condition is the perfect guideline,
 but we have found that the guideline did correctly
 identify that the normal distribution was not appropriate.
 
-\pagebreak
+% \pagebreak
 
 \Comment{Used an artificial page break here to make the
     transition smoother. Delete this comment when doing
@@ -1009,7 +1009,8 @@ of the \pewwindpollsize{} respondents.
 
 \begin{exercisewrap}
 \begin{nexercise}\label{pew_wind_turbine_support_normal_dist_gp}
-Is the normal approximation reasonable in this case?\footnotemark
+Is the normal approximation reasonable for the proportion
+of US adults who support expanding wind turbines?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{We
@@ -1166,7 +1167,7 @@ degree perform on this and other world health questions.
 
 We're interested in understanding whether people know much
 about world health and development. If we take a multiple choice
-world health question, then we might like to understand if
+world health question, then we might like to understand~if
 \begin{description}
 \item[$\mathbf{H_0}$:]
     People never learn these particular topics and their
@@ -1344,10 +1345,12 @@ That is, in this case, the null value is $p_0 = 0.333$.
 \subsection{Testing hypotheses using confidence intervals}
 \label{utilizingOurCI}
 
-\Comment{Build the \data{rosling\_responses} data set and put it
+\Comment{Build the \data{rosling\_\hspace{0.3mm}responses}
+data set and put it
 in the R~package.}
 
-We will use the \data{rosling\_responses} data set to evaluate
+We will use the \data{rosling\_\hspace{0.3mm}responses}
+data set to evaluate
 the hypothesis test evaluating whether college-educated adults
 who get the question about extreme poverty correct is different
 from 33.3\%.
@@ -1425,7 +1428,7 @@ and we do not reject the null hypothesis,~$H_0$.
   necessarily mean the null hypothesis is true.
   Perhaps there was an actual difference,
   but we were not able to detect it with this
-  relatively small sample of 50.
+  relatively small sample of~50.
 
   Second, we are only evaluating the proportion,
   and if the population proportion is 0.333,
@@ -1481,8 +1484,8 @@ The correct answer to the question is 2~billion.
 While the world population is projected to increase,
 the average age is also expected to rise.
 That is, the majority of the population growth will
-happen in older age groups, and people will tend to live
-longer in the future across much of the world.}
+happen in older age groups, meaning people are projected
+to live longer in the future across much of the world.}
 
 % n <- 228; x <- 39; p <- x / n; n; p; 1 - p; x; n - x; sqrt(p*(1-p)/n)
 \newcommand{\roslingBsize}{228}
@@ -1791,11 +1794,14 @@ to how we use the null value, $p_0$.
         $n = \pewcoalpollsize{}$,
         the success-failure condition is met, since
         \begin{align*}
-        np \quad \stackrel{H_0}{=}
-            \quad \pewcoalpollsize{} \times \pewcoalpollnullvalue{} = 500
-        \qquad
-        n (1 - p) \quad \stackrel{H_0}{=}
-            \quad \pewcoalpollsize{} \times (1 - \pewcoalpollnullvalue{}) = 500
+        np ~ \stackrel{H_0}{=}
+            ~ \pewcoalpollsize{} \times \pewcoalpollnullvalue{}
+            = 500
+        \qquad\qquad
+        n (1 - p) ~ \stackrel{H_0}{=}
+            ~ \pewcoalpollsize{} \times
+                (1 - \pewcoalpollnullvalue{})
+            = 500
         \end{align*}
         are both at least 10.
         Note that the success-failure condition was checked
@@ -2256,7 +2262,7 @@ in the opposite direction must be disregarded.
     we encountered an example where doctors were interested
     in determining whether stents would help people who had
     a high risk of stroke.
-    The researchers believed the stents would help.
+    The researchers here believed the stents would help.
     Unfortunately, the data showed the opposite:
     patients who received stents actually did worse.
     Why was using a two-sided test so important in

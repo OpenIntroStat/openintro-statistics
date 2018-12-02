@@ -467,11 +467,26 @@ There are two visual methods for checking the assumption of normality, which can
 
 \begin{examplewrap}
 \begin{nexample}{Are NBA player heights normally distributed?
-    Consider all NBA players season presented in
+    Consider all 494 NBA players presented in
     Figure~\ref{nbaNormal}.}
-We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a ``wave''. We can compare these characteristics to the sample of 400 normally distributed observations in Example~\ref{normalExamplesExample} and see that they represent much stronger deviations from the normal model. NBA player heights do not appear to come from a normal distribution.
+  We first create a histogram and normal probability plot
+  of the NBA player heights.
+  The histogram in the left panel appears to have too few
+  observations at the upper end since the curve is notably
+  above the histogram.
+  The points in the normal probability plot
+  follow a straight line for much of the center of the
+  distribution, and then deviates more at the upper values.
+  We can compare these characteristics to the sample of
+  400 normally distributed observations in
+  Example~\ref{normalExamplesExample} and see that they
+  represent much stronger deviations from the normal model.
+  NBA player heights do not appear to come from a normal
+  distribution.
 \end{nexample}
+\end{examplewrap}
 
+\begin{examplewrap}
 \begin{nexample}{Can we approximate poker winnings by a normal distribution? We consider the poker winnings of an individual over 50 days. A histogram and normal probability plot of these data are shown in Figure~\ref{pokerNormal}.}
 The data are very strongly right skewed\index{skew!example: very strong} in the histogram, which corresponds to the very strong deviations on the upper right component of the normal probability plot. If we compare these results to the sample of 40 normal observations in Example~\ref{normalExamplesExample}, it is apparent that these data show very strong deviations from the normal model.
 \end{nexample}
