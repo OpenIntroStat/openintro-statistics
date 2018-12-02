@@ -12,45 +12,63 @@ Chapter~\ref{inferenceForCategoricalData} introduces inference in the setting of
 The methods we learned in previous chapters will continue to be useful in these settings. For example, sample proportions are well characterized by a nearly normal distribution when certain conditions are satisfied, making it possible to employ the usual confidence interval and hypothesis testing tools. In other instances, such as those with contingency tables or when sample size conditions are not met, we will use a different distribution, though the core ideas remain the same.
 
 
+
 %__________________
 \section{Inference for a single proportion}
 \label{singleProportion}
 
-\index{data!Ebola poll|(}
-
-In New York City on October 23rd, 2014, a doctor who had recently been treating Ebola patients in Guinea went to the hospital with a slight fever and was subsequently diagnosed with Ebola. Soon thereafter, an NBC 4 New York/The Wall Street Journal/Marist Poll found that 82\% of New Yorkers favored a ``mandatory 21-day quarantine for anyone who has come in contact with an Ebola patient''.\footnote{\oiRedirect{textbook-maristpoll_ebola_201410}{Poll ID NY141026 on maristpoll.marist.edu}.} This poll included responses of 1,042 New York adults between October 26th and 28th, 2014.
-
+We encountered inference methods for a single proportion
+in Chapter~\ref{ch_foundations_for_inf},
+exploring point estimates, confidence intervals,
+and hypothesis tests.
+In this section, we'll do a review of these topics
+before moving onto a new scenario in
+Section~\ref{differenceOfTwoProportions}.
 
 
 \subsection{Identifying when the sample proportion is nearly normal}
 
-A sample proportion can be described as a sample mean. If we represent each ``success'' as a 1 and each ``failure'' as a 0, then the sample proportion is the mean of these numerical outcomes:
-\begin{eqnarray*}
-\hat{p} = \frac{\ 0 + 1 + 1 + \cdots + 0\ }{1042} = 0.82
-\end{eqnarray*}
-The distribution of $\hat{p}$ is nearly normal when the distribution of 0's and 1's is not too strongly skewed for the sample size. The most common guideline for sample size and skew when working with proportions is to ensure that we expect to observe a minimum number of successes (1's) and failures (0's), typically at least 10 of each. The labels \term{success} and \term{failure} need not mean something positive or negative. These terms are just convenient words that are frequently used when discussing proportions.
+A sample proportion $\hat{p}$ will tend to be well-modeled
+using a normal distribution when the observations in the
+sample are independent and the sample size is sufficiently
+large.
 
-\begin{onebox}{Conditions for the sampling distribution of $\hat{p}$ being nearly normal}
-The sampling distribution for $\hat{p}$, taken from a sample of size $n$ from a population with a true proportion $p$, is nearly normal when
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item the sample observations are independent and
-\item we expected to see at least 10 successes and 10 failures in our sample, i.e. $np\geq10$ and $n(1-p)\geq10$. This is called the \term{success-failure condition}.
-\end{enumerate}
-If these conditions are met, then the sampling distribution of $\hat{p}$ is nearly normal with mean $p$ and standard error
-\index{standard error (SE)!single proportion}
-\begin{eqnarray}
-SE_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}
-\label{seOfPHat}
-\end{eqnarray}
+
+%A sample proportion can be described as a sample mean. If we represent each ``success'' as a 1 and each ``failure'' as a 0, then the sample proportion is the mean of these numerical outcomes:
+%\begin{eqnarray*}
+%\hat{p} = \frac{\ 0 + 1 + 1 + \cdots + 0\ }{1042} = 0.82
+%\end{eqnarray*}
+%The distribution of $\hat{p}$ is nearly normal when the distribution of 0's and 1's is not too strongly skewed for the sample size. The most common guideline for sample size and skew when working with proportions is to ensure that we expect to observe a minimum number of successes (1's) and failures (0's), typically at least 10 of each. The labels \term{success} and \term{failure} need not mean something positive or negative. These terms are just convenient words that are frequently used when discussing proportions.
+
+\begin{onebox}{Sampling distribution of $\mathbf{\hat{p}}$}
+  The sampling distribution for $\hat{p}$, taken from
+  a sample of size $n$ from a population with a true
+  proportion $p$, is nearly normal when:
+  \begin{enumerate}
+  \setlength{\itemsep}{0mm}
+  \item The sample observations are independent,
+      e.g. are from a simple random sample.
+  \item We expected to see at least 10 successes and
+      10 failures in the sample, i.e. $np\geq10$ and
+      $n(1-p)\geq10$.
+      This is called the \term{success-failure condition}.
+  \end{enumerate}
+  When these conditions are met, then the sampling
+  distribution of $\hat{p}$ is nearly normal with mean
+  $p$ and standard error
+  \index{standard error (SE)!single proportion}%
+  $SE_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}$.
 \end{onebox}
 
-Typically we don't know the true proportion, $p$, so we substitute some value to check conditions and to estimate the standard error. For confidence intervals, usually the sample proportion $\hat{p}$ is used to check the success-failure condition and compute the standard error. For hypothesis tests, typically the null value -- that is, the proportion claimed in the null hypothesis -- is used in place of $p$. Examples are presented for each of these cases in Sections~\ref{confIntForPropSection} and~\ref{htForPropSection}.
-
-%\begin{tipBox}{\tipBoxTitle{Reminder on checking independence of observations}
-%If data come from a simple random sample, then the independence assumption is reasonable. Alternatively, if the data come from a random process, we must evaluate the independence condition more carefully.}
-%\end{tipBox}
-
+Typically we don't know the true proportion, $p$,
+so we substitute some value to check conditions
+and estimate the standard error.
+For confidence intervals, usually the sample proportion
+$\hat{p}$ is used to check the success-failure condition
+and compute the standard error.
+For hypothesis tests, typically the null value --
+that is, the proportion claimed in the null hypothesis --
+is used in place of $p$.
 
 
 \subsection{Confidence intervals for a proportion}
@@ -58,46 +76,96 @@ Typically we don't know the true proportion, $p$, so we substitute some value to
 
 \index{point estimate!single proportion}
 
-We may want a confidence interval for the proportion of New York adults who favored a mandatory quarantine of anyone who had been in contact with an Ebola patient. Our point estimate, based on a sample of size $n = 1042$, is $\hat{p} = 0.82$. We would like to use the general confidence interval formula from Section~\ref{aFrameworkForInference}. However, first we must verify that the sampling distribution of $\hat{p}$ is nearly normal and calculate the standard error of $\hat{p}$.
-\begin{description}
-\item[Observations are independent.] The poll is based on a simple random sample and consists of fewer than 10\% of the New York adult population, which verifies independence.
-\item[Success-failure condition.] The sample size must also be sufficiently large, which is checked using the \hiddenterm{success-failure condition}. There were $1042 \times \hat{p} \approx 854$ ``successes'' and $1042 \times (1 - \hat{p}) \approx 188$ ``failures'' in the sample, both easily greater than~10.
-\end{description}
-With the conditions met, we are assured that the sampling distribution of $\hat{p}$ is nearly normal. Next, a standard error for $\hat{p}$ is needed, and then we can employ the usual method to construct a confidence interval.
+In this first example, we'll use the point estimate
+$\hat{p}$ to check whether it is reasonable to model
+$\hat{p}$ using a normal distribution,
+since we will be computing a confidence interval.
 
-\begin{exercisewrap}
-\begin{nexercise} \label{seOfPropOfAmericansJobApprovalOfSupremeCourt}
-Estimate the standard error of $\hat{p} = 0.82$ using Equation~\eqref{seOfPHat}. Because $p$ is unknown and the standard error is for a confidence interval, use $\hat{p}$ in place of $p$ in the formula.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$SE = \sqrt{\frac{p(1-p)}{n}} \approx \sqrt{\frac{0.82 (1 - 0.82)}{1042}} = 0.012$.}
+\index{data!Payday regulation poll|(}
+
+\newcommand{\paydayN}{826}
+\newcommand{\paydayNHalf}{413}
+\newcommand{\paydayRegPerc}{70\%}
+\newcommand{\paydayRegProp}{0.70}
+\newcommand{\paydayRegSE}{0.016}
+\newcommand{\paydayRegSEPerc}{1.6\%}
+\newcommand{\paydayRegLower}{0.669}
+\newcommand{\paydayRegUpper}{0.731}
+\newcommand{\paydayRegLowerPerc}{66.9\%}
+\newcommand{\paydayRegUpperPerc}{73.1\%}
+\Comment{The source of the data is
+  \url{https://www.pewtrusts.org/-/media/assets/2017/04/payday-loan-customers-want-more-protections-methodology.pdf}}
 
 \begin{examplewrap}
-\begin{nexample}{Construct a 95\% confidence interval for $p$, the proportion of New York adults who supported a quarantine for anyone who has come into contact with an Ebola patient.}
-Using the standard error $SE = 0.012$ from Guided Practice~\ref{seOfPropOfAmericansJobApprovalOfSupremeCourt}, the point estimate 0.82, and $z^{\star} = 1.96$ for a 95\% confidence interval, the confidence interval is
-\begin{eqnarray*}
-\text{point estimate} \ \pm\ z^{\star}SE \quad\to\quad 0.82 \ \pm\ 1.96\times 0.012 \quad\to\quad (0.796, 0.844)
-\end{eqnarray*}
-We are 95\% confident that the true proportion of New York adults in October 2014 who supported a quarantine for anyone who had come into contact with an Ebola patient was between 0.796 and 0.844.
+\begin{nexample}{A simple random sample of \paydayN{}
+    payday loan borrowers was surveyed to better
+    understand their interests around regulation and costs.
+    \paydayRegPerc{} of the responses supported new
+    regulations on payday lenders.
+    Is it reasonable to model $\hat{p} = \paydayRegProp{}$
+    using a normal distribution?}
+  This is a random sample, so the observations are
+  independent and representative of the population of interest.
 
-\index{data!Ebola poll|)}
-
+  We also must check the success-failure condition,
+  which we do using $\hat{p}$:
+  \begin{align*}
+  n p & \approx \paydayN{} * \paydayRegProp{} = 578.2
+  n (1 - p) & \approx \paydayN{} * (1 - \paydayRegProp{}) = 247.8
+  \end{align*}
+  Since both values are at least 10, we can use the normal
+  distribution to model $\hat{p}$.
 \end{nexample}
 \end{examplewrap}
 
-Notice that since the poll was around the time where a doctor in New York had come down with Ebola, the results may not be as applicable today as they were at the time the poll was taken. This highlights an important detail about polls: they provide data about public opinion at a single point in time.
+
+\begin{exercisewrap}
+\begin{nexercise} \label{seOfPropOfPDBorrowersSupportReg}
+Estimate the standard error of $\hat{p} = \paydayRegProp{}$.
+Because $p$ is unknown and the standard error is for
+a confidence interval, use $\hat{p}$ in place of $p$
+in the formula.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$SE = \sqrt{\frac{p(1-p)}{n}} \approx
+    \sqrt{\frac{\paydayRegProp{} (1 - \paydayRegProp{})}
+        {\paydayN{}}} = \paydayRegSE{}$.}
+
+\begin{examplewrap}
+\begin{nexample}{Construct a 95\% confidence interval for $p$,
+    the proportion of payday borrowers who support increased
+    regulation for payday lenders.}
+  Using the standard error $SE = \paydayRegSE{}$ from
+  Guided Practice~\ref{seOfPropOfPDBorrowersSupportReg},
+  the point estimate \paydayRegProp{},
+  and $z^{\star} = 1.96$ for a 95\% confidence interval,
+  the confidence interval is
+  \begin{eqnarray*}
+  \text{point estimate} \ \pm\ z^{\star}SE
+      \quad\to\quad
+      \paydayRegProp{} \ \pm\ 1.96\times \paydayRegSE{}
+      \quad\to\quad
+      (\paydayRegLower{}, \paydayRegUpper{})
+  \end{eqnarray*}
+  We are 95\% confident that the true proportion of
+  payday borrowers who supported regulation at the time
+  of the poll was between \paydayRegLower{} and
+  \paydayRegUpper{}.
+\end{nexample}
+\end{examplewrap}
 
 \begin{onebox}{Constructing a confidence interval for a proportion}
   There are three steps to constructing a confidence
   interval for $p$.
   \begin{itemize}
   \setlength{\itemsep}{0mm}
-  \item Verify the observations are independent, and also verify
-      the success-failure condition using $\hat{p}$ and $n$.
-  \item If the conditions are met, the sampling distribution
+  \item Check independence and the success-failure condition
+      using $\hat{p}$.
+      If the conditions are met, the sampling distribution
       of $\hat{p}$ may be well-approximated by the normal model.
-  \item Construct the standard error using $\hat{p}$ in place
-      of $p$ and apply the general confidence interval formula.
+  \item Construct the standard error using $\hat{p}$
+      in place of $p$ in the standard error formula.
+  \item Apply the general confidence interval formula.
   \end{itemize}
 \end{onebox}
 
@@ -105,45 +173,107 @@ Notice that since the poll was around the time where a doctor in New York had co
 \subsection{Hypothesis testing for a proportion}
 \label{htForPropSection}
 
-To apply the normal distribution framework in the context of a hypothesis test for a proportion, the independence and success-failure conditions must be satisfied. In a hypothesis test, the success-failure condition is checked using the null proportion: we verify $np_0$ and $n(1-p_0)$ are at least 10, where $p_0$ is the null value.
+\newcommand{\paydayCCPerc}{51\%}
+\newcommand{\paydayCCProp}{0.51}
+\newcommand{\paydayCCSE}{0.017}
+\newcommand{\paydayCCSEPerc}{1.7\%}
+\newcommand{\paydayCCZ}{0.59}
+\newcommand{\paydayCCOneTail}{0.2776}
+\newcommand{\paydayCCPvalue}{0.5552}
 
-\index{data!nuclear arms reduction|(}
+One possible regulation for payday lenders is that they
+would be required to do a credit check and evaluate debt
+payments against the borrower's finances.
+We would like to know: would borrowers support this form
+of regulation?
+
 
 \begin{exercisewrap}
 \begin{nexercise}
-Do a majority of American support nuclear arms reduction? Set up a one-sided hypothesis test to evaluate this question.\footnotemark
+\label{paydayCC_hypotheses_gp}%
+Set up hypotheses to evaluate whether borrowers
+have a majority support for this type of
+regulation.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$H_0: p = 0.50$. $H_A: p > 0.50$.}
+\footnotetext{$H_0$: $p = 0.50$. $H_A$: $p \neq 0.50$.}
 
+To apply the normal distribution framework in the context
+of a hypothesis test for a proportion, the independence
+and success-failure conditions must be satisfied.
+In a hypothesis test, the success-failure condition is
+checked using the null proportion:
+we verify $np_0$ and $n(1-p_0)$ are at least 10,
+where $p_0$ is the null value.
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{paydayCC_conditions_gp}%
+We consider another question asked
+of the payday loan borrowers:
+Do you support a regulation that would
+require lenders to pull your credit report
+and evaluate your debt payments?
+Of the \paydayN{} borrowers, \paydayCCPerc{}
+said they supported such a regulation.
+Is it reasonable to model $\hat{p} = \paydayCCProp{}$
+for a hypothesis test here?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Independence holds since the poll
+    is based on a random sample.
+    The success failure also holds, which we check
+    using the null proportion, $p_0 = 0.5$ from the
+    null hypothesis:
+    $np \approx \paydayN{} \times 0.5 = \paydayNHalf$,
+    $n(1 - p) \approx \paydayN{} \times 0.5 = \paydayNHalf$.}
+    
 \begin{examplewrap}
-\begin{nexample}{A simple random sample of 1,028 US adults in March 2013 found that 56\% support nuclear arms reduction.\footnote{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}} Does this provide convincing evidence that a majority of Americans supported nuclear arms reduction at the 5\% significance level?} \label{NuclearArmsInferenceExample}
-The poll was of a simple random sample that includes fewer than 10\% of US adults, meaning the observations are independent. In a one-proportion hypothesis test, the success-failure condition is checked using the null proportion, which is $p_0 = 0.5$ in this context: $n p_0 = n (1 - p_0) = 1028 \times 0.5 = 514 > 10$. With these conditions verified, the normal model may be applied to $\hat{p}$.
-
-Next the standard error can be computed. The null value $p_0$ is used again here, because this is a hypothesis test for a single proportion.
-\begin{align*}
-SE = \sqrt{\frac{p_0 (1 - p_0)}{n}} = \sqrt{\frac{0.5 (1 - 0.5)}{1028}} = 0.016
-\end{align*}
-A picture of the normal model is shown in Figure~\ref{nuclearArmsReductionPValue} with the p-value represented by the shaded region. Based on the normal model, the test statistic can be computed as the Z-score of the point estimate:
-\begin{align*}
-Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.56 - 0.50}{0.016} = 3.75
-\end{align*}
-The upper tail area, representing the p-value, is about 0.0001. Because the p-value is smaller than 0.05, we reject $H_0$. The poll provides convincing evidence that a majority of Americans supported nuclear arms reduction efforts in March 2013.
+\begin{nexample}{Using the hypotheses and data from
+    Guided Practice~\ref{paydayCC_hypotheses_gp}
+    and~\ref{paydayCC_conditions_gp},
+    evaluate whether the poll provides convincing evidence
+    that a majority of payday loan borrowers support
+    a new regulation that would
+    require lenders to pull credit reports
+    and evaluate debt payments.}
+  With hypotheses already set up and conditions checked,
+  we can move onto calculations.
+  The standard error in the context of a one-proportion
+  hypothesis test is computed using the null value, $p_0$:
+  \begin{align*}
+  SE = \sqrt{\frac{p_0 (1 - p_0)}{n}}
+      = \sqrt{\frac{0.5 (1 - 0.5)}{\paydayN{}}}
+      = \paydayCCSE{}
+  \end{align*}
+  A picture of the normal model is shown below
+  with the p-value represented by the shaded region.
+  \begin{center}
+  \Figure{0.5}{paydayCC_norm_pvalue}
+  \end{center}
+  Based on the normal model, the test statistic can be
+  computed as the Z-score of the point estimate:
+  \begin{align*}
+  Z = \frac{\text{point estimate} - \text{null value}}{SE}
+      = \frac{\paydayCCProp{} - 0.50}{\paydayCCSE{}}
+      = \paydayCCZ{}
+  \end{align*}
+  The single tail area is \paydayCCOneTail{}, and the p-value,
+  represented by both tail areas together, is \paydayCCPvalue{}.
+  Because the p-value is larger than 0.05,
+  we do not reject $H_0$.
+  The poll does not provide convincing evidence that
+  a majority of payday loan borrowers support or oppose
+  regulations around credit checks and evaluation of
+  debt payments.
 \end{nexample}
 \end{examplewrap}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.48\textwidth]{ch_inference_for_props/figures/nuclearArmsReduction/nuclearArmsReductionPValue}
-\caption{Sampling distribution for Example~\ref{NuclearArmsInferenceExample}.}
-\label{nuclearArmsReductionPValue}
-\end{figure}
 
 \begin{onebox}{Hypothesis test for a proportion}
 Set up hypotheses and verify the conditions using the null value, $p_0$, to ensure $\hat{p}$ is nearly normal under $H_0$. If the conditions hold, construct the standard error, again using $p_0$, and show the p-value in a drawing. Lastly, compute the p-value and evaluate the hypotheses.
 \end{onebox}
 
-\index{data!nuclear arms reduction|)}
+\index{data!Payday regulation poll|)}
 
 \CalculatorVideos{confidence intervals and hypothesis tests for a single proportion}
 
@@ -205,23 +335,44 @@ It should also be noted that the success-failure condition is not met with $n = 
 \end{nexample}
 \end{examplewrap}
 
-\Comment{Review the last exercise to see whether want to make updates regarding small sample size suggestions.}
+\Comment{Review the above exercise to see whether want to make updates regarding small sample size suggestions.}
 
-\index{data!Congress approval rating|(}
+\index{data!Payday regulation poll|(}
 
 \begin{exercisewrap}
 \begin{nexercise}
-A recent estimate of Congress' approval rating was 19\%.\footnote{\oiRedirect{textbook-congress_at_19_in_May2015}{www.gallup.com/poll/183128/five-months-gop-congress-approval-remains-low.aspx}} What sample size does this estimate suggest we should use for a margin of error of 0.04 with 95\% confidence?\footnotemark
+Suppose we want to continually track the support
+of payday borrowers for regulation on lenders,
+where we would conduct a new poll every month.
+Running such frequent polls is expensive, so we decide
+a wider margin of error of 5\% for each individual survey
+would be acceptable.
+Based on the original sample of borrowers where
+\paydayRegPerc{} supported some form of regulation,
+how big should our monthly sample be for a margin
+of error of 0.04 with 95\% confidence?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{We complete the same computations as before, except now we use $0.19$ instead of $0.5$ for $p$:
-\begin{align*}
-1.96\times \sqrt{\frac{p(1-p)}{n}} \approx
-1.96\times \sqrt{\frac{0.19(1-0.19)}{n}} &\leq 0.04 \qquad\to\qquad n \geq 369.5
-\end{align*}
-A sample size of 370 or more would be reasonable. (Reminder: always round up for sample size calculations!)}
+\footnotetext{We complete the same computations as before,
+   except now we use $\paydayRegProp{}$ instead of $0.5$
+   for $p$:
+   \begin{align*}
+   1.96\times \sqrt{\frac{p(1-p)}{n}}
+       \approx 1.96\times
+           \sqrt{\frac{\paydayRegProp{}(1-\paydayRegProp{})}
+               {n}}
+       &\leq 0.05
+     \qquad\to\qquad
+       n \geq 322.7
+  \end{align*}
+  A sample size of 323 or more would be reasonable.
+  (Reminder: always round up for sample size calculations!)
+  Given that we plan to track this poll over time,
+  we also may want to periodically repeat these calculations
+  to ensure that we're being thoughtful in our sample
+  size recommendations.}
 
-\index{data!Congress approval rating|)}
+\index{data!Payday regulation poll|)}
 \index{margin of error|)}
 
 
