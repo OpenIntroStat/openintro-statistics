@@ -290,6 +290,8 @@ When collecting data, we choose a sample size suitable for the purpose of the st
 %\end{align*}
 %where $ME$ represented the actual margin of error and $z^{\star}$ was chosen to correspond to the confidence level. The standard error formula is specified to correspond to the particular setting. For instance, in the case of means, the standard error was given as $\sigma / \sqrt{n}$. In the case of a single proportion, we use $\sqrt{p(1-p) / n\ }$ for the standard error.
 
+\index{data!Student football stadium|(}
+
 \begin{examplewrap}
 \begin{nexample}{A university newspaper is conducting a survey to determine what fraction of students support a \$200 per year increase in fees to pay for a new football stadium. How big of a sample is required to ensure the margin of error is smaller than 0.04 using a 95\% confidence level?}
 The margin of error for a sample proportion is
@@ -311,32 +313,76 @@ We would need over 600.25 participants, which means we need 601 participants or 
 \end{nexample}
 \end{examplewrap}
 
+\index{data!Student football stadium|)}
+
 When an estimate of the proportion is available, we use it in place of the worst case proportion value,~0.5.
 
+\index{data!Tire failure rate|(}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{tire_failure_rate_3_samp_size_calc}%
+A manager is about to oversee the mass
+production of a new tire model in her factory,
+and she would like to estimate what proportion of
+these tires will be rejected through quality control.
+The quality control team has monitored the last three
+tire models produced by the factory,
+failing 1.7\% of tires in the first model,
+6.2\% of the second model,
+and 1.3\% of the third model.
+The manager would like to examine enough tires
+to estimate the failure rate of the new tire model
+to within about 1\% with a 90\% confidence level.
+There are three different failure rates to choose from.
+Perform the sample size computation for each separately,
+and identify three sample sizes to consider.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{For a 90\% confidence interval, $z^{\star} = 1.65$,
+  and since an estimate of the proportion 0.017 is available,
+  we'll use it in the margin of error formula:
+  \begin{align*}
+  1.65\times \sqrt{\frac{0.017(1-0.017)}{n}} &\ < \ 0.01
+    \qquad\to\qquad
+      \frac{0.017(1-0.017)}{n} \ < \ 
+          \left(\frac{0.01}{1.65}\right)^2
+    \qquad\to\qquad
+      454.96 \ < \ n
+  \end{align*}
+  For sample size calculations, we always round up,
+  so the first tire model suggests 455 tires would
+  be sufficient.
+
+  A similar computation can be accomplished using 0.062
+  and 0.013 for $p$, and you should verify that using these
+  proportions results in minimum sample sizes of 1584
+  and~350 tires, respectively.}
+
 \begin{examplewrap}
-\begin{nexample}{A manager is about to oversee the mass production of a new tire model in her factory, and she would like to estimate what proportion of these tires will be rejected through quality control. The quality control team has monitored the last three tire models produced by the factory, failing 1.7\% of tires in the first model, 6.2\% of the second model, and 1.3\% of the third model. The manager would like to examine enough tires to estimate the failure rate of the new tire model to within about 2\% with a 90\% confidence level.
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item[(a)] There are three different failure rates to choose from. Perform the sample size computation for each separately, and identify three sample sizes to consider.
-\item[(b)] The sample sizes vary widely. Which of the three would you suggest using? What would influence your choice?
-\end{enumerate}}
-(a)~For a 90\% confidence interval, $z^{\star} = 1.65$, and since an estimate of the proportion 0.017 is available, we'll use it in the margin of error formula: %use theFor the 1.7\% estimate of $p$, we estimate the appropriate sample size as follows:
-\begin{align*}
-1.65\times \sqrt{\frac{0.017(1-0.017)}{n}} &\ < \ 0.02 \\
-113.7 &\ < \ n
-\end{align*}
-For sample size calculations, we always round up, so the first tire model suggests 114 tires would be sufficient.
+\begin{nexample}{The sample sizes vary widely in
+    Guided Practice~\ref{tire_failure_rate_3_samp_size_calc}.
+    Which of the three would you suggest using?
+    What would influence your choice?}
+  We could examine which of the old models is most
+  like the new model, then choose the corresponding sample
+  size.
+  Or if two of the previous estimates are based on small
+  samples while the other is based on a larger sample,
+  we should consider the value corresponding to the larger
+  sample.
+  There are also other reasonable approaches.
 
-A similar computation can be accomplished using 0.062 and 0.013 for $p$, and you should verify that using these proportions results in minimum sample sizes of 396 and~88 tires, respectively.
-
-(b) We could examine which of the old models is most like the new model, then choose the corresponding sample size. Or if two of the previous estimates are based on small samples while the other is based on a larger sample, we should consider the value corresponding to the larger sample. There are also other reasonable approaches.
-
-It should also be noted that the success-failure condition is not met with $n = 114$ or $n = 88$. That is, we would need additional methods than what we've covered so far to analyze results based on those sample sizes.
+  Also observe that the success-failure
+  condition would need to be checked in the final sample.
+  For instance, if we sampled $n = 1584$ tires and found
+  a failure rate of 0.5\%, the normal approximation would
+  not be reasonable, and we would require more advanced
+  statistical methods for creating the confidence interval.
 \end{nexample}
 \end{examplewrap}
 
-\Comment{Review the above exercise to see whether want to make updates regarding small sample size suggestions.}
-
+\index{data!Tire failure rate|)}
 \index{data!Payday regulation poll|(}
 
 \begin{exercisewrap}
