@@ -567,19 +567,70 @@ where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confide
 
 \index{logistic regression|(}
 
-In this section we introduce \term{logistic regression} as a tool for building models when there is a categorical response variable with two levels. Logistic regression is a type of \term{generalized linear model} (GLM) for response variables where regular multiple regression does not work very well. In particular, the response variable in these settings often takes a form where residuals look completely different from the normal distribution.
+In this section we introduce \term{logistic regression}
+as a tool for building models when there is a categorical
+response variable with two levels.
+Logistic regression is a type of
+\term{generalized linear model} (GLM) for response variables
+where regular multiple regression does not work very well.
+In particular, the response variable in these settings often
+takes a form where residuals look completely different from
+the normal distribution.
 
-GLMs can be thought of as a two-stage modeling approach. We first model the response variable using a probability distribution, such as the binomial or Poisson distribution. Second, we model the parameter of the distribution using a collection of predictors and a special form of multiple regression.
+GLMs can be thought of as a two-stage modeling approach.
+We first model the response variable using a probability
+distribution, such as the binomial or Poisson distribution.
+Second, we model the parameter of the distribution using
+a collection of predictors and a special form of multiple
+regression.
 
-\index{data!email|(}
+%In Section~\ref{logisticRegression} we will revisit the \data{email} data set from Chapter~\ref{introductionToData}. These emails were collected from a single email account, and we will work on developing a basic spam filter using these data. The response variable, \var{spam}, has been encoded to take value~0 when a message is not spam and~1 when it is spam. Our task will be to build an appropriate model that classifies messages as spam or not spam using email characteristics coded as predictor variables. While this model will not be the same as those used in large-scale spam filters, it shares many of the same features. 
 
-In Section~\ref{logisticRegression} we will revisit the \data{email} data set from Chapter~\ref{introductionToData}. These emails were collected from a single email account, and we will work on developing a basic spam filter using these data. The response variable, \var{spam}, has been encoded to take value~0 when a message is not spam and~1 when it is spam. Our task will be to build an appropriate model that classifies messages as spam or not spam using email characteristics coded as predictor variables. While this model will not be the same as those used in large-scale spam filters, it shares many of the same features. 
+\subsection{Resume data}
 
-\subsection{Email data}
+\index{data!resume|(}
 
-\Comment{Planning to replace this data set. If do not get to this, then this section will need to be revised before final publication, e.g. email data set is no longer discussed in Chapter~1.}
+\newcommand{\resNumPred}{11}
+\newcommand{\resUniqueNames}{36}
 
-The \data{email} data set was first presented in Chapter~\ref{introductionToData} with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Figure~\ref{emailVariables}. The \var{spam} variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.\footnote{Recall from Chapter~\ref{linRegrForTwoVar} that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter~\ref{introductionToData}. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.}
+We will consider experiment data comes from a study that sought
+to understand the influence of race and gender on job application
+callback rates.
+The study monitored job postings in Boston and Chicago for
+several months during 2001 and 2002 and used this to build
+up a set of test cases.
+Over this time period, the researchers randomly generating
+resumes to go out to a job posting, such as years of experience
+and education details, to create a realistic-looking resume.
+They then randomly assigned a name to the resume that would
+communicate the applicant's gender and race.
+The first names of each applicant were chosen for the study
+were selected so that the names would predominantly be
+recognized as belonging to black or white individuals.
+For example, Lakisha was a name that their survey indicated
+would be interpreted as a black woman, while Greg was a name
+that would generally be interpreted to be associated with
+a white male.
+
+Because this is an experiment where attributes were
+randomly assigned to the resumes, we can conclude that
+any statistically significant difference in callback
+rates is causally linked to these attributes.
+
+The response variable of interest is whether or not there
+was a callback from the employer for the applicant,
+and there were \resNumPred{} attributes that
+were randomly assigned, with special interest in the
+race and gender variables.
+Race and gender are \term{protected classes} in the
+United States, meaning they are not legally permitted
+factors for hiring or employment decisions.
+The full set of attributes considered is described in
+Figure~\ref{resumeVariables}.
+To get a better intuition for how first names
+are mapped to race and gender, the first 40 names
+and how they are mapped to race and gender are listed
+in Figure~\ref{resumeFirstName}.
 
 \begin{figure}[h]
 \centering\small
@@ -587,22 +638,120 @@ The \data{email} data set was first presented in Chapter~\ref{introductionToData
 \hline
 {\bf variable} & {\bf description} \\
 \hline
-\var{spam} & Specifies whether the message was spam. \\
-\var{to\_\hspace{0.3mm}multiple} & An indicator variable for if more than one person was listed in the \emph{To} field of the email.  \\
-\var{cc} & An indicator for if someone was CCed on the email. \\
-\var{attach} & An indicator for if there was an attachment, such as a document or image.   \\
-\var{dollar} & An indicator for if the word ``dollar'' or dollar symbol (\$) appeared in the email.  \\
-\var{winner} & An indicator for if the word ``winner'' appeared in the email message.  \\
-\var{inherit} & An indicator for if the word ``inherit'' (or a variation, like ``inheritance'') appeared in the email.  \\
-\var{password} & An indicator for if the word ``password'' was present in the email.  \\
-\var{format} & Indicates if the email contained special formatting, such as bolding, tables, or links    \\
-\var{re\_\hspace{0.3mm}subj} & Indicates whether ``Re:'' was included at the start of the email subject.   \\
-\var{exclaim\_\hspace{0.3mm}subj} & Indicates whether any exclamation point was included in the email subject.    \\
+\var{callback} &
+    Specifies whether the employer called the applicant
+    following submission of the application for the job. \\
+%\var{first\us{}name} &
+%    First name of the applicant that is listed on the resume. \\
+\var{race} &
+    Race of the applicant, implied by their first name
+    listed on the resume. \\
+\var{gender} &
+    Gender of the applicant, implied by their first name
+    listed on the resume. \\
+\var{job\us{}city} &
+    City where the job was located: Boston or Chicago.\\
+\var{job\us{}industry} &
+    The job industry, e.g. manufacturing or transportation,
+    for the job listing. \\
+\var{job\us{}type} &
+    The type of job, e.g. supervisor or sales representative,
+    for the job listing. \\
+\var{job\us{}req} &
+    An indicator for if there were any job requirements listed
+    in the job listing. \\
+\var{college\us{}degree} &
+    An indicator for whether the resume listed a college degree. \\
+\var{years\us{}experience} &
+    Number of years of experience listed on the resume. \\
+\var{employment\us{}holes} &
+    Indicator for if there were gaps in employment history
+    on the resume. \\
+\var{military} &
+    Indicator for if the resume listed any military experience. \\
+\var{has\us{}email\us{}address} &
+    Indicator for if the resume listed an email address for
+    the applicant. \\
 \hline
 \end{tabular}
-\caption{Descriptions for 11 variables in the \data{email} data set. Notice that all of the variables are indicator\index{indicator variable} variables, which take the value 1 if the specified characteristic is present and 0 otherwise.}
-\label{emailVariables}
+\caption{Descriptions for the \var{callback} variable
+    along with \resNumPred{} other variables
+    in the \data{resume} data set.
+    Many of the variables are
+    indicator\index{indicator variable} variables,
+    meaning they take the value 1 if the specified
+    characteristic is present and 0 otherwise.}
+\label{resumeVariables}
 \end{figure}
+
+\begin{figure}
+\centering\small
+\begin{tabular}{lll c lll c lll}
+  \cline{1-3} \cline{5-7} \cline{9-11}
+  first\us{}name & race & gender
+      & \ \hspace{2mm}\ &
+      first\us{}name & race & gender
+      & \ \hspace{2mm}\ &
+      first\us{}name & race & gender
+      \\
+  \cline{1-3} \cline{5-7} \cline{9-11}
+  Aisha & black & female &&
+      Hakim & black & male &&
+      Laurie & white & female \\
+  Allison & white & female &&
+      Jamal & black & male &&
+      Leroy & black & male \\
+  Anne & white & female &&
+      Jay & white & male &&
+      Matthew & white & male \\
+  Brad & white & male &&
+      Jermaine & black & male &&
+      Meredith & white & female \\
+  Brendan & white & male &&
+      Jill & white & female &&
+      Neil & white & male \\
+  Brett & white & male &&
+      Kareem & black & male &&
+      Rasheed & black & male \\
+  Carrie & white & female &&
+      Keisha & black & female &&
+      Sarah & white & female \\
+  Darnell & black & male &&
+      Kenya & black & female &&
+      Tamika & black & female \\
+  Ebony & black & female &&
+      Kristen & white & female &&
+      Tanisha & black & female \\
+  Emily & white & female &&
+      Lakisha & black & female &&
+      Todd & white & male \\
+  Geoffrey & white & male &&
+      Latonya & black & female &&
+      Tremayne & black & male \\
+  Greg & white & male &&
+      Latoya & black & female &&
+      Tyrone & black & male \\
+  \cline{1-3} \cline{5-7} \cline{9-11}
+\end{tabular}
+\caption{List of all \resUniqueNames{} unique names along
+    with the commonly inferred race and gender associated
+    with these names.}
+\label{resumeFirstName}
+\end{figure}
+% library(openintro); library(xtable); vars <- c("firstname", "race", "gender"); d <- resume[, vars]; names(d)[1] <- "first_name"; d <- unique(d); d <- d[order(d$first_name), ]; rownames(d) <- NULL; d. <- cbind(d[1:12, ], d[13:24, ], d[25:36, ]); xtable(d.)
+
+All of the attributes listed on each resume were
+randomly assigned.
+This means that no attributes that might be favorable
+or detrimental to employment would favor one demographic
+over another on these resumes,
+and importantly, we can infer causation between these
+variables and the callback rate, if the variable is
+statistically significant.
+Our analysis will allow us to compare the practical
+importance of each of the variables relative to each other.
+
+
 
 
 \subsection{Modeling the probability of an event}
@@ -865,5 +1014,5 @@ In addition to finding more and better predictors, we would need to create a cus
 
 For what is the extremely challenging task of classifying spam messages, we have made a lot of progress. We have seen that simple email variables, such as the format, inclusion of certain words, and other circumstantial characteristics, provide helpful information for spam classification. Many challenges remain, from better understanding logistic regression to carrying out the necessary computer programming, but completing such a task is very nearly within your reach.
 
-\index{data!email|)}
+\index{data!resume|)}
 \index{logistic regression|)}
