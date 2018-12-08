@@ -914,7 +914,7 @@ Registered voters	 & 		& 0.72 & 0.07 & 0.12 & 0.09 & & 1.00 \\
 
 While the proportions in the juries do not precisely represent the population proportions, it is unclear whether these data provide convincing evidence that the sample is not representative. If the jurors really were randomly sampled from the registered voters, we might expect small differences due to chance. However, unusually large differences may provide convincing evidence that the juries were not representative.
 
-A second application, assessing the fit of a distribution, is presented at the end of this section. Daily stock returns from the S\&P500 for the years 1990-2011 are used to assess whether stock activity each day is independent of the stock's behavior on previous days.
+A second application, assessing the fit of a distribution, is presented at the end of this section. Daily stock returns from the S\&P500 for 25 years are used to assess whether stock activity each day is independent of the stock's behavior on previous days.
 
 In these problems, we would like to examine all bins simultaneously, not simply compare one or two bins at a time, which will require us to develop a new test statistic.
 
@@ -1204,7 +1204,38 @@ Section~\ref{geomDist} would be useful background reading for this example, but 
 
 \index{data!S\&P500 stock data|(}
 
-We can apply our new chi-square testing framework to the second problem in this section: evaluating whether a certain statistical model fits a data set. Daily stock returns from the S\&P500 for 1990-2011 can be used to assess whether stock activity each day is independent of the stock's behavior on previous days. This sounds like a very complex question, and it is, but a chi-square test can be used to study the problem. We will label each day as \resp{Up} or \resp{Down} (\resp{D}) depending on whether the market was up or down that day. For example, consider the following changes in price, their new labels of up and down, and then the number of days that must be observed before each \resp{Up} day:
+\newcommand{\spyears}{10}
+\newcommand{\spdays}{1362}
+\newcommand{\spdaysA}{717}
+\newcommand{\spdaysB}{369}
+\newcommand{\spdaysC}{155}
+\newcommand{\spdaysD}{69}
+\newcommand{\spdaysE}{28}
+\newcommand{\spdaysF}{14}
+\newcommand{\spdaysG}{10}
+\newcommand{\spdaysEA}{743}
+\newcommand{\spdaysEB}{338}
+\newcommand{\spdaysEC}{154}
+\newcommand{\spdaysED}{70}
+\newcommand{\spdaysEE}{32}
+\newcommand{\spdaysEF}{14}
+\newcommand{\spdaysEG}{12}
+\newcommand{\spdaysEProp}{0.1128}
+\newcommand{\spdaysEPerc}{11.28\%}
+\newcommand{\spUpProp}{0.545}
+\newcommand{\spUpPerc}{54.5\%}
+\newcommand{\spDownProp}{0.455}
+\newcommand{\spDownPerc}{45.5\%}
+\newcommand{\spdaysXSq}{4.61}
+\newcommand{\spdaysN}{7}
+\newcommand{\spdaysDF}{6}
+\newcommand{\spdaysPvalue}{0.5951}
+
+We can apply our new chi-square testing framework to the
+second problem in this section:
+evaluating whether a certain statistical model fits
+a data set.
+Daily stock returns from the S\&P500 for \spyears{} can be used to assess whether stock activity each day is independent of the stock's behavior on previous days. This sounds like a very complex question, and it is, but a chi-square test can be used to study the problem. We will label each day as \resp{Up} or \resp{Down} (\resp{D}) depending on whether the market was up or down that day. For example, consider the following changes in price, their new labels of up and down, and then the number of days that must be observed before each \resp{Up} day:
 \begin{center}\footnotesize
 \begin{tabular}{lc ccc ccc ccc cc}
 Change in price		&\hspace{-1mm}	& \footnotesize2.52 &
@@ -1221,18 +1252,22 @@ Outcome	 & \hspace{-1mm} &
 \footnotesize Days to Up & \hspace{-1mm} & 1 & - & 2 & - & 2 & 1 & - & - & - & 4 \\
 \end{tabular}
 \end{center}
-If the days really are independent, then the number of days until a positive trading day should follow a geometric distribution. The geometric distribution describes the probability of waiting for the $k^{th}$ trial to observe the first success. Here each up day (Up) represents a success, and down (D) days represent failures. In the data above, it took only one day until the market was up, so the first wait time was 1 day. It took two more days before we observed our next \resp{Up} trading day, and two more for the third \resp{Up} day. We would like to determine if these counts (1, 2, 2, 1, 4, and so on) follow the geometric distribution. Figure~\ref{sAndP500For1990To2011TimeToPosTrade} shows the number of waiting days for a positive trading day during 1990-2011 for the S\&P500.
+If the days really are independent, then the number of days until a positive trading day should follow a geometric distribution. The geometric distribution describes the probability of waiting for the $k^{th}$ trial to observe the first success. Here each up day (Up) represents a success, and down (D) days represent failures. In the data above, it took only one day until the market was up, so the first wait time was 1 day. It took two more days before we observed our next \resp{Up} trading day, and two more for the third \resp{Up} day. We would like to determine if these counts (1, 2, 2, 1, 4, and so on) follow the geometric distribution. Figure~\ref{sAndP500TimeToPosTrade} shows the number of waiting days for a positive trading day during \spyears{} years for the S\&P500.
 
 \begin{figure}[h]
 \centering
 \begin{tabular}{ll ccc ccc c ll}
-\hline
-Days	 & \hspace{2mm} & 1 & 2 & 3 & 4 & 5 & 6 & 7+ & \hspace{2mm} & Total \\
-Observed &		& 1532 & 760 & 338 & 194 & 74 & 33 & 17 & & 2948 \\
-\hline
+  \hline
+  Days	 & \hspace{2mm} & 1 & 2 & 3 & 4 & 5 & 6 & 7+ &
+      \hspace{2mm} & Total \\
+  Observed &		& \spdaysA{} & \spdaysB{} & \spdaysC{} &
+      \spdaysD{} & \spdaysE{} & \spdaysF{} & \spdaysG{} & &
+      \spdays{} \\
+  \hline
 \end{tabular}
-\caption{Observed distribution of the waiting time until a positive trading day for the S\&P500, 1990-2011.}
-\label{sAndP500For1990To2011TimeToPosTrade}
+\caption{Observed distribution of the waiting time until
+    a positive trading day for the S\&P500.}
+\label{sAndP500TimeToPosTrade}
 \end{figure}
 
 We consider how many days one must wait until observing an \resp{Up} day on the S\&P500 stock index. If the stock activity was independent from one day to the next and the probability of a positive trading day was constant, then we would expect this waiting time to follow a \emph{geometric distribution}. We can organize this into a hypothesis framework:
@@ -1242,70 +1277,143 @@ We consider how many days one must wait until observing an \resp{Up} day on the 
 \end{itemize}
 There are important implications in our result for stock traders: if information from past trading days is useful in telling what will happen today, that information may provide an advantage over other traders.
 
-We consider data for the S\&P500 from 1990 to 2011 and summarize the waiting times in Figure~\ref{sAndP500For1990To2011TimeToPosTrade2} and Figure~\ref{geomFitEvaluationForSP500For1990To2011}. The S\&P500 was positive on 53.2\% of those days.
+We consider data for the S\&P500 and summarize the waiting times in Figure~\ref{sAndP500TimeToPosTrade2} and Figure~\ref{geomFitEvaluationForSP500}. The S\&P500 was positive on \spUpPerc{} of those days.
 
 \begin{figure}
 \centering
 \begin{tabular}{ll ccc ccc c ll}
-\hline
-Days	 & \hspace{1mm} & 1 & 2 & 3 & 4 & 5 & 6 & 7+ & \hspace{1mm} & Total \\
-\hline
-Observed &		& 1532 & 760 & 338 & 194 & 74 & 33 & 17 & & 2948 \\
-Geometric Model &		& 1569 & 734 & 343 & 161 & 75 & 35 & 31 & & 2948 \\
-\hline
+  \hline
+  Days & \hspace{1mm} &
+      1 & 2 & 3 & 4 & 5 & 6 & 7+ & \hspace{1mm} & Total \\
+  \hline
+  Observed & & \spdaysA{} & \spdaysB{} & \spdaysC{} &
+      \spdaysD{} & \spdaysE{} & \spdaysF{} & \spdaysG{} & &
+      \spdays{} \\
+  Geometric Model & & \spdaysEA{} & \spdaysEB{} & \spdaysEC{} &
+      \spdaysED{} & \spdaysEE{} & \spdaysEF{} & \spdaysEG{} & &
+      \spdays{} \\
+  \hline
 \end{tabular}
-\caption{Distribution of the waiting time until a positive trading day. The expected counts based on the geometric model are shown in the last row. To find each expected count, we identify the probability of waiting $D$ days based on the geometric model ($P(D) = (1-0.532)^{D-1}(0.532)$) and multiply by the total number of streaks, 2948. For example, waiting for three days occurs under the geometric model about $0.468^2\times 0.532 = 11.65\%$ of the time, which corresponds to $0.1165\times 2948 = 343$ streaks.}
-\label{sAndP500For1990To2011TimeToPosTrade2}
+\caption{Distribution of the waiting time until a positive
+    trading day.
+    The expected counts based on the geometric model are
+    shown in the last row.
+    To find each expected count, we identify the probability
+    of waiting $D$ days based on the geometric model
+    ($P(D) = (1-\spUpProp{})^{D-1}(\spUpProp{})$)
+    and multiply by the total number of streaks, \spdays{}.
+    For example, waiting for three days occurs under the
+    geometric model about
+    $\spDownProp{}^2\times \spUpProp{} = \spdaysEPerc{}$
+    of the time, which corresponds to
+    $\spdaysEProp{} \times \spdays{} = \spdaysEC$ streaks.}
+\label{sAndP500TimeToPosTrade2}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.98\textwidth]{ch_inference_for_props/figures/geomFitEvaluationForSP500For1990To2011/geomFitEvaluationForSP500For1990To2011}
-\caption{Side-by-side bar plot of the observed and expected counts for each waiting time.}
-\label{geomFitEvaluationForSP500For1990To2011}
+  \centering
+  \Figure{0.85}{geomFitEvaluationForSP500}
+  \caption{Side-by-side bar plot of the observed
+      and expected counts for each waiting time.}
+  \label{geomFitEvaluationForSP500}
 \end{figure}
 
-Because applying the chi-square framework requires expected counts to be at least~5, we have \emph{binned} together all the cases where the waiting time was at least 7 days to ensure each expected count is well above this minimum. The actual data, shown in the \emph{Observed} row in Figure~\ref{sAndP500For1990To2011TimeToPosTrade2}, can be compared to the expected counts from the \emph{Geometric Model} row. The method for computing expected counts is discussed in Figure~\ref{sAndP500For1990To2011TimeToPosTrade2}. In general, the expected counts are determined by (1) identifying the null proportion associated with each bin, then (2) multiplying each null proportion by the total count to obtain the expected counts. That is, this strategy identifies what proportion of the total count we would expect to be in each bin.
+Because applying the chi-square framework requires expected counts to be at least~5, we have \emph{binned} together all the cases where the waiting time was at least \spdaysN{} days to ensure each expected count is well above this minimum. The actual data, shown in the \emph{Observed} row in Figure~\ref{sAndP500TimeToPosTrade2}, can be compared to the expected counts from the \emph{Geometric Model} row. The method for computing expected counts is discussed in Figure~\ref{sAndP500TimeToPosTrade2}. In general, the expected counts are determined by (1) identifying the null proportion associated with each bin, then (2) multiplying each null proportion by the total count to obtain the expected counts. That is, this strategy identifies what proportion of the total count we would expect to be in each bin.
 
 \begin{examplewrap}
-\begin{nexample}{Do you notice any unusually large deviations in the graph? Can you tell if these deviations are due to chance just by looking?}
-It is not obvious whether differences in the observed counts and the expected counts from the geometric distribution are significantly different. That is, it is not clear whether these deviations might be due to chance or whether they are so strong that the data provide convincing evidence against the null hypothesis. However, we can perform a chi-square test using the counts in Figure~\ref{sAndP500For1990To2011TimeToPosTrade2}.
+\begin{nexample}{Do you notice any unusually large deviations
+    in the graph?
+    Can you tell if these deviations are due to chance just
+    by looking?}
+  It is not obvious whether differences in the observed counts
+  and the expected counts from the geometric distribution are
+  significantly different.
+  That is, it is not clear whether these deviations might be
+  due to chance or whether they are so strong that the data
+  provide convincing evidence against the null hypothesis.
+  However, we can perform a chi-square test using the counts
+  in Figure~\ref{sAndP500TimeToPosTrade2}.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Figure~\ref{sAndP500For1990To2011TimeToPosTrade2} provides a set of count data for waiting times ($O_1=1532$, $O_2=760$, ...) and expected counts under the geometric distribution ($E_1=1569$, $E_2=734$, ...). Compute the chi-square test statistic, $X^2$.\footnotemark
+Figure~\ref{sAndP500TimeToPosTrade2}
+provides a set of count data for waiting times
+($O_1=\spdaysA{}$, $O_2=\spdaysB{}$, ...)
+and expected counts under the geometric distribution
+($E_1=\spdaysEA{}$, $E_2=\spdaysEB{}$, ...).
+Compute the chi-square test statistic, $X^2$.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$X^2=\frac{(1532-1569)^2}{1569} + \frac{(760-734)^2}{734} + \cdots + \frac{(17-31)^2}{31} = 15.08$}
+\footnotetext{$X^2 =
+      \frac{(\spdaysA{}-\spdaysEA{})^2}{\spdaysEA{}} +
+      \frac{(\spdaysB{}-\spdaysEB{})^2}{\spdaysEB{}} +
+      \cdots +
+      \frac{(\spdaysG{}-\spdaysEG{})^2}{\spdaysEG{}}
+    = \spdaysXSq{}$}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Because the expected counts are all at least~5, we can safely apply the chi-square distribution to $X^2$. However, how many degrees of freedom should we~use?\footnotemark
+Because the expected counts are all at least~5,
+we can safely apply the chi-square distribution to $X^2$.
+However, how many degrees of freedom should
+we~use?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{There are $k=7$ groups, so we use $df=k-1=6$.}
+\footnotetext{There are $k = \spdaysN{}$ groups, so we use
+    $df = k - 1 = \spdaysDF{}$.}
 
 \begin{examplewrap}
-\begin{nexample}{If the observed counts follow the geometric model, then the chi-square test statistic $X^2 = 15.08$ would closely follow a chi-square distribution with $df = 6$. Using this information, compute a p-value.} \label{RejectGeomModelForSP500StockDataFor1990To2011}
-Figure~\ref{geomFitPValueForSP500For1990To2011} shows the chi-square distribution, cutoff, and the shaded p-value. If we look up the statistic $X^2=15.08$ in Appendix~\ref{chiSquareProbabilityTable}, we find that the p-value is between 0.01 and 0.02. In other words, we have sufficient evidence to reject the notion that the wait times follow a geometric distribution, i.e. trading days are not independent and past days may help predict what the stock market will do today.
+\begin{nexample}{If the observed counts follow the
+    geometric model, then the chi-square test statistic
+    $X^2 = \spdaysXSq{}$ would closely follow a chi-square
+    distribution with $df = \spdaysDF{}$.
+    Using this information, compute a p-value.} 
+  \label{DNRejectGeomModelForSP500}%
+  Figure~\ref{geomFitPValueForSP500} shows the
+  chi-square distribution, cutoff, and the shaded p-value.
+  We could look up $X^2 = \spdaysXSq{}$ in
+  Appendix~\ref{chiSquareProbabilityTable} to determine
+  that the p-value is greater than 0.3.
+  Using software, we can get a more precise value for
+  the p-value: \spdaysPvalue{}.
+  Ultimately, we do not have sufficient evidence to reject
+  the notion that the wait times follow a geometric
+  distribution for the last \spyears{} years of data
+  for the S\&P500,
+  i.e. we cannot reject the notion that trading days
+  are independent.
 \end{nexample}
 \end{examplewrap}
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{ch_inference_for_props/figures/geomFitPValueForSP500For1990To2011/geomFitPValueForSP500For1990To2011}
-\caption{Chi-square distribution with 6 degrees of freedom. The p-value for the stock analysis is shaded.}
-\label{geomFitPValueForSP500For1990To2011}
+  \centering
+  \Figure{0.9}{geomFitPValueForSP500}
+  \caption{Chi-square distribution with \spdaysDF{}
+      degrees of freedom.
+      The p-value for the stock analysis is shaded.}
+  \label{geomFitPValueForSP500}
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{In Example~\ref{RejectGeomModelForSP500StockDataFor1990To2011}, we rejected the null hypothesis that the trading days are independent. Why is this so important?}
-Because the data provided strong evidence that the geometric distribution is not appropriate, we reject the claim that trading days are independent. While it is not obvious how to exploit this information, it suggests there are some hidden patterns in the data that could be interesting and possibly useful to a stock trader.
-\index{data!S\&P500 stock data|)}
+\begin{nexample}{In
+    Example~\ref{DNRejectGeomModelForSP500},
+    we did not reject the null hypothesis that the trading days
+    are independent during the last \spyears{} of data.
+    Why is this so important?}
+  It may be tempting to think the market is ``due'' for
+  an \resp{Up} day if there have been several consecutive
+  days where it has been down.
+  However, we haven't found strong evidence that there's
+  any such property where the market is ``due'' for
+  a correction.
+  At the very least, the analysis suggests any dependence
+  between days is very weak.
 \end{nexample}
 \end{examplewrap}
+
+\index{data!S\&P500 stock data|)}
 
 \CalculatorVideos{the chi-square goodness of fit test}
 
