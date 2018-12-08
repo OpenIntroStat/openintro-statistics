@@ -9,7 +9,7 @@ The principles of simple linear regression lay the foundation for more sophistic
 
 
 
-\section[Introduction to multiple regression]{Introduction to multiple regression \sectionvideohref{youtube-sQpAuyfEYZg&list=PLkIselvEzpM5f1HYzIjFt52SD4izsJ2_I}~\sectionslideshref{os3_slides_08}}
+\section{Introduction to multiple regression}
 \label{introductionToMultipleRegression}
 
 \index{multiple regression|(}
@@ -85,10 +85,12 @@ Results of this model are shown in Figure~\ref{singleVarModelsForPriceUsingCond}
 % library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); xtable(lm(d$totalPr ~ d$cond)); xtable(lm(d$totalPr ~ d$duration))
 
 \begin{figure}
-\centering
-\Figure{0.725}{marioKartSingle}
-\caption{Scatterplot of the total auction price against the game's condition. The least squares line is also shown.}
-\label{marioKartSingle}
+  \centering
+  \Figure{0.725}{marioKartSingle}
+  \caption{Scatterplot of the total auction price against
+      the game's condition.
+      The least squares line is also shown.}
+  \label{marioKartSingle}
 \end{figure}
 
 \begin{exercisewrap}
@@ -251,7 +253,7 @@ Adjusted $R^2$ could have been used in Chapter~\ref{linRegrForTwoVar}. However, 
 
 
 %__________________
-\section[Model selection]{Model selection \sectionvideohref{youtube-VB1qSwoF-l0&list=PLkIselvEzpM5f1HYzIjFt52SD4izsJ2_I}~\sectionslideshref{os3_slides_08}}
+\section{Model selection}
 \label{introductionToMultipleRegression}
 
 
@@ -458,7 +460,7 @@ Regardless of whether you use adjusted $R^2$ or the p-value approach, or if you 
 
 
 %%%%%
-\section[Checking model assumptions using graphs]{Checking model assumptions using graphs \sectionvideohref{youtube-3KSUeYMKt5A&list=PLkIselvEzpM5f1HYzIjFt52SD4izsJ2_I}~\sectionslideshref{os3_slides_08}}
+\section{Checking model assumptions using graphs}
 \label{multipleRegressionModelAssumptions}
 
 \index{multiple regression!model assumptions|(}
@@ -506,19 +508,33 @@ generally depend on the following four assumptions:
 \item[Residuals in order of their data collection.] A plot of the residuals in the order their corresponding auctions were observed is shown in Figure~\ref{mkDiagnosticInOrder}. Such a plot is helpful in identifying any connection between cases that are close to one another, e.g. we could look for declining prices over time or if there was a time of the day when auctions tended to fetch a higher price. Here we see no structure that indicates a problem.\footnote{An especially rigorous check would use \term{time series} methods. For instance, we could check whether consecutive residuals are correlated. Doing so with these residuals yields no statistically significant correlations.}
 
 \begin{figure}[h]
-\centering
-\Figures{0.72}{marioKartDiagnostics}{mkDiagnosticInOrder}
-\caption{Plotting residuals in the order that their corresponding observations were collected helps identify connections between successive observations. If it seems that consecutive observations tend to be close to each other, this indicates the independence assumption of the observations would fail.}
-\label{mkDiagnosticInOrder}
+  \centering
+  \Figures{0.72}{marioKartDiagnostics}{mkDiagnosticInOrder}
+  \caption{Plotting residuals in the order that their
+      corresponding observations were collected helps
+      identify connections between successive observations.
+      If it seems that consecutive observations tend to be
+      close to each other, this indicates the independence
+      assumption of the observations would fail.}
+  \label{mkDiagnosticInOrder}
 \end{figure}
 
 \item[Residuals against each predictor variable.] We consider a plot of the residuals against the \var{cond\_\hspace{0.3mm}new} variable, the residuals against the \var{stock\_\hspace{0.3mm}photo} variable, and the residuals against the \var{wheels} variable. These plots are shown in Figure~\ref{mkDiagnosticEvsVariables}. For the two-level condition variable, we are guaranteed not to see any remaining trend, and instead we are checking that the variability doesn't fluctuate across groups, which it does not. However, looking at the stock photo variable, we find that there is some difference in the variability of the residuals in the two groups. Additionally, when we consider the residuals against the \var{wheels} variable, we see some possible structure. There appears to be curvature in the residuals, indicating the relationship is probably not linear.
 
 \begin{figure}
-\centering
-\Figures{}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
-\caption{For the condition and stock photo variables, we check for differences in the distribution shape or variability of the residuals. In the case of the stock photos variable, we see a little less variability in the unique photo group than the stock photo group. For numerical predictors, we also check for trends or other structure. We see some slight bowing in the residuals against the \var{wheels} variable in the bottom plot.}
-\label{mkDiagnosticEvsVariables}
+  \centering
+  \Figures{}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
+  \caption{For the condition and stock photo variables,
+      we check for differences in the distribution shape
+      or variability of the residuals.
+      In the case of the stock photos variable, we see
+      a little less variability in the unique photo group
+      than the stock photo group.
+      For numerical predictors, we also check for trends
+      or other structure.
+      We see some slight bowing in the residuals against
+      the \var{wheels} variable in the bottom plot.}
+  \label{mkDiagnosticEvsVariables}
 \end{figure}
 
 \end{description}
@@ -546,7 +562,7 @@ where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confide
 
 
 %__________________
-\section[Introduction to logistic regression]{Introduction to logistic regression \sectionvideohref{youtube-uYC2eLVSpI8&list=PLkIselvEzpM5f1HYzIjFt52SD4izsJ2_I}~\sectionslideshref{os3_slides_08}}
+\section{Introduction to logistic regression}
 \label{logisticRegression}
 
 \index{logistic regression|(}
@@ -561,7 +577,7 @@ In Section~\ref{logisticRegression} we will revisit the \data{email} data set fr
 
 \subsection{Email data}
 
-\Comment{Planning to replace this data set. If do not get to this, then this section will need to be revised, e.g. email data set is no longer discussed in Chapter~1.}
+\Comment{Planning to replace this data set. If do not get to this, then this section will need to be revised before final publication, e.g. email data set is no longer discussed in Chapter~1.}
 
 The \data{email} data set was first presented in Chapter~\ref{introductionToData} with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Figure~\ref{emailVariables}. The \var{spam} variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.\footnote{Recall from Chapter~\ref{linRegrForTwoVar} that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter~\ref{introductionToData}. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.}
 
@@ -617,10 +633,10 @@ The logit transformation is shown in Figure~\ref{logitTransformationFigureHoriz}
 In our spam example, there are 10 predictor variables, so $k = 10$. This model isn't very intuitive, but it still has some resemblance to multiple regression, and we can fit this model using software. In fact, once we look at results from software, it will start to feel like we're back in multiple regression, even if the interpretation of the coefficients is more complex.
 
 \begin{figure}
-\centering
-\Figure{}{logitTransformationFigureHoriz}
-\caption{Values of $p_i$ against values of $logit(p_i)$.}
-\label{logitTransformationFigureHoriz}
+  \centering
+  \Figure{}{logitTransformationFigureHoriz}
+  \caption{Values of $p_i$ against values of $logit(p_i)$.}
+  \label{logitTransformationFigureHoriz}
 \end{figure}
 
 \begin{examplewrap}
@@ -771,8 +787,14 @@ The first condition of the logistic regression model is not easily checked witho
 \begin{figure}[h]
   \centering
   \Figures{}{logisticModel}{logisticModelPredict}
-  \caption{The predicted probability that each of the 3,912 emails is spam is classified by their grouping, spam or not. Noise (small, random vertical shifts) have been added to each point so that points with nearly identical values aren't plotted exactly on top of one another. This makes it possible to see more observations.}
-\label{logisticModelPredict}
+  \caption{The predicted probability that each of the
+      3,912 emails is spam is classified by their grouping,
+      spam or not.
+      Noise (small, random vertical shifts) have been added
+      to each point so that points with nearly identical
+      values aren't plotted exactly on top of one another.
+      This makes it possible to see more observations.}
+  \label{logisticModelPredict}
 \end{figure}
 
 This may at first seem very discouraging: we have fit a logistic model to create a spam filter, but no emails have a fitted probability of being spam above 0.75. Don't despair; we will discuss ways to improve the model through the use of better variables in Section~\ref{improvingTheSetOfVariablesForASpamFilter}.
@@ -782,10 +804,16 @@ We'd like to assess the quality of our model. For example, we might ask: if we l
 The curve fit using natural splines is shown in Figure~\ref{logisticModelSpline} as a solid black line. If the logistic model fits well, the curve should closely follow the dashed $y=x$ line. We have added shading to represent the confidence bound for the curved line to clarify what fluctuations might plausibly be due to chance. Even with this confidence bound, there are weaknesses in the first model assumption. The solid curve and its confidence bound dips below the dashed line from about 0.1 to 0.3, and then it drifts above the dashed line from about 0.35 to 0.55. These deviations indicate the model relating the parameter to the predictors does not closely resemble the true relationship.
 
 \begin{figure}
-\centering
-\Figures{}{logisticModel}{logisticModelSpline}
-\caption{The solid black line provides the empirical estimate of the probability for observations based on their predicted probabilities (confidence bounds are also shown for this line), which is fit using natural splines. A small amount of noise was added to the observations in the plot to allow more observations to be seen.}
-\label{logisticModelSpline}
+  \centering
+  \Figures{}{logisticModel}{logisticModelSpline}
+  \caption{The solid black line provides the empirical
+      estimate of the probability for observations based
+      on their predicted probabilities
+      (confidence bounds are also shown for this line),
+      which is fit using natural splines.
+      A small amount of noise was added to the observations
+      in the plot to allow more observations to be seen.}
+  \label{logisticModelSpline}
 \end{figure}
 
 We could evaluate the second logistic regression model assumption -- independence of the outcomes -- using the model residuals. The residuals for a logistic regression model are calculated the same way as with multiple regression: the observed outcome minus the expected outcome. For logistic regression, the expected value of the outcome is the fitted probability for the observation, and the residual may be written as
