@@ -592,6 +592,15 @@ regression.
 
 \newcommand{\resNumPred}{11}
 \newcommand{\resUniqueNames}{36}
+\newcommand{\resHonorsInt}{-2.4998}
+\newcommand{\resHonorsCoef}{0.8668}
+\newcommand{\resHonorsIntPlusCoef}{-1.6330}
+\newcommand{\resHonorsCoefSE}{0.1776}
+\newcommand{\resHonorsCoefZ}{4.88}
+\newcommand{\resHonorsProb}{0.163}
+\newcommand{\resHonorsPerc}{16.3\%}
+\newcommand{\resHonorsNotProb}{0.076}
+\newcommand{\resHonorsNotPerc}{7.6\%}
 
 We will consider experiment data comes from a study that sought
 to understand the influence of race and gender on job application
@@ -634,7 +643,7 @@ in Figure~\ref{resumeFirstName}.
 
 \begin{figure}[h]
 \centering\small
-\begin{tabular}{lp{10.5cm}}
+\begin{tabular}{lp{112mm}}
 \hline
 {\bf variable} & {\bf description} \\
 \hline
@@ -664,12 +673,12 @@ in Figure~\ref{resumeFirstName}.
     An indicator for whether the resume listed a college degree. \\
 \var{years\us{}experience} &
     Number of years of experience listed on the resume. \\
-\var{employment\us{}holes} &
-    Indicator for if there were gaps in employment history
-    on the resume. \\
+\var{honors} &
+    Indicator for the resume listing some sort of honors,
+    e.g.~employee of the month. \\
 \var{military} &
     Indicator for if the resume listed any military experience. \\
-\var{has\us{}email\us{}address} &
+\var{email\us{}address} &
     Indicator for if the resume listed an email address for
     the applicant. \\
 \hline
@@ -757,29 +766,76 @@ importance of each of the variables relative to each other.
 \subsection{Modeling the probability of an event}
 \label{modelingTheProbabilityOfAnEvent}
 
-\begin{onebox}{Notation for a logistic regression model}
-The outcome variable for a GLM is denoted by $Y_i$, where the index $i$ is used to represent observation $i$. In the email application, $Y_i$ will be used to represent whether email $i$ is spam ($Y_i=1$) or not ($Y_i=0$). \vspace{3mm}
+Logistic regression is a generalized linear model where
+the outcome is a two-level categorical variable.
+The outcome, $Y_i$, takes the value 1
+(in our application, this represents a callback
+for the resume)
+with probability $p_i$
+and the value 0 with probability $1 - p_i$.
+It~is the probability $p_i$ that we model in relation
+to the predictor variables.
 
-The predictor variables are represented as follows: $x_{1,i}$ is the value of variable 1 for observation $i$, $x_{2,i}$ is the value of variable 2 for observation $i$, and so on.
+\begin{onebox}{Notation for a logistic regression model}
+The outcome variable for a GLM is denoted by $Y_i$,
+where the index $i$ is used to represent observation $i$.
+In the resume application, $Y_i$ will be used to represent
+whether resume $i$ received a callback ($Y_i=1$)
+or not ($Y_i=0$). \vspace{3mm}
+
+The predictor variables are represented as follows:
+$x_{1,i}$ is the value of variable 1 for observation $i$,
+$x_{2,i}$ is the value of variable 2 for observation $i$,
+and so on.
 \end{onebox}
 
-Logistic regression is a generalized linear model where the outcome is a two-level categorical variable. The outcome, $Y_i$, takes the value 1 (in our application, this represents a spam message) with probability $p_i$ and the value 0 with probability $1-p_i$. It~is the probability $p_i$ that we model in relation to the predictor variables.
-
-The logistic regression model relates the probability an email is spam ($p_i$) to the predictors $x_{1,i}$, $x_{2,i}$, ..., $x_{k,i}$ through a framework much like that of multiple regression:
+The logistic regression model relates the probability
+a resume would receive a callback ($p_i$) to the predictors
+$x_{1,i}$, $x_{2,i}$, ..., $x_{k,i}$
+through a framework much like that of multiple regression:
 \begin{align}
-transformation(p_{i}) = \beta_0 + \beta_1x_{1,i} + \beta_2 x_{2,i} + \cdots \beta_k x_{k,i}
+transformation(p_{i})
+  = \beta_0 +
+      \beta_1x_{1,i} +
+      \beta_2 x_{2,i} +
+      \cdots +
+      \beta_k x_{k,i}
 \label{linkTransformationEquation}
 \end{align}
-We want to choose a transformation in Equation~\eqref{linkTransformationEquation} that makes practical and mathematical sense. For example, we want a transformation that makes the range of possibilities on the left hand side of Equation~\eqref{linkTransformationEquation} equal to the range of possibilities for the right hand side; if there was no transformation for this equation, the left hand side could only take values between 0 and 1, but the right hand side could take values outside of this range. A common transformation for $p_i$ is the \term{logit transformation}, which may be written as
+We want to choose a transformation in the equation
+that makes practical and mathematical sense.
+For example, we want a transformation that makes
+the range of possibilities on the left hand side
+of the equation equal to the range of possibilities
+for the right hand side;
+if there was no transformation for this equation,
+the left hand side could only take values between 0 and 1,
+but the right hand side could take values outside of this
+range.
+A common transformation for $p_i$ is the \term{logit transformation}, which may be written as
 \begin{align*}
 logit(p_i) = \log_{e}\left( \frac{p_i}{1-p_i} \right)
 \end{align*}
-The logit transformation is shown in Figure~\ref{logitTransformationFigureHoriz}. Below, we rewrite Equation~\eqref{linkTransformationEquation} using the logit transformation of $p_i$:
+The logit transformation is shown in
+Figure~\ref{logitTransformationFigureHoriz}.
+Below, we rewrite the equation relating $Y_i$ to its
+predictors using the logit transformation of $p_i$:
 \begin{align*}
 \log_{e}\left( \frac{p_i}{1-p_i} \right)
-	= \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i}
+  = \beta_0 +
+      \beta_1 x_{1,i} +
+      \beta_2 x_{2,i} +
+      \cdots +
+      \beta_k x_{k,i}
 \end{align*}
-In our spam example, there are 10 predictor variables, so $k = 10$. This model isn't very intuitive, but it still has some resemblance to multiple regression, and we can fit this model using software. In fact, once we look at results from software, it will start to feel like we're back in multiple regression, even if the interpretation of the coefficients is more complex.
+In our resume example, there are \resNumPred{} predictor
+variables, so $k = \resNumPred{}$.
+This model isn't very intuitive, but it still has some
+resemblance to multiple regression, and we can fit this
+model using software.
+In fact, once we look at results from software,
+it will start to feel like we're back in multiple regression,
+even if the interpretation of the coefficients is more complex.
 
 \begin{figure}
   \centering
@@ -789,31 +845,77 @@ In our spam example, there are 10 predictor variables, so $k = 10$. This model i
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{Here we create a spam filter with a single predictor: \var{to\_\hspace{0.3mm}multiple}. This variable indicates whether more than one email address was listed in the \emph{To} field of the email. The following logistic regression model was fit using statistical software:
-\begin{align*}
-\log\left( \frac{p_i}{1-p_i} \right) = -2.12 - 1.81\times\text{\var{to\_\hspace{0.3mm}multiple}}
-\end{align*}
-%library(openintro); data(email); tm <- email$to_multiple > 0; g <- glm(email$spam ~ tm, family=binomial); summary(g); a <- exp(-2.12); a/(1+a); a <- exp(-2.12-1.81); a/(1+a)
-If an email is randomly selected and it has just one address in the \emph{To} field, what is the probability it is spam? What if more than one address is listed in the \emph{To} field?}\label{logisticExampleWithToMultiple}
-If there is only one email in the \emph{To} field, then \var{to\_\hspace{0.3mm}multiple} takes value 0 and the right side of the model equation equals -2.12. Solving for $p_i$: $\frac{e^{-2.12}}{1 + e^{-2.12}} = 0.11$. Just as we labeled a fitted value of $y_i$ with a ``hat'' in single-variable and multiple regression, we will do the same for this probability: $\hat{p}_i = 0.11$.
+\begin{nexample}{We start by fitting a model with a single
+    predictor: \var{employment\us{}holes}.
+    This variable indicates whether the applicant has gaps in their
+    employment history.
+    The following logistic regression model was fit using
+    statistical software:
+    \begin{align*}
+    \log\left( \frac{p_i}{1-p_i} \right)
+      = \resHonorsInt{} +
+          \resHonorsCoef{} \times\text{\var{honors}}
+    \end{align*}
+    %library(openintro); m <- glm(received_callback ~ honors, data = resume, family=binomial); summary(m); co <- round(m$coefficients, 4); a <- exp(co["(Intercept)"]); a/(1+a); a <- exp(sum(co)); a/(1+a)
+    If a resume is randomly selected and it does not have
+    any honors listed, what is the probability it received
+    a callback?
+    What if it did list some honors?}
+    \label{logisticExampleWithHonors}%
+  If a randomly chosen resume from those sent out is considered,
+  and it does not list honors, then \var{honors} takes
+  value~0 and the right side of the model equation equals
+  \resHonorsInt{}.
+  Solving for $p_i$:
+  $\frac{e^{\resHonorsInt{}}}{1 + e^{\resHonorsInt{}}}
+      = \resHonorsNotProb{}$.
+  Just as we labeled a fitted value of $y_i$ with a ``hat''
+  in single-variable and multiple regression, we will do the
+  same for this probability: $\hat{p}_i = \resHonorsNotProb{}$.
 
-If there is more than one address listed in the \emph{To} field, then the right side of the model equation is $-2.12 - 1.81\times1 = -3.93$, which corresponds to a probability $\hat{p}_i = 0.02$.
+  If the resume had listed some honors,
+  then the right side of the model equation is
+  $\resHonorsInt{} + \resHonorsCoef{} \times 1
+      = \resHonorsIntPlusCoef{}$,
+  which corresponds to a probability
+  $\hat{p}_i = \resHonorsProb{}$.
 
-Notice that we could examine -2.12 and -3.93 in Figure~\ref{logitTransformationFigureHoriz} to estimate the probability before formally calculating the value.
+  Notice that we could examine \resHonorsInt{} and
+  \resHonorsIntPlusCoef{} in
+  Figure~\ref{logitTransformationFigureHoriz}
+  to estimate the probability before formally calculating
+  the value.
 \end{nexample}
 \end{examplewrap}
 
-To convert from values on the regression-scale (e.g. -2.12 and -3.93 in Example~\ref{logisticExampleWithToMultiple}), use the following formula, which is the result of solving for $p_i$ in the regression model:
+To convert from values on the regression-scale
+(e.g. \resHonorsInt{} and \resHonorsIntPlusCoef{} in
+Example~\ref{logisticExampleWithHonors}),
+use the following formula, which is the result
+of solving for $p_i$ in the regression model:
+\newcommand{\exponentialToSolveForPi}
+    {e^{\beta_0 + \beta_1 x_{1,i}+\cdots+\beta_k x_{k,i}}}%
 \begin{align*}
-p_i
-	= \frac{e^{\beta_0 + \beta_1 x_{1,i}+\cdots+\beta_k x_{k,i}}}
-		{\ 1\ \ +\ \ e^{\beta_0 + \beta_1 x_{1,i}+\cdots+\beta_k x_{k,i}}\ }
+p_i = \frac{\exponentialToSolveForPi{}}
+    {\ 1\ \ +\ \ \exponentialToSolveForPi{}\ }
 \end{align*}
-As with most applied data problems, we substitute the point estimates for the parameters (the $\beta_i$) so that we may make use of this formula. In Example~\ref{logisticExampleWithToMultiple}, the probabilities were calculated as
+As with most applied data problems, we substitute the point estimates for the parameters (the $\beta_i$) so that we may make use of this formula. In Example~\ref{logisticExampleWithHonors}, the probabilities were calculated as
 \begin{align*}
-&\frac{\ e^{-2.12}\ }{\ 1\ +\ e^{-2.12}\ } = 0.11 && \frac{\ e^{-2.12 - 1.81}\ }{\ 1\ +\ e^{-2.12 - 1.81}\ } = 0.02
+&\frac{\ e^{\resHonorsInt{}}\ }
+    {\ 1\ +\ e^{\resHonorsInt{}}\ }
+  = \resHonorsNotProb{} &&
+\frac{\ e^{\resHonorsInt{} + \resHonorsCoef{}}\ }
+    {\ 1\ +\ e^{\resHonorsInt{} + \resHonorsCoef{}}\ }
+  = \resHonorsProb{}
 \end{align*}
-While the information about whether the email is addressed to multiple people is a helpful start in classifying email as spam or not, the probabilities of 11\% and 2\% are not dramatically different, and neither provides very strong evidence about which particular email messages are spam. To get more precise estimates, we'll need to include many more variables in the model.
+While knowing whether a resume listed honors is useful when
+predicting whether or not the employer would call,
+we would like to account for many different variables
+at once to understand how each of the different resume aspects
+affected the chance of a callback.
+
+
+\subsection{Building the logistic model with many variables}
 
 We used statistical software to fit the logistic regression model with all ten predictors described in Figure~\ref{emailVariables}. Like multiple regression, the result may be presented in a summary table, which is shown in Figure~\ref{emailLogisticModelResults}. The structure of this table is almost identical to that of multiple regression; the only notable difference is that the p-values are calculated using the normal distribution rather than the $t$-distribution.
 
