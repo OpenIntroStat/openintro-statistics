@@ -1159,35 +1159,6 @@ This is a persistent challenge around combatting discrimination.
 
 
 
-\subsection{Practical decisions in the email application}
-
-Examples~\ref{exampleForResumeAndWhiteQuantified} and~\ref{exampleForSpamAndFormat} highlight a key feature of logistic and multiple regression. In the spam filter example, some email characteristics will push an email's classification in the direction of spam while other characteristics will push it in the opposite direction.
-
-If we were to implement a spam filter using the model we have fit, then each future email we analyze would fall into one of three categories based on the email's characteristics:
-\begin{enumerate}
-\item The email characteristics generally indicate the email is not spam, and so the resulting probability that the email is spam is quite low, say, under 0.05.
-\item The characteristics generally indicate the email is spam, and so the resulting probability that the email is spam is quite large, say, over 0.95.
-\item The characteristics roughly balance each other out in terms of evidence for and against the message being classified as spam. Its probability falls in the remaining range, meaning the email cannot be adequately classified as spam or not spam.
-\end{enumerate}
-If we were managing an email service, we would have to think about what should be done in each of these three instances. In an email application, there are usually just two possibilities: filter the email out from the regular inbox and put it in a ``spambox'', or let the email go to the regular inbox.
-
-\begin{exercisewrap}
-\begin{nexercise}
-The first and second scenarios are intuitive. If the evidence strongly suggests a message is not spam, send it to the inbox. If the evidence strongly suggests the message is spam, send it to the spambox. How should we handle emails in the third category?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{In this particular application, we should err on the side of sending more mail to the inbox rather than mistakenly putting good messages in the spambox. So, in summary: emails in the first and last categories go to the regular inbox, and those in the second scenario go to the spambox.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Suppose we apply the logistic model we have built as a spam filter and that 100 messages are placed in the spambox over 3 months. If we used the guidelines above for putting messages into the spambox, about how many legitimate (non-spam) messages would you expect to find among the 100 messages?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{First, note that we proposed a cutoff for the predicted probability of 0.95 for spam. In a worst case scenario, all the messages in the spambox had the minimum probability equal to about 0.95. Thus, we should expect to find about 5 or fewer legitimate messages among the 100 messages placed in the spambox.}
-
-Almost any classifier will have some error. In the spam filter guidelines above, we have decided that it is okay to allow up to 5\% of the messages in the spambox to be real messages. If we wanted to make it a little harder to classify messages as spam, we could use a cutoff of 0.99. This would have two effects. Because it raises the standard for what can be classified as spam, it reduces the number of good emails that are classified as spam. However, it will also fail to correctly classify an increased fraction of spam messages. No matter the complexity and the confidence we might have in our model, these practical considerations are absolutely crucial to making a helpful spam filter. Without them, we could actually do more harm than good by using our statistical model.
-
-
 \subsection{Diagnostics for the email classifier}
 
 \begin{onebox}{Logistic regression conditions}
