@@ -565,6 +565,12 @@ where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confide
 \section{Introduction to logistic regression}
 \label{logisticRegression}
 
+\Comment{We will be reaching out to groups that work on
+topics of racial and gender discrimination to provide
+feedback on the presentation of the material in this
+section.
+This current version is still very much only a draft.}
+
 \index{logistic regression|(}
 
 In this section we introduce \term{logistic regression}
@@ -590,7 +596,7 @@ regression.
 
 \index{data!resume|(}
 
-\newcommand{\resNumPred}{11}
+\newcommand{\resNumPred}{9}
 \newcommand{\resUniqueNames}{36}
 \newcommand{\resHonorsInt}{-2.4998}
 \newcommand{\resHonorsCoef}{0.8668}
@@ -652,20 +658,14 @@ in Figure~\ref{resumeFirstName}.
     following submission of the application for the job. \\
 %\var{first\us{}name} &
 %    First name of the applicant that is listed on the resume. \\
-\var{race} &
-    Race of the applicant, implied by their first name
-    listed on the resume. \\
-\var{gender} &
-    Gender of the applicant, implied by their first name
-    listed on the resume. \\
 \var{job\us{}city} &
     City where the job was located: Boston or Chicago.\\
-\var{job\us{}industry} &
-    The job industry, e.g. manufacturing or transportation,
-    for the job listing. \\
-\var{job\us{}type} &
-    The type of job, e.g. supervisor or sales representative,
-    for the job listing. \\
+%\var{job\us{}industry} &
+%    The job industry, e.g. manufacturing or transportation,
+%    for the job listing. \\
+%\var{job\us{}type} &
+%    The type of job, e.g. supervisor or sales representative,
+%    for the job listing. \\
 \var{job\us{}req} &
     An indicator for if there were any job requirements listed
     in the job listing. \\
@@ -681,6 +681,12 @@ in Figure~\ref{resumeFirstName}.
 \var{email\us{}address} &
     Indicator for if the resume listed an email address for
     the applicant. \\
+\var{race} &
+    Race of the applicant, implied by their first name
+    listed on the resume. \\
+\var{gender} &
+    Gender of the applicant, implied by their first name
+    listed on the resume. \\
 \hline
 \end{tabular}
 \caption{Descriptions for the \var{callback} variable
@@ -917,84 +923,245 @@ affected the chance of a callback.
 
 \subsection{Building the logistic model with many variables}
 
-We used statistical software to fit the logistic regression model with all ten predictors described in Figure~\ref{emailVariables}. Like multiple regression, the result may be presented in a summary table, which is shown in Figure~\ref{emailLogisticModelResults}. The structure of this table is almost identical to that of multiple regression; the only notable difference is that the p-values are calculated using the normal distribution rather than the $t$-distribution.
+We used statistical software to fit the logistic regression
+model with all \resNumPred{} predictors described in
+Figure~\ref{resumeVariables}.
+Like multiple regression, the result may be presented
+in a summary table, which is shown in
+Figure~\ref{resumeLogisticModelResults}.
+The structure of this table is almost identical to that
+of multiple regression;
+the only notable difference is that the p-values are
+calculated using the normal distribution rather than
+the $t$-distribution.
 
 \begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
   \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\ 
+  & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & -0.8362 & 0.0962 & -8.69 & 0.0000 \\ 
-  to\_\hspace{0.3mm}multiple & -2.8836 & 0.3121 & -9.24 & 0.0000 \\ 
-  winner & 1.7038 & 0.3254 & 5.24 & 0.0000 \\ 
-  format & -1.5902 & 0.1239 & -12.84 & 0.0000 \\ 
-  re\_\hspace{0.3mm}subj & -2.9082 & 0.3708 & -7.84 & 0.0000 \\ 
-  exclaim\_\hspace{0.3mm}subj & 0.1355 & 0.2268 & 0.60 & 0.5503 \\ 
-  cc & -0.4863 & 0.3054 & -1.59 & 0.1113 \\ 
-  attach & 0.9790 & 0.2170 & 4.51 & 0.0000 \\ 
-  dollar & -0.0582 & 0.1589 & -0.37 & 0.7144 \\ 
-  inherit & 0.2093 & 0.3197 & 0.65 & 0.5127 \\ 
-  password & -1.4929 & 0.5295 & -2.82 & 0.0048 \\ 
-\hline
+  (Intercept) & -2.6632 & 0.1820 & -14.64 & 0.0000 \\
+  job\_cityChicago & -0.4403 & 0.1142 & -3.85 & 0.0001 \\
+  college\_degree & -0.0666 & 0.1211 & -0.55 & 0.5821 \\
+  years\_experience & 0.0200 & 0.0102 & 1.96 & 0.0503 \\
+  honors & 0.7694 & 0.1858 & 4.14 & 0.0000 \\
+  military & -0.3422 & 0.2157 & -1.59 & 0.1127 \\
+  email\_address & 0.2183 & 0.1133 & 1.93 & 0.0541 \\
+  racewhite & 0.4424 & 0.1080 & 4.10 & 0.0000 \\
+  gendermale & -0.1818 & 0.1376 & -1.32 & 0.1863 \\
+  \hline
 \end{tabular}
-\caption{Summary table for the full logistic regression model for the spam filter example.}
-\label{emailLogisticModelResults}
+\caption{Summary table for the full logistic regression model
+    for the resume callback example.}
+\label{resumeLogisticModelResults}
 \end{figure}
-% library(openintro); ?email # run example
-% library(xtable); xtable(g)
+% library(openintro); library(dplyr); a <- resume; d <- data.frame(callback = a$received_callback, job_city = a$job_city, college_degree = a$college_degree, years_experience = a$years_experience, honors = a$honors, military = a$military, email_address = a$has_email_address, race = a$race, gender = ifelse(a$gender == "m", "male", "female"))
+% job_industry = a$job_industry, job_type = a$job_type, 
+% m <- glm(callback ~ job_city + college_degree + years_experience + honors + military + email_address + race + gender, data = d, family = binomial); summary(m); xtable(m)
+\newcommand{\resRaceWhiteCoef}{0.4424}
 
-Just like multiple regression, we could trim some variables from the model using the p-value. Using backward elimination with a p-value cutoff of 0.05 (start with the full model and trim the predictors with p-values greater than 0.05), we ultimately eliminate the \var{exclaim\_\hspace{0.3mm}subj}, \var{dollar}, \var{inherit}, and \var{cc} predictors. The remainder of this section will rely on this smaller model, which is summarized in Figure~\ref{emailLogisticReducedModel}.
+Just like multiple regression, we could trim some variables
+from the model.
+Here we'll use the p-value method, though better approaches
+exist that are beyond the scope of this book,
+e.g. \hiddenterm{Akaike information criterion (AIC)}%
+\index{AIC|textbf}.
+Using backward elimination with a p-value cutoff of 0.05
+(start with the full model and trim the predictors with
+p-values greater than 0.05),
+we ultimately eliminate the \var{college\us{}degree},
+\var{military}, \var{email\us{}address}, and \var{gender}
+predictors.
+The remainder of this section will rely on this smaller
+model, which is summarized in
+Figure~\ref{resumeLogisticReducedModel}.
 
 \begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
   \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\ 
+  & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & -0.8595 & 0.0910 & -9.44 & 0.0000 \\ 
-  to\_\hspace{0.3mm}multiple & -2.8372 & 0.3092 & -9.18 & 0.0000 \\ 
-  winner & 1.7370 & 0.3218 & 5.40 & 0.0000 \\ 
-  format & -1.5569 & 0.1207 & -12.90 & 0.0000 \\ 
-  re\_\hspace{0.3mm}subj & -3.0482 & 0.3630 & -8.40 & 0.0000 \\ 
-  attach & 0.8643 & 0.2042 & 4.23 & 0.0000 \\ 
-  password & -1.4871 & 0.5290 & -2.81 & 0.0049 \\ 
+  (Intercept) & -2.7727 & 0.1344 & -20.63 & 0.0000 \\ 
+  job\_cityChicago & -0.3504 & 0.1089 & -3.22 & 0.0013 \\ 
+  years\_experience & 0.0264 & 0.0096 & 2.76 & 0.0059 \\ 
+  honors & 0.7935 & 0.1829 & 4.34 & 0.0000 \\ 
+  racewhite & 0.4399 & 0.1079 & 4.08 & 0.0000 \\ 
 \hline
 \end{tabular}
-\caption{Summary table for the logistic regression model for the spam filter, where variable selection has been performed.}
-\label{emailLogisticReducedModel}
+\caption{Summary table for the logistic regression model
+    for the resume callback example, where variable selection
+    has been performed.}
+\label{resumeLogisticReducedModel}
 \end{figure}
-% library(openintro); ?email # run example
-% g <- glm(spam ~ to_multiple + winner + format + re_subj + attach + password, data=e, family=binomial); xtable(g)
+% # Run code for table above first
+% % m <- glm(callback ~ job_city + years_experience + honors + race, data = d, family = binomial); summary(m); xtable(m)
+\newcommand{\resRaceWhiteCoefReduced}{0.4399}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Examine the summary of the reduced model in Figure~\ref{emailLogisticReducedModel}, and in particular, examine the \var{to\_\hspace{0.3mm}multiple} row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.\footnotemark
+The \var{race} variable had taken only two levels:
+\resp{black} and \resp{white}.
+Based on the model results, was race a meaningful
+factor for if a prospective employer would
+call back?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.}
+\footnotetext{The coefficient shown in the model for the
+    race variable reflects the log-odds gain for resumes
+    where the candidate's first name implied they were
+    white.
+    We see that the p-value for this coefficient is very
+    small (essentially zero), which implies that race
+    played a statistically significant role in whether
+    a candidate received a callback.
+    Additionally, we see that the coefficient shown
+    corresponds to the level of \resp{white},
+    and it is positive,
+    which implies that resumes from individuals with
+    names typically associated with white individuals
+    tended to receive more callbacks than those
+    typically associated with black individuals.}
 
-Point estimates will generally change a little -- and sometimes a lot -- depending on which other variables are included in the model. This is usually due to colinearity in the predictor variables. We previously saw this in the Ebay auction example when we compared the coefficient of \var{cond\_\hspace{0.3mm}new} in a single-variable model and the corresponding coefficient in the multiple regression model that used three additional variables (see Sections~\ref{twoSingleVariableModelsForMarioKartData} and~\ref{includingAndAssessingManyVariablesInAModel}).
+The data provide very strong evidence of racial bias
+by prospective employers.
+We, the authors, found this conclusion saddening,
+though not surprising.
+%It is also important to consider that this data only
+%highlights one stage of racial bias in employment --
+%when someone is trying to get hired --
+%and it does not consider racial bias during employment.
+%It does not scratch the surface of racial bias
+%for individuals who are hired.
 
 \begin{examplewrap}
-\begin{nexample}{Spam filters are built to be automated, meaning a piece of software is written to collect information about emails as they arrive, and this information is put in the form of variables. These variables are then put into an algorithm that uses a statistical model, like the one we've fit, to classify the email. Suppose we write software for a spam filter using the reduced model shown in Figure~\ref{emailLogisticReducedModel}. If an incoming email has the word ``winner'' in it, will this raise or lower the model's calculated probability that the incoming email is spam?} \label{exampleForSpamAndWinner}
-The estimated coefficient of \var{winner} is positive (1.7370). A positive coefficient estimate in logistic regression, just like in multiple regression, corresponds to a positive association between the predictor and response variables when accounting for the other variables in the model. Since the response variable takes value 1 if an email is spam and 0 otherwise, the positive coefficient indicates that the presence of ``winner'' in an email raises the model probability that the message is spam.
+\begin{nexample}{Examine the summary of the reduced model
+    in Figure~\ref{resumeLogisticReducedModel},
+    and in particular, examine the \var{racewhite} row.
+    Is the point estimate the same as we found before,
+    \resRaceWhiteCoefReduced{}, or is it different?
+    Explain why this might be.}
+  The new estimate is only slightly different:
+  \resRaceWhiteCoefReduced{} vs \resRaceWhiteCoef{}.
+  We earlier discussed how the implied race on the resume
+  was randomized, meaning this variable is independent of
+  other predictors.
+  This means that the estimated effect will be virtually
+  unchanged, which is what we've seen here, even after we
+  correct for these other variables.
+  This is the product of thoughtful experiment design
+  by this study's researchers.
+\end{nexample}
+\end{examplewrap}
+
+The predictors in this experiment were thoughtfully
+laid out so that they were independent,
+which aligned with the motivation of the study to tease
+out which effects were important to getting a callback.
+When a data set doesn't come from a thoughtfully designed
+experiment -- for instance, maybe it is observational data --
+it's common for point estimates will generally change a little,
+and sometimes, sometimes a lot, depending on which other
+variables are included in the model.
+This is usually due to colinearity in the predictor variables.
+\Comment{Revisit the end of this paragraph,
+  e.g. if removing the Ebay auction example.}
+We previously saw this in the Ebay auction example when we compared the coefficient of \var{cond\_\hspace{0.3mm}new} in a single-variable model and the corresponding coefficient in the multiple regression model that used three additional variables (see Sections~\ref{twoSingleVariableModelsForMarioKartData} and~\ref{includingAndAssessingManyVariablesInAModel}).
+
+\begin{examplewrap}
+\begin{nexample}{Use the model to estimate the probability
+    of receiving a callback for a job in Chicago
+    where the candidate lists 14 years experience,
+    no honors, and has a first name that implies
+    they are white.}
+  \label{exampleForResumeAndWhiteQuantified}%
+  We start by identifying which coefficients
+  should be included in the linear combination calculation:
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  %\item \var{(Intercept)}: Always included.
+  \item \var{job\us{}cityChicago}:
+      Since the resume is for a position in Chicago,
+      we will include this coefficient.
+  \item \var{years\us{}experience}:
+      Set the variable to 12,
+      which will be multiplied by the coefficient, 0.0264.
+  \item \var{honors}:
+      Since no honors are listed on the resume,
+      this variable will drop out of the equation.
+  \item \var{racewhite}:
+      This coefficient will be included in the calculation.
+  \end{itemize}
+  Computing the linear combination:
+  \begin{align*}
+  log\left(\frac{p}{1 - p}\right)
+    &= - 2.6632
+        - 0.4403 \times 1_{Chicago}
+        + 0.7694 \times 1_{honors}
+        + 0.4424 \times 1_{white} \\
+    &= - 2.6632
+        - 0.4403 \times 1
+        + 0.7694 \times 0
+        + 0.4424 \times 1 \\
+    &= - 2.6611
+  \end{align*}
+  We can now back-solve for $p$:
+  the chance such an individual will receive
+  a callback is about~6.5\%.
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{Suppose the same email from Example~\ref{exampleForSpamAndWinner} was in HTML format, meaning the \var{format} variable took value 1. Does this characteristic increase or decrease the probability that the email is spam according to the model?}\label{exampleForSpamAndFormat}
-Since HTML corresponds to a value of 1 in the \var{format} variable and the coefficient of this variable is negative (-1.5569), this would lower the probability estimate returned from the model.
+\begin{nexample}{Compute the probability of a callback
+    for an individual with a black-sounding name
+    with the same characteristics as the one described
+    in Example~\ref{exampleForResumeAndWhiteQuantified}.}
+  \index{exampleForResumeAndBlackQuantified}%
+  We can complete the same steps for an individual
+  with the same characteristics who is black,
+  where the only difference in the calculation is that
+  $1_{white}$ will take a value of \resp{0}.
+  Doing so yields a probability of 0.0430.
+  Let's compare the results with those of
+  Example~\ref{exampleForResumeAndWhiteQuantified}.
+
+  In practical terms, such an individual with
+  a white-sounding name would need to apply to
+  $\frac{1}{0.0653} = 15.3$ jobs on average to receive
+  a callback,
+  while an individual with an identical resume but with
+  a black-sounding name would need to apply to
+  $\frac{1}{0.0430} = 23.3$ jobs on average to receive
+  a callback.
+  That is, to get a callback, someone with a
+  black-sounding name needs to send their resume to,
+  on average,
+  about 50\% more employers to receive a callback.
 \end{nexample}
 \end{examplewrap}
+
+What we've quantified in this section is alarming and disturbing.
+However, one aspect that makes this racial bias so difficult to
+address is that the experiment, as well designed as it is,
+cannot send us much signal about which employers are
+discriminating.
+When the data is much more chaotic, as is often the case
+with observational data, the challenge is much more profound.
+In many cases, it is only possible to say that discrimination
+is happening, even if we cannot say which particular instances
+are representing discrimination.
+This is a persistent challenge around combatting discrimination.
+
+
 
 \subsection{Practical decisions in the email application}
 
-Examples~\ref{exampleForSpamAndWinner} and~\ref{exampleForSpamAndFormat} highlight a key feature of logistic and multiple regression. In the spam filter example, some email characteristics will push an email's classification in the direction of spam while other characteristics will push it in the opposite direction.
+Examples~\ref{exampleForResumeAndWhiteQuantified} and~\ref{exampleForSpamAndFormat} highlight a key feature of logistic and multiple regression. In the spam filter example, some email characteristics will push an email's classification in the direction of spam while other characteristics will push it in the opposite direction.
 
 If we were to implement a spam filter using the model we have fit, then each future email we analyze would fall into one of three categories based on the email's characteristics:
 \begin{enumerate}
