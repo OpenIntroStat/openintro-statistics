@@ -596,6 +596,9 @@ regression.
 
 \index{data!resume|(}
 
+\newcommand{\resN}{4870}
+\newcommand{\resCallbackProp}{0.0805}
+\newcommand{\resCallbackPerc}{8.05\%}
 \newcommand{\resNumPred}{9}
 \newcommand{\resUniqueNames}{36}
 \newcommand{\resHonorsInt}{-2.4998}
@@ -1159,7 +1162,7 @@ This is a persistent challenge around combatting discrimination.
 
 
 
-\subsection{Diagnostics for the email classifier}
+\subsection{Diagnostics for the callback rate model}
 
 \begin{onebox}{Logistic regression conditions}
 There are two key conditions for fitting a logistic regression model:
@@ -1171,26 +1174,51 @@ There are two key conditions for fitting a logistic regression model:
 \end{enumerate}
 \end{onebox}
 
-The first condition of the logistic regression model is not easily checked without a fairly sizable amount of data. Luckily, we have 3,921 emails in our data set! Let's first visualize these data by plotting the true classification of the emails against the model's fitted probabilities, as shown in Figure~\ref{logisticModelPredict}. The vast majority of emails (spam or not) still have fitted probabilities below 0.5.
+The first condition of the logistic regression model is not
+easily checked without a fairly sizable amount of data.
+Luckily, we have \resN{} resume submissions in the data set!
+Let's first visualize these data by plotting the true
+classification of the resumes against the model's fitted
+probabilities, as shown in
+Figure~\ref{logisticModelPredict}.
+%The vast majority of emails (spam or not) still have fitted probabilities below 0.5.
 
 \begin{figure}[h]
   \centering
   \Figures{}{logisticModel}{logisticModelPredict}
   \caption{The predicted probability that each of the
-      3,912 emails is spam is classified by their grouping,
-      spam or not.
+      \resN{} resumes results in a callback.
       Noise (small, random vertical shifts) have been added
       to each point so that points with nearly identical
-      values aren't plotted exactly on top of one another.
-      This makes it possible to see more observations.}
+      values aren't plotted exactly on top of one another,
+      making it reasonable to see more observations.}
   \label{logisticModelPredict}
 \end{figure}
 
-This may at first seem very discouraging: we have fit a logistic model to create a spam filter, but no emails have a fitted probability of being spam above 0.75. Don't despair; we will discuss ways to improve the model through the use of better variables in Section~\ref{improvingTheSetOfVariablesForASpamFilter}.
+%The probabilities predicted by the model fall between
+%4.3\% and 29.9\%.
+We'd like to assess the quality of the model.
+For example, we might ask:
+if we look at resumes that we modeled as having
+a 10\% chance of getting a callback, do we find
+about 10\% of them actually receive a callback?
+To help us out, we'll borrow an advanced statistical
+method called \term{natural splines} that estimates
+the local probability over the region 0.04 to 0.30,
+which is the range of the predicted probabilities.
+All you need to know about natural splines to understand
+what we are doing is that they are used to fit flexible
+lines rather than straight lines.
 
-We'd like to assess the quality of our model. For example, we might ask: if we look at emails that we modeled as having a 10\% chance of being spam, do we find about 10\% of them actually are spam? To help us out, we'll borrow an advanced statistical method called \term{natural splines} that estimates the local probability over the region 0.00 to 0.75 (the largest predicted probability was 0.73, so we avoid extrapolating). All you need to know about natural splines to understand what we are doing is that they are used to fit flexible lines rather than straight lines.
-
-The curve fit using natural splines is shown in Figure~\ref{logisticModelSpline} as a solid black line. If the logistic model fits well, the curve should closely follow the dashed $y=x$ line. We have added shading to represent the confidence bound for the curved line to clarify what fluctuations might plausibly be due to chance. Even with this confidence bound, there are weaknesses in the first model assumption. The solid curve and its confidence bound dips below the dashed line from about 0.1 to 0.3, and then it drifts above the dashed line from about 0.35 to 0.55. These deviations indicate the model relating the parameter to the predictors does not closely resemble the true relationship.
+The curve fit using natural splines is shown in
+Figure~\ref{logisticModelSpline} as a solid black line.
+If the logistic model fits well, the curve should closely
+follow the dashed $y = x$ line.
+We have added shading to represent the confidence bound for
+the curved line to clarify what fluctuations might plausibly
+be due to chance.
+The dashed line generally stays within the error bound
+of the solid curve, suggesting the fit is reasonable.
 
 \begin{figure}
   \centering
@@ -1200,19 +1228,31 @@ The curve fit using natural splines is shown in Figure~\ref{logisticModelSpline}
       on their predicted probabilities
       (confidence bounds are also shown for this line),
       which is fit using natural splines.
+      \index{spline}\index{natural spline}%
       A small amount of noise was added to the observations
       in the plot to allow more observations to be seen.}
   \label{logisticModelSpline}
 \end{figure}
 
-We could evaluate the second logistic regression model assumption -- independence of the outcomes -- using the model residuals. The residuals for a logistic regression model are calculated the same way as with multiple regression: the observed outcome minus the expected outcome. For logistic regression, the expected value of the outcome is the fitted probability for the observation, and the residual may be written as
-\begin{align*}
-e_i = Y_i - \hat{p}_i
-\end{align*}
-We could plot these residuals against a variety of variables or in their order of collection, as we did with the residuals in multiple regression. However, since the model will need to be revised to effectively classify spam and you have already seen similar residual plots in Section~\ref{multipleRegressionModelAssumptions}, we won't investigate the residuals here.
+The second logistic regression model assumption
+-- independence of the outcomes --
+is reasonable since characteristics of resumes were
+randomly assigned to the resumes that were sent out.
+
+Additional diagnostics may be created that are similar to those
+featured in Section~\ref{multipleRegressionModelAssumptions}.
+For instance, we could compute residuals as
+the observed outcome minus the expected outcome
+($e_i = Y_i - \hat{p}_i$),
+and then we could create plots of these residuals
+against each predictor.
+We might also create a smoothed average like that in
+Figure~\ref{logisticModelSpline} to better understand
+deviations.
 
 
 
+%\subsection{Understanding why minorities are more impacted by discrimination} % Discuss imbalance in number of opportunities for being discriminated against.
 \subsection{Improving the set of variables for a spam filter}
 \label{improvingTheSetOfVariablesForASpamFilter}
 
