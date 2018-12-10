@@ -1250,49 +1250,110 @@ We might also create a smoothed average like that in
 Figure~\ref{logisticModelSpline} to better understand
 deviations.
 
-
-
-%\subsection{Understanding why minorities are more impacted by discrimination} % Discuss imbalance in number of opportunities for being discriminated against.
-\subsection{Improving the set of variables for a spam filter}
-\label{improvingTheSetOfVariablesForASpamFilter}
-
-If we were building a spam filter for an email service that managed many accounts (e.g. Gmail or Hotmail), we would spend much more time thinking about additional variables that could be useful in classifying emails as spam or not. We also would use transformations or other techniques that would help us include strongly skewed numerical variables as predictors.
-
-Take a few minutes to think about additional variables that might be useful in identifying spam. Below is a list of variables we think might be useful:
-\begin{enumerate}
-\item[(1)] An indicator variable could be used to represent whether there was prior two-way correspondence with a message's sender. For instance, if you sent a message to john@example.com and then John sent you an email, this variable would take value 1 for the email that John sent. If you had never sent John an email, then the variable would be set to~0.
-\item[(2)] A second indicator variable could utilize an account's past spam flagging information. The variable could take value 1 if the sender of the message has previously sent messages flagged as~spam.
-\item[(3)] A third indicator variable could flag emails that contain links included in previous spam messages. If such a link is found, then set the variable to~1 for the email. Otherwise, set it to~0.
-\end{enumerate}
-The variables described above take one of two approaches. Variable (1) is specially designed to capitalize on the fact that spam is rarely sent between individuals that have two-way communication. Variables~(2) and~(3) are specially designed to flag common spammers or spam messages. While we would have to verify using the data that each of the variables is effective, these seem like promising ideas.
-
-Figure~\ref{emailTableOfSpamAnd} shows a contingency table for spam and also for the new variable described in~(1) above. If we look at the 1,090 emails where there was correspondence with the sender in the preceding 30 days, not one of these message was spam. This suggests variable~(1) would be very effective at accurately classifying some messages as not spam. With this single variable, we would be able to send about 28\% of messages through to the inbox with confidence that almost none are spam.
-
-\begin{figure}[h]
-\centering
-\begin{tabular}{lrrrr}
-& \multicolumn{3}{c}{prior correspondence} & \\
-\cline{2-4}
- & \ \hspace{5mm}\resp{no} & \ \hspace{8mm}\resp{yes} && \ \hspace{3mm}Total \\
-\hline
-\vspace{-3.8mm} & & & & \\
-\resp{spam} &  367 &    0 &&  367 \\
-\resp{not spam}\hspace{3mm}\  & 2464 & 1090 && 3554 \\
-\hline
-\vspace{-3.8mm} & & & & \\
-Total & 2831 & 1090 && 3921 \\
-\hline
-\end{tabular}
-\caption{A contingency table for \var{spam} and a new variable that represents whether there had been correspondence with the sender in the preceding 30~days.}
-\label{emailTableOfSpamAnd}
-\end{figure}
-%library(openintro); data(email); contTable(email[,c("spam", "sent_email")])
-
-The variables described in (2) and (3) would provide an excellent foundation for distinguishing messages coming from known spammers or messages that take a known form of spam. To utilize these variables, we would need to build databases: one holding email addresses of known spammers, and one holding URLs found in known spam messages. Our access to such information is limited, so we cannot implement these two variables in this textbook. However, if we were hired by an email service to build a spam filter, these would be important next steps.
-
-In addition to finding more and better predictors, we would need to create a customized logistic regression model for each email account. This may sound like an intimidating task, but its complexity is not as daunting as it may at first seem. We'll save the details for a statistics course where computer programming plays a more central role.
-
-For what is the extremely challenging task of classifying spam messages, we have made a lot of progress. We have seen that simple email variables, such as the format, inclusion of certain words, and other circumstantial characteristics, provide helpful information for spam classification. Many challenges remain, from better understanding logistic regression to carrying out the necessary computer programming, but completing such a task is very nearly within your reach.
-
 \index{data!resume|)}
 \index{logistic regression|)}
+
+
+
+\subsection{The mathematics behind discrimination}
+
+\Comment{This section especially will require a careful
+    review from an outside group that specializes in the
+    topic of discrimination.}
+
+\index{discrimination|(}
+
+Discrimination is an incredibly difficult topic,
+and this is why we decided it was so important to discuss
+this topic using data.
+We observe many people ignoring the evidence
+and prevalence of this issue, and we hope this section
+has been eye-opening to understand that there continues
+to be a problem of discrimination.
+This study also only examined discrimination in a single
+aspect: whether a prospective employer would call someone
+back who submitted their resume.
+There was a 50\% barrier for resumes simply when the
+candidate had a first name that was perceived to be
+from a black individual.
+It's certain that discrimination would not stop there:
+how many minorities, even when they receive a callback,
+do not make it through the hiring because of racial bias?
+Each stage of the hiring bias is yet another opportunity
+for discrimination to compound on itself.
+
+Despite these considerations, we often hear requests
+for considerations around \emph{reverse discrimination}.
+\index{reverse discrimination}%
+Reverse discrimination \emph{is} real, and so let's
+examine why it is rarely perceived as a significant
+issue versus discrimination against a minority group.
+There is, in fact, simple mathematics that partially
+explains why discrimination against minority groups
+tends to be much more severe.
+
+\begin{examplewrap}
+\begin{nexample}{Let's consider a gender-imbalanced
+    company where the company consists of 20\% women
+    and 80\% men, and we'll suppose that the
+    company is very large.\footnotemark
+    Suppose when someone goes up for promotion at this
+    company, 5~of their colleagues are randomly chosen
+    to provide feedback on their work.
+
+    Now let's imagine that 10\% of the people in the
+    company are prejudiced against the opposite gender.
+    That is, 10\% of men are prejudiced against women,
+    and similarly, 10\% of women are prejudiced against men.
+    
+    Who is discriminated against more at the company,
+    men or women?}
+  \index{gender_imbalance_leads_to_discrimination}%
+  Let's suppose we took 100 men who have gone for promotion
+  in the past few years.
+  For these men, $5 \times 100 = 500$ random colleagues
+  will be tapped for their feedback, of which,
+  20\% will be women (100 women).
+  Of these 100 women, about 10 will be biased against
+  the man they are reviewing.
+  That means, of the 500 colleagues, men will experience
+  discrimination by about 2\% of their colleagues when
+  they go for promotion.
+
+  Let's complete a similar calculation for 100 women
+  who have gone for promotion in the last few years.
+  They will also have 500 random colleagues providing
+  feedback, of which about 400 (80\%) will be men.
+  Of these 400 men, about 40 (10\%) hold a bias against
+  women.
+  Of the 500 colleagues providing feedback on the
+  promotion packet for these women, 8\% of the
+  colleagues hold a bias against the women.
+\end{nexample}
+\end{examplewrap}
+\footnotetext{A more thoughtful example would include
+    non-binary individuals.}
+
+Example~\ref{gender_imbalance_leads_to_discrimination}
+highlights something profound:
+even if each demographic has the same degree of prejudice
+against other demographics, it is the minority groups
+that will experience those effects the most profoundly.
+Additionally, if we would complete a handful of examples
+like the one above with different numbers,
+we'd learn that the greater the imbalance
+in the population groups, the more the minority
+is disproportionately impacted.
+
+No discrimination has a place in our society,
+be it discrimination against a minority group
+or a majority group.
+Yet we cannot deny the mathematics behind
+discrimination: minority groups are much more
+prone to severe effects from discrimination
+than majority groups.
+While we will stand up to discrimination in all
+its forms, we recognize that the biggest problems
+we face today is discrimination against minorities.
+
+\index{discrimination|)}
