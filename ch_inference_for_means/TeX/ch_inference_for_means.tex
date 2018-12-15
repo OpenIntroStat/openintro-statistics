@@ -3,13 +3,17 @@
 \label{ch_inference_for_means}
 \renewcommand{\chapterfolder}{ch_inference_for_means}
 
-Chapter~\ref{foundationsForInference} introduced a framework for statistical inference based on confidence intervals and hypotheses. In this chapter, we encounter several new point estimates and scenarios. In each case, the inference ideas remain the same:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Determine which point estimate or test statistic is useful.
-\item Identify an appropriate distribution for the point estimate or test statistic.
-\item Apply the ideas from Chapter~\ref{foundationsForInference} using the distribution from step 2.
-\end{enumerate}
+Chapters~\ref{ch_foundations_for_inf}
+introduced a framework for statistical inference based
+on confidence intervals and hypotheses using the
+normal distribution.
+In this chapter, we encounter several new point estimates
+and a couple new distributions.
+In each case, the inference ideas remain the same:
+determine which point estimate or test statistic is useful,
+identify an appropriate distribution for the point estimate
+or test statistic, and
+apply the ideas from Chapter~\ref{foundationsForInference}.
 
 
 
@@ -17,6 +21,7 @@ Chapter~\ref{foundationsForInference} introduced a framework for statistical inf
 \section{One-sample means with the $\mathbf{t}$-distribution}
 \label{oneSampleMeansWithTDistribution}
 
+\noindent%
 We required a large sample in Chapter~\ref{foundationsForInference} for two reasons:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -31,16 +36,28 @@ While we emphasize the use of the $t$-distribution for small samples, this distr
 \subsection{The normality condition}
 \label{normalityCond}
 
-A special case of the Central Limit Theorem ensures the distribution of sample means will be nearly normal, regardless of sample size, when the data come from a nearly normal distribution.
+A special case of the Central Limit Theorem ensures
+the sample mean will be nearly normal,
+regardless of sample size, when the data come from
+a nearly normal distribution.
 
 \begin{onebox}{Central Limit Theorem for normal data}
-The sampling distribution of the mean is nearly normal when the sample observations are independent and come from a nearly normal distribution. This is true for any sample size.
+The sampling distribution of the mean is nearly normal when
+the sample observations are independent and come from a nearly
+normal distribution.
+This is true for any sample size.
 \index{Central Limit Theorem!normal data|)}
 \end{onebox}
 
-We should exercise caution when verifying the normality condition for small samples. It is important to not only examine the data but also think about where the data come from. For example, ask: would I expect this distribution to be symmetric, and am I confident that outliers are rare?
+We should exercise caution when verifying the normality condition for small samples.
+It is important to not only examine the data but also think about where the data come from.
+For example, ask: would I expect this distribution to be symmetric, and am I confident that outliers are rare?
 
-You may relax the normality condition as the sample size goes up. If the sample size is~10 or more, slight skew is not problematic. Once the sample size hits about~30, then moderate skew is reasonable. Data with strong skew or outliers require a more cautious analysis.
+You may relax the normality condition as the sample size goes up.
+If the sample size is~10 or more, slight skew is not problematic.
+Once the sample size hits about~30, then moderate skew is
+reasonable.
+Data with strong skew or outliers require a more cautious analysis.
 
 
 \subsection{Introducing the $t$-distribution}
@@ -342,6 +359,7 @@ To help us remember to use the $t$-distribution, we use a $T$ to represent the t
 \Comment{The data here has been updated,
   and meaningful updates to the text have been made.}
 
+\noindent%
 In earlier editions of this textbook,
 we found that Amazon prices were, on average,
 lower than those of the UCLA Bookstore for UCLA courses
@@ -458,6 +476,8 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
     differences.}
 \label{textbooksSummaryStats}
 \end{figure}
+
+\Comment{Consider breaking the next example into two pieces.}
 
 \begin{examplewrap}
 \begin{nexample}{Set up and implement a hypothesis test to determine whether, on average, there is a difference between Amazon's price for a book and the UCLA bookstore's price.}
@@ -597,7 +617,7 @@ on Amazon?\footnotemark
 \section{Difference of two means}
 \label{differenceOfTwoMeans}
 
-{
+\noindent%
 In this section we consider a difference in two population means, $\mu_1 - \mu_2$, under the condition that the data are not paired. Just as with a single sample, we identify conditions to ensure we can use the $t$-distribution with a point estimate of the difference, $\bar{x}_1 - \bar{x}_2$.
 
 We apply these methods in three contexts: determining whether stem cells can improve heart function, exploring the impact of pregnant womens' smoking habits on birth weights of newborns, and exploring whether there is statistically significant evidence that one variation of an exam is harder than another variation. This section is motivated by questions like ``Is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke?''
@@ -893,6 +913,8 @@ We examine row $df=26$ in the $t$-table. Because this value is smaller than the 
 
 \subsection{Summary for inference using the $t$-distribution}
 
+\Comment{This subsection should be heavily updated.}
+
 %When considering the difference of two means, there are two common cases: the two samples are paired or they are independent. (There are instances where the data are neither paired nor independent, e.g. see blocking in Section~\ref{experimentalDesignPrinciples}.) The paired case was treated in Section~\ref{pairedData}, where the one-sample methods were applied to the differences from the paired observations. We examined the second and more complex scenario in this section.
 
 \textbf{Hypothesis tests.} When applying the $t$-distribution for a hypothesis test, we proceed as follows:
@@ -970,7 +992,6 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 {Pool standard deviations only after careful consideration}
 {A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.}
 \end{caution}
-}
 
 
 
@@ -978,6 +999,7 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 \section{Power calculations for a difference of means}
 \label{PowerForDifferenceOfTwoMeans}
 
+\noindent%
 Often times in experiment planning, there are two competing considerations:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
@@ -1168,11 +1190,11 @@ Figure~\ref{power_curve_neg-3} shows the power for sample sizes from 20~patients
 \label{power_curve_neg-3}
 \end{figure}
 
-\begin{exercisewrap}
-\begin{nexercise}
-
-\end{nexercise}
-\end{exercisewrap}
+%\begin{exercisewrap}
+%\begin{nexercise}
+%
+%\end{nexercise}
+%\end{exercisewrap}
 
 Power calculations for expensive or risky experiments are critical. However, what about experiments that are inexpensive and where the ethical considerations are minimal? For example, if we are doing final testing on a new feature on a popular website, how would our sample size considerations change? As before, we'd want to make sure the sample is big enough. However, if the feature has undergone some testing and is known to perform well (i.e. not frustrate many site users), then we may run a much larger experiment than is necessary to detect the minimum effects of interest. The reason is that there may be additional benefits to having an even more precise estimate of the effect of the new feature. We may even conduct a large experiment as part of the rollout of the new feature.
 
@@ -1186,6 +1208,7 @@ Power calculations for expensive or risky experiments are critical. However, wha
 
 \index{analysis of variance (ANOVA)|(}
 
+\noindent%
 Sometimes we want to compare means across many groups. We might initially think to do pairwise comparisons; for example, if there were three groups, we might be tempted to compare the first mean with the second, then with the third, and then finally compare the second and third means for a total of three comparisons. However, this strategy can be treacherous. If we have many groups and do many comparisons, it is likely that we will eventually find a difference just by chance, even if there is no difference in the populations.
 
 In this section, we will learn a new method called \term{analysis of variance (ANOVA)} and a new test statistic called $F$. ANOVA uses a single hypothesis test to check whether the means across many groups are equal:

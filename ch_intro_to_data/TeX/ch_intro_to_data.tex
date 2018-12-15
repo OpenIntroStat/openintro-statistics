@@ -7,18 +7,27 @@
 %Understand basics about data organization, data types, numerical summaries of data, graphical summaries of data, and foundational techniques for data collection. We begin and end the chapter with case studies.}
 %\end{tipBox}
 
-Scientists seek to answer questions using rigorous methods and careful observations. These observations -- collected from the likes of field notes, surveys, and experiments -- form the backbone of a statistical investigation and are called \term{data}. Statistics is the study of how best to collect, analyze, and draw conclusions from data. It is helpful to put statistics in the context of a general process of investigation:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item Identify a question or problem.
-\item Collect relevant data on the topic.
-\item Analyze the data.
-\item Form a conclusion.
-%\item Make decisions based on the conclusion.
-\end{enumerate}
-Statistics as a subject focuses on making stages 2-4 objective, rigorous, and efficient. That~is, statistics has three primary components: How best can we collect data? How should it be analyzed? And what can we infer from the analysis?
+Scientists seek to answer questions using rigorous methods
+and careful observations.
+These observations -- collected from the likes of field notes,
+surveys, and experiments -- form the backbone of a statistical
+investigation and are called \term{data}.
+Statistics is the study of how best to collect, analyze,
+and draw conclusions from data, %It is helpful to put statistics in the context of a general process of investigation:
+%\begin{enumerate}
+%\setlength{\itemsep}{0mm}
+%\item Identify a question or problem.
+%\item Collect relevant data on the topic.
+%\item Analyze the data.
+%\item Form a conclusion.
+%%\item Make decisions based on the conclusion.
+%\end{enumerate}
+%Statistics as a subject focuses on making stages 2-4 objective, rigorous, and efficient. That~is, statistics has three primary components: How best can we collect data? How should it be analyzed? And what can we infer from the analysis?
+and in this first chapter,
+we focus on both the properties of data
+and on the collection of data.
 
-The topics scientists investigate are as diverse as the questions they ask. However, many of these investigations can be addressed with a small number of data collection techniques, analytic tools, and fundamental concepts in statistical inference. This chapter provides a glimpse into these and other themes we will encounter throughout the rest of the book. We introduce the basic principles of each branch and learn some tools along the way. We will encounter applications from other fields, some of which are not typically associated with science but nonetheless can benefit from statistical study.
+%The topics scientists investigate are as diverse as the questions they ask. However, many of these investigations can be addressed with a small number of data collection techniques, analytic tools, and fundamental concepts in statistical inference. This chapter provides a glimpse into these and other themes we will encounter throughout the rest of the book. We introduce the basic principles of each branch and learn some tools along the way. We will encounter applications from other fields, some of which are not typically associated with science but nonetheless can benefit from statistical study.
 
 \section{Case study: using stents to prevent strokes}
 \label{basicExampleOfStentsAndStrokes}
@@ -101,33 +110,31 @@ While we don't yet have our statistical tools to fully address this question on 
 
 \index{data!stroke|)}
 
+
+
 \section{Data basics}
 \label{dataBasics}
+
+\Comment{This section and its data were overhauled.
+  The most prominent conspicuous change was removing the
+  \data{email50} data set for the \data{loan50} data set.
+  US county-level data has also been updated.}
 
 Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.
 
 \subsection{Observations, variables, and data matrices}
 
-\Comment{This entire section and its data were overhauled.
-  The most prominent conspicuous change was removing the
-  \data{email50} data set for the \data{loan50} data set.}
-
 \index{data!loan50|(}
 
 Figure~\ref{loan50DF} displays rows 1, 2, 3, and 50 of a data set
-for 50 randomly sampled loans offered through Lending
-Club over \Comment{list the time period}\footnote{need
-to add a citation},
-which is \Comment{describe Lending Club}.
-These observations will be referred to as the \data{loan50} data set, and they are a random sample from a larger data set that we will see in Section~\ref{}.
-\Comment{Need to fill out refs in this paragraph.}
-
-%Figure~\ref{email50DF} displays rows 1, 2, 3, and 50 of a data set concerning 50 emails received during early 2012. These observations will be referred to as the \data{email50} data set, and they are a random sample from a larger data set that we will see in Section~\ref{categoricalData}.
+for 50 randomly sampled loans offered through Lending Club,
+which is a peer-to-peer lending company.
+These observations will be referred to as the
+\data{loan50} data set.
 
 Each row in the table represents a single loan.
 The formal name for a row is a \term{case}
 or \term{observational unit}\index{unit of observation}.
-\Comment{Make unit of observation index point to observational unit.}
 The columns represent characteristics,
 called \termsub{variables}{variable},
 for each of the loans.
@@ -157,10 +164,10 @@ in Figure~\ref{loan50Variables}.
 {\small
 \begin{tabular}{ccc ccc cc} %c}
   \hline
-   & \var{loan\_\hspace{0.3mm}amount}
-   & \var{interest\_\hspace{0.3mm}rate}
+   & \var{loan\us{}amount}
+   & \var{interest\us{}rate}
    & \var{term} & \var{grade} & \var{state}
-   & \var{total\_\hspace{0.3mm}income}
+   & \var{total\us{}income}
    & \var{homeownership} \\ % & verified\_income \\ 
   \hline
   1 & 7500 & 7.34 & 36 & A & MD & 70000 & RENT \\ % & Source Verified \\ 
@@ -184,9 +191,9 @@ in Figure~\ref{loan50Variables}.
 \hline
 {\bf variable} & {\bf description} \\
 \hline
-\var{loan\_\hspace{0.3mm}amount} & Amount of the loan received,
+\var{loan\us{}amount} & Amount of the loan received,
     in US dollars.  \\
-\var{interest\_\hspace{0.3mm}rate} & Interest rate on the loan,
+\var{interest\us{}rate} & Interest rate on the loan,
     in a percent.  \\
 \var{term} & The length of the loan, which is always set
     as a whole number of months. \\
@@ -194,16 +201,16 @@ in Figure~\ref{loan50Variables}.
     and represents the quality of the loan and its likelihood
     of being repaid.  \\
 \var{state} & US state where the borrower resides. \\
-\var{total\_\hspace{0.3mm}income} & Borrower's total income,
+\var{total\us{}income} & Borrower's total income,
     including any second income, in US dollars.   \\
 \var{homeownership} & Indicates whether the
     person owns, owns but has a mortgage, or rents.  \\
-%\var{verified\_\hspace{0.3mm}income} & Indicates whether the
+%\var{verified\us{}income} & Indicates whether the
 %    income is verified, its source is verified but not the amount,
 %    or it is not verified.   \\
 \hline
 \end{tabular}
-\caption{Variables and their descriptions for the \data{email50} data set.}
+\caption{Variables and their descriptions for the \data{loan50} data set.}
 \label{loan50Variables}
 \end{figure}
 
@@ -268,14 +275,16 @@ Practice~\ref{desc_county_as_data_matrix} represents the
 \data{county} data set, which is shown as a data matrix
 in Figure~\ref{countyDF}.
 The variables are summarized in Figure~\ref{countyVariables}.
-\Comment{These data were collected from the US Census website. Move this reference to an appendix.}\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
+\Comment{Fix this reference and move it to the data appendix when it is ready.}\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
+
+\Comment{Fix weird page break behavior here.}
 
 \begin{landscape}
 \begin{figure}
 \centering\small
 \begin{tabular}{ccc ccc ccc ccc}
   \hline
- & \var{name} & \var{state} & \var{pop} & \var{pop\_\hspace{0.3mm}change} & \var{poverty} & \var{homeownership} & \var{multi\_\hspace{0.3mm}unit} & \var{unemp\_\hspace{0.3mm}rate} & \var{metro} & \var{median\_\hspace{0.3mm}edu} & \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income} \\ 
+ & \var{name} & \var{state} & \var{pop} & \var{pop\us{}change} & \var{poverty} & \var{homeownership} & \var{multi\us{}unit} & \var{unemp\us{}rate} & \var{metro} & \var{median\us{}edu} & \var{median\us{}hh\us{}income} \\ 
   \hline
   1 & Autauga  & Alabama &  55504 &  1.48 & 13.5 & 77.5 &  7.2 & 3.86 & yes & some\_college & 54487 \\ 
   2 & Baldwin  & Alabama & 212628 &  9.19 & 11.7 & 76.7 & 22.6 & 3.99 & yes & some\_college & 56460 \\ 
@@ -306,24 +315,24 @@ The variables are summarized in Figure~\ref{countyVariables}.
 \var{state} & State where the county resides,
     or the District of Columbia \\
 \var{pop} & Population in 2017 \\
-\var{pop\_\hspace{0.3mm}change} & Population change from 2010 to 2017 \\
+\var{pop\us{}change} & Population change from 2010 to 2017 \\
 \var{poverty}  &  Percent of the population in poverty \\
 \var{homeownership}  &
     Percent of the population that lives in their own home
     or lives with the owner, e.g. children living with parents
     who own the home \\
-\var{multi\_\hspace{0.3mm}unit}  &
+\var{multi\us{}unit}  &
     Percent of living units that are in multi-unit structures,
     e.g. apartments \\
-\var{unemp\_\hspace{0.3mm}rate} & Unemployment rate \\
+\var{unemp\us{}rate} & Unemployment rate \\
 \var{metro} & Whether the county contains a metropolitan area \\
-\var{median\_\hspace{0.3mm}edu} & Median education level, which
+\var{median\us{}edu} & Median education level, which
     can take a value among
-    \resp{below\_\hspace{0.3mm}hs},
-    \resp{hs\_\hspace{0.3mm}diploma},
-    \resp{some\_\hspace{0.3mm}college},
+    \resp{below\us{}hs},
+    \resp{hs\us{}diploma},
+    \resp{some\us{}college},
     and \resp{bachelors} \\
-\var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income} &
+\var{median\us{}hh\us{}income} &
     Median household income for the county, where a household's
     income equals the total income of its occupants who are
     15~years or older \\
@@ -338,12 +347,12 @@ The variables are summarized in Figure~\ref{countyVariables}.
 \subsection{Types of variables}
 \label{variableTypes}
 
-Examine the \var{unemp\_\hspace{0.3mm}rate}, \var{pop}, \var{state},
-and \var{median\_\hspace{0.3mm}edu} variables in the \data{county}
+Examine the \var{unemp\us{}rate}, \var{pop}, \var{state},
+and \var{median\us{}edu} variables in the \data{county}
 data set. Each of these variables is inherently different from the
 other three, yet some share certain characteristics.
 
-First consider \var{unemp\_\hspace{0.3mm}rate},
+First consider \var{unemp\us{}rate},
 which is said to be a \term{numerical} variable since
 it can take a wide range of numerical values,
 and it is sensible to add, subtract, or take averages
@@ -353,7 +362,7 @@ reporting telephone area codes as numerical since their
 average, sum, and difference have no clear meaning.
 
 The \var{pop} variable is also numerical, although it seems
-to be a little different than \var{unemp\_\hspace{0.3mm}rate}.
+to be a little different than \var{unemp\us{}rate}.
 This variable of the population count can only take whole
 non-negative numbers (\resp{0}, \resp{1}, \resp{2}, ...).
 For this reason, the population variable is said to be
@@ -368,10 +377,10 @@ Because the responses themselves are categories,
 \var{state} is called a \term{categorical} variable,
 and the possible values are called the variable's \term{levels}.
 
-Finally, consider the \var{median\_\hspace{0.3mm}edu} variable,
+Finally, consider the \var{median\us{}edu} variable,
 which describes the type of county-wide smoking ban and takes values
-\resp{below\_\hspace{0.3mm}hs}, \resp{hs\_\hspace{0.3mm}diploma},
-\resp{some\_\hspace{0.3mm}college}, or \resp{bachelors}
+\resp{below\us{}hs}, \resp{hs\us{}diploma},
+\resp{some\us{}college}, or \resp{bachelors}
 in each county.
 This variable seems to be a hybrid: it is a categorical variable
 but the levels have a natural ordering.
@@ -408,7 +417,9 @@ The number of siblings and student height represent numerical variables. Because
 \end{nexample}
 \end{examplewrap}
 
-\Comment{Watch the line break here with the GP footnote.}
+\Comment{Watch the line break here with the GP footnote.
+    In fact, watch for this carefully throughout the entire book
+    when doing final formatting.}
 
 \begin{exercisewrap}
 \begin{nexercise}\index{data!stroke}%
@@ -416,7 +427,7 @@ An experiment is evaluating the effectiveness of a new drug
 in treating migraines.
 A \var{group} variable is used to indicate which group a patient
 has been assigned to the treatment or control group,
-and \var{num\_\hspace{0.3mm}migraines} represents the number of migraines the
+and \var{num\us{}migraines} represents the number of migraines the
 patient experienced during a 3-month period.
 Classify each variable as either numerical or
 categorical?\footnotemark
@@ -425,7 +436,7 @@ categorical?\footnotemark
 \footnotetext{There
   \var{group} variable can take just one of two group names,
   making it categorical.
-  The \var{num\_\hspace{0.3mm}migraines} variable describes
+  The \var{num\us{}migraines} variable describes
   a count of the number of migraines, which is an outcome where
   basic arithmetic is sensible, which means this is numerical
   outcome (and more specifically, a discrete numerical variable).}
@@ -467,7 +478,7 @@ Additionally, graphs can be used to visually exploring the data.
 used to study the relationship between two numerical variables.
 Figure~\ref{multiunitsVsOwnership} compares the variables
 \var{homeownership} and
-\var{multi\_\hspace{0.3mm}unit},
+\var{multi\us{}unit},
 which is the percent of units in multi-unit structures
 (e.g. apartments, condos).
 Each point on the plot represents a single county.
@@ -565,8 +576,8 @@ variables and vice-versa.
   \centering
   \Figure{0.8}{pop_change_v_med_income}
   \caption{A scatterplot showing
-      \var{pop\_\hspace{0.3mm}change}
-      against \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income}.
+      \var{pop\us{}change}
+      against \var{median\us{}hh\us{}income}.
       Owsley County of Kentucky, with a poverty rate of 45.2\%
       and median household income of \$23,115, is highlighted.}
   \label{pop_change_v_med_income}
@@ -580,8 +591,8 @@ these variables are said to be
 \termsub{negatively associated}{negative association}.
 A~\term{positive association} is shown in the relationship
 between the
-\var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income}
-and \var{pop\_\hspace{0.3mm}change}
+\var{median\us{}hh\us{}income}
+and \var{pop\us{}change}
 variables represented in Figure~\ref{pop_change_v_med_income},
 where counties with higher median household income tend
 to have higher rates of population growth.
@@ -590,7 +601,7 @@ to have higher rates of population growth.
 %\centering
 %\includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/medianHHIncomePoverty/medianHHIncomePoverty}
 %\caption{A scatterplot showing
-%    \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income}
+%    \var{median\us{}hh\us{}income}
 %    against \var{poverty}.
 %    Owsley County of Kentucky, with a poverty rate of 45.2\%
 %    and median household income of \$23,115, is highlighted.}
@@ -598,7 +609,7 @@ to have higher rates of population growth.
 %\end{figure}
 
 %Because there is a slight downward trend in
-%Figure~\ref{interest_rate_vs_income} -- counties with more units in multi-unit structures are associated with lower homeownership -- these variables are said to be \termsub{negatively associated}{negative association}. A \term{positive association} is shown in the relationship between the \var{poverty} and \var{fed\_\hspace{0.3mm}spend} variables represented in Figure~\ref{interest_rate_vs_income}, where counties with higher poverty rates tend to receive more federal spending per capita.
+%Figure~\ref{interest_rate_vs_income} -- counties with more units in multi-unit structures are associated with lower homeownership -- these variables are said to be \termsub{negatively associated}{negative association}. A \term{positive association} is shown in the relationship between the \var{poverty} and \var{fed\us{}spend} variables represented in Figure~\ref{interest_rate_vs_income}, where counties with higher poverty rates tend to receive more federal spending per capita.
 
 If two variables are not associated,
 then they are said to be \term{independent}.
@@ -761,10 +772,11 @@ We can easily access ratings for products, sellers, and companies through websit
 \subsection{Explanatory and response variables}
 \label{explanatoryAndResponse}
 
+\noindent%
 \Comment{This subsection was significantly updated.}
 
 \index{data!county|(}
-
+\noindent%
 Consider the following question from
 page~\pageref{pop_change_v_median_hh_income_question}
 for the \data{county} data set:
@@ -869,7 +881,27 @@ Figure~\ref{multiunitsVsOwnership} shows a negative association between the home
     to increases in property value, making
     homeownership infeasible for many residents.}
 
-Observational studies come in two forms: prospective and retrospective studies. A \term{prospective study} identifies individuals and collects information as events unfold. For instance, medical researchers may identify and follow a group of similar individuals over many years to assess the possible influences of behavior on cancer risk. One example of such a study is The Nurses' Health Study, started in 1976 and expanded in 1989.\footnote{\oiRedirect{textbook-channing_nurse_study}{www.channing.harvard.edu/nhs}} This prospective study recruits registered nurses and then collects data from them using questionnaires. \termsub{Retrospective studies}{retrospective studies} collect data after events have taken place, e.g. researchers may review past events in medical records. Some data sets, such as \data{county}, may contain both prospectively- and retrospectively-collected variables. Local governments prospectively collect some variables as events unfolded (e.g. retails sales) while the federal government retrospectively collected others during the 2010 census (e.g. county population counts).
+Observational studies come in two forms:
+prospective and retrospective studies.
+A \term{prospective study} identifies individuals
+and collects information as events unfold.
+For instance, medical researchers may identify and follow
+a group of similar individuals over many years to assess
+the possible influences of behavior on cancer risk.
+One example of such a study is The Nurses' Health Study,
+started in 1976 and expanded in 1989.\footnote{\oiRedirect{textbook-channing_nurse_study}{www.channing.harvard.edu/nhs}}
+This prospective study recruits registered nurses and then
+collects data from them using questionnaires.
+\termsub{Retrospective studies}{retrospective studies}
+collect data after events have taken place,
+e.g. researchers may review past events in medical records.
+Some data sets, such as \data{county}, may contain both
+prospectively- and retrospectively-collected variables.
+Local governments prospectively collect some variables
+as events unfolded (e.g. retails sales) while the federal
+government retrospectively collected others such as during
+a census.
+
 
 \subsection{Four sampling methods (special topic)}
 \label{fourSamplingMethods}
@@ -884,7 +916,7 @@ Almost all statistical methods are based on the notion of implied randomness. If
 \label{simple_stratified}
 \end{figure}
 
-\termsub{Simple random sampling}{sample!simple random sampling} is probably the most intuitive form of random sampling. Consider the salaries of Major League Baseball (MLB) players, where each player is a member of one of the league's 30 teams. To take a simple random sample of 120 baseball players and their salaries from the 2010 season, we could write the names of that season's 828 players onto slips of paper, drop the slips into a bucket, shake the bucket around until we are sure the names are all mixed up, then draw out slips until we have the sample of 120 players. In general, a sample is referred to as ``simple random'' if each case in the population has an equal chance of being included in the final sample \emph{and} knowing that a case is included in a sample does not provide useful information about which other cases are included.
+\termsub{Simple random sampling}{sample!simple random sampling} is probably the most intuitive form of random sampling. Consider the salaries of Major League Baseball (MLB) players, where each player is a member of one of the league's 30 teams. To take a simple random sample of 120 baseball players and their salaries, we could write the names of that season's several hundreds of players onto slips of paper, drop the slips into a bucket, shake the bucket around until we are sure the names are all mixed up, then draw out slips until we have the sample of 120 players. In general, a sample is referred to as ``simple random'' if each case in the population has an equal chance of being included in the final sample \emph{and} knowing that a case is included in a sample does not provide useful information about which other cases are included.
 
 \termsub{Stratified sampling}{sample!stratified sampling} is a divide-and-conquer sampling strategy. The population is divided into groups called \term{strata}\index{sample!strata|textbf}. The strata are chosen so that similar cases are grouped together, then a second sampling method, usually simple random sampling, is employed within each stratum. In the baseball salary example, the teams could represent the strata, since some teams have a lot more money (up to 4~times as much!). Then we might randomly sample 4 players from each team for a total of 120 players.
 

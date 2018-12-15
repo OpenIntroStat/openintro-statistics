@@ -26,7 +26,7 @@
 
 % _____ Online Version _____ %
 \usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
-\newcommand{\versiondate}[0]{July 1st, 2018}
+\newcommand{\versiondate}[0]{December 16th, 2018}
 \newcommand{\printlocation}[0]{}
 
 % _____ Print Version _____ %
@@ -46,12 +46,13 @@
 \setcounter{tocdepth}{1}
 
 \begin{document}
+\include{extraTeX/preamble/review_copy}
 \renewcommand{\thepage}{}
 \maketitle
 \include{extraTeX/preamble/copyright}%_derivative}
 \renewcommand{\thepage}{\arabic{page}}
 \tableofcontents
-\include{extraTeX/preamble/preface}
+%\include{extraTeX/preamble/preface}
 \normalsize
 
 \includechapter{1}{ch_intro_to_data}
@@ -66,7 +67,7 @@
 
 
 \appendix{}
-\include{extraTeX/eoceSolutions/eoceSolutions}
+%\include{extraTeX/eoceSolutions/eoceSolutions}
 \include{extraTeX/appendix/TeX/zTable}
 \include{extraTeX/appendix/TeX/tTable}
 \include{extraTeX/appendix/TeX/chiSquareTable}

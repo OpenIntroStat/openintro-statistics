@@ -125,7 +125,8 @@
   \addtocounter{chapter}{-1}
   \normalsize
   \include{#2/TeX/#2}
-  \include{#2/TeX/#2_ex}}
+  %\include{#2/TeX/#2_ex}
+  }
 
 
 
@@ -136,10 +137,11 @@
 {\color{oiB}\normalfont\Huge\bfseries\raggedright}{\chaptertitlename\
 \thechapter}{20pt}{{\Huge #1}}
 % 5.2 Section
+\newcommand{\sectionheaderspaceA}{1mm}
 \let\oldsection\section
 \renewcommand\section{\clearpage\oldsection}
 \titleformat{\section}
-    {{\color{oiR}\titlerule[1mm]}\addvspace{0mm}\color{oiB}\normalfont\LARGE\bfseries%
+    {{\color{oiR}\titlerule[1mm]}\addvspace{\sectionheaderspaceA}\color{oiB}\normalfont\LARGE\bfseries%
         \fontfamily{phv}%
         \selectfont}
     {\color{oiB}\thesection \quad #1}

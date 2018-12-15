@@ -4,7 +4,13 @@
 
 \index{probability|(}
 
-Probability forms a foundation for statistics, and you might already be familiar with many aspects of probability. However, formalization of the concepts is new for most. This chapter aims to introduce probability on familiar terms using processes most people have seen before.
+\Comment{Need to improve the wording of this chapter intro.}
+
+Probability forms a foundation for statistics,
+and you might already be familiar with many of the ideas.
+However, formalization of the concepts is new for most.
+This chapter aims to introduce probability concepts using
+many examples that will be familiar to most people.
 
 \section{Defining probability}
 \label{basicsOfProbability}
@@ -1079,10 +1085,14 @@ P(\text{has BC and mammogram$^+$}) &= P(\text{mammogram$^+$ } | \text{ has BC})P
 \end{align*}
 The probability of a positive test result is the sum of the two corresponding scenarios:
 \begin{align*}
-P(\text{\underline{\color{black}mammogram$^+$}}) &= P(\text{\underline{\color{black}mammogram$^+$} and has BC}) + P(\text{\underline{\color{black}mammogram$^+$} and no BC}) \\
-	&= P(\text{has BC})P(\text{mammogram$^+$ } | \text{ has BC}) \\
-	&\qquad\qquad	+ P(\text{no BC})P(\text{mammogram$^+$ } | \text{ no BC}) \\
-	&= 0.0035\times 0.89 + 0.9965\times 0.07 = 0.07288
+P(\text{\underline{\color{black}mammogram$^+$}})
+  &= P(\text{\underline{\color{black}mammogram$^+$} and has BC}) \\
+  &\qquad\qquad
+      + P(\text{\underline{\color{black}mammogram$^+$} and no BC})\\
+  &= P(\text{has BC})P(\text{mammogram$^+$ } | \text{ has BC}) \\
+  &\qquad\qquad
+      + P(\text{no BC})P(\text{mammogram$^+$ } | \text{ no BC}) \\
+  &= 0.0035\times 0.89 + 0.9965\times 0.07 = 0.07288
 \end{align*}
 Then if the mammogram screening is positive for a patient, the probability the patient has breast cancer is
 \begin{align*}
@@ -1220,6 +1230,8 @@ The last several exercises offered a way to update our belief about whether ther
 %_________________
 \section{Sampling from a small population}
 \label{smallPop}
+
+\Comment{The Section header spacing is funny here and throughout the rest of the book.}
 
 \begin{examplewrap}
 \begin{nexample}{Professors sometimes select a student at random to answer a question. If each student has an equal chance of being selected and there are 15 people in your class, what is the chance that she will pick you for the next question?}
@@ -1553,6 +1565,10 @@ a\times E(X) + b\times E(Y)
 Recall that the expected value is the same as the mean, e.g. $E(X) = \mu_X$.
 \end{onebox}
 
+\Comment{The next example about stock returns
+    have been updated and continues into the text of
+    Section~\ref{var_lin_combo_of_RVs}.}
+
 \begin{examplewrap}
 \begin{nexample}{Leonard has invested \$6000 in Caterpillar Inc
     (stock ticker: CAT) and \$2000 in Exxon Mobil Corp (XOM).
@@ -1601,7 +1617,9 @@ a loss this month?\footnotemark
   While stocks tend to rise over time, they are often
   volatile in the short term.}
 
+
 \subsection{Variability in linear combinations of random variables}
+\label{var_lin_combo_of_RVs}
 
 Quantifying the average outcome from a linear combination
 of random variables is helpful, but it is also important
@@ -1668,7 +1686,7 @@ Var(aX + bY) = a^2\times Var(X) + b^2\times Var(Y)
 \end{align*}
 It is important to note that this equality assumes the
 random variables are independent;
-\Comment{Updating this...}
+\Comment{new description here about if independence is broken}
 if independence doesn't hold, then a modification to
 this equation would be required that we leave as a topic
 for a future course to cover.

@@ -3,13 +3,18 @@
 \label{ch_inference_for_props}
 \renewcommand{\chapterfolder}{ch_inference_for_props}
 
-Chapter~\ref{inferenceForCategoricalData} introduces inference in the setting of categorical data. We use these methods to answer questions like the following:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item What proportion of the American public approves of the job the Supreme Court is doing?
-\item The Pew Research Center conducted a poll about support for the 2010 health care law, and they used two forms of the survey question. Each respondent was randomly given one of the two questions. What is the difference in the support for respondents under the two question orderings?
-\end{itemize}
-The methods we learned in previous chapters will continue to be useful in these settings. For example, sample proportions are well characterized by a nearly normal distribution when certain conditions are satisfied, making it possible to employ the usual confidence interval and hypothesis testing tools. In other instances, such as those with contingency tables or when sample size conditions are not met, we will use a different distribution, though the core ideas remain the same.
+Chapter~\ref{inferenceForCategoricalData}
+introduces inference in the setting of categorical data.
+The methods we learned in Chapter~\ref{ch_foundations_for_inf}
+will be useful in each of these settings.
+For example, while a sample proportion can be
+well-characterized by a nearly normal distribution
+when certain conditions are satisfied,
+this is also true when looking at the difference
+of two proportions when conditions are satisfied.
+In other instances, such as those with contingency tables,
+we will use a different distribution, though the core
+ideas remain the same.
 
 
 
@@ -22,8 +27,8 @@ in Chapter~\ref{ch_foundations_for_inf},
 exploring point estimates, confidence intervals,
 and hypothesis tests.
 In this section, we'll do a review of these topics
-before moving onto a new scenario in
-Section~\ref{differenceOfTwoProportions}.
+and also explore how to do sample size calculations
+for data collection purposes.
 
 
 \subsection{Identifying when the sample proportion is nearly normal}
@@ -93,8 +98,7 @@ since we will be computing a confidence interval.
 \newcommand{\paydayRegUpper}{0.731}
 \newcommand{\paydayRegLowerPerc}{66.9\%}
 \newcommand{\paydayRegUpperPerc}{73.1\%}
-\Comment{The source of the data is
-  \url{https://www.pewtrusts.org/-/media/assets/2017/04/payday-loan-customers-want-more-protections-methodology.pdf}}
+% https://www.pewtrusts.org/-/media/assets/2017/04/payday-loan-customers-want-more-protections-methodology.pdf
 
 \begin{examplewrap}
 \begin{nexample}{A simple random sample of \paydayN{}
@@ -111,7 +115,7 @@ since we will be computing a confidence interval.
   which we do using $\hat{p}$:
   \begin{align*}
   n p & \approx \paydayN{} * \paydayRegProp{} = 578.2
-  n (1 - p) & \approx \paydayN{} * (1 - \paydayRegProp{}) = 247.8
+  &n (1 - p) & \approx \paydayN{} * (1 - \paydayRegProp{}) = 247.8
   \end{align*}
   Since both values are at least 10, we can use the normal
   distribution to model $\hat{p}$.
@@ -1743,7 +1747,7 @@ Section~\ref{differenceOfTwoProportions}.
 \end{nexample}
 \end{examplewrap}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{l ccc l}
 \hline
@@ -1781,7 +1785,8 @@ six table cells.\footnotemark
 
 \begin{exercisewrap}
 \begin{nexercise}
-Compute the chi-square test statistic.\footnotemark
+Compute the chi-square test statistic for the data in
+Figure~\ref{diabetes2ExpMetRosiLifestyleSummary}.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{For each cell,
@@ -1794,12 +1799,14 @@ Compute the chi-square test statistic.\footnotemark
 
 \begin{exercisewrap}
 \begin{nexercise}
-Because there are 2 rows and 3 columns,
+Because there are 3 rows and 2 columns,
 the degrees of freedom for the test is
-$df = (2 - 1) \times (3 - 1) = 2$.
-Use $X^2 = 8.16$, $df = 2$, and the chi-square table on
+$df = (3 - 1) \times (2 - 1) = 2$.
+Use $X^2 = 8.16$, $df = 2$, and either software
+or the chi-square table on
 page~\pageref{chiSquareProbabilityTable} to evaluate whether
-to reject the null hypothesis.\footnotemark
+to reject the null hypothesis using a significance level
+of~0.05.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The test statistic

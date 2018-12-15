@@ -3,44 +3,21 @@
 \label{ch_foundations_for_inf}
 \renewcommand{\chapterfolder}{ch_foundations_for_inf}
 
-Statistical inference is concerned primarily with understanding the
-accuracy of parameter estimates. While the equations and details change
-depending on the setting, the foundations for inference are the same
-throughout all of statistics.
-\begin{enumerate}
-\item[\ref{pointEstimates}] We start with a familiar topic:
-    the notion of using a sample proportion as our estimate
-    of a population proportion. Our goal in this section
-    is to understand that estimate's variability from one
-    sample to the next.
-\item[\ref{confidenceIntervals}] Next, rather than providing
-    a single point estimate, we create what's called a
-    \hiddenterm{confidence interval}, which is a range
-    of values where the population value is likely to lie.
-\item[\ref{hypothesisTesting}] In the third section,
-    we introduce a hypothesis testing framework, which allows
-    us to formally evaluate claims about the population,
-    such as \emph{a survey shows a candidate has a majority
-    of support} of the voting population.
-\item[\ref{aFrameworkForInference}] Lastly, we touch on how
-    the methods in this chapter generalize to many other
-    situations. While the details may vary from one
-    application to another, the core methods are the same.
-\end{enumerate}
-
-%What you learn in this chapter will be applied in many contexts.
-
-%Each of the ideas in this chapter are applicable to a broad set of
-%applications and new contexts. We'll expand on these ideas in later
-%chapters.
-
-\Comment{Do additional checks to confirm that the term
-\emph{standard error} is being used consistently rather than
-\emph{standard deviation}.}
-
-\Comment{Planning to aggressively cut out the usage of
-    ``true'', as in ``true proportion'', in OS4.}
-
+Statistical inference is concerned primarily with
+understanding the accuracy of parameter estimates.
+While the equations and details change
+depending on the setting, the foundations for inference
+are the same throughout all of statistics.
+We start with a familiar topic:
+the notion of using a sample proportion as our estimate
+of a population proportion.
+Next, we create what's called a
+\hiddenterm{confidence interval}, which is a range
+of values where the population value is likely to lie.
+Finally, we introduce a hypothesis testing framework,
+which allows us to formally evaluate claims about the
+population, such as \emph{a survey shows a candidate
+has a majority of support} of the voting population.
 
 
 
@@ -66,10 +43,8 @@ They found that \pewsolarpollpercent{}\% of respondents
 favored expanding
 solar energy.\footnote{The full survey's sample size was 2541,
 and we've taken a subsample. To find the survey details, see\\
-\oiRedirect{textbook-pew_2018_poll_on_solar_and_wind_expansion}{www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient}}
+\oiRedirect{textbook-pew_2018_poll_on_solar_and_wind_expansion}{www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient} [Make sure the redirect link actually works.]}
 A~natural question is,
-\Comment{The redirect link in the footnote needs to be confirmed as
-working.}
 \begin{quote}
 If the poll was based on only a couple thousand people, how reliable is it?
 \end{quote}
@@ -202,21 +177,25 @@ distribution of sample proportions is called a
 \term{sampling distribution}.
 We can characterize this sampling distribution as follows:
 \begin{description}
-\item[Center.] The center of the distribution is
-    $\bar{x}_{\hat{p}} = \pewsolarpollprop{}0$, which is the same as the
-    population proportion.
+\item[Center.]
+    The center of the distribution is
+    $\bar{x}_{\hat{p}} = \pewsolarpollprop{}0$,
+    which is the same as the population proportion.
     That~is, we see that the sample proportion is an
     \termsub{unbiased estimate}{unbiased}
     of the population proportion.
-\item[Spread.] The standard deviation of the distribution
-    is $s_{\hat{p}} = \pewsolarpollse{}$. When we're talking about
+\item[Spread.]
+    The standard deviation of the distribution
+    is $s_{\hat{p}} = \pewsolarpollse{}$.
+    When we're talking about
     a sampling distribution or the variability of
     a point estimate, we typically use the term
     \termsub{standard error}{standard error (SE)}
     rather than \emph{standard deviation},
     and the notation $SE_{\hat{p}}$ is used for the standard
     error associated with the sample proportion.
-\item[Shape.] The distribution is symmetric and bell-shaped,
+\item[Shape.]
+    The distribution is symmetric and bell-shaped,
     and it \emph{resembles a normal distribution}.
 \end{description}
 These findings are very encouraging! When the population
@@ -499,8 +478,8 @@ proportions to understand the sampling distribution of
 $\hat{p}$ when $n = 10$ and $p = 0.25$, which we've plotted
 in Figure~\ref{sampling_10_prop_25p}
 alongside a normal distribution with the
-same mean and standard deviation. These distributions
-look nothing alike.
+same mean and variability.
+These distributions look nothing alike.
 
 \begin{figure}[h]
    \centering
@@ -553,14 +532,8 @@ the success-failure condition is the perfect guideline,
 but we have found that the guideline did correctly
 identify that the normal distribution was not appropriate.
 
-% \pagebreak
-
-\Comment{Used an artificial page break here to make the
-    transition smoother. Delete this comment when doing
-    final formatting.}
-
 \Comment{Ensure the two full-page figures are on pages
-    facing each other for the print version.}
+    facing each other for the final print version.}
 
 We can complete several additional simulations,
 shown in
@@ -680,9 +653,9 @@ of the point estimate, and when the Central
 Limit Theorem conditions are satisfied, we also know
 that the point estimate closely follows a normal
 distribution. In a normal distribution, about 95\% of
-the data is within 2 standard deviations of the mean.
+the data is within 2~standard deviations of the mean.
 Using this principle, we can construct a confidence
-interval that extends 2 standard errors from the sample
+interval that extends 2~standard errors from the sample
 proportion to be \term{95\% confident}\index{confident|textbf}
 that the interval captures the population proportion:
 \begin{align*}
@@ -720,18 +693,19 @@ $p = \pewsolarpollprop{}$, and one interval does not.
 one interval does not contain $p = \pewsolarpollprop{}$.
 Does this imply that the population proportion cannot be
 $p = \pewsolarpollprop{}$?}
-Just as some observations occur more than 2 standard deviations
+Just as some observations occur more than 2~standard deviations
 from the mean, some point estimates will be more than
-2 standard errors from the parameter of interest.
+2~standard errors from the parameter of interest.
 A confidence interval only provides a plausible range
-of values. While we might say other values are implausible
+of values.
+While we might say other values are implausible
 based on the data, this does not mean they are impossible.
 \end{nexample}
 \end{examplewrap}
 
-While about 95\% of the data is within 2 standard deviations
+While about 95\% of the data is within 2~standard deviations
 in a normal distribution, it would be more precise to use
-a value of 1.96 standard deviations. This more precise value
+a value of 1.96~standard deviations. This more precise value
 is typically what is used to construct a
 95\% confidence interval.
 
@@ -801,7 +775,7 @@ The choice of 1.96 corresponds to a 95\% confidence level.
 \begin{exercisewrap}
 \begin{nexercise} \label{leadInForMakingA99PercentCIExercise}
 If $X$ is a normally distributed random variable, how often will $X$
-be within 2.58 standard deviations of the mean?\footnotemark
+be within 2.58~standard deviations of the mean?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{This is equivalent to asking how often the
@@ -812,11 +786,11 @@ be within 2.58 standard deviations of the mean?\footnotemark
     the normal distribution: 0.0049 and 0.9951.
     Thus, there is a $0.9951-0.0049 \approx 0.99$ probability
     that an unobserved normal random variable
-    $X$ will be within 2.58 standard deviations of $\mu$.}
+    $X$ will be within 2.58~standard deviations of $\mu$.}
 
 Guided Practice~\ref{leadInForMakingA99PercentCIExercise} highlights
 that 99\% of the time a normal random variable will be within
-2.58 standard deviations of the mean.
+2.58~standard deviations of the mean.
 To create a 99\% confidence interval, change 1.96 in the 95\%
 confidence interval formula to be $2.58$.
 That is, the formula
@@ -1346,8 +1320,7 @@ That is, in this case, the null value is $p_0 = 0.333$.
 \label{utilizingOurCI}
 
 \Comment{Build the \data{rosling\_\hspace{0.3mm}responses}
-data set and put it
-in the R~package.}
+data set and put it in the R~package.}
 
 We will use the \data{rosling\_\hspace{0.3mm}responses}
 data set to evaluate
@@ -2085,10 +2058,6 @@ question.\footnotemark
   \end{description}
 \end{onebox}
 
-\Comment{If the box above seems useful,
-    more of these can be added to draw connections across
-    different methods.}
-
 \CalculatorVideos{hypothesis tests for a single proportion}
 
 
@@ -2124,9 +2093,9 @@ Under this strategy, the Type~2 Error can be reduced
 while not affecting the Type~1 Error rate.
 Of course, collecting extra data is often costly,
 so~there is a cost-benefit analysis to be considered.
-We'll discuss this topic a bit more in
-Sections~\ref{} and~\ref{}.
-\Comment{Fix this reference.}
+%We'll discuss this topic a bit more in
+%Sections~\ref{} and~\ref{}.
+%\Comment{Fix this reference.}
 
 \newcommand{\doorhingeflawrate}{0.2}
 
