@@ -52,7 +52,7 @@ If we took another poll, we wouldn't get the exact same answer.
 Maybe we'd get 90\%, or perhaps even 80\%.
 Ultimately, it's unlikely that the actual proportion of Americans
 who support expanding solar energy is \emph{exactly}
-\pewsolarpollpercent{}\%, but the data suggests the actual
+\pewsolarpollpercent{}\%, but the data suggest the actual
 support is close to \pewsolarpollpercent{}\%.
 
 In this section, we discuss what a point estimate like
@@ -147,13 +147,13 @@ the estimate had an error of +0.014.
 \texttt{\# 1.\ Create a set of 250 million entries,
 where 89\% of them are "support" \\
 \#\ \ \ \ and 11\% are "not". \\
-possible\_entries <- rep(c("support", "not"),
-    c(\pewsolarpollprop{}, \pewsolarpollpropcomplement{}) * 250e6)\\
+pop\_size <- 250000000 \\
+possible\_entries <- c(rep("support", \pewsolarpollprop{}*pop\_size), rep("not", \pewsolarpollpropcomplement{}*pop\_size))\\
 \# 2.\ Sample \pewsolarpollsize{} of the entries. \\
 sampled\_entries <- sample(possible\_entries, \pewsolarpollsize{}) \\
-\# 3.\ Count the number that are "justified", then divide
+\# 3.\ Count the number that are "support", then divide
 by the sample size. \\
-sum(sampled\_entries == "justified") / \pewsolarpollsize{}}
+sum(sampled\_entries == "support") / \pewsolarpollsize{}}
 \caption{Code for a simulation using the
     statistical software called \R\index{R}.
     Each line that starts with \texttt{\#} is a \term{code comment},
@@ -316,7 +316,8 @@ distribution is reasonable in this context.
   consist of fewer than 10\% of the population, then they
   are independent.
   Even if the sample is bigger than 10\%, assuming independence
-  will lead to more conservative results.\vspace{3mm}
+  will lead to more conservative results than what we would
+  get using more advanced methods.\vspace{3mm}
 
   If a sample is from a seemingly random process,
   e.g. an occasional error on an assembly line,
@@ -705,8 +706,10 @@ based on the data, this does not mean they are impossible.
 
 While about 95\% of the data is within 2~standard deviations
 in a normal distribution, it would be more precise to use
-a value of 1.96~standard deviations. This more precise value
-is typically what is used to construct a
+a value of 1.96~standard deviations as the area under the
+normal curve within 1.96~standard deviations is closer to~0.95.
+This more precise value
+is typically what is typically used to construct a
 95\% confidence interval.
 
 \begin{onebox}{95\% confidence interval for a parameter}
@@ -774,8 +777,9 @@ The choice of 1.96 corresponds to a 95\% confidence level.
 
 \begin{exercisewrap}
 \begin{nexercise} \label{leadInForMakingA99PercentCIExercise}
-If $X$ is a normally distributed random variable, how often will $X$
-be within 2.58~standard deviations of the mean?\footnotemark
+If $X$ is a normally distributed random variable, what is the
+probability of the value $X$ being
+within 2.58~standard deviations of the mean?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{This is equivalent to asking how often the
@@ -1060,10 +1064,11 @@ the confidence level only quantifies how plausible
 it is that the parameter is in the interval.
 
 Another important consideration of confidence intervals is that they
-\emph{only try to capture the population parameter}. A confidence
-interval says nothing about the confidence of capturing individual
-observations, a proportion of the observations, or about capturing
-point estimates. Confidence intervals only attempt to capture
+are \emph{only about the population parameter}.
+A confidence interval says nothing about individual
+observations, a proportion of the observations,
+or point estimates.
+Confidence intervals only provide a plausible range for
 population parameters.
 
 \index{data!wind turbine survey|)}
@@ -1082,6 +1087,10 @@ population parameters.
 \label{hypothesisTesting}
 
 \index{hypothesis testing|(}
+
+\Comment{Update OpenIntro's site to handle all new redirect links,
+    many of which are currently broken in this edition.
+    Also mention the other authors.}
 
 The following question comes from Hans Rosling's book
 \emph{\oiRedirect{amazon_factfulness}{Factfulness}}:
@@ -1387,7 +1396,11 @@ intervals. This can be useful for the hypothesis test.
 
 Because the null value in the hypothesis test is $p_0 = 0.333$,
 which falls within the range of plausible values from the
-confidence interval, we cannot say the null value is implausible.
+confidence interval, we cannot say the null value is
+implausible.\footnote{Arguably this method is slightly imprecise.
+  As we'll see in a few pages, the standard error is often
+  computed slightly differently in the context of a hypothesis
+  test for a proportion.}
 That is, the data do not provide sufficient evidence to reject
 the notion that the performance of college-educated
 adults was different than random guessing,
@@ -1425,7 +1438,7 @@ and we do not reject the null hypothesis,~$H_0$.
 \end{onebox}
 
 \begin{exercisewrap}
-\begin{nexercise}\label{roslingB_hypothesis_setup}
+\begin{nexercise}\label{roslingB_hypothesis_setup}%
 Let's move onto a second question posed by Hans Rosling:
 \begin{quote}{\em
   There are 2 billion children in the world today
@@ -1472,7 +1485,7 @@ to live longer in the future across much of the world.}
 % n <- 228; x <- 34; (p <- x/n); (se <- sqrt(p * (1 - p) / n)); p + c(-1, 1) * 1.96 * se
 
 \begin{exercisewrap}
-\begin{nexercise}\label{roslingB_normality}
+\begin{nexercise}\label{roslingB_normality}%
 This time we took a larger sample of
 \roslingBsize{} college-educated adults,
 \roslingBpercent{}\% selected the correct answer to the
@@ -1599,20 +1612,20 @@ Table~\ref{fourHTScenarios} may be useful.\footnotemark
   (i.e. failed to convict the person) when she was
   in fact guilty ($H_A$ true).}
 
-\begin{exercisewrap}
-\begin{nexercise} \label{howToReduceType1ErrorsInUSCourts}
-How could we reduce the Type~1 Error rate in US courts?
-What influence would this have on the Type~2 Error
-rate?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{To lower the Type~1 Error rate, we might
+\begin{examplewrap}
+\begin{nexample}{How could we reduce the Type~1 Error rate
+    in US courts?
+    What influence would this have on the Type~2 Error rate?}
+    \label{howToReduceType1ErrorsInUSCourts}%
+  To lower the Type~1 Error rate, we might
   raise our standard for conviction from
   ``beyond a reasonable doubt'' to
   ``beyond a conceivable doubt'' so fewer people would
   be wrongly convicted. However, this would also make
   it more difficult to convict the people who are
-  actually guilty, so we would make more Type~2 Errors.}
+  actually guilty, so we would make more Type~2 Errors.
+\end{nexample}
+\end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{howToReduceType2ErrorsInUSCourts}
@@ -1671,7 +1684,7 @@ that several proportions are equal, it isn't clear how
 to construct and compare many confidence intervals
 altogether.
 
-Next we will introduce a tool called the \emph{p-value}
+Next we will introduce a statistic called the \emph{p-value}
 to help us expand our statistical toolkit, which will
 enable us to both better understand the strength of
 evidence and work in more complex data scenarios in
@@ -1715,7 +1728,8 @@ p-value method rather than confidence intervals.
   The uninteresting result is that there is no majority either way:
   half of Americans support and the other half oppose expanding the
   use of coal to produce energy. The alternative hypothesis would
-  be that there is a majority support (or oppose) to expanding the
+  be that there is a majority support or oppose
+  (though we do not known which one!) expanding the
   use of coal. If $p$ represents the proportion supporting, then
   we can write the hypotheses as
   \begin{description}
@@ -1727,10 +1741,10 @@ p-value method rather than confidence intervals.
 \end{examplewrap}
 
 \newcommand{\pewcoalpollsize}{1000}
-\newcommand{\pewcoalpollprop}{0.370}
-\newcommand{\pewcoalpollpropcomplement}{0.630}
-\newcommand{\pewcoalpollpercent}{37.0}
-\newcommand{\pewcoalpollpercentcomplement}{63.0}
+\newcommand{\pewcoalpollprop}{0.37}
+\newcommand{\pewcoalpollpropcomplement}{0.63}
+\newcommand{\pewcoalpollpercent}{37}
+\newcommand{\pewcoalpollpercentcomplement}{63}
 \newcommand{\pewcoalpollcount}{370}
 \newcommand{\pewcoalpollcountcomplement}{630}
 \newcommand{\pewcoalpollse}{0.0153}

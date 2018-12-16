@@ -203,15 +203,15 @@
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
 \newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=os3_pdf}{#2}}
-\newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera}~}
+\newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}~}
 \newcommand{\CalculatorVideos}[1]{}%{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
 %Videos covering #1 using TI and Casio graphing calculators are available at \mbox{\oiRedirect{textbook-openintro_videos}{openintro.org/videos}}.}
 %\end{tipBox}}
-\newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
-\newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
+\newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
+\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
+\newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
+\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
+\newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
 \newcommand{\MarginVideo}[1]{\marginpar[{\videomarginhref{#1}}]{{\videomarginhref{#1}}}}
 % 6.7 Helper commands
 \newcommand{\us}{\_\hspace{0.3mm}}
@@ -280,12 +280,12 @@
 %\reversemarginpar
 \def\warningsymbol{\protect\marginsymbolhelper}
 \def\marginsymbolhelper{\tabto*{0mm} {\dbend} \tabto*{0mm}}
-\newcommand{\exampleicon}[1]{\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example}\hspace{2mm}\ }
+\newcommand{\exampleicon}[1]{\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example.png}\hspace{2mm}\ }
 \newenvironment{gpewrapper}[1]{\addvspace{4mm}
 
 \noindent\hspace{-12.45mm}\begin{minipage}[c]{\textwidth+8mm}
 \begin{minipage}[c]{8.4mm}
-\hspace{0.5mm}\includegraphics[width=5mm]{extraTeX/icons/#1}
+\hspace{0.5mm}\includegraphics[width=5mm]{extraTeX/icons/#1.png}
 \end{minipage}\begin{minipage}[c]{\textwidth-0.45mm}\begin{mdframed}[%
     topline=false,
     rightline=false,
