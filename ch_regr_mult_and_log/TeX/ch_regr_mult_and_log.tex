@@ -20,13 +20,13 @@ Multiple regression extends simple two-variable regression to the case that stil
 
 We will consider Ebay auctions of a video game called \emph{Mario Kart} for the Nintendo Wii. The outcome variable of interest is the total price of an auction, which is the highest bid plus the shipping cost. We will try to determine how total price is related to each characteristic in an auction while simultaneously controlling for other variables. For instance, all other characteristics held constant, are longer auctions associated with higher or lower prices? And, on average, how much more do buyers tend to pay for additional Wii wheels (plastic steering wheels that attach to the Wii controller) in auctions? Multiple regression will help us answer these and other questions.
 
-The data set \data{mario\_\hspace{0.3mm}kart} includes results from 141 auctions.\footnote{Diez DM, Barr CD, \c{C}etinkaya-Rundel M. 2015. \texttt{openintro}: OpenIntro data sets and supplement functions. \oiRedirect{textbook-github_openintro}{github.com/OpenIntroOrg/openintro-r-package}.} Four observations from this data set are shown in Figure~\ref{marioKartDataMatrix}, and descriptions for each variable are shown in Figure~\ref{marioKartVariables}. Notice that the condition and stock photo variables are indicator variables\index{indicator variable}. For instance, the \var{cond\_\hspace{0.3mm}new} variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section~\ref{categoricalPredictorsWithTwoLevels} for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.
+The data set \data{mario\us{}kart} includes results from 141 auctions.\footnote{Diez DM, Barr CD, \c{C}etinkaya-Rundel M. 2015. \texttt{openintro}: OpenIntro data sets and supplement functions. \oiRedirect{textbook-github_openintro}{github.com/OpenIntroOrg/openintro-r-package}.} Four observations from this data set are shown in Figure~\ref{marioKartDataMatrix}, and descriptions for each variable are shown in Figure~\ref{marioKartVariables}. Notice that the condition and stock photo variables are indicator variables\index{indicator variable}. For instance, the \var{cond\us{}new} variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section~\ref{categoricalPredictorsWithTwoLevels} for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.
 
 \begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrlr}
   \hline
- & price & cond\_\hspace{0.3mm}new & stock\_\hspace{0.3mm}photo & duration & wheels \\ 
+ & price & cond\us{}new & stock\us{}photo & duration & wheels \\ 
   \hline
 1 & 51.55 &   1 & 1 & 3 &   1 \\ 
   2 & 37.04 &  0 &  1 & 7 &   1 \\ 
@@ -35,7 +35,7 @@ $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
   141 & 54.51 &  1 &  1 & 1 &   2 \\ 
    \hline
 \end{tabular}
-\caption{Four observations from the \data{mario\_\hspace{0.3mm}kart} data set.}
+\caption{Four observations from the \data{mario\us{}kart} data set.}
 \label{marioKartDataMatrix}
 \end{figure}
 %library(openintro); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; row.names(d) <- NULL; d
@@ -47,13 +47,13 @@ $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
 {\bf variable} & {\bf description} \\
 \hline
 \var{price} & final auction price plus shipping costs, in US dollars \\
-\var{cond\_\hspace{0.3mm}new} & a coded two-level categorical variable, which takes value \resp{1} when the game is new and \resp{0} if the game is used \\
-\var{stock\_\hspace{0.3mm}photo} & a coded two-level categorical variable, which takes value \resp{1} if the primary photo used in the auction was a stock photo and \resp{0} if the photo was unique to that auction \\
+\var{cond\us{}new} & a coded two-level categorical variable, which takes value \resp{1} when the game is new and \resp{0} if the game is used \\
+\var{stock\us{}photo} & a coded two-level categorical variable, which takes value \resp{1} if the primary photo used in the auction was a stock photo and \resp{0} if the photo was unique to that auction \\
 \var{duration} & the length of the auction, in days, taking values from 1 to 10 \\
 \var{wheels} & the number of Wii wheels included with the auction (a \emph{Wii wheel} is a plastic racing wheel that holds the Wii controller and is an optional but helpful accessory for playing Mario Kart) \\
 \hline
 \end{tabular}
-\caption{Variables and their descriptions for the \data{mario\_\hspace{0.3mm}kart} data set.}
+\caption{Variables and their descriptions for the \data{mario\us{}kart} data set.}
 \label{marioKartVariables}
 \end{figure}
 
@@ -62,7 +62,7 @@ $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
 
 Let's fit a linear regression model with the game's condition as a predictor of auction price. The model may be written as
 \begin{align*}
-\widehat{price} &= 42.87 + 10.90\times cond\_\hspace{0.3mm}new
+\widehat{price} &= 42.87 + 10.90\times cond\us{}new
 \end{align*}
 Results of this model are shown in Figure~\ref{singleVarModelsForPriceUsingCond} and a scatterplot for price versus game condition is shown in Figure~\ref{marioKartSingle}.
 
@@ -75,7 +75,7 @@ Results of this model are shown in Figure~\ref{singleVarModelsForPriceUsingCond}
   \hline
   \vspace{-3.8mm} & & & & \\
 (Intercept) & 42.8711 & 0.8140 & 52.67 & 0.0000 \\ 
-  cond\_\hspace{0.3mm}new & 10.8996 & 1.2583 & 8.66 & 0.0000 \\ 
+  cond\us{}new & 10.8996 & 1.2583 & 8.66 & 0.0000 \\ 
    \hline
    &&&\multicolumn{2}{r}{$df=139$}
 \end{tabular}
@@ -102,7 +102,7 @@ Examine Figure~\ref{marioKartSingle}. Does the linear model seem reasonable?\foo
 
 \begin{examplewrap}
 \begin{nexample}{Interpret the coefficient for the game's condition in the model. Is this coefficient significantly different from 0?}
-Note that \var{cond\_\hspace{0.3mm}new} is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra \$10.90 for those games that are new versus those that are used. (See Section~\ref{categoricalPredictorsWithTwoLevels} for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Figure~\ref{singleVarModelsForPriceUsingCond}, we can see that the p-value for \var{cond\_\hspace{0.3mm}new} is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.
+Note that \var{cond\us{}new} is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra \$10.90 for those games that are new versus those that are used. (See Section~\ref{categoricalPredictorsWithTwoLevels} for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Figure~\ref{singleVarModelsForPriceUsingCond}, we can see that the p-value for \var{cond\us{}new} is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.
 \end{nexample}
 \end{examplewrap}
 
@@ -111,11 +111,11 @@ Note that \var{cond\_\hspace{0.3mm}new} is a two-level categorical variable that
 
 Sometimes there are underlying structures or relationships between predictor variables. For instance, new games sold on Ebay tend to come with more Wii wheels, which may have led to higher prices for those auctions. We would like to fit a model that includes all potentially important variables simultaneously. This would help us evaluate the relationship between a predictor variable and the outcome while controlling for the potential influence of other variables. This is the strategy used in \term{multiple regression}. While we remain cautious about making any causal interpretations using multiple regression, such models are a common first step in providing evidence of a causal connection.
 
-We want to construct a model that accounts for not only the game condition, as in Section~\ref{twoSingleVariableModelsForMarioKartData}, but simultaneously accounts for three other variables: \var{stock\_\hspace{0.3mm}photo}, \var{duration}, and \var{wheels}.
+We want to construct a model that accounts for not only the game condition, as in Section~\ref{twoSingleVariableModelsForMarioKartData}, but simultaneously accounts for three other variables: \var{stock\us{}photo}, \var{duration}, and \var{wheels}.
 \begin{align}
 \widehat{\var{price}}
-	&= \beta_0 + \beta_1\times \var{cond\_\hspace{0.3mm}new} +
-		\beta_2\times \var{stock\_\hspace{0.3mm}photo} \notag \\
+	&= \beta_0 + \beta_1\times \var{cond\us{}new} +
+		\beta_2\times \var{stock\us{}photo} \notag \\
 	&\qquad\  + \beta_3 \times  \var{duration} +
 		\beta_4 \times  \var{wheels} \notag \\
 \hat{y}
@@ -142,14 +142,14 @@ Here there are 141 residuals, one for each observation. We typically use a compu
   \hline
   \vspace{-3.8mm} & & & & \\
 (Intercept) & 36.2110 & 1.5140 & 23.92 & 0.0000 \\ 
-  cond\_\hspace{0.3mm}new & 5.1306 & 1.0511 & 4.88 & 0.0000 \\ 
-  stock\_\hspace{0.3mm}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
+  cond\us{}new & 5.1306 & 1.0511 & 4.88 & 0.0000 \\ 
+  stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
   duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
   wheels & 7.2852 & 0.5547 & 13.13 & 0.0000 \\ 
    \hline
    &&&\multicolumn{2}{r}{$df=136$}
 \end{tabular}
-\caption{Output for the regression model where \var{price} is the outcome and \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, \var{duration}, and \var{wheels} are the predictors.}
+\caption{Output for the regression model where \var{price} is the outcome and \var{cond\us{}new}, \var{stock\us{}photo}, \var{duration}, and \var{wheels} are the predictors.}
 \label{outputForMultipleRegrOutputForAllPredictors}
 \end{figure}
 %library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); g <-lm(totalPr ~ cond + stockPhoto + duration + wheels, d)
@@ -184,8 +184,8 @@ Compute the residual of the first observation in Table~\ref{marioKartDataMatrix}
 \footnotetext{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.}
 
 \begin{examplewrap}
-\begin{nexample}{We estimated a coefficient for \var{cond\_\hspace{0.3mm}new} in Section~\ref{twoSingleVariableModelsForMarioKartData} of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?} \label{colinearityOfCondNewAndStockPhoto}
-If we examined the data carefully, we would see that some predictors are correlated. For instance, when we estimated the connection of the outcome \var{price} and predictor \var{cond\_\hspace{0.3mm}new} using simple linear regression, we were unable to control for other variables like the number of Wii wheels included in the auction. That model was biased by the confounding variable \var{wheels}. When we use both variables, this particular underlying and unintentional bias is reduced or eliminated (though bias from other confounding variables may still remain).
+\begin{nexample}{We estimated a coefficient for \var{cond\us{}new} in Section~\ref{twoSingleVariableModelsForMarioKartData} of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?} \label{colinearityOfCondNewAndStockPhoto}
+If we examined the data carefully, we would see that some predictors are correlated. For instance, when we estimated the connection of the outcome \var{price} and predictor \var{cond\us{}new} using simple linear regression, we were unable to control for other variables like the number of Wii wheels included in the auction. That model was biased by the confounding variable \var{wheels}. When we use both variables, this particular underlying and unintentional bias is reduced or eliminated (though bias from other confounding variables may still remain).
 \end{nexample}
 \end{examplewrap}
 
@@ -196,7 +196,7 @@ Example~\ref{colinearityOfCondNewAndStockPhoto} describes a common issue in mult
 The estimated value of the intercept is 36.21, and one might be tempted to make some interpretation of this coefficient, such as, it is the model's predicted price when each of the variables take value zero: the game is used, the primary image is not a stock photo, the auction duration is zero days, and there are no wheels included. Is there any value gained by making this interpretation?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Three of the variables (\var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels}) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.}
+\footnotetext{Three of the variables (\var{cond\us{}new}, \var{stock\us{}photo}, and \var{wheels}) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.}
 
 
 \subsection{Adjusted $R^2$ as a better estimate of explained variance}
@@ -232,7 +232,7 @@ Because $k$ is never negative, the adjusted $R^2$ will be smaller -- often times
 
 \begin{exercisewrap}
 \begin{nexercise}
-There were $n=141$ auctions in the \data{mario\_\hspace{0.3mm}kart} data set and $k=4$ predictor variables in the model. Use $n$, $k$, and the variances from Guided Practice~\ref{computeUnadjustedR2ForAllPredictorsInMarioKart} to calculate $R_{adj}^2$ for the Mario Kart model.\footnotemark
+There were $n=141$ auctions in the \data{mario\us{}kart} data set and $k=4$ predictor variables in the model. Use $n$, $k$, and the variances from Guided Practice~\ref{computeUnadjustedR2ForAllPredictorsInMarioKart} to calculate $R_{adj}^2$ for the Mario Kart model.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$R_{adj}^2 = 1 - \frac{23.34}{83.06}\times \frac{141-1}{141-4-1} = 0.711$.}
@@ -281,8 +281,8 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
   \hline
   \vspace{-3.8mm} & & & & \\
 (Intercept) & 36.2110 & 1.5140 & 23.92 & 0.0000 \\ 
-  cond\_\hspace{0.3mm}new & 5.1306 & 1.0511 & 4.88 & 0.0000 \\ 
-  stock\_\hspace{0.3mm}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
+  cond\us{}new & 5.1306 & 1.0511 & 4.88 & 0.0000 \\ 
+  stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
   duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
   wheels & 7.2852 & 0.5547 & 13.13 & 0.0000 \\ 
    \hline
@@ -302,14 +302,14 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
   \hline
   \vspace{-3.8mm} & & & & \\
 (Intercept) & 36.0483 & 0.9745 & 36.99 & 0.0000 \\ 
-  cond\_\hspace{0.3mm}new & 5.1763 & 0.9961 & 5.20 & 0.0000 \\ 
-  stock\_\hspace{0.3mm}photo & 1.1177 & 1.0192 & 1.10 & 0.2747 \\ 
+  cond\us{}new & 5.1763 & 0.9961 & 5.20 & 0.0000 \\ 
+  stock\us{}photo & 1.1177 & 1.0192 & 1.10 & 0.2747 \\ 
   wheels & 7.2984 & 0.5448 & 13.40 & 0.0000 \\ 
    \hline
   \vspace{-3.6mm} & & & & \\
 \multicolumn{3}{l}{$R_{adj}^2 = 0.7128$}&\multicolumn{2}{r}{$df=137$}
 \end{tabular}
-\caption{The fit for the regression model for predictors \var{cond\_new}, \var{stock\_photo}, and \var{wheels}.}
+\caption{The fit for the regression model for predictors \var{cond\us{}new}, \var{stock\us{}photo}, and \var{wheels}.}
 \label{marioKartMultipleRegressionModelAllButDuration}
 \end{figure}
 
@@ -329,13 +329,13 @@ Two common strategies for adding or removing variables in a multiple regression 
 \termsub{Backward elimination}{backward elimination} starts with the model that includes all potential predictor variables. Variables are eliminated one-at-a-time from the model until we cannot improve the adjusted $R^2$. The strategy within each elimination step is to eliminate the variable that leads to the largest improvement in adjusted $R^2$.
 
 \begin{examplewrap}
-\begin{nexample}{Results corresponding to the \emph{full model} for the \data{mario\_\hspace{0.3mm}kart} data are shown in Figure~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
+\begin{nexample}{Results corresponding to the \emph{full model} for the \data{mario\us{}kart} data are shown in Figure~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
 Our baseline adjusted $R^2$ from the full model is $R^2_{adj} = 0.7108$, and we need to determine whether dropping a predictor will improve the adjusted $R^2$. To check, we fit four models that each drop a different predictor, and we record the adjusted $R^2$ from each:
 \begin{center}
 \begin{tabular}{lllll}
 Exclude ... &
-	\var{cond\_\hspace{0.3mm}new} &
-	\var{stock\_\hspace{0.3mm}photo} &
+	\var{cond\us{}new} &
+	\var{stock\us{}photo} &
 	\var{duration} &
 	\var{wheels} \\
 &
@@ -351,8 +351,8 @@ Since we eliminated a predictor from the model in the first step, we see whether
 \begin{center}
 \begin{tabular}{llll}
 Exclude \var{duration} and ... &
-	\var{cond\_\hspace{0.3mm}new} &
-	\var{stock\_\hspace{0.3mm}photo} &
+	\var{cond\us{}new} &
+	\var{stock\us{}photo} &
 	\var{wheels} \\
 &
 	$R^2_{adj} = 0.6587$ &
@@ -360,10 +360,10 @@ Exclude \var{duration} and ... &
 	$R^2_{adj} = 0.3414$ \\
 \end{tabular}
 \end{center}
-None of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the remaining predictors. That is, after backward elimination, we are left with the model that keeps \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photos}, and \var{wheels}, which we can summarize using the coefficients from Figure~\ref{marioKartMultipleRegressionModelAllButDuration}:
+None of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the remaining predictors. That is, after backward elimination, we are left with the model that keeps \var{cond\us{}new}, \var{stock\us{}photos}, and \var{wheels}, which we can summarize using the coefficients from Figure~\ref{marioKartMultipleRegressionModelAllButDuration}:
 \begin{align*}
 \hat{y} \ &= \ b_0 + b_1x_1 + b_2x_2 + b_4x_4 \\
-\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\_\hspace{0.3mm}new}} + 1.12 \times \text{\var{stock\_\hspace{0.3mm}photo}} + 7.30 \times \text{\var{wheels}}
+\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\us{}new}} + 1.12 \times \text{\var{stock\us{}photo}} + 7.30 \times \text{\var{wheels}}
 \end{align*}
 \end{nexample}
 \end{examplewrap}
@@ -371,13 +371,13 @@ None of these models lead to an improvement in adjusted $R^2$, so we do not elim
 The \term{forward selection} strategy is the reverse of the backward elimination technique. Instead of eliminating variables one-at-a-time, we add variables one-at-a-time until we cannot find any variables that improve the model (as measured by adjusted $R^2$).
 
 \begin{examplewrap}
-\begin{nexample}{Construct a model for the \data{mario\_\hspace{0.3mm}kart} data set using the forward selection strategy.}\label{forwardEliminationExampleWMarioKartData}
-We start with the model that includes no variables. Then we fit each of the possible models with just one variable. That is, we fit the model including just \var{cond\_\hspace{0.3mm}new}, then the model including just \var{stock\_\hspace{0.3mm}photo}, then a model with just \var{duration}, and a model with just \var{wheels}. Each of the four models provides an adjusted $R^2$ value:
+\begin{nexample}{Construct a model for the \data{mario\us{}kart} data set using the forward selection strategy.}\label{forwardEliminationExampleWMarioKartData}
+We start with the model that includes no variables. Then we fit each of the possible models with just one variable. That is, we fit the model including just \var{cond\us{}new}, then the model including just \var{stock\us{}photo}, then a model with just \var{duration}, and a model with just \var{wheels}. Each of the four models provides an adjusted $R^2$ value:
 \begin{center}
 \begin{tabular}{lllll}
 Add ... &
-	\var{cond\_\hspace{0.3mm}new} &
-	\var{stock\_\hspace{0.3mm}photo} &
+	\var{cond\us{}new} &
+	\var{stock\us{}photo} &
 	\var{duration} &
 	\var{wheels} \\
 &
@@ -393,8 +393,8 @@ We repeat the process again, this time considering 2-predictor models where one 
 \begin{center}
 \begin{tabular}{llll}
 Add \var{wheels} and ... &
-	\var{cond\_\hspace{0.3mm}new} &
-	\var{stock\_\hspace{0.3mm}photo} &
+	\var{cond\us{}new} &
+	\var{stock\us{}photo} &
 	\var{duration} \\
 &
 	$R^2_{adj} = 0.7124$ &
@@ -402,22 +402,22 @@ Add \var{wheels} and ... &
 	$R^2_{adj} = 0.6528$ \\
 \end{tabular}
 \end{center}
-The best predictor in this stage, \var{cond\_\hspace{0.3mm}new}, has a higher adjusted $R^2$ (0.7124) than the baseline (0.6390), so we also add \var{cond\_\hspace{0.3mm}new} to the model.
+The best predictor in this stage, \var{cond\us{}new}, has a higher adjusted $R^2$ (0.7124) than the baseline (0.6390), so we also add \var{cond\us{}new} to the model.
 
 Since we have again added a variable to the model, we continue and see whether it would be beneficial to add a third variable:
 \begin{center}
 \begin{tabular}{lll}
-Add \var{wheels}, \var{cond\_\hspace{0.3mm}new}, and ... &
-	\var{stock\_\hspace{0.3mm}photo} &
+Add \var{wheels}, \var{cond\us{}new}, and ... &
+	\var{stock\us{}photo} &
 	\var{duration} \\
 &
 	$R^2_{adj} = 0.7128$ &
 	$R^2_{adj} = 0.7107$ \\
 \end{tabular}
 \end{center}
-The model adding \var{stock\_\hspace{0.3mm}photo} improved adjusted $R^2$ (0.7124 to 0.7128), so we add \var{stock\_\hspace{0.3mm}photo} to the model.
+The model adding \var{stock\us{}photo} improved adjusted $R^2$ (0.7124 to 0.7128), so we add \var{stock\us{}photo} to the model.
 
-Because we have again added a predictor, we check whether adding the last variable, \var{duration}, will improve adjusted $R^2$. We compare the adjusted $R^2$ for the model with \var{duration} and the other three predictors (0.7108) to the model that only considers \var{wheels}, \var{cond\_\hspace{0.3mm}new}, and \var{stock\_\hspace{0.3mm}photo} (0.7128). Adding \var{duration} does not improve the adjusted $R^2$, so we do not add it to the model, and we have arrived at the same model that we identified from backward elimination.
+Because we have again added a predictor, we check whether adding the last variable, \var{duration}, will improve adjusted $R^2$. We compare the adjusted $R^2$ for the model with \var{duration} and the other three predictors (0.7108) to the model that only considers \var{wheels}, \var{cond\us{}new}, and \var{stock\us{}photo} (0.7128). Adding \var{duration} does not improve the adjusted $R^2$, so we do not add it to the model, and we have arrived at the same model that we identified from backward elimination.
 
 \end{nexample}
 \end{examplewrap}
@@ -440,12 +440,12 @@ In forward selection with p-values, we reverse the process. We begin with a mode
 
 \begin{exercisewrap}
 \begin{nexercise}
-Examine Figure~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}, which considers the model including the \var{cond\_\hspace{0.3mm}new}, \var{stock\_\hspace{0.3mm}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnotemark
+Examine Figure~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}, which considers the model including the \var{cond\us{}new}, \var{stock\us{}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The \var{stock\_\hspace{0.3mm}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\_\hspace{0.3mm}photo} from the model.}
+\footnotetext{The \var{stock\us{}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\us{}photo} from the model.}
 
-While the adjusted $R^2$ and p-value approaches are similar, they sometimes lead to different models, with the adjusted $R^2$ approach tending to include more predictors in the final model. For example, if we had used the p-value approach with the auction data, we would not have included the \var{stock\_\hspace{0.3mm}photo} predictor in the final model.
+While the adjusted $R^2$ and p-value approaches are similar, they sometimes lead to different models, with the adjusted $R^2$ approach tending to include more predictors in the final model. For example, if we had used the p-value approach with the auction data, we would not have included the \var{stock\us{}photo} predictor in the final model.
 
 \begin{onebox}{Adjusted $\mathbf{R^2}$ vs p-value approach}
 When the sole goal is to improve prediction accuracy, use adjusted $R^2$. This is commonly the case in machine learning applications.\vspace{3mm}
@@ -479,7 +479,7 @@ generally depend on the following four assumptions:
 \end{enumerate}
 \termsub{Diagnostic plots}{diagnostic plots} can be used to check each of these assumptions. We will consider the model from the Mario Kart auction data, and check whether there are any notable concerns:
 \begin{align*}
-\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\_\hspace{0.3mm}new}} + 1.12 \times \text{\var{stock\_\hspace{0.3mm}photo}} + 7.30 \times \text{\var{wheels}}
+\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\us{}new}} + 1.12 \times \text{\var{stock\us{}photo}} + 7.30 \times \text{\var{wheels}}
 \end{align*}
 
 \begin{description}
@@ -519,7 +519,7 @@ generally depend on the following four assumptions:
   \label{mkDiagnosticInOrder}
 \end{figure}
 
-\item[Residuals against each predictor variable.] We consider a plot of the residuals against the \var{cond\_\hspace{0.3mm}new} variable, the residuals against the \var{stock\_\hspace{0.3mm}photo} variable, and the residuals against the \var{wheels} variable. These plots are shown in Figure~\ref{mkDiagnosticEvsVariables}. For the two-level condition variable, we are guaranteed not to see any remaining trend, and instead we are checking that the variability doesn't fluctuate across groups, which it does not. However, looking at the stock photo variable, we find that there is some difference in the variability of the residuals in the two groups. Additionally, when we consider the residuals against the \var{wheels} variable, we see some possible structure. There appears to be curvature in the residuals, indicating the relationship is probably not linear.
+\item[Residuals against each predictor variable.] We consider a plot of the residuals against the \var{cond\us{}new} variable, the residuals against the \var{stock\us{}photo} variable, and the residuals against the \var{wheels} variable. These plots are shown in Figure~\ref{mkDiagnosticEvsVariables}. For the two-level condition variable, we are guaranteed not to see any remaining trend, and instead we are checking that the variability doesn't fluctuate across groups, which it does not. However, looking at the stock photo variable, we find that there is some difference in the variability of the residuals in the two groups. Additionally, when we consider the residuals against the \var{wheels} variable, we see some possible structure. There appears to be curvature in the residuals, indicating the relationship is probably not linear.
 
 \begin{figure}
   \centering
@@ -574,7 +574,7 @@ where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confide
 
 In this section we introduce \term{logistic regression}
 as a tool for building models when there is a categorical
-response variable with two levels.
+response variable with two levels, e.g. yes and no.
 Logistic regression is a type of
 \term{generalized linear model} (GLM) for response variables
 where regular multiple regression does not work very well.
@@ -588,6 +588,9 @@ distribution, such as the binomial or Poisson distribution.
 Second, we model the parameter of the distribution using
 a collection of predictors and a special form of multiple
 regression.
+Ultimately, the application of a GLM will feel very similar
+to multiple regression, even if some of the details are
+different.
 
 %In Section~\ref{logisticRegression} we will revisit the \data{email} data set from Chapter~\ref{introductionToData}. These emails were collected from a single email account, and we will work on developing a basic spam filter using these data. The response variable, \var{spam}, has been encoded to take value~0 when a message is not spam and~1 when it is spam. Our task will be to build an appropriate model that classifies messages as spam or not spam using email characteristics coded as predictor variables. While this model will not be the same as those used in large-scale spam filters, it shares many of the same features. 
 
@@ -598,7 +601,7 @@ regression.
 \newcommand{\resN}{4870}
 \newcommand{\resCallbackProp}{0.0805}
 \newcommand{\resCallbackPerc}{8.05\%}
-\newcommand{\resNumPred}{9}
+\newcommand{\resNumPred}{8}
 \newcommand{\resUniqueNames}{36}
 \newcommand{\resHonorsInt}{-2.4998}
 \newcommand{\resHonorsCoef}{0.8668}
@@ -610,98 +613,29 @@ regression.
 \newcommand{\resHonorsNotProb}{0.076}
 \newcommand{\resHonorsNotPerc}{7.6\%}
 
-We will consider experiment data comes from a study that sought
+We will consider experiment data from a study that sought
 to understand the influence of race and gender on job application
 callback rates.
-The study monitored job postings in Boston and Chicago for
-several months during 2001 and 2002 and used this to build
-up a set of test cases.
-Over this time period, the researchers randomly generating
-resumes to go out to a job posting, such as years of experience
-and education details, to create a realistic-looking resume.
-They then randomly assigned a name to the resume that would
-communicate the applicant's gender and race.
-The first names of each applicant were chosen for the study
-were selected so that the names would predominantly be
+Researchers monitored job postings in Boston and Chicago for
+several months and used this to build up a set of test cases.
+To evaluate which factors were important, these researchers
+created many fake resumes to send off to these jobs.
+They enumerated important characteristics, such as years of
+experience and education details, and they used these
+characteristics to randomly generate a resume.
+Finally, they randomly assigned a name to the resume, where
+the name would imply the applicant's gender and race.
+The first names used in this experiment were selected so that
+the names would predominantly be
 recognized as belonging to black or white individuals.
 For example, Lakisha was a name that their survey indicated
 would be interpreted as a black woman, while Greg was a name
 that would generally be interpreted to be associated with
 a white male.
-
-Because this is an experiment where attributes were
-randomly assigned to the resumes, we can conclude that
-any statistically significant difference in callback
-rates is causally linked to these attributes.
-
-The response variable of interest is whether or not there
-was a callback from the employer for the applicant,
-and there were \resNumPred{} attributes that
-were randomly assigned, with special interest in the
-race and gender variables.
-Race and gender are \term{protected classes} in the
-United States, meaning they are not legally permitted
-factors for hiring or employment decisions.
-The full set of attributes considered is described in
-Figure~\ref{resumeVariables}.
-To get a better intuition for how first names
-are mapped to race and gender, the first 40 names
-and how they are mapped to race and gender are listed
-in Figure~\ref{resumeFirstName}.
+You can find the full set of names they used in
+Figure~\ref{resumeFirstName}.
 
 \begin{figure}[h]
-\centering\small
-\begin{tabular}{lp{112mm}}
-\hline
-{\bf variable} & {\bf description} \\
-\hline
-\var{callback} &
-    Specifies whether the employer called the applicant
-    following submission of the application for the job. \\
-%\var{first\us{}name} &
-%    First name of the applicant that is listed on the resume. \\
-\var{job\us{}city} &
-    City where the job was located: Boston or Chicago.\\
-%\var{job\us{}industry} &
-%    The job industry, e.g. manufacturing or transportation,
-%    for the job listing. \\
-%\var{job\us{}type} &
-%    The type of job, e.g. supervisor or sales representative,
-%    for the job listing. \\
-\var{job\us{}req} &
-    An indicator for if there were any job requirements listed
-    in the job listing. \\
-\var{college\us{}degree} &
-    An indicator for whether the resume listed a college degree. \\
-\var{years\us{}experience} &
-    Number of years of experience listed on the resume. \\
-\var{honors} &
-    Indicator for the resume listing some sort of honors,
-    e.g.~employee of the month. \\
-\var{military} &
-    Indicator for if the resume listed any military experience. \\
-\var{email\us{}address} &
-    Indicator for if the resume listed an email address for
-    the applicant. \\
-\var{race} &
-    Race of the applicant, implied by their first name
-    listed on the resume. \\
-\var{gender} &
-    Gender of the applicant, implied by their first name
-    listed on the resume. \\
-\hline
-\end{tabular}
-\caption{Descriptions for the \var{callback} variable
-    along with \resNumPred{} other variables
-    in the \data{resume} data set.
-    Many of the variables are
-    indicator\index{indicator variable} variables,
-    meaning they take the value 1 if the specified
-    characteristic is present and 0 otherwise.}
-\label{resumeVariables}
-\end{figure}
-
-\begin{figure}
 \centering\small
 \begin{tabular}{lll c lll c lll}
   \cline{1-3} \cline{5-7} \cline{9-11}
@@ -757,12 +691,75 @@ in Figure~\ref{resumeFirstName}.
 \end{figure}
 % library(openintro); library(xtable); vars <- c("firstname", "race", "gender"); d <- resume[, vars]; names(d)[1] <- "first_name"; d <- unique(d); d <- d[order(d$first_name), ]; rownames(d) <- NULL; d. <- cbind(d[1:12, ], d[13:24, ], d[25:36, ]); xtable(d.)
 
+The response variable of interest is whether or not there
+was a callback from the employer for the applicant,
+and there were \resNumPred{} attributes that
+were randomly assigned that we'll consider,
+with special interest in the race and gender variables.
+Race and gender are \term{protected classes} in the
+United States, meaning they are not legally permitted
+factors for hiring or employment decisions.
+The full set of attributes considered is provided in
+Figure~\ref{resumeVariables}.
+
+\begin{figure}[h]
+\centering\small
+\begin{tabular}{lp{112mm}}
+\hline
+{\bf variable} & {\bf description} \\
+\hline
+\var{callback} &
+    Specifies whether the employer called the applicant
+    following submission of the application for the job. \\
+%\var{first\us{}name} &
+%    First name of the applicant that is listed on the resume. \\
+\var{job\us{}city} &
+    City where the job was located: Boston or Chicago.\\
+%\var{job\us{}industry} &
+%    The job industry, e.g. manufacturing or transportation,
+%    for the job listing. \\
+%\var{job\us{}type} &
+%    The type of job, e.g. supervisor or sales representative,
+%    for the job listing. \\
+%\var{job\us{}req} &
+%    An indicator for if there were any job requirements listed
+%    in the job listing. \\
+\var{college\us{}degree} &
+    An indicator for whether the resume listed a college degree. \\
+\var{years\us{}experience} &
+    Number of years of experience listed on the resume. \\
+\var{honors} &
+    Indicator for the resume listing some sort of honors,
+    e.g.~employee of the month. \\
+\var{military} &
+    Indicator for if the resume listed any military experience. \\
+\var{email\us{}address} &
+    Indicator for if the resume listed an email address for
+    the applicant. \\
+\var{race} &
+    Race of the applicant, implied by their first name
+    listed on the resume. \\
+\var{gender} &
+    Gender of the applicant, implied by their first name
+    listed on the resume. \\
+\hline
+\end{tabular}
+\caption{Descriptions for the \var{callback} variable
+    along with \resNumPred{} other variables
+    in the \data{resume} data set.
+    Many of the variables are
+    indicator\index{indicator variable} variables,
+    meaning they take the value 1 if the specified
+    characteristic is present and 0 otherwise.}
+\label{resumeVariables}
+\end{figure}
+
 All of the attributes listed on each resume were
 randomly assigned.
 This means that no attributes that might be favorable
 or detrimental to employment would favor one demographic
-over another on these resumes,
-and importantly, we can infer causation between these
+over another on these resumes.
+Importantly, we can infer causation between these
 variables and the callback rate, if the variable is
 statistically significant.
 Our analysis will allow us to compare the practical
@@ -781,8 +778,14 @@ The outcome, $Y_i$, takes the value 1
 for the resume)
 with probability $p_i$
 and the value 0 with probability $1 - p_i$.
-It~is the probability $p_i$ that we model in relation
-to the predictor variables.
+Because each observation has a slightly different
+context, e.g. different education level or a different
+number of years of experience, the probability $p_i$
+will differ for each observation.
+Ultimately, it is this probability that we model
+in relation to the predictor variables:
+we will examine which resume characteristics
+correspond to higher or lower callback rates.
 
 \begin{onebox}{Notation for a logistic regression model}
 The outcome variable for a GLM is denoted by $Y_i$,
@@ -841,8 +844,9 @@ variables, so $k = \resNumPred{}$.
 This model isn't very intuitive, but it still has some
 resemblance to multiple regression, and we can fit this
 model using software.
-In fact, once we look at results from software,
-it will start to feel like we're back in multiple regression,
+In~fact, once we look at results from software,
+it will start to feel like we're back in the multiple
+regression context,
 even if the interpretation of the coefficients is more complex.
 
 \begin{figure}
@@ -865,12 +869,14 @@ even if the interpretation of the coefficients is more complex.
           \resHonorsCoef{} \times\text{\var{honors}}
     \end{align*}
     %library(openintro); m <- glm(received_callback ~ honors, data = resume, family=binomial); summary(m); co <- round(m$coefficients, 4); a <- exp(co["(Intercept)"]); a/(1+a); a <- exp(sum(co)); a/(1+a)
-    If a resume is randomly selected and it does not have
-    any honors listed, what is the probability it received
-    a callback?
-    What if it did list some honors?}
+    (a) If a resume is randomly selected from the study
+    and it does not have any honors listed,
+    what is the probability resulted in a callback?
+    
+    (b) What would the probability be if the resume did
+    list some honors?}
     \label{logisticExampleWithHonors}%
-  If a randomly chosen resume from those sent out is considered,
+  (a) If a randomly chosen resume from those sent out is considered,
   and it does not list honors, then \var{honors} takes
   value~0 and the right side of the model equation equals
   \resHonorsInt{}.
@@ -878,10 +884,10 @@ even if the interpretation of the coefficients is more complex.
   $\frac{e^{\resHonorsInt{}}}{1 + e^{\resHonorsInt{}}}
       = \resHonorsNotProb{}$.
   Just as we labeled a fitted value of $y_i$ with a ``hat''
-  in single-variable and multiple regression, we will do the
-  same for this probability: $\hat{p}_i = \resHonorsNotProb{}$.
+  in single-variable and multiple regression, we do the same
+  for this probability: $\hat{p}_i = \resHonorsNotProb{}$.
 
-  If the resume had listed some honors,
+  (b) If the resume had listed some honors,
   then the right side of the model equation is
   $\resHonorsInt{} + \resHonorsCoef{} \times 1
       = \resHonorsIntPlusCoef{}$,
@@ -896,7 +902,7 @@ even if the interpretation of the coefficients is more complex.
 \end{nexample}
 \end{examplewrap}
 
-To convert from values on the regression-scale
+To convert from values on the logistic regression scale
 (e.g. \resHonorsInt{} and \resHonorsIntPlusCoef{} in
 Example~\ref{logisticExampleWithHonors}),
 use the following formula, which is the result
@@ -907,7 +913,11 @@ of solving for $p_i$ in the regression model:
 p_i = \frac{\exponentialToSolveForPi{}}
     {\ 1\ \ +\ \ \exponentialToSolveForPi{}\ }
 \end{align*}
-As with most applied data problems, we substitute the point estimates for the parameters (the $\beta_i$) so that we may make use of this formula. In Example~\ref{logisticExampleWithHonors}, the probabilities were calculated as
+As with most applied data problems,
+we substitute the point estimates for the parameters
+(the $\beta_i$) so that we can make use of this formula.
+In Example~\ref{logisticExampleWithHonors},
+the probabilities were calculated as
 \begin{align*}
 &\frac{\ e^{\resHonorsInt{}}\ }
     {\ 1\ +\ e^{\resHonorsInt{}}\ }
@@ -916,11 +926,11 @@ As with most applied data problems, we substitute the point estimates for the pa
     {\ 1\ +\ e^{\resHonorsInt{} + \resHonorsCoef{}}\ }
   = \resHonorsProb{}
 \end{align*}
-While knowing whether a resume listed honors is useful when
-predicting whether or not the employer would call,
-we would like to account for many different variables
-at once to understand how each of the different resume aspects
-affected the chance of a callback.
+While knowing whether a resume listed honors provides
+some signal when predicting whether or not the employer
+would call, we would like to account for many different
+variables at once to understand how each of the different
+resume characteristics affected the chance of a callback.
 
 
 \subsection{Building the logistic model with many variables}
@@ -946,12 +956,12 @@ the $t$-distribution.
   \hline
   \vspace{-3.8mm} & & & & \\
   (Intercept) & -2.6632 & 0.1820 & -14.64 & 0.0000 \\
-  job\_cityChicago & -0.4403 & 0.1142 & -3.85 & 0.0001 \\
-  college\_degree & -0.0666 & 0.1211 & -0.55 & 0.5821 \\
-  years\_experience & 0.0200 & 0.0102 & 1.96 & 0.0503 \\
+  job\us{}cityChicago & -0.4403 & 0.1142 & -3.85 & 0.0001 \\
+  college\us{}degree & -0.0666 & 0.1211 & -0.55 & 0.5821 \\
+  years\us{}experience & 0.0200 & 0.0102 & 1.96 & 0.0503 \\
   honors & 0.7694 & 0.1858 & 4.14 & 0.0000 \\
   military & -0.3422 & 0.2157 & -1.59 & 0.1127 \\
-  email\_address & 0.2183 & 0.1133 & 1.93 & 0.0541 \\
+  email\us{}address & 0.2183 & 0.1133 & 1.93 & 0.0541 \\
   racewhite & 0.4424 & 0.1080 & 4.10 & 0.0000 \\
   gendermale & -0.1818 & 0.1376 & -1.32 & 0.1863 \\
   \hline
@@ -976,10 +986,10 @@ Using backward elimination with a p-value cutoff of 0.05
 p-values greater than 0.05),
 we ultimately eliminate the \var{college\us{}degree},
 \var{military}, \var{email\us{}address}, and \var{gender}
-predictors.
-The remainder of this section will rely on this smaller
-model, which is summarized in
-Figure~\ref{resumeLogisticReducedModel}.
+predictors, giving the smaller model summarized in
+Figure~\ref{resumeLogisticReducedModel},
+which is what we'll rely on for the remainder
+of this section.
 
 \begin{figure}[ht]
 \centering
@@ -990,8 +1000,8 @@ Figure~\ref{resumeLogisticReducedModel}.
   \hline
   \vspace{-3.8mm} & & & & \\
   (Intercept) & -2.7727 & 0.1344 & -20.63 & 0.0000 \\ 
-  job\_cityChicago & -0.3504 & 0.1089 & -3.22 & 0.0013 \\ 
-  years\_experience & 0.0264 & 0.0096 & 2.76 & 0.0059 \\ 
+  job\us{}cityChicago & -0.3504 & 0.1089 & -3.22 & 0.0013 \\ 
+  years\us{}experience & 0.0264 & 0.0096 & 2.76 & 0.0059 \\ 
   honors & 0.7935 & 0.1829 & 4.34 & 0.0000 \\ 
   racewhite & 0.4399 & 0.1079 & 4.08 & 0.0000 \\ 
 \hline
@@ -1005,35 +1015,35 @@ Figure~\ref{resumeLogisticReducedModel}.
 % % m <- glm(callback ~ job_city + years_experience + honors + race, data = d, family = binomial); summary(m); xtable(m)
 \newcommand{\resRaceWhiteCoefReduced}{0.4399}
 
-\begin{exercisewrap}
-\begin{nexercise}
-The \var{race} variable had taken only two levels:
-\resp{black} and \resp{white}.
-Based on the model results, was race a meaningful
-factor for if a prospective employer would
-call back?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{The coefficient shown in the model for the
-    race variable reflects the log-odds gain for resumes
-    where the candidate's first name implied they were
-    white.
-    We see that the p-value for this coefficient is very
-    small (essentially zero), which implies that race
-    played a statistically significant role in whether
-    a candidate received a callback.
-    Additionally, we see that the coefficient shown
-    corresponds to the level of \resp{white},
-    and it is positive,
-    which implies that resumes from individuals with
-    names typically associated with white individuals
-    tended to receive more callbacks than those
-    typically associated with black individuals.}
+\begin{examplewrap}
+\begin{nexample}{The \var{race} variable had taken
+    only two levels: \resp{black} and \resp{white}.
+    Based on the model results, was race a meaningful
+    factor for if a prospective employer would
+    call back?}
+  We see that the p-value for this coefficient is very
+  small (essentially zero), which implies that race
+  played a statistically significant role in whether
+  a candidate received a callback.
+  Additionally, we see that the coefficient shown
+  corresponds to the level of \resp{white},
+  and it is positive,
+  which implies that resumes from individuals with
+  names typically associated with white individuals
+  tended to receive more callbacks than those
+  typically associated with black individuals.
+\end{nexample}
+\end{examplewrap}
 
 The data provide very strong evidence of racial bias
-by prospective employers.
-We, the authors, found this conclusion saddening,
-though not surprising.
+by prospective employers that favors resumes where the
+first name is typically interpreted to be white.
+The coefficient shown in the model for the
+race variable reflects a positive gain in callback
+rate for resumes where the candidate's first name
+implied they were white.
+%We, the authors, found this conclusion saddening,
+%though not surprising.
 %It is also important to consider that this data only
 %highlights one stage of racial bias in employment --
 %when someone is trying to get hired --
@@ -1042,22 +1052,22 @@ though not surprising.
 %for individuals who are hired.
 
 \begin{examplewrap}
-\begin{nexample}{Examine the summary of the reduced model
-    in Figure~\ref{resumeLogisticReducedModel},
-    and in particular, examine the \var{racewhite} row.
-    Is the point estimate the same as we found before,
-    \resRaceWhiteCoefReduced{}, or is it different?
-    Explain why this might be.}
-  The new estimate is only slightly different:
+\begin{nexample}{Compare the coefficient of the
+    \var{racewhite} row in the full model in
+    Figure~\ref{resumeLogisticModelResults},
+    versus the summary of the reduced model in
+    Figure~\ref{resumeLogisticReducedModel}.
+    Why are the two estimated coefficients so
+    close to each other?}
+  The estimates are only very slightly different:
   \resRaceWhiteCoefReduced{} vs \resRaceWhiteCoef{}.
   We earlier discussed how the implied race on the resume
-  was randomized, meaning this variable is independent of
+  was randomized and this variable is independent of
   other predictors.
   This means that the estimated effect will be virtually
-  unchanged, which is what we've seen here, even after we
-  correct for these other variables.
-  This is the product of thoughtful experiment design
-  by this study's researchers.
+  unchanged even after we correct for these other variables.
+  This property is the product of thoughtful experiment
+  design by this study's researchers.
 \end{nexample}
 \end{examplewrap}
 
@@ -1067,16 +1077,24 @@ which aligned with the motivation of the study to tease
 out which effects were important to getting a callback.
 When a data set doesn't come from a thoughtfully designed
 experiment -- for instance, maybe it is observational data --
-it's common for point estimates will generally change a little,
-and sometimes, sometimes a lot, depending on which other
+it's common for point estimates to change a little,
+and sometimes a lot, depending on which other
 variables are included in the model.
 This is usually due to colinearity in the predictor variables.
 \Comment{Revisit the end of this paragraph,
   e.g. if removing the Ebay auction example.}
-We previously saw this in the Ebay auction example when we compared the coefficient of \var{cond\_\hspace{0.3mm}new} in a single-variable model and the corresponding coefficient in the multiple regression model that used three additional variables (see Sections~\ref{twoSingleVariableModelsForMarioKartData} and~\ref{includingAndAssessingManyVariablesInAModel}).
+We previously saw this in the Ebay auction example when
+we compared the coefficient of \var{cond\us{}new} in a
+single-variable model and the corresponding coefficient
+in the multiple regression model when including three
+additional variables (see
+Sections~\ref{twoSingleVariableModelsForMarioKartData}
+and~\ref{includingAndAssessingManyVariablesInAModel}).
 
 \begin{examplewrap}
-\begin{nexample}{Use the model to estimate the probability
+\begin{nexample}{Use the model summarized in
+    Figure~\ref{resumeLogisticReducedModel}
+    to estimate the probability
     of receiving a callback for a job in Chicago
     where the candidate lists 14 years experience,
     no honors, and has a first name that implies
@@ -1084,6 +1102,7 @@ We previously saw this in the Ebay auction example when we compared the coeffici
   \label{exampleForResumeAndWhiteQuantified}%
   We start by identifying which coefficients
   should be included in the linear combination calculation:
+  \vspace{-2mm}%
   \begin{itemize}
   \setlength{\itemsep}{0mm}
   %\item \var{(Intercept)}: Always included.
@@ -1120,61 +1139,85 @@ We previously saw this in the Ebay auction example when we compared the coeffici
 
 \begin{examplewrap}
 \begin{nexample}{Compute the probability of a callback
-    for an individual with a black-sounding name
-    with the same characteristics as the one described
+    for an individual with a name commonly inferred
+    to be from a black individual but who otherwise
+    has the same characteristics as the one described
     in Example~\ref{exampleForResumeAndWhiteQuantified}.}
   \index{exampleForResumeAndBlackQuantified}%
   We can complete the same steps for an individual
   with the same characteristics who is black,
   where the only difference in the calculation is that
+  the indicator variable
   $1_{white}$ will take a value of \resp{0}.
   Doing so yields a probability of 0.0430.
   Let's compare the results with those of
   Example~\ref{exampleForResumeAndWhiteQuantified}.
 
   In practical terms, such an individual with
-  a white-sounding name would need to apply to
-  $\frac{1}{0.0653} = 15.3$ jobs on average to receive
-  a callback,
+  a white-sounding name would need to
+  apply to $\frac{1}{0.0653} = 15.3$ jobs on average
+  to receive a callback,
   while an individual with an identical resume but with
-  a black-sounding name would need to apply to
-  $\frac{1}{0.0430} = 23.3$ jobs on average to receive
-  a callback.
+  a black-sounding name would need
+  to apply to $\frac{1}{0.0430} = 23.3$ jobs on average
+  to receive a callback.
   That is, to get a callback, someone with a
   black-sounding name needs to send their resume to,
   on average,
-  about 50\% more employers to receive a callback.
+  about 50\% more employers to receive a callback
+  than a person with a white-sounding name.
 \end{nexample}
 \end{examplewrap}
 
+\Comment{Will the phrases \emph{white-sounding}
+    or \emph{black-sounding} in the above example
+    be perceived as offensive by some individuals?
+    This aspect needs to be thoughtfully reviewed,
+    and if the answer is \emph{yes}, revised.}
+
 What we've quantified in this section is alarming and disturbing.
 However, one aspect that makes this racial bias so difficult to
-address is that the experiment, as well designed as it is,
+address is that the experiment, as well-designed as it is,
 cannot send us much signal about which employers are
 discriminating.
-When the data is much more chaotic, as is often the case
-with observational data, the challenge is much more profound.
-In many cases, it is only possible to say that discrimination
-is happening, even if we cannot say which particular instances
-are representing discrimination.
-This is a persistent challenge around combatting discrimination.
+It is only possible to say that discrimination is happening,
+even if we cannot say which particular callbacks
+-- or non-callbacks -- represent discrimination.
+Finding strong evidence of racism for individual cases is
+a persistent challenge in enforcing anti-discrimination laws.
+%For observational data on racial discrimination,
+%there are even more challenges:
+%some variables may be correlated with race
+%or there may be potential confounding variables that
+%cannot reasonably be modeled,
+%making the challenges even more profound in reliably
+%identifying racism.
 
 
 
 \subsection{Diagnostics for the callback rate model}
 
 \begin{onebox}{Logistic regression conditions}
-There are two key conditions for fitting a logistic regression model:
+There are two key conditions for fitting a logistic regression model:\vspace{-1mm}
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item Each predictor $x_i$ is linearly related to logit$(p_i)$ if all other predictors are held constant.
-%\item The model relating the parameter $p_i$ to the predictors $x_{1,i}$, $x_{2,i}$, ..., $x_{k,i}$ closely resembles the true relationship between the parameter and the predictors.
-\item Each outcome $Y_i$ is independent of the other outcomes.
+\item
+    Each outcome $Y_i$ is independent of the other outcomes.
+\item
+    Each predictor $x_i$ is linearly related to logit$(p_i)$
+    if all other predictors are held constant.
 \end{enumerate}
 \end{onebox}
 
-The first condition of the logistic regression model is not
-easily checked without a fairly sizable amount of data.
+The first logistic regression model assumption
+-- independence of the outcomes --
+is reasonable for the experiment since characteristics
+of resumes were randomly assigned to the resumes that
+were sent out.
+%This is further discussed in Appendix~\ref{}.
+
+The second condition of the logistic regression model is
+not easily checked without a fairly sizable amount of data.
 Luckily, we have \resN{} resume submissions in the data set!
 Let's first visualize these data by plotting the true
 classification of the resumes against the model's fitted
@@ -1184,13 +1227,13 @@ Figure~\ref{logisticModelPredict}.
 
 \begin{figure}[h]
   \centering
-  \Figures{}{logisticModel}{logisticModelPredict}
+  \Figures{0.95}{logisticModel}{logisticModelPredict}
   \caption{The predicted probability that each of the
       \resN{} resumes results in a callback.
-      Noise (small, random vertical shifts) have been added
-      to each point so that points with nearly identical
-      values aren't plotted exactly on top of one another,
-      making it reasonable to see more observations.}
+      \hiddenterm{Noise}
+      (small, random vertical shifts) have been added
+      to each point so points with nearly identical
+      values aren't plotted exactly on top of one another.}
   \label{logisticModelPredict}
 \end{figure}
 
@@ -1221,22 +1264,12 @@ of the solid curve, suggesting the fit is reasonable.
 
 \begin{figure}
   \centering
-  \Figures{}{logisticModel}{logisticModelSpline}
-  \caption{The solid black line provides the empirical
-      estimate of the probability for observations based
-      on their predicted probabilities
-      (confidence bounds are also shown for this line),
-      which is fit using natural splines.
-      \index{spline}\index{natural spline}%
-      A small amount of noise was added to the observations
-      in the plot to allow more observations to be seen.}
+  \Figures{0.95}{logisticModel}{logisticModelSpline}
+  \caption{The dashed line is within the confidence bound
+       of the smoothed line, suggesting the logistic fit is
+       reasonable.}
   \label{logisticModelSpline}
 \end{figure}
-
-The second logistic regression model assumption
--- independence of the outcomes --
-is reasonable since characteristics of resumes were
-randomly assigned to the resumes that were sent out.
 
 Additional diagnostics may be created that are similar to those
 featured in Section~\ref{multipleRegressionModelAssumptions}.
