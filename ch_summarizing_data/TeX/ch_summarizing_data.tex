@@ -32,9 +32,9 @@ are constructed.
 \newcommand{\loanVar}{25.52}
 \newcommand{\loanSD}{5.05}
 \newcommand{\loanN}{50}
-\newcommand{\loanMedianBelow}{9.93}
-\newcommand{\loanMedianAbove}{9.93}
-\newcommand{\loanMedian}{9.93}
+\newcommand{\loanMedianBelow}{9.93\%}
+\newcommand{\loanMedianAbove}{9.93\%}
+\newcommand{\loanMedian}{9.93\%}
 \newcommand{\loanQA}{7.96}
 \newcommand{\loanQC}{13.72}
 \newcommand{\loanIQR}{5.76}
@@ -759,18 +759,13 @@ Figure~\ref{loan_int_rate_box_plot_layout} provides
 a vertical dot plot alongside a box plot of the
 \var{interest\us{}rate} variable from
 the \data{loan50} data set.
-\Comment{We'll be revisiting the jitter added to the
-    vertical dot plot in
-    Figure~\ref{loan_int_rate_box_plot_layout}.
-    We may do something more like a stacked dot plot.}
 
 \begin{figure}[h]
   \centering
   \Figure{0.86}{loan_int_rate_box_plot_layout}
-  \caption{A vertical dot plot next to a labeled box plot
-      for the interest rates of the \loanN{} loans.
-      The median (\loanMedian{}), splits the data into the
-      bottom 50\% and the top 50\%.}
+  \caption{A vertical dot plot, where points have been
+      horizontally stacked, next to a labeled box plot
+      for the interest rates of the \loanN{} loans.}
   \label{loan_int_rate_box_plot_layout}
 \end{figure}
 
@@ -1154,6 +1149,36 @@ for getting precise values in any given county,
 but they are very helpful for seeing geographic trends
 and generating interesting research questions or hypotheses.
 
+\begin{examplewrap}
+\begin{nexample}{What interesting features are evident in the
+    \var{poverty} and \var{unemployment\us{}rate}
+    intensity maps?}
+  Poverty rates are evidently higher in a few locations.
+  Notably, the deep south shows higher poverty rates,
+  as does the southwest border of Texas.
+  The vertical strip of eastern Utah and Arizona
+  appears to have higher rates of poverty.
+  High poverty rates are evident in the Mississippi
+  flood plains a little north of New Orleans and
+  also in a large section of Kentucky and West Virginia.
+
+  The unemployment rate follows similar trends,
+  and we can see correspondence between the two
+  variables. In fact, it makes sense for higher rates
+  of unemployment to be closely related to poverty rates.
+  One observation that stand out when comparing the two maps:
+  the poverty rate is much higher than the unemployment
+  rate, meaning while many people may be working,
+  they are not making enough to break out of poverty.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+What interesting features are evident in the \var{median\us{}hh\us{}income} intensity map in Figure~\ref{countyMedIncomeMap}?\footnote{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.}
+\end{nexercise}
+\end{exercisewrap}
+
 \begin{figure}
   \centering
   \subfigure[]{
@@ -1195,36 +1220,6 @@ and generating interesting research questions or hypotheses.
       household income (\$1000s).}
 \label{countyIntensityMaps2}
 \end{figure}
-
-\begin{examplewrap}
-\begin{nexample}{What interesting features are evident in the
-    \var{poverty} and \var{unemployment\us{}rate}
-    intensity maps?}
-  Poverty rates are evidently higher in a few locations.
-  Notably, the deep south shows higher poverty rates,
-  as does the southwest border of Texas.
-  The vertical strip of eastern Utah and Arizona
-  appears to have higher rates of poverty.
-  High poverty rates are evident in the Mississippi
-  flood plains a little north of New Orleans and
-  also in a large section of Kentucky and West Virginia.
-
-  The unemployment rate follows similar trends,
-  and we can see correspondence between the two
-  variables. In fact, it makes sense for higher rates
-  of unemployment to be closely related to poverty rates.
-  One observation that stand out when comparing the two maps:
-  the poverty rate is much higher than the unemployment
-  rate, meaning while many people may be working,
-  they are not making enough to break out of poverty.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-What interesting features are evident in the \var{median\us{}hh\us{}income} intensity map in Figure~\ref{countyMedIncomeMap}?\footnote{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.}
-\end{nexercise}
-\end{exercisewrap}
 
 \index{intensity map|)}
 \index{data!county|)}
@@ -1918,7 +1913,7 @@ What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you f
 
 %___________________________________________
 \section{Case study: malaria vaccine}
-%\label{caseStudyMalariaVaccine}
+\label{caseStudyMalariaVaccine}
 
 \begin{examplewrap}
 \begin{nexample}{Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not {exactly} equal $\hat{p}_{_R}$?}\label{classRightLeftSideApple}

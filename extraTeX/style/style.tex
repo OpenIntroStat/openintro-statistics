@@ -9,6 +9,16 @@
 % 9 Examples and Exercises
 % 10 Special Boxes
 
+%\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+%                    \thispagestyle{fancy}%
+%                    \global\@topnum\z@
+%                    \@afterindentfalse
+%                    \secdef\@chapter\@schapter}
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyhead[RO,RE]{\thepage} %RO=right odd, RE=right even
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
 \raggedbottom
 
 
@@ -72,6 +82,7 @@
 
 %-------------------------------------------------------------
 % 2 Special Commands for Editions
+\newcommand{\referrer}{os4_pdf}
 \newcommand{\vspaceB}[1]{\vspace{#1}}
 \newcommand{\hspaceB}[1]{\hspace{#1}}
 \newcommand{\textB}[1]{}
@@ -188,7 +199,8 @@
 \newcommand{\indexthis}[2]{#1\index{#2}}
 \newcommand{\termO}[1]{\textbf{\color{termOColor}#1}}
 \newenvironment{data}[1]{\texttt{#1}}{}
-\newenvironment{var}[1]{\texttt{#1}}{}
+\newcommand{\datalink}[1]{\index{#1|textbf}\texttt{\href{http://www.openintro.org/redirect.php?go=data_#1&referrer=\referrer}{#1}}}
+\newenvironment{var}[1]{}{}
 \newenvironment{resp}[1]{\texttt{#1}}{}
 \newenvironment{calctext}[1]{{\color{oiB}\texttt{#1}}}{}
 \newenvironment{calctextmath}[1]{{\color{oiB}\mathtt{#1}}}{}
@@ -202,7 +214,7 @@
 \setlength{\parindent}{0.3in}
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
-\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=os3_pdf}{#2}}
+\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=\referrer}{#2}}
 \newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}~}
 \newcommand{\CalculatorVideos}[1]{}%{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
 %Videos covering #1 using TI and Casio graphing calculators are available at \mbox{\oiRedirect{textbook-openintro_videos}{openintro.org/videos}}.}

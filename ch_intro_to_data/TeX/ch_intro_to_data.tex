@@ -36,7 +36,8 @@ and on the collection of data.
 
 Section~\ref{basicExampleOfStentsAndStrokes} introduces a classic challenge in statistics: evaluating the efficacy of a medical treatment. Terms in this section, and indeed much of this chapter, will all be revisited later in the text. The plan for now is simply to get a sense of the role statistics can play in practice.
 
-In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.\footnote{Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003. \oiRedirect{textbook-nejm_stent_study}{www.nejm.org/doi/full/10.1056/NEJMoa1105335}. NY Times article reporting on the study: \oiRedirect{textbook-nytimes_stent_study}{www.nytimes.com/2011/09/08/health/research/08stent.html}.} Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
+In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.
+Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
 \begin{quote}
 Does the use of stents reduce the risk of stroke?
 \end{quote}
@@ -116,11 +117,16 @@ While we don't yet have our statistical tools to fully address this question on 
 \label{dataBasics}
 
 \Comment{This section and its data were overhauled.
-  The most prominent conspicuous change was removing the
+  The most conspicuous change was removing the
   \data{email50} data set for the \data{loan50} data set.
-  US county-level data has also been updated.}
+  US county-level data has also been updated for variables
+  where new data was available.}
 
-Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.
+Effective presentation and description of data is a first step
+in most analyses.
+This section introduces the \emph{data matrix} for organizing
+data as well as some terminology that will be used throughout
+this book.
 
 \subsection{Observations, variables, and data matrices}
 
@@ -275,7 +281,11 @@ Practice~\ref{desc_county_as_data_matrix} represents the
 \data{county} data set, which is shown as a data matrix
 in Figure~\ref{countyDF}.
 The variables are summarized in Figure~\ref{countyVariables}.
-\Comment{Fix this reference and move it to the data appendix when it is ready.}\footnote{\oiRedirect{textbook-census_quick_facts}{quickfacts.census.gov/qfd/index.html}}
+\Comment{Fix this reference and move it to the data appendix
+    when it is
+    ready.}%
+\footnote{\oiRedirect{textbook-census_quick_facts}
+    {quickfacts.census.gov/qfd/index.html}}
 
 \Comment{Fix weird page break behavior here.}
 
@@ -358,8 +368,9 @@ it can take a wide range of numerical values,
 and it is sensible to add, subtract, or take averages
 with those values.
 On the other hand, we would not classify a variable
-reporting telephone area codes as numerical since their
-average, sum, and difference have no clear meaning.
+reporting telephone area codes as numerical since the
+average, sum, and difference of area codes doesn't have
+any clear meaning.
 
 The \var{pop} variable is also numerical, although it seems
 to be a little different than \var{unemp\us{}rate}.
@@ -368,17 +379,19 @@ non-negative numbers (\resp{0}, \resp{1}, \resp{2}, ...).
 For this reason, the population variable is said to be
 \term{discrete} since it can only take numerical values
 with jumps.
-On the other hand, the poverty rate variable is said
+On the other hand, the unemployment rate variable is said
 to be \term{continuous}.
 
 The variable \var{state} can take up to 51 values after
-accounting for Washington, DC: \resp{AL}, ..., and \resp{WY}.
+accounting for Washington, DC: \resp{AL}, \resp{AK}, ...,
+and \resp{WY}.
 Because the responses themselves are categories,
 \var{state} is called a \term{categorical} variable,
 and the possible values are called the variable's \term{levels}.
 
 Finally, consider the \var{median\us{}edu} variable,
-which describes the type of county-wide smoking ban and takes values
+which describes the median education level of county
+residents and takes values
 \resp{below\us{}hs}, \resp{hs\us{}diploma},
 \resp{some\us{}college}, or \resp{bachelors}
 in each county.
@@ -387,8 +400,8 @@ but the levels have a natural ordering.
 A variable with these properties is called an \term{ordinal}
 variable, while a regular categorical variable without this
 type of special ordering is called a \term{nominal} variable.
-To simplify analyses, any ordinal variables in this book will
-be treated as categorical variables.
+To simplify analyses, any ordinal variable in this book will
+be treated as a nominal (unordered) categorical variable.
 
 \begin{figure}
   \centering
@@ -397,23 +410,22 @@ be treated as categorical variables.
   \label{variables}
 \end{figure}
 
-Finally, consider the \var{grade} variable is an assessment
-of the quality of a loan. A grade of \resp{A} represents
-a loan that will very likely be repaid, while a grade of
-\resp{C} has a lower chance of being repaid, meaning it is
-a riskier loan from the lender's perspective.
-This variable seems to be a hybrid:
-it is categorical, but the levels have a natural ordering.
-A variable with these two properties is called an
-\term{ordinal} variable.
-A regular categorical variable without this type of special
-ordering is called a \term{nominal} variable.
-To simplify analyses, any ordinal variables in this book
-will be treated as categorical variables.
-
 \begin{examplewrap}
-\begin{nexample}{Data were collected about students in a statistics course. Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course. Classify each of the variables as continuous numerical, discrete numerical, or categorical.}
-The number of siblings and student height represent numerical variables. Because the number of siblings is a count, it is discrete. Height varies continuously, so it is a continuous numerical variable. The last variable classifies students into two categories -- those who have and those who have not taken a statistics course -- which makes this variable categorical.
+\begin{nexample}{Data were collected about students
+    in a statistics course.
+    Three variables were recorded for each student:
+    number of siblings, student height, and whether
+    the student had previously taken a statistics course.
+    Classify each of the variables as continuous numerical,
+    discrete numerical, or categorical.}
+  The number of siblings and student height represent
+  numerical variables.
+  Because the number of siblings is a count, it is discrete.
+  Height varies continuously, so it is a continuous numerical
+  variable.
+  The last variable classifies students into two categories
+  -- those who have and those who have not taken a statistics
+  course -- which makes this variable categorical.
 \end{nexample}
 \end{examplewrap}
 
@@ -439,7 +451,8 @@ categorical?\footnotemark
   The \var{num\us{}migraines} variable describes
   a count of the number of migraines, which is an outcome where
   basic arithmetic is sensible, which means this is numerical
-  outcome (and more specifically, a discrete numerical variable).}
+  outcome; more specifically, since it represents a count,
+  \var{num\us{}migraines} is a discrete numerical variable).}
 
 \subsection{Relationships between variables}
 \label{variableRelations}
@@ -510,8 +523,8 @@ reasonable explanation.
 Examine the variables in the \data{loan50} data set,
 which are described in Table~\vref{loan50Variables}.
 Create two questions about possible relationships
-between variables in this data set that are of interest
-to you.\footnotemark
+between variables in \data{loan50} that are of interest
+to~you.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Two example questions: \\
@@ -529,7 +542,7 @@ variables and vice-versa.
 
 \begin{examplewrap}
 \begin{nexample}{This example examines the relationship
-    between population change over a 7~year period and
+    between population change over a 7-year period and
     median household income,
     which is visualized as a scatterplot in
     Figure~\ref{pop_change_v_med_income}.
@@ -837,6 +850,7 @@ In general, association does not imply causation, and causation can only be infe
 
 %%%%%
 \section{Observational studies and sampling strategies}
+\label{section_obs_data_sampling}
 
 \subsection{Observational studies}
 

@@ -599,6 +599,9 @@ Because the equation holds, the event that the card is a heart and the event tha
 \end{nexample}
 \end{examplewrap}
 
+
+
+
 %_________________
 \section{Conditional probability}
 \label{conditionalProbabilitySection}
@@ -1070,7 +1073,23 @@ We first take a critical look at an example of inverting conditional probabiliti
 \Comment{Ensure the footnote in the next example stays on the proper page.}
 
 \begin{examplewrap}
-\begin{nexample}{In Canada, about 0.35\% of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnotemark
+\begin{nexample}{In Canada, about 0.35\% of women over 40
+    will develop breast cancer in any given year.
+    A common screening test for cancer is the mammogram,
+    but this test is not perfect.
+    In about 11\% of patients with breast cancer, the test
+    gives a \term{false negative}:
+    it indicates a woman does not have breast cancer when
+    she does have breast cancer.
+    Similarly, the test gives a \term{false positive}
+    in 7\% of patients who do not have breast cancer:
+    it indicates these patients have breast cancer when
+    they actually do not.\footnotemark
+    If we tested a random woman over 40 for breast cancer
+    using a mammogram and the test came back positive
+    -- that is, the test suggested the patient has cancer --
+    what is the probability that the patient actually has
+    breast cancer?}
 
 \label{probBreastCancerGivenPositiveTestExample}
 
@@ -1103,7 +1122,7 @@ P(\text{has BC } | \text{ mammogram$^+$})
 That is, even if a patient has a positive mammogram screening, there is still only a~4\%~chance that she has breast cancer.
 \end{nexample}
 \end{examplewrap}
-\footnotetext{The probabilities reported here were obtained using studies reported at \oiRedirect{textbook-breastCancerDotOrg_20090831b}{www.breastcancer.org} and \oiRedirect{textbook-ncbi_nih_breast_cancer}{www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}.} If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?}
+\footnotetext{The probabilities reported here were obtained using studies reported at \oiRedirect{textbook-breastCancerDotOrg_20090831b}{www.breastcancer.org} and \oiRedirect{textbook-ncbi_nih_breast_cancer}{www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}.}
 
 \begin{figure}[h]
   \centering
@@ -1230,8 +1249,6 @@ The last several exercises offered a way to update our belief about whether ther
 %_________________
 \section{Sampling from a small population}
 \label{smallPop}
-
-\Comment{The Section header spacing is funny here and throughout the rest of the book.}
 
 \begin{examplewrap}
 \begin{nexample}{Professors sometimes select a student at random to answer a question. If each student has an equal chance of being selected and there are 15 people in your class, what is the chance that she will pick you for the next question?}

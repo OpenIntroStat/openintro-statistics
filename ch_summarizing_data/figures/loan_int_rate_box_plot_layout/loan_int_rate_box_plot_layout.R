@@ -51,20 +51,21 @@ arrows(2, s, 1.1, m[2] + 0.3, length = 0.08)
 text(2, s, 'suspected outliers', pos = 4)
 
 set.seed(the.seed)
-pt.jitter <- 0.08
-points(rep(0.4, 50) + runif(50, -pt.jitter, pt.jitter),
-       d,
-       col = rep(COL[1, 3], 25),
-       pch = 19)
-# points(rep(0.4, 25) + runif(25, -pt.jitter, pt.jitter),
-#        rev(sort(d))[1:25],
-#        col = rep(COL[1, 3], 25),
-#        cex = 0.8)
-# points(rep(0.4, 25) + runif(25, -pt.jitter, pt.jitter),
-#        sort(d)[1:25],
-#        col = rep(COL[4,3], 25),
-#        pch = 19,
-#        cex = 0.8)
+pt.jitter <- 0.05
+nco <- 50
+cutoffs <- seq(0.9 * min(d), max(d), length.out = nco)
+for (i in 2:nco) {
+  these <- which(cutoffs[i - 1] < d & d <= cutoffs[i])
+  lt <- length(these)
+  if (lt == 0) {
+    next
+  }
+  x <- pt.jitter * (1:lt)
+  x <- x - mean(x)
+  points(rep(0.4, lt) + x, d[these],
+      col = rep(COL[1, 3], 25), pch = 19)
+}
+
 dev.off()
 
 sort(d)[25:26]
