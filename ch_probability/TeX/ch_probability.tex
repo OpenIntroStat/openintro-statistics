@@ -1,6 +1,7 @@
 \chapter{Probability}
 \label{probability}
 \label{ch_probability}
+\renewcommand{\chapterfolder}{ch_probability}
 
 \index{probability|(}
 
@@ -14,7 +15,6 @@ many examples that will be familiar to most people.
 
 \section{Defining probability}
 \label{basicsOfProbability}
-\renewcommand{\chapterfolder}{ch_probability}
 
 \begin{examplewrap}
 \begin{nexample}{A ``die'', the singular of dice, is a cube with six faces numbered \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, and \resp{6}. What is the chance of getting \resp{1} when rolling a die?}\label{probOf1}
@@ -608,7 +608,9 @@ Because the equation holds, the event that the card is a heart and the event tha
 
 \index{data!family\_college|(}
 
-The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized in Figure~\ref{contTableOfParStCollege}.\footnote{A simulated data set based on real population summaries at \oiRedirect{textbook-student_parent_college_2001}{nces.ed.gov/pubs2001/2001126.pdf}.} The \var{teen} variable is either \resp{college} or \resp{not}, where the \var{college} label means the teen went to college immediately after high school. The~\var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
+The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized in Figure~\ref{contTableOfParStCollege}.
+The \var{teen} variable is either \resp{college} or \resp{not}, where the \var{college} label means the teen went to college immediately after high school.
+The~\var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
 
 \begin{figure}[ht]
 \centering
@@ -828,7 +830,8 @@ The data indicate there is an association between parents having a college degre
 
 \index{data!smallpox|(}
 
-The \data{smallpox} data set provides a sample of 6,224 individuals from the year 1721 who were exposed to smallpox in Boston.\footnote{Fenner F. 1988. \emph{Smallpox and Its Eradication (History of International Public Health, No. 6)}. Geneva: World Health Organization. ISBN 92-4-156110-6.} Doctors at the time believed that inoculation, which involves exposing a person to the disease in a controlled form, could reduce the likelihood of death.
+The \data{smallpox} data set provides a sample of 6,224 individuals from the year 1721 who were exposed to smallpox in Boston.
+Doctors at the time believed that inoculation, which involves exposing a person to the disease in a controlled form, could reduce the likelihood of death.
 
 Each case represents one person with two variables: \var{inoculated} and \var{result}. The variable \var{inoculated} takes two levels: \resp{yes} or \resp{no}, indicating whether the person was inoculated or not. The variable \var{result} has outcomes \resp{lived} or \resp{died}. These data are summarized in Tables~\ref{smallpoxContingencyTable} and~\ref{smallpoxProbabilityTable}.
 

@@ -74,8 +74,8 @@ Results of this model are shown in Figure~\ref{singleVarModelsForPriceUsingCond}
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 42.8711 & 0.8140 & 52.67 & 0.0000 \\ 
-  cond\us{}new & 10.8996 & 1.2583 & 8.66 & 0.0000 \\ 
+(Intercept) & 42.8711 & 0.8140 & 52.67 & <0.0001 \\ 
+  cond\us{}new & 10.8996 & 1.2583 & 8.66 & <0.0001 \\ 
    \hline
    &&&\multicolumn{2}{r}{$df=139$}
 \end{tabular}
@@ -141,11 +141,11 @@ Here there are 141 residuals, one for each observation. We typically use a compu
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.2110 & 1.5140 & 23.92 & 0.0000 \\ 
-  cond\us{}new & 5.1306 & 1.0511 & 4.88 & 0.0000 \\ 
+(Intercept) & 36.2110 & 1.5140 & 23.92 & <0.0001 \\ 
+  cond\us{}new & 5.1306 & 1.0511 & 4.88 & <0.0001 \\ 
   stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
   duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
-  wheels & 7.2852 & 0.5547 & 13.13 & 0.0000 \\ 
+  wheels & 7.2852 & 0.5547 & 13.13 & <0.0001 \\ 
    \hline
    &&&\multicolumn{2}{r}{$df=136$}
 \end{tabular}
@@ -280,11 +280,11 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.2110 & 1.5140 & 23.92 & 0.0000 \\ 
-  cond\us{}new & 5.1306 & 1.0511 & 4.88 & 0.0000 \\ 
+(Intercept) & 36.2110 & 1.5140 & 23.92 & <0.0001 \\ 
+  cond\us{}new & 5.1306 & 1.0511 & 4.88 & <0.0001 \\ 
   stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
   duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
-  wheels & 7.2852 & 0.5547 & 13.13 & 0.0000 \\ 
+  wheels & 7.2852 & 0.5547 & 13.13 & <0.0001 \\ 
    \hline
   \vspace{-3.6mm} & & & & \\
 \multicolumn{3}{l}{$R_{adj}^2 = 0.7108$}&\multicolumn{2}{r}{$df=136$}
@@ -301,10 +301,10 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.0483 & 0.9745 & 36.99 & 0.0000 \\ 
-  cond\us{}new & 5.1763 & 0.9961 & 5.20 & 0.0000 \\ 
+(Intercept) & 36.0483 & 0.9745 & 36.99 & <0.0001 \\ 
+  cond\us{}new & 5.1763 & 0.9961 & 5.20 & <0.0001 \\ 
   stock\us{}photo & 1.1177 & 1.0192 & 1.10 & 0.2747 \\ 
-  wheels & 7.2984 & 0.5448 & 13.40 & 0.0000 \\ 
+  wheels & 7.2984 & 0.5448 & 13.40 & <0.0001 \\ 
    \hline
   \vspace{-3.6mm} & & & & \\
 \multicolumn{3}{l}{$R_{adj}^2 = 0.7128$}&\multicolumn{2}{r}{$df=137$}
@@ -614,17 +614,19 @@ different.
 \newcommand{\resHonorsNotPerc}{7.6\%}
 
 We will consider experiment data from a study that sought
-to understand the effect of race and gender on job application
+to understand the effect of race and sex on job application
 callback rates.
-Researchers monitored job postings in Boston and Chicago for
-several months and used this to build up a set of test cases.
-To evaluate which factors were important, these researchers
-created many fake resumes to send off to these jobs.
-They enumerated important characteristics, such as years of
+To evaluate which factors were important,
+job postings were identified in Boston and Chicago
+for the study,
+and researchers created many fake resumes to send off
+to these jobs to see which would elicit a callback.
+The researchers enumerated important characteristics,
+such as years of
 experience and education details, and they used these
-characteristics to randomly generate a resume.
-Finally, they randomly assigned a name to the resume, where
-the name would imply the applicant's gender and race.
+characteristics to randomly generate the resumes.
+Finally, they randomly assigned a name to each resume,
+where the name would imply the applicant's sex and race.
 The first names used in this experiment were selected so that
 the names would predominantly be
 recognized as belonging to black or white individuals.
@@ -639,11 +641,11 @@ Figure~\ref{resumeFirstName}.
 \centering\small
 \begin{tabular}{lll c lll c lll}
   \cline{1-3} \cline{5-7} \cline{9-11}
-  first\us{}name & race & gender
+  first\us{}name & race & sex
       & \ \hspace{2mm}\ &
-      first\us{}name & race & gender
+      first\us{}name & race & sex
       & \ \hspace{2mm}\ &
-      first\us{}name & race & gender
+      first\us{}name & race & sex
       \\
   \cline{1-3} \cline{5-7} \cline{9-11}
   Aisha & black & female &&
@@ -685,7 +687,7 @@ Figure~\ref{resumeFirstName}.
   \cline{1-3} \cline{5-7} \cline{9-11}
 \end{tabular}
 \caption{List of all \resUniqueNames{} unique names along
-    with the commonly inferred race and gender associated
+    with the commonly inferred race and sex associated
     with these names.}
 \label{resumeFirstName}
 \end{figure}
@@ -695,8 +697,8 @@ The response variable of interest is whether or not there
 was a callback from the employer for the applicant,
 and there were \resNumPred{} attributes that
 were randomly assigned that we'll consider,
-with special interest in the race and gender variables.
-Race and gender are \term{protected classes} in the
+with special interest in the race and sex variables.
+Race and sex are \term{protected classes} in the
 United States, meaning they are not legally permitted
 factors for hiring or employment decisions.
 The full set of attributes considered is provided in
@@ -739,9 +741,10 @@ Figure~\ref{resumeVariables}.
 \var{race} &
     Race of the applicant, implied by their first name
     listed on the resume. \\
-\var{gender} &
-    Gender of the applicant, implied by their first name
-    listed on the resume. \\
+\var{sex} &
+    Sex of the applicant (limited to only \resp{male}
+    and \resp{female} in this study),
+    implied by the first name listed on the resume. \\
 \hline
 \end{tabular}
 \caption{Descriptions for the \var{callback} variable
@@ -759,9 +762,9 @@ randomly assigned.
 This means that no attributes that might be favorable
 or detrimental to employment would favor one demographic
 over another on these resumes.
-Importantly, we can infer causation between these
-variables and the callback rate, if the variable is
-statistically significant.
+Importantly, due to the experimental nature of this study,
+we can infer causation between these variables and the
+callback rate, if the variable is statistically significant.
 Our analysis will allow us to compare the practical
 importance of each of the variables relative to each other.
 
@@ -841,13 +844,13 @@ predictors using the logit transformation of $p_i$:
 \end{align*}
 In our resume example, there are \resNumPred{} predictor
 variables, so $k = \resNumPred{}$.
-This model isn't very intuitive, but it still has some
-resemblance to multiple regression, and we can fit this
-model using software.
-In~fact, once we look at results from software,
-it will start to feel like we're back in the multiple
-regression context,
-even if the interpretation of the coefficients is more complex.
+While the precise choice of a logit function isn't intuitive,
+it is based on theory that underpins generalized linear models,
+which is beyond the scope of this book.
+Fortunately, once we fit a model using software,
+it will start to feel like we're back in the
+multiple regression context, even if the
+interpretation of the coefficients is more complex.
 
 \begin{figure}
   \centering
@@ -858,9 +861,10 @@ even if the interpretation of the coefficients is more complex.
 
 \begin{examplewrap}
 \begin{nexample}{We start by fitting a model with a single
-    predictor: \var{employment\us{}holes}.
-    This variable indicates whether the applicant has gaps in their
-    employment history.
+    predictor: \var{honors}.
+    This variable indicates whether the applicant had any
+    type of honors listed on their resume,
+    such as employee of the month.
     The following logistic regression model was fit using
     statistical software:
     \begin{align*}
@@ -955,15 +959,15 @@ the $t$-distribution.
   & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\
   \hline
   \vspace{-3.8mm} & & & & \\
-  (Intercept) & -2.6632 & 0.1820 & -14.64 & 0.0000 \\
+  (Intercept) & -2.6632 & 0.1820 & -14.64 & <0.0001 \\
   job\us{}cityChicago & -0.4403 & 0.1142 & -3.85 & 0.0001 \\
   college\us{}degree & -0.0666 & 0.1211 & -0.55 & 0.5821 \\
   years\us{}experience & 0.0200 & 0.0102 & 1.96 & 0.0503 \\
-  honors & 0.7694 & 0.1858 & 4.14 & 0.0000 \\
+  honors & 0.7694 & 0.1858 & 4.14 & <0.0001 \\
   military & -0.3422 & 0.2157 & -1.59 & 0.1127 \\
   email\us{}address & 0.2183 & 0.1133 & 1.93 & 0.0541 \\
-  racewhite & 0.4424 & 0.1080 & 4.10 & 0.0000 \\
-  gendermale & -0.1818 & 0.1376 & -1.32 & 0.1863 \\
+  racewhite & 0.4424 & 0.1080 & 4.10 & <0.0001 \\
+  sexmale & -0.1818 & 0.1376 & -1.32 & 0.1863 \\
   \hline
 \end{tabular}
 \caption{Summary table for the full logistic regression model
@@ -977,19 +981,18 @@ the $t$-distribution.
 
 Just like multiple regression, we could trim some variables
 from the model.
-Here we'll use the p-value method, though better approaches
-exist that are beyond the scope of this book,
-e.g. \hiddenterm{Akaike information criterion (AIC)}%
-\index{AIC|textbf}.
-Using backward elimination with a p-value cutoff of 0.05
-(start with the full model and trim the predictors with
-p-values greater than 0.05),
-we ultimately eliminate the \var{college\us{}degree},
-\var{military}, \var{email\us{}address}, and \var{gender}
-predictors, giving the smaller model summarized in
-Figure~\ref{resumeLogisticReducedModel},
+Here we'll use a statistic called
+\term{Akaike information criterion (AIC)},
+which is an analog to how we used adjusted R-squared
+in multiple regression,
+and we look for models with a lower AIC
+through a backward elimination strategy.
+After using this criteria, the \var{college\us{}degree}
+variable is eliminated, giving the smaller model summarized
+in Figure~\ref{resumeLogisticReducedModel},
 which is what we'll rely on for the remainder
 of this section.
+\Comment{Do we want to discuss that one variable dropping out more?}
 
 \begin{figure}[ht]
 \centering
@@ -999,21 +1002,24 @@ of this section.
   & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-  (Intercept) & -2.7727 & 0.1344 & -20.63 & 0.0000 \\ 
-  job\us{}cityChicago & -0.3504 & 0.1089 & -3.22 & 0.0013 \\ 
-  years\us{}experience & 0.0264 & 0.0096 & 2.76 & 0.0059 \\ 
-  honors & 0.7935 & 0.1829 & 4.34 & 0.0000 \\ 
-  racewhite & 0.4399 & 0.1079 & 4.08 & 0.0000 \\ 
+  (Intercept) & -2.7162 & 0.1551 & -17.51 & <0.0001 \\ 
+  job\_cityChicago & -0.4364 & 0.1141 & -3.83 & 0.0001 \\ 
+  years\_experience & 0.0206 & 0.0102 & 2.02 & 0.0430 \\ 
+  honors & 0.7634 & 0.1852 & 4.12 & <0.0001 \\ 
+  military & -0.3443 & 0.2157 & -1.60 & 0.1105 \\ 
+  email\_address & 0.2221 & 0.1130 & 1.97 & 0.0494 \\ 
+  racewhite & 0.4429 & 0.1080 & 4.10 & <0.0001 \\ 
+  sexmale & -0.1959 & 0.1352 & -1.45 & 0.1473 \\ 
 \hline
 \end{tabular}
 \caption{Summary table for the logistic regression model
     for the resume callback example, where variable selection
-    has been performed.}
+    has been performed using AIC.}
 \label{resumeLogisticReducedModel}
 \end{figure}
 % # Run code for table above first
-% % m <- glm(callback ~ job_city + years_experience + honors + race, data = d, family = binomial); summary(m); xtable(m)
-\newcommand{\resRaceWhiteCoefReduced}{0.4399}
+% % m. <- step(m); summary(m.); xtable(m.)
+\newcommand{\resRaceWhiteCoefReduced}{0.4429}
 
 \begin{examplewrap}
 \begin{nexample}{The \var{race} variable had taken
@@ -1065,7 +1071,8 @@ implied they were white.
   was randomized and this variable is independent of
   other predictors.
   This means that the estimated effect will be virtually
-  unchanged even after we correct for these other variables.
+  unchanged even after we add or remove other variables
+  from the model.
   This property is the product of thoughtful experiment
   design by this study's researchers.
 \end{nexample}
@@ -1097,50 +1104,47 @@ and~\ref{includingAndAssessingManyVariablesInAModel}).
     to estimate the probability
     of receiving a callback for a job in Chicago
     where the candidate lists 14 years experience,
-    no honors, and has a first name that implies
-    they are white.}
+    no honors,
+    no military experience,
+    includes an email address,
+    and has a first name that implies they are a white male.}
   \label{exampleForResumeAndWhiteQuantified}%
-  We start by identifying which coefficients
-  should be included in the linear combination calculation:
-  \vspace{-2mm}%
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  %\item \var{(Intercept)}: Always included.
-  \item \var{job\us{}cityChicago}:
-      Since the resume is for a position in Chicago,
-      we will include this coefficient.
-  \item \var{years\us{}experience}:
-      Set the variable to 12,
-      which will be multiplied by the coefficient, 0.0264.
-  \item \var{honors}:
-      Since no honors are listed on the resume,
-      this variable will drop out of the equation.
-  \item \var{racewhite}:
-      This coefficient will be included in the calculation.
-  \end{itemize}
-  Computing the linear combination:
+  We can start by writing out the equation using indicator
+  functions and coefficients from the model, then we can
+  add in the corresponding values of each variable for this
+  individual:
   \begin{align*}
   log\left(\frac{p}{1 - p}\right)
-    &= - 2.6632
-        - 0.4403 \times 1_{Chicago}
-        + 0.7694 \times 1_{honors}
-        + 0.4424 \times 1_{white} \\
-    &= - 2.6632
-        - 0.4403 \times 1
-        + 0.7694 \times 0
-        + 0.4424 \times 1 \\
-    &= - 2.6611
+    &= - 2.7162
+        - 0.4364 \times 1_{Chicago}
+        + 0.0206 \times \text{(years experience)}
+        + 0.7634 \times 1_{honors} \\
+      &\qquad
+          - 0.3443 \times 1_{military}
+          + 0.2221 \times 1_{email}
+          + 0.4424 \times 1_{white}
+          - 0.1959 \times 1_{male} \\
+    &= - 2.7162
+        - 0.4364 \times 1
+        + 0.0206 \times 14
+        + 0.7634 \times 0 \\
+      &\qquad
+          - 0.3443 \times 0
+          + 0.2221 \times 1
+          + 0.4424 \times 1
+          - 0.1959 \times 1 \\
+    &= - 2.3956
   \end{align*}
   We can now back-solve for $p$:
   the chance such an individual will receive
-  a callback is about~6.5\%.
+  a callback is about~8.35\%.
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
 \begin{nexample}{Compute the probability of a callback
     for an individual with a name commonly inferred
-    to be from a black individual but who otherwise
+    to be from a black male but who otherwise
     has the same characteristics as the one described
     in Example~\ref{exampleForResumeAndWhiteQuantified}.}
   \index{exampleForResumeAndBlackQuantified}%
@@ -1149,22 +1153,23 @@ and~\ref{includingAndAssessingManyVariablesInAModel}).
   where the only difference in the calculation is that
   the indicator variable
   $1_{white}$ will take a value of \resp{0}.
-  Doing so yields a probability of 0.0430.
+  Doing so yields a probability of 0.0553.
   Let's compare the results with those of
   Example~\ref{exampleForResumeAndWhiteQuantified}.
 
   In practical terms, such an individual perceived
   as white based on their first name would need to
-  apply to $\frac{1}{0.0653} = 15.3$ jobs on average
+  apply to $\frac{1}{0.0835} \approx 12$ jobs on average
   to receive a callback,
   while an individual perceived as black based on their
   first name would need
-  to apply to $\frac{1}{0.0430} = 23.3$ jobs on average
+  to apply to $\frac{1}{0.0553} \approx 18$ jobs on average
   to receive a callback.
-  This corresponds to applicants who are perceived as
+  Applicants who are perceived as
   black needing to apply to about 50\% more employers
   to receive a callback than someone who is perceived
-  as white based on their first name.
+  as white based on their first name for jobs like
+  those in the study.
 \end{nexample}
 \end{examplewrap}
 
@@ -1189,6 +1194,7 @@ a persistent challenge in enforcing anti-discrimination laws.
 
 
 \subsection{Diagnostics for the callback rate model}
+\label{logistic_regr_diagnostics_subsection}
 
 \begin{onebox}{Logistic regression conditions}
 There are two key conditions for fitting a logistic regression model:\vspace{-1mm}
@@ -1306,18 +1312,19 @@ from a black individual.
 It's unlikely that discrimination would stop there.
 
 Despite these considerations, we've observed calls for
-considerations around \emph{reverse discrimination}.
+considerations around \emph{reverse discrimination},
 \index{reverse discrimination}%
-Reverse discrimination against a majority
-group is likely real in some situations.
-Yet, the impact of this reverse discrimination
-appears to be so much smaller than the discrimination
-experienced by minorities... \emph{why?}
+which is the notion that individuals from minority groups
+get special treatment because of their minority status,
+translating to discrimination against a non-minority group.
+Such discrimination is likely real in some situations.
+Yet, the impact appears to be so much smaller than the
+discrimination experienced by minorities... \emph{why?}
 
 \begin{examplewrap}
-\begin{nexample}{Let's consider a gender-imbalanced
+\begin{nexample}{Let's consider a sex-imbalanced
     company that consists of 20\% women
-    and 80\% men, and we'll suppose that the
+    and 80\% men,\footnotemark and we'll suppose that the
     company is very large, consisting of perhaps
     20,000 employees.
     Suppose when someone goes up for promotion at this
@@ -1326,14 +1333,14 @@ experienced by minorities... \emph{why?}
     \exspace{}
 
     Now let's imagine that 10\% of the people in the
-    company are prejudiced against the opposite gender.
+    company are prejudiced against the other sex.
     That is, 10\% of men are prejudiced against women,
     and similarly, 10\% of women are prejudiced against men.
     \exspace{}
     
     Who is discriminated against more at the company,
     men or women?}
-  \label{gender_imbalance_leads_to_discrimination}%
+  \label{sex_imbalance_leads_to_discrimination}%
   Let's suppose we took 100 men who have gone up for
   promotion in the past few years.
   For these men, $5 \times 100 = 500$ random colleagues
@@ -1360,7 +1367,7 @@ experienced by minorities... \emph{why?}
 \footnotetext{A more thoughtful example would include
     non-binary individuals.}
 
-Example~\ref{gender_imbalance_leads_to_discrimination}
+Example~\ref{sex_imbalance_leads_to_discrimination}
 highlights something profound:
 even if each demographic has the same degree of prejudice
 against the other demographic, minority groups
@@ -1370,6 +1377,19 @@ like the one above with different numbers,
 we'd learn that the greater the imbalance
 in the population groups, the more the minority
 is disproportionately impacted.
+For example, if a proportion $p$ of a company are
+women and the rest of the company consists rest men,
+then the ratio of rates of discrimination against women
+vs men would be given by $\frac{1 - p}{p}$;
+this ratio is always greater than 1 when $p < 0.5$.
+That is, whenever individuals are equally likely to
+be prejudiced, the minority group would always encounter
+more discrimination, and the degree of that discrimination
+will be larger the greater the imbalance in the population.
+
+The 8\%-to-2\% is a direct result of the 80\%-to-20\% ratio
+in Example~\ref{sex_imbalance_leads_to_discrimination}.
+More generally, if 
 
 No discrimination has a place in our society,
 be it discrimination against a minority group
