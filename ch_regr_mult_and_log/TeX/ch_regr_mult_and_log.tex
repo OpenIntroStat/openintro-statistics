@@ -127,69 +127,312 @@ Section~\ref{ind_and_cat_vars_as_predictors}.
 \subsection{Indicator and categorical variables as predictors}
 \label{ind_and_cat_vars_as_predictors}
 
-Let's fit a linear regression model with the game's condition as a predictor of auction price. The model may be written as
+Let's start by fitting a linear regression model for
+interest rate with a single predictor indicating whether
+or not a person has a bankruptcy in their record:
 \begin{align*}
-\widehat{price} &= 42.87 + 10.90\times cond\us{}new
+\widehat{rate} &= 12.33 + 0.74\times past\us{}bankr
 \end{align*}
-Results of this model are shown in Figure~\ref{singleVarModelsForPriceUsingCond} and a scatterplot for price versus game condition is shown in Figure~\ref{marioKartSingle}.
+Results of this model are shown in
+Figure~\ref{intRateVsPastBankrModel}.
+%and a scatterplot for price
+%versus game condition is shown in
+%Figure~\ref{intRateVsPastBankrScatter}.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
-\begin{tabular}{rrrrr}
+\begin{tabular}{l rrr r}
   \hline
   \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
-  \vspace{-3.8mm} & & & & \\
-(Intercept) & 42.8711 & 0.8140 & 52.67 & <0.0001 \\ 
-  cond\us{}new & 10.8996 & 1.2583 & 8.66 & <0.0001 \\ 
-   \hline
-   &&&\multicolumn{2}{r}{$df=139$}
+  (Intercept) & 12.3380 & 0.0533 & 231.49 & $<$0.0001 \\ 
+  past\us{}bankr & 0.7368 & 0.1529 & 4.82 & $<$0.0001 \\ 
+  \hline
+  &&&\multicolumn{2}{r}{$df=9998$}
 \end{tabular}
-\caption{Summary of a linear model for predicting auction price based on game condition.}
-\label{singleVarModelsForPriceUsingCond}
+\caption{Summary of a linear model for predicting
+    interest rate based on whether the borrower has
+    a bankruptcy in their record.}
+\label{intRateVsPastBankrModel}
 \end{figure}
-% library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); xtable(lm(d$totalPr ~ d$cond)); xtable(lm(d$totalPr ~ d$duration))
 
-\begin{figure}
-  \centering
-  \Figure{0.725}{marioKartSingle}
-  \caption{Scatterplot of the total auction price against
-      the game's condition.
-      The least squares line is also shown.}
-  \label{marioKartSingle}
+%\begin{figure}[h]
+%  \centering
+%  \Figures{0.45}{loansSingles}{intRateVsPastBankrScatter}
+%  \caption{Scatterplot of interest rate against
+%      the past bankruptcy indicator variable.
+%      The least squares line is also shown,
+%      representing a relatively small difference
+%      between the two bankruptcy groups.}
+%  \label{intRateVsPastBankrScatter}
+%\end{figure}
+
+%\begin{exercisewrap}
+%\begin{nexercise}
+%Examine Figure~\ref{intRateVsPastBankrScatter}.
+%Are the conditions for a linear model reasonable?\footnotemark
+%\end{nexercise}
+%\end{exercisewrap}
+%\footnotetext{Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.}
+
+\begin{examplewrap}
+\begin{nexample}{Interpret the coefficient for the
+     past bankruptcy variable in the model.
+     Is this coefficient significantly different from 0?}
+  The \var{past\us{}bankr} variable is a two-level categorical
+  variable, taking value 1 when the borrower has a bankruptcy
+  in their history and 0 otherwise.
+  So 0.74 means that the model predicts a 0.74\% higher
+  interest rate for those borrowers with a bankruptcy in
+  their record.
+  (See Section~\ref{categoricalPredictorsWithTwoLevels}
+  for a review of the interpretation for two-level
+  categorical predictor variables.)
+  Examining the regression output in
+  Figure~\ref{intRateVsPastBankrModel},
+  we can see that the p-value for \var{past\us{}bankr}
+  is very close to zero, indicating there is strong evidence
+  that the coefficient is different from zero when using this
+  simple one-variable model.
+\end{nexample}
+\end{examplewrap}
+
+Suppose we had fit a model using a 3-level categorical variable,
+such as \var{ver\us{}income}.
+The output from software is shown in
+Figure~\ref{intRateVsVerIncomeModel}.
+This regression output provides multiple
+rows for the \var{ver\us{}income} variable.
+Each row represents the relative difference for
+each level of \var{ver\us{}income}.
+However, we are missing one of the levels:
+\resp{not} (for \emph{not verified}).
+The missing level is called the \term{reference level},
+and it represents the default level that
+other levels are measured against.
+%This will make more sense after we write out the equation.
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{l rrr r}
+  \hline
+  \vspace{-3.7mm} & & & & \\
+  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+  (Intercept) &
+      11.0995 & 0.0809 & 137.18 & $<$0.0001 \\
+  ver\us{}income\lmlevel{source\us{}only} &
+      1.4160 & 0.1107 & 12.79 & $<$0.0001 \\ 
+  ver\us{}income\lmlevel{verified} &
+      3.2543 & 0.1297 & 25.09 & $<$0.0001 \\ 
+  \hline
+  &&&\multicolumn{2}{r}{$df=9998$}
+\end{tabular}
+\caption{Summary of a linear model for predicting
+    interest rate based on whether the borrower's
+    income source and amount has been verified.
+    This predictor has three levels, which results
+    in 2 rows in the regression output.}
+\label{intRateVsVerIncomeModel}
 \end{figure}
+
+\begin{examplewrap}
+\begin{nexample}{How would we write an equation for
+    this regression model?}
+  \label{verIncomeEquationExample}%
+  The equation for the linear model may be written as
+  a model with two predictors:
+  \begin{align*}
+  \widehat{rate} = 11.10 +
+      1.42 \times 1_{source\_only} +
+      3.25 \times 1_{verified}
+  \end{align*}
+  The notation $1_{context}$ is a special
+  \term{indicator variable} notation that puts the
+  categorical variable into an indicator variable structure.
+  For example, $1_{source\_only}$ would take a value of
+  1 if \var{ver\us{}income} took a value of \resp{source\us{}only}
+  and 0 if it took any other value.
+  Likewise, $1_{verified}$ would take a value of
+  1 if \var{ver\us{}income} took a value of \resp{verified}
+  and 0 if it took any other value.
+  % In Example~\ref{}, we'll run through a few examples
+  % of how we can use the equation for the model.
+\end{nexample}
+\end{examplewrap}
+
+\Comment{We could also invent a tweak to the indicator
+  variable notation: $1^{^{variable\_name}}_{_{variable\_level}}$.
+  This is not standard, but it seems like it would be
+  easier for someone to read.}
+
+The notation used in Example~\ref{verIncomeEquationExample}
+may feel a bit confusing.
+Let's figure out how to use the equation for each level
+of the \var{ver\us{}income} variable.
+
+\begin{examplewrap}
+\begin{nexample}{Using the model from
+    Example~\ref{verIncomeEquationExample},
+    compute the average interest rate for borrowers
+    whose income source and amount are both unverified.}
+  When \var{ver\us{}income} takes a value of \resp{not},
+  then both indicator functions in the equation from
+  Example~\ref{verIncomeEquationExample}
+  are set to zero:
+  \begin{align*}
+  \widehat{rate} &= 11.10 +
+      1.42 \times 0 +
+      3.25 \times 0 \\
+    &= 11.10
+  \end{align*}
+  The average interest rate for these borrowers is 11.1\%.
+  Because the \resp{not} level does not have its own
+  coefficient and it is the reference value,
+  the indicators for the other levels for this variable
+  all drop out.
+\end{nexample}
+\end{examplewrap}
+
+\begin{examplewrap}
+\begin{nexample}{Using the model from
+    Example~\ref{verIncomeEquationExample},
+    compute the average interest rate for borrowers
+    whose income source is verified but the amount is not.}
+  When \var{ver\us{}income} takes a value of
+  \resp{source\us{}only},
+  then the corresponding indicator function is 1
+  while the other ($1_{verified}$) is 0:
+  \begin{align*}
+  \widehat{rate} &= 11.10 +
+      1.42 \times 1 +
+      3.25 \times 0 \\
+    &= 12.52
+  \end{align*}
+  The average interest rate for these borrowers is 12.52\%.
+\end{nexample}
+\end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Examine Figure~\ref{marioKartSingle}. Does the linear model seem reasonable?\footnotemark
+Compute the average interest rate for borrowers
+whose income source and amount are both verified.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.}
+\footnotetext{When \var{ver\us{}income} takes a value of
+  \resp{verified},
+  then the corresponding indicator function is 1
+  while the other ($1_{source\_only}$) is 0:
+  \begin{align*}
+  \widehat{rate} &= 11.10 +
+      1.42 \times 0 +
+      3.25 \times 1 \\
+    &= 14.35
+  \end{align*}
+  The average interest rate for these borrowers is 14.35\%.}
 
-\begin{examplewrap}
-\begin{nexample}{Interpret the coefficient for the game's condition in the model. Is this coefficient significantly different from 0?}
-Note that \var{cond\us{}new} is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra \$10.90 for those games that are new versus those that are used. (See Section~\ref{categoricalPredictorsWithTwoLevels} for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Figure~\ref{singleVarModelsForPriceUsingCond}, we can see that the p-value for \var{cond\us{}new} is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.
-\end{nexample}
-\end{examplewrap}
+\begin{onebox}{Predictors with several categories}
+When fitting a regression model with a categorical variable
+that has $k$ levels where $k > 2$, software will provide
+a coefficient for $k - 1$ of those levels.
+For the last level that does not receive a coefficient,
+this is the \term{reference level}, and the coefficients
+listed for the other levels are all considered relative
+to this reference level.
+\end{onebox}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Interpret the coefficients in the \var{ver\us{}income}
+model.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Each of the coefficients gives the
+  incremental interest rate for the corresponding level
+  relative to the \resp{not} level, which is the reference
+  level.
+  For example, for a borrower whose income source and
+  amount have been verified, the model predicts that
+  they will have a 3.25\% higher interest rate than
+  a borrower who has not had their income source or
+  amount verified.}
+
+The higher interest rate for borrowers who have verified
+their income source or amount is surprising.
+Intuitively, we'd think that a loan would look \emph{less}
+risky if the borrower's income has been verified.
+However, note that the situation may be more complex,
+and there may be confounding variables.
+For example, perhaps lender require borrowers with
+poor credit to verify their income.
+That is, verifying income in our data set might be
+a signal of some concerns about the borrower
+rather than a reassurance that the borrower will pay
+back the loan.
+For this reason, the borrower could be deemed higher
+risk, resulting in a higher interest rate.
+(What other confounding variables might explain this
+counter-intuitive model?)
+
+\begin{exercisewrap}
+\begin{nexercise}
+How much larger of an interest rate would we expect for
+a borrower who has verified their income source and amount
+vs a borrower whose income source has only been
+verified?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Relative to the \resp{not} category,
+  the \resp{verified} category has an interest rate of
+  3.25\% higher, while the \resp{source\us{}only}
+  category is only 1.42\% higher.
+  Thus, \resp{verified} borrowers will tend to get
+  an interest rate about $3.25\% - 1.42\% = 1.83\%$
+  higher than \resp{source\us{}only} borrowers.}
+
 
 \subsection{Including and assessing many variables in a model}
 \label{includingAndAssessingManyVariablesInAModel}
 
-Sometimes there are underlying structures or relationships between predictor variables. For instance, new games sold on Ebay tend to come with more Wii wheels, which may have led to higher prices for those auctions. We would like to fit a model that includes all potentially important variables simultaneously. This would help us evaluate the relationship between a predictor variable and the outcome while controlling for the potential influence of other variables. This is the strategy used in \term{multiple regression}. While we remain cautious about making any causal interpretations using multiple regression, such models are a common first step in providing evidence of a causal connection.
+The world is complex, and it can be helpful to be able to
+consider many factors at once in statistical modeling.
+For example, we might like to use the full context of
+borrower to predict the interest rate they receive
+rather than using a single variable.
+This is the strategy used in \term{multiple regression}.
+While we remain cautious about making any causal
+interpretations using multiple regression,
+such models are a common first step in gaining insights
+or providing some evidence of a causal connection.
 
-We want to construct a model that accounts for not only the game condition, as in Section~\ref{ind_and_cat_vars_as_predictors}, but simultaneously accounts for three other variables: \var{stock\us{}photo}, \var{duration}, and \var{wheels}.
-\begin{align}
-\widehat{\var{price}}
-	&= \beta_0 + \beta_1\times \var{cond\us{}new} +
-		\beta_2\times \var{stock\us{}photo} \notag \\
-	&\qquad\  + \beta_3 \times  \var{duration} +
-		\beta_4 \times  \var{wheels} \notag \\
-\hat{y}
-	&= \beta_0 + \beta_1 x_1 + \beta_2 x_2 +
-		\beta_3 x_3 + \beta_4 x_4
-\label{eqForMultipleRegrOfTotalPrForAllPredictors}
-\end{align}
+We want to construct a model that accounts for not only
+for any past bankruptcy or whether the borrower had
+their income source or amount verified,
+but simultaneously accounts for all the variables
+in the data set:
+\var{var\us{}income},
+\var{debt\us{}to\us{}income},
+\var{credit\us{}util},
+\var{past\us{}bankr},
+\var{term},
+\var{issued},
+and \var{credit\us{}checks}.
+\begin{align*}
+\widehat{\var{rate}}
+	&= \beta_0 +
+	    \beta_1\times \var{var\us{}income}_{source\us{}only} +
+	    \beta_2\times \var{var\us{}income}_{verified} +
+		\beta_3\times \var{debt\us{}to\us{}income} \\
+	&\qquad\  +
+	    \beta_4 \times \var{credit\us{}util} +
+	    \beta_5 \times \var{past\us{}bankr} +
+		\beta_6 \times \var{term} \\
+	&\qquad\  +
+	    \beta_7 \times \var{issued}_{Jan2018} +
+	    \beta_8 \times \var{issued}_{Mar2018} +
+		\beta_9 \times \var{credit\us{}checks}
+\end{align*}
 In this equation, $y$ represents the total price, $x_1$ indicates whether the game is new, $x_2$ indicates whether a stock photo was used, $x_3$ is the duration of the auction, and $x_4$ is the number of Wii wheels included with the game. Just as with the single predictor case, a multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this one may fit the data reasonably well.
 
 We estimate the parameters $\beta_0$, $\beta_1$, ..., $\beta_4$ in the same way as we did in the case of a single predictor. We select $b_0$, $b_1$, ..., $b_4$ that minimize the sum of the squared residuals:
@@ -208,11 +451,11 @@ Here there are 141 residuals, one for each observation. We typically use a compu
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.2110 & 1.5140 & 23.92 & <0.0001 \\ 
-  cond\us{}new & 5.1306 & 1.0511 & 4.88 & <0.0001 \\ 
+(Intercept) & 36.2110 & 1.5140 & 23.92 & $<$0.0001 \\ 
+  cond\us{}new & 5.1306 & 1.0511 & 4.88 & $<$0.0001 \\ 
   stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
   duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
-  wheels & 7.2852 & 0.5547 & 13.13 & <0.0001 \\ 
+  wheels & 7.2852 & 0.5547 & 13.13 & $<$0.0001 \\ 
    \hline
    &&&\multicolumn{2}{r}{$df=136$}
 \end{tabular}
@@ -231,7 +474,7 @@ when there are $k$ predictors. We often estimate the $\beta_i$ parameters using 
 
 \begin{exercisewrap}
 \begin{nexercise} \label{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}
-Write out the model in Equation~\eqref{eqForMultipleRegrOfTotalPrForAllPredictors} using the point estimates from Figure~\ref{outputForMultipleRegrOutputForAllPredictors}. How many predictors are there in this model?\footnotemark
+Write out the multiple model using the point estimates from Figure~\ref{outputForMultipleRegrOutputForAllPredictors}. How many predictors are there in this model?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.}
@@ -347,11 +590,11 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.2110 & 1.5140 & 23.92 & <0.0001 \\ 
-  cond\us{}new & 5.1306 & 1.0511 & 4.88 & <0.0001 \\ 
+(Intercept) & 36.2110 & 1.5140 & 23.92 & $<$0.0001 \\ 
+  cond\us{}new & 5.1306 & 1.0511 & 4.88 & $<$0.0001 \\ 
   stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
   duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
-  wheels & 7.2852 & 0.5547 & 13.13 & <0.0001 \\ 
+  wheels & 7.2852 & 0.5547 & 13.13 & $<$0.0001 \\ 
    \hline
   \vspace{-3.6mm} & & & & \\
 \multicolumn{3}{l}{$R_{adj}^2 = 0.7108$}&\multicolumn{2}{r}{$df=136$}
@@ -368,10 +611,10 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.0483 & 0.9745 & 36.99 & <0.0001 \\ 
-  cond\us{}new & 5.1763 & 0.9961 & 5.20 & <0.0001 \\ 
+(Intercept) & 36.0483 & 0.9745 & 36.99 & $<$0.0001 \\ 
+  cond\us{}new & 5.1763 & 0.9961 & 5.20 & $<$0.0001 \\ 
   stock\us{}photo & 1.1177 & 1.0192 & 1.10 & 0.2747 \\ 
-  wheels & 7.2984 & 0.5448 & 13.40 & <0.0001 \\ 
+  wheels & 7.2984 & 0.5448 & 13.40 & $<$0.0001 \\ 
    \hline
   \vspace{-3.6mm} & & & & \\
 \multicolumn{3}{l}{$R_{adj}^2 = 0.7128$}&\multicolumn{2}{r}{$df=137$}
@@ -1020,21 +1263,22 @@ the $t$-distribution.
 
 \begin{figure}[ht]
 \centering
-\begin{tabular}{rrrrr}
+\begin{tabular}{l rrrr}
   \hline
   \vspace{-3.7mm} & & & & \\
   & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\
   \hline
   \vspace{-3.8mm} & & & & \\
-  (Intercept) & -2.6632 & 0.1820 & -14.64 & <0.0001 \\
-  job\us{}cityChicago & -0.4403 & 0.1142 & -3.85 & 0.0001 \\
+  (Intercept) & -2.6632 & 0.1820 & -14.64 & $<$0.0001 \\
+  job\us{}city\lmlevel{Chicago} &
+      -0.4403 & 0.1142 & -3.85 & 0.0001 \\
   college\us{}degree & -0.0666 & 0.1211 & -0.55 & 0.5821 \\
   years\us{}experience & 0.0200 & 0.0102 & 1.96 & 0.0503 \\
-  honors & 0.7694 & 0.1858 & 4.14 & <0.0001 \\
+  honors & 0.7694 & 0.1858 & 4.14 & $<$0.0001 \\
   military & -0.3422 & 0.2157 & -1.59 & 0.1127 \\
   email\us{}address & 0.2183 & 0.1133 & 1.93 & 0.0541 \\
-  racewhite & 0.4424 & 0.1080 & 4.10 & <0.0001 \\
-  sexmale & -0.1818 & 0.1376 & -1.32 & 0.1863 \\
+  race\lmlevel{white} & 0.4424 & 0.1080 & 4.10 & $<$0.0001 \\
+  sex\lmlevel{male} & -0.1818 & 0.1376 & -1.32 & 0.1863 \\
   \hline
 \end{tabular}
 \caption{Summary table for the full logistic regression model
@@ -1063,20 +1307,21 @@ of this section.
 
 \begin{figure}[ht]
 \centering
-\begin{tabular}{rrrrr}
+\begin{tabular}{l rrrr}
   \hline
   \vspace{-3.7mm} & & & & \\
   & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-  (Intercept) & -2.7162 & 0.1551 & -17.51 & <0.0001 \\ 
-  job\_cityChicago & -0.4364 & 0.1141 & -3.83 & 0.0001 \\ 
-  years\_experience & 0.0206 & 0.0102 & 2.02 & 0.0430 \\ 
-  honors & 0.7634 & 0.1852 & 4.12 & <0.0001 \\ 
+  (Intercept) & -2.7162 & 0.1551 & -17.51 & $<$0.0001 \\ 
+  job\us{}city\lmlevel{Chicago} &
+      -0.4364 & 0.1141 & -3.83 & 0.0001 \\ 
+  years\us{}experience & 0.0206 & 0.0102 & 2.02 & 0.0430 \\ 
+  honors & 0.7634 & 0.1852 & 4.12 & $<$0.0001 \\ 
   military & -0.3443 & 0.2157 & -1.60 & 0.1105 \\ 
-  email\_address & 0.2221 & 0.1130 & 1.97 & 0.0494 \\ 
-  racewhite & 0.4429 & 0.1080 & 4.10 & <0.0001 \\ 
-  sexmale & -0.1959 & 0.1352 & -1.45 & 0.1473 \\ 
+  email\us{}address & 0.2221 & 0.1130 & 1.97 & 0.0494 \\ 
+  race\lmlevel{white} & 0.4429 & 0.1080 & 4.10 & $<$0.0001 \\ 
+  sex\lmlevel{male} & -0.1959 & 0.1352 & -1.45 & 0.1473 \\ 
 \hline
 \end{tabular}
 \caption{Summary table for the logistic regression model
