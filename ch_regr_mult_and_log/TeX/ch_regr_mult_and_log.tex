@@ -16,49 +16,116 @@ The principles of simple linear regression lay the foundation for more sophistic
 
 Multiple regression extends simple two-variable regression to the case that still has one response but many predictors (denoted $x_1$, $x_2$, $x_3$, ...). The method is motivated by scenarios where many variables may be simultaneously connected to an output.
 
-\index{data!mario\_kart|(}
+\index{data!loans|(}
 
-We will consider Ebay auctions of a video game called \emph{Mario Kart} for the Nintendo Wii. The outcome variable of interest is the total price of an auction, which is the highest bid plus the shipping cost. We will try to determine how total price is related to each characteristic in an auction while simultaneously controlling for other variables. For instance, all other characteristics held constant, are longer auctions associated with higher or lower prices? And, on average, how much more do buyers tend to pay for additional Wii wheels (plastic steering wheels that attach to the Wii controller) in auctions? Multiple regression will help us answer these and other questions.
+\newcommand{\loNcomma}{10,000}
+\newcommand{\loN}{10000}
 
-The data set \data{mario\us{}kart} includes results from 141 auctions.\footnote{Diez DM, Barr CD, \c{C}etinkaya-Rundel M. 2015. \texttt{openintro}: OpenIntro data sets and supplement functions. \oiRedirect{textbook-github_openintro}{github.com/OpenIntroOrg/openintro-r-package}.} Four observations from this data set are shown in Figure~\ref{marioKartDataMatrix}, and descriptions for each variable are shown in Figure~\ref{marioKartVariables}. Notice that the condition and stock photo variables are indicator variables\index{indicator variable}. For instance, the \var{cond\us{}new} variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section~\ref{categoricalPredictorsWithTwoLevels} for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.
+We will consider data about loans from the peer-to-peer lender,
+Lending Club, which is a data set we first encountered in
+Chapters~\ref{ch_intro_to_data}
+and~\ref{ch_summarizing_data}.
+The loan data includes terms of the loan as well as
+information about the borrower.
+The outcome variable we would like to better understand
+is the interest rate assigned to the loan.
+For instance, all other characteristics held constant,
+does it matter how much debt someone already has?
+Does it matter if their income has been verified?
+Multiple regression will help us answer these and other questions.
 
-\begin{figure}[ht]
-\centering
-\begin{tabular}{rrrrlr}
+The data set \data{loans} includes results from \loNcomma{} loans,
+and we'll be looking at a subset of the available variables,
+some of which will be new from those we saw in earlier chapters.
+The first six observations in the data set are shown in
+Figure~\ref{loansDataMatrix},
+and descriptions for each variable are shown in
+Figure~\ref{loansVariables}.
+Notice that the past bankruptcy variable (\var{past\us{}bankr})
+is an indicator variable\index{indicator variable},
+where it takes the value 1 if the borrower had a past
+bankruptcy in their record and 0 if not.
+Using an indicator variable in place of a category name
+allows for these variables to be directly used in regression.
+Two of the other variables are
+categorical\index{categorical variable}
+(\var{ver\us{}income} and \var{issued}), each of which
+can take one of a few different non-numerical values;
+we'll discuss how these are handled in the model in
+Section~\ref{ind_and_cat_vars_as_predictors}.
+
+\begin{figure}[h]
+\centering\footnotesize
+\begin{tabular}{r ccc ccc cc}
   \hline
- & price & cond\us{}new & stock\us{}photo & duration & wheels \\ 
+   & interest\us{}rate & ver\us{}income
+       & debt\us{}to\us{}income & credit\us{}util
+       & past\us{}bankr & term
+       & issued & credit\us{}checks \\ 
   \hline
-1 & 51.55 &   1 & 1 & 3 &   1 \\ 
-  2 & 37.04 &  0 &  1 & 7 &   1 \\ 
-$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
-  140 & 38.76 &  0 &  0 & 7 &   0 \\ 
-  141 & 54.51 &  1 &  1 & 1 &   2 \\ 
+  1 & 14.07 & verified & 18.01 & 0.55 & 0 & 60 & Mar2018 & 6 \\ 
+  2 & 12.61 & not & 5.04 & 0.15 & 1 & 36 & Feb2018 & 1 \\ 
+  3 & 17.09 & source\_only & 21.15 & 0.66 & 0 & 36 & Feb2018 & 4 \\ 
+  4 & 6.72 & not & 10.16 & 0.20 & 0 & 36 & Jan2018 & 0 \\ 
+  5 & 14.07 & verified & 57.96 & 0.75 & 0 & 36 & Mar2018 & 7 \\ 
+  6 & 6.72 & not & 6.46 & 0.09 & 0 & 36 & Jan2018 & 6 \\
+  $\vdots$ & $\vdots$ & $\vdots$ &
+      $\vdots$ & $\vdots$ & $\vdots$ &
+      $\vdots$ & $\vdots$ & $\vdots$ \\
    \hline
 \end{tabular}
-\caption{Four observations from the \data{mario\us{}kart} data set.}
-\label{marioKartDataMatrix}
+\caption{First six rows from the \data{loans} data set.}
+\label{loansDataMatrix}
 \end{figure}
-%library(openintro); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; row.names(d) <- NULL; d
+%library(openintro)  # Run some example code from loans_full_schema
+%library(xtable); xtable(rbind.data.frame(head(d[, c("interest_rate", co)], 6))) #, tail(d[, c("interest_rate", co)], 2)))
 
-\begin{figure}
+\begin{figure}[h]
 \centering\small
-\begin{tabular}{lp{9.5cm}}
+\begin{tabular}{lp{11.5cm}}
 \hline
 {\bf variable} & {\bf description} \\
 \hline
-\var{price} & final auction price plus shipping costs, in US dollars \\
-\var{cond\us{}new} & a coded two-level categorical variable, which takes value \resp{1} when the game is new and \resp{0} if the game is used \\
-\var{stock\us{}photo} & a coded two-level categorical variable, which takes value \resp{1} if the primary photo used in the auction was a stock photo and \resp{0} if the photo was unique to that auction \\
-\var{duration} & the length of the auction, in days, taking values from 1 to 10 \\
-\var{wheels} & the number of Wii wheels included with the auction (a \emph{Wii wheel} is a plastic racing wheel that holds the Wii controller and is an optional but helpful accessory for playing Mario Kart) \\
+\var{interest\us{}rate} &
+    final auction price plus shipping costs, in US dollars \\
+\var{ver\us{}income} &
+    Categorical variable describing whether the borrower's
+    income source and amount have been verified. \\
+\var{debt\us{}to\us{}income} &
+    Debt-to-income ratio, which is the ratio of total debt
+    of the borrower divided by their total income. \\
+\var{credit\us{}util} &
+    Of all the credit available to the borrower,
+    what fraction are they utilizing.
+    For example, the credit utilization on a credit card would
+    be the card's balance divided by the card's credit limit. \\
+\var{past\us{}bankr} &
+    An indicator variable for whether the borrower has a past
+    bankruptcy in her record. This variable takes a value of
+    \resp{1} if the answer is ``yes''
+    and \resp{0} if the answer is ``no''. \\
+\var{term} &
+    The length of the loan, in months. \\
+\var{issued} &
+    The month and year the loan was issued,
+    which for these loans is always during the first
+    quarter of 2018. \\
+\var{credit\us{}checks} &
+    Number of credit checks in the last 12 months.
+    For example, when filing an application for a credit card,
+    it is common for the company receiving the application
+    to run a credit check. \\
 \hline
 \end{tabular}
 \caption{Variables and their descriptions for the \data{mario\us{}kart} data set.}
-\label{marioKartVariables}
+\label{loansVariables}
 \end{figure}
 
-\subsection{A single-variable model for the Mario Kart data}
-\label{twoSingleVariableModelsForMarioKartData}
+
+\newpage
+
+\subsection{Indicator and categorical variables as predictors}
+\label{ind_and_cat_vars_as_predictors}
 
 Let's fit a linear regression model with the game's condition as a predictor of auction price. The model may be written as
 \begin{align*}
@@ -111,7 +178,7 @@ Note that \var{cond\us{}new} is a two-level categorical variable that takes valu
 
 Sometimes there are underlying structures or relationships between predictor variables. For instance, new games sold on Ebay tend to come with more Wii wheels, which may have led to higher prices for those auctions. We would like to fit a model that includes all potentially important variables simultaneously. This would help us evaluate the relationship between a predictor variable and the outcome while controlling for the potential influence of other variables. This is the strategy used in \term{multiple regression}. While we remain cautious about making any causal interpretations using multiple regression, such models are a common first step in providing evidence of a causal connection.
 
-We want to construct a model that accounts for not only the game condition, as in Section~\ref{twoSingleVariableModelsForMarioKartData}, but simultaneously accounts for three other variables: \var{stock\us{}photo}, \var{duration}, and \var{wheels}.
+We want to construct a model that accounts for not only the game condition, as in Section~\ref{ind_and_cat_vars_as_predictors}, but simultaneously accounts for three other variables: \var{stock\us{}photo}, \var{duration}, and \var{wheels}.
 \begin{align}
 \widehat{\var{price}}
 	&= \beta_0 + \beta_1\times \var{cond\us{}new} +
@@ -178,13 +245,13 @@ What does $\beta_4$, the coefficient of variable $x_4$ (Wii wheels), represent? 
 
 \begin{exercisewrap}
 \begin{nexercise} \label{computeMultipleRegressionResidualForMarioKart}%
-Compute the residual of the first observation in Table~\ref{marioKartDataMatrix} on page~\pageref{marioKartDataMatrix} using the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.\footnotemark
+Compute the residual of the first observation in Table~\ref{loansDataMatrix} on page~\pageref{loansDataMatrix} using the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.}
 
 \begin{examplewrap}
-\begin{nexample}{We estimated a coefficient for \var{cond\us{}new} in Section~\ref{twoSingleVariableModelsForMarioKartData} of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?} \label{colinearityOfCondNewAndStockPhoto}
+\begin{nexample}{We estimated a coefficient for \var{cond\us{}new} in Section~\ref{ind_and_cat_vars_as_predictors} of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?} \label{colinearityOfCondNewAndStockPhoto}
 If we examined the data carefully, we would see that some predictors are correlated. For instance, when we estimated the connection of the outcome \var{price} and predictor \var{cond\us{}new} using simple linear regression, we were unable to control for other variables like the number of Wii wheels included in the auction. That model was biased by the confounding variable \var{wheels}. When we use both variables, this particular underlying and unintentional bias is reduced or eliminated (though bias from other confounding variables may still remain).
 \end{nexample}
 \end{examplewrap}
@@ -1095,7 +1162,7 @@ we compared the coefficient of \var{cond\us{}new} in a
 single-variable model and the corresponding coefficient
 in the multiple regression model when including three
 additional variables (see
-Sections~\ref{twoSingleVariableModelsForMarioKartData}
+Sections~\ref{ind_and_cat_vars_as_predictors}
 and~\ref{includingAndAssessingManyVariablesInAModel}).
 
 \begin{examplewrap}
