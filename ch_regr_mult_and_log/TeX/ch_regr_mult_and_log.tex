@@ -475,7 +475,7 @@ each $\beta_i$, just as we did in the one-predictor case.
 \begin{tabular}{rrrrr}
   \hline
   \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
   (Intercept) & 1.9251 & 0.2102 & 9.16 & $<$0.0001 \\ 
@@ -619,7 +619,8 @@ variables take value zero: income source is not verified,
 the borrower has no debt (debt-to-income and credit
 utilization are zero), and so on.
 Is this reasonable?
-Is there any value gained by making this interpretation?\footnotemark
+Is there any value gained by making this
+interpretation?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Many of the variables do take a value 0
@@ -636,7 +637,8 @@ Is there any value gained by making this interpretation?\footnotemark
    this setting is not insightful.}
 
 
-\subsection{Adjusted $R^2$ as a better estimate of explained variance}
+\subsection{Adjusted $R^2$ as a better estimate
+    of explained variance}
 
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|(}
 
@@ -729,9 +731,11 @@ adjusted~$R^2$?\hspace{0.7mm}\footnotemark
 \footnotetext{The unadjusted $R^2$ would stay the same
     and the adjusted $R^2$ would go down.}
 
-Adjusted $R^2$ could have been used in Chapter~\ref{linRegrForTwoVar}. However, when there is only
-$k = 1$ predictors, adjusted $R^2$ is very close to regular
-$R^2$, so this nuance isn't typically important when
+Adjusted $R^2$ could have been used in
+Chapter~\ref{linRegrForTwoVar}.
+However, when there is only $k = 1$ predictors,
+adjusted $R^2$ is very close to regular $R^2$,
+so this nuance isn't typically important when
 considering only one predictor.
 
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|)}
@@ -742,42 +746,66 @@ considering only one predictor.
 
 %__________________
 \section{Model selection}
-\label{introductionToMultipleRegression}
-
-
+\label{model_selection_section}
 \label{modelSelection}
 
 \index{model selection|(}
 
-The best model is not always the most complicated. Sometimes including variables that are not evidently important can actually reduce the accuracy of predictions. In this section we discuss model selection strategies, which will help us eliminate variables from the model that are found to be less important.
+The best model is not always the most complicated.
+Sometimes including variables that are not evidently
+important can actually reduce the accuracy of predictions.
+In this section we discuss model selection strategies,
+which will help us eliminate variables from the model that
+are found to be less important.
 
-In practice, the model that includes all available explanatory variables is often referred to as the \term{full model}. The full model may not be the best model, and if it isn't, we want to identify a smaller model that is preferable.
+In practice, the model that includes all available explanatory
+variables is often referred to as the \term{full model}.
+The full model may not be the best model, and if it isn't,
+we want to identify a smaller model that is preferable.
 
 
-\subsection{Identifying variables in the model that may not be helpful}
+\subsection{Identifying variables in the model that may
+    not be helpful}
 
-Adjusted $R^2$ describes the strength of a model fit, and it is a useful tool for evaluating which predictors are adding value to the model, where \emph{adding value} means they are (likely) improving the accuracy in predicting future outcomes.
+Adjusted $R^2$ describes the strength of a model fit,
+and it is a useful tool for evaluating which predictors
+are adding value to the model, where \emph{adding value}
+means they are (likely) improving the accuracy in
+predicting future outcomes.
 
-Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrOutputForAllPredictors2} and~\ref{marioKartMultipleRegressionModelAllButDuration}. The first table summarizes the full model since it includes all predictors, while the second does not include the \var{duration} variable.
+Let's consider two models, which are shown in
+Tables~\ref{outputForMultipleRegrOutputForAllPredictors2}
+and~\ref{marioKartMultipleRegressionModelAllButDuration}.
+The first table summarizes the full model since it includes
+all predictors, while the second does not include the
+\var{issued} variable.
 
 \begin{figure}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
   \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.2110 & 1.5140 & 23.92 & $<$0.0001 \\ 
-  cond\us{}new & 5.1306 & 1.0511 & 4.88 & $<$0.0001 \\ 
-  stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
-  duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
-  wheels & 7.2852 & 0.5547 & 13.13 & $<$0.0001 \\ 
-   \hline
-  \vspace{-3.6mm} & & & & \\
-\multicolumn{3}{l}{$R_{adj}^2 = 0.7108$}&\multicolumn{2}{r}{$df=136$}
+  (Intercept) & 1.9251 & 0.2102 & 9.16 & $<$0.0001 \\ 
+  ver\us{}income\lmlevel{source\us{}only} &
+      0.9750 & 0.0991 & 9.83 & $<$0.0001 \\ 
+  ver\us{}income\lmlevel{verified} &
+      2.5374 & 0.1172 & 21.65 & $<$0.0001 \\ 
+  debt\us{}to\us{}income & 0.0211 & 0.0029 & 7.18 & $<$0.0001 \\ 
+  credit\us{}util & 4.8959 & 0.1619 & 30.24 & $<$0.0001 \\ 
+  past\us{}bankr & 0.3864 & 0.1324 & 2.92 & 0.0035 \\ 
+  term & 0.1537 & 0.0039 & 38.96 & $<$0.0001 \\ 
+  issued\lmlevel{Jan2018} & 0.0276 & 0.1081 & 0.26 & 0.7981 \\ 
+  issued\lmlevel{Mar2018} & -0.0397 & 0.1065 & -0.37 & 0.7093 \\ 
+  credit\us{}checks & 0.2282 & 0.0182 & 12.51 & $<$0.0001 \\ 
+  \hline
+  \multicolumn{3}{l}{$R_{adj}^2 = 0.25843$}&
+      \multicolumn{2}{r}{$df=9990$}
 \end{tabular}
-\caption{The fit for the full regression model, including the adjusted $R^2$.}
+\caption{The fit for the full regression model,
+    including the adjusted $R^2$.}
 \label{outputForMultipleRegrOutputForAllPredictors2}
 \end{figure}
 
@@ -786,28 +814,44 @@ Let's consider two models, which are shown in Tables~\ref{outputForMultipleRegrO
 \begin{tabular}{rrrrr}
   \hline
   \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.0483 & 0.9745 & 36.99 & $<$0.0001 \\ 
-  cond\us{}new & 5.1763 & 0.9961 & 5.20 & $<$0.0001 \\ 
-  stock\us{}photo & 1.1177 & 1.0192 & 1.10 & 0.2747 \\ 
-  wheels & 7.2984 & 0.5448 & 13.40 & $<$0.0001 \\ 
-   \hline
+  (Intercept) & 1.9213 & 0.1982 & 9.69 & $<$0.0001 \\ 
+  ver\us{}income\lmlevel{source\us{}only} &
+      0.9740 & 0.0991 & 9.83 & $<$0.0001 \\ 
+  ver\us{}income\lmlevel{verified} &
+      2.5355 & 0.1172 & 21.64 & $<$0.0001 \\ 
+  debt\us{}to\us{}income & 0.0211 & 0.0029 & 7.19 & $<$0.0001 \\ 
+  credit\us{}util & 4.8958 & 0.1619 & 30.25 & $<$0.0001 \\ 
+  past\us{}bankr & 0.3869 & 0.1324 & 2.92 & 0.0035 \\ 
+  term & 0.1537 & 0.0039 & 38.97 & $<$0.0001 \\ 
+  credit\us{}checks & 0.2283 & 0.0182 & 12.51 & $<$0.0001 \\ 
+  \hline
   \vspace{-3.6mm} & & & & \\
-\multicolumn{3}{l}{$R_{adj}^2 = 0.7128$}&\multicolumn{2}{r}{$df=137$}
+  \multicolumn{3}{l}{$R_{adj}^2 = 0.25854$}&
+      \multicolumn{2}{r}{$df=9992$}
 \end{tabular}
-\caption{The fit for the regression model for predictors \var{cond\us{}new}, \var{stock\us{}photo}, and \var{wheels}.}
+\caption{The fit for the regression model after dropping
+   the \var{issued} variable.} %, which represented 3 categories
+   % and 2 degrees of freedom.}
 \label{marioKartMultipleRegressionModelAllButDuration}
 \end{figure}
 
 \begin{examplewrap}
 \begin{nexample}{Which of the two models is better?}
-We compare the adjusted $R^2$ of each model to determine which to choose. Since the first model has an $R^2_{adj}$ smaller than the $R^2_{adj}$ of the second model, we prefer the second model to the first.
+  We compare the adjusted $R^2$ of each model to determine
+  which to choose.
+  Since the first model has an $R^2_{adj}$ smaller than
+  the $R^2_{adj}$ of the second model, we prefer the second
+  model to the first.
 \end{nexample}
 \end{examplewrap}
 
-Will the model without \var{duration} be better than the model with \var{duration}? We~cannot know for sure, but based on the adjusted $R^2$, this is our best assessment.
+Will the model without \var{issued} be better than the
+model with \var{issued}?
+We~cannot know for sure, but based on the adjusted $R^2$,
+this is our best assessment.
 
 
 \subsection{Two model selection strategies}
