@@ -127,11 +127,14 @@ Section~\ref{ind_and_cat_vars_as_predictors}.
 \subsection{Indicator and categorical variables as predictors}
 \label{ind_and_cat_vars_as_predictors}
 
+\newcommand{\pastbankrACoef}{0.74}
+\newcommand{\pastbankrACoefSE}{0.15}
+
 Let's start by fitting a linear regression model for
 interest rate with a single predictor indicating whether
 or not a person has a bankruptcy in their record:
 \begin{align*}
-\widehat{rate} &= 12.33 + 0.74\times past\us{}bankr
+\widehat{rate} &= 12.33 + \pastbankrACoef{} \times past\us{}bankr
 \end{align*}
 Results of this model are shown in
 Figure~\ref{intRateVsPastBankrModel}.
@@ -183,7 +186,8 @@ Figure~\ref{intRateVsPastBankrModel}.
   The \var{past\us{}bankr} variable is a two-level categorical
   variable, taking value 1 when the borrower has a bankruptcy
   in their history and 0 otherwise.
-  So 0.74 means that the model predicts a 0.74\% higher
+  So \pastbankrACoef{} means that the model predicts a
+  \pastbankrACoef{}\% higher
   interest rate for those borrowers with a bankruptcy in
   their record.
   (See Section~\ref{categoricalPredictorsWithTwoLevels}
@@ -247,30 +251,25 @@ other levels are measured against.
   \widehat{rate} = 11.10 +
       1.42 \times
           %1_{\var{ver\us{}income} = \resp{source\us{}only}} +
-          \var{ver\us{}income}_{source\us{}only} +
+          \indfunc{ver\us{}income}{source\us{}only} +
       3.25 \times
           %1_{\var{ver\us{}income} = \resp{verified}}
-          \var{ver\us{}income}_{verified}
+          \indfunc{ver\us{}income}{verified}
   \end{align*}
-  We use the notation $\var{variable}_{level}$
+  We use the notation $\indfunc{variable}{level}$
   to represent \termsub{indicator variables}{indicator variable}
   for when the categorical variable takes a particular value.
-  For example, $\var{ver\us{}income}_{source\us{}only}$
+  For example, $\indfunc{ver\us{}income}{source\us{}only}$
   would take a value of 1 if \var{ver\us{}income} was
   \resp{source\us{}only} for a loan,
   and it would take a value of 0 otherwise.
-  Likewise, $\var{ver\us{}income}_{verified}$ would take
+  Likewise, $\indfunc{ver\us{}income}{verified}$ would take
   a value of 1 if \var{ver\us{}income} took a value
   of \resp{verified} and 0 if it took any other value.
   % In Example~\ref{}, we'll run through a few examples
   % of how we can use the equation for the model.
 \end{nexample}
 \end{examplewrap}
-
-\Comment{We could also invent a tweak to the indicator
-  variable notation: $1^{^{variable\_name}}_{_{variable\_level}}$.
-  This is not standard, but it seems like it would be
-  easier for someone to read.}
 
 The notation used in Example~\ref{verIncomeEquationExample}
 may feel a bit confusing.
@@ -416,7 +415,7 @@ for any past bankruptcy or whether the borrower had
 their income source or amount verified,
 but simultaneously accounts for all the variables
 in the data set:
-\var{var\us{}income},
+\var{ver\us{}income},
 \var{debt\us{}to\us{}income},
 \var{credit\us{}util},
 \var{past\us{}bankr},
@@ -426,32 +425,50 @@ and \var{credit\us{}checks}.
 \begin{align*}
 \widehat{\var{rate}}
 	&= \beta_0 +
-	    \beta_1\times \var{var\us{}income}_{source\us{}only} +
-	    \beta_2\times \var{var\us{}income}_{verified} +
+	    \beta_1\times \indfunc{ver\us{}income}{source\us{}only} +
+	    \beta_2\times \indfunc{ver\us{}income}{verified} +
 		\beta_3\times \var{debt\us{}to\us{}income} \\
 	&\qquad\  +
 	    \beta_4 \times \var{credit\us{}util} +
 	    \beta_5 \times \var{past\us{}bankr} +
 		\beta_6 \times \var{term} \\
 	&\qquad\  +
-	    \beta_7 \times \var{issued}_{Jan2018} +
-	    \beta_8 \times \var{issued}_{Mar2018} +
+	    \beta_7 \times \indfunc{issued}{Jan2018} +
+	    \beta_8 \times \indfunc{issued}{Mar2018} +
 		\beta_9 \times \var{credit\us{}checks}
 \end{align*}
-This model
+This equation represents a holistic approach for modeling
+all of the variables simultaneously.
 Notice that there are two coefficients for \var{ver\us{}income}
 and also two coefficients for \var{issued}, since both are
 3-level categorical variables.
 
+\Comment{Work on this paragraph.}
 A multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this one may fit the data reasonably well.
 
-We estimate the parameters $\beta_0$, $\beta_1$, ..., $\beta_4$ in the same way as we did in the case of a single predictor. We select $b_0$, $b_1$, ..., $b_4$ that minimize the sum of the squared residuals:
+
+We estimate the parameters
+$\beta_0$, $\beta_1$, $\beta_2$, ..., $\beta_9$
+in the same way as we did in the case of a single predictor.
+We select $b_0$, $b_1$, $b_2$, ..., $b_9$ that minimize the
+sum of the squared residuals:
 \begin{align}\label{sumOfSqResInMultRegr}
-SSE = e_1^2 + e_2^2 + \dots + e_{141}^2
-	= \sum_{i=1}^{141} e_i^2
-	 = \sum_{i=1}^{141} \left(y_i - \hat{y}_i\right)^2
+SSE = e_1^2 + e_2^2 + \dots + e_{\loN}^2
+	= \sum_{i=1}^{\loN} e_i^2
+	 = \sum_{i=1}^{\loN} \left(y_i - \hat{y}_i\right)^2
 \end{align}
-Here there are 141 residuals, one for each observation. We typically use a computer to minimize the sum in Equation~\eqref{sumOfSqResInMultRegr} and compute point estimates, as shown in the sample output in Figure~\ref{outputForMultipleRegrOutputForAllPredictors}. Using this output, we identify the point estimates $b_i$ of each $\beta_i$, just as we did in the one-predictor case.
+where $y_i$ and $\hat{y}_i$ represent the observed
+interest rates and their estimated values according to
+the model, respectively.
+There are \loNcomma{} residuals, one for each observation.
+We typically use a computer to minimize the sum of squares
+and compute point estimates, as shown in the sample output
+in Figure~\ref{outputForMultipleRegrOutputForAllPredictors}.
+Using this output, we identify the point estimates $b_i$ of
+each $\beta_i$, just as we did in the one-predictor case.
+
+\newcommand{\pastbankrFullCoef}{0.39}
+\newcommand{\pastbankrFullCoefSE}{0.13}
 
 \begin{figure}[ht]
 \centering
@@ -461,62 +478,163 @@ Here there are 141 residuals, one for each observation. We typically use a compu
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.2110 & 1.5140 & 23.92 & $<$0.0001 \\ 
-  cond\us{}new & 5.1306 & 1.0511 & 4.88 & $<$0.0001 \\ 
-  stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
-  duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
-  wheels & 7.2852 & 0.5547 & 13.13 & $<$0.0001 \\ 
+  (Intercept) & 1.9251 & 0.2102 & 9.16 & $<$0.0001 \\ 
+  ver\us{}income\lmlevel{source\us{}only} &
+      0.9750 & 0.0991 & 9.83 & $<$0.0001 \\ 
+  ver\us{}income\lmlevel{verified} &
+      2.5374 & 0.1172 & 21.65 & $<$0.0001 \\ 
+  debt\us{}to\us{}income & 0.0211 & 0.0029 & 7.18 & $<$0.0001 \\ 
+  credit\us{}util & 4.8959 & 0.1619 & 30.24 & $<$0.0001 \\ 
+  past\us{}bankr & 0.3864 & 0.1324 & 2.92 & 0.0035 \\ 
+  term & 0.1537 & 0.0039 & 38.96 & $<$0.0001 \\ 
+  issued\lmlevel{Jan2018} & 0.0276 & 0.1081 & 0.26 & 0.7981 \\ 
+  issued\lmlevel{Mar2018} & -0.0397 & 0.1065 & -0.37 & 0.7093 \\ 
+  credit\us{}checks & 0.2282 & 0.0182 & 12.51 & $<$0.0001 \\ 
    \hline
-   &&&\multicolumn{2}{r}{$df=136$}
+   &&&\multicolumn{2}{r}{$df=9990$}
 \end{tabular}
-\caption{Output for the regression model where \var{price} is the outcome and \var{cond\us{}new}, \var{stock\us{}photo}, \var{duration}, and \var{wheels} are the predictors.}
+\caption{Output for the regression model where
+    \var{interest\us{}rate} is the outcome and
+    variables listed are the predictors.}
 \label{outputForMultipleRegrOutputForAllPredictors}
 \end{figure}
-%library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); g <-lm(totalPr ~ cond + stockPhoto + duration + wheels, d)
 
 \begin{onebox}{Multiple regression model}
-A multiple regression model is a linear model with many predictors. In general, we write the model as
-\begin{align*}
-\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k %+ \epsilon
-\end{align*}
-when there are $k$ predictors. We often estimate the $\beta_i$ parameters using a computer.
+  A multiple regression model is a linear model
+  with many predictors.
+  In general, we write the model as
+  \begin{align*}
+  \hat{y} =
+      \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k
+  \end{align*}
+  when there are $k$ predictors.
+  We always estimate the $\beta_i$ parameters using
+  statistical software.
 \end{onebox}
 
-\begin{exercisewrap}
-\begin{nexercise} \label{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}
-Write out the multiple model using the point estimates from Figure~\ref{outputForMultipleRegrOutputForAllPredictors}. How many predictors are there in this model?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-What does $\beta_4$, the coefficient of variable $x_4$ (Wii wheels), represent? What is the point estimate of $\beta_4$?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{It is the average difference in auction price for each additional Wii wheel included when holding the other variables constant. The point estimate is $b_4 = 7.29$.}
-
-\begin{exercisewrap}
-\begin{nexercise} \label{computeMultipleRegressionResidualForMarioKart}%
-Compute the residual of the first observation in Table~\ref{loansDataMatrix} on page~\pageref{loansDataMatrix} using the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice~\ref{eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients}.}
-
 \begin{examplewrap}
-\begin{nexample}{We estimated a coefficient for \var{cond\us{}new} in Section~\ref{ind_and_cat_vars_as_predictors} of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?} \label{colinearityOfCondNewAndStockPhoto}
-If we examined the data carefully, we would see that some predictors are correlated. For instance, when we estimated the connection of the outcome \var{price} and predictor \var{cond\us{}new} using simple linear regression, we were unable to control for other variables like the number of Wii wheels included in the auction. That model was biased by the confounding variable \var{wheels}. When we use both variables, this particular underlying and unintentional bias is reduced or eliminated (though bias from other confounding variables may still remain).
+\begin{nexample}{Write out the regression model using
+    the point estimates from
+    Figure~\ref{outputForMultipleRegrOutputForAllPredictors}.
+    How many predictors are there in this model?}
+  \label{loansFullModelEqWCoef}%
+  The fitted model for the interest rate is given by:
+  {\small\begin{align*}
+  \widehat{\var{rate}}
+	&= 1.925 +
+	    0.975 \times \indfunc{ver\us{}income}{source\us{}only} +
+	    2.537 \times \indfunc{ver\us{}income}{verified} +
+		0.021 \times \var{debt\us{}to\us{}income} \\
+	&\qquad\  +
+	    4.896 \times \var{credit\us{}util} +
+	    0.386 \times \var{past\us{}bankr} +
+		0.154 \times \var{term} \\
+	&\qquad\  +
+	    0.028 \times \indfunc{issued}{Jan2018}
+	    -0.040 \times \indfunc{issued}{Mar2018} +
+		0.228 \times \var{credit\us{}checks}
+  \end{align*}}
 \end{nexample}
 \end{examplewrap}
 
-Example~\ref{colinearityOfCondNewAndStockPhoto} describes a common issue in multiple regression: correlation among predictor variables. We say the two predictor variables are \term{collinear} (pronounced as \emph{co-linear}) when they are correlated, and this collinearity complicates model estimation. While it is impossible to prevent collinearity from arising in observational data, experiments are usually designed to prevent predictors from being collinear.
 
 \begin{exercisewrap}
 \begin{nexercise}
-The estimated value of the intercept is 36.21, and one might be tempted to make some interpretation of this coefficient, such as, it is the model's predicted price when each of the variables take value zero: the game is used, the primary image is not a stock photo, the auction duration is zero days, and there are no wheels included. Is there any value gained by making this interpretation?\footnotemark
+What does $\beta_4$, the coefficient of variable
+\var{credit\us{}util}, represent?
+What is the point estimate of~$\beta_4$?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Three of the variables (\var{cond\us{}new}, \var{stock\us{}photo}, and \var{wheels}) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.}
+\footnotetext{$\beta_4$ represents the change in
+   interest rate we would expect if someone's credit
+   utilization was 0 and went to 1,
+   all other factors held even.
+   The point estimate is $b_4 = 4.90\%$.}
+
+\begin{examplewrap}
+\begin{nexample}{Compute the residual of the first observation
+    in Table~\ref{loansDataMatrix} on
+    page~\pageref{loansDataMatrix} using the equation identified
+    in Guided Practice~\ref{loansFullModelEqWCoef}.}
+  \label{computeMultipleRegressionResidualForMarioKart}%
+  To compute the residual, we first need the predicted value,
+  which we compute by plugging values into the equation from
+  Example~\ref{loansFullModelEqWCoef}.
+  For example, $\indfunc{ver\us{}income}{source\us{}only}$
+  takes a value of 0,
+  $\indfunc{ver\us{}income}{verified}$ takes a value of 1
+  (since the borrower's income source and amount were verified),
+  \var{debt\us{}to\us{}income} was 18.01, and so on.
+  This leads to a prediction of $\widehat{rate}_1 = 18.09$.
+  The observed interest rate was 14.07\%, which leads to
+  a residual of $e_i = 14.07 - 18.09 = -4.02$.
+\end{nexample}
+\end{examplewrap}
+% sum(model.matrix(m)[1, ] * round(m$coef, 3))
+
+\begin{examplewrap}
+\begin{nexample}{We estimated a coefficient for
+    \var{past\us{}bankr} in
+    Section~\ref{ind_and_cat_vars_as_predictors}
+    of $b_4 = \pastbankrACoef{}$ with a standard error
+    of $SE_{b_1} = \pastbankrACoefSE{}$ when using simple
+    linear regression.
+    Why is there be a difference between that estimate
+    and the estimated coefficient of \pastbankrFullCoef{}
+    in the multiple regression setting?}
+  \label{pastBankrCoefDiffExplained}%
+  If we examined the data carefully, we would see that
+  some predictors are correlated.
+  For instance, when we estimated the connection of the
+  outcome \var{interest\us{}rate} and predictor
+  \var{past\us{}bankr} using simple linear regression,
+  we were unable to control for other variables like
+  whether the borrower had her income verified,
+  the borrower's debt-to-income ratio, and other variables.
+  That original model was constructed in a vacuum and did
+  not consider the full context.
+  When we all of the variables, underlying and unintentional
+  bias that was missed by these other variables is reduced
+  or eliminated.
+  Of course, bias can still exist from other confounding
+  variables.
+\end{nexample}
+\end{examplewrap}
+
+Example~\ref{pastBankrCoefDiffExplained} describes a common
+issue in multiple regression: correlation among predictor
+variables.
+We say the two predictor variables are \term{collinear}
+(pronounced as \emph{co-linear}) when they are correlated,
+and this collinearity complicates model estimation.
+While it is impossible to prevent collinearity from arising
+in observational data, experiments are usually designed to
+prevent predictors from being collinear.
+
+\begin{exercisewrap}
+\begin{nexercise}
+The estimated value of the intercept is 1.925, and one might
+be tempted to make some interpretation of this coefficient,
+such as, it is the model's predicted price when each of the
+variables take value zero: income source is not verified,
+the borrower has no debt (debt-to-income and credit
+utilization are zero), and so on.
+Is this reasonable?
+Is there any value gained by making this interpretation?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Many of the variables do take a value 0
+   for at least one data point, and for those variables,
+   it is reasonable.
+   However, one variable never takes a value of zero:
+   \var{term}, which describes the length of the loan,
+   in months.
+   If \var{term} is set to zero, then the loan
+   must be paid back immediately; the borrower
+   must give the money back as soon as she receives it,
+   which means it is not a real loan.
+   Ultimately, the interpretation of the intercept in
+   this setting is not insightful.}
 
 
 \subsection{Adjusted $R^2$ as a better estimate of explained variance}

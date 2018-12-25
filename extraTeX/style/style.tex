@@ -202,7 +202,7 @@
 \newcommand{\datalink}[1]{\index{#1|textbf}\texttt{\href{http://www.openintro.org/redirect.php?go=data_#1&referrer=\referrer}{#1}}}
 \newenvironment{var}[1]{\texttt{#1}}{}
 \newenvironment{resp}[1]{\texttt{#1}}{}
-\newcommand{\lmlevel}[1]{:~\textbf{\color{highlightO}#1}}{}
+\newcommand{\lmlevel}[1]{:~\emph{#1}}{}
 \newenvironment{calctext}[1]{{\color{oiB}\texttt{#1}}}{}
 \newenvironment{calctextmath}[1]{{\color{oiB}\mathtt{#1}}}{}
 \newenvironment{calcbutton}[1]{{\color{oiB}\texttt{#1}}}{}
@@ -229,7 +229,7 @@
 % 6.7 Helper commands
 \newcommand{\us}[0]{\_\hspace{0.3mm}}
 %\newcommand{\quadplus}[0]{\quad + \quad}
-%\newcommand{\indfunc}[2]{1^{^{\var{#1}}}_{_{\resp{#2}}}}
+\newcommand{\indfunc}[2]{\var{#1}_{\resp{#2}}}
 
 
 %-------------------------------------------------------------
