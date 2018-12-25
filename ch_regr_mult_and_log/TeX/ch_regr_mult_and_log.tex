@@ -443,8 +443,8 @@ Notice that there are two coefficients for \var{ver\us{}income}
 and also two coefficients for \var{issued}, since both are
 3-level categorical variables.
 
-\Comment{Work on this paragraph.}
-A multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this one may fit the data reasonably well.
+%\Comment{Work on this paragraph.}
+%A multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this one may fit the data reasonably well.
 
 
 We estimate the parameters
@@ -556,7 +556,6 @@ What is the point estimate of~$\beta_4$?\footnotemark
     in Table~\ref{loansDataMatrix} on
     page~\pageref{loansDataMatrix} using the equation identified
     in Guided Practice~\ref{loansFullModelEqWCoef}.}
-  \label{computeMultipleRegressionResidualForMarioKart}%
   To compute the residual, we first need the predicted value,
   which we compute by plugging values into the equation from
   Example~\ref{loansFullModelEqWCoef}.
@@ -567,7 +566,7 @@ What is the point estimate of~$\beta_4$?\footnotemark
   \var{debt\us{}to\us{}income} was 18.01, and so on.
   This leads to a prediction of $\widehat{rate}_1 = 18.09$.
   The observed interest rate was 14.07\%, which leads to
-  a residual of $e_i = 14.07 - 18.09 = -4.02$.
+  a residual of $e_1 = 14.07 - 18.09 = -4.02$.
 \end{nexample}
 \end{examplewrap}
 % sum(model.matrix(m)[1, ] * round(m$coef, 3))
@@ -641,48 +640,99 @@ Is there any value gained by making this interpretation?\footnotemark
 
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|(}
 
-We first used $R^2$ in Section~\ref{fittingALineByLSR} to determine the amount of variability in the response that was explained by the model:
+We first used $R^2$ in Section~\ref{fittingALineByLSR}
+to determine the amount of variability in the response
+that was explained by the model:
 \begin{align*}
-R^2 = 1 - \frac{\text{variability in residuals}}{\text{variability in the outcome}}
+R^2 =
+    1 - \frac{\text{variability in residuals}}
+        {\text{variability in the outcome}}
 	= 1 - \frac{Var(e_i)}{Var(y_i)}
 \end{align*}
-where $e_i$ represents the residuals of the model and $y_i$ the outcomes. This equation remains valid in the multiple regression framework, but a small enhancement can often be even more informative.
+where $e_i$ represents the residuals of the model and
+$y_i$ the outcomes.
+This equation remains valid in the multiple regression
+framework, but a small enhancement can make it even
+more informative.
 
 \begin{exercisewrap}
-\begin{nexercise} \label{computeUnadjustedR2ForAllPredictorsInMarioKart}
-The variance of the residuals for the model given in Guided Practice~\ref{computeMultipleRegressionResidualForMarioKart} is 23.34, and the variance of the total price in all the auctions is 83.06. Calculate $R^2$ for this model.\footnotemark
+\begin{nexercise}
+\label{computeUnadjR2ForFullLoansModel}%
+The variance of the residuals for the model given in
+Guided Practice~\ref{loansFullModelEqWCoef}
+is 18.53, and the variance of the total price in all
+the auctions is 25.01.
+Calculate $R^2$ for this model.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$R^2 = 1 - \frac{23.34}{83.06} = 0.719$.}
+\footnotetext{$R^2 = 1 - \frac{18.53}{25.01} = 0.2591$.}
 
-This strategy for estimating $R^2$ is acceptable when there is just a single variable. However, it becomes less helpful when there are many variables. The regular $R^2$ is a less estimate of the amount of variability explained by the model. To get a better estimate, we use the adjusted $R^2$.
+This strategy for estimating $R^2$ is acceptable when there
+is just a single variable.
+However, it becomes less helpful when there are many
+variables.
+The regular $R^2$ is a less estimate of the amount of
+variability explained by the model.
+To get a better estimate, we use the adjusted $R^2$.
 
-\begin{onebox}{Adjusted $\mathbf{R^2}$ as a tool for model assessment}
-The \termsub{adjusted $\mathbf{R^2}$}{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)} is computed as
-\begin{align*}
-R_{adj}^{2} = 1-\frac{Var(e_i) / (n-k-1)}{Var(y_i) / (n-1)}
-	= 1-\frac{Var(e_i)}{Var(y_i)} \times \frac{n-1}{n-k-1}
-\end{align*}
-where $n$ is the number of cases used to fit the model and $k$ is the number of predictor variables in the model.
+\begin{onebox}{Adjusted $\mathbf{R^2}$ as a tool for
+    model assessment}
+  The \termsub{adjusted $\mathbf{R^2}$}
+      {adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)}
+  is computed as
+  \begin{align*}
+  R_{adj}^{2} = 1-\frac{Var(e_i) / (n-k-1)}{Var(y_i) / (n-1)}
+      = 1-\frac{Var(e_i)}{Var(y_i)} \times \frac{n-1}{n-k-1}
+  \end{align*}
+  where $n$ is the number of cases used to fit the model
+  and $k$ is the number of predictor variables in the model.
 \end{onebox}
 
-Because $k$ is never negative, the adjusted $R^2$ will be smaller -- often times just a little smaller -- than the unadjusted $R^2$. The reasoning behind the adjusted $R^2$ lies in the \termsub{degrees of freedom}{degrees of freedom (df)!regression} associated with each variance.\footnote{In multiple regression, the degrees of freedom associated with the variance of the estimate of the residuals is $n-k-1$, not $n-1$. For instance, if we were to make predictions for new data using our current model, we would find that the unadjusted $R^2$ is an overly optimistic estimate of the reduction in variance in the response, and using the degrees of freedom in the adjusted $R^2$ formula helps correct this bias.}
+Because $k$ is never negative, the adjusted $R^2$ will be
+smaller -- often times just a little smaller -- than the
+unadjusted $R^2$.
+The reasoning behind the adjusted $R^2$ lies in the
+\termsub{degrees of freedom}{degrees of freedom (df)!regression}
+associated with each variance,
+which is equal to $n - k - 1$ for the multiple regression
+context.
+If we were to make predictions for new data
+using our current model, we would find that the unadjusted
+$R^2$ would tend to be slightly overly optimistic, while
+the adjusted $R^2$ formula helps correct this bias.
 
 \begin{exercisewrap}
 \begin{nexercise}
-There were $n=141$ auctions in the \data{mario\us{}kart} data set and $k=4$ predictor variables in the model. Use $n$, $k$, and the variances from Guided Practice~\ref{computeUnadjustedR2ForAllPredictorsInMarioKart} to calculate $R_{adj}^2$ for the Mario Kart model.\footnotemark
+There were $n=10000$ auctions in the \data{loans} data set
+and $k=9$ predictor variables in the model.
+Use $n$, $k$, and the variances from
+Guided Practice~\ref{computeUnadjR2ForFullLoansModel}
+to calculate $R_{adj}^2$ for the interest rate
+model.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$R_{adj}^2 = 1 - \frac{23.34}{83.06}\times \frac{141-1}{141-4-1} = 0.711$.}
+\footnotetext{$R_{adj}^2
+    = 1 - \frac{18.53}{25.01}\times \frac{10000-1}{1000-9-1}
+    = 0.2584$.
+  While the difference is very small, it will be important
+  when we fine tune the model in the next section.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Suppose you added another predictor to the model, but the variance of the errors $Var(e_i)$ didn't go down. What would happen to the $R^2$? What would happen to the adjusted $R^2$?\hspace{0.7mm}\footnotemark
+Suppose you added another predictor to the model, but the
+variance of the errors $Var(e_i)$ didn't go down.
+What would happen to the~$R^2$?
+What would happen to the
+adjusted~$R^2$?\hspace{0.7mm}\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The unadjusted $R^2$ would stay the same and the adjusted $R^2$ would go down.}
+\footnotetext{The unadjusted $R^2$ would stay the same
+    and the adjusted $R^2$ would go down.}
 
-Adjusted $R^2$ could have been used in Chapter~\ref{linRegrForTwoVar}. However, when there is only $k = 1$ predictors, adjusted $R^2$ is very close to regular $R^2$, so this nuance isn't typically important when considering only one predictor.
+Adjusted $R^2$ could have been used in Chapter~\ref{linRegrForTwoVar}. However, when there is only
+$k = 1$ predictors, adjusted $R^2$ is very close to regular
+$R^2$, so this nuance isn't typically important when
+considering only one predictor.
 
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|)}
 
