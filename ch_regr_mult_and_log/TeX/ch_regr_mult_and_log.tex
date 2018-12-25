@@ -245,18 +245,23 @@ other levels are measured against.
   a model with two predictors:
   \begin{align*}
   \widehat{rate} = 11.10 +
-      1.42 \times 1_{source\_only} +
-      3.25 \times 1_{verified}
+      1.42 \times
+          %1_{\var{ver\us{}income} = \resp{source\us{}only}} +
+          \var{ver\us{}income}_{source\us{}only} +
+      3.25 \times
+          %1_{\var{ver\us{}income} = \resp{verified}}
+          \var{ver\us{}income}_{verified}
   \end{align*}
-  The notation $1_{context}$ is a special
-  \term{indicator variable} notation that puts the
-  categorical variable into an indicator variable structure.
-  For example, $1_{source\_only}$ would take a value of
-  1 if \var{ver\us{}income} took a value of \resp{source\us{}only}
-  and 0 if it took any other value.
-  Likewise, $1_{verified}$ would take a value of
-  1 if \var{ver\us{}income} took a value of \resp{verified}
-  and 0 if it took any other value.
+  We use the notation $\var{variable}_{level}$
+  to represent \termsub{indicator variables}{indicator variable}
+  for when the categorical variable takes a particular value.
+  For example, $\var{ver\us{}income}_{source\us{}only}$
+  would take a value of 1 if \var{ver\us{}income} was
+  \resp{source\us{}only} for a loan,
+  and it would take a value of 0 otherwise.
+  Likewise, $\var{ver\us{}income}_{verified}$ would take
+  a value of 1 if \var{ver\us{}income} took a value
+  of \resp{verified} and 0 if it took any other value.
   % In Example~\ref{}, we'll run through a few examples
   % of how we can use the equation for the model.
 \end{nexample}
@@ -433,7 +438,12 @@ and \var{credit\us{}checks}.
 	    \beta_8 \times \var{issued}_{Mar2018} +
 		\beta_9 \times \var{credit\us{}checks}
 \end{align*}
-In this equation, $y$ represents the total price, $x_1$ indicates whether the game is new, $x_2$ indicates whether a stock photo was used, $x_3$ is the duration of the auction, and $x_4$ is the number of Wii wheels included with the game. Just as with the single predictor case, a multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this one may fit the data reasonably well.
+This model
+Notice that there are two coefficients for \var{ver\us{}income}
+and also two coefficients for \var{issued}, since both are
+3-level categorical variables.
+
+A multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this one may fit the data reasonably well.
 
 We estimate the parameters $\beta_0$, $\beta_1$, ..., $\beta_4$ in the same way as we did in the case of a single predictor. We select $b_0$, $b_1$, ..., $b_4$ that minimize the sum of the squared residuals:
 \begin{align}\label{sumOfSqResInMultRegr}
