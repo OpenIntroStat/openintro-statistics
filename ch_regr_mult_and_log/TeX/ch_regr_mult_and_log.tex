@@ -1093,28 +1093,72 @@ to choose the model with the larger $R_{adj}^2$.
 
 \subsection{The p-value approach, an alternative to adjusted $R^2$}
 
-The p-value may be used as an alternative to adjusted $R^2$ for model selection.
-
-In backward elimination, we would identify the predictor corresponding to the largest p-value. If the p-value is above the significance level, usually $\alpha = 0.05$, then we would drop that variable, refit the model, and repeat the process. If the largest p-value is less than $\alpha = 0.05$, then we would not eliminate any predictors and the current model would be our best-fitting model.
-
-In forward selection with p-values, we reverse the process. We begin with a model that has no predictors, then we fit a model for each possible predictor, identifying the model where the corresponding predictor's p-value is smallest. If that p-value is smaller than $\alpha = 0.05$, we add it to the model and repeat the process, considering whether to add more variables one-at-a-time. When none of the remaining predictors can be added to the model and have a p-value less than 0.05, then we stop adding variables and the current model would be our best-fitting model.
+\noindent%
+The p-value may be used as an alternative to $R_{adj}^2$
+for model selection:
+\begin{description}
+\item[Backward elimination with the p-value approach.]
+    In backward elimination, we would identify the predictor
+    corresponding to the largest p-value.
+    If the p-value is above the significance level,
+    usually $\alpha = 0.05$, then we would drop that variable,
+    refit the model, and repeat the process.
+    If the largest p-value is less than $\alpha = 0.05$,
+    then we would not eliminate any predictors and the current
+    model would be our best-fitting model.
+\item[Forward selection with the p-value approach.]
+    In forward selection with p-values, we reverse the process.
+    We begin with a model that has no predictors, then we fit
+    a model for each possible predictor, identifying the model
+    where the corresponding predictor's p-value is smallest.
+    If that p-value is smaller than $\alpha = 0.05$, we add
+    it to the model and repeat the process, considering whether
+    to add more variables one-at-a-time.
+    When none of the remaining predictors can be added to the
+    model and have a p-value less than 0.05,
+    then we stop adding variables and the current model would
+    be our best-fitting model.
+\end{description}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Examine Figure~\ref{loansModelAllButIssued} on page~\pageref{loansModelAllButIssued}, which considers the model including the \var{cond\us{}new}, \var{stock\us{}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnotemark
+Examine Figure~\ref{loansModelAllButIssued} on
+page~\pageref{loansModelAllButIssued}, which considers the
+model including all variables except the variable for the month
+the loan was issued.
+If we were using the p-value approach with backward elimination
+and we were considering this model, which of these variables
+would be up for elimination?
+Would we drop that variable, or would we keep it in the
+model?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The \var{stock\us{}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\us{}photo} from the model.}
+\footnotetext{The \var{past\us{}bankr} predictor is up for
+  elimination since it has the largest p-value.
+  However, since that p-value is smaller than 0.05,
+  we would still keep it in the model.}
 
-While the adjusted $R^2$ and p-value approaches are similar, they sometimes lead to different models, with the adjusted $R^2$ approach tending to include more predictors in the final model. For example, if we had used the p-value approach with the auction data, we would not have included the \var{stock\us{}photo} predictor in the final model.
+While the adjusted $R^2$ and p-value approaches are similar,
+they sometimes lead to different models, with the $R_{adj}^2$
+approach tending to include more predictors in the final model.
 
 \begin{onebox}{Adjusted $\mathbf{R^2}$ vs p-value approach}
-When the sole goal is to improve prediction accuracy, use adjusted $R^2$. This is commonly the case in machine learning applications.\vspace{3mm}
+  When the sole goal is to improve prediction accuracy,
+  use $R_{adj}^2$.
+  This is commonly the case in machine learning
+  applications.\vspace{3mm}
 
-When we care about understanding which variables are statistically significant predictors of the response, or if there is interest in producing a simpler model at the potential cost of a little prediction accuracy, then the p-value approach is preferred.
+  When we care about understanding which variables are
+  statistically significant predictors of the response,
+  or if there is interest in producing a simpler model
+  at the potential cost of a little prediction accuracy,
+  then the p-value approach is preferred.
 \end{onebox}
 
-Regardless of whether you use adjusted $R^2$ or the p-value approach, or if you use the backward elimination of forward selection strategy, our job is not done after variable selection. We must still verify the model conditions are reasonable.
+Regardless of whether you use $R_{adj}^2$ or the p-value approach,
+or if you use the backward elimination of forward selection
+strategy, our job is not done after variable selection.
+We must still verify the model conditions are reasonable.
 
 \index{model selection|)}
 
