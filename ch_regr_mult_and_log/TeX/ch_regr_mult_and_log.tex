@@ -774,8 +774,8 @@ means they are (likely) improving the accuracy in
 predicting future outcomes.
 
 Let's consider two models, which are shown in
-Tables~\ref{outputForMultipleRegrOutputForAllPredictors2}
-and~\ref{marioKartMultipleRegressionModelAllButDuration}.
+Tables~\ref{loansFullModelModelSelectionSection}
+and~\ref{loansModelAllButIssued}.
 The first table summarizes the full model since it includes
 all predictors, while the second does not include the
 \var{issued} variable.
@@ -806,7 +806,7 @@ all predictors, while the second does not include the
 \end{tabular}
 \caption{The fit for the full regression model,
     including the adjusted $R^2$.}
-\label{outputForMultipleRegrOutputForAllPredictors2}
+\label{loansFullModelModelSelectionSection}
 \end{figure}
 
 \begin{figure}[ht]
@@ -835,7 +835,7 @@ all predictors, while the second does not include the
 \caption{The fit for the regression model after dropping
    the \var{issued} variable.} %, which represented 3 categories
    % and 2 degrees of freedom.}
-\label{marioKartMultipleRegressionModelAllButDuration}
+\label{loansModelAllButIssued}
 \end{figure}
 
 \begin{examplewrap}
@@ -856,110 +856,239 @@ this is our best assessment.
 
 \subsection{Two model selection strategies}
 
-Two common strategies for adding or removing variables in a multiple regression model are called \emph{backward elimination} and \emph{forward selection}. These techniques are often referred to as \term{stepwise} model selection strategies, because they add or delete one variable at a time as they ``step'' through the candidate predictors.
+Two common strategies for adding or removing variables
+in a multiple regression model are called
+\emph{backward elimination} and \emph{forward selection}.
+These techniques are often referred to as \term{stepwise}
+model selection strategies, because they add or delete
+one variable at a time as they ``step'' through the
+candidate predictors.
 
-\termsub{Backward elimination}{backward elimination} starts with the model that includes all potential predictor variables. Variables are eliminated one-at-a-time from the model until we cannot improve the adjusted $R^2$. The strategy within each elimination step is to eliminate the variable that leads to the largest improvement in adjusted $R^2$.
+\termsub{Backward elimination}{backward elimination}
+starts with the model that includes all potential
+predictor variables.
+Variables are eliminated one-at-a-time from the model
+until we cannot improve the adjusted $R^2$.
+The strategy within each elimination step is to eliminate
+the variable that leads to the largest improvement in
+adjusted $R^2$.
 
 \begin{examplewrap}
-\begin{nexample}{Results corresponding to the \emph{full model} for the \data{mario\us{}kart} data are shown in Figure~\ref{outputForMultipleRegrOutputForAllPredictors2}. How should we proceed under the backward elimination strategy?} \label{backwardEliminationExampleWMarioKartData}
-Our baseline adjusted $R^2$ from the full model is $R^2_{adj} = 0.7108$, and we need to determine whether dropping a predictor will improve the adjusted $R^2$. To check, we fit four models that each drop a different predictor, and we record the adjusted $R^2$ from each:
-\begin{center}
-\begin{tabular}{lllll}
-Exclude ... &
-	\var{cond\us{}new} &
-	\var{stock\us{}photo} &
-	\var{duration} &
-	\var{wheels} \\
-&
-	$R^2_{adj} = 0.6626$ &
-	$R^2_{adj} = 0.7107$ &
-	$R^2_{adj} = 0.7128$ &
-	$R^2_{adj} = 0.3487$ \\
-\end{tabular}
-\end{center}
-The third model without \var{duration} has the highest adjusted $R^2$ of 0.7128, so we compare it to the adjusted $R^2$ for the full model. Because eliminating \var{duration} leads to a model with a higher adjusted $R^2$, we drop \var{duration} from the model.
+\begin{nexample}{Results corresponding to the \emph{full model}
+    for the \data{loans} data are shown in
+    Figure~\ref{loansFullModelModelSelectionSection}.
+    How should we proceed under the backward elimination
+    strategy?}
+  \label{loansBackwardElimEx}%
+  Our baseline adjusted $R^2$ from the full model is
+  $R^2_{adj} = 0.25843$, and we need to determine whether
+  dropping a predictor will improve the adjusted $R^2$.
+  To check, we fit models that each drop a different
+  predictor, and we record the adjusted $R^2$:
+  \begin{center}
+  \begin{tabular}{lllll}
+  Exclude ... &
+      \var{ver\us{}income} &
+      \var{debt\us{}to\us{}income} &
+      \var{credit\us{}util} &
+      \var{past\us{}bankr} \\
+  &
+      $R^2_{adj} = 0.22380$ &
+      $R^2_{adj} = 0.25468$ &
+      $R^2_{adj} = 0.19063$ &
+      $R^2_{adj} = 0.25787$ \\
+  \\
+  &
+      \var{term} &
+      \var{issued} &
+      \var{credit\us{}checks} \\
+  &
+      $R^2_{adj} = 0.14581$ &
+      $R^2_{adj} = 0.25854$ &
+      $R^2_{adj} = 0.24689$ \\
+  \end{tabular}
+  \end{center}
+  The model without \var{issued} has the highest adjusted $R^2$
+  of 0.25854, higher than the adjusted $R^2$ for the full model.
+  Because eliminating \var{issued} leads to a model with
+  a higher adjusted $R^2$, we drop \var{issued} from the model.
 
-Since we eliminated a predictor from the model in the first step, we see whether we should eliminate any additional predictors. Our baseline adjusted $R^2$ is now $R^2_{adj} = 0.7128$. We now fit three new models, which consider eliminating each of the three remaining predictors:
-\begin{center}
-\begin{tabular}{llll}
-Exclude \var{duration} and ... &
-	\var{cond\us{}new} &
-	\var{stock\us{}photo} &
-	\var{wheels} \\
-&
-	$R^2_{adj} = 0.6587$ &
-	$R^2_{adj} = 0.7124$ &
-	$R^2_{adj} = 0.3414$ \\
-\end{tabular}
-\end{center}
-None of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the remaining predictors. That is, after backward elimination, we are left with the model that keeps \var{cond\us{}new}, \var{stock\us{}photos}, and \var{wheels}, which we can summarize using the coefficients from Figure~\ref{marioKartMultipleRegressionModelAllButDuration}:
-\begin{align*}
-\hat{y} \ &= \ b_0 + b_1x_1 + b_2x_2 + b_4x_4 \\
-\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\us{}new}} + 1.12 \times \text{\var{stock\us{}photo}} + 7.30 \times \text{\var{wheels}}
-\end{align*}
+  Since we eliminated a predictor from the model in the first step,
+  we see whether we should eliminate any additional predictors.
+  Our baseline adjusted $R^2$ is now $R^2_{adj} = 0.25854$.
+  We now fit new models, which consider eliminating each of the
+  remaining predictors in addition to \var{issued}:
+  \begin{center}
+  \begin{tabular}{llll}
+  Exclude \var{issued} and ... &
+      \var{ver\us{}income} &
+      \var{debt\us{}to\us{}income} &
+      \var{credit\us{}util} \\
+  &
+      $R^2_{adj} = 0.22395$ &
+      $R^2_{adj} = 0.25479$ &
+      $R^2_{adj} = 0.19074$ \\
+  \\
+  &
+      \var{past\us{}bankr} &
+      \var{term} &
+      \var{credit\us{}checks} \\
+  &
+      $R^2_{adj} = 0.25798$ &
+      $R^2_{adj} = 0.14592$ &
+      $R^2_{adj} = 0.24701$ \\
+  \end{tabular}
+  \end{center}
+  None of these models lead to an improvement in adjusted $R^2$,
+  so we do not eliminate any of the remaining predictors.
+  That is, after backward elimination, we are left with the
+  model that keeps all predictors except \var{issued},
+  which we can summarize using the coefficients from
+  Figure~\ref{loansModelAllButIssued}:
+  \begin{align*}
+  \widehat{rate} &= \ 1.921
+      + 0.974 \times \indfunc{ver\us{}income}{source\us{}only}
+      + 2.535 \times \indfunc{ver\us{}income}{verified} \\
+    &\qquad
+      + 0.021 \times \var{debt\us{}to\us{}income}
+      + 4.896 \times \var{credit\us{}util}
+      + 0.387 \times \var{past\us{}bankr} \\
+    &\qquad
+      + 0.154 \times \var{term}
+      + 0.228 \times \var{credit\us{}check}
+  \end{align*}
 \end{nexample}
 \end{examplewrap}
 
 The \term{forward selection} strategy is the reverse of the backward elimination technique. Instead of eliminating variables one-at-a-time, we add variables one-at-a-time until we cannot find any variables that improve the model (as measured by adjusted $R^2$).
 
 \begin{examplewrap}
-\begin{nexample}{Construct a model for the \data{mario\us{}kart} data set using the forward selection strategy.}\label{forwardEliminationExampleWMarioKartData}
-We start with the model that includes no variables. Then we fit each of the possible models with just one variable. That is, we fit the model including just \var{cond\us{}new}, then the model including just \var{stock\us{}photo}, then a model with just \var{duration}, and a model with just \var{wheels}. Each of the four models provides an adjusted $R^2$ value:
-\begin{center}
-\begin{tabular}{lllll}
-Add ... &
-	\var{cond\us{}new} &
-	\var{stock\us{}photo} &
-	\var{duration} &
-	\var{wheels} \\
-&
-	$R^2_{adj} = 0.3459$ &
-	$R^2_{adj} = 0.0332$ &
-	$R^2_{adj} = 0.1338$ &
-	$R^2_{adj} = 0.6390$ \\
-\end{tabular}
-\end{center}
-In this first step, we compare the adjusted $R^2$ against a baseline model that has no predictors. The no-predictors model always has $R_{adj}^2 = 0$. The model with one predictor that has the largest adjusted $R^2$ is the model with the \var{wheels} predictor, and because this adjusted $R^2$ is larger than the adjusted $R^2$ from the model with no predictors ($R_{adj}^2 = 0$), we will add this variable to our model.
+\begin{nexample}{Construct a model for the \data{loans} data
+    set using the forward selection strategy.}
+  \label{loansForwardElimEx}%
+  We start with the model that includes no variables.
+  Then we fit each of the possible models with just one
+  variable.
+  That is, we fit the model including just \var{ver\us{}income},
+  then the model including just \var{debt\us{}to\us{}income},
+  then a model with just \var{credit\us{}util}, and so on.
+  Then we examine the adjusted $R^2$ for each of these models:
+  \begin{center}
+  \begin{tabular}{lllll}
+  Add ... &
+      \var{ver\us{}income} &
+      \var{debt\us{}to\us{}income} &
+      \var{credit\us{}util} &
+      \var{past\us{}bankr} \\
+  &
+      $R^2_{adj} = 0.05926$ &
+      $R^2_{adj} = 0.01946$ &
+      $R^2_{adj} = 0.06452$ &
+      $R^2_{adj} = 0.00222$ \\
+  \\
+  &
+      \var{term} &
+      \var{issued} &
+      \var{credit\us{}checks} \\
+  &
+      $R^2_{adj} = 0.12855$ &
+      $R^2_{adj} = -0.00008$ &
+      $R^2_{adj} = 0.01711$ \\
+  \end{tabular}
+  \end{center}
+  % for (i in 1:7) { m <- lm(F(co, i), data = d);
+  %   cat(i, " ", co[i], " ", AdjR2(m), "\n") }
+  In this first step, we compare the adjusted $R^2$ against
+  a baseline model that has no predictors.
+  The no-predictors model always has $R_{adj}^2 = 0$.
+  The model with one predictor that has the largest
+  adjusted $R^2$ is the model with the \var{term} predictor,
+  and because this adjusted $R^2$ is larger than the
+  adjusted $R^2$ from the model with no predictors
+  ($R_{adj}^2 = 0$), we will add this variable to our model.
 
-We repeat the process again, this time considering 2-predictor models where one of the predictors is \var{wheels} and with a new baseline of $R^2_{adj} = 0.6390$:
-\begin{center}
-\begin{tabular}{llll}
-Add \var{wheels} and ... &
-	\var{cond\us{}new} &
-	\var{stock\us{}photo} &
-	\var{duration} \\
-&
-	$R^2_{adj} = 0.7124$ &
-	$R^2_{adj} = 0.6587$ &
-	$R^2_{adj} = 0.6528$ \\
-\end{tabular}
-\end{center}
-The best predictor in this stage, \var{cond\us{}new}, has a higher adjusted $R^2$ (0.7124) than the baseline (0.6390), so we also add \var{cond\us{}new} to the model.
+  We repeat the process again, this time considering
+  2-predictor models where one of the predictors is
+  \var{term} and with a new baseline of $R^2_{adj} = 0.12855$:
+  \begin{center}
+  \begin{tabular}{llll}
+  Add \var{term} and ... &
+      \var{ver\us{}income} &
+      \var{debt\us{}to\us{}income} &
+      \var{credit\us{}util} \\
+  &
+      $R^2_{adj} = 0.16851$ &
+      $R^2_{adj} = 0.14368$ &
+      $R^2_{adj} = 0.20046$ \\
+  \\
+  &
+      \var{past\us{}bankr} &
+      \var{issued} &
+      \var{credit\us{}checks} \\
+  &
+      $R^2_{adj} = 0.13070$ &
+      $R^2_{adj} = 0.12840$ &
+      $R^2_{adj} = 0.14294$ \\
+  \end{tabular}
+  \end{center}
+  The best second predictor, \var{credit\us{}util},
+  has a higher adjusted $R^2$ (0.20046) than the
+  baseline (0.12855), so we also add \var{credit\us{}util}
+  to the model.
 
-Since we have again added a variable to the model, we continue and see whether it would be beneficial to add a third variable:
-\begin{center}
-\begin{tabular}{lll}
-Add \var{wheels}, \var{cond\us{}new}, and ... &
-	\var{stock\us{}photo} &
-	\var{duration} \\
-&
-	$R^2_{adj} = 0.7128$ &
-	$R^2_{adj} = 0.7107$ \\
-\end{tabular}
-\end{center}
-The model adding \var{stock\us{}photo} improved adjusted $R^2$ (0.7124 to 0.7128), so we add \var{stock\us{}photo} to the model.
+  Since we have again added a variable to the model,
+  we continue and see whether it would be beneficial
+  to add a third variable:
+  \begin{center}
+  \begin{tabular}{llll}
+  Add \var{term}, \var{credit\us{}util}, and ... &
+      \var{ver\us{}income} &
+      \var{debt\us{}to\us{}income} \\
+  &
+      $R^2_{adj} = 0.24183$ &
+      $R^2_{adj} = 0.20810$ \\
+  \\
+  &
+      \var{past\us{}bankr} &
+      \var{issued} &
+      \var{credit\us{}checks} \\
+  &
+      $R^2_{adj} = 0.20169$ &
+      $R^2_{adj} = 0.20031$ &
+      $R^2_{adj} = 0.21629$ \\
+  \end{tabular}
+  \end{center}
+  The model adding \var{ver\us{}income} improved adjusted $R^2$
+  (0.24183 to 0.20046), so we add \var{ver\us{}income} to the
+  model.
 
-Because we have again added a predictor, we check whether adding the last variable, \var{duration}, will improve adjusted $R^2$. We compare the adjusted $R^2$ for the model with \var{duration} and the other three predictors (0.7108) to the model that only considers \var{wheels}, \var{cond\us{}new}, and \var{stock\us{}photo} (0.7128). Adding \var{duration} does not improve the adjusted $R^2$, so we do not add it to the model, and we have arrived at the same model that we identified from backward elimination.
-
+  We continue on in this way,
+  next adding \var{debt\us{}to\us{}income},
+  then \var{credit\us{}checks},
+  and \var{past\us{}bankr}.
+  At this point, we come again to the \var{issued} variable:
+  adding this variable leads to $R_{adj}^2 = 0.25843$,
+  while keeping all the other variables but excluding \var{issued}
+  leads to a higher $R_{adj}^2 = 0.25854$.
+  This means we do not add \var{issued}.
+  In this example, we have arrived at the same model that we
+  identified from backward elimination.
 \end{nexample}
 \end{examplewrap}
 
 \begin{onebox}{Model selection strategies}
-Backward elimination begins with the largest model and eliminates variables one-by-one until we are satisfied that all remaining variables are important to the model. Forward selection starts with no variables included in the model, then it adds in variables according to their importance until no other important variables are found.
+  Backward elimination begins with the largest model
+  and eliminates variables one-by-one until we are satisfied
+  that all remaining variables are important to the model.
+  Forward selection starts with no variables included in
+  the model, then it adds in variables according to their
+  importance until no other important variables are found.
 \end{onebox}
 
-There is no guarantee that backward elimination and forward selection will arrive at the same final model. If both techniques are tried and they arrive at different models, we choose the model with the larger $R_{adj}^2$; other tie-break options exist but are beyond the scope of this book.
-
+Backward elimination and forward selection sometimes
+arrive at different final models.
+If trying both techniques and this happens, it's common
+to choose the model with the larger $R_{adj}^2$.
 
 
 \subsection{The p-value approach, an alternative to adjusted $R^2$}
@@ -972,7 +1101,7 @@ In forward selection with p-values, we reverse the process. We begin with a mode
 
 \begin{exercisewrap}
 \begin{nexercise}
-Examine Figure~\ref{marioKartMultipleRegressionModelAllButDuration} on page~\pageref{marioKartMultipleRegressionModelAllButDuration}, which considers the model including the \var{cond\us{}new}, \var{stock\us{}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnotemark
+Examine Figure~\ref{loansModelAllButIssued} on page~\pageref{loansModelAllButIssued}, which considers the model including the \var{cond\us{}new}, \var{stock\us{}photo}, and \var{wheels} predictors. If we were using the p-value approach with backward elimination and we were considering this model, which of these three variables would be up for elimination? Would we drop that variable, or would we keep it in the model?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The \var{stock\us{}photo} predictor is up for elimination since it has the largest p-value. Additionally, since that p-value is larger than 0.05, we would in fact eliminate \var{stock\us{}photo} from the model.}
