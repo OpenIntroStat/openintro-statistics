@@ -1170,6 +1170,7 @@ We must still verify the model conditions are reasonable.
 
 \index{multiple regression!model assumptions|(}
 
+\noindent%
 Multiple regression methods using the model
 \begin{align*}
 \hat{y} &= \beta_0 + \beta_1x_1 + \beta_2x_2 + \cdots + \beta_kx_k
@@ -1182,72 +1183,275 @@ generally depend on the following four assumptions:
 \item the residuals are independent, and
 \item each variable is linearly related to the outcome.
 \end{enumerate}
-\termsub{Diagnostic plots}{diagnostic plots} can be used to check each of these assumptions. We will consider the model from the Mario Kart auction data, and check whether there are any notable concerns:
+
+
+\subsection{Diagnostic plots}
+\label{diagnostic_plots_subsection}
+
+\termsub{Diagnostic plots}{diagnostic plots} can be used
+to check each of these assumptions. We will consider the
+model from the Lending Club loans data, and check whether
+there are any notable concerns:
+\Comment{Still must update the next equation.}
 \begin{align*}
-\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\us{}new}} + 1.12 \times \text{\var{stock\us{}photo}} + 7.30 \times \text{\var{wheels}}
+\widehat{rate} &= \ 1.921
+    + 0.974 \times \indfunc{ver\us{}income}{source\us{}only}
+    + 2.535 \times \indfunc{ver\us{}income}{verified} \\
+  &\qquad
+    + 0.021 \times \var{debt\us{}to\us{}income}
+    + 4.896 \times \var{credit\us{}util}
+    + 0.387 \times \var{past\us{}bankr} \\
+  &\qquad
+    + 0.154 \times \var{term}
+    + 0.228 \times \var{credit\us{}check}
 \end{align*}
 
 \begin{description}
-\item[Normal probability plot.] A normal probability plot of the residuals is shown in Figure~\ref{mkDiagnosticNormalQuantilePlot}. While the plot exhibits some minor irregularities, there are no outliers that might be cause for concern. In a normal probability plot for residuals, we tend to be most worried about residuals that appear to be outliers, since these indicate long tails in the distribution of residuals.
+\item[Normal probability plot.]
+    A normal probability plot of the residuals is shown
+    in Figure~\ref{loansDiagNormalQuantilePlot}.
+    While the plot exhibits some minor irregularities,
+    they are very mild.
+    In a normal probability plot for residuals,
+    we tend to be most worried about residuals that appear
+    to be outliers, since these indicate long tails in the
+    distribution of residuals.
+    Additionally, if there is a lot of data, normality
+    tends to be less important.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.71}
-      {marioKartDiagnostics}
-      {mkDiagnosticNormalQuantilePlot}
-  \caption{A normal probability plot of the residuals is helpful in identifying observations that might be outliers.}
-  \label{mkDiagnosticNormalQuantilePlot}
+  \Figures{0.55}
+      {loansDiagnostics}
+      {loansDiagNormalQuantilePlot}
+  \caption{A normal probability plot of the residuals.}
+  \label{loansDiagNormalQuantilePlot}
 \end{figure}
 
-\item[Absolute values of residuals against fitted values.] A plot of the absolute value of the residuals against their corresponding fitted values ($\hat{y}_i$) is shown in Figure~\ref{mkDiagnosticEvsAbsF}. This plot is helpful to check the condition that the variance of the residuals is approximately constant. We don't see any obvious deviations from constant variance in this example.
+\item[Absolute values of residuals against fitted values.]
+    A plot of the absolute value of the residuals against
+    their corresponding fitted values ($\hat{y}_i$) is shown
+    in Figure~\ref{loansDiagEvsAbsF}.
+    This plot is helpful to check the condition that the
+    variance of the residuals is approximately constant,
+    and a smoothed line has been added to represent the
+    approximate trend in this plot.
+    There is more evident variability for fitted values that are
+    larger, which we'll discuss further.
 
 \begin{figure}
   \centering
   \Figures{0.7}
-      {marioKartDiagnostics}
-      {mkDiagnosticEvsAbsF}
+      {loansDiagnostics}
+      {loansDiagEvsAbsF}
   \caption{Comparing the absolute value of the residuals against the fitted values ($\hat{y}_i$) is helpful in identifying deviations from the constant variance assumption.}
-  \label{mkDiagnosticEvsAbsF}
+  \label{loansDiagEvsAbsF}
 \end{figure}
 
-\item[Residuals in order of their data collection.] A plot of the residuals in the order their corresponding auctions were observed is shown in Figure~\ref{mkDiagnosticInOrder}. Such a plot is helpful in identifying any connection between cases that are close to one another, e.g. we could look for declining prices over time or if there was a time of the day when auctions tended to fetch a higher price. Here we see no structure that indicates a problem.\footnote{An especially rigorous check would use \term{time series} methods. For instance, we could check whether consecutive residuals are correlated. Doing so with these residuals yields no statistically significant correlations.}
+\item[Residuals in order of their data collection.]
+    This type of plot can be helpful when observations were
+    collected in a sequence.
+    Such a plot is helpful in identifying any connection
+    between cases that are close to one another.
+    The loans in this data set were issued over a 3 month period,
+    and the month the loan was issued was not found to be important,
+    suggesting this is not a concern for this data set.
+    In cases where a data set does show some pattern
+    for this check, \term{time series} methods may be useful.
 
-\begin{figure}[h]
-  \centering
-  \Figures{0.72}{marioKartDiagnostics}{mkDiagnosticInOrder}
-  \caption{Plotting residuals in the order that their
-      corresponding observations were collected helps
-      identify connections between successive observations.
-      If it seems that consecutive observations tend to be
-      close to each other, this indicates the independence
-      assumption of the observations would fail.}
-  \label{mkDiagnosticInOrder}
-\end{figure}
+\item[Residuals against each predictor variable.]
+    We consider a plot of the residuals against each of
+    the predictors in Figure~\ref{loansDiagEvsVariables}.
+    For those instances where there are only 2-3 groups,
+    box plots are shown.
+    For the numerical outcomes, a smoothed line has been
+    fit to the data to make it easier to review.
+    Ultimately, we are looking for any notable change
+    in variability between groups or pattern in the data.
 
-\item[Residuals against each predictor variable.] We consider a plot of the residuals against the \var{cond\us{}new} variable, the residuals against the \var{stock\us{}photo} variable, and the residuals against the \var{wheels} variable. These plots are shown in Figure~\ref{mkDiagnosticEvsVariables}. For the two-level condition variable, we are guaranteed not to see any remaining trend, and instead we are checking that the variability doesn't fluctuate across groups, which it does not. However, looking at the stock photo variable, we find that there is some difference in the variability of the residuals in the two groups. Additionally, when we consider the residuals against the \var{wheels} variable, we see some possible structure. There appears to be curvature in the residuals, indicating the relationship is probably not linear.
+    Here are the things of importance from these plots:
+    \begin{itemize}
+    \item
+        There is some minor differences in variability
+        between the verified income groups.
+    \item
+        There is a very clear pattern for the
+        debt-to-income variable.
+        What also stands out is that this variable
+        is very strongly right skewed:
+        there are few observations with very high
+        debt-to-income ratios.
+    \item
+        The downward curve on the right side of the
+        credit utilization and credit check plots suggests
+        some minor misfitting for those larger values.
+    \end{itemize}
 
 \begin{figure}
   \centering
-  \Figures{}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
-  \caption{For the condition and stock photo variables,
-      we check for differences in the distribution shape
-      or variability of the residuals.
-      In the case of the stock photos variable, we see
-      a little less variability in the unique photo group
-      than the stock photo group.
+  \Figures{}{loansDiagnostics}{loansDiagEvsVariables_1}
+  \Figures{}{loansDiagnostics}{loansDiagEvsVariables_2}
+  \Figures{}{loansDiagnostics}{loansDiagEvsVariables_3}
+  \caption{Diagnostic plots for residuals against each of the
+      predictors.
+      For the box plots, we're looking for notable differences
+      in variability.
       For numerical predictors, we also check for trends
-      or other structure.
-      We see some slight bowing in the residuals against
-      the \var{wheels} variable in the bottom plot.}
-  \label{mkDiagnosticEvsVariables}
+      or other structure in the data.}
+  \label{loansDiagEvsVariables}
 \end{figure}
 
 \end{description}
 
-It is necessary to summarize diagnostics for any model fit. If the diagnostics support the model assumptions, this would improve credibility in the findings. If the diagnostic assessment shows remaining underlying structure in the residuals, we should try to adjust the model to account for that structure. If we are unable to do so, we may still report the model but must also note its shortcomings. In the case of the auction data, we report that there appears to be non-constant variance in the stock photo variable and that there may be a nonlinear relationship between the total price and the number of wheels included for an auction. This information would be important to buyers and sellers who may review the analysis, and omitting this information could be a setback to the very people who the model might assist.
+Having reviewed the diagnostic plots, there are two options.
+The first option is to, if we're not concerned about the issues
+observed, use this as the final model;
+if going this route, it is important to still note any
+abnormalities observed in the diagnostics.
+The second option is to try to improve the model,
+which is what we'll try to do with this particular model fit.
 
-\begin{onebox}{``All models are wrong, but some are useful''~~~-George E.P. Box}
-The truth is that no model is perfect. However, even imperfect models can be useful. Reporting a flawed model can be reasonable so long as we are clear and report the model's shortcomings.
+
+
+\subsection{Options for improving the model fit}
+
+There are several options for improvement a model,
+including transforming variables,
+seeking out additional variables to fill model gaps,
+or using more advanced methods that would account for
+challenges around inconsistent variability or nonlinear
+relationships between predictors and the outcome.
+
+The main concern for the initial model is that
+there is a notable nonlinear relationship
+between the debt-to-income variable observed in
+Figure~\ref{loansDiagEvsVariables}.
+To resolve this issue, we're going to consider
+a couple strategies for adjusting the relationship
+between the predictor variable and the outcome.
+
+Let's start by taking a look at a histogram of
+\var{debt\us{}to\us{}income} in
+Figure~\ref{loansDebtToIncomeHist}.
+The variable is extremely skewed,
+and upper values will have a lot of leverage
+on the fit.
+Below are several options:
+\begin{itemize}
+\item log transformation ($\log{x}$),
+    \index{transformation!log}
+\item square root transformation ($\sqrt{x}$),
+    \index{transformation!square root}
+\item inverse transformation ($1 / x$),
+    \index{transformation!inverse}
+\item truncation (cap the max value possible)
+    \index{truncation}\index{transformation!truncation}
+\end{itemize}
+If we inspected the data more closely, we'd observe
+some instances where the variable takes a value of~0,
+and since $\log(0)$ and $1 / x$ are undefined when $x = 0$,
+we'll exclude these transformations from further
+consideration.\footnote{There are ways to make them work,
+   but we'll leave those options to a later course.}
+A square root transformation is valid for all values
+the variable takes, and truncating some of the larger
+observations is also a valid approach.
+We'll consider both of these approaches.
+
+\begin{figure}[h]
+  \centering
+  \Figures{0.62}{loansDiagnostics}{loansDebtToIncomeHist}
+  \caption{Histogram of \var{debt\us{}to\us{}income},
+      where extreme skew is evident.}
+  \label{loansDebtToIncomeHist}
+\end{figure}
+
+To try transforming the variable, we make two new variables
+representing the transformed versions:
+\begin{description}
+\item[Square root.]
+    We create a new variable,
+    \var{sqrt\us{}debt\us{}to\us{}income},
+    where all the values are simply the square roots of the
+    values in \var{debt\us{}to\us{}income},
+    and then refit the model as before.
+    The result is shown in the left panel of
+    Figure~\ref{loansDiagEvsTransformDebtToIncome}.
+    The square root pulled in the higher values
+    a bit, but the fit still doesn't look great
+    since the smoothed line is still wavy.
+\item[Truncate at 50.]
+    We create a new variable,
+    \var{debt\us{}to\us{}income\us{}50},
+    where any values in \var{debt\us{}to\us{}income}
+    that are greater than 50 are shrunk to exactly 50.
+    Refitting the model once more,
+    the diagnostic plot for this new variable is shown
+    in the right panel of
+    Figure~\ref{loansDiagEvsTransformDebtToIncome}.
+    Here the fit looks much more reasonable,
+    so this appears to be a reasonable approach.
+    %If we inspected the data, we'd also observe that
+    %the debt-to-income ratio tends to be large when
+    %income is very small, so these values may also
+    %have been a bit inflated if someone was between jobs.
+\end{description}
+The downside of using transformations is that it reduces
+the ease of interpreting the results.
+Fortunately, since the truncation transformation only affects
+a relatively small number of cases, the interpretation
+isn't dramatically impacted.
+
+\begin{figure}[h]
+  \centering
+  \Figures{0.62}{loansDiagnostics}
+      {loansDiagEvsTransformDebtToIncome}
+  \caption{Histogram of \var{debt\us{}to\us{}income},
+      where extreme skew is evident.}
+  \label{loansDiagEvsTransformDebtToIncome}
+\end{figure}
+
+As a next step, we'd evaluate the new model using
+the truncated version of \var{debt\us{}to\us{}income},
+we would complete all the same procedures as before.
+The other two issues noted while inspecting diagnostics
+in Section~\ref{diagnostic_plots_subsection} are still
+present in the updated model.
+If we choose to report this model, we would want to also
+discuss these shortcomings to be transparent in our work.
+Depending on what the model will be used, we could either
+try to bring those under control, or we could stop since
+those issues aren't severe.
+Had the non-constant variance been a little more dramatic,
+it would be a higher priority.
+Ultimately we decided that the model was reasonable,
+and we report its final form here:
+\begin{align*}
+\widehat{rate} &= \ 1.562
+    + 1.002 \times \indfunc{ver\us{}income}{source\us{}only}
+    + 2.436 \times \indfunc{ver\us{}income}{verified} \\
+  &\qquad
+    + 0.048 \times \var{debt\us{}to\us{}income\us{}50}
+    + 4.694 \times \var{credit\us{}util}
+    + 0.394 \times \var{past\us{}bankr} \\
+  &\qquad
+    + 0.153 \times \var{term}
+    + 0.223 \times \var{credit\us{}check}
+\end{align*}
+A sharp eye would notice that the coefficient for
+\var{debt\us{}to\us{}income\us{}50} is more than twice
+as large as what the coefficient had been for the
+\var{debt\us{}to\us{}income} variable in the earlier model.
+This suggests those larger values not only were points
+with high leverage, but they were influential points that
+were dramatically impacting the coefficient.
+
+\begin{onebox}{``All models are wrong,
+    but some are useful''~~~-George E.P. Box}
+  The truth is that no model is perfect.
+  However, even imperfect models can be useful.
+  Reporting a flawed model can be reasonable so long
+  as we are clear and report the model's shortcomings.
 \end{onebox}
 
 Don't report results when assumptions are grossly violated.
