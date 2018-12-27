@@ -701,7 +701,7 @@ P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
   Of~these \fashNA{} photos, \fashNY{} were actually
   about fashion:
 \begin{eqnarray*}
-P(\text{\var{truth} = \resp{fashion}
+P(\text{\var{truth} is \resp{fashion}
     given \var{mach\us{}learn} is \resp{pred\us{}not}})
   = \frac{\fashNY{}}{\fashNA{}}
   = 0.070
@@ -725,7 +725,7 @@ single variable without regard to any other variables.
 For instance, a probability based solely on the
 \var{mach\us{}learn} variable is a marginal probability:
 \begin{align*}
-P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion}})
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}})
     = \frac{\fashYA{}}{\fashN{}}
     = 0.12
 \end{align*}
@@ -733,8 +733,8 @@ A probability of outcomes for two or more variables
 or processes is called a
 \termsub{joint \mbox{probability}}{joint probability}:
 \begin{align*}
-P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion}
-    and \var{truth} = \resp{fashion}})
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}})
   = \frac{\fashYY{}}{\fashN{}}
   = 0.11
 \end{align*}
@@ -743,11 +743,11 @@ probability, although using either the word ``and'' or a
 comma is acceptable.
 That is,
 \begin{center}
-$P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion},
-    \var{truth} = \resp{fashion}})$ \\[2mm]
+$P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion},
+    \var{truth} is \resp{fashion}})$ \\[2mm]
 means the same thing as \\[2mm]
-$P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion}
-    and \var{truth} = \resp{fashion}})$
+$P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}})$
 \end{center}
 
 \begin{onebox}{Marginal and joint probabilities}
@@ -770,13 +770,16 @@ Figure~\ref{photoClassifyDistribution}.
 \begin{figure}[h]
 \centering
 \begin{tabular}{l rr r}
-  \hline
-& \var{parents}: \resp{degree} & \var{parents}: \resp{not} & Total  \\
-  \hline
-\var{teen}: \resp{college}     & 0.11 & 0.01 & 0.12 \\
-\var{teen}: \resp{not} \hspace{0.5cm} & 0.06 & 0.82 & 0.88  \\
-   \hline
-Total & 0.17 & 0.83 & 1.00 \\
+\hline
+& \var{truth}: \resp{fashion} &
+    \var{truth}: \resp{not} & Total  \\
+\hline
+\var{mach\us{}learn}: \resp{pred\us{}fashion} \hspace{0.5cm}
+    & 0.1081 & 0.0121 & 0.1202 \\
+\var{mach\us{}learn}: \resp{pred\us{}not}
+    & 0.0615 & 0.8183 & 0.8798  \\
+\hline
+Total & 0.1696 & 0.8304 & 1.00 \\
 \hline
 \end{tabular}
 \caption{Probability table summarizing the
@@ -790,16 +793,16 @@ Total & 0.17 & 0.83 & 1.00 \\
   \hline
 Joint outcome & Probability \\
   \hline
-\var{mach\us{}learn} = \resp{pred\us{}fashion}
-    and \var{truth} = \resp{fashion} & 0.11 \\
-\var{mach\us{}learn} = \resp{pred\us{}fashion}
-    and \var{truth} = \resp{not} & 0.01 \\
-\var{mach\us{}learn} = \resp{pred\us{}not}
-    and \var{truth} = \resp{fashion} & 0.06 \\
-\var{mach\us{}learn} = \resp{pred\us{}not}
-    and \var{truth} = \resp{not} & 0.82 \\
+\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion} & 0.1081 \\
+\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{not} & 0.0121 \\
+\var{mach\us{}learn} is \resp{pred\us{}not}
+    and \var{truth} is \resp{fashion} & 0.0615 \\
+\var{mach\us{}learn} is \resp{pred\us{}not}
+    and \var{truth} is \resp{not} & 0.8183 \\
    \hline
-Total & 1.00 \\
+Total & 1.0000 \\
 \hline
 \end{tabular}
 \caption{Joint probability distribution for the \data{photo\us{}classify} data set.}
@@ -816,7 +819,7 @@ sum to~1.\footnotemark
 \end{exercisewrap}
 \footnotetext{Each of the four outcome combination are disjoint,
    all probabilities are indeed non-negative, and the sum of
-   the probabilities is $0.11 + 0.01 + 0.06 + 0.82 = 1.00$.}
+   the probabilities is $0.1081 + 0.0121 + 0.0615 + 0.8183 = 1.00$.}
 
 We can compute marginal probabilities using joint probabilities
 in simple cases.
@@ -825,15 +828,15 @@ data set is about fashion is found by summing the outcomes where
 \var{truth} takes value \resp{fashion}:%
 \index{marginal probability|)}\index{joint probability|)}
 \newcommand{\ultruthfashion}[0]
-    {\underline{\var{truth} = \resp{fashion}}}%
+    {\underline{\var{truth} is \resp{fashion}}}%
 \begin{align*}
 P(\text{\ultruthfashion{}})
-  &= P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion}
+  &= P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
         and \ultruthfashion{}}) \\
-    & \qquad + P(\text{\var{mach\us{}learn} = \resp{pred\us{}not}
+    & \qquad + P(\text{\var{mach\us{}learn} is \resp{pred\us{}not}
         and \ultruthfashion{}}) \\
-  &= 0.11 + 0.06 \\
-  &= 0.17
+  &= 0.1081 + 0.0615 \\
+  &= 0.1696
 \end{align*}
 
 
@@ -841,82 +844,176 @@ P(\text{\ultruthfashion{}})
 
 \index{conditional probability|(}
 
-There is some connection between education level of parents and of the teenager: a college degree by a parent is associated with college attendance of the teenager. In this section, we discuss how to use information about associations between two variables to improve probability estimation.
+The ML classifier predicts whether a photo is about fashion,
+even if it is not perfect.
+We would like to better understand how to use information
+from a variable like \var{mach\us{}learn} to improve our
+probability estimation of a second variable, which in this
+example is \var{truth}.
 
-The probability that a random teenager from the study attended college is 0.56. Could we update this probability if we knew that one of the teen's parents has a college degree? Absolutely. To do so, we limit our view to only those 280 cases where a parent has a college degree and look at the fraction where the teenager attended college:
+The probability that a random photo from the data set is about
+fashion is about 0.17.
+If we knew the machine learning classifier predicted the
+photo was about fashion, could we get a better estimate of the
+probability the photo is actually about fashion?
+Absolutely.
+To do so, we limit our view to only those \fashYA{} cases
+where the ML classifier predicted that the photo was about
+fashion and look at the fraction where the photo was actually
+about fashion:
 \begin{eqnarray*}
-P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
+P(\text{\var{truth} is \resp{fashion} given
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+  = \frac{\fashYY{}}{\fashYA{}}
+  = 0.900
 \end{eqnarray*}
-We call this a \term{conditional probability} because we computed the probability under a condition: a parent has a college degree. There are two parts to a conditional probability, the \term{outcome of interest} and the \term{condition}. It is useful to think of the condition as information we know to be true, and this information usually can be described as a known outcome or~event.
+We call this a \term{conditional probability} because
+we computed the probability under a condition:
+the ML classifier prediction said the photo was about fashion.
 
-We separate the text inside our probability notation into the outcome of interest and the condition:
-\begin{eqnarray}
-&& P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) \notag \\
-&& = P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
-\label{probStudentUsedIfParentsUsedInFormalNotation}
-\end{eqnarray}
+There are two parts to a conditional probability,
+the \term{outcome of interest} and the \term{condition}.
+It is useful to think of the condition as information we know
+to be true, and this information usually can be described as
+a known outcome or~event.
+We generally separate the text inside our probability notation
+into the outcome of interest and the condition with a
+vertical bar:
+\begin{align*}
+&& P(\text{\var{truth} is \resp{fashion} given
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+&& \quad = P(\text{\var{truth} is \resp{fashion}\ }|
+    \text{\ \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+  = \frac{\fashYY{}}{\fashYA{}}
+  = 0.900
+\end{align*}
 The vertical bar ``$|$'' is read as \emph{given}.
 
-In Equation~\eqref{probStudentUsedIfParentsUsedInFormalNotation}, we computed the probability a teen attended college based on the condition that at least one parent has a college degree as a fraction:\vspaceB{-1mm}
-\begin{eqnarray}
-&& P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
-&&\quad = \frac{\text{\# cases where \var{teen} \resp{college} and \var{parents} \resp{degree}}}{\text{\# cases where \var{parents} \resp{degree}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
-&&\quad = \frac{231}{280} = 0.825 \notag
-\end{eqnarray}
-We considered only those cases that met the condition, \var{parents} \resp{degree}, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
-
-Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~\eqref{ratioOfBothToRatioOfConditionalForParentsAndStudent} as a template to understand this technique.
-
-We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Figure~\ref{photoClassifyProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 29\% or $0.29\times 1000 = 290$ to meet both the information criteria and represent our outcome of interest. Then the conditional probability can be computed as
-\begin{align}
-&P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
-	&= \frac{\text{\# (\var{teen} \resp{college} and \var{parents} \resp{degree})}}{\text{\# (\var{parents} \resp{degree})}} \notag \\
-	&= \frac{290}{350}
-		= \frac{0.29}{0.35}
-		= 0.829\quad\text{(different from 0.825 due to rounding error)}
-\label{stUserPUsedHypSampSize}
-\end{align}
-In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.29 and 0.35, which we can write as
+In the last equation, we computed the probability a photo
+was about fashion based on the condition that the ML algorithm
+predicted it was about fashion as a fraction:
 \begin{align*}
-P(\text{\var{teen} \resp{college} and \var{parents} \resp{degree}})
-	\quad\text{and}\quad
-	P(\text{\var{parents} \resp{degree}}).
+& P(\text{\var{truth} is \resp{fashion}\ }|
+    \text{\ \var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+  &\quad = \frac{\text{\# cases where \var{truth} is \resp{fashion}
+       and \var{mach\us{}learn} is \resp{pred\us{}fashion}}}
+     {\text{\# cases where \var{truth} is \resp{fashion}}} \\
+  &\quad = \frac{\fashYY{}}{\fashYA{}}
+      = 0.900
 \end{align*}
-The fraction of these probabilities is an example of the general formula for conditional probability.
+We considered only those cases that met the condition,
+\var{mach\us{}learn} is \resp{pred\us{}fashion}, and then
+we computed the ratio of those cases that satisfied our
+outcome of interest, photo was actually about fashion.
+
+Frequently, marginal and joint probabilities are provided
+instead of count data.
+For example, disease rates are commonly listed in percentages
+rather than in a count format.
+We would like to be able to compute conditional probabilities
+even when no counts are available, and we use the last equation
+as a template to understand this technique.
+
+We considered only those cases that satisfied the condition,
+where the ML algorithm predicted fashion.
+Of these cases, the conditional probability was the
+fraction representing the outcome of interest, that the
+photo was about fashion.
+Suppose we were provided only the information in
+Figure~\ref{photoClassifyProbTable}, i.e. only probability data.
+Then if we took a sample of 1000 photos, we would anticipate
+about 12.0\% or $0.120\times 1000 = 120$ would be predicted to be
+about fashion (\var{mach\us{}learn} is \resp{pred\us{}fashion}).
+Similarly, we would expect about 10.8\% or
+$0.108\times 1000 = 108$ to meet both the information criteria
+and represent our outcome of interest.
+Then the conditional probability can be computed as
+\begin{align*}
+&P(\text{\var{truth} is \resp{fashion}}\ |\ 
+    \text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+  &= \frac{\text{\# (\var{truth} is \resp{fashion}
+      and \var{mach\us{}learn} is \resp{pred\us{}fashion})}}
+    {\text{\# (\var{mach\us{}learn} is \resp{pred\us{}fashion})}} \\
+  &= \frac{108}{120}
+		= \frac{0.108}{0.120}
+		= 0.90
+\end{align*}
+Here we are examining exactly the fraction of two probabilities,
+0.108 and 0.120, which we can write as
+\begin{align*}
+P(\text{\var{truth} is \resp{fashion} and
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+\quad\text{and}\quad
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}).
+\end{align*}
+The fraction of these probabilities is an example of the
+general formula for conditional probability.
 
 \begin{onebox}{Conditional probability}
-The conditional probability of the outcome of interest $A$ given condition $B$ is computed as the following:
-\begin{align}
-P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
-\label{condProbEq}
-\end{align}
+  The conditional probability of the outcome of interest $A$
+  given condition $B$ is computed as the following:
+  \begin{align*}
+  P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
+  \end{align*}
 \end{onebox}
 
 \begin{exercisewrap}
-\begin{nexercise}\label{familyCollegeProbOfParentsEqualNotGivenTeen}
-(a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case where neither parent has a college degree if it is known that the teenager didn't attend college right after high school}''. Notice that the condition is now based on the {teenager}, not the {parent}. \\[1mm]
-(b)~Determine the probability from part (a). Table~\vref{photoClassifyProbTable} may be helpful.\footnotemark
+\begin{nexercise}
+\label{fashionProbOfMLNotGivenTruthNot}%
+(a) Write out the following statement in conditional
+probability notation:
+``\emph{The probability that the ML prediction was correct,
+if the photo was about fashion}''.
+Here the condition is now based on the photo's
+\var{truth} status, not the ML algorithm. \\[1mm]
+(b)~Determine the probability from part (a).
+Table~\vref{photoClassifyProbTable} may be helpful.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a) $P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} \resp{not} and \var{teen} \resp{not}}) = 0.38$ and $P(\text{\var{teen} \resp{not}}) = 0.44$. Then the ratio represents the conditional probability: $0.38 / 0.44 = 0.864$.}
+\footnotetext{(a) If the photo is about fashion and the
+  ML algorithm prediction was correct, then the ML algorithm
+  my have a value of \resp{pred\us{}fashion}:
+  \begin{align*}
+  P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}\ |
+      \ \text{\var{truth} is \resp{fashion}})
+  \end{align*}
+  (b)~The equation for conditional probability indicates we
+  should first find
+  $P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}}) = 0.1081$
+  and $P(\text{\var{truth} is \resp{not}}) = 0.1696$.
+  Then the ratio represents the conditional probability:
+  $0.1081 / 0.1696 = 0.6374$.}
 
 \begin{exercisewrap}
 \begin{nexercise}\label{whyCondProbSumTo1}
-(a)~Determine the probability that one of the parents has a college degree if it is known the teenager did not attend college. \\[1mm]
-(b)~Using the answers from part~(a) and Guided Practice~\ref{familyCollegeProbOfParentsEqualNotGivenTeen}(b), compute\\[1mm]
-\textC{{\color{white}.\hspace{5mm}}}$P(\text{\var{parents} \resp{degree}}\ |\ \text{\var{teen} \resp{not}})
-\ + \ P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})$\\[1mm]
-(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnotemark
+(a)~Determine the probability that the algorithm is incorrect
+if it is known the photo is about fashion. \\[1mm]
+(b)~Using the answers from part~(a) and
+Guided Practice~\ref{fashionProbOfMLNotGivenTruthNot}(b),
+compute
+\begin{align*}
+&P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}
+    \ |\ \text{\var{truth} is \resp{fashion}}) \\
+&\qquad  +\ P(\text{\var{mach\us{}learn} is \resp{pred\us{}not}}
+    \ |\ \text{\var{truth} is \resp{fashion}})
+\end{align*}
+(c)~Provide an intuitive argument to explain why the sum
+in~(b) is~1.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a)~This probability is $\frac{P(\text{\var{parents} \resp{degree}, \var{teen} \resp{not}})}{P(\text{\var{teen} \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works for conditional probabilities, provided the probabilities are conditioned on the same information.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-The data indicate there is an association between parents having a college degree and their teenager attending college. Does this mean the parents' college degree(s) \emph{caused} the teenager to go to college?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{No. While there is an association, the data are observational. Two potential confounding variables include \var{income} and \var{region}. Can you think of others?}
+\footnotetext{(a)~This probability is
+  $\frac{P(\text{\var{mach\us{}learn} is \resp{pred\us{}not},
+      \var{truth} is \resp{fashion}})}
+    {P(\text{\var{truth} is \resp{fashion}})}
+  = \frac{0.0615}{0.1696} = 0.3626$.
+  (b)~The total equals~1.
+  (c)~Under the condition the photo is about fashion,
+      the ML algorithm must have either predicted it was
+      about fashion or predicted it was not about fashion.
+      The complement still works for conditional probabilities,
+      provided the probabilities are conditioned on the same
+      information.}
 
 \index{conditional probability|)}
 \index{data!photo\_classify|)}
@@ -996,7 +1093,7 @@ P(A\text{ and }B) = P(A | B)\times P(B)
 \end{eqnarray*} \vspace{-6.5mm} \par
 It is useful to think of $A$ as the outcome of interest and $B$ as the condition.
 \end{onebox}
-This General Multiplication Rule is simply a rearrangement of the definition for conditional probability in Equation~(\ref{condProbEq}) on page~\pageref{condProbEq}.
+This General Multiplication Rule is simply a rearrangement of the equation for conditional probability.
 
 \begin{examplewrap}
 \begin{nexample}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
