@@ -85,7 +85,7 @@ As we become more comfortable with this notation, we will abbreviate it further.
 Random processes include rolling a die and flipping a coin. (a) Think of another random process. (b) Describe all the possible outcomes of that process. For instance, rolling a die is a random process with possible outcomes \mbox{\resp{1}, \resp{2}, ..., \resp{6}}.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Here are four examples. (i) Whether someone gets sick in the next month or not is an apparently random process with outcomes \resp{sick} and \resp{not}. (ii) We can \emph{generate} a random process by randomly picking a person and measuring that person's height. The outcome of this process will be a positive number. (iii) Whether the stock market goes up or down next week is a seemingly random process with possible outcomes \resp{up}, \resp{down}, and \resp{no\_\hspace{0.3mm}change}. Alternatively, we could have used the percent change in the stock market as a numerical outcome. (iv) Whether your roommate cleans her dishes tonight probably seems like a random process with possible outcomes \resp{cleans\_\hspace{0.3mm}dishes} and \resp{leaves\_\hspace{0.3mm}dishes}.}
+\footnotetext{Here are four examples. (i) Whether someone gets sick in the next month or not is an apparently random process with outcomes \resp{sick} and \resp{not}. (ii) We can \emph{generate} a random process by randomly picking a person and measuring that person's height. The outcome of this process will be a positive number. (iii) Whether the stock market goes up or down next week is a seemingly random process with possible outcomes \resp{up}, \resp{down}, and \resp{no\us{}change}. Alternatively, we could have used the percent change in the stock market as a numerical outcome. (iv) Whether your roommate cleans her dishes tonight probably seems like a random process with possible outcomes \resp{cleans\us{}dishes} and \resp{leaves\us{}dishes}.}
 
 What we think of as random processes are not necessarily random, but they may just be too difficult to understand exactly. The fourth example in the footnote solution to Guided Practice~\ref{randomProcessExercise} suggests a roommate's behavior is a random process. However, even if a roommate's behavior is not truly random, modeling her behavior as a random process can still be useful. 
 
@@ -594,55 +594,117 @@ Because the equation holds, the event that the card is a heart and the event tha
 \section{Conditional probability}
 \label{conditionalProbabilitySection}
 
-\index{data!family\_college|(}
+\Comment{Need to add an introductory paragraph.}
 
-The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized in Figure~\ref{contTableOfParStCollege}.
-The \var{teen} variable is either \resp{college} or \resp{not}, where the \var{college} label means the teen went to college immediately after high school.
-The~\var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
+
+\subsection{Exploring probabilities with a contingency table}
+
+\index{data!photo\_classify|(}
+
+\newcommand{\fashN}{1822}
+% In order of ML, then Human
+\newcommand{\fashYY}{197}
+\newcommand{\fashYN}{22}
+\newcommand{\fashYA}{219}
+\newcommand{\fashNY}{112}
+\newcommand{\fashNN}{1491}
+\newcommand{\fashNA}{1603}
+\newcommand{\fashAY}{309}
+\newcommand{\fashAN}{1513}
+\newcommand{\fashAA}{\fashN{}}
+%\newcommand{\fashPYY}{}
+%\newcommand{\fashPYN}{}
+%\newcommand{\fashPNY}{}
+%\newcommand{\fashPNN}{}
+%\newcommand{\fashPYA}{0.12}
+%\newcommand{\fashPNA}{0.88}
+%\newcommand{\fashPAY}{}
+%\newcommand{\fashPAN}{}
+%\newcommand{\fashPYCY}{}
+%\newcommand{\fashPYCN}{}
+%\newcommand{\fashPNCY}{}
+%\newcommand{\fashPNCN}{}
+\newcommand{\fashCYPY}{0.96}
+\newcommand{\fashCYPN}{0.04}
+\newcommand{\fashCNPY}{0.07}
+\newcommand{\fashCNPN}{0.93}
+
+The \data{photo\us{}classify} data set represents
+a classifier a sample of \fashN{} photos from photo sharing website.
+Data scientists have been working to improve a classifier for
+whether the photo is about fashion or not, and these 659 photos
+represent a test for their classifier.
+Each photo gets two classifications:
+the first is called \var{mach\us{}learn} and gives
+a classification from a machine
+learning~(ML)\index{machine learning (ML)} system of
+either \resp{pred\us{}fashion} or \resp{pred\us{}not}.
+Each of these \fashN{} photos have also been classified carefully
+by a team of people, which we take to be the source of truth;
+this variable is called \var{truth} and takes values
+\resp{fashion} and \resp{not}.
+Figure~\ref{contTableOfFashionPhotos} summarizes the results.
 
 \begin{figure}[ht]
 \centering
-\begin{tabular}{ll rr r rr}
-  && \multicolumn{2}{c}{\var{parents}} & \hspace{1cm} &  \\
-  \cline{3-4}
-	&& \resp{degree} & \resp{not} & Total  \\
-  \cline{2-5}
-	& \resp{college}     & 231 & 214 & 445 \\
-\raisebox{1.5ex}[0pt]{\var{teen}}	& \resp{not} \hspace{0.5cm} & 49 & 298 & 347   \\
-  \cline{2-5}
-	& Total & 280 & 512 & 792 \\
+\begin{tabular}{ll ccc rr}
+&& \multicolumn{2}{c}{\var{truth}} & \hspace{1cm} &  \\
+\cline{3-4}
+&& \resp{fashion} & \resp{not} & Total  \\
+\cline{2-5}
+& \resp{pred\us{}fashion} &
+    \fashYY{} & \fashYN{} & \fashYA{} \\
+\raisebox{1.5ex}[0pt]{\var{pred\us{}not}}
+    & \resp{not} \hspace{0.5cm} &
+    \fashNY{} & \fashNN{} & \fashNA{}   \\
+\cline{2-5}
+& Total & \fashAY{} & \fashAN{} & \fashN{} \\
 \end{tabular}
-\caption{Contingency table summarizing the \data{family\_\hspace{0.3mm}college} data set.}
-\label{contTableOfParStCollege}
+\caption{Contingency table summarizing the
+    \data{photo\us{}classify} data set.}
+\label{contTableOfFashionPhotos}
 \end{figure}
-%set.seed(5); n <- 792
-%parents <- sample(c("college", "not"), n, replace = TRUE, prob = c(0.35, 0.65))
-%p <- ifelse(parents == "college", 0.82, 0.45)
-%teen <- ifelse(runif(n) < p, "college", "not")
-%table(teen, parents)
-%table(teen, parents) / n
+% library(openintro); table(photo_classify)
 
 \begin{figure}[ht]
-\centering
-\includegraphics[width=0.7\textwidth]{ch_probability/figures/familyCollegeVenn/familyCollegeVenn}
-\caption{A Venn diagram using boxes for the \data{family\_\hspace{0.3mm}college} data set.}
-\label{familyCollegeVenn}
+  \centering
+  \Figure{0.65}{photoClassifyVenn}
+  \caption{A Venn diagram using boxes for the
+      \data{photo\us{}classify} data set.}
+  \label{photoClassifyVenn}
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{If at least one parent of a teenager completed a college degree, what is the chance the teenager attended college right after high school?}
-We can estimate this probability using the data. Of the 280 cases in this data set where \var{parents} takes value \resp{degree}, 231 represent cases where the \var{teen} variable takes value \resp{college}:
+\begin{nexample}{If a photo is actually about fashion,
+    what is the chance the ML classifier correctly identified
+    the photo as being about fashion?}
+  We can estimate this probability using the data.
+  Of the \fashAY{} fashion photos,
+  the ML algorithm correctly classified \fashYY{} of the photos:
 \begin{eqnarray*}
-P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    given \var{truth} is \resp{fashion}})
+  = \frac{\fashYY{}}{\fashAY{}}
+  = 0.638
 \end{eqnarray*}
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{A teenager is randomly selected from the sample and she did not attend college right after high school. What is the probability that at least one of her parents has a college degree?}\label{collegeProbOfParentsGivenStudentNot}
-If the teenager did not attend, then she is one of the 347 teens in the second row. Of~these 347 teens, 49 had at least one parent who got a college degree:
+\begin{nexample}{We sample a photo from the data set
+    and learn the ML algorithm predicted this photo
+    was not about fashion.
+    What is the probability that it was incorrect and
+    the photo is about fashion?}
+  If the ML classifier suggests a photo is not about fashion,
+  then it comes from the second row in the data set.
+  Of~these \fashNA{} photos, \fashNY{} were actually
+  about fashion:
 \begin{eqnarray*}
-P(\text{\var{parents} \resp{degree} given \var{teen} \resp{not}}) = \frac{49}{347} = 0.141
+P(\text{\var{truth} = \resp{fashion}
+    given \var{mach\us{}learn} is \resp{pred\us{}not}})
+  = \frac{\fashNY{}}{\fashNA{}}
+  = 0.070
 \end{eqnarray*}
 \end{nexample}
 \end{examplewrap}
@@ -653,7 +715,7 @@ P(\text{\var{parents} \resp{degree} given \var{teen} \resp{not}}) = \frac{49}{34
 \index{marginal probability|(}
 \index{joint probability|(}
 
-Figure~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without regard to any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
+Figure~\ref{contTableOfFashionPhotos} includes row and column totals for each variable separately in the \data{family\us{}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without regard to any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
 \begin{align*}
 P(\text{\var{teen} \resp{college}}) = \frac{445}{792} = 0.56
 \end{align*}
@@ -672,7 +734,7 @@ $P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}})$
 If a probability is based on a single variable, it is a \emph{\hiddenterm{marginal probability}}. The probability of outcomes for two or more variables or processes is called a \emph{\hiddenterm{joint probability}}.
 \end{onebox}
 
-We use \term{table proportions} to summarize joint probabilities for the \data{family\_\hspace{0.3mm}college} sample. These proportions are computed by dividing each count in Figure~\ref{contTableOfParStCollege} by the table's total, 792, to obtain the proportions in Figure~\ref{familyCollegeProbTable}. The joint probability distribution of the \var{parents} and \var{teen} variables is shown in Figure~\ref{familyCollegeDistribution}.
+We use \term{table proportions} to summarize joint probabilities for the \data{family\us{}college} sample. These proportions are computed by dividing each count in Figure~\ref{contTableOfFashionPhotos} by the table's total, 792, to obtain the proportions in Figure~\ref{familyCollegeProbTable}. The joint probability distribution of the \var{parents} and \var{teen} variables is shown in Figure~\ref{familyCollegeDistribution}.
 
 \begin{figure}[h]
 \centering
@@ -704,7 +766,7 @@ Joint outcome & Probability \\
 Total & 1.00 \\
 \hline
 \end{tabular}
-\caption{Joint probability distribution for the \data{family\_\hspace{0.3mm}college} data set.}
+\caption{Joint probability distribution for the \data{family\us{}college} data set.}
 \label{familyCollegeDistribution}
 \end{figure}
 
@@ -807,7 +869,7 @@ The data indicate there is an association between parents having a college degre
 \footnotetext{No. While there is an association, the data are observational. Two potential confounding variables include \var{income} and \var{region}. Can you think of others?}
 
 \index{conditional probability|)}
-\index{data!family\_college|)}
+\index{data!photo\_classify|)}
 
 
 \subsection{Smallpox in Boston, 1721}
@@ -1245,7 +1307,7 @@ If there are 15 people to ask and none are skipping class, then the probability 
 For the first question, she will pick someone else with probability $14/15$. When she asks the second question, she only has 14 people who have not yet been asked. Thus, if you were not picked on the first question, the probability you are again not picked is $13/14$. Similarly, the probability you are again not picked on the third question is $12/13$, and the probability of not being picked for any of the three questions is
 \begin{eqnarray*}
 &&P(\text{not picked in 3 questions}) \\
-&&\quad = P(\text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q3}} = \text{\resp{not\_\hspace{0.3mm}picked}.}) \\
+&&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
 &&\quad = \frac{14}{15}\times\frac{13}{14}\times\frac{12}{13} = \frac{12}{15} = 0.80
 \end{eqnarray*}
 \end{nexample}
@@ -1256,10 +1318,10 @@ For the first question, she will pick someone else with probability $14/15$. Whe
 What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\_\hspace{0.3mm}picked}$)$, and two conditional probabilities:
+\footnotetext{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\us{}picked}$)$, and two conditional probabilities:
 \begin{eqnarray*}
-&&P(\text{\var{Q2}} =  \text{\resp{not\_\hspace{0.3mm}picked} }|\text{ \var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}}) \\
-&&P(\text{\var{Q3}} =  \text{\resp{not\_\hspace{0.3mm}picked} }|\text{ \var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}})
+&&P(\text{\var{Q2}} =  \text{\resp{not\us{}picked} }|\text{ \var{Q1}} = \text{\resp{not\us{}picked}}) \\
+&&P(\text{\var{Q3}} =  \text{\resp{not\us{}picked} }|\text{ \var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}})
 \end{eqnarray*}
 Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.}
 
@@ -1268,7 +1330,7 @@ Using the General Multiplication Rule, the product of these three probabilities 
 Each pick is independent, and the probability of not being picked for any individual question is $14/15$. Thus, we can use the Multiplication Rule for independent processes.
 \begin{eqnarray*}
 &&P(\text{not picked in 3 questions}) \\
-&&\quad = P(\text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q3}} = \text{\resp{not\_\hspace{0.3mm}picked}.}) \\
+&&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
 &&\quad = \frac{14}{15}\times\frac{14}{15}\times\frac{14}{15} = 0.813
 \end{eqnarray*}
 You have a slightly higher chance of not being picked compared to when she picked a new person for each question. However, you now may be picked more than once.
