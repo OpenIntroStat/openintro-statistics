@@ -715,26 +715,57 @@ P(\text{\var{truth} = \resp{fashion}
 \index{marginal probability|(}
 \index{joint probability|(}
 
-Figure~\ref{contTableOfFashionPhotos} includes row and column totals for each variable separately in the \data{family\us{}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without regard to any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
+Figure~\ref{contTableOfFashionPhotos} includes row and
+column totals for each variable separately in the
+\data{photo\us{}classify} data set.
+These totals represent
+\termsub{marginal probabilities}{marginal probability}
+for the sample, which are the probabilities based on a
+single variable without regard to any other variables.
+For instance, a probability based solely on the
+\var{mach\us{}learn} variable is a marginal probability:
 \begin{align*}
-P(\text{\var{teen} \resp{college}}) = \frac{445}{792} = 0.56
+P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion}})
+    = \frac{\fashYA{}}{\fashN{}}
+    = 0.12
 \end{align*}
-A probability of outcomes for two or more variables or processes is called a \termsub{joint \mbox{probability}}{joint probability}:
+A probability of outcomes for two or more variables
+or processes is called a
+\termsub{joint \mbox{probability}}{joint probability}:
 \begin{align*}
-P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}}) = \frac{214}{792} = 0.27
+P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion}
+    and \var{truth} = \resp{fashion}})
+  = \frac{\fashYY{}}{\fashN{}}
+  = 0.11
 \end{align*}
-It is common to substitute a comma for ``and'' in a joint probability, although either is acceptable. That is,
+It is common to substitute a comma for ``and'' in a joint
+probability, although using either the word ``and'' or a
+comma is acceptable.
+That is,
 \begin{center}
-$P(\text{\var{teen} \resp{college}, \var{parents} \resp{not}})$ \\[2mm]
+$P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion},
+    \var{truth} = \resp{fashion}})$ \\[2mm]
 means the same thing as \\[2mm]
-$P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}})$
+$P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion}
+    and \var{truth} = \resp{fashion}})$
 \end{center}
 
 \begin{onebox}{Marginal and joint probabilities}
-If a probability is based on a single variable, it is a \emph{\hiddenterm{marginal probability}}. The probability of outcomes for two or more variables or processes is called a \emph{\hiddenterm{joint probability}}.
+  If a probability is based on a single variable,
+  it is a \emph{\hiddenterm{marginal probability}}.
+  The probability of outcomes for two or more variables
+  or processes is called a \emph{\hiddenterm{joint probability}}.
 \end{onebox}
 
-We use \term{table proportions} to summarize joint probabilities for the \data{family\us{}college} sample. These proportions are computed by dividing each count in Figure~\ref{contTableOfFashionPhotos} by the table's total, 792, to obtain the proportions in Figure~\ref{familyCollegeProbTable}. The joint probability distribution of the \var{parents} and \var{teen} variables is shown in Figure~\ref{familyCollegeDistribution}.
+We use \term{table proportions} to summarize joint probabilities
+for the \data{photo\us{}classify} sample.
+These proportions are computed by dividing each count in
+Figure~\ref{contTableOfFashionPhotos} by the table's total,
+\fashN{}, to obtain the proportions in
+Figure~\ref{photoClassifyProbTable}.
+The joint probability distribution of the \var{mach\us{}learn}
+and \var{truth} variables is shown in
+Figure~\ref{photoClassifyDistribution}.
 
 \begin{figure}[h]
 \centering
@@ -742,14 +773,15 @@ We use \term{table proportions} to summarize joint probabilities for the \data{f
   \hline
 & \var{parents}: \resp{degree} & \var{parents}: \resp{not} & Total  \\
   \hline
-\var{teen}: \resp{college}     & 0.29 & 0.27 & 0.56 \\
-\var{teen}: \resp{not} \hspace{0.5cm} & 0.06 & 0.38 & 0.44  \\
+\var{teen}: \resp{college}     & 0.11 & 0.01 & 0.12 \\
+\var{teen}: \resp{not} \hspace{0.5cm} & 0.06 & 0.82 & 0.88  \\
    \hline
-Total & 0.35 & 0.65 & 1.00 \\
+Total & 0.17 & 0.83 & 1.00 \\
 \hline
 \end{tabular}
-\caption{Probability table summarizing whether at least one parent had a college degree and the teenager attended college.}
-\label{familyCollegeProbTable}
+\caption{Probability table summarizing the
+    \var{photo\us{}classify} data set.}
+\label{photoClassifyProbTable}
 \end{figure}
 
 \begin{figure}[h]
@@ -758,32 +790,50 @@ Total & 0.35 & 0.65 & 1.00 \\
   \hline
 Joint outcome & Probability \\
   \hline
-\var{parents} \resp{degree} and \var{teen} \resp{college} & 0.29 \\
-\var{parents} \resp{degree} and \var{teen} \resp{not} & 0.06 \\
-\var{parents} \resp{not} and \var{teen} \resp{college} & 0.27 \\
-\var{parents} \resp{not} and \var{teen} \resp{not} & 0.38 \\
+\var{mach\us{}learn} = \resp{pred\us{}fashion}
+    and \var{truth} = \resp{fashion} & 0.11 \\
+\var{mach\us{}learn} = \resp{pred\us{}fashion}
+    and \var{truth} = \resp{not} & 0.01 \\
+\var{mach\us{}learn} = \resp{pred\us{}not}
+    and \var{truth} = \resp{fashion} & 0.06 \\
+\var{mach\us{}learn} = \resp{pred\us{}not}
+    and \var{truth} = \resp{not} & 0.82 \\
    \hline
 Total & 1.00 \\
 \hline
 \end{tabular}
-\caption{Joint probability distribution for the \data{family\us{}college} data set.}
-\label{familyCollegeDistribution}
+\caption{Joint probability distribution for the \data{photo\us{}classify} data set.}
+\label{photoClassifyDistribution}
 \end{figure}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Verify Figure~\ref{familyCollegeDistribution} represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to~1.\footnotemark
+Verify Figure~\ref{photoClassifyDistribution} represents
+a probability distribution: events are disjoint,
+all probabilities are non-negative, and the probabilities
+sum to~1.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is $0.29 + 0.06 + 0.27 + 0.38 = 1.00$.}
+\footnotetext{Each of the four outcome combination are disjoint,
+   all probabilities are indeed non-negative, and the sum of
+   the probabilities is $0.11 + 0.01 + 0.06 + 0.82 = 1.00$.}
 
-We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
+We can compute marginal probabilities using joint probabilities
+in simple cases.
+For example, the probability a randomly selected photo from the
+data set is about fashion is found by summing the outcomes where
+\var{truth} takes value \resp{fashion}:%
+\index{marginal probability|)}\index{joint probability|)}
+\newcommand{\ultruthfashion}[0]
+    {\underline{\var{truth} = \resp{fashion}}}%
 \begin{align*}
-P(\text{\underline{\color{black}\var{teen} \resp{college}}})
-&=  P(\text{\var{parents} \resp{degree} and \underline{\color{black}\var{teen} \resp{college}}}) \\
-& \quad \quad + P(\text{\var{parents} \resp{not} and \underline{\color{black}\var{teen} \resp{college}}}) \\
-&= 0.29 + 0.27 \\
-&= 0.56
+P(\text{\ultruthfashion{}})
+  &= P(\text{\var{mach\us{}learn} = \resp{pred\us{}fashion}
+        and \ultruthfashion{}}) \\
+    & \qquad + P(\text{\var{mach\us{}learn} = \resp{pred\us{}not}
+        and \ultruthfashion{}}) \\
+  &= 0.11 + 0.06 \\
+  &= 0.17
 \end{align*}
 
 
@@ -817,7 +867,7 @@ We considered only those cases that met the condition, \var{parents} \resp{degre
 
 Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~\eqref{ratioOfBothToRatioOfConditionalForParentsAndStudent} as a template to understand this technique.
 
-We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Figure~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 29\% or $0.29\times 1000 = 290$ to meet both the information criteria and represent our outcome of interest. Then the conditional probability can be computed as
+We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Figure~\ref{photoClassifyProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 29\% or $0.29\times 1000 = 290$ to meet both the information criteria and represent our outcome of interest. Then the conditional probability can be computed as
 \begin{align}
 &P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
 	&= \frac{\text{\# (\var{teen} \resp{college} and \var{parents} \resp{degree})}}{\text{\# (\var{parents} \resp{degree})}} \notag \\
@@ -845,7 +895,7 @@ P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
 \begin{exercisewrap}
 \begin{nexercise}\label{familyCollegeProbOfParentsEqualNotGivenTeen}
 (a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case where neither parent has a college degree if it is known that the teenager didn't attend college right after high school}''. Notice that the condition is now based on the {teenager}, not the {parent}. \\[1mm]
-(b)~Determine the probability from part (a). Table~\vref{familyCollegeProbTable} may be helpful.\footnotemark
+(b)~Determine the probability from part (a). Table~\vref{photoClassifyProbTable} may be helpful.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(a) $P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} \resp{not} and \var{teen} \resp{not}}) = 0.38$ and $P(\text{\var{teen} \resp{not}}) = 0.44$. Then the ratio represents the conditional probability: $0.38 / 0.44 = 0.864$.}
