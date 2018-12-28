@@ -133,15 +133,17 @@ What about  the probability of rolling a \resp{1}, \resp{2}, \resp{3}, \resp{4},
 \end{eqnarray*}
 The \term{Addition Rule} guarantees the accuracy of this approach when the outcomes are disjoint. 
 
-\begin{onebox}{Addition Rule of disjoint outcomes} If $A_1$ and $A_2$ represent two disjoint outcomes, then the probability that one of them occurs is given by
-\begin{eqnarray*}
-P(A_1\text{ or } A_2) = P(A_1) + P(A_2)
-\end{eqnarray*}
-If there are many disjoint outcomes $A_1$, ..., $A_k$, then the probability that one of these outcomes will occur is
-\begin{eqnarray}
-P(A_1) + P(A_2) + \cdots + P(A_k)
-\end{eqnarray}
-
+\begin{onebox}{Addition Rule of disjoint outcomes}
+  If $A_1$ and $A_2$ represent two disjoint outcomes,
+  then the probability that one of them occurs is given by
+  \begin{align*}
+  P(A_1\text{ or } A_2) = P(A_1) + P(A_2)
+  \end{align*}
+  If there are many disjoint outcomes $A_1$, ..., $A_k$,
+  then the probability that one of these outcomes will occur is
+  \begin{align*}
+  P(A_1) + P(A_2) + \cdots + P(A_k)
+  \end{align*}
 \end{onebox}
 
 \begin{exercisewrap}
@@ -270,20 +272,23 @@ P(A) + P(B)
 \label{overCountFaceDiamond}
 \end{eqnarray*}
 However, the three cards that are in both events were counted twice, once in each probability. We must correct this double counting:
-\begin{eqnarray}
-P(A\text{ or } B) &=&P({\color{redcards}\diamondsuit}\text{ or face card})  \notag \\
-  &=& P({\color{redcards}\diamondsuit}) + P(\text{face card}) - P({\color{redcards}\diamondsuit}\text{ and face card}) \label{diamondFace} \\
-  &=& 13/52 + 12/52 - 3/52 \notag \\
-  &=& 22/52 = 11/26 \notag
-\end{eqnarray}
-Equation~(\ref{diamondFace}) is an example of the \term{General Addition Rule}. 
+\begin{align*}
+P(A\text{ or } B)
+  &= P({\color{redcards}\diamondsuit}\text{ or face card}) \\
+  &= P({\color{redcards}\diamondsuit}) + P(\text{face card})
+      - P({\color{redcards}\diamondsuit}\text{ and face card}) \\
+  &= 13/52 + 12/52 - 3/52 \\
+  &= 22/52 = 11/26
+\end{align*}
+This equation is an example of the \term{General Addition Rule}. 
 
-\begin{onebox}{General Addition Rule} If $A$ and $B$ are any two events, disjoint or not, then the probability that at least one of them will occur is
-\begin{eqnarray}
-P(A\text{ or }B) = P(A) + P(B) - P(A\text{ and }B)
-\label{generalAdditionRule}
-\end{eqnarray}
-where $P(A$ and $B)$ is the probability that both events occur.
+\begin{onebox}{General Addition Rule}
+  If $A$ and $B$ are any two events, disjoint or not, then
+  the probability that at least one of them will occur is
+  \begin{align*}
+  P(A\text{ or }B) = P(A) + P(B) - P(A\text{ and }B)
+  \end{align*}
+  where $P(A$ and $B)$ is the probability that both events occur.
 \end{onebox}
 
 \begin{tipBox}{\tipBoxTitle{``or'' is inclusive}
@@ -295,7 +300,7 @@ When we write ``or'' in statistics, we mean ``and/or'' unless we explicitly stat
 (a) If $A$ and $B$ are disjoint, describe why this implies $P(A$ and $B) = 0$. (b) Using part (a), verify that the General Addition Rule simplifies to the simpler Addition Rule for disjoint events if $A$ and $B$ are disjoint.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a) If $A$ and $B$ are disjoint, $A$ and $B$ can never occur simultaneously. (b) If $A$ and $B$ are disjoint, then the last term of Equation~(\ref{generalAdditionRule}) is 0 (see part (a)) and we are left with the Addition Rule for disjoint events.}
+\footnotetext{(a) If $A$ and $B$ are disjoint, $A$ and $B$ can never occur simultaneously. (b) If $A$ and $B$ are disjoint, then the last $P(A\text{ and }B)$ term of in the General Addition Rule formula is 0 (see part (a)) and we are left with the Addition Rule for disjoint events.}
 
 \index{data!loans|(}
 
@@ -445,22 +450,24 @@ Events $A=\{$\resp{1}, \resp{2}$\}$ and $B=\{$\resp{4}, \resp{6}$\}$ are shown i
 \footnotetext{Brief solutions: (a)~$A^c=\{$\resp{3}, \resp{4}, \resp{5}, \resp{6}$\}$ and $B^c=\{$\resp{1}, \resp{2}, \resp{3}, \resp{5}$\}$. (b)~Noting that each outcome is disjoint, add the individual outcome probabilities to get $P(A^c)=2/3$ and $P(B^c)=2/3$. (c)~$A$~and~$A^c$ are disjoint, and the same is true of $B$~and~$B^c$. Therefore, $P(A) + P(A^c) = 1$ and $P(B) + P(B^c) = 1$.}
 
 A complement of an event $A$ is constructed to have two very important properties: (i) every possible outcome not in $A$ is in $A^c$, and (ii) $A$ and $A^c$ are disjoint. Property (i) implies
-\begin{eqnarray}
+\begin{align*}
 P(A\text{ or }A^c) = 1
-\label{complementSumTo1}
-\end{eqnarray}
+\end{align*}
 That is, if the outcome is not in $A$, it must be represented in $A^c$. We use the Addition Rule for disjoint events to apply Property (ii):
-\begin{eqnarray}
+\begin{align*}
 P(A\text{ or }A^c) = P(A) + P(A^c)
-\label{complementDisjointEquation}
-\end{eqnarray}
-Combining Equations~(\ref{complementSumTo1}) and~(\ref{complementDisjointEquation}) yields a very useful relationship between the probability of an event and its complement.
+\end{align*}
+Combining the last two equations yields a very useful
+relationship between the probability of an event and
+its complement.
 
 \begin{onebox}{Complement}
-The complement of event $A$ is denoted $A^c$, and $A^c$ represents all outcomes not in~$A$. $A$ and $A^c$ are mathematically related: \vspace{-2mm}
-\begin{eqnarray}\label{complement}
-P(A) + P(A^c) = 1, \quad\text{i.e.}\quad P(A) = 1-P(A^c)
-\end{eqnarray}\vspace{-6.5mm}
+  The complement of event $A$ is denoted $A^c$, and $A^c$
+  represents all outcomes not in~$A$. $A$ and $A^c$ are
+  mathematically related:
+  \begin{align*}
+  P(A) + P(A^c) = 1, \quad\text{i.e.}\quad P(A) = 1-P(A^c)
+  \end{align*}
 \end{onebox}
 
 In simple examples, computing $A$ or $A^c$ is feasible in a few steps. However, using the complement can save a lot of time as problems grow in complexity.
@@ -470,7 +477,7 @@ In simple examples, computing $A$ or $A^c$ is feasible in a few steps. However, 
 Let $A$ represent the event where we roll two dice and their total is less than \resp{12}. (a)~What does the event $A^c$ represent? (b)~Determine $P(A^c)$ from Figure~\ref{diceProb} on page~\pageref{diceProb}. (c)~Determine $P(A)$.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a)~The complement of $A$: when the total is equal to \resp{12}. (b)~$P(A^c) = 1/36$. (c)~Use the probability of the complement from part (b), $P(A^c) = 1/36$, and Equation~(\ref{complement}): $P($less than \resp{12}$) = 1 - P($\resp{12}$) = 1 - 1/36 = 35/36$.}
+\footnotetext{(a)~The complement of $A$: when the total is equal to \resp{12}. (b)~$P(A^c) = 1/36$. (c)~Use the probability of the complement from part (b), $P(A^c) = 1/36$, and the equation for the complement: $P($less than \resp{12}$) = 1 - P($\resp{12}$) = 1 - 1/36 = 35/36$.}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -524,14 +531,19 @@ Example~\ref{threeDice} illustrates what is called the Multiplication Rule for i
 
 \begin{onebox}{Multiplication Rule for independent processes}
   \index{Multiplication Rule|textbf}%
-If $A$ and $B$ represent events from two different and independent processes, then the probability that both $A$ and $B$ occur can be calculated as the product of their separate probabilities: \vspace{-1.5mm}
-\begin{eqnarray}\label{eqForIndependentEvents}
-P(A \text{ and }B) = P(A) \times  P(B)
-\end{eqnarray}
-Similarly, if there are $k$ events $A_1$, ..., $A_k$ from $k$ independent processes, then the probability they all occur is\vspace{-1.5mm}
-\begin{eqnarray*}
-P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)
-\end{eqnarray*}\vspace{-6mm}
+  If $A$ and $B$ represent events from two different and
+  independent processes, then the probability that both $A$
+  and $B$ occur can be calculated as the product of their
+  separate probabilities:
+  \begin{eqnarray}\label{eqForIndependentEvents}
+  P(A \text{ and }B) = P(A) \times  P(B)
+  \end{eqnarray}
+  Similarly, if there are $k$ events $A_1$, ..., $A_k$
+  from $k$ independent processes, then the probability
+  they all occur is
+  \begin{eqnarray*}
+  P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)
+  \end{eqnarray*}\vspace{-6mm}
 \end{onebox}
 
 \begin{exercisewrap}
@@ -593,11 +605,14 @@ Three people are selected at random.\footnotemark \vspace{-1.5mm}
 \end{exercisewrap}
 \footnotetext{Brief answers are provided. (a)~This can be written in probability notation as $P($a randomly selected person is male and right-handed$)=0.455$. (b)~0.207. (c)~0.045. (d)~0.0093.}
 
-Sometimes we wonder if one outcome provides useful information about another outcome. The question we are asking is, are the occurrences of the two events independent? We say that two events $A$ and $B$ are independent if they satisfy Equation~\eqref{eqForIndependentEvents}.
+Sometimes we wonder if one outcome provides useful information about another outcome. The question we are asking is, are the occurrences of the two events independent? We say that two events $A$ and $B$ are independent if they satisfy
+$P(A \text{ and }B) = P(A) \times  P(B)$.
 
 \begin{examplewrap}
 \begin{nexample}{If we shuffle up a deck of cards and draw one, is the event that the card is a heart independent of the event that the card is an ace?}
-The probability the card is a heart is $1/4$ and the probability that it is an ace is $1/13$. The probability the card is the ace of hearts is $1/52$. We check whether Equation~\ref{eqForIndependentEvents} is satisfied:
+The probability the card is a heart is $1/4$ and the probability that it is an ace is $1/13$. The probability the card is the ace of hearts is $1/52$.
+We check whether $P(A \text{ and }B) = P(A) \times  P(B)$
+is satisfied:
 \begin{align*}
 P({\color{redcards}\heartsuit})\times P(\text{ace}) = \frac{1}{4}\times \frac{1}{13} = \frac{1}{52} 
 					= P({\color{redcards}\heartsuit}\text{ and ace})
@@ -1379,11 +1394,10 @@ Consider the following conditional probability for variable 1 and variable 2:\vs
 P(\text{outcome $A_1$ of variable 1 } | \text{ outcome $B$ of variable 2})
 \end{align*}
 Bayes' Theorem states that this conditional probability can be identified as the following fraction:\vspace{-1.5mm}
-\begin{align}
+\begin{align*}
 \frac{P(B | A_1) P(A_1)}
 	{P(B | A_1) P(A_1) + P(B | A_2) P(A_2) + \cdots + P(B | A_k) P(A_k)}
-	\label{equationOfBayesTheorem}
-\end{align}
+\end{align*}
 where $A_2$, $A_3$, ..., and $A_k$ represent all other possible outcomes of the first variable.\index{Bayes' Theorem|textbf}
 \end{onebox}
 
@@ -1726,7 +1740,9 @@ So far, we have thought of each variable as being a complete story in and of its
 \begin{examplewrap}
 \begin{nexample}{John travels to work five days a week. We will use $X_1$ to represent his travel time on Monday, $X_2$ to represent his travel time on Tuesday, and so on. Write an equation using $X_1$, ..., $X_5$ that represents his travel time for the week, denoted by $W$.}
 His total weekly travel time is the sum of the five daily values:
-$$ W = X_1 + X_2 + X_3 + X_4 + X_5 $$
+\begin{align*}
+W = X_1 + X_2 + X_3 + X_4 + X_5
+\end{align*}
 Breaking the weekly travel time $W$ into pieces provides a framework for understanding each source of randomness and is useful for modeling $W$.
 \end{nexample}
 \end{examplewrap}
@@ -1768,18 +1784,22 @@ Would you be surprised if John's weekly commute wasn't exactly 90 minutes or if 
 Two important concepts concerning combinations of random variables have so far been introduced. First, a final value can sometimes be described as the sum of its parts in an equation. Second, intuition suggests that putting the individual average values into this equation gives the average value we would expect in total. This second point needs clarification -- it is guaranteed to be true in what are called \emph{linear combinations of random variables}.
 
 A \term{linear combination} of two random variables $X$ and $Y$ is a fancy phrase to describe a combination
-$$ aX + bY$$
+\begin{align*}
+aX + bY
+\end{align*}
 where $a$ and $b$ are some fixed and known numbers. For John's commute time, there were five random variables -- one for each work day -- and each random variable could be written as having a fixed coefficient of 1:
-$$ 1X_1 + 1 X_2 + 1 X_3 + 1 X_4 + 1 X_5 $$
+\begin{align*}
+1X_1 + 1 X_2 + 1 X_3 + 1 X_4 + 1 X_5
+\end{align*}
 For Elena's net gain or loss, the $X$ random variable had a coefficient of +1 and the $Y$ random variable had a coefficient of -1.
 
 When considering the average of a linear combination of random variables, it is safe to plug in the mean of each random variable and then compute the final result. For a few examples of nonlinear combinations of random variables -- cases where we cannot simply plug in the means -- see the footnote.\footnote{If $X$ and $Y$ are random variables, consider the following combinations: $X^{1+Y}$, $X\times Y$, $X/Y$. In such cases, plugging in the average value for each random variable and computing the result will not generally lead to an accurate average value for the end result.}
 
 \begin{onebox}{Linear combinations of random variables and the average result}
 If $X$ and $Y$ are random variables, then a linear combination of the random variables is given by
-\begin{align}\label{linComboOfRandomVariablesXAndY}
+\begin{align*}
 aX + bY
-\end{align}
+\end{align*}
 where $a$ and $b$ are some fixed numbers. To compute the average value of a linear combination of random variables, plug in the average of each individual random variable and compute the result:
 \begin{align*}
 a\times E(X) + b\times E(Y)

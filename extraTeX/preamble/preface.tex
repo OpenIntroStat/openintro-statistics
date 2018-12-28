@@ -1,9 +1,9 @@
-\chapter{Preface}
+\chapter*{Preface}
 %\chaptertext{}
 %\sectiontext{}
 
 This book may be downloaded as a free PDF at
-\oiRedirect{textbook-openintro}
+\oiRedirect{os}
     {\color{black}\textbf{openintro.org/os}}. \vspace{3mm}
 
 \noindent We hope readers will take away three ideas from
@@ -34,14 +34,13 @@ The chapters of this book are as follows:%\vspace{2mm}
     Data summaries, graphics,
     and a teaser of inference using randomization.
 \item[3. Probability.]
-    The basic principles of probability.
-    An understanding of this chapter is not required for
-    the main content in
-    Chapters~\ref{modeling}-\ref{multipleAndLogisticRegression}.
+    Basic principles of probability.
+    %This chapter is not required for the later chapters.
 \item[4. Distributions of random variables.]
-    Introduction to the normal model and other key
-    distributions.
+    The normal model and other key distributions.
 \item[5. Foundations for inference.]
+    %Introduction to uncertainty in point estimates,
+    %confidence intervals, and hypothesis tests.
     General ideas for statistical inference in the context
     of estimating the population proportion.
 \item[6. Inference for categorical data.]
@@ -49,117 +48,152 @@ The chapters of this book are as follows:%\vspace{2mm}
     and chi-square distributions.
 \item[7. Inference for numerical data.]
     Inference for one or two sample means using the
-    \mbox{$t$-distribution}, and also comparisons of many
+    \mbox{$t$-distribution},
+    statistical power for comparing two groups,
+    and also comparisons of many
     means using ANOVA.
 \item[8. Introduction to linear regression.]
-    An introduction to regression with two variables.
+    Regression for a numerical outcome with a single predictor.
     Most of this chapter could be covered after
     Chapter~\ref{introductionToData}.
 \item[9. Multiple and logistic regression.]
-    A light introduction to multiple regression
-    and logistic regression for an accelerated course.
+    Regression for numerical and categorical data
+    using many predictors. %for an accelerated course.
 \end{description}
 
 \noindent%
-\emph{OpenIntro Statistics} was written to allow flexibility
-in choosing and ordering course topics.
-The text has been structured to allow exploration of
-several special topics, including chi-square, and ANOVA.
-If the main goal is to move as fast as possible through
-the material to get to later chapters, then consider the
-following to be an outline of the required topics:
+\emph{OpenIntro Statistics} supports flexibility
+in choosing and ordering topics.
+If the main goal is to reach multiple regression
+(Chapter~\ref{ch_regr_mult_and_log})
+as quickly as possible, then consider the
+following path:
 \begin{itemize}
-\item Chapter~\ref{ch_intro_to_data} provides basic data
-    considerations that are required, and
-    Sections~\ref{numericalData}
-    and~\ref{categoricalData}
-    cover basic data summaries that are used throughout the book.
-\item Obtain a basic foundation in the normal distribution
-    in Section~\ref{normalDist}, which will be used through
-    the inference sections.
-\item Chapter~\ref{ch_foundations_for_inf} is all required
-    to understand the topic of inference for the remaining
-    chapters.
-\item For the remaining chapters, they could be tackled in
-    almost any order, with the exception that
-    Section~\ref{oneSampleMeansWithTDistribution}
-    and Chapter~\ref{ch_regr_simple_linear}
-    come before Chapter~\ref{ch_regr_mult_and_log}.
+\item Chapter~\ref{ch_intro_to_data},
+    Sections~\ref{numericalData},
+    and Section~\ref{categoricalData} for a solid
+    introduction to data structures and statistical
+    summaries that are used throughout the book.
+\item Section~\ref{normalDist}
+    for a solid understanding of the normal distribution.
+\item Chapter~\ref{ch_foundations_for_inf}
+    to establish the core set of inference tools.
+%\item Section~\ref{oneSampleMeansWithTDistribution}
+%    and Chapter~\ref{ch_regr_simple_linear}
+%    provide required for multiple regression with a numerical
+%    outcome.
+%    For the remaining chapters, they could be tackled in
+%    almost any order, with the exception that
+%    
+%    
+%    come before Chapter~\ref{ch_regr_mult_and_log}.
+\item Section~\ref{oneSampleMeansWithTDistribution}
+    to give a foundation for the $t$-distribution
+\item Chapter~\ref{ch_regr_simple_linear}
+    for establishing ideas and principles for single
+    predictor regression.
+%    introduce the 
+%    which introduces the $t$-distribution, should come before
+%    Section~\ref{oneSampleMeansWithTDistribution}
+%Chapters~\ref{ch_inference_for_props}-\ref{ch_regr_mult_and_log},
+%    could be tackled in
+%    almost any order, with the exception that
+%    Section~\ref{oneSampleMeansWithTDistribution}
+%    and Chapter~\ref{ch_regr_simple_linear}
+%    come before Chapter~\ref{ch_regr_mult_and_log}.
+%\item Sections~\ref{ch_inference_for_props}
+%    and~\ref{} are recommended before logistic regression.
 \end{itemize}
-One conspicuously missing topic from the list above is the
-chapter on Probability.
-While useful for a deeper understanding of the calculations,
-especially for anyone looking to take a second course in
-statistics, it is not required reading when the focus is on
-applied data analysis.
+%One conspicuously missing topic from the list above is the
+%chapter on Probability.
+%While useful for a deeper understanding of the calculations,
+%especially for anyone looking to take a second course in
+%statistics, it is not required reading when the focus is on
+%applied data analysis.
 
 
-\subsection*{Examples, exercises, and appendices}
+\subsection*{Examples and exercises}
+%, and appendices}
 
+\noindent%
 Examples and Guided Practice throughout the textbook may be
 identified as follows:
 
 \begin{examplewrap}
-\begin{nexample}{This is the example setting.}
-  Full solutions to examples are provided and may include
-  an accompanying table or figure.
+\begin{nexample}{This is an example.
+    When a question is asked here, where can the answer be found?}
+  The answer can be found here, in the solution section
+  to the example!
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-We list a Guided Practice problem when we think the reader
-should be ready to try something out.
-This does not guarantee the reader will (or should)
-know the answer, so we provide solutions for all Guided
-Practice in footnotes.\footnotemark
+When we think the reader should be ready to try something out
+or answer a question, we frame it in a Guided Practice problem.
+Of course, the reader may not know the answer,
+so we provide the full solution in a footnote.\footnotemark{}
+%Readers are strongly encouraged to attempt these practice problems.
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Full solutions are located down here
-    in the footnote!}
+\footnotetext{Guided Practice solutions are always located
+    in a footnote.}
 
-There are exercises at the end of each chapter for practice
-or homework assignments.
-Odd-numbered exercise solutions are in
+A large number of exercises are also provided at the end
+of each chapter for practice or homework assignments.
+Solutions are given for odd-numbered exercise in
 Appendix~\ref{eoceSolutions}.
-Probability tables for the normal, $t$,
-and chi-square distributions are in
-Appendix~\ref{distributionTables}.
+%Probability tables for the normal, $t$,
+%and chi-square distributions are in
+%Appendix~\ref{distributionTables}.
 
-\subsection*{OpenIntro, online resources, and getting involved}
 
-OpenIntro is an organization focused on developing
-free and affordable education materials.
+\subsection*{Additional resources}
+
+OpenIntro is focused on increasing access to education.
 \emph{OpenIntro Statistics} is intended for introductory
 statistics courses at the college level.
 We~offer another title,
 \oiRedirect{textbook-books}
     {\emph{Advanced High School Statistics}},
-for high school courses.
+that is intended for high school courses.
 
 Video overviews, slides, statistical software labs,
-and much more is readily available at\\[-4mm]
+data sets used in the textbook,
+and much more are readily available at\\[-5mm]
 \begin{center}
-\oiRedirect{textbook-openintro_videos}{\color{black}\textbf{openintro.org/os}}
+\oiRedirect{os}
+    {\color{black}\textbf{openintro.org/os}}
 \end{center}
-Data sets for this textbook are available on the website
-and through a companion R package.\footnote{Diez DM,
-    Barr CD, \c{C}etinkaya-Rundel M. 2015.
-    \texttt{openintro}: OpenIntro data sets and supplement
-    functions.
-    \oiRedirect{textbook-github_openintro}
-        {github.com/OpenIntroOrg/openintro-r-package}.}
-All of these resources are free and may be used with
-or without this textbook as a companion.
+%Data sets for this textbook are available on the website
+%and in a companion R package.\footnote{Diez DM,
+%    Barr CD, \c{C}etinkaya-Rundel M. 2015.
+%    \texttt{openintro}: OpenIntro data sets and supplement
+%    functions.
+%    \oiRedirect{textbook-github_openintro}
+%        {github.com/OpenIntroOrg/openintro-r-package}.}
+%All of these resources are free and may be used with
+%or without this textbook as a companion.
+We also have improved the ability to access data in this book
+through the addition of Appendix~\ref{data_appendix},
+which provides a guide to each of the data sets used in the
+main text.
+Online guides to each of these data sets are also provided at
+\oiRedirect{os_data}
+    {\color{black}\textbf{openintro.org/os/data}}.
 
-We value your feedback.
-If there is a particular component of the project you
-especially like or think needs improvement,
-we want to hear from you.
-You may find our contact information on the title page
-of this book or at
-\oiRedirect{textbook-openintro_about}
-    {\color{black}\textbf{openintro.org/about}}.
+We appreciate all feedback as well as reports of any
+typos through the website.
+A short-link to report a new typo or review known typos is
+\oiRedirect{os_typos}
+    {\color{black}\textbf{openintro.org/os/typos}}.
+\Comment{Make link work.}
+%You may also learn more about OpenIntro or find our
+%contact information at
+%\oiRedirect{textbook-openintro_about}
+%    {\color{black}\textbf{openintro.org/about}}.
+
+
 
 \subsection*{Acknowledgements}
 
@@ -170,9 +204,9 @@ The authors would like to thank the
 for their involvement and ongoing contributions.
 We~are also very grateful to the hundreds of students
 and instructors who have provided us with valuable feedback
-since we first started working on OpenIntro in~2009.
+since we first started working on this book in~2009.
 
 We also want to thank the many teachers who helped review
-the new edition, including
+this edition, including
 Laura Acion,
 \Comment{Complete the list.}
