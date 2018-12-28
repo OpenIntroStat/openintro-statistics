@@ -3,10 +3,6 @@
 \label{ch_summarizing_data}
 \renewcommand{\chapterfolder}{ch_summarizing_data}
 
-\Comment{All content in this chapter (previously in Chapter~1)
-    was overhauled with new examples and data.
-    The structure itself has not changed too much.}
-
 This chapter focuses on the mechanics and construction
 of summary statistics and graphs.
 However, don't be fooled into thinking that the formulas
@@ -278,9 +274,6 @@ based on larger samples tend to be more accurate than
 those based on smaller samples.
 \end{nexample}
 \end{examplewrap}
-
-\Comment{Next example is new and tries to highlight
-\emph{why} the mean is so useful.}
 
 The mean is useful because it allows us to
 rescale or standardize a metric to something more easily
@@ -605,9 +598,6 @@ x_3^{}-\bar{x} &= \loanC - \loanAvg{} = \loanCdev \\
 			&\ \vdots \\
 x_{50}^{}-\bar{x} &= \loanZ - \loanAvg{} = \loanZdev
 \end{align*}
-\Comment{Next sentence says ``average'' even though
-  it is dividing by $n - 1$.
-  Same change in the term box below. Thoughts?}
 If we square these deviations and then take an average,
 the result is equal to the sample
 \term{variance}\label{varianceIsDefined},
@@ -619,8 +609,8 @@ s_{}^2 &= \frac{(\loanAdev)_{}^2 + (\loanBdev)_{}^2 + (\loanCdev)_{}^2 + \cdots 
 \end{align*}
 We divide by $n - 1$, rather than dividing by $n$,
 when computing the variance;
-you need not worry about this mathematical nuance
-for the material in this textbook.
+there's some mathematical nuance here, but the end result is that
+doing this makes this statistic slightly more reliable and useful.
 Notice that squaring the deviations does two things.
 First, it makes large values relatively much larger,
 seen by comparing $(\loanAdev)^2$, $(\loanBdev)^2$, $(\loanCdev)^2$,
@@ -655,9 +645,6 @@ which data is being referenced.
   not strict rules.
 \end{onebox}
 
-\Comment{This paragraph has been shortened to focus
-  exclusively on the notation for the population and
-  omits the $n - 1$ and $n$ distinction.}
 Like the mean, the population values for variance
 and standard deviation have special symbols:
 $\sigma_{}^2$ for the variance and $\sigma$ for the
@@ -1505,8 +1492,6 @@ What does 0.122 at the intersection of \resp{joint} and \resp{own} represent in 
 %library(openintro); library(xtable); data(email); tab <- table(email[,c("spam", "format")])[2:1,]; tab; colSums(tab); rowSums(tab)
 \end{figure}
 
-\Comment{This next paragraph is heavily revised,
-    and the following example is new.}
 Example~\ref{weighingRowColumnProportions} points out
 that row and column proportions are not equivalent.
 Before settling on one form for a table,
