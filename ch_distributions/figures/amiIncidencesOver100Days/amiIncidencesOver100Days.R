@@ -1,11 +1,6 @@
 library(openintro)
-data(COL)
 
-set.seed(1)
-r <- 200 / 10^6
-N <- 8 * 10^6
-n <- 365
-x <- rpois(n, r * N / 365)
+x <- ami.occurrences$ami
 
 myPDF("amiIncidencesOver100Days.pdf", 5, 2.4,
        mar = c(1.6, 2.5, 0.5, 1))

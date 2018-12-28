@@ -72,6 +72,8 @@ We use the standard deviation as a guide. Ann is 1 standard deviation above aver
 \end{nexample}
 \end{examplewrap}
 
+\Comment{Update the SAT and ACT score distributions...}
+
 \begin{table}
 \centering
 \begin{tabular}{l r r}
@@ -463,10 +465,12 @@ There are two visual methods for checking the assumption of normality, which can
 \end{examplewrap}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{ch_distributions/figures/normalExamples/normalExamples}
-\caption{Histograms and normal probability plots for three simulated normal data sets; $n=40$ (left), $n=100$ (middle), $n=400$ (right).}
-\label{normalExamples}
+  \centering
+  \Figure{0.9}{normalExamples}
+  \caption{Histograms and normal probability plots for
+      three simulated normal data sets; $n=40$ (left),
+      $n=100$ (middle), $n=400$ (right).}
+  \label{normalExamples}
 \end{figure}
 
 \begin{examplewrap}
@@ -518,10 +522,11 @@ Determine which data sets represented in Figure~\ref{normalQuantileExer} plausib
 \footnotetext{Answers may vary a little. The top-left plot shows some deviations in the smallest values in the data set; specifically, the left tail of the data set has some outliers we should be wary of. The top-right and bottom-left plots do not show any obvious or extreme deviations from the lines for their respective sample sizes, so a normal model would be reasonable for these data sets. The bottom-right plot has a consistent curvature that suggests it is not from the normal distribution. If we examine just the vertical coordinates of these observations, we see that there is a lot of data between -20 and 0, and then about five observations scattered between 0 and 70. This describes a distribution that has a strong right skew.}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExer}
-\caption{Four normal probability plots for Guided Practice~\ref{normalQuantileExercise}.}
-\label{normalQuantileExer}
+  \centering
+  \Figure{0.8}{normalQuantileExer}
+  \caption{Four normal probability plots for
+      Guided Practice~\ref{normalQuantileExercise}.}
+  \label{normalQuantileExer}
 \end{figure}
 
 %When observations spike downwards on the left side of a normal probability plot, it means the data have more outliers in the left tail than we'd expect under a normal distribution. When observations spike upwards on the right side, it means the data have more outliers in the right tail than what we'd expect under the normal distribution.
@@ -535,10 +540,11 @@ Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two
 \footnotetext{Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is skewed to the high end. The second plot shows the opposite features, and this distribution is skewed to the low end.}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ch_distributions/figures/normalQuantileExer/normalQuantileExerAdditional}
-\caption{Normal probability plots for Guided Practice~\ref{normalQuantileExerciseAdditional}.}
-\label{normalQuantileExerAdditional}
+  \centering
+  \Figures{0.8}{normalQuantileExer}{normalQuantileExerAdditional}
+  \caption{Normal probability plots for
+      Guided Practice~\ref{normalQuantileExerciseAdditional}.}
+  \label{normalQuantileExerAdditional}
 \end{figure}
 
 
@@ -905,6 +911,8 @@ How many ways can you arrange one success and $n-1$ failures in $n$ trials? How 
 
 The binomial formula is cumbersome when the sample size ($n$) is large, particularly when we consider a range of observations. In some cases we may use the normal distribution as an easier and faster way to estimate binomial probabilities.
 
+\Comment{\href{https://www.cdc.gov/tobacco/data_statistics/fact_sheets/adult_data/cig_smoking/index.htm}{This page} suggests the actual smoking rate is now closer to 15.5\%.}
+
 \begin{examplewrap}
 \begin{nexample}{Approximately 20\% of the US population smokes cigarettes. A local government believed their community had a lower smoker rate and commissioned a survey of 400 randomly selected individuals. The survey found that only 59 of the 400 participants smoke cigarettes. If the true proportion of smokers in the community was really 20\%, what is the probability of observing 59 or fewer smokers in a sample of 400 people?}\label{exactBinomialForN400P20SmokerExample}
 We leave the usual verification that the four conditions for the binomial model are valid as an exercise.
@@ -1010,10 +1018,7 @@ The tip to add extra area when applying the normal approximation is most often u
 
 
 %_________________
-\section{More discrete distributions}
-\label{discreteModels}
-
-\subsection{Negative binomial distribution}
+\section{Negative binomial distribution}
 \label{negativeBinomial}
 
 \index{distribution!negative binomial|(}
@@ -1183,23 +1188,46 @@ On 70\% of days, a hospital admits at least one heart attack patient. On 30\% of
 \index{distribution!negative binomial|)}
 
 
-\subsection{Poisson distribution}
+
+
+%_________________
+\section{Poisson distribution}
 \label{poisson}
 
 \index{distribution!Poisson|(}
 
 \begin{examplewrap}
-\begin{nexample}{There are about 8 million individuals in New York City. How many individuals might we expect to be hospitalized for acute myocardial infarction (AMI), i.e. a heart attack, each day? According to historical records, the average number is about 4.4 individuals. However, we would also like to know the approximate distribution of counts. What would a histogram of the number of AMI occurrences each day look like if we recorded the daily counts over an entire year?} \label{amiIncidencesEachDayOver1YearInNYCExample}
-A histogram of the number of occurrences of AMI on 365 days for NYC is shown in Figure~\ref{amiIncidencesOver100Days}.\footnotemark The sample mean (4.38) is similar to the historical average of 4.4. The sample standard deviation is about 2, and the histogram indicates that about 70\% of the data fall between 2.4 and 6.4. The distribution's shape is unimodal and skewed to the right.
+\begin{nexample}{There are about 8 million individuals
+    in New York City.
+    How many individuals might we expect to be hospitalized
+    for acute myocardial infarction (AMI), i.e. a heart attack,
+    each day?
+    According to historical records, the average number is
+    about 4.4 individuals.
+    However, we would also like to know the approximate
+    distribution of counts.
+    What would a histogram of the number of AMI occurrences
+    each day look like if we recorded the daily counts over
+    an entire year?}
+  \label{amiIncidencesEachDayOver1YearInNYCExample}%
+  A histogram of the number of occurrences of AMI on 365 days
+  for NYC is shown in
+  Figure~\ref{amiIncidencesOver100Days}.\footnotemark{}
+  The sample mean (4.38) is similar to the historical average
+  of~4.4.
+  The sample standard deviation is about 2, and the histogram
+  indicates that about 70\% of the data fall between 2.4 and~6.4.
+  The distribution's shape is unimodal and skewed to the right.
 \end{nexample}
 \end{examplewrap}
 \footnotetext{These data are simulated. In practice, we should check for an association between successive days.}
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.6\textwidth]{ch_distributions/figures/amiIncidencesOver100Days/amiIncidencesOver100Days}
-\caption{A histogram of the number of occurrences of AMI on 365 separate days in NYC.}
-\label{amiIncidencesOver100Days}
+  \centering
+  \Figure{0.6}{amiIncidencesOver100Days}
+  \caption{A histogram of the number of occurrences
+      of AMI on 365 separate days in NYC.}
+  \label{amiIncidencesOver100Days}
 \end{figure}
 
 The \termsub{Poisson distribution}{distribution!Poisson} is often useful for estimating the number of events in a large population over a unit of time. For instance, consider each of the following events:

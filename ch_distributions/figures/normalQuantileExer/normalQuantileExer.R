@@ -1,7 +1,12 @@
 library(openintro)
 data(COL)
 
-source("normalQuantileExer-data.R")
+
+obs1 <- simulated_dist$d1
+obs2 <- simulated_dist$d2
+obs3 <- simulated_dist$d3
+obs4 <- simulated_dist$d4
+
 source("QQNorm.R")
 
 myPDF("normalQuantileExer.pdf", 6, 5.3,

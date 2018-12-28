@@ -1,7 +1,6 @@
 library(openintro)
-data(COL)
 
-source("fcidMHeights-data.R")
+obs <- male_heights_fcid$height_inch
 source("fcidMHeights-helpers.R")
 
 hold <- hist(obs, plot = FALSE)

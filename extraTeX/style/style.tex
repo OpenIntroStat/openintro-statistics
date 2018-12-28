@@ -149,8 +149,9 @@
 \thechapter}{20pt}{{\Huge #1}}
 % 5.2 Section
 \newcommand{\sectionheaderspaceA}{1mm}
+\newcommand{\clearpageforsection}{\clearpage}
 \let\oldsection\section
-\renewcommand\section{\clearpage\oldsection}
+\renewcommand\section{\clearpageforsection\oldsection}
 \titleformat{\section}
     {{\color{oiR}\titlerule[1mm]}\addvspace{\sectionheaderspaceA}\color{oiB}\normalfont\LARGE\bfseries%
         \fontfamily{phv}%
