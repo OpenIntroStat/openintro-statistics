@@ -41,9 +41,9 @@ Pew Research conducted a poll of 1000
 American adults' support of different forms of energy.
 They found that \pewsolarpollpercent{}\% of respondents
 favored expanding
-solar energy.\footnote{The full survey's sample size was 2541,
-and we've taken a subsample. To find the survey details, see\\
-\oiRedirect{textbook-pew_2018_poll_on_solar_and_wind_expansion}{www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient} [Make sure the redirect link actually works.]}
+solar energy. %\footnote{The full survey's sample size was 2541,
+%and we've taken a subsample. To find the survey details, see\\
+%\oiRedirect{textbook-pew_2018_poll_on_solar_and_wind_expansion}{www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient} [Make sure the redirect link actually works.]}
 A~natural question is,
 \begin{quote}
 If the poll was based on only a couple thousand people, how reliable is it?
@@ -207,7 +207,7 @@ that the histogram resembles a normal distribution.
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.8\textwidth]{ch_foundations_for_inf/figures/sampling_10k_prop_887p/sampling_10k_prop_887p}
+   \Figure{0.8}{sampling_10k_prop_887p}
    \caption{A histogram of 10,000 sample proportions, where each
        sample is taken from a population where the population
        proportion is \pewsolarpollprop{} and the sample size is
@@ -895,8 +895,7 @@ and was subsequently diagnosed with Ebola. Soon thereafter,
 an NBC~4 New York/The Wall Street Journal/Marist Poll found that
 \wsjebolapollpercent{}\% of New Yorkers favored a ``mandatory 21-day
 quarantine for anyone who has come in contact with an Ebola
-patient''.\footnote{\oiRedirect{textbook-maristpoll_ebola_201410}{Poll
-ID NY141026 on maristpoll.marist.edu}.} This poll included responses
+patient''. This poll included responses
 of \wsjebolapollsizecomma{} New York adults between
 Oct 26th and~28th, 2014.
 %We may want a confidence interval for the proportion of New York
@@ -1089,11 +1088,11 @@ population parameters.
 \index{hypothesis testing|(}
 
 \Comment{Update OpenIntro's site to handle all new redirect links,
-    many of which are currently broken in this edition.
-    Also mention the other authors.}
+    many of which are currently broken in this edition.}
 
-The following question comes from Hans Rosling's book
-\emph{\oiRedirect{amazon_factfulness}{Factfulness}}:
+The following question comes from a book written by
+Hans Rosling, Anna Rosling R{\"o}nnlund, and Ola Rosling
+called \emph{\oiRedirect{amazon_factfulness}{Factfulness}}:
 \begin{quote}{\em
   In the last 20 years the proportion of the
   world population living in extreme poverty has:
@@ -1221,7 +1220,7 @@ The null hypothesis often represents a skeptical position
 or a perspective of ``no difference''.
 In our first example, we'll consider whether
 the typical person does any different than random guessing
-on Rosling's question about how extreme poverty has changed
+on Roslings' question about how extreme poverty has changed
 in the last 20~years.
 
 The alternative hypothesis generally represents a new
@@ -1262,7 +1261,7 @@ Failing to find strong evidence for the alternative
 hypothesis is not equivalent to accepting
 the null hypothesis.
 
-When considering Rosling's question about extreme poverty,
+When considering Roslings' question about extreme poverty,
 the null hypothesis represents the notion that the people
 we will be considering -- college-educated adults --
 are as accurate as random guessing.
@@ -1302,7 +1301,7 @@ That is, in this case, the null value is $p_0 = 0.333$.
   \emph{exactly} 33.3\%, that doesn't really tell us anything
   useful! We would still be stuck with the original question:
   do people do better or worse than random guessing on
-  Rosling's question?
+  Roslings' question?
   Without data that strongly
   points in one direction or the other, it is both
   uninteresting and pointless to reject $H_0$.
@@ -1439,7 +1438,7 @@ and we do not reject the null hypothesis,~$H_0$.
 
 \begin{exercisewrap}
 \begin{nexercise}\label{roslingB_hypothesis_setup}%
-Let's move onto a second question posed by Hans Rosling:
+Let's move onto a second question posed by the Roslings:
 \begin{quote}{\em
   There are 2 billion children in the world today
   aged 0-15 years old, how many children will there
@@ -1546,13 +1545,13 @@ the normal distribution for $\hat{p}$: \\
 \end{examplewrap}
 
 This data from this second question is not a fluke:
-Hans Rosling has several such questions
+the Roslings have several such questions similar
 to the two we've so far discussed where people
 actually do worse than random guessing.
 In general, the answers suggest that people tend to be
 more pessimistic about progress than reality suggests.
 This topic is discussed in much greater detail in
-Rosling's book,
+the Roslings' book,
 \emph{\oiRedirect{amazon_factfulness}{Factfulness}}.
 
 
@@ -1994,7 +1993,7 @@ question.\footnotemark
     \gallupnucleararmspollsize{} US adults
     in March 2013 found that
     \gallupnucleararmspollpercent{}\% support nuclear arms
-    reduction.\footnotemark
+    reduction.
     Does this provide convincing evidence that a majority
     of Americans supported nuclear arms reduction at the
     5\% significance level?} \label{NuclearArmsInferenceExample}
@@ -2046,7 +2045,6 @@ question.\footnotemark
   in March 2013.
 \end{nexample}
 \end{examplewrap}
-\footnotetext{\oiRedirect{textbook-nuclear_arms_reduction_201303}{www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}}
 
 \index{data!nuclear arms reduction|)}
 
@@ -2266,7 +2264,7 @@ highlights that using a one-sided hypothesis creates
 a risk of overlooking data supporting the opposite
 conclusion.
 We could have made a similar error when reviewing
-the Hans Rosling question data this section;
+the Roslings' question data this section;
 if we had such a pre-conceived notion that
 college-educated folks wouldn't do worse than random
 guessing and so used a one-sided test,

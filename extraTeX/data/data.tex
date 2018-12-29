@@ -66,7 +66,7 @@ on these pages.
     Data prior to 2011 is all from
     \href{http://census.gov}{census.gov},
     where the specific Quick Facts page providing the data
-    is no longer online.
+    is no longer available.
     The more recent data comes from
     \href{https://www.ers.usda.gov/data-products/county-level-data-sets/download-data/}
         {USDA (ers.usda.gov)},
@@ -197,9 +197,11 @@ on these pages.
 \label{ch_distributions_data}
 
 \begin{itemize}
-\item[SAT and ACT score distributions]
+\item[\ref{normalDist}]
+    [SAT and ACT score distributions]
     \Comment{Would be nice to add something here...}
-\item[Male heights]
+\item[\ref{normalDist}]
+    [Male heights]
     The distribution is based on the
     USDA Food Commodity Intake Database.
 \item[\ref{normalDist}]
@@ -270,7 +272,261 @@ on these pages.
 
 
 
+\section{\nameref{ch_foundations_for_inf}}
+\label{ch_foundations_for_inf_data}
+
 \begin{itemize}
+\item[\ref{pointEstimates}]
+    [\datalink{pew\_energy\_2018}]
+    The actual data has more observations than were referenced
+    in this chapter.
+    That is, we used a subsample since it helped smooth some
+    of the examples to have a bit more variability.
+    The \data{pew\us{}energy\us{}2018} data set represents
+    the full data set for each of the different energy source
+    questions, which covers solar, wind, offshore drilling,
+    hydrolic fracturing, and nuclear energy.
+    The statistics used to construct the data are from
+    the following page:
+    \begin{center}
+    \oiRedirect{textbook-pew_2018_poll_on_solar_and_wind_expansion}
+        {{\small{www.pewinternet.org/2018/05/14/majorities-see-government-efforts-to-protect-the-environment-as-insufficient/}}}
+    \end{center}
+    
+\item[\ref{confidenceIntervals}]
+    [\datalink{pew\_energy\_2018}]
+    See the details for this data set above
+    in the Section~\ref{pointEstimates} data section.
+\item[\ref{confidenceIntervals}]
+    [\datalink{ebola\_survey}]
+    In New York City on October 23rd, 2014, a doctor who had
+    recently been treating Ebola patients in Guinea went to
+    the hospital with a slight fever and was subsequently
+    diagnosed with Ebola.
+    Soon thereafter, an NBC~4 New York/The Wall Street
+    Journal/Marist Poll found that
+    \wsjebolapollpercent{}\% of New Yorkers favored a
+    ``mandatory 21-day quarantine for anyone who has come
+    in contact with an Ebola patient''.
+    This poll included responses of \wsjebolapollsizecomma{}
+    New York adults between Oct 26th and~28th, 2014.
+    \oiRedirect{textbook-maristpoll_ebola_201410}
+        {Poll ID NY141026 on maristpoll.marist.edu}.
+
+\item[\ref{hypothesisTesting}]
+    [\datalink{pew\_energy\_2018}]
+    See the details for this data set above
+    in the Section~\ref{pointEstimates} data section.
+\item[\ref{hypothesisTesting}]
+    [Rosling questions]
+    We noted much smaller samples than the Roslings'
+    describe in their book,
+    \oiRedirect{amazon_factfulness}{Factfulness},
+    The samples we describe are similar but not
+    the same as the actual rates.
+    The approximate rates for the correct answers for the
+    two questions for (sometimes different) populations
+    discussed in the book, as reported in
+    \oiRedirect{amazon_factfulness}{Factfulness},
+    are
+    \begin{itemize}
+    \item
+        Extreme poverty halved in the last 20 years:
+        7\% get this correct.
+        \oiRedirect{gapm-io-q3}{gapm.io/q3}
+    \item
+        Number of children in the world in 2100:
+        9\% correct.
+        \oiRedirect{gapm-io-q5}{gapm.io/q5}
+    \end{itemize}
+    Here are a few more questions and a rough percent
+    of people who get them correct:
+    \begin{itemize}
+    \item
+        In all low-income countries across the world today,
+        how many girls finish primary school: 20\%, 40\%, or 60\%?
+        Answer: 60\%.
+        About 7\% of people get this question correct.
+        \oiRedirect{gapm-io-q1}{gapm.io/q1}
+    \item
+        What is the life expectancy of the world today:
+        50 years, 60 years, or 70 years?
+        Answer: 70 years.
+        In the US, about 43\% of people get this question correct.
+        \oiRedirect{gapm-io-q4}{gapm.io/q4}
+    \item
+        How many of the world's 1 year old children today
+        have been vaccinated against some disease:
+        20\%, 50\%, or 80\%?
+        Answer: 80\%.
+        About 13\% of people get this question correct.
+        \oiRedirect{gapm-io-q9}{gapm.io/q9}
+    \item
+        In 1996, tigers, giant pandas, and black rhinos
+        were all listed as endangered.
+        How many of these three species are more
+        critically endangered today:
+        two of them,
+        one of them,
+        none of them?
+        Answer: none of them.
+        About 7\% of people get this question correct.
+        \oiRedirect{gapm-io-q11}{gapm.io/q11}
+    \item
+        How many people in the world have some access
+        to electricity? 20\%, 50\%, 80\%.
+        Answer: 80\%.
+        About 22\% of people get this correct.
+        \oiRedirect{gapm-io-q12}{gapm.io/q12}
+    \end{itemize}
+    For more information, check out the book,
+    \oiRedirect{amazon_factfulness}{Factfulness}.
+\item[\ref{hypothesisTesting}]
+    [\datalink{nuclear\_survey}]
+    A simple random sample of 1,028 US adults in March 2013
+    found that 56\% of US adults support nuclear arms reduction.
+    \oiRedirect{textbook-nuclear_arms_reduction_201303}
+        {www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}
+\item[\ref{hypothesisTesting}]
+    [\datalink{stent30}, \datalink{stent365}]
+    See the details for this data set above
+    in the Section~\ref{basicExampleOfStentsAndStrokes}
+    data section.
+
+\end{itemize}
+
+
+
+
+
+
+
+\section{\nameref{ch_inference_for_props}}
+\label{ch_inference_for_props_data}
+
+\begin{itemize}
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\end{itemize}
+
+
+
+
+
+
+\section{\nameref{ch_inference_for_means}}
+\label{ch_inference_for_means_data}
+
+\begin{itemize}
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\end{itemize}
+
+
+
+
+
+
+\section{\nameref{ch_regr_simple_linear}}
+\label{ch_regr_simple_linear_data}
+
+\begin{itemize}
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\item[\ref{}]
+    [\datalink{}]
+    
+
+\end{itemize}
+
+
+
+
+
+
+
+\section{\nameref{ch_regr_mult_and_log}}
+\label{ch_regr_mult_and_log_data}
+
+\begin{itemize}
+\item[\ref{}]
+    [\datalink{}]
+    
+
 \item[\ref{}]
     [\datalink{}]
     

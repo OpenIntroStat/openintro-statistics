@@ -12,7 +12,7 @@ mean(results)
 sd(results)
 
 myPDF('sampling_10k_prop_887p.pdf', 6.5, 3.2,
-    mar = c(3.5, 3.5, 0.7, 0.7),
+    mar = c(3.5, 3.5, 1.8, 0.7),
     mgp = c(2.3, 0.6, 0),
     yaxs = "i")
 histPlot(results,
