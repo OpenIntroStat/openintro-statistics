@@ -203,7 +203,7 @@ Dolphins are at the top of the oceanic food chain, which causes dangerous substa
 \end{figure}
 \setlength{\captionwidth}{\mycaptionwidth}
 
-Here we identify a confidence interval for the average mercury content in dolphin muscle using a sample of 19 Risso's dolphins from the Taiji area in Japan.\footnote{Taiji was featured in the movie \emph{The Cove}, and it is a significant source of dolphin and whale meat in Japan. Thousands of dolphins pass through the Taiji area annually, and we will assume these 19 dolphins represent a simple random sample from those dolphins. Data reference: Endo T and Haraguchi K. 2009. High mercury levels in hair samples from residents of Taiji, a Japanese whaling town. Marine Pollution Bulletin 60(5):743-747.} The data are summarized in Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. The minimum and maximum observed values can be used to evaluate whether or not there are obvious outliers or skew.
+Here we identify a confidence interval for the average mercury content in dolphin muscle using a sample of 19 Risso's dolphins from the Taiji area in Japan. The data are summarized in Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}. The minimum and maximum observed values can be used to evaluate whether or not there are obvious outliers or skew.
 
 \begin{figure}[h]
 \centering
@@ -266,7 +266,7 @@ where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confiden
 \begin{exercisewrap}
 \begin{nexercise} \label{croakerWhiteFishPacificExerConditions}
 \index{data!white fish and mercury|(}
-The FDA's webpage provides some data on mercury content of fish.\footnote{\oiRedirect{textbook-fda_mercury_in_fish_2010}{www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}} Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?\footnotemark
+The FDA's webpage provides some data on mercury content of fish. Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.}
@@ -300,7 +300,7 @@ Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions}
 \newcommand{\cherryblossomse}{1.70}
 \newcommand{\cherryblossomz}{2.37}
 
-Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each~spring.\footnote{\oiRedirect{textbook-cherryblossom_org}{www.cherryblossom.org}}
+Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each~spring.
 
 The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from \cherryblossomn{} participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
 
@@ -356,9 +356,6 @@ To help us remember to use the $t$-distribution, we use a $T$ to represent the t
 \index{paired data|(}
 \index{data!textbooks|(}
 
-\Comment{The data here has been updated,
-  and meaningful updates to the text have been made.}
-
 \noindent%
 In earlier editions of this textbook,
 we found that Amazon prices were, on average,
@@ -380,10 +377,10 @@ where prices are in US dollars.
 \begin{tabular}{r ll ccc}
   \hline
  & subject &
-     course\_\hspace{0.3mm}num &
-     bookstore\_\hspace{0.3mm}new &
-     amazon\_\hspace{0.3mm}new &
-     price\_\hspace{0.3mm}diff \\ 
+     course\us{}num &
+     bookstore\us{}new &
+     amazon\us{}new &
+     price\us{}diff \\ 
   \hline
   1 & African American Studies & 19 & 6.97 & 7.94 & -0.97 \\ 
   2 & American Indian Studies & M10 & 47.97 & 47.45 & 0.52 \\ 
@@ -627,7 +624,7 @@ We apply these methods in three contexts: determining whether stem cells can imp
 \index{data!stem cells, heart function|(}
 \index{point estimate!difference of means|(}
 
-Does treatment using embryonic stem cells (ESCs) help improve heart function following a heart attack?\footnote{\href{https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(05)67380-1/fulltext}{Menard C, et al. 2005. Transplantation of cardiac-committed mouse embryonic stem cells to infarcted sheep myocardium: a preclinical study. The Lancet: 366:9490, p1005-1012.}}
+Does treatment using embryonic stem cells (ESCs) help improve heart function following a heart attack?
 Figure~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured in the study. A~positive value corresponds to increased pumping capacity, which generally suggests a stronger recovery. Our goal will be to identify a 95\% confidence interval for the effect of ESCs on the change in heart pumping capacity relative to the control group.
 
 A point estimate of the difference in the heart pumping variable can be found using the difference in the sample means:
@@ -736,7 +733,7 @@ We are 95\% confident that embryonic stem cells improve the heart's pumping func
 
 \index{data!baby\_smoke|(}
 
-A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Figure~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
+A data set called \data{ncbirths} represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Figure~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
 
 \begin{figure}[h]
 \centering
@@ -751,7 +748,7 @@ A data set called \data{baby\_\hspace{0.3mm}smoke} represents a random sample of
   150 & 45 & 50 &  36 & 9.25 & female & nonsmoker \\ 
    \hline
 \end{tabular}
-\caption{Four cases from the \data{baby\_\hspace{0.3mm}smoke} data set. The value ``NA'', shown for the first two entries of the first variable, indicates that piece of data is missing.}
+\caption{Four cases from the \data{ncbirths} data set. The value ``NA'', shown for the first two entries of the first variable, indicates that piece of data is missing.}
 \label{babySmokeDF}
 \end{figure}
 
@@ -787,7 +784,7 @@ st. dev. & 1.43 & 1.60 \\
 samp. size & 50 & 100 \\
 \hline
 \end{tabular}
-\caption{Summary statistics for the \data{baby\_\hspace{0.3mm}smoke} data set.}
+\caption{Summary statistics for the \data{ncbirths} data set.}
 \label{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}
 \end{figure}
 
@@ -950,19 +947,18 @@ SE_{\bar{x}_1} = \frac{s_1}{\ \sqrt{n_1}\ }
 where $s_1$ and $n_1$ represent the sample standard deviation and sample size.
 
 The standard error of the difference of two sample means can be constructed from the standard errors of the separate sample means:
-\begin{eqnarray}
+\begin{align*}
 SE_{\bar{x}_{1} - \bar{x}_{2}}
 	= \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
 	= \sqrt{\frac{s_1^2}{{n_1}} + \frac{s_2^2}{{n_2}}}
-\label{seOfDiffOfMeansInTermsOfSEOfIndividualMeans}
-\end{eqnarray}
+\end{align*}
 This special relationship follows from probability theory.
 
 \begin{exercisewrap}
 \begin{nexercise}
 \label{derivingSEForDiffOfTwoMeansExercise}%
 Prerequisite: Section~\ref{randomVariablesSection}.
-We can rewrite Equation~(\ref{seOfDiffOfMeansInTermsOfSEOfIndividualMeans}) in a different way:
+We can rewrite the equation above in a different way:
 \begin{eqnarray*}
 SE_{\bar{x}_{1} - \bar{x}_{2}}^2 = SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2
 \end{eqnarray*}
@@ -1247,10 +1243,10 @@ Any real difference in the means of groups I, II, and III is difficult to discer
 \end{examplewrap}
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.68\textwidth]{ch_inference_for_means/figures/toyANOVA/toyANOVA}
-\caption{Side-by-side dot plot for the outcomes for six groups.}
-\label{toyANOVA}
+  \centering
+  \Figure{0.68}{toyANOVA}
+  \caption{Side-by-side dot plot for the outcomes for six groups.}
+  \label{toyANOVA}
 \end{figure}
 
 

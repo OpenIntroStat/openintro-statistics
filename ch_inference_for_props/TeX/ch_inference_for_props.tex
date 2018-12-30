@@ -196,8 +196,8 @@ of regulation?
 \begin{nexercise}
 \label{paydayCC_hypotheses_gp}%
 Set up hypotheses to evaluate whether borrowers
-have a majority support for this type of
-regulation.\footnotemark
+have a majority support or majority opposition for this
+type of regulation.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$H_0$: $p = 0.50$. $H_A$: $p \neq 0.50$.}
@@ -513,11 +513,7 @@ in this case, just as it did in the one-proportion case:
 \begin{nexample}{We consider an experiment for patients
     who underwent CPR for a heart attack and were
     subsequently admitted to a
-    hospital.\footnote{\emph{Efficacy and safety of
-      thrombolytic therapy after initially unsuccessful
-      cardiopulmonary resuscitation: a prospective
-      clinical trial}, by B$\ddot{\text{o}}$ttiger et al.,
-      The Lancet, 2001.}
+    hospital.
     These patients were randomly divided into a treatment
     group where they received a blood thinner or the control
     group where they did not receive a blood thinner.
@@ -598,9 +594,7 @@ Total			&& 25		& 65		&& 90 \\
 
 \begin{exercisewrap}
 \begin{nexercise}
-A 5-year experiment\footnote{Manson JE, et al. 2018.
-    Marine n?3 Fatty Acids and Prevention of
-    Cardiovascular Disease and Cancer. NEJMoa1811403.}
+A 5-year experiment
 was conducted to evaluate the effectiveness
 of fish oils on reducing cardiovascular events,
 where each subject was randomized into one of two
@@ -665,7 +659,7 @@ study.\footnotemark
 
 A mammogram is an X-ray procedure used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it's the topic of our next example where we examine 2-proportion hypothesis test when $H_0$~is~$p_1 - p_2 = 0$ (or equivalently, $p_1 = p_2$).
 
-A 30-year study was conducted with nearly 90,000 female participants.\footnote{\oiRedirect{textbook-90k_mammogram_study_2014}{Miller AB. 2014. \emph{Twenty five year follow-up for breast cancer incidence and mortality of the Canadian National Breast Screening Study: randomised screening trial}. BMJ 2014;348:g366.}} During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure~\ref{mammogramStudySummaryTable}.
+A 30-year study was conducted with nearly 90,000 female participants. During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure~\ref{mammogramStudySummaryTable}.
 
 If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On~the other hand, if mammograms are not as effective as regular breast cancer exams, we~would expect to see an increase in breast cancer deaths in the mammogram group.
 
@@ -811,7 +805,22 @@ These considerations highlight the complexity around medical care and treatment 
 
 \subsection{More on 2-proportion hypothesis tests (special topic)}
 
-When we conduct a 2-proportion hypothesis test, usually $H_0$ is $p_1 - p_2 = 0$. However, there are rare situations where we want to check for some difference in $p_1$ and $p_2$ that is some value other than 0. For example, maybe we care about checking a null hypothesis where $p_1 - p_2 = 0.1$.\footnote{We can also encounter a similar situation with a difference of two means, though no such example was given in Chapter~\ref{inferenceForNumericalData} since the methods remain exactly the same in the context of sample means. On the other hand, the success-failure condition and the calculation of the standard error vary slightly in different proportion contexts.} In contexts like these, we generally use $\hat{p}_1$ and $\hat{p}_2$ to check the success-failure condition and construct the standard error.
+When we conduct a 2-proportion hypothesis test,
+usually $H_0$ is $p_1 - p_2 = 0$. However, there are rare
+situations where we want to check for some difference in
+$p_1$ and $p_2$ that is some value other than 0.
+For example, maybe we care about checking a null hypothesis
+where $p_1 - p_2 = 0.1$.\footnote{We can
+  also encounter a similar situation with a difference of
+  two means, though no such example is given in
+  Chapter~\ref{inferenceForNumericalData} since the methods
+  remain exactly the same in the context of sample means.
+  On the other hand, the success-failure condition and the
+  calculation of the standard error vary slightly in different
+  proportion contexts.}
+In contexts like these, we generally use $\hat{p}_1$ and
+$\hat{p}_2$ to check the success-failure condition and
+construct the standard error.
 
 \begin{exercisewrap}
 \begin{nexercise}\label{carWheelBladeManufacturer}

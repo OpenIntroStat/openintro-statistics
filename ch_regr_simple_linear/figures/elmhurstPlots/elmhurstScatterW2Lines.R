@@ -1,6 +1,4 @@
 library(openintro)
-data(COL)
-data(elmhurst)
 d <- elmhurst
 
 g <- lm(d$gift_aid ~ d$family_income)

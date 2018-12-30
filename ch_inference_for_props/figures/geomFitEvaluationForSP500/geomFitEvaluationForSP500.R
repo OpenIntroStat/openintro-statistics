@@ -1,5 +1,5 @@
 library(openintro)
-d <- read.csv("sp500_1950_2018.csv")
+d <- sp500_1950_2018  # read.csv("sp500_1950_2018.csv")
 d <- subset(d, "2009-01-01" <= as.Date(Date) & as.Date(Date) <= "2018-12-31")
 d. <- diff(d$Adj.Close)
 mean(d. > 0)

@@ -15,8 +15,14 @@ Imagine what a perfect linear relationship would mean: you would know the exact 
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.65\textwidth]{ch_regr_simple_linear/figures/perfLinearModel/perfLinearModel}
-   \caption{Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker \texttt{TGT}, April 26th, 2012), and the total cost of the shares were reported. Because the cost is computed using a linear formula, the linear fit is perfect.}
+   \Figure{0.65}{perfLinearModel}
+   \caption{Requests from twelve separate buyers were
+       simultaneously placed with a trading company to purchase
+       Target Corporation stock
+       (ticker \texttt{TGT}, December 28th, 2018),
+       and the total cost of the shares were reported.
+       Because the cost is computed using a linear formula,
+       the linear fit is perfect.}
    \label{perfLinearModel}
 \end{figure}
 
@@ -66,8 +72,9 @@ with estimates of model parameters.
 
 \begin{figure}
    \centering
-   \includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/imperfLinearModel/imperfLinearModel}
-   \caption{Three data sets where a linear model may be useful even though the data do not all fall exactly on the line.}
+   \Figure{}{imperfLinearModel}
+   \caption{Three data sets where a linear model may be useful
+       even though the data do not all fall exactly on the line.}
    \label{imperfLinearModel}
 \end{figure}
 
@@ -75,8 +82,9 @@ We will also see examples in this chapter where fitting a straight line to the d
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/notGoodAtAllForALinearModel/notGoodAtAllForALinearModel}
-   \caption{A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment.}
+   \Figure{0.9}{notGoodAtAllForALinearModel}
+   \caption{A linear model is not useful in this nonlinear case.
+       These data are from an introductory physics experiment.}
    \label{notGoodAtAllForALinearModel}
 \end{figure}
 
@@ -85,8 +93,7 @@ We will also see examples in this chapter where fitting a straight line to the d
 
 
 %__________________
-\section%[Line fitting, residuals, and correlation]
-    {Line fitting, residuals, and correlation}% \sectionvideohref{youtube-mPvtZhdPBhQ&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}~\sectionslideshref{gdoc_os3_slides_7-1}}
+\section{Line fitting, residuals, and correlation}
 \label{lineFittingResidualsCorrelation}
 
 It is helpful to think deeply about the line fitting process. In this section, we examine criteria for identifying a linear model and introduce a new statistic, \emph{correlation}.
@@ -227,7 +234,7 @@ The last plot shows very little upwards trend, and the residuals also show no ob
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.95\textwidth]{ch_regr_simple_linear/figures/sampleLinesAndResPlots/sampleLinesAndResPlots}
+   \Figure{0.95}{sampleLinesAndResPlots}
    \caption{Sample data with their best fitting lines (top row) and their corresponding residual plots (bottom row).}
    \label{sampleLinesAndResPlots}
 \end{figure}
@@ -249,8 +256,14 @@ where $\bar{x}$, $\bar{y}$, $s_x$, and $s_y$ are the sample means and standard d
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.95\textwidth]{ch_regr_simple_linear/figures/posNegCorPlots/posNegCorPlots}
-   \caption{Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.}
+   \Figure{0.95}{posNegCorPlots}
+   \caption{Sample scatterplots and their correlations.
+       The first row shows variables with a positive
+       relationship, represented by the trend up and to
+       the right.
+       The second row shows variables with a negative trend,
+       where a large value in one variable is associated with
+       a low value in the other.}
    \label{posNegCorPlots}
 \end{figure}
 
@@ -259,7 +272,11 @@ The correlation is intended to quantify the strength of a linear trend. Nonlinea
 \begin{figure}
    \centering
    \Figures{0.9}{posNegCorPlots}{corForNonLinearPlots}
-   \caption{Sample scatterplots and their correlations. In each case, there is a strong relationship between the variables. However, the correlation is not very strong, and the relationship is not linear.}
+   \caption{Sample scatterplots and their correlations.
+       In each case, there is a strong relationship between
+       the variables.
+       However, the correlation is not very strong,
+       and the relationship is not linear.}
    \label{corForNonLinearPlots}
 \end{figure}
 
@@ -273,21 +290,23 @@ It appears no straight line would fit any of the datasets represented in Figure~
 
 
 %__________________
-\section%[Fitting a line by least squares regression]
-    {Fitting a line by least squares regression}% \sectionvideohref{youtube-z8DmwG2G4Qc&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}~\sectionslideshref{gdoc_os3_slides_7-2}}
+\section{Fitting a line by least squares regression}
 \label{fittingALineByLSR}
 
 \index{least squares regression|(}
 
 Fitting linear models by eye is open to criticism since it is based on an individual preference. In this section, we use \emph{least squares regression} as a more rigorous approach.
 
-This section considers family income and gift aid data from a random sample of fifty students in the 2011 freshman class of Elmhurst College in Illinois.\footnote{These data were sampled from a table of data for all freshman from the 2011 class at Elmhurst College that accompanied an article titled \emph{What Students Really Pay to Go to College} published online by \emph{The~Chronicle of Higher Education}: \oiRedirect{textbook-chronicle_elmhurst_article}{chronicle.com/article/What-Students-Really-Pay-to-Go/131435}} Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
+This section considers family income and gift aid data from a random sample of fifty students in the 2011 freshman class of Elmhurst College in Illinois. Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure~\ref{elmhurstScatterW2Lines} along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/elmhurstPlots/elmhurstScatterW2Lines}
-\caption{Gift aid and family income for a random sample of 50 freshman students from Elmhurst College. Two lines are fit to the data, the solid line being the \emph{least squares line}.}
-\label{elmhurstScatterW2Lines}
+  \centering
+  \Figures{0.75}{elmhurstPlots}{elmhurstScatterW2Lines}
+  \caption{Gift aid and family income for a random sample of
+      50~freshman students from Elmhurst College.
+      Two lines are fit to the data, the solid line being the
+      \emph{least squares line}.}
+  \label{elmhurstScatterW2Lines}
 \end{figure}
 
 \begin{exercisewrap}
@@ -332,10 +351,19 @@ When this condition is found to be unreasonable, it is usually because of outlie
 \end{description}
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/whatCanGoWrongWithLinearModel/whatCanGoWrongWithLinearModel}
-\caption{Four examples showing when the methods in this chapter are insufficient to apply to the data. In the left panel, a straight line does not fit the data. In the second panel, there are outliers; two points on the left are relatively distant from the rest of the data, and one of these points is very far away from the line. In the third panel, the variability of the data around the line increases with larger values of $x$. In the last panel, a time series data set is shown, where successive observations are highly correlated.}
-\label{whatCanGoWrongWithLinearModel}
+  \centering
+  \Figure{}{whatCanGoWrongWithLinearModel}
+  \caption{Four examples showing when the methods in this
+      chapter are insufficient to apply to the data.
+      In the left panel, a straight line does not fit the data.
+      In the second panel, there are outliers; two points on
+      the left are relatively distant from the rest of the data,
+      and one of these points is very far away from the line.
+      In the third panel, the variability of the data around the
+      line increases with larger values of $x$.
+      In the last panel, a time series data set is shown,
+      where successive observations are highly correlated.}
+  \label{whatCanGoWrongWithLinearModel}
 \end{figure}
 
 \begin{exercisewrap}
@@ -549,13 +577,24 @@ If a linear model has a very strong negative relationship with a correlation of 
 \subsection{Categorical predictors with two levels}
 \label{categoricalPredictorsWithTwoLevels}
 
-Categorical variables are also useful in predicting outcomes. Here we consider a categorical predictor with two levels (recall that a \emph{level} is the same as a \emph{category}). We'll consider Ebay auctions for a video game, \emph{Mario Kart} for the Nintendo Wii, where both the total price of the auction and the condition of the game were recorded.\footnote{These data were collected in Fall 2009 and may be found at \oiRedirect{textbook-openintro}{openintro.org}.} Here we want to predict total price based on game condition, which takes values \resp{used} and \resp{new}. A plot of the auction data is shown in Figure~\ref{marioKartNewUsed}.
+Categorical variables are also useful in predicting outcomes.
+Here we consider a categorical predictor with two levels
+(recall that a \emph{level} is the same as a \emph{category}).
+We'll consider Ebay auctions for a video game, \emph{Mario Kart}
+for the Nintendo Wii, where both the total price of the auction
+and the condition of the game were recorded.
+Here we want to predict total price based on game condition,
+which takes values \resp{used} and \resp{new}.
+A plot of the auction data is shown in Figure~\ref{marioKartNewUsed}.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.65\textwidth]{ch_regr_simple_linear/figures/marioKartNewUsed/marioKartNewUsed}
-\caption{Total auction prices for the video game \emph{Mario Kart}, divided into used ($x=0$) and new ($x=1$) condition games. The least squares regression line is also shown.}
-\label{marioKartNewUsed}
+  \centering
+  \Figure{0.65}{marioKartNewUsed}
+  \caption{Total auction prices for the video game
+      \emph{Mario Kart}, divided into used ($x=0$)
+      and new ($x=1$) condition games.
+      The least squares regression line is also shown.}
+  \label{marioKartNewUsed}
 \end{figure}
 
 To incorporate the game condition variable into a regression equation, we must convert the categories into a numerical form. We will do so using an \term{indicator variable} called \var{cond\_\hspace{0.3mm}new}, which takes value 1 when the game is new and 0 when the game is used. Using this indicator variable, the linear model may be written as
@@ -607,8 +646,7 @@ multiple regression\index{multiple regression}.
 
 
 %__________________
-\section%[Types of outliers in linear regression]
-    {Types of outliers in linear regression}% \sectionvideohref{youtube-jZEKAlo1E54&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}~\sectionslideshref{gdoc_os3_slides_7-3}}
+\section{Types of outliers in linear regression}
 \label{typesOfOutliersInLinearRegression}
 
 In this section, we identify criteria for determining which outliers are important and influential. Outliers in regression are observations that fall far from the ``cloud'' of points. These points are especially important because they can have a strong influence on the least squares line. 
@@ -658,8 +696,7 @@ It is tempting to remove outliers. Don't do this without a very good reason. Mod
 
 
 %__________________
-\section%[Inference for linear regression]
-{Inference for linear regression}% \sectionvideohref{youtube-depiT-hTaGA&list=PLkIselvEzpM63ikRfN41DNIhSgzboELOM}~\sectionslideshref{gdoc_os3_slides_7-4}}
+\section{Inference for linear regression}
 \label{inferenceForLinearRegression}
 
 In this section we discuss uncertainty in the estimates of the slope and y-intercept for a regression line. Just as we identified standard errors for point estimates in previous chapters, we first discuss standard errors for these new estimates. However, in the case of regression, we will identify standard errors using statistical software.
