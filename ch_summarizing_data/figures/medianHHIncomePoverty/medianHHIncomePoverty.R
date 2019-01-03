@@ -1,6 +1,5 @@
 library(openintro)
-data(county)
-data(COL)
+library(splines)
 
 ind <- 1088
 
@@ -29,11 +28,20 @@ t2 <- y[ind]
 # lines(c(t1, t1), c(-1e5, t2), lty = 2, col = COL[4])
 # lines(c(-1e5, t1), c(t2, t2), lty = 2, col = COL[4])
 # points(t1, t2, col = COL[4])
-m <- lm(y ~ I(1 / x))
+my_exp <- 1.2
+(m <- lm(y ~ I(1 / x^my_exp) + I(x^0.3)))
+(m <- lm(y ~ x + I(x^2) + I(x^3)))
 x. <- seq(0.1, 100, 0.1)
-y. <- m$coef[1] + m$coef[2] / x.
-lines(x., y., lty = 2, lwd = 2, col = "white")
-lines(x., y., lty = 2, lwd = 1, col = COL[5])
+y. <- m$coef[1] + m$coef[2] / x.^my_exp + m$coef[3] * x.^0.3
+y. <- m$coef[1] + m$coef[2] * x. + m$coef[3] * x.^2 + m$coef[4] * x.^3
+i <- 350
+m. <- (y.[i] - y.[i-1]) / 0.1
+b. <- y.[i] - m. * i / 10
+y.[i:1000] <- m. * x.[i:1000] + b.
+y. <- y.[x. > 1.8]
+x. <- x.[x. > 1.8]
+lines(x., y., lwd = 1.5, col = COL[7, 1])
+lines(x., y., lty = 2, lwd = 1.5, col = COL[5])
 
 dev.off()
 

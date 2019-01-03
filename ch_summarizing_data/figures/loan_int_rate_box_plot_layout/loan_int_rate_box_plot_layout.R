@@ -5,7 +5,7 @@ the.seed <- 2
 
 myPDF("loan_int_rate_box_plot_layout.pdf", 5.5, 3.8,
       mar = c(0, 4, 0, 1),
-      mgp = c(2.8, 0.7, 0))
+      mgp = c(2.8, 0.55, 0))
 boxPlot(d,
         ylab = 'Interest Rate',
         xlim = c(0.3, 3),

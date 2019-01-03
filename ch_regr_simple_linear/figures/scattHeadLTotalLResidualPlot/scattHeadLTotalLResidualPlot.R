@@ -2,7 +2,7 @@ require(openintro)
 data(COL)
 data(possum)
 
-myPDF('scattHeadLTotalLResidualPlot.pdf', 6.51, 3.786,
+myPDF('scattHeadLTotalLResidualPlot.pdf', 5.5, 2.7,
       mar = c(3, 3, 0.5, 1),
       mgp = c(1.8, 0.6, 0))
 these <- c(48, 42, 3)

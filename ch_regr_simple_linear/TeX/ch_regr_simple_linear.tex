@@ -5,17 +5,52 @@
 
 \index{linear regression|textbf}
 
-Linear regression is a very powerful statistical technique. Many people have some familiarity with regression just from reading the news, where graphs with straight lines are overlaid on scatterplots. Linear models can be used for prediction or to evaluate whether there is a linear relationship between two numerical variables.
+Linear regression is a very powerful statistical technique.
+Many people have some familiarity with regression just from
+reading the news, where graphs with straight lines are overlaid
+on scatterplots.
+Linear models can be used for prediction or to evaluate whether
+there is a linear relationship between two numerical variables.
 
-Figure~\ref{perfLinearModel} shows two variables whose relationship can be modeled perfectly with a straight line. The equation for the line is
+
+
+%__________
+\section{Fitting a line, residuals, and correlation}
+% \section{Using a line to model data}
+\label{fitting_line_to_data_section}
+
+It's helpful to think deeply about the line fitting process.
+In this section, we define the form of a linear model,
+explore criteria for what makes a good fit,
+and introduce a new statistic called
+\emph{correlation}\index{correlation}.
+
+\Comment{Subsection titles need work.}
+
+
+\subsection{Fitting a line to data}
+
+Figure~\ref{perfLinearModel} shows two variables whose
+relationship can be modeled perfectly with a straight line.
+The equation for the line is
 \begin{eqnarray*}
-y = 5 + 57.49x
+y = 5 + 64.96 x
 \end{eqnarray*}
-Imagine what a perfect linear relationship would mean: you would know the exact value of $y$ just by knowing the value of $x$. This is unrealistic in almost any natural process. For example, if we took family income $x$, this value would provide some useful information about how much financial support $y$ a college may offer a prospective student. However, there would still be variability in financial support, even when comparing students whose families have similar financial backgrounds.
+Consider what a perfect linear relationship means:
+we know the exact value of $y$ just by knowing
+the value of $x$.
+This is unrealistic in almost any natural process.
+For example, if we took family income ($x$),
+this value would provide some useful information about
+how much financial support a college may offer a prospective
+student~($y$).
+However, the prediction would be far from perfect,
+since other factors play a role in financial support
+beyond a family's finances.
 
-\begin{figure}
+\begin{figure}[h]
    \centering
-   \Figure{0.65}{perfLinearModel}
+   \Figure{0.6}{perfLinearModel}
    \caption{Requests from twelve separate buyers were
        simultaneously placed with a trading company to purchase
        Target Corporation stock
@@ -26,14 +61,14 @@ Imagine what a perfect linear relationship would mean: you would know the exact 
    \label{perfLinearModel}
 \end{figure}
 
-Linear regression assumes that the relationship between
-two variables, $x$ and $y$,
-can be modeled by a straight line with some error:
+Linear regression is the statistical method for fitting
+a line to data where the relationship between two variables,
+$x$ and $y$, can be modeled by a straight line with some error:
 \begin{eqnarray}
 y = \beta_0 + \beta_1x + \varepsilon
 \label{genLinModelWNoErrorTerm}
 \end{eqnarray}
-where $\beta_0$ and $\beta_1$ represent two model
+The values $\beta_0$ and $\beta_1$ represent the model's
 parameters\index{parameter}
 ($\beta$ is the Greek letter
   \emph{beta}\index{Greek!beta@beta ($\beta$)}),
@@ -42,13 +77,14 @@ and the error is represented by $\varepsilon$
 The parameters are estimated using data,
 and we write their point estimates as $b_0$ and $b_1$.
 When we use $x$ to predict $y$,
-we usually call $x$ the explanatory
+we usually call $x$ the explanatory\index{explanatory variable}
 or \term{predictor} variable,
 and we call $y$ the response.
 
-It is rare for all of the data to fall on a straight line,
-as seen in the three scatterplots in
-Figure~\ref{imperfLinearModel}.
+It is rare for all of the data to fall perfectly on a straight line.
+Instead, it's more common for data to appear as
+a \emph{cloud of points}\index{cloud of points},
+such as those examples shown in  Figure~\ref{imperfLinearModel}.
 In each case, the data fall around a straight line,
 even if none of the observations fall exactly on the line.
 The first plot shows a relatively strong downward
@@ -66,7 +102,7 @@ of the model parameters, $\beta_0$ and $\beta_1$.
 For instance, we might wonder, should we move the line
 up or down a little, or should we tilt it more or less?
 As we move forward in this chapter,
-we will learn different criteria for line-fitting,
+we will learn about criteria for line-fitting,
 and we will also learn about the uncertainty associated
 with estimates of model parameters.
 
@@ -78,68 +114,102 @@ with estimates of model parameters.
    \label{imperfLinearModel}
 \end{figure}
 
-We will also see examples in this chapter where fitting a straight line to the data, even if there is a clear relationship between the variables, is not helpful. One such case is shown in Figure~\ref{notGoodAtAllForALinearModel} where there is a very strong relationship between the variables even though the trend is not linear. We will discuss nonlinear trends in this chapter\MultipleRegressionChapter{ and the next}{}, but the details of fitting nonlinear models are saved for a later course.
+There are also cases where fitting a straight line to the data,
+even if there is a clear relationship between the variables,
+is not helpful.
+One such case is shown in
+Figure~\ref{notGoodAtAllForALinearModel}
+where there is a very clear relationship between the variables
+even though the trend is not linear.
+We will discuss \indexthis{nonlinear} trends in this chapter
+and the next, but details of fitting nonlinear models
+are saved for a later course.
 
 \begin{figure}
    \centering
-   \Figure{0.9}{notGoodAtAllForALinearModel}
+   \Figure{0.8}{notGoodAtAllForALinearModel}
    \caption{A linear model is not useful in this nonlinear case.
        These data are from an introductory physics experiment.}
    \label{notGoodAtAllForALinearModel}
 \end{figure}
 
 
-
-
-
-%__________________
-\section{Line fitting, residuals, and correlation}
-\label{lineFittingResidualsCorrelation}
-
-It is helpful to think deeply about the line fitting process. In this section, we examine criteria for identifying a linear model and introduce a new statistic, \emph{correlation}.
-
-\subsection{Beginning with straight lines}
+\subsection{Introducing the \data{possum} data set}
 
 \index{data!possum|(}
 
-Scatterplots were introduced in Chapter~\ref{introductionToData} as a graphical technique to present two numerical variables simultaneously. Such plots permit the relationship between the variables to be examined with ease. Figure~\ref{scattHeadLTotalL} shows a scatterplot for the head length and total length of 104 brushtail possums from Australia. Each point represents a single possum from the data.
-
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=0.85\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalL/scattHeadLTotalL}
-   \caption{A scatterplot showing head length against total length for 104 brushtail possums. A point representing a possum with head length 94.1mm and total length 89cm is highlighted.}
-   \label{scattHeadLTotalL}
-\end{figure}
+Brushtail possums are a marsupial that lives in Australia,
+and a photo of one is shown in
+Figure~\ref{brushtail_possum}.
+Researchers captured 104 of these animals and took body
+measurements before releasing the animals back into the wild.
+We consider two of these measurements:
+the total length of each possum, from head to tail,
+and the length of each possum's head.
 
 \setlength{\captionwidth}{0.83\mycaptionwidth}
-\begin{figure}
-   \centering
-   \includegraphics[width=0.9\textwidth]{ch_regr_simple_linear/figures/brushtail_possum/brushtail_possum}
-   \caption{The common brushtail possum of Australia.\vspace{-1mm} \\
-   -----------------------------\vspace{-2mm}\\
-   {\footnotesize Photo by Greg Schechter (\oiRedirect{textbook-flickr_com_schechter_brushtail_possum_5653697137}{https://flic.kr/p/9BAFbR}). \oiRedirect{textbook-CC_BY_2}{CC~BY~2.0~license}.}\vspace{-8mm}}
-   \label{brushtail_possum}
+\begin{figure}[h]
+  \centering
+  \Figure{0.5}{brushtail_possum}
+  \caption{The common brushtail possum of Australia.\vspace{-1mm} \\
+      -----------------------------\vspace{-2mm}\\
+      {\footnotesize Photo by Greg Schechter
+      (\oiRedirect{textbook-flickr_com_schechter_brushtail_possum_5653697137}
+          {https://flic.kr/p/9BAFbR}).
+      \oiRedirect{textbook-CC_BY_2}
+          {CC~BY~2.0~license}.}}
+  \label{brushtail_possum}
 \end{figure}
 \setlength{\captionwidth}{\mycaptionwidth}
 
-The head and total length variables are associated. Possums with an above average total length also tend to have above average head lengths. While the relationship is not perfectly linear, it could be helpful to partially explain the connection between these variables with a straight line.
+%Scatterplots were introduced in Chapter~\ref{introductionToData}
+%as a graphical technique to present two numerical variables
+%simultaneously.
+%Such plots permit the relationship between the variables
+%to be examined with ease.
+Figure~\ref{scattHeadLTotalL} shows a scatterplot for the head
+length and total length of the possums.
+Each point represents a single possum from the data.
+The head and total length variables are associated:
+possums with an above average total length also tend to have
+above average head lengths.
+While the relationship is not perfectly linear, it could
+be helpful to partially explain the connection between these
+variables with a straight line.
 
-\begin{figure}
-   \centering
-   \includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLTube/scattHeadLTotalLTube}
-   \caption{The figure on the left shows head length versus total length, and reveals that many of the points could be captured by a straight band. On the right, we see that a curved band is more appropriate in the scatterplot for \var{weight} and \var{mpgCity} from the \data{cars} data set.}
-   \label{scattHeadLTotalLTube}
+
+\begin{figure}[h]
+  \centering
+  \Figure{0.75}{scattHeadLTotalL}
+  \caption{A scatterplot showing head length against total length
+      for 104 brushtail possums.
+      A point representing a possum with head length 94.1mm
+      and total length 89cm is highlighted.}
+  \label{scattHeadLTotalL}
 \end{figure}
 
-Straight lines should only be used when the data appear to have a linear relationship, such as the case shown in the left panel of Figure~\ref{scattHeadLTotalLTube}. The right panel of Figure~\ref{scattHeadLTotalLTube} shows a case where a curved line would be more useful in understanding the relationship between the two variables.
+Straight lines should only be used when the data appear to have
+a linear relationship, such as the case shown in the left panel
+of Figure~\ref{scattHeadLTotalLTube}.
+The right panel of Figure~\ref{scattHeadLTotalLTube} shows
+a case where a curved line would be more useful in understanding
+the relationship between the two variables.
+
+\begin{figure}[h]
+  \centering
+  \Figure{0.95}{scattHeadLTotalLTube}
+  \caption{The figure on the left shows head length versus
+      total length, and reveals that many of the points could
+      be captured by a straight band.
+      On the right, we see that a curved band is more appropriate
+      in this scatterplot.}
+  \label{scattHeadLTotalLTube}
+\end{figure}
 
 %\begin{caution}
 %{Watch out for curved trends}
 %{We only consider models based on straight lines in this chapter. If data show a nonlinear trend, like that in the right panel of Figure~\ref{scattHeadLTotalLTube}, more advanced techniques should be used.\vspace{0.7mm}}
 %\end{caution}
-
-
-\subsection{Fitting a line by eye}
 
 We want to describe the relationship between the head length and total length variables in the possum data set using a line. In this example, we will use the total length as the predictor variable, $x$, to predict a possum's head length, $y$. We could fit the linear relationship by eye, as in Figure~\ref{scattHeadLTotalLLine}. The equation for this line is
 \begin{eqnarray}
@@ -154,23 +224,57 @@ We can use this line to discuss properties of possums. For instance, the equatio
 A ``hat'' on $y$ is used to signify that this is an estimate. This estimate may be viewed as an average: the equation predicts that possums with a total length of 80 cm will have an average head length of 88.2 mm. Absent further information about an 80 cm possum, the prediction for head length that uses the average is a reasonable estimate.
 
 \begin{figure}
-   \centering
-   \includegraphics[width=0.71\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLLine/scattHeadLTotalLLine}
-   \caption{A reasonable linear model was fit to represent the relationship between head length and total length.}
-   \label{scattHeadLTotalLLine}
+  \centering
+  % \Figure{0.7}{scattHeadLTotalLLine}
+  \Figures{0.7}{scattHeadLTotalLLine}
+      {scattHeadLTotalLLineResiduals}
+  \caption{A reasonable linear model was fit to represent
+      the relationship between head length and total length.}
+  \label{scattHeadLTotalLLine}
 \end{figure}
+
+
 
 \subsection{Residuals}
 
 \index{residual|(}
 
+\noindent%
 \termsub{Residuals}{residual} are the leftover variation in the data after accounting for the model fit:
 \begin{align*}
 \text{Data} = \text{Fit} + \text{Residual}
 \end{align*}
-Each observation will have a residual. If an observation is above the regression line, then its residual, the vertical distance from the observation to the line, is positive. Observations below the line have negative residuals. One goal in picking the right linear model is for these residuals to be as small as possible.
+Each observation will have a residual, and three of the
+residuals for the linear model we fit for the \data{possum}
+data is shown in
+Figure~\ref{scattHeadLTotalLLine}.
+If an observation is above the regression line, then its residual,
+the vertical distance from the observation to the line, is positive.
+Observations below the line have negative residuals.
+One goal in picking the right linear model is for these residuals
+to be as small as possible.
 
-Three observations are noted specially in Figure~\ref{scattHeadLTotalLLine}. The observation marked by an ``$\times$'' has a small, negative residual of about -1; the observation marked by ``$+$'' has a large residual of about +7; and the observation marked by ``$\triangle$'' has a moderate residual of about -4. The size of a residual is usually discussed in terms of its absolute value. For example, the residual for ``$\triangle$'' is larger than that of ``$\times$'' because $|-4|$ is larger than $|-1|$.
+%\begin{figure}[h]
+%  \centering
+%  \Figures{0.7}{scattHeadLTotalLLine}
+%      {scattHeadLTotalLLineResiduals}
+%  \caption{The linear model from
+%      Figure~\ref{scattHeadLTotalLLine}
+%      where 3 residuals are highlighted.}
+%  \label{scattHeadLTotalLLineResiduals}
+%\end{figure}
+
+Let's look closer at the three residuals featured in
+Figure~\ref{scattHeadLTotalLLine}.
+The observation marked by an ``$\times$'' has a small,
+negative residual of about -1;
+the observation marked by ``$+$'' has a large residual of about +7;
+and the observation marked by ``$\triangle$'' has a moderate
+residual of about -4.
+The size of a residual is usually discussed in terms of its
+absolute value.
+For example, the residual for ``$\triangle$'' is larger than
+that of ``$\times$'' because $|-4|$ is larger than $|-1|$.
 
 \begin{onebox}{Residual: difference between observed and expected}
 The residual of the $i^{th}$ observation $(x_i, y_i)$ is the difference of the observed response ($y_i$) and the response we would predict based on the model fit ($\hat{y}_i$):
@@ -213,11 +317,12 @@ Compute the residuals for the observations $(85.0, 98.6)$ (``$+$'' in the figure
 Residuals are helpful in evaluating how well a linear model fits a data set. We often display them in a \term{residual plot} such as the one shown in Figure~\ref{scattHeadLTotalLResidualPlot} for the regression line in Figure~\ref{scattHeadLTotalLLine}. The residuals are plotted at their original horizontal locations but with the vertical coordinate as the residual. For instance, the point $(85.0,98.6)_{+}$ had a residual of 7.45, so in the residual plot it is placed at $(85.0, 7.45)$. Creating a residual plot is sort of like tipping the scatterplot over so the regression line is horizontal. 
 \index{data!possum|)}
 
-\begin{figure}
-   \centering
-   \includegraphics[width=0.73\textwidth]{ch_regr_simple_linear/figures/scattHeadLTotalLResidualPlot/scattHeadLTotalLResidualPlot}
-   \caption{Residual plot for the model in Figure~\ref{scattHeadLTotalLLine}.}
-   \label{scattHeadLTotalLResidualPlot}
+\begin{figure}[h]
+  \centering
+  \Figure{0.7}{scattHeadLTotalLResidualPlot}
+  \caption{Residual plot for the model in
+      Figure~\ref{scattHeadLTotalLLine}.}
+  \label{scattHeadLTotalLResidualPlot}
 \end{figure}
 
 \begin{examplewrap}
@@ -256,7 +361,7 @@ where $\bar{x}$, $\bar{y}$, $s_x$, and $s_y$ are the sample means and standard d
 
 \begin{figure}
    \centering
-   \Figure{0.95}{posNegCorPlots}
+   \Figure{0.9}{posNegCorPlots}
    \caption{Sample scatterplots and their correlations.
        The first row shows variables with a positive
        relationship, represented by the trend up and to
@@ -271,7 +376,7 @@ The correlation is intended to quantify the strength of a linear trend. Nonlinea
 
 \begin{figure}
    \centering
-   \Figures{0.9}{posNegCorPlots}{corForNonLinearPlots}
+   \Figures{0.85}{posNegCorPlots}{corForNonLinearPlots}
    \caption{Sample scatterplots and their correlations.
        In each case, there is a strong relationship between
        the variables.
@@ -282,11 +387,16 @@ The correlation is intended to quantify the strength of a linear trend. Nonlinea
 
 \begin{exercisewrap}
 \begin{nexercise}
-It appears no straight line would fit any of the datasets represented in Figure~\ref{corForNonLinearPlots}. Try drawing nonlinear curves on each plot. Once you create a curve for each, describe what is important in your fit.\footnotemark
+No straight line is a good fit for the data sets
+represented in Figure~\ref{corForNonLinearPlots}.
+Try drawing nonlinear curves on each plot.
+Once you create a curve for each, describe what is important
+in your~fit.\footnotemark{}
 \index{correlation|)}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{We'll leave it to you to draw the lines. In general, the lines you draw should be close to most points and reflect overall trends in the data.}
+
 
 
 %__________________
@@ -548,10 +658,12 @@ Applying a model estimate to values outside of the realm of the original data is
 We evaluated the strength of the linear relationship between two variables earlier using the correlation, $R$. However, it is more common to explain the strength of a linear fit using $R^2$, called \termsub{R-squared}{least squares regression!R-squared ($R^2$)}. If provided with a linear model, we might like to describe how closely the data cluster around the linear fit.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.75\textwidth]{ch_regr_simple_linear/figures/elmhurstPlots/elmhurstScatterWLSROnly}
-\caption{Gift aid and family income for a random sample of 50 freshman students from Elmhurst College, shown with the least squares regression line.}
-\label{elmhurstScatterWLSROnly}
+  \centering
+  \Figures{0.75}{elmhurstPlots}{elmhurstScatterWLSROnly}
+  \caption{Gift aid and family income for a random sample
+      of 50 freshman students from Elmhurst College, shown
+      with the least squares regression line.}
+  \label{elmhurstScatterWLSROnly}
 \end{figure}
 
 The $R^2$ of a linear model describes the amount of variation in the response that is explained by the least squares line. For example, consider the Elmhurst data, shown in Figure~\ref{elmhurstScatterWLSROnly}. The variance of the response variable, aid received, is $s_{aid}^2=29.8$. However, if we apply our least squares line, then this model reduces our uncertainty in predicting aid using a student's family income. The variability in the residuals describes how much variation remains after using the model: $s_{_{RES}}^2 = 22.4$. In short, there was a reduction of

@@ -32,10 +32,10 @@ arrows(0.12 + 0.55, 1.16, y1 = 1, length = 0.1, lwd = 1.37)
 text(0.13 + 0.55, 1.08, "randomly\nsplit in half", cex = 0.7, pos = 4)
 
 # _____ Inner Box _____ #
-rect(0.02, 0.50, 0.41, 0.88, border = COL[5,3])
-rect(0.02, 0.02, 0.41, 0.40, border = COL[5,3])
-rect(0.57+slimBox3, 0.50, 0.98, 0.88, border = COL[5,3])
-rect(0.57+slimBox3, 0.02, 0.98, 0.40, border = COL[5,3])
+rect(0.02, 0.50, 0.41, 0.88, border = COL[5,4])
+rect(0.02, 0.02, 0.41, 0.40, border = COL[5,4])
+rect(0.57+slimBox3, 0.50, 0.98, 0.88, border = COL[5,4])
+rect(0.57+slimBox3, 0.02, 0.98, 0.40, border = COL[5,4])
 
 # _____ Labels _____ #
 rect(-0.05, 0.39 + 0.47, 0.14, 0.45 + 0.47,

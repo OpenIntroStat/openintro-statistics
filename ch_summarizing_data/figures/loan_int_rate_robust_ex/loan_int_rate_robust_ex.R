@@ -40,7 +40,7 @@ plot(p1, y1,
     ylab = '',
     pch = 20,
     col = COL[1,3],
-    xlim = c(-1, max(p1, p2, p3)),
+    xlim = c(1, max(p1, p2, p3)),
     ylim = c(0.6, 3.4),
     axes = FALSE)
 points(max(p1), y1[which.max(p1)],
@@ -57,7 +57,7 @@ points(p2, y2,
 points(15, y2[p2 == 15],
     col = COL[4])
 text(5, 2,
-     '26.30% to 15.00%',
+     '26.3% to 15%',
      pos = 2,
      cex = 0.8)
 
@@ -67,7 +67,7 @@ points(p3, y3,
 points(35, y3[p3 == 35],
     col = COL[4])
 text(5, 1,
-     '26.30% to 35.00%',
+     '26.3% to 35%',
      pos = 2,
      cex = 0.8)
 
