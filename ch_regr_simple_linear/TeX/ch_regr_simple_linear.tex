@@ -134,6 +134,8 @@ are saved for a later course.
 \end{figure}
 
 
+
+
 \subsection{Introducing the \data{possum} data set}
 
 \index{data!possum|(}
@@ -188,40 +190,42 @@ variables with a straight line.
   \label{scattHeadLTotalL}
 \end{figure}
 
-Straight lines should only be used when the data appear to have
-a linear relationship, such as the case shown in the left panel
-of Figure~\ref{scattHeadLTotalLTube}.
-The right panel of Figure~\ref{scattHeadLTotalLTube} shows
-a case where a curved line would be more useful in understanding
-the relationship between the two variables.
+%Straight lines should only be used when the data appear to have
+%a linear relationship, such as the case shown in the left panel
+%of Figure~\ref{scattHeadLTotalLTube}.
+%The right panel of Figure~\ref{scattHeadLTotalLTube} shows
+%a case where a curved line would be more useful in understanding
+%the relationship between the two variables.
 
-\begin{figure}[h]
-  \centering
-  \Figure{0.95}{scattHeadLTotalLTube}
-  \caption{The figure on the left shows head length versus
-      total length, and reveals that many of the points could
-      be captured by a straight band.
-      On the right, we see that a curved band is more appropriate
-      in this scatterplot.}
-  \label{scattHeadLTotalLTube}
-\end{figure}
-
-%\begin{caution}
-%{Watch out for curved trends}
-%{We only consider models based on straight lines in this chapter. If data show a nonlinear trend, like that in the right panel of Figure~\ref{scattHeadLTotalLTube}, more advanced techniques should be used.\vspace{0.7mm}}
-%\end{caution}
+%\begin{figure}[h]
+%  \centering
+%  \Figure{0.95}{scattHeadLTotalLTube}
+%  \caption{The figure on the left shows head length versus
+%      total length, and reveals that many of the points could
+%      be captured by a straight band.
+%      On the right, we see that a curved band is more appropriate
+%      in this scatterplot.}
+%  \label{scattHeadLTotalLTube}
+%\end{figure}
 
 We want to describe the relationship between the head length and total length variables in the possum data set using a line. In this example, we will use the total length as the predictor variable, $x$, to predict a possum's head length, $y$. We could fit the linear relationship by eye, as in Figure~\ref{scattHeadLTotalLLine}. The equation for this line is
-\begin{eqnarray}
+\begin{align*}
 \hat{y} = 41 + 0.59x
-\label{headLLinModTotalL}
-\end{eqnarray}
-We can use this line to discuss properties of possums. For instance, the equation predicts a possum with a total length of 80 cm will have a head length of
+\end{align*}
+A ``hat'' on $y$ is used to signify that this is an estimate.
+We can use this line to discuss properties of possums.
+For instance, the equation predicts a possum with a total length
+of 80 cm will have a head length of
 \begin{align*}
 \hat{y} &= 41 + 0.59\times 80 \\
 	&= 88.2 % mm
 \end{align*}
-A ``hat'' on $y$ is used to signify that this is an estimate. This estimate may be viewed as an average: the equation predicts that possums with a total length of 80 cm will have an average head length of 88.2 mm. Absent further information about an 80 cm possum, the prediction for head length that uses the average is a reasonable estimate.
+The estimate may be viewed as an average:
+the equation predicts that possums with a total length of
+80~cm will have an average head length of 88.2~mm.
+Absent further information about an 80~cm possum,
+the prediction for head length that uses the average
+is a reasonable estimate.
 
 \begin{figure}
   \centering
@@ -233,6 +237,28 @@ A ``hat'' on $y$ is used to signify that this is an estimate. This estimate may 
   \label{scattHeadLTotalLLine}
 \end{figure}
 
+\begin{examplewrap}
+\begin{nexample}{What other variables might help us predict the
+    head length of a possum besides its length?}
+  Perhaps the relationship would be a little different for
+  male possums than female possums,
+  as shown in Figure~\ref{scattHeadLTotalLSex},
+  Or perhaps it would differ for possums from one region
+  of Australia versus another region.
+  In Chapter~\ref{ch_regr_mult_and_log},
+  we'll learn about how we can include more than one predictor.
+  Before we get there, we first need to better understand
+  how to best build a simple linear model with one predictor.
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}
+  \centering
+  \Figure{0.6}{scattHeadLTotalLSex}
+  \caption{Possums where the possum's sex is represented
+      by the plotting icon.}
+  \label{scattHeadLTotalLSex}
+\end{figure}
 
 
 \subsection{Residuals}
