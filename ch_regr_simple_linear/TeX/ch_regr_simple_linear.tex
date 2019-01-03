@@ -1129,50 +1129,101 @@ multiple regression\index{multiple regression}.
 \section{Types of outliers in linear regression}
 \label{typesOfOutliersInLinearRegression}
 
-In this section, we identify criteria for determining which outliers are important and influential. Outliers in regression are observations that fall far from the ``cloud'' of points. These points are especially important because they can have a strong influence on the least squares line. 
+In this section, we identify criteria for determining which
+outliers are important and influential.
+Outliers in regression are observations that fall far from
+the cloud of points.
+These points are especially important because they can have
+a strong influence on the least squares line. 
 
 \begin{examplewrap}
-\begin{nexample}{There are six plots shown in Figure~\ref{outlierPlots} along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify the outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.}\label{outlierPlotsExample}
-\begin{itemize}
-%\setlength{\itemsep}{0mm}
-\item[(1)] There is one outlier far from the other points, though it only appears to slightly influence the line.
-\item[(2)] There is one outlier on the right, though it is quite close to the least squares line, which suggests it wasn't very influential.
-\item[(3)] There is one point far away from the cloud, and this outlier appears to pull the least squares line up on the right; examine how the line around the primary cloud doesn't appear to fit very well.
-\item[(4)] There is a primary cloud and then a small secondary cloud of four outliers. The secondary cloud appears to be influencing the line somewhat strongly, making the least square line fit poorly almost everywhere. There might be an interesting explanation for the dual clouds, which is something that could be investigated.
-\item[(5)] There is no obvious trend in the main cloud of points and the outlier on the right appears to largely control the slope of the least squares line.
-\item[(6)] There is one outlier far from the cloud, however, it falls quite close to the least squares line and does not appear to be very influential.
-\end{itemize}
+\begin{nexample}{There are six plots shown in
+    Figure~\ref{outlierPlots} along with the least squares
+    line and residual plots.
+    For~each scatterplot and residual plot pair,
+    identify the outliers and note how they influence
+    the least squares line.
+    Recall that an outlier is any point that doesn't appear
+    to belong with the vast majority of the other points.}
+  \label{outlierPlotsExample}%
+  \begin{itemize}
+  %\setlength{\itemsep}{0mm}
+  \item[(1)]
+      There is one outlier far from the other points,
+      though it only appears to slightly influence the~line.
+  \item[(2)]
+      There is one outlier on the right, though it is quite
+      close to the least squares line, which suggests it
+      wasn't very influential.
+  \item[(3)]
+      There is one point far away from the cloud, and this
+      outlier appears to pull the least squares line up on
+      the right;
+      examine how the line around the primary cloud doesn't
+      appear to fit very~well.
+  \item[(4)]
+      There is a primary cloud and then a small secondary
+      cloud of four outliers.
+      The secondary cloud appears to be influencing the line
+      somewhat strongly, making the least square line fit
+      poorly almost everywhere.
+      There might be an interesting explanation for the dual
+      clouds, which is something that could be investigated.
+  \item[(5)]
+      There is no obvious trend in the main cloud of points
+      and the outlier on the right appears to largely control
+      the slope of the least squares line.
+  \item[(6)]
+      There is one outlier far from the cloud.
+      However, it falls quite close to the least squares line
+      and does not appear to be very influential.
+  \end{itemize}
 \end{nexample}
 \end{examplewrap}
 
 \begin{figure}
   \centering
-  \Figure{1.00}{outlierPlots}
+  \Figure{}{outlierPlots}
   \caption{Six plots, each with a least squares line and
       residual plot. All data sets have at least one outlier.}
 \label{outlierPlots}
 \end{figure}
 
-Examine the residual plots in Figure~\ref{outlierPlots}. You will probably find that there is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier (!).
+Examine the residual plots in Figure~\ref{outlierPlots}.
+You will probably find that there is some trend in the main
+clouds of~(3) and~(4).
+In these cases, the outliers influenced the slope of the
+least squares lines.
+In~(5), data with no clear trend were assigned a line with
+a large trend simply due to one outlier (!).
  
- \begin{onebox}{Leverage}
-Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with \term{high leverage}.
+\begin{onebox}{Leverage}
+  Points that fall horizontally away from the center of the
+  cloud tend to pull harder on the line, so we call them points
+  with \term{high leverage}.\index{leverage}
 \end{onebox}
 
-Points that fall horizontally far from the line are points of high leverage; these points can strongly influence the slope of the least squares line. If one of these high leverage points does appear to actually invoke its influence on the slope of the line -- as in cases (3), (4), and (5) of Example~\ref{outlierPlotsExample} -- then we call it an \term{influential point}. Usually we can say a point is influential if, had we fitted the line without it, the influential point would have been unusually far from the least squares line.
+Points that fall horizontally far from the line are points
+of high leverage;
+these points can strongly influence the slope of the least
+squares line.
+If one of these high leverage points does appear to actually
+invoke its influence on the slope of the line --
+as in cases~(3), (4), and (5) of Example~\ref{outlierPlotsExample}
+-- then we call it an \term{influential point}.
+Usually we can say a point is influential if, had we fitted
+the line without it, the influential point would have been
+unusually far from the least squares line.
 
-It is tempting to remove outliers. Don't do this without a very good reason. Models that ignore exceptional (and interesting) cases often perform poorly. For instance, if a financial firm ignored the largest market swings -- the ``outliers'' --  they would soon go bankrupt by making poorly thought-out investments.
+It is tempting to remove outliers.
+Don't do this without a very good reason.
+Models that ignore exceptional (and interesting) cases often
+perform poorly.
+For instance, if a financial firm ignored the largest market
+swings -- the ``outliers'' --  they would soon go bankrupt
+by making poorly thought-out investments.
 
-%\begin{onebox}{Don't ignore outliers when fitting a final model}
-%  If there are outliers in the data, they should not be
-%  removed or ignored without a~good reason.
-%  Whatever final model is fit to the data would not be
-%  very helpful if it ignores the most exceptional cases.
-%\end{onebox}
-%
-%\begin{caution}{Outliers for a categorical predictor with two levels}{
-%Be cautious about using a categorical predictor when one of the levels has very few observations. When this happens, those few observations become influential points.}
-%\end{caution}
+
 
 
 %__________________
