@@ -242,8 +242,7 @@ is a reasonable estimate.
     head length of a possum besides its length?}
   Perhaps the relationship would be a little different for
   male possums than female possums,
-  as shown in Figure~\ref{scattHeadLTotalLSex},
-  Or perhaps it would differ for possums from one region
+  or perhaps it would differ for possums from one region
   of Australia versus another region.
   In Chapter~\ref{ch_regr_mult_and_log},
   we'll learn about how we can include more than one predictor.
@@ -251,14 +250,6 @@ is a reasonable estimate.
   how to best build a simple linear model with one predictor.
 \end{nexample}
 \end{examplewrap}
-
-\begin{figure}
-  \centering
-  \Figure{0.6}{scattHeadLTotalLSex}
-  \caption{Possums where the possum's sex is represented
-      by the plotting icon.}
-  \label{scattHeadLTotalLSex}
-\end{figure}
 
 
 \subsection{Residuals}
@@ -311,7 +302,8 @@ We typically identify $\hat{y}_i$ by plugging $x_i$ into the model.
 \end{onebox}
 
 \begin{examplewrap}
-\begin{nexample}{The linear fit shown in Figure~\ref{scattHeadLTotalLLine} is given as $\hat{y} = 41 + 0.59x$. Based on this line, formally compute the residual of the observation $(77.0, 85.3)$. This observation is denoted by ``$\times$'' on the plot. Check it against the earlier visual estimate,~-1.}
+\begin{nexample}{The linear fit shown in Figure~\ref{scattHeadLTotalLLine} is given as $\hat{y} = 41 + 0.59x$. Based on this line, formally compute the residual of the observation $(77.0, 85.3)$. This observation is denoted by ``$\times$'' in Figure~\ref{}.
+Check it against the earlier visual estimate,~-1.}
 We first compute the predicted value of point ``$\times$'' based on the model:
 \begin{eqnarray*}
 \hat{y}_{\times} = 41+0.59x_{\times} = 41+0.59\times 77.0 = 86.4
@@ -422,6 +414,30 @@ in your~fit.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{We'll leave it to you to draw the lines. In general, the lines you draw should be close to most points and reflect overall trends in the data.}
+
+\begin{examplewrap}
+\begin{nexample}{What other variables might help us predict the
+    head length of a possum besides its length?}
+  Perhaps the relationship would be a little different for
+  male possums than female possums,
+  as shown in Figure~\ref{scattHeadLTotalLSex},
+  Or perhaps it would differ for possums from one region
+  of Australia versus another region.
+  In Chapter~\ref{ch_regr_mult_and_log},
+  we'll learn about how we can include more than one predictor.
+  Before we get there, we first need to better understand
+  how to best build a simple linear model with one predictor.
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}
+  \centering
+  \Figure{0.6}{scattHeadLTotalLSex}
+  \caption{Possums where the possum's sex is represented
+      by the plotting icon.}
+  \label{scattHeadLTotalLSex}
+\end{figure}
+
 
 
 
