@@ -10,7 +10,7 @@ plot(possum$totalL[-these],
      possum$headL[-these] - (41 + 0.59 * possum$totalL[-these]),
      pch = 19,
      col = COL[1, 2],
-     xlab = 'Total length (cm)',
+     xlab = 'Total Length (cm)',
      ylab = 'Residuals',
      ylim = c(-7, 9))
 y.extra <- 0.59 * possum$totalL[these] + rnorm(1,0,0.01)

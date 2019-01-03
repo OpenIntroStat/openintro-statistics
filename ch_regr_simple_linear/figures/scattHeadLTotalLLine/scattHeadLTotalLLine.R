@@ -10,8 +10,8 @@ plot(possum$totalL, possum$headL,
      pch = 20,
      col = COL[1, 2],
      cex = 1.7,
-     xlab = 'Total length (cm)',
-     ylab = 'Head length (mm)')
+     xlab = 'Total Length (cm)',
+     ylab = 'Head Length (mm)')
 abline(41, 0.59, col = COL[5])
 dev.off()
 
@@ -24,8 +24,8 @@ plot(possum$totalL[-these], possum$headL[-these],
      pch = 20,
      col = COL[1, 2],
      cex = 1.7,
-     xlab = 'Total length (cm)',
-     ylab = 'Head length (mm)')
+     xlab = 'Total Length (cm)',
+     ylab = 'Head Length (mm)')
 points(possum$totalL[these] + rnorm(3,0,0.02),
        possum$headL[these] + rnorm(3,0,0.02),
        pch = c(3, 4, 2),
