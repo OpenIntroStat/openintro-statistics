@@ -1474,11 +1474,6 @@ where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confide
 \section{Introduction to logistic regression}
 \label{logisticRegression}
 
-\Comment{We will be reaching out to groups that work
-    on the topic of discrimination to provide feedback
-    on the presentation of the material in this section.
-    This current version is still very much only a draft.}
-
 \index{logistic regression|(}
 
 In this section we introduce \term{logistic regression}
@@ -1939,26 +1934,21 @@ of this section.
     factor for if a prospective employer would
     call back?}
   We see that the p-value for this coefficient is very
-  small (essentially zero), which implies that race
+  small (very nearly zero), which implies that race
   played a statistically significant role in whether
   a candidate received a callback.
   Additionally, we see that the coefficient shown
   corresponds to the level of \resp{white},
-  and it is positive,
-  which implies that resumes from individuals with
-  names typically associated with white individuals
-  tended to receive more callbacks than those
-  typically associated with black individuals.
+  and it is positive.
+  This positive coefficient reflects a positive gain
+  in callback rate for resumes where the candidate's
+  first name implied they were white.  
+  The data provide very strong evidence of racial bias
+  by prospective employers that favors resumes where the
+  first name is typically interpreted to be white.
 \end{nexample}
 \end{examplewrap}
 
-The data provide very strong evidence of racial bias
-by prospective employers that favors resumes where the
-first name is typically interpreted to be white.
-The coefficient shown in the model for the
-race variable reflects a positive gain in callback
-rate for resumes where the candidate's first name
-implied they were white.
 %We, the authors, found this conclusion saddening,
 %though not surprising.
 %It is also important to consider that this data only
@@ -1968,29 +1958,28 @@ implied they were white.
 %It does not scratch the surface of racial bias
 %for individuals who are hired.
 
-\begin{examplewrap}
-\begin{nexample}{Compare the coefficient of the
-    \var{racewhite} row in the full model in
-    Figure~\ref{resumeLogisticModelResults},
-    versus the summary of the reduced model in
-    Figure~\ref{resumeLogisticReducedModel}.
-    Why are the two estimated coefficients so
-    close to each other?}
-  The estimates are only very slightly different:
-  \resRaceWhiteCoefReduced{} vs \resRaceWhiteCoef{}.
-  We earlier discussed how the implied race on the resume
-  was randomized and this variable is independent of
-  other predictors.
-  This means that the estimated effect will be virtually
-  unchanged even after we add or remove other variables
-  from the model.
-  This property is the product of thoughtful experiment
-  design by this study's researchers.
-\end{nexample}
-\end{examplewrap}
+%\begin{examplewrap}
+%\begin{nexample}{Compare the coefficient of t.
+%    Why are the two estimated coefficients different?}
+%  We earlier discussed how the implied race on the resume
+%  was randomized and this variable is independent of
+%  other predictors.
+%  This means that the estimated effect will be virtually
+%  unchanged even after we add or remove other variables
+%  from the model.
+%  This property is the product of thoughtful experiment
+%  design by this study's researchers.
+%\end{nexample}
+%\end{examplewrap}
 
+The coefficient of \var{racewhite} in the full model in
+Figure~\ref{resumeLogisticModelResults},
+is nearly identical to the model shown in
+Figure~\ref{resumeLogisticReducedModel}.
 The predictors in this experiment were thoughtfully
-laid out so that they were independent,
+laid out so that the coefficient estimates would typically
+not be much influenced by which other predictors were 
+in the model,
 which aligned with the motivation of the study to tease
 out which effects were important to getting a callback.
 When a data set doesn't come from a thoughtfully designed
@@ -2033,7 +2022,7 @@ and~\ref{includingAndAssessingManyVariablesInAModel}).
       &\qquad
           - 0.3443 \times 1_{military}
           + 0.2221 \times 1_{email}
-          + 0.4424 \times 1_{white}
+          + 0.4429 \times 1_{white}
           - 0.1959 \times 1_{male} \\
     &= - 2.7162
         - 0.4364 \times 1
@@ -2042,9 +2031,9 @@ and~\ref{includingAndAssessingManyVariablesInAModel}).
       &\qquad
           - 0.3443 \times 0
           + 0.2221 \times 1
-          + 0.4424 \times 1
+          + 0.4429 \times 1
           - 0.1959 \times 1 \\
-    &= - 2.3956
+    &= - 2.3955
   \end{align*}
   We can now back-solve for $p$:
   the chance such an individual will receive

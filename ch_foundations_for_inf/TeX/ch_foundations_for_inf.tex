@@ -145,16 +145,18 @@ the estimate had an error of +0.014.
 %\setlength\textwidth{\officialtextwidth-10mm}
 \begin{figure}
 \texttt{\# 1.\ Create a set of 250 million entries,
-where 89\% of them are "support" \\
-\#\ \ \ \ and 11\% are "not". \\
-pop\_size <- 250000000 \\
-possible\_entries <- c(rep("support", \pewsolarpollprop{}*pop\_size), rep("not", \pewsolarpollpropcomplement{}*pop\_size))\\
-\# 2.\ Sample \pewsolarpollsize{} of the entries. \\
+where 88.7\% of them are "support" \\
+\#\ \ \ \ and 11.3\% are "not". \\
+pop\us{}size <- 250000000 \\
+possible\_entries <- c(rep("support", \pewsolarpollprop{}*pop\us{}size), rep("not", \pewsolarpollpropcomplement{}*pop\us{}size))\\
+\# 2.\ Sample \pewsolarpollsize{} entries without replacement. \\
 sampled\_entries <- sample(possible\_entries, \pewsolarpollsize{}) \\
-\# 3.\ Count the number that are "support", then divide
-by the sample size. \\
+\# 3.\ Compute p-hat:
+count the number that are "support", then divide
+by \\
+\#\ \ \ \ the sample size. \\
 sum(sampled\_entries == "support") / \pewsolarpollsize{}}
-\caption{Code for a simulation using the
+\caption{Code for a single $\hat{p}$ simulation using the
     statistical software called \R\index{R}.
     Each line that starts with \texttt{\#} is a \term{code comment},
     which is used to describe in regular language what the
@@ -923,6 +925,7 @@ Oct 26th and~28th, 2014.
 \begin{examplewrap}
 \begin{nexample}{Estimate the standard error of
     $\hat{p} = \wsjebolapollprop{}$ from the Ebola survey.}
+  \label{seOfPropOfNYEbolaSurvey}%
   We'll use the substitution approximation of
   $p \approx \hat{p} = \wsjebolapollprop{}$ to compute the standard error:
   \begin{align*}
@@ -939,7 +942,7 @@ Oct 26th and~28th, 2014.
     the proportion of New York adults who supported a quarantine
     for anyone who has come into contact with an Ebola patient.}
   Using the standard error $SE = 0.012$ from
-  Example~\ref{seOfPropOfAmericansJobApprovalOfSupremeCourt},
+  Example~\ref{seOfPropOfNYEbolaSurvey},
   the point estimate \wsjebolapollprop{}, and $z^{\star} = 1.96$
   for a 95\% confidence level, the confidence interval is
   \begin{eqnarray*}
@@ -956,16 +959,28 @@ Oct 26th and~28th, 2014.
 
 \begin{exercisewrap}
 \begin{nexercise}
+What does 95\% confident mean in this context?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{If we took many such samples and computed
+  a 95\% confidence interval for each, then about 95\% of those
+  intervals would contain the actual proportion of New York
+  adults who supported a quarantine for anyone who has come into
+  contact with an Ebola patient.}
+
+\begin{exercisewrap}
+\begin{nexercise}
 Do you think the confidence interval is still valid for the opinions
 of New Yorkers today?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Not necessarily. The poll was taken at a
-time where there was a huge public safety concern. Now that people
-have had some time to step back, they may have changed their opinions.
-We would need to run a new poll if we wanted to get an estimate of the
-current proportion of New York adults who would support such a
-quarantine period.}
+  time where there was a huge public safety concern.
+  Now that people have had some time to step back,
+  they may have changed their opinions.
+  We would need to run a new poll if we wanted to get an
+  estimate of the current proportion of New York adults who
+  would support such a quarantine period.}
 
 \index{data!wind turbine survey|(}
 
@@ -1577,21 +1592,24 @@ scenarios, which are summarized in Table~\ref{fourHTScenarios}.
 \centering
 \begin{tabular}{l l c c}
 & & \multicolumn{2}{c}{\textbf{Test conclusion}} \\
-  \cline{3-4}
+\cline{3-4}
 \vspace{-3.7mm} \\
 & & do not reject $H_0$ &  reject $H_0$ in favor of $H_A$ \\
-  \cline{2-4}
+\cline{2-4}
 \vspace{-3.7mm} \\
-& $H_0$ true & okay &  Type~1 Error \\
-\raisebox{1.5ex}{\textbf{Truth}} & $H_A$ true & Type~2 Error & okay \\
-  \cline{2-4}
+& $H_0$ true &
+    okay &  \highlight{Type~1 Error} \\
+\raisebox{1.5ex}{\textbf{Truth}} & $H_A$ true &
+    \highlight{Type~2 Error} & okay \\
+\cline{2-4}
 \end{tabular}
 \caption{Four different scenarios for hypothesis tests.}
 \label{fourHTScenarios}
 \end{table}
 
 A \term{Type~1 Error} is rejecting the null hypothesis when
-$H_0$ is actually true. A \term{Type~2 Error} is failing to
+$H_0$ is actually true.
+A \term{Type~2 Error} is failing to
 reject the null hypothesis when the alternative is actually
 true.
 
@@ -1607,9 +1625,14 @@ Table~\ref{fourHTScenarios} may be useful.\footnotemark
 \footnotetext{If
   the court makes a Type~1 Error, this means the defendant
   is innocent ($H_0$ true) but wrongly convicted.
+  Note that a Type~1 Error is only possible if we've rejected
+  the null hypothesis.
+
   A Type~2 Error means the court failed to reject $H_0$
   (i.e. failed to convict the person) when she was
-  in fact guilty ($H_A$ true).}
+  in fact guilty ($H_A$ true).
+  Note that a Type~2 Error is only possible if we have
+  failed to reject the null hypothesis.}
 
 \begin{examplewrap}
 \begin{nexample}{How could we reduce the Type~1 Error rate
@@ -1836,6 +1859,11 @@ to how we use the null value, $p_0$.
   we check the conditions for $\hat{p}$ and construct the
   standard error using the null value, $p_0$, instead of using
   the sample proportion.
+
+  In a hypothesis test with a p-value, we are supposing the
+  null hypothesis is true when we compute the p-value,
+  which is a different mindset than when we compute
+  a confidence interval.
 \end{onebox}
 
 When we identify the sampling distribution under the null hypothesis,
