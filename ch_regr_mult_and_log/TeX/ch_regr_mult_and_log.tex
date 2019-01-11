@@ -87,7 +87,7 @@ Section~\ref{ind_and_cat_vars_as_predictors}.
 {\bf variable} & {\bf description} \\
 \hline
 \var{interest\us{}rate} &
-    final auction price plus shipping costs, in US dollars \\
+    Interest rate for the loan. \\
 \var{ver\us{}income} &
     Categorical variable describing whether the borrower's
     income source and amount have been verified. \\
@@ -463,7 +463,7 @@ the model, respectively.
 There are \loNcomma{} residuals, one for each observation.
 We typically use a computer to minimize the sum of squares
 and compute point estimates, as shown in the sample output
-in Figure~\ref{outputForMultipleRegrOutputForAllPredictors}.
+in Figure~\ref{loansFullModelOutput}.
 Using this output, we identify the point estimates $b_i$ of
 each $\beta_i$, just as we did in the one-predictor case.
 
@@ -496,7 +496,7 @@ each $\beta_i$, just as we did in the one-predictor case.
 \caption{Output for the regression model where
     \var{interest\us{}rate} is the outcome and
     variables listed are the predictors.}
-\label{outputForMultipleRegrOutputForAllPredictors}
+\label{loansFullModelOutput}
 \end{figure}
 
 \begin{onebox}{Multiple regression model}
@@ -515,7 +515,7 @@ each $\beta_i$, just as we did in the one-predictor case.
 \begin{examplewrap}
 \begin{nexample}{Write out the regression model using
     the point estimates from
-    Figure~\ref{outputForMultipleRegrOutputForAllPredictors}.
+    Figure~\ref{loansFullModelOutput}.
     How many predictors are there in this model?}
   \label{loansFullModelEqWCoef}%
   The fitted model for the interest rate is given by:
@@ -553,7 +553,7 @@ What is the point estimate of~$\beta_4$?\footnotemark
 
 \begin{examplewrap}
 \begin{nexample}{Compute the residual of the first observation
-    in Table~\ref{loansDataMatrix} on
+    in Figure~\ref{loansDataMatrix} on
     page~\pageref{loansDataMatrix} using the equation identified
     in Guided Practice~\ref{loansFullModelEqWCoef}.}
   To compute the residual, we first need the predicted value,
@@ -740,6 +740,211 @@ considering only one predictor.
 
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|)}
 
+
+\subsection{Case study: Mario Kart}
+
+We will consider Ebay auctions of a video game called \emph{Mario Kart} for the Nintendo Wii. The outcome variable of interest is the total price of an auction, which is the highest bid plus the shipping cost. We will try to determine how total price is related to each characteristic in an auction while simultaneously controlling for other variables. For instance, all other characteristics held constant, are longer auctions associated with higher or lower prices? And, on average, how much more do buyers tend to pay for additional Wii wheels (plastic steering wheels that attach to the Wii controller) in auctions? Multiple regression will help us answer these and other questions.
+
+The data set \data{mario\us{}kart} includes results from 141 auctions.\footnote{Diez DM, Barr CD, \c{C}etinkaya-Rundel M. 2015. \texttt{openintro}: OpenIntro data sets and supplement functions. \oiRedirect{textbook-github_openintro}{github.com/OpenIntroOrg/openintro-r-package}.} Four observations from this data set are shown in Figure~\ref{marioKartDataMatrix}, and descriptions for each variable are shown in Figure~\ref{marioKartVariables}. Notice that the condition and stock photo variables are indicator variables\index{indicator variable}. For instance, the \var{cond\us{}new} variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression.
+
+\begin{figure}[ht]
+\centering
+\begin{tabular}{rrrrlr}
+  \hline
+ & price & cond\us{}new & stock\us{}photo & duration & wheels \\ 
+  \hline
+1 & 51.55 &   1 & 1 & 3 &   1 \\ 
+  2 & 37.04 &  0 &  1 & 7 &   1 \\ 
+$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
+  140 & 38.76 &  0 &  0 & 7 &   0 \\ 
+  141 & 54.51 &  1 &  1 & 1 &   2 \\ 
+   \hline
+\end{tabular}
+\caption{Four observations from the \data{mario\us{}kart} data set.}
+\label{marioKartDataMatrix}
+\end{figure}
+%library(openintro); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; row.names(d) <- NULL; d
+
+\begin{figure}
+\centering\small
+\begin{tabular}{lp{9.5cm}}
+\hline
+{\bf variable} & {\bf description} \\
+\hline
+\var{price} &
+  Final auction price plus shipping costs, in US dollars. \\
+\var{cond\us{}new} &
+  Indicator variable for if the game is new (\resp{1}) or used (\resp{0}). \\
+\var{stock\us{}photo} &
+  Indicator variable for if the auction's main photo
+  is a stock photo. \\
+\var{duration} &
+  The length of the auction, in days, taking values from 1 to 10. \\
+\var{wheels} &
+  The number of Wii wheels included with the auction.
+  A \emph{Wii wheel} is an optional steering wheel accessory
+  that holds the Wii controller. \\
+\hline
+\end{tabular}
+\caption{Variables and their descriptions for the
+    \data{mario\us{}kart} data set.}
+\label{marioKartVariables}
+\end{figure}
+
+% library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); xtable(lm(d$totalPr ~ d$cond)); xtable(lm(d$totalPr ~ d$duration))
+
+%\begin{figure}[h]
+%  \centering
+%  \Figure{0.5}{marioKartSingle}
+%  \caption{Scatterplot of the total auction price against the
+%      game's condition.
+%      The least squares line is also shown.}
+%  \label{marioKartSingle}
+%\end{figure}
+
+\newpage
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{condNewVarForMarioKartOnly}
+We fit a linear regression model with
+the game's condition as a predictor of auction price.
+Results of this model are summarized below:
+\begin{center}
+\begin{tabular}{rrrrr}
+  \hline
+  \vspace{-3.7mm} & & & & \\
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+  \vspace{-3.8mm} & & & & \\
+(Intercept) & 42.8711 & 0.8140 & 52.67 & $<$0.0001 \\ 
+  cond\us{}new & 10.8996 & 1.2583 & 8.66 & $<$0.0001 \\ 
+   \hline
+   &&&\multicolumn{2}{r}{$df=139$}
+\end{tabular}
+\end{center}
+Write down the equation for the model,
+note whether the trend is statistically different from zero,
+and interpret the coefficient.\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The equation for the line may be written as
+  \begin{align*}
+  \widehat{price}
+      &= 42.87 + 10.90\times cond\us{}new
+  \end{align*}
+  Examining the regression output in
+  Guided Practice~\ref{condNewVarForMarioKartOnly},
+  we can see that the p-value for \var{cond\us{}new}
+  is very close to zero, indicating there is strong evidence
+  that the coefficient is different from zero when using this
+  simple one-variable model.
+
+  The \var{cond\us{}new} is a two-level
+  categorical variable that takes value 1 when the game is new
+  and value 0 when the game is used.
+  This means the 10.90 model coefficient predicts an extra
+  \$10.90 for those games that are new versus those that are used.}
+
+Sometimes there are underlying structures or relationships between predictor variables. For instance, new games sold on Ebay tend to come with more Wii wheels, which may have led to higher prices for those auctions. We would like to fit a model that includes all potentially important variables simultaneously. This would help us evaluate the relationship between a predictor variable and the outcome while controlling for the potential influence of other variables. This is the strategy used in \term{multiple regression}. While we remain cautious about making any causal interpretations using multiple regression, such models are a common first step in providing evidence of a causal connection.
+
+We want to construct a model that accounts for not only the game
+condition, as in Guided Practice~\ref{condNewVarForMarioKartOnly},
+but simultaneously accounts for three other variables:
+\begin{align*}
+\widehat{\var{price}}
+	&= \beta_0 + \beta_1\times \var{cond\us{}new} +
+		\beta_2\times \var{stock\us{}photo} \\
+	&\qquad\  + \beta_3 \times  \var{duration} +
+		\beta_4 \times  \var{wheels}
+\end{align*}
+Figure~\ref{MarioKartFullModelOutput} summarizes the full model.
+Using this output, we identify the point estimates of each
+coefficient.
+
+\begin{figure}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+  \vspace{-3.7mm} & & & & \\
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+  \vspace{-3.8mm} & & & & \\
+(Intercept) & 36.2110 & 1.5140 & 23.92 & $<$0.0001 \\ 
+  cond\us{}new & 5.1306 & 1.0511 & 4.88 & $<$0.0001 \\ 
+  stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
+  duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
+  wheels & 7.2852 & 0.5547 & 13.13 & $<$0.0001 \\ 
+   \hline
+   &&&\multicolumn{2}{r}{$df=136$}
+\end{tabular}
+\caption{Output for the regression model where \var{price} is the outcome and \var{cond\us{}new}, \var{stock\us{}photo}, \var{duration}, and \var{wheels} are the predictors.}
+\label{MarioKartFullModelOutput}
+\end{figure}
+%library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); g <-lm(totalPr ~ cond + stockPhoto + duration + wheels, d)
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{eqForMultRegrOfTotalPrForAllPredWithCoef}%
+Write out the model in using the point estimates from
+Figure~\ref{MarioKartFullModelOutput}.
+How many predictors are there in this model?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$\widehat{price}
+    = 36.21
+        + 5.13 \times \var{cond\us{}new}
+        + 1.08 \times \var{stock\us{}photo}
+        - 0.03 \times \var{duration}
+        + 7.29 \times \var{wheels}$,
+  with the $k=4$ predictors.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+What does $\beta_4$, the coefficient of variable
+$x_4$ (Wii wheels), represent?
+What is the point estimate of $\beta_4$?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{It is the average difference in auction price
+  for each additional Wii wheel included when holding the
+  other variables constant.
+  The point estimate is $b_4 = 7.29$.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{computeMultipleRegressionResidualForMarioKart}%
+Compute the residual of the first observation in
+Figure~\vref{marioKartDataMatrix} using the equation identified
+in Guided Practice~\ref{eqForMultRegrOfTotalPrForAllPredWithCoef}.\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$,
+  where 49.62 was computed using the variables values from the
+  observation and the equation identified in
+  Guided Practice~\ref{eqForMultRegrOfTotalPrForAllPredWithCoef}.}
+
+\begin{examplewrap}
+\begin{nexample}{We estimated a coefficient for
+    \var{cond\us{}new} in
+    Section~\ref{condNewVarForMarioKartOnly}
+    of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$
+    when using simple linear regression.
+    Why might there be a difference between that estimate
+    and the one in the multiple regression setting?}
+  \label{colinearityOfCondNewAndStockPhoto}%
+  If we examined the data carefully, we would see that
+  there is collinearity\index{collinear} among some predictors.
+  For instance, when we estimated the connection of the outcome
+  \var{price} and predictor \var{cond\us{}new} using simple linear
+  regression, we were unable to control for other variables like
+  the number of Wii wheels included in the auction.
+  That model was biased by the confounding variable \var{wheels}.
+  When we use both variables, this particular underlying and
+  unintentional bias is reduced or eliminated (though bias
+  from other confounding variables may still remain).
+\end{nexample}
+\end{examplewrap}
 
 
 
@@ -992,7 +1197,7 @@ The \term{forward selection} strategy is the reverse of the backward elimination
       \var{credit\us{}checks} \\
   &
       $R^2_{adj} = 0.12855$ &
-      $R^2_{adj} = -0.00008$ &
+      $R^2_{adj} = -$<$0.00018$ &
       $R^2_{adj} = 0.01711$ \\
   \end{tabular}
   \end{center}
@@ -1159,6 +1364,127 @@ Regardless of whether you use $R_{adj}^2$ or the p-value approach,
 or if you use the backward elimination of forward selection
 strategy, our job is not done after variable selection.
 We must still verify the model conditions are reasonable.
+
+
+\subsection{Case study: Mario Kart}
+
+\noindent%
+Let's revisit the model for the Mario Kart auction and complete
+model selection using backwards selection.
+Recall that the full model took the following form:
+\begin{align*}
+\widehat{price} = 36.21
+    + 5.13 \times \var{cond\us{}new}
+    + 1.08 \times \var{stock\us{}photo}
+    - 0.03 \times \var{duration}
+    + 7.29 \times \var{wheels}
+\end{align*}
+
+
+\begin{examplewrap}
+\begin{nexample}{Results corresponding to the full model
+    for the \data{mario\us{}kart} data were shown
+    in Figure~\vref{MarioKartFullModelOutput}.
+    For this model, we consider what would happen if dropping
+    each of the variables in the model:
+    \begin{center}
+    \begin{tabular}{lllll}
+    Exclude ... &
+      \var{cond\us{}new} &
+      \var{stock\us{}photo} &
+      \var{duration} &
+      \var{wheels} \\
+    &
+      $R^2_{adj} = 0.6626$ &
+      $R^2_{adj} = 0.7107$ &
+      $R^2_{adj} = 0.7128$ &
+      $R^2_{adj} = 0.3487$ \\
+    \end{tabular}
+    \end{center}
+    For the full model, $R_{adj}^2 = 0.7108$.
+    How should we proceed under the backward elimination strategy?}
+  \label{backwardEliminationExampleWMarioKartData}%
+  The third model without \var{duration} has the highest
+  $R_{adj}^2$ of 0.7128, so we compare it to
+  $R_{adj}^2$ for the full model.
+  Because eliminating \var{duration} leads to a model with
+  a higher $R_{adj}^2$, we drop \var{duration} from the model.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+In Example~\ref{backwardEliminationExampleWMarioKartData},
+we eliminated the \var{duration} variable,
+which resulted in a model with $R_{adj}^2 = 0.7128$.
+Let's look at if we would eliminate another variable from the
+model using backwards elimination:
+\begin{center}
+\begin{tabular}{llll}
+Exclude \var{duration} and ... &
+	\var{cond\us{}new} &
+	\var{stock\us{}photo} &
+	\var{wheels} \\
+&
+	$R^2_{adj} = 0.6587$ &
+	$R^2_{adj} = 0.7124$ &
+	$R^2_{adj} = 0.3414$ \\
+\end{tabular}
+\end{center}
+Should we eliminate any additional variable, and if so,
+which variable should we eliminate?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Removing any of the three remaining variables
+  would lead to a decrease in $R_{adj}^2$, so we should not
+  remove any additional variables from the model after we
+  removed \var{duration}.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{totPrPredictionUsedStockPhotoTwoWheels}%
+After eliminating the auction's duration from the model,
+we are left with the following reduced model:
+\begin{align*}
+\widehat{price} &= \ 36.05
+    + 5.18 \times \text{\var{cond\us{}new}}
+    + 1.12 \times \text{\var{stock\us{}photo}}
+    + 7.30 \times \text{\var{wheels}}
+\end{align*}
+How much would you predict for the total price for
+the Mario Kart game if it was used, used a stock photo,
+and included two wheels and put up for auction during
+the time period that the Mario Kart data were
+collected?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We would plug in \resp{0} for \var{cond\us{}new}
+  \resp{1} for \var{stock\us{}photo},
+  and \resp{2} for \var{wheels} into the equation,
+  which would return \$51.77, which is the total price
+  we would expect for the auction.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Would you be surprised if the seller from
+Guided Practice~\ref{totPrPredictionUsedStockPhotoTwoWheels}
+didn't get the exact price predicted?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{No.
+  The model provides the \emph{average} auction price
+  we would expect, and the price for one auction to the next
+  will continue to vary a bit
+  (but less than what our prediction would be without the model).}
+
+
+%If we continued the process, we would not eliminate any additional  of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the remaining predictors. That is, after backward elimination, we are left with the model that keeps \var{cond\us{}new}, \var{stock\us{}photos}, and \var{wheels}, which we can summarize using the coefficients from Table~\ref{marioKartMultipleRegressionModelAllButDuration}:
+%\begin{align*}
+%\hat{y} \ &= \ b_0 + b_1x_1 + b_2x_2 + b_4x_4 \\
+%\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\us{}new}} + 1.12 \times \text{\var{stock\us{}photo}} + 7.30 \times \text{\var{wheels}}
+%\end{align*}
+
+
 
 \index{model selection|)}
 
@@ -1470,6 +1796,110 @@ where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confide
 \end{onebox}
 
 
+\subsection{Case study: Mario Kart}
+
+\noindent%
+Let's take a closer look at the diagnostics for the Mario Kart
+model to check if the model we have identified is reasonable.
+
+\begin{description}
+\item[Normal probability plot.]
+    A normal probability plot of the residuals is shown in
+    Figure~\ref{mkDiagnosticNormalQuantilePlot}.
+    While the plot exhibits some minor irregularities,
+    there are no outliers that might be cause for concern.
+
+\begin{figure}[h]
+  \centering
+  \Figures{0.55}{marioKartDiagnostics}
+      {mkDiagnosticNormalQuantilePlot}
+  \caption{Normal probability plot of the residuals.
+      No clear outliers are evident.}
+  \label{mkDiagnosticNormalQuantilePlot}
+\end{figure}
+
+\item[Absolute values of residuals against fitted values.]
+    A plot of the absolute value of the residuals against
+    their corresponding fitted values ($\hat{y}_i$) is shown
+    in Figure~\ref{mkDiagnosticEvsAbsF}.
+    We don't see any obvious deviations from constant variance
+    in this example.
+
+\begin{figure}
+  \centering
+  \Figures{0.55}{marioKartDiagnostics}{mkDiagnosticEvsAbsF}
+  \caption{Absolute value of the residuals against
+      the fitted values.
+      No patterns are evident.}
+  \label{mkDiagnosticEvsAbsF}
+\end{figure}
+
+\item[Residuals in order of their data collection.]
+    A plot of the residuals in the order their corresponding
+    auctions were observed is shown in
+    Figure~\ref{mkDiagnosticInOrder}.
+    Here we see no structure that indicates a problem.
+
+\begin{figure}[h]
+  \centering
+  \Figures{0.5}{marioKartDiagnostics}{mkDiagnosticInOrder}
+  \caption{Residuals in the order that their
+      corresponding observations were collected.
+      There are no evident patterns.}
+  \label{mkDiagnosticInOrder}
+\end{figure}
+
+\item[Residuals against each predictor variable.]
+    We consider a plot of the residuals against the
+    \var{cond\us{}new} variable, the residuals against
+    the \var{stock\us{}photo} variable,
+    and the residuals against the \var{wheels} variable.
+    These plots are shown in Figure~\ref{mkDiagnosticEvsVariables}.
+    For the two-level condition variable, we are guaranteed not
+    to see any remaining trend, and instead we are checking that
+    the variability doesn't fluctuate across groups,
+    which it does not.
+    However, looking at the stock photo variable,
+    we find that there is some difference in the variability
+    of the residuals in the two groups.
+    Additionally, when we consider the residuals against the
+    \var{wheels} variable, we see some possible structure.
+    There appears to be curvature in the residuals,
+    indicating the relationship is probably not linear.
+
+\begin{figure}
+  \centering
+  \Figures{0.75}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
+  \caption{For the condition and stock photo variables, we check
+      for differences in the distribution shape or variability of
+      the residuals.
+      In the case of the stock photos variable, we see a little
+      less variability in the unique photo group than the stock
+      photo group.
+      For numerical predictors, we also check for trends or other
+      structure.
+      We see some slight bowing in the residuals against the
+      \var{wheels} variable in the bottom plot.}
+  \label{mkDiagnosticEvsVariables}
+\end{figure}
+
+\end{description}
+
+As with the \data{loans} analysis, we would summarize
+diagnostics when reporting the model results.
+In the case of this auction data,
+we would report that there appears to be non-constant variance
+in the stock photo variable and that there may be a nonlinear
+relationship between the total price and the number of wheels
+included for an auction.
+This information would be important to buyers and sellers who
+may review the analysis, and omitting this information could be
+a setback to the very people who the model might assist.
+
+
+
+
+
 %__________________
 \section{Introduction to logistic regression}
 \label{logisticRegression}
@@ -1480,7 +1910,8 @@ In this section we introduce \term{logistic regression}
 as a tool for building models when there is a categorical
 response variable with two levels, e.g. yes and no.
 Logistic regression is a type of
-\term{generalized linear model} (GLM) for response variables
+\term{generalized linear model} (\indexthis{GLM})
+for response variables
 where regular multiple regression does not work very well.
 In particular, the response variable in these settings often
 takes a form where residuals look completely different from
@@ -1533,11 +1964,11 @@ Finally, they randomly assigned a name to each resume,
 where the name would imply the applicant's sex and race.
 The first names used in this experiment were selected so that
 the names would predominantly be
-recognized as belonging to black or white individuals.
+recognized as belonging to Black or White individuals.
 For example, Lakisha was a name that their survey indicated
-would be interpreted as a black woman, while Greg was a name
+would be interpreted as a Black woman, while Greg was a name
 that would generally be interpreted to be associated with
-a white male.
+a White male.
 You can find the full set of names they used in
 Figure~\ref{resumeFirstName}.
 
@@ -1897,7 +2328,7 @@ variable is eliminated, giving the smaller model summarized
 in Figure~\ref{resumeLogisticReducedModel},
 which is what we'll rely on for the remainder
 of this section.
-\Comment{Do we want to discuss that one variable dropping out more?}
+%\Comment{Do we want to discuss that one variable dropping out more?}
 
 \begin{figure}[ht]
 \centering
@@ -1942,10 +2373,10 @@ of this section.
   and it is positive.
   This positive coefficient reflects a positive gain
   in callback rate for resumes where the candidate's
-  first name implied they were white.  
+  first name implied they were White.  
   The data provide very strong evidence of racial bias
   by prospective employers that favors resumes where the
-  first name is typically interpreted to be white.
+  first name is typically interpreted to be White.
 \end{nexample}
 \end{examplewrap}
 
@@ -1987,16 +2418,17 @@ experiment -- for instance, maybe it is observational data --
 it's common for point estimates to change a little,
 and sometimes a lot, depending on which other
 variables are included in the model.
-This is usually due to colinearity in the predictor variables.
-\Comment{Revisit the end of this paragraph,
-  e.g. if removing the Ebay auction example.}
-We previously saw this in the Ebay auction example when
-we compared the coefficient of \var{cond\us{}new} in a
-single-variable model and the corresponding coefficient
-in the multiple regression model when including three
-additional variables (see
-Sections~\ref{ind_and_cat_vars_as_predictors}
-and~\ref{includingAndAssessingManyVariablesInAModel}).
+%This might happen if predictor variables are correlated,
+%where the inclusion of one of the variables can influence.
+%\Comment{Revisit the end of this paragraph,
+%  e.g. if removing the Ebay auction example.}
+%We previously saw this in the Ebay auction example when
+%we compared the coefficient of \var{cond\us{}new} in a
+%single-variable model and the corresponding coefficient
+%in the multiple regression model when including three
+%additional variables (see
+%Sections~\ref{ind_and_cat_vars_as_predictors}
+%and~\ref{includingAndAssessingManyVariablesInAModel}).
 
 \begin{examplewrap}
 \begin{nexample}{Use the model summarized in
@@ -2007,7 +2439,7 @@ and~\ref{includingAndAssessingManyVariablesInAModel}).
     no honors,
     no military experience,
     includes an email address,
-    and has a first name that implies they are a white male.}
+    and has a first name that implies they are a White male.}
   \label{exampleForResumeAndWhiteQuantified}%
   We can start by writing out the equation using indicator
   functions and coefficients from the model, then we can
@@ -2044,12 +2476,12 @@ and~\ref{includingAndAssessingManyVariablesInAModel}).
 \begin{examplewrap}
 \begin{nexample}{Compute the probability of a callback
     for an individual with a name commonly inferred
-    to be from a black male but who otherwise
+    to be from a Black male but who otherwise
     has the same characteristics as the one described
     in Example~\ref{exampleForResumeAndWhiteQuantified}.}
   \index{exampleForResumeAndBlackQuantified}%
   We can complete the same steps for an individual
-  with the same characteristics who is black,
+  with the same characteristics who is Black,
   where the only difference in the calculation is that
   the indicator variable
   $1_{white}$ will take a value of \resp{0}.
@@ -2057,18 +2489,19 @@ and~\ref{includingAndAssessingManyVariablesInAModel}).
   Let's compare the results with those of
   Example~\ref{exampleForResumeAndWhiteQuantified}.
 
-  In practical terms, such an individual perceived
-  as white based on their first name would need to
+  In practical terms, an individual perceived
+  as White based on their first name would need to
   apply to $\frac{1}{0.0835} \approx 12$ jobs on average
   to receive a callback,
-  while an individual perceived as black based on their
-  first name would need
+  while an individual perceived as Black
+  based on their first name
+  would need
   to apply to $\frac{1}{0.0553} \approx 18$ jobs on average
   to receive a callback.
-  Applicants who are perceived as
-  black needing to apply to about 50\% more employers
+  That is, applicants who are perceived as
+  Black need to apply to 50\% more employers
   to receive a callback than someone who is perceived
-  as white based on their first name for jobs like
+  as White based on their first name for jobs like
   those in the study.
 \end{nexample}
 \end{examplewrap}
@@ -2185,17 +2618,9 @@ deviations.
 \index{logistic regression|)}
 
 
+\newpage
 
 \subsection{The mathematics behind discrimination}
-
-\Comment{This subsection is tentatively added due to the
-    importance of discussing racial discrimination.
-    We would like feedback on whether it seems appropriate
-    to retain this subsection, or whether it should be moved
-    to a blog post or other place.
-    No matter where it goes, we will have it carefully
-    reviewed by an outside group that specializes in the
-    topic of discrimination.}
 
 \index{discrimination|(}
 
@@ -2208,18 +2633,14 @@ single aspect: whether a prospective employer would
 call a candidate who submitted their resume.
 There was a 50\% higher barrier for resumes simply when
 the candidate had a first name that was perceived to be
-from a black individual.
+from a Black individual.
 It's unlikely that discrimination would stop there.
 
-Despite these considerations, we've observed calls for
-considerations around \emph{reverse discrimination},
-\index{reverse discrimination}%
-which is the notion that individuals from minority groups
-get special treatment because of their minority status,
-translating to discrimination against a non-minority group.
-Such discrimination is likely real in some situations.
-Yet, the impact appears to be so much smaller than the
-discrimination experienced by minorities... \emph{why?}
+Of course, discrimination can happen to anyone.
+Yet, discrimination against non-minority groups is
+considered to be much less impactful than
+the discrimination experienced by minorities.
+\emph{Why?}
 
 \begin{examplewrap}
 \begin{nexample}{Let's consider a sex-imbalanced
@@ -2234,7 +2655,7 @@ discrimination experienced by minorities... \emph{why?}
 
     Now let's imagine that 10\% of the people in the
     company are prejudiced against the other sex.
-    That is, 10\% of men are prejudiced against women,
+    That~is, 10\% of men are prejudiced against women,
     and similarly, 10\% of women are prejudiced against men.
     \exspace{}
     
@@ -2283,24 +2704,39 @@ then the ratio of rates of discrimination against women
 vs men would be given by $\frac{1 - p}{p}$;
 this ratio is always greater than 1 when $p < 0.5$.
 That is, whenever individuals are equally likely to
-be prejudiced, the minority group would always encounter
+discriminate, the minority group would always encounter
 more discrimination, and the degree of that discrimination
 will be larger the greater the imbalance in the population.
 
-The 8\%-to-2\% is a direct result of the 80\%-to-20\% ratio
-in Example~\ref{sex_imbalance_leads_to_discrimination}.
-More generally, if 
+%The 8\%-to-2\% is a direct result of the 80\%-to-20\% ratio
+%in Example~\ref{sex_imbalance_leads_to_discrimination}.
+%More generally, if 
 
 No discrimination has a place in our society,
 be it discrimination against a minority group
 or a majority group.
 Yet we cannot deny the mathematics behind
 discrimination: minority groups are much more
-prone to severe effects from discrimination
+prone to the negative impacts from discrimination
 than majority groups.
 While we will stand up to discrimination in all
 its forms, we recognize that the biggest problems
 we face today is discrimination against minorities.
+
+Discrimination is a complex topic and discussed
+thoughtfully by many others.
+For further reading,
+please consider the following excellent resources:
+\Comment{Need to identify appropriate resources.
+  Suggestions welcome!}
+\begin{itemize}
+\item
+    \Comment{Resource \#1}
+\item
+    \Comment{Resource \#2}
+\item
+    \Comment{Resource \#3}
+\end{itemize}
 
 We close this book on this serious topic,
 and we hope it inspires you to think about
