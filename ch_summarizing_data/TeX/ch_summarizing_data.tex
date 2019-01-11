@@ -1251,22 +1251,19 @@ Figure~\ref{countyMedIncomeMap}?\footnotemark{}
 
 \index{data!loans|(}
 
-Like numerical data, categorical data can also be organized
-and analyzed.
 In this section, we will introduce tables and other basic tools
 for categorical data that are used throughout this book.
 The \data{loan50} data set represents a sample from a larger
 loan data set called \data{loans}.
 This larger data set contains information on 10,000 loans made
 through Lending Club.
-In this section we will examine the relationship between
+We~will examine the relationship between
 \var{homeownership}, which for the \data{loans} data can take
 a value of \resp{rent}, \resp{mortgage}
 (owns but has a mortgage), or \resp{own},
 and \var{app\us{}type},
-which indicates whether the borrower reported joint income
-with a partner or whether that reported income was
-individual only.
+which indicates whether the loan application was made
+with a partner or whether it was an individual application.
 % library(openintro); dim(loans_full_schema)
 
 
@@ -1364,15 +1361,14 @@ A bar plot is a common way to display a single
 categorical variable.
 The left panel of Figure~\ref{loan_homeownership_bar_plot}
 shows a \term{bar plot} for the \var{homeownership} variable.
-In the right panel, the counts are converted into proportions
-(e.g. $\loanapphomeDA{} / \loanapphomeDD{} = 0.3858$ for
-  \resp{rent}),
+In the right panel, the counts are converted into proportions,
 showing the proportion of observations that are in each level
-(i.e. in each category).
+(e.g. $\loanapphomeDA{} / \loanapphomeDD{} = 0.3858$ for
+  \resp{rent}).
 
 \begin{figure}[bht]
   \centering
-  \Figure{0.9}{loan_homeownership_bar_plot}
+  \Figure{0.82}{loan_homeownership_bar_plot}
   \caption{Two bar plots of \var{number}.
       The left panel shows the counts, and the right panel
       shows the proportions in each group.}
@@ -1382,11 +1378,14 @@ showing the proportion of observations that are in each level
 
 \subsection{Row and column proportions}
 
+Sometimes it is useful to understand the fractional breakdown
+of one variable in another,
+and we can modify our contingency table to provide such a view.
 Figure~\ref{rowPropAppTypeHomeownership}
-shows the row proportions for
-Figure~\ref{loan_home_app_type_totals}.
-The \termsub{row proportions}{contingency table!row proportions}
-are computed as the counts divided by their row totals.
+shows the
+\termsub{row proportions}{contingency table!row proportions}
+for Figure~\ref{loan_home_app_type_totals},
+which are computed as the counts divided by their row totals.
 The value \loanapphomeAA{} at the intersection of
 \resp{individual} and \resp{rent} is replaced by
 $\loanapphomeAA{}/\loanapphomeAD{} = 0.411$,
@@ -1403,49 +1402,66 @@ applicants who rent.
   & rent & mortgage & own & Total \\
   \hline
   individual & 
-      $\loanapphomeAA{}/\loanapphomeAD{} = 0.411$ &
-      $\loanapphomeAB{}/\loanapphomeAD{} = 0.451$ &
-      $\loanapphomeAC{}/\loanapphomeAD{} = 0.138$ &
+%      $\loanapphomeAA{}/\loanapphomeAD{} = 0.411$ &
+%      $\loanapphomeAB{}/\loanapphomeAD{} = 0.451$ &
+%      $\loanapphomeAC{}/\loanapphomeAD{} = 0.138$ &
+      0.411 &
+      0.451 &
+      0.138 &
       1.000 \\
   joint &
-      $\loanapphomeBA{}/\loanapphomeBD{} = 0.242$ &
-      $\loanapphomeBB{}/\loanapphomeBD{} = 0.635$ &
-      $\loanapphomeBC{}/\loanapphomeBD{} = 0.122$ &
+%      $\loanapphomeBA{}/\loanapphomeBD{} = 0.242$ &
+%      $\loanapphomeBB{}/\loanapphomeBD{} = 0.635$ &
+%      $\loanapphomeBC{}/\loanapphomeBD{} = 0.122$ &
+      0.242 &
+      0.635 &
+      0.122 &
       1.000 \\
   \hline
   Total &
-      $\loanapphomeDA{}/\loanapphomeDD{} = 0.386$ &
-      $\loanapphomeDB{}/\loanapphomeDD{} = 0.479$ &
-      $\loanapphomeDC{}/\loanapphomeDD{} = 0.135$ &
+%      $\loanapphomeDA{}/\loanapphomeDD{} = 0.386$ &
+%      $\loanapphomeDB{}/\loanapphomeDD{} = 0.479$ &
+%      $\loanapphomeDC{}/\loanapphomeDD{} = 0.135$ &
+      0.386 &
+      0.479 &
+      0.135 &
       1.000 \\
   \hline
 \end{tabular}
 \caption{A contingency table with row proportions
     for the \var{app\us{}type} and
     \var{homeownership} variables.
-    The totals for some rows are off by 0.001
-    due to rounding errors.}
+    The row total is off by 0.001 for the
+    \resp{joint} row due to a rounding error.}
 \label{rowPropAppTypeHomeownership}
 \end{figure}
 
 A contingency table of the column proportions is computed in a similar way, where each \termsub{column proportion}{contingency table!column proportion} is computed as the count divided by the corresponding column total. Figure~\ref{colPropAppTypeHomeownership} shows such a table, and here the value 0.906 indicates that 90.6\% of renters applied as individuals for the loan. This rate is higher compared to loans from people with mortgages (80.2\%) or who own their home (85.1\%). Because these rates vary between the three levels of \var{homeownership} (\resp{rent}, \resp{mortgage}, \resp{own}), this provides evidence that the \var{app\us{}type} and \var{homeownership} variables are associated.
 
 \begin{figure}[h]
-\centering\small
+\centering%\small
 \begin{tabular}{l rrr r}
   \hline
   & rent & mortgage & own & Total \\
   \hline
   individual &
-      $\loanapphomeAA{}/\loanapphomeDA{} = 0.906$ &
-      $\loanapphomeAB{}/\loanapphomeDB{} = 0.802$ &
-      $\loanapphomeAC{}/\loanapphomeDC{} = 0.865$ &
-      $\loanapphomeAD{}/\loanapphomeDD{} = 0.851$ \\
+%      $\loanapphomeAA{}/\loanapphomeDA{} = 0.906$ &
+%      $\loanapphomeAB{}/\loanapphomeDB{} = 0.802$ &
+%      $\loanapphomeAC{}/\loanapphomeDC{} = 0.865$ &
+%      $\loanapphomeAD{}/\loanapphomeDD{} = 0.851$ \\
+      0.906 &
+      0.802 &
+      0.865 &
+      0.851 \\
   joint &
-      $\loanapphomeBA{}/\loanapphomeDA{} = 0.094$ &
-      $\loanapphomeBB{}/\loanapphomeDB{} = 0.198$ &
-      $\loanapphomeBC{}/\loanapphomeDC{} = 0.135$ &
-      $\loanapphomeBD{}/\loanapphomeDD{} = 0.150$ \\
+%      $\loanapphomeBA{}/\loanapphomeDA{} = 0.094$ &
+%      $\loanapphomeBB{}/\loanapphomeDB{} = 0.198$ &
+%      $\loanapphomeBC{}/\loanapphomeDC{} = 0.135$ &
+%      $\loanapphomeBD{}/\loanapphomeDD{} = 0.150$ \\
+      0.094 &
+      0.198 &
+      0.135 &
+      0.150 \\
   \hline
   Total & 1.000 & 1.000 & 1.000 & 1.000 \\
   \hline
@@ -1460,20 +1476,34 @@ A contingency table of the column proportions is computed in a similar way, wher
 
 We could also have checked for an association between \var{app\us{}type} and \var{homeownership} in Figure~\ref{rowPropAppTypeHomeownership} using row proportions. When comparing these row proportions, we would look down columns to see if the fraction of loans where the borrower rents, has a mortgage, or owns varied across the \resp{individual} to \resp{joint} application types.
 
-\Comment{These next exercises must be checked \textbf{very}
-    carefully for errors.}
+\begin{exercisewrap}
+\begin{nexercise}
+(a)~What does 0.451 represent in
+Figure~\ref{rowPropAppTypeHomeownership}?
+
+(b)~What does 0.802 represent in
+Figure~\ref{colPropAppTypeHomeownership}?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a)~0.451 represents the proportion of individual
+  applicants who have a mortgage.
+  (b)~0.802 represents the fraction
+  of applicants with mortgages who applied as individuals.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-What does 0.451 represent in Figure~\ref{rowPropAppTypeHomeownership}? What does 0.802 represent in Figure~\ref{colPropAppTypeHomeownership}?\footnote{0.451 represents the proportion of individual applicants who have a mortgage. 0.802 represents the fraction of applicants with mortgages who applied as individuals.}
-\end{nexercise}
-\end{exercisewrap}
+(a)~What does 0.122 at the intersection of \resp{joint} and
+\resp{own} represent in
+Figure~\ref{rowPropAppTypeHomeownership}?
 
-\begin{exercisewrap}
-\begin{nexercise}
-What does 0.122 at the intersection of \resp{joint} and \resp{own} represent in Figure~\ref{rowPropAppTypeHomeownership}? What does 0.135 represent in the Figure~\ref{colPropAppTypeHomeownership}?\footnote{0.122 represents the fraction of joint borrowers who own their home. 0.135 represents the home-owning borrowers who had a joint application for the loan.}
+(b)~What does 0.135 represent in the
+Figure~\ref{colPropAppTypeHomeownership}?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
+\footnotetext{(a)~0.122 represents the fraction of joint borrowers
+  who own their home.
+  (b)~0.135 represents the home-owning borrowers
+  who had a joint application for the loan.}
 
 \begin{examplewrap}
 \begin{nexample}{
@@ -1482,18 +1512,18 @@ What does 0.122 at the intersection of \resp{joint} and \resp{own} represent in 
     By noting specific characteristics of an email,
     a data scientist may be able to classify some emails as spam
     or not spam with high accuracy.
-    One of those characteristics is whether the email
+    One such characteristic is whether the email
     contains no numbers, small numbers, or big numbers.
-    Another characteristic is whether or not an email
-    has any HTML content.
-    A contingency table for the \var{spam} and \var{format}
-    variables from the \data{email} data set are shown in
+    Another characteristic is the email format, which
+    indicates whether or not an email has any HTML content,
+    such as bolded text.
+    We'll focus on email format and spam status using the
+    \data{email} data set, and these variables are summarized
+    in a contingency table in
     Figure~\ref{emailSpamHTMLTableTotals}.
-    For reference, an HTML email is an email with the capacity
-    for special formatting, e.g. bold text.
-    In Figure~\ref{emailSpamHTMLTableTotals},
-    which would be more helpful to someone hoping to classify
-    email as spam or regular email: row or column proportions?}
+    Which would be more helpful to someone hoping to classify
+    email as spam or regular email for this table:
+    row or column proportions?}
   \label{weighingRowColumnProportions}
   A data scientist would be interested in how the proportion
   of spam changes within each email format.
@@ -1509,9 +1539,9 @@ What does 0.122 at the intersection of \resp{joint} and \resp{own} represent in 
   an email as spam or not spam, as over 80\% of plain text
   emails are not spam.
   Yet, when we carefully combine this information with many
-  other characteristics, such as \var{number} and other variables,
-  we stand a reasonable chance of being able to classify some
-  email as spam or not spam.
+  other characteristics,
+  we stand a reasonable chance of being able to classify
+  some emails as spam or not spam with confidence.
 \end{nexample}
 \end{examplewrap}
 
@@ -1551,14 +1581,13 @@ is more useful.
   and \var{homeownership} vs the email example is that
   these two variables don't have a clear explanatory-response
   variable relationship that we might hypothesize
-  (these terms were introduced in
-    Section~\ref{explanatoryAndResponse}).
+  (see Section~\ref{explanatoryAndResponse} for these terms).
   Usually it is most useful to ``condition'' on the
   explanatory variable.
   For instance, in the email example, the email format
   was seen as a possible explanatory variable of whether
-  the message was spam, so we computed the relative
-  frequencies for each email format.
+  the message was spam, so we would find it more interesting
+  to compute the relative frequencies for each email format.
 \end{nexample}
 \end{examplewrap}
 
@@ -1582,24 +1611,29 @@ the information in these tables.
 A \termsub{stacked bar plot}{bar plot!stacked bar plot}
 \index{bar plot!segmented bar plot}
 is a graphical display of contingency table information.
-For example, a stacked bar plot representing
+For example, a~stacked bar plot representing
 Figure~\ref{colPropAppTypeHomeownership}
 is shown in Figure~\ref{loan_app_type_home_seg_bar},
 where we have first created a bar plot using the
 \var{homeownership} variable and then divided each group
-by the levels of \var{app\us{}type}.
-One related visualization is a
-\termsub{side-by-side bar plot}{bar plot!side-by-side},
-which is shown in
-Figure~\ref{loan_app_type_home_sbs_bar}.
-The column proportions of
-Figure~\ref{colPropAppTypeHomeownership}
-have been translated into a standardized stacked bar plot
-in Figure~\ref{loan_app_type_home_seg_bar_standardized},
-which is a helpful visualization of the fraction of individual
-or joint loan applications for borrowers in each level of
-\var{homeownership}.
+by the levels of \mbox{\var{app\us{}type}}.
 
+One related visualization to the stacked bar plot is the
+\termsub{side-by-side bar plot}{bar plot!side-by-side},
+where an example is shown in
+Figure~\ref{loan_app_type_home_sbs_bar}.
+
+For the last type of bar plot we introduce,
+the column proportions for the
+\var{app\us{}type} and \var{homeownership} contingency table
+have been translated into a standardized stacked bar plot
+in Figure~\ref{loan_app_type_home_seg_bar_standardized}.
+This type of visualization is helpful in understanding
+the fraction of individual or joint loan applications
+for borrowers in each level of \var{homeownership}.
+Additionally, since the proportions of \resp{joint}
+and \resp{individual} vary across the groups,
+we can conclude that the two variables are associated.
 
 \newcommand{\loanapptypehomesegbarplotwidth}{0.48\textwidth}
 \begin{figure}[h]
@@ -1639,7 +1673,7 @@ or joint loan applications for borrowers in each level of
     Figure~\ref{loan_app_type_home_seg_bar_plot}.
     When is the stacked, side-by-side, or standardized
     stacked bar plot the most useful?}
-  This stacked bar plot is most useful when it is reasonable
+  The stacked bar plot is most useful when it's reasonable
   to assign one variable as the explanatory variable and
   the other variable as the response, since we are effectively
   grouping by one variable first and then breaking it down by
@@ -1649,26 +1683,24 @@ or joint loan applications for borrowers in each level of
   about which variable, if any, represents the explanatory
   and which the response variable.
   It is also easy to discern the number of cases
-  in of the six different group combinations shown than
-  in a stacked bar plot.
-  However, one downside of the side-by-side visualization
+  in of the six different group combinations.
+  However, one downside
   is that it tends to require more horizontal space;
   the narrowness of Figure~\ref{loan_app_type_home_sbs_bar}
   makes the plot feel a bit cramped.
   Additionally, when two groups are of very different sizes,
-  as we see in the \resp{mortgage} and \resp{own} groups,
-  it is difficult to discern if there is any association
+  as we see in the \resp{own} group relative to either of the
+  other two groups,
+  it is difficult to discern if there is an association
   between the variables.
 
-  The standardized stacked bar plot is helpful if primary
+  The standardized stacked bar plot is helpful if the primary
   variable in the stacked bar plot is relatively imbalanced,
-  e.g. as we see where the \resp{own} category has only
-  a third of the observations in the \resp{mortgage}
-  category, making it a bit more difficult
-  to discern whether the proportion of borrowers
-  in each group that are individual or joint borrowers
-  is stable across the two groups.
-  That said, the major downside of the standardized version
+  e.g. the \resp{own} category has only a third of the
+  observations in the \resp{mortgage} category,
+  making the simple stacked bar plot less useful for
+  checking for an association.
+  The major downside of the standardized version
   is that we lose all sense of how many cases each of the
   bars represents.
 \end{nexample}
@@ -1687,7 +1719,7 @@ A \term{mosaic plot} is a visualization technique
 suitable for contingency tables that resembles
 a standardized stacked bar plot with the benefit
 that we still see the relative group sizes of the
-primary variable.
+primary variable as well.
 
 To get started in creating our first mosaic plot,
 we'll break a square into columns for each category
@@ -1736,7 +1768,8 @@ and it was divided into individual loans (upper)
 and joint loans (lower).
 As another example, the bottom segment of the third column
 represents loans where the borrower owns their home
-and applied jointly, while the upper segment represents
+and applied jointly, while the upper segment
+of this column represents
 borrowers who are homeowners and filed individually.
 We can again use this plot to see that
 the \var{homeownership} and \var{app\us{}type}
@@ -1755,7 +1788,9 @@ Like with the bar plots, it's common to use
 the explanatory variable to represent the
 first split in a mosaic plot,
 and then for the response to break
-up each level of the explanatory variable.
+up each level of the explanatory variable,
+if these labels are reasonable to attach to
+the variables under consideration.
 
 \begin{figure}[h]
   \centering
@@ -1774,19 +1809,19 @@ up each level of the explanatory variable.
 
 \subsection{The only pie chart you will see in this book}
 
-\Comment{The language against pie charts has been softened.}
-
 A \term{pie chart} is shown in
 Figure~\ref{loan_homeownership_pie_chart} alongside
 a bar plot representing the same information.
 Pie charts can be useful for giving a high-level overview
 to show how a set of cases break down.
-However, it is also difficult to decipher close details
+However, it is also difficult to decipher details
 in a pie chart.
 For example, it takes a couple seconds longer to recognize
 that there are more loans where the borrower has
 a mortgage than rent when looking at the pie chart,
 while this detail is very obvious in the bar plot.
+While pie charts can be useful, we prefer bar plots
+for their ease in comparing groups.
 %One benefit of pie charts is that they to make it easier
 %to see when a series of groups make up at least 50\%,
 %e.g. \Comment{would need to show a pie chart with
@@ -1794,7 +1829,7 @@ while this detail is very obvious in the bar plot.
 
 \begin{figure}[h]
   \centering
-  \Figure{1.00}{loan_homeownership_pie_chart}
+  \Figure{}{loan_homeownership_pie_chart}
   \caption{A pie chart and bar plot of \var{homeownership}.}
   \label{loan_homeownership_pie_chart}
 \end{figure}
@@ -1808,20 +1843,19 @@ while this detail is very obvious in the bar plot.
 
 Some of the more interesting investigations can be considered
 by examining numerical data across groups.
-The methods required here aren't really new.
-All that is required is to make a numerical plot for each group.
-Here two convenient methods are introduced: side-by-side
-box plots and hollow histograms.
+The methods required here aren't really new:
+all that's required is to make a numerical plot for each group
+in the same graph.
+Here two convenient methods are introduced:
+side-by-side box plots and hollow histograms.
 
 We will take a look again at the \data{county} data set
 and compare the median household income for counties that
 gained population from 2010 to 2017 versus counties that
-had no gain.\footnote{Some counties are excluded since
-  they did not have available population data for one
-  or both years.}
+had no gain.
 While we might like to make a causal connection here,
 remember that these are observational data and so such
-an interpretation would not be justified.
+an interpretation would be, at best, half-baked.
 
 \newcommand{\numcountieswithgains}{1454}
 \newcommand{\numcountieswithgainsC}{1,454}
@@ -1838,14 +1872,19 @@ Figure~\ref{countyIncomeSplitByPopGainTable}
 to give a better sense of some of the raw median
 income data.
 
+\newcommand{\npgpad}[1]{\hspace{2mm}#1\hspace{1.5mm}\ }
 \begin{figure}
 \centering
 \begin{tabular}{ ccc ccc c ccc }
-\multicolumn{6}{c}{\bf population gain} &&
-    \multicolumn{3}{c}{\bf no gain} \\ 
+\multicolumn{10}{c}{\bf Median Income for 150 Counties,
+    in \$1000s} \\
+\hline
+\vspace{-2mm} \\
+\multicolumn{6}{c}{\bf Population Gain} &\hspace{5mm}\ &
+    \multicolumn{3}{c}{\bf No Population Gain} \\ 
   \cline{1-6} \cline{8-10}
-62.7 & 61.2 & 32.4 & 74.2 & 44.6 & 38.8 &\hspace{5mm}\ &
-    55.2 & 49.6 & 44.1 \\
+62.7 & 61.2 & 32.4 & 74.2 & 44.6 & 38.8 &&
+    \npgpad{55.2}& \npgpad{49.6}& \npgpad{44.1}\\
 26.7 & 63.6 & 42.9 & 45.3 & 52.8 & 77 && 41.1 & 45.8 & 49 \\
 41.5 & 45.3 & 55.5 & 49 & 38.2 & 51 && 53.9 & 44.8 & 38.8 \\
 48.1 & 45.6 & 74.1 & 50.6 & 45.6 & 97.5 && 54.6 & 41.5 & 44.1 \\
@@ -1901,7 +1940,10 @@ What do you notice about the approximate center of each group?
 What do you notice about the variability between groups?
 Is the shape relatively consistent between groups?
 How many \emph{prominent} modes are there for each
-group?\footnote{Answers may vary a little.
+group?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Answers may vary a little.
   The counties with population gains tend to have higher
   income (median of about \$45,000) versus counties without
   a gain (median of about \$40,000).
@@ -1915,17 +1957,20 @@ group?\footnote{Answers may vary a little.
   The box plots indicate there are many observations
   far above the median in each group, though we should
   anticipate that many observations will fall beyond
-  the whiskers when using such most data sets that
+  the whiskers when examining any data set that
   contain more than a couple hundred data points.}
-\end{nexercise}
-\end{exercisewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you find most useful?\footnote{Answers will vary. The side-by-side box plots are especially useful for comparing centers and spreads, while the hollow histograms are more useful for seeing distribution shape, skew, and potential anomalies.}
+What components of each plot in
+Figure~\ref{countyIncomeSplitByPopGain}
+do you find most useful?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-
+\footnotetext{Answers will vary.
+  The side-by-side box plots are especially useful for comparing
+  centers and spreads, while the hollow histograms are more useful
+  for seeing distribution shape, skew, and potential anomalies.}
 \index{data!county|)}
 
 
