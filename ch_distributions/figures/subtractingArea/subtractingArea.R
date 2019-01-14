@@ -32,11 +32,11 @@ plot(X, Y,
 AddShadedPlot(X, Y, 0)
 AddText(0, format(c(1, 0.0001), scientific = FALSE)[1])
 
-AddShadedPlot(X, Y, 8, -8, 0.43)
-AddText(8, format(0.6664, scientific = FALSE)[1])
+AddShadedPlot(X, Y, 8, -8, 0.45)
+AddText(8, format(0.6736, scientific = FALSE)[1])
 
-AddShadedPlot(X, Y, 16, 0.43, 8)
-AddText(16, format(0.3336, scientific = FALSE)[1])
+AddShadedPlot(X, Y, 16, 0.45, 8)
+AddText(16, format(0.3264, scientific = FALSE)[1])
 
 lines(c(3.72, 4.28), rep(0.549283, 2), lwd = 2)
 lines(c(3, 8 - 3), c(0.2, 0.2), lwd = 3)

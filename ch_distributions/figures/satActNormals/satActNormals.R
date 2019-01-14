@@ -9,8 +9,8 @@ par(mfrow = c(2, 1),
     mar = c(2.5, 0, 0.5, 0))
 
 # _____ Curve 1 _____ #
-m <- 1500
-s <- 300
+m <- 1100
+s <- 200
 X <- m + s * seq(-4, 4, 0.01)
 Y <- dnorm(X, m, s)
 plot(X, Y,
@@ -36,7 +36,7 @@ text(m + s,
 # _____ Curve 2 _____ #
 par(mar = c(2, 0, 1, 0))
 m <- 21
-s <- 5
+s <- 6
 X <- m + s * seq(-4, 4, 0.01)
 Y <- dnorm(X, m, s)
 plot(X, Y,
