@@ -775,19 +775,49 @@ $\mu = \satmean{}$ and standard deviation $\sigma = \satsd{}$.
 \section{Evaluating the normal approximation}
 \label{assessingNormal}
 
-Many processes can be well approximated by the normal distribution. We have already seen two good examples: SAT scores and the heights of US adult males. While using a normal model can be extremely convenient and helpful, it is important to remember normality is always an approximation. Evaluating the appropriateness of the normal assumption is a key step in many data analyses.
+Many processes can be well approximated by the normal distribution.
+We have already seen two good examples:
+SAT scores and the heights of US adult males.
+While using a normal model can be extremely convenient
+and helpful, it is important to remember normality is
+always an approximation.
+Evaluating the appropriateness of the normal assumption
+is a key step in many data analyses.
 
 \index{normal probability plot|(}
 
-Example~\ref{normalExam40Perc} suggests the distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
+Example~\ref{normalExam40Perc} in Section~\ref{normalDist}
+suggested the distribution of heights of US males is well
+approximated by the normal model.
+We are interested in proceeding under the assumption that
+the data are normally distributed, but first we must check
+to see if this is reasonable.
 
-There are two visual methods for checking the assumption of normality, which can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of Figure~\ref{fcidMHeights}. The sample mean $\bar{x}$ and standard deviation $s$ are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a \term{normal probability plot},\footnote{Also commonly called a \term{quantile-quantile plot}.} shown in the right panel of Figure~\ref{fcidMHeights}. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
+There are two visual methods for checking the assumption of
+normality, which can be implemented and interpreted quickly.
+The first is a simple histogram with the best fitting normal
+curve overlaid on the plot, as shown in the left panel of
+Figure~\ref{fcidMHeights}.
+The sample mean $\bar{x}$ and standard deviation $s$ are used
+as the parameters of the best fitting normal curve.
+The closer this curve fits the histogram, the more reasonable
+the normal model assumption.
+Another common method is examining a
+\term{normal probability plot},\footnote{Also commonly
+  called a \term{quantile-quantile plot}.}
+shown in the right panel of Figure~\ref{fcidMHeights}.
+The closer the points are to a perfect straight line,
+the more confident we can be that the data follow the
+normal model.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.7\textwidth]{ch_distributions/figures/fcidMHeights/fcidMHeights}
-\caption{A sample of 100 male heights. The observations are rounded to the nearest whole inch, explaining why the points appear to jump in increments in the normal probability plot.}
-\label{fcidMHeights}
+  \centering
+  \Figure{0.7}{fcidMHeights}
+  \caption{A sample of 100 male heights.
+      The observations are rounded to the nearest whole inch,
+      explaining why the points appear to jump in increments
+      in the normal probability plot.}
+  \label{fcidMHeights}
 \end{figure}
 
 \begin{examplewrap}
@@ -872,45 +902,76 @@ The data are very strongly right skewed\index{skew!example: very strong} in the 
 \end{examplewrap}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ch_distributions/figures/nbaNormal/nbaNormal}
-\caption{Histogram and normal probability plot for the NBA heights from the 2008-9 season.}
-\label{nbaNormal}
+  \centering
+  \Figure{0.8}{nbaNormal}
+  \caption{Histogram and normal probability plot
+      for the NBA heights from the 2008-9 season.}
+  \label{nbaNormal}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{ch_distributions/figures/pokerNormal/pokerNormal}
-\caption{A histogram of poker data with the best fitting normal plot and a normal probability plot.}
-\label{pokerNormal}
+  \centering
+  \Figure{0.9}{pokerNormal}
+  \caption{A histogram of poker data with the best
+      fitting normal plot and a normal probability plot.}
+  \label{pokerNormal}
 \end{figure}
 
 \begin{exercisewrap}
 \begin{nexercise}\label{normalQuantileExercise}%
-Determine which data sets represented in Figure~\ref{normalQuantileExer} plausibly come from a nearly normal distribution. Are you confident in all of your conclusions? There are 100 (top left), 50 (top right), 500 (bottom left), and 15 points (bottom right) in the four plots.\footnotemark
+Determine which data sets represented in
+Figure~\ref{normalQuantileExer} plausibly come from
+a nearly normal distribution.
+Are you confident in all of your conclusions?
+There are 100 (top left), 50 (top right), 500 (bottom left),
+and 15 points (bottom right) in the four plots.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Answers may vary a little. The top-left plot shows some deviations in the smallest values in the data set; specifically, the left tail of the data set has some outliers we should be wary of. The top-right and bottom-left plots do not show any obvious or extreme deviations from the lines for their respective sample sizes, so a normal model would be reasonable for these data sets. The bottom-right plot has a consistent curvature that suggests it is not from the normal distribution. If we examine just the vertical coordinates of these observations, we see that there is a lot of data between -20 and 0, and then about five observations scattered between 0 and 70. This describes a distribution that has a strong right skew.}
+\footnotetext{Answers may vary a little.
+  The top-left plot shows some deviations in the smallest values
+  in the data set;
+  specifically, the left tail of the data set has some outliers
+  we should be wary of.
+  The top-right and bottom-left plots do not show any obvious
+  or extreme deviations from the lines for their respective
+  sample sizes, so a normal model would be reasonable for these
+  data sets.
+  The bottom-right plot has a consistent curvature that suggests
+  it is not from the normal distribution.
+  If we examine just the vertical coordinates of these
+  observations, we see that there is a lot of data between
+  -20 and 0, and then about five observations scattered
+  between 0 and 70.
+  This describes a distribution that has a strong right skew.}
 
 \begin{figure}
   \centering
-  \Figure{0.8}{normalQuantileExer}
+  \Figure{0.7}{normalQuantileExer}
   \caption{Four normal probability plots for
       Guided Practice~\ref{normalQuantileExercise}.}
   \label{normalQuantileExer}
 \end{figure}
 
-%When observations spike downwards on the left side of a normal probability plot, it means the data have more outliers in the left tail than we'd expect under a normal distribution. When observations spike upwards on the right side, it means the data have more outliers in the right tail than what we'd expect under the normal distribution.
-
 \begin{exercisewrap}
 \begin{nexercise}
 \label{normalQuantileExerciseAdditional}%
-Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two distributions that are skewed. One distribution is skewed to the low end (left skewed) and the other to the high end (right skewed). Which is which?\footnotemark
+Figure~\ref{normalQuantileExerAdditional} shows normal
+probability plots for two distributions that are skewed.
+One distribution is skewed to the low end (left skewed)
+and the other to the high end (right skewed).
+Which is which?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is skewed to the high end. The second plot shows the opposite features, and this distribution is skewed to the low end.}
+\footnotetext{Examine where the points fall along the
+  vertical axis.
+  In the first plot, most points are near the low end
+  with fewer observations scattered along the high end;
+  this describes a distribution that is skewed to the
+  high end.
+  The second plot shows the opposite features,
+  and this distribution is skewed to the low end.}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figures{0.8}{normalQuantileExer}{normalQuantileExerAdditional}
   \caption{Normal probability plots for
@@ -918,9 +979,10 @@ Figure~\ref{normalQuantileExerAdditional} shows normal probability plots for two
   \label{normalQuantileExerAdditional}
 \end{figure}
 
-
 \index{normal probability plot|)}
 \index{distribution!normal|)}
+
+
 
 
 %_________________
