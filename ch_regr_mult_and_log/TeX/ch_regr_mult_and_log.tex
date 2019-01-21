@@ -1495,6 +1495,8 @@ didn't get the exact price predicted?\footnotemark{}
 \label{multipleRegressionModelAssumptions}
 
 \index{multiple regression!model assumptions|(}
+\index{multiple regression!technical conditions|(}
+\index{multiple regression!conditions|(}
 
 \noindent%
 Multiple regression methods using the model
@@ -1790,6 +1792,8 @@ Confidence intervals for coefficients in multiple regression can be computed usi
 b_i \ \pm\ t_{df}^{\star}SE_{b_{i}}
 \end{align*}
 where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confidence level and model degrees of freedom, $df=n-k-1$.
+\index{multiple regression!conditions|)}
+\index{multiple regression!technical conditions|)}
 \index{multiple regression!model assumptions|)}
 \index{data!mario\_kart|)}
 \index{multiple regression|)}
@@ -2413,11 +2417,13 @@ not be much influenced by which other predictors were
 in the model,
 which aligned with the motivation of the study to tease
 out which effects were important to getting a callback.
-When a data set doesn't come from a thoughtfully designed
-experiment -- for instance, maybe it is observational data --
+In most observational data,
 it's common for point estimates to change a little,
 and sometimes a lot, depending on which other
 variables are included in the model.
+Collinearity can also occur in experiments,
+but in this case the experiment was designed in such a way
+that collinearity it was not an issue.
 %This might happen if predictor variables are correlated,
 %where the inclusion of one of the variables can influence.
 %\Comment{Revisit the end of this paragraph,
@@ -2541,7 +2547,7 @@ There are two key conditions for fitting a logistic regression model:\vspace{-1m
 \end{enumerate}
 \end{onebox}
 
-The first logistic regression model assumption
+The first logistic regression model condition
 -- independence of the outcomes --
 is reasonable for the experiment since characteristics
 of resumes were randomly assigned to the resumes that
@@ -2730,6 +2736,8 @@ please consider the following excellent resources:
 \Comment{Need to identify appropriate resources.
   Suggestions welcome!}
 \begin{itemize}
+\item
+     \Add{https://www.theatlantic.com/education/archive/2017/08/myth-of-reverse-racism/535689/}
 \item
     \Comment{Resource \#1}
 \item

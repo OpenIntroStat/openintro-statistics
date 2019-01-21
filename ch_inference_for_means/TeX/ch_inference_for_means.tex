@@ -225,7 +225,7 @@ The observations are a simple random sample and consist of less than 10\% of the
 
 In the normal model, we used $z^{\star}$ and the standard error to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$-distribution:
 \begin{eqnarray*}
-\bar{x} \ \pm\  t^{\star}_{df}SE
+\bar{x} \ \pm\  t^{\star}_{df} \times SE
 \end{eqnarray*}
 The sample mean and estimated standard error are computed just as before ($\bar{x} = 4.4$ and $SE = s/\sqrt{n} = 0.528$). The value $t^{\star}_{df}$ is a cutoff we obtain based on the confidence level and the $t$-distribution with $df$ degrees of freedom. Before determining this cutoff, we will first need the degrees of freedom.
 
@@ -245,7 +245,7 @@ Generally the value of $t^{\star}_{df}$ is slightly larger than what we would ge
 
 Finally, we can substitute all our values into the confidence interval equation to create the 95\% confidence interval for the average mercury content in muscles from Risso's dolphins that pass through the Taiji area:
 \begin{eqnarray*}
-\bar{x} \ \pm\  t^{\star}_{18}SE
+\bar{x} \ \pm\  t^{\star}_{18} \times SE
 	\quad \to \quad
 4.4 \ \pm\  2.10 \times 0.528
 	\quad \to \quad
@@ -258,7 +258,7 @@ We are 95\% confident the average mercury content of muscles in Risso's dolphins
 \begin{onebox}{Finding a $t$-confidence interval for the mean}
 Based on a sample of $n$ independent and nearly normal observations, a confidence interval for the population mean is
 \begin{eqnarray*}
-\bar{x} \ \pm\  t^{\star}_{df}SE
+\bar{x} \ \pm\  t^{\star}_{df} \times SE
 \end{eqnarray*}
 where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error as estimated by the sample.
 \end{onebox}
@@ -285,7 +285,7 @@ Looking in the column where two tails is 0.100 (for a 90\% confidence interval) 
 Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$\bar{x} \ \pm\ t^{\star}_{14} SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90\% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.}
+\footnotetext{$\bar{x} \ \pm\ t^{\star}_{14} \times SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90\% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.}
 
 \index{data!white fish and mercury|)}
 
@@ -719,7 +719,8 @@ We will use the sample difference and the standard error for that point estimate
 \end{align*}
 Using $df = 8$, we can identify the appropriate $t^{\star}_{df} = t^{\star}_{8}$ for a 95\% confidence interval as 2.31. Finally, we can enter the values into the confidence interval formula:
 \begin{align*}
-\text{point estimate} \ \pm\ t^{\star}SE \quad\rightarrow\quad
+\text{point estimate} \ \pm\ t^{\star} \times SE
+\quad\rightarrow\quad
 7.83 \ \pm\ 2.31\times 1.95 \quad\rightarrow\quad (3.32, 12.34)
 \end{align*}
 We are 95\% confident that embryonic stem cells improve the heart's pumping function in sheep that have suffered a heart attack by 3.32\% to 12.34\%.

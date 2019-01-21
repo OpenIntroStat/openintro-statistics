@@ -153,15 +153,15 @@ or \term{observational unit}\index{unit of observation}.
 The columns represent characteristics,
 called \termsub{variables}{variable},
 for each of the loans.
-For example, the first row represents represents a loan of \$7,500 with an interest rate of 7.34\%, where the borrower is based in Maryland (MD) and has an income of \$70,000.
+For example, the first row represents a loan of \$7,500 with an interest rate of 7.34\%, where the borrower is based in Maryland (MD) and has an income of \$70,000.
 
 \begin{exercisewrap}
 \begin{nexercise}
 What is the grade of the first loan in Figure~\ref{loan50DF}?
 And what is the home ownership status of the borrower
 for that first loan?
-You can check your answer in the
-footnote.\footnotemark
+For these Guided Practice questions, you can check your answer
+in the footnote.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The loan's grade is A,
@@ -171,7 +171,7 @@ In practice, it is especially important to ask clarifying
 questions to ensure important aspects of the data are understood.
 For instance, it is always important to be sure we know what
 each variable means and the units of measurement.
-Descriptions of the \data{loan50} variables are described
+Descriptions of the \data{loan50} variables are given
 in Figure~\ref{loan50Variables}.
 
 \begin{figure}[h]
@@ -234,7 +234,8 @@ in Figure~\ref{loan50Variables}.
 The data in Figure~\ref{loan50DF} represent a \term{data matrix},
 which is a convenient and common way to organize data,
 especially if collecting data in a spreadsheet.
-Each row of a data matrix corresponds to a unique case,
+Each row of a data matrix corresponds to a unique case
+(observational unit),
 and each column corresponds to a variable.
 %A data matrix for the stroke study introduced in
 %Section~\ref{basicExampleOfStentsAndStrokes} is shown
@@ -587,7 +588,7 @@ to~you.\footnotemark
 
 \begin{figure}
   \centering
-  \Figure{0.85}{pop_change_v_med_income}
+  \Figure{0.9}{pop_change_v_med_income}
   \caption{A scatterplot showing
       \var{pop\us{}change}
       against \var{median\us{}hh\us{}income}.
@@ -633,7 +634,47 @@ is no evident relationship between the two.
 A pair of variables are either related in some way (associated) or not (independent). No pair of variables is both associated and independent.
 \end{onebox}
 
+When we ask questions about the relationship
+between two variables, we may be trying to determine
+if the change in one cause a change in the other.
+For example, consider again the second question about
+the \data{county} data set:
+\begin{quote}\em
+    \popchangevmedianhhincomequestion{}
+\end{quote}
+We're probably asking such a question since we suspect
+a county's median household income could affect the county's
+growth rate.
+If this is our underlying belief,
+then median household income is the
+\termsub{explanatory}{explanatory variable}
+variable and the change in the population is the
+\termsub{response}{response variable} variable in the
+relationship.
+
 \index{data!county|)}
+
+\begin{onebox}{Explanatory and response variables}
+When we suspect one variable might causally affect another,
+we label the first variable the explanatory variable and the
+second the response variable.
+\vspace{1mm}
+
+\hspace{10mm}\includegraphics[height=0.34in]{ch_intro_to_data/figures/expResp/expResp}
+
+Often times it doesn't seem that one variable might
+affect the other,
+in which case these labels should not be applied.
+\end{onebox}
+
+Bear in mind that
+the explanatory and response labels only considers
+a \emph{suspected} causal relationship, and it does not guarantee
+that such a causal relationship exists.
+A formal evaluation to check whether one variable causes
+a change in another requires an experiment.
+
+
 
 
 %%%%%
@@ -674,14 +715,14 @@ represents an individual case.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(\ref{timeToGraduationQuestionForUCLAStudents})
-    Notice that the first question is only relevant
+    The first question is only relevant
     to students who complete their degree;
     the average cannot be computed using a student
     who never finished her degree.
-    Thus, only Duke undergraduate students who have
+    Thus, only Duke undergraduate students who
     graduated in the last five years represent cases
     in the population under consideration.
-    Each such student would represent an individual case.
+    Each such student is an individual case.
     (\ref{identifyPopulationOfStentStudy})~A person with
     severe heart disease represents a case.
     The population includes all people with severe heart
@@ -718,7 +759,7 @@ Data collected in this haphazard fashion are called
 \term{anecdotal evidence}.
 
 \setlength{\captionwidth}{\textwidth-75mm}
-\begin{figure}
+\begin{figure}[h]
   \centering
   \hspace{8mm}\Figuress{55mm}{mnWinter}{mnWinter}\hspace{4mm}
   \begin{minipage}[b]{\textwidth-75mm}
@@ -864,60 +905,14 @@ We can easily access ratings for products, sellers, and companies through websit
 \index{sample|)}
 
 
-\newpage
-
-
-\subsection{Explanatory and response variables}
-\label{explanatoryAndResponse}
-
-\index{data!county|(}
-
-\noindent%
-Consider the following question from
-page~\pageref{pop_change_v_median_hh_income_question}
-for the \data{county} data set:
-\begin{enumerate}
-\item[(2)]
-    \popchangevmedianhhincomequestion{}
-\end{enumerate}
-If we suspect a county's median household income might affect
-its growth rate,
-then median household income is the
-\termsub{explanatory}{explanatory variable}
-variable and the change in the population is the
-\termsub{response}{response variable} variable in the
-relationship.\footnote{Sometimes the term
-\term{independent variable} is used for
-the explanatory variable and \term{dependent variable} for
-the response variable.
-However, because this is confusing since a \emph{pair} of
-variables might be independent or dependent, we avoid this
-particular terminology.}
-If there are many variables, it is possible to consider
-a number of them as explanatory variables.
-
-\index{data!county|)}
-
-\begin{onebox}{Explanatory and response variables}
-When we suspect one variable might causally affect another,
-we label the first variable the explanatory variable and the
-second the response variable.
-\vspace{1mm}
-
-\hspace{10mm}\includegraphics[height=0.34in]{ch_intro_to_data/figures/expResp/expResp}
-
-Often times it doesn't seem that one variable might affect the other,
-in which case these labels should not be applied.
-\end{onebox}
-
-The explanatory and response labels only considers
-a \emph{suspected} causal relationship, and it does not guarantee
-that such a causal relationship exists.
-Evaluating whether the relationship is in fact causal
-requires an experiment.
-
-
 \subsection{Introducing observational studies and experiments}
+
+\Comment{Should this subsection go at the end of 1.2,
+  then the rest of 1.3 can be folded together with 1.4 to make
+  a broader sampling / observational data section.}
+\Comment{If not, it's probably worth writing an extra sentence
+  at the bottom to tee up the population / sampling topic
+  as a precursor to other sampling and experiments.}
 
 \noindent%
 There are two primary types of data collection:
@@ -1167,7 +1162,19 @@ Studies where the researchers assign treatments to cases are called \termsub{exp
 \noindent{}Randomized experiments are generally built on four principles.
 
 \begin{description}
-\item[Controlling.] Researchers assign treatments to cases, and they do their best to \term{control} any other differences in the groups. For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water. To control for the effect of water consumption, a doctor may ask all patients to drink a 12 ounce glass of water with the pill.
+\item[Controlling.]
+    Researchers assign treatments to cases, and they do their
+    best to \term{control} any other differences in the
+    groups.\footnote{This is a different concept than
+      a \emph{control group}, which we discuss in
+      the second principle and in
+      Section~\ref{biasInHumanExperiments}.}
+    For example, when patients take a drug in pill form,
+    some patients take the pill with only a sip of water
+    while others may have it with an entire glass of water.
+    To control for the effect of water consumption,
+    a doctor may ask all patients to drink a 12 ounce glass
+    of water with the pill.
 \item[Randomization.] Researchers randomize patients into treatment groups to account for variables that cannot be controlled. For example, some patients may be more susceptible to a disease than others due to their dietary habits. Randomizing patients into the treatment or control group helps even out such differences, and it also prevents accidental bias from entering the study.
 \item[Replication.] The more cases researchers observe, the more accurately they can estimate the effect of the explanatory variable on the response. In a single study, we \term{replicate} by collecting a sufficiently large sample. Additionally, a group of scientists may replicate an entire study to verify an earlier finding.
 
@@ -1249,7 +1256,50 @@ treatment.\footnote{There are always some researchers involved
 
 \begin{exercisewrap}
 \begin{nexercise}
-Look back to the study in Section~\ref{basicExampleOfStentsAndStrokes} where researchers were testing whether stents were effective at reducing strokes in at-risk patients. Is this an experiment? Was the study blinded? Was it double-blinded?\footnotemark
+Look back to the study in Section~\ref{basicExampleOfStentsAndStrokes} where researchers were testing whether stents were effective at reducing strokes in at-risk patients. Is this an experiment? Was the study blinded? Was it double-blinded?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.}
+
+\noindent\Comment{The next GP is new.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{gp_sham_surgery}%
+For the study in Section~\ref{basicExampleOfStentsAndStrokes},
+could the researchers have employed a placebo?
+If so, what would that placebo have looked like?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Ultimately, can we make patients think they
+  got treated from a surgery?
+  In fact, we can, and some experiments use
+  what's called a \term{sham surgery}.
+  In a sham surgery, the patient does undergo surgery,
+  but the patient does not receive the full treatment,
+  though they will still get a placebo effect.}
+
+\Add{You may have many questions about the ethics of
+sham surgeries to create a placebo after reading
+Guided Practice~\ref{gp_sham_surgery}.
+These questions may have even arisen in your mind when
+in the general experiment context, where a possibly
+helpful treatment was withheld from individuals in the
+control group;
+the main difference is that a sham surgery tends to
+create additional risk, while withholding a treatment
+only maintains a person's risk.
+
+There are always multiple viewpoints of experiments
+and placebos, and rarely is it obvious which is
+ethically ``correct''.
+For instance, is it ethical to use a sham surgery
+when it creates a risk to the patient?
+However, if we don't use sham surgeries,
+we may promote the use of a costly treatment that
+has no real effect;
+if this happens, money and other resources will be diverted
+away from other treatments that are known to be helpful.
+Ultimately, we cannot perfectly protect both the patients
+who have volunteered for the study and the patients who
+may benefit (or not) from the treatment in the future.}

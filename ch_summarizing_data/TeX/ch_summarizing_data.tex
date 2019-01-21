@@ -1300,12 +1300,11 @@ provide the total counts across each row
   \loanapphomeAC{} = \loanapphomeAD{}$),
 and \term{column totals} \index{contingency table!column totals}
 are total counts down each column.
-
-A table for a single variable is called a \term{frequency table}.
-Figure~\ref{loan_homeownership_totals} is a frequency table for
-the \var{homeownership} variable.
-If we replaced the counts with percentages or proportions,
-the table would be called a \term{relative frequency table}.
+We can also create a table that shows only the overall 
+percentages or proportions for each combination of categories,
+or we can create a table for a single variable,
+such as the one shown in Figure~\ref{loan_homeownership_totals}
+for the \var{homeownership} variable.
 
 \begin{figure}[ht]
 \centering
@@ -1352,8 +1351,8 @@ the table would be called a \term{relative frequency table}.
   Total & \loanapphomeDD{} \\ 
   \hline
 \end{tabular}
-\caption{A frequency table for the \var{homeownership}
-    variable.}
+\caption{A table summarizing the frequencies of each
+    value for the \var{homeownership} variable.}
 \label{loan_homeownership_totals}
 \end{figure}
 
@@ -1587,7 +1586,8 @@ is more useful.
   For instance, in the email example, the email format
   was seen as a possible explanatory variable of whether
   the message was spam, so we would find it more interesting
-  to compute the relative frequencies for each email format.
+  to compute the relative frequencies (proportions)
+  for each email format.
 \end{nexample}
 \end{examplewrap}
 
@@ -2099,7 +2099,7 @@ be inferred from the results?\footnotemark{}
 
 In this study, a smaller proportion of patients
 who received the vaccine showed signs of an infection
-(\malariaVIR{} versus \malariaPIRPerc{}).
+(\malariaVIRPerc{} versus \malariaPIRPerc{}).
 However, the sample is very small,
 and it is unclear whether the difference provides
 \emph{convincing evidence} that the vaccine is
@@ -2140,7 +2140,8 @@ is large, the sample size for the study is small,
 making it unclear if this observed difference represents
 efficacy of the vaccine or whether it is simply due to
 chance.
-We label these two competing claims, $H_0$ and $H_A$:
+We label these two competing claims, $H_0$ and $H_A$,
+which are spoken as ``H-nought'' and ``H-A'':
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[$H_0$:] \textbf{Independence model.}
@@ -2161,7 +2162,7 @@ We label these two competing claims, $H_0$ and $H_A$:
 What would it mean if the independence model,
 which says the vaccine had no influence on the
 rate of infection, is true?
-It would mean 11~patients were going to develop
+It would mean 11~patients were going to
 develop an infection \emph{no matter which group
 they were randomized into},
 and 9~patients would not develop an infection
