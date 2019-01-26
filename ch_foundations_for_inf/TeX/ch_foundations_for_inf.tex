@@ -397,19 +397,33 @@ distribution is reasonable in this context.
   if they undergo random assignment to the treatment
   groups.\stdvspace{}
 
+  If the observations are from a simple random sample,
+  then they are independent.\stdvspace{}
+
   If a sample is from a seemingly random process,
   e.g. an occasional error on an assembly line,
   checking independence is more difficult. In~this case,
   use your best judgement.
 \end{onebox}
 
-If the observations are from a simple random sample and
-consist of fewer than 10\% of the population, then they
-are independent.
-Even if the sample is bigger than 10\% of the population,
-assuming independence
-will lead to more conservative results than what we would
-get using more advanced methods.
+An additional condition that is sometimes added for samples
+from a population is that they are no larger than 10\% of
+the population.
+When the sample exceeds 10\% of the population size,
+the methods we discuss tend to overestimate the sampling error
+slightly versus what we would get using more advanced
+methods.\footnote{For example, we could use what's called the
+  \term{finite population correction factor}:
+  if the sample is of size $n$ and the population size is $N$,
+  then we can multiple the typical standard error formula by
+  $\sqrt{\frac{N-n}{N-1}}$
+  to obtain a smaller, more precise estimate of the
+  actual standard error.
+  When $n < 0.1 \times N$, this correction factor is
+  relatively small.}
+This is very rarely an issue, and when it is an issue,
+our methods tend to be conservative, so we consider this
+additional check as optional.
 
 \begin{examplewrap}
 \begin{nexample}{Compute the theoretical mean and standard error
@@ -473,11 +487,12 @@ $SE_{\hat{p}} = \sqrt{\frac{p (1 - p)}{n}}$.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Since the
-    sample size $n$ is in the denominator of the fraction (on the
-    bottom of the fraction), a bigger sample size means the entire
-    expression when calculated will tend to be smaller. That is,
-    a larger sample size would correspond to a smaller standard
-    error.}
+  sample size $n$ is in the denominator
+  (on the bottom) of the fraction,
+  a bigger sample size means the entire
+  expression when calculated will tend to be smaller.
+  That is, a larger sample size would correspond to
+  a smaller standard error.}
 
 
 \subsection{Applying the Central Limit Theorem to a real-world setting}
@@ -506,7 +521,7 @@ We check the conditions from the Central Limit Theorem:
     \end{align*}
     While we cannot check the condition with $p$,
     the sample proportion $\hat{p}$ acts as
-    a reasonable substitute, and each value is comfortably
+    a reasonable substitute, and each value is well
     above the minimums of 10.
 \end{description}
 
@@ -521,12 +536,11 @@ SE_{\hat{p}}
         (1 - \pewsolarpollprop{})}{\pewsolarpollsize{}}}
     = \pewsolarpollse{}
 \end{align*}
+This substitution technique is sometimes
+referred to as the ``\hiddenterm{plug-in principle}''.
 
 
-\subsection[Better understanding the Central Limit Theorem
-    (special~topic)]
-  {Better understanding the Central Limit Theorem \\
-      \mbox{(special~topic)}}
+\subsection{More details regarding the Central Limit Theorem}
 
 \noindent%
 We've applied the Central Limit Theorem in numerous examples
@@ -550,8 +564,8 @@ An interesting question to answer is, \emph{what happens when
 $np < 10$ or $n(1-p) < 10$?} As we did in
 Section~\ref{simulationForUnderstandingVariabilitySection},
 we can simulate drawing samples of different sizes where,
-say, $p = 0.25$. Here's a sample of
-size~10:
+say, the true proportion is $p = 0.25$.
+Here's a sample of size~10:
 \begin{center}
 % paste(sample(c("yes", "no"), 10, TRUE, c(.25, .75)), collapse = ", ")
 no, no, yes, yes, no, no, no, no, no, no
@@ -563,7 +577,7 @@ $\hat{p}$ when $n = 10$ and $p = 0.25$, which we've plotted
 in Figure~\ref{sampling_10_prop_25p}
 alongside a normal distribution with the
 same mean and variability.
-These distributions look nothing alike.
+These distributions have a number of important differences.
 
 \begin{figure}[h]
    \centering
@@ -602,10 +616,14 @@ These distributions look nothing alike.
 \hline
     &  Unimodal?  &  Smooth?  &  Symmetric? \\
 \hline
-Normal  &  \highlightO{Yes}  &  \highlightO{Yes}  &
+Normal: $N(0.25, 0.14)$  &
+    \highlightO{Yes}  &
+    \highlightO{Yes}  &
     \highlightO{Yes} \\
-$n = 10$, $p = 0.25$  &  \highlightO{Yes}  &
-    \highlightT{No}  &  \highlightT{No} \\
+$n = 10$, $p = 0.25$  &
+    \highlightO{Yes}  &
+    \highlightT{No}  &
+    \highlightT{No} \\
 \hline
 \end{tabular}
 \end{center}
@@ -618,7 +636,7 @@ n p = 10 \times 0.25 = 2.5 &&
 This single sampling distribution does not show that
 the success-failure condition is the perfect guideline,
 but we have found that the guideline did correctly
-identify that the normal distribution was not appropriate.
+identify that the normal distribution might not be appropriate.
 
 \Comment{Ensure the two full-page figures are on pages
     facing each other for the final print version.}
@@ -646,9 +664,9 @@ We can see some trends:
 \end{enumerate}
 
 So far we've only focused on the skew and discreteness
-of the distributions. We haven't considered
-how the mean and standard error
-of the distributions change!
+of the distributions.
+We haven't considered how the mean and standard error
+of the distributions change.
 Take a moment to look back at the graphs,
 and pay attention to three things:
 \begin{enumerate}
@@ -669,14 +687,15 @@ and pay attention to three things:
 \item For a particular sample size, the variability
     will be largest when $p = 0.5$. The differences
     may be a little subtle, so take a close look.
-    This reflects the importances of the proportion
+    This reflects the role of the proportion
     $p$ in the standard error formula:
     $SE = \sqrt{\frac{p (1 - p)}{n}}$.
     The standard error is largest when $p = 0.5$.
 \end{enumerate}
 
 At no point will the distribution of $\hat{p}$ look
-\emph{perfectly} normal.
+\emph{perfectly} normal, since $\hat{p}$ will always
+be take discrete values ($x / n$).
 It is always a matter of degree, and we will use
 the standard success-failure condition with minimums
 of 10 for $np$ and $n (1 - p)$ as our guideline
@@ -696,7 +715,8 @@ for the population proportion $p$. However, the sample proportion
 isn't perfect and will have some \emph{standard error}
 associated with it. Instead of supplying just this point estimate
 of the population proportion, a next logical step would be
-to provide a plausible \emph{range of values}.
+to provide a plausible \emph{range of values} for the population
+proportion.
 
 \subsection{Capturing the population parameter}
 
@@ -802,12 +822,15 @@ a 95\% confidence interval.
 
 \begin{onebox}{95\% confidence interval for a parameter}
   \index{confidence interval!95\%}
-  When a point estimate qualifies for the Central Limit
-  Theorem and closely follows a normal distribution,
+  When the distribution of a point estimate qualifies for
+  the Central Limit Theorem and
+  therefore closely follows a normal distribution,
   we can construct a 95\% confidence interval as
   \begin{align*}
   \text{point estimate} &\pm 1.96 \times SE
   \end{align*}
+  This confidence interval only accounts for sampling error,
+  not bias.
 \end{onebox}
 
 \begin{examplewrap}
@@ -832,7 +855,10 @@ a 95\% confidence interval.
   \end{align*}
   We are 95\% confident that the actual proportion of
   American adults who support expanding solar power is
-  between 86.74\% and 90.66\%.
+  between 86.7\% and 90.7\%.
+  (It's common to round to the nearest percentage point
+  or nearest tenth of a percentage point when reporting
+  a confidence interval.)
 \end{nexample}
 \end{examplewrap}
 
@@ -987,6 +1013,8 @@ quarantine for anyone who has come in contact with an Ebola
 patient''. This poll included responses
 of \wsjebolapollsizecomma{} New York adults between
 Oct 26th and~28th, 2014.
+%\footnote{This survey, like the others
+%  you'll see in this book, ...}
 %We may want a confidence interval for the proportion of New York
 %adults who favored a mandatory quarantine of anyone who had been in
 %contact with an Ebola patient.
@@ -1003,9 +1031,10 @@ Oct 26th and~28th, 2014.
   ($\wsjebolapollsize{} \times \hat{p} \approx \wsjebolapollcount{}$
   and $\wsjebolapollsize{} \times (1 - \hat{p})
       \approx \wsjebolapollcountcomplement{}$,
-  both easily greater than~10). With the conditions met, we are assured
-  that the sampling distribution of $\hat{p}$ can be modeled using
-  a normal distribution.
+  both easily greater than~10).
+  With the conditions met, we are assured
+  that the sampling distribution of $\hat{p}$ can be
+  reasonably modeled using a normal distribution.
 \end{nexample}
 \end{examplewrap}
 
@@ -1029,6 +1058,7 @@ Oct 26th and~28th, 2014.
 \begin{nexample}{Construct a 95\% confidence interval for $p$,
     the proportion of New York adults who supported a quarantine
     for anyone who has come into contact with an Ebola patient.}
+  \label{ex_ci_ny_ebola_quarantine}%
   Using the standard error $SE = 0.012$ from
   Example~\ref{seOfPropOfNYEbolaSurvey},
   the point estimate \wsjebolapollprop{}, and $z^{\star} = 1.96$
@@ -1047,22 +1077,23 @@ Oct 26th and~28th, 2014.
 
 \begin{exercisewrap}
 \begin{nexercise}
-What does 95\% confident mean in this context?\footnotemark
+Answer the following two questions about the confidence interval
+from Example~\ref{ex_ci_ny_ebola_quarantine}:\footnotemark{}
+\begin{enumerate}[(a)]
+\item
+    What does 95\% confident mean in this context?
+\item
+    Do you think the confidence interval is still valid
+    for the opinions of New Yorkers today?
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{If we took many such samples and computed
+\footnotetext{(a)~If we took many such samples and computed
   a 95\% confidence interval for each, then about 95\% of those
   intervals would contain the actual proportion of New York
   adults who supported a quarantine for anyone who has come into
-  contact with an Ebola patient.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Do you think the confidence interval is still valid for the opinions
-of New Yorkers today?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Not necessarily. The poll was taken at a
+  contact with an Ebola patient. \\
+  (b)~Not necessarily. The poll was taken at a
   time where there was a huge public safety concern.
   Now that people have had some time to step back,
   they may have changed their opinions.
@@ -1081,57 +1112,57 @@ of New Yorkers today?\footnotemark
 \newcommand{\pewwindpollcountcomplement}{152}
 \newcommand{\pewwindpollse}{0.0114}
 
-In the poll by Pew Research asking about solar energy, the
-researchers also inquired about other forms of energy.
-In this next case study, we examine the support for expanding wind
-turbines, which received support from \pewwindpollpercent{}\%
-of the \pewwindpollsize{} respondents.
-
-\begin{exercisewrap}
-\begin{nexercise}\label{pew_wind_turbine_support_normal_dist_gp}
-Is the normal approximation reasonable for the proportion
-of US adults who support expanding wind turbines?\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{We
-check independence, which is okay since this survey was a simple
-random sample, and also the success-failure condition
-($\pewwindpollsize{} \times \pewwindpollprop{} = \pewwindpollcount{}$
-and $\pewwindpollsize{} \times \pewwindpollpropcomplement{}
-    = \pewwindpollcountcomplement$ are both at least 10).
-Since both conditions are satisfied,
-$\hat{p} = \pewwindpollprop{}$ can be
-modeled using the normal distribution.}
-
 \begin{exercisewrap}
 \begin{nexercise}
-Using the Pew Research survey where $n = \pewwindpollsize{}$ and
-$\hat{p} = \pewwindpollprop{}$, create a 99\% confidence interval
-for the level of American support for expanding the use of wind
-turbines for power
-generation.\footnotemark
+\label{pew_wind_turbine_support_normal_dist_gp}%
+In the poll by Pew Research asking about solar energy, the
+researchers also inquired about other forms of energy.
+Support for expanding wind turbines received support
+from \pewwindpollpercent{}\% of the \pewwindpollsize{}
+respondents.\footnotemark{}
+\begin{enumerate}[(a)]
+\item
+    Is the normal approximation reasonable for the proportion
+    of US adults who support expanding wind turbines?
+\item
+    Create a 99\% confidence interval for the level of American
+    support for expanding the use of wind turbines for power
+    generation.
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Guided
-Practice~\ref{pew_wind_turbine_support_normal_dist_gp}
-confirmed that that $\hat{p}$ closely follows a normal distribution,
-so we can use the confidence interval formula:
-\begin{align*}
-\text{point estimate} \pm z^{\star} \times SE
-\end{align*}
-In this case, the point estimate is $\hat{p} = \pewwindpollprop{}$.
-For a 99\% confidence interval, $z^{\star} = 2.58$. Computing the
-standard error:
-$SE_{\hat{p}}
-  = \sqrt{\frac{\pewwindpollprop{}(1 - \pewwindpollprop{})}
-      {\pewwindpollsize{}}}
-  = \pewwindpollse{}$.
-Finally, we compute the interval as
-$\pewwindpollprop{} \pm 2.58 \times \pewwindpollse{} \to (0.8186, 0.8774)$.
-It is also important to \emph{always} provide an interpretation
-for the interval: we are 99\% confident the proportion of
-American adults that support expanding the use of wind
-turbines is between 81.9\% and 87.7\% in 2018.}
+\footnotetext{(a)~We
+  check independence, which is okay since this survey was a simple
+  random sample, and also the success-failure condition
+  ($\pewwindpollsize{} \times \pewwindpollprop{}
+    = \pewwindpollcount{}$
+  and $\pewwindpollsize{} \times \pewwindpollpropcomplement{}
+    = \pewwindpollcountcomplement$ are both at least 10).
+  Since both conditions are satisfied,
+  $\hat{p} = \pewwindpollprop{}$ can be
+  modeled using the normal distribution. \\
+  (b)~Guided
+  Practice~\ref{pew_wind_turbine_support_normal_dist_gp}
+  confirmed that that $\hat{p}$ closely follows
+  a normal distribution, so we can use the C.I.~formula:
+  \begin{align*}
+  \text{point estimate} \pm z^{\star} \times SE
+  \end{align*}
+  In this case, the point estimate is
+  $\hat{p} = \pewwindpollprop{}$.
+  For a 99\% confidence interval, $z^{\star} = 2.58$.
+  Computing the standard error:
+  $SE_{\hat{p}}
+    = \sqrt{\frac{\pewwindpollprop{}(1 - \pewwindpollprop{})}
+        {\pewwindpollsize{}}}
+    = \pewwindpollse{}$.
+  Finally, we compute the interval as
+  $\pewwindpollprop{} \pm 2.58 \times \pewwindpollse{}
+    \to (0.8186,   0.8774)$.
+  It is also important to \emph{always} provide an interpretation
+  for the interval: we are 99\% confident the proportion of
+  American adults that support expanding the use of wind
+  turbines in 2018 is between 81.9\% and 87.7\%.}
 
 
 \subsection{Interpreting confidence intervals}
@@ -1155,7 +1186,7 @@ using somewhat formal language:
 \end{description}
 First, notice that the statements are always about the population
 parameter, which considers \emph{all} American adults for the
-energy polls and \emph{all} New York adults for the quarantine poll.
+energy polls or \emph{all} New York adults for the quarantine poll.
 
 We also avoided another common mistake:
 \emph{incorrect} language might try to describe the confidence interval
@@ -1172,6 +1203,20 @@ observations, a proportion of the observations,
 or point estimates.
 Confidence intervals only provide a plausible range for
 population parameters.
+
+\index{bias|(}
+Lastly, keep in mind the methods we discussed only apply
+to sampling error, not to bias.
+If a data set is collected in a way that will tend to result
+in a bias that tends to systematically under-estimate
+(or over-estimate) the population parameter, the techniques
+we have discussed will not address that problem.
+Instead, we rely on careful data collection procedures to
+help protect against bias in the examples we have considered,
+which is a common practice employed by data scientists
+to combat bias.
+\index{bias|)}
+
 
 \index{data!wind turbine survey|)}
 \index{data!solar survey|)}
@@ -1553,6 +1598,7 @@ Let's move onto a second question posed by the Roslings:
   aged 0-15 years old, how many children will there
   be in year 2100 according to the United Nations?
   \begin{enumerate}[a.]
+  \setlength{\itemsep}{0mm}
   \item 4 billion.
   \item 3 billion.
   \item 2 billion.
@@ -1585,8 +1631,8 @@ to live longer in the future across much of the world.}
 \newcommand{\roslingBsize}{228}
 \newcommand{\roslingBprop}{0.149}
 \newcommand{\roslingBpropcomplement}{0.851}
-\newcommand{\roslingBpercent}{14.9}
-\newcommand{\roslingBpercentcomplement}{85.1}
+\newcommand{\roslingBpercent}{14.9\%}
+\newcommand{\roslingBpercentcomplement}{85.1\%}
 \newcommand{\roslingBcount}{34}
 \newcommand{\roslingBcountcomplement}{194}
 \newcommand{\roslingBse}{0.024}
@@ -1596,7 +1642,7 @@ to live longer in the future across much of the world.}
 \begin{nexercise}\label{roslingB_normality}%
 This time we took a larger sample of
 \roslingBsize{} college-educated adults,
-\roslingBpercent{}\% selected the correct answer to the
+\roslingBcount{} (\roslingBpercent{}) selected the correct answer to the
 question in Guided
 Practice~\ref{roslingB_hypothesis_setup}: 2~billion.
 Can we apply the normal model to the sample proportion
@@ -1621,7 +1667,8 @@ the normal distribution for $\hat{p}$: \\
     children-in-2100 question correctly, and evaluate the
     hypotheses in Guided
     Practice~\ref{roslingB_hypothesis_setup}.}
-  To compute the standard error, we'll again use $\hat{p}$
+  To compute the standard error, we'll again use
+  $\hat{p}$
   in place of $p$ for the calculation:
   \begin{align*}
   SE_{\hat{p}}
@@ -1647,16 +1694,27 @@ the normal distribution for $\hat{p}$: \\
   That is, the data provide statistically significant
   evidence that the actual proportion of college adults
   who get the children-in-2100 question correct is
-  different from random guessing. Because the entire interval
+  different from random guessing. Because the entire
+  95\% confidence interval
   is below 0.333, we can conclude college-educated adults
   do \emph{worse} than random guessing on this question.
+
+  One subtle consideration is that we used a
+  95\% confidence interval.
+  What if we had used a 99\% confidence level?
+  Or even a 99.9\% confidence level?
+  It's possible to come to a different conclusion
+  if using a different confidence level.
+  Therefore, when we make a conclusion based
+  on confidence interval, we should also be sure
+  it is clear what confidence level we used.
 \end{nexample}
 \end{examplewrap}
 
-This data from this second question is not a fluke:
-there are many such questions similar
-to the two we've so far discussed where people
-actually do worse than random guessing.
+The worse-than-random performance on this
+last question is not a fluke:
+there are many such world health questions where people
+do worse than random guessing.
 In general, the answers suggest that people tend to be
 more pessimistic about progress than reality suggests.
 This topic is discussed in much greater detail in
@@ -1669,13 +1727,14 @@ the Roslings' book,
 
 \index{hypothesis testing!decision errors|(}
 
-Hypothesis tests are not flawless: we can make a wrong
+Hypothesis tests are not flawless: we can make an incorrect
 decision in a statistical hypothesis test based on the data.
 For example, in the court system innocent people are
 sometimes wrongly convicted and the guilty sometimes walk free.
+%Unfortunately, we never truly know if $H_0$ or $H_A$ holds true.
 One key distinction with statistical hypothesis tests is that
-we have the tools necessary to quantify how often we make
-errors in our conclusions.
+we have the tools necessary to probabilistically quantify how
+often we make errors in our conclusions.
 
 Recall that there are two competing hypotheses:
 the null and the alternative.
