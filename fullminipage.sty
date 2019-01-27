@@ -1,0 +1,108 @@
+%%
+%% This is file `fullminipage.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% fullminipage.dtx  (with options: `package')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright 2012 Christian Schneider <software(at)chschneider(dot)eu>
+%% 
+%% This file is part of fullminipage.
+%% 
+%% fullminipage is free software: you can redistribute it and/or modify
+%% it under the terms of the GNU General Public License version 3 as
+%% published by the Free Software Foundation, not any later version.
+%% 
+%% fullminipage is distributed in the hope that it will be useful,
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%% GNU General Public License for more details.
+%% 
+%% You should have received a copy of the GNU General Public License
+%% along with fullminipage.  If not, see <http://www.gnu.org/licenses/>.
+%% 
+%% WARNING: THIS IS ALPHA SOFTWARE AND MAY CONTAIN SERIOUS BUGS!
+%% 
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{fullminipage}
+  [2014/07/06 v0.1.1 fullpage minipage environment]
+\RequirePackage{keyval}
+\RequirePackage{color}
+\define@key{fullminipage}{left}{\def\fullminipage@left{#1}}
+\define@key{fullminipage}{right}{\def\fullminipage@right{#1}}
+\define@key{fullminipage}{top}{\def\fullminipage@top{#1}}
+\define@key{fullminipage}{bottom}{\def\fullminipage@bottom{#1}}
+\define@key{fullminipage}{alignment}{\def\fullminipage@alignment{#1}}
+\define@key{fullminipage}{bgcolor}[black]{\def\fullminipage@bgcolor{#1}}
+\define@key{fullminipage}{background}{\def\fullminipage@background{#1}}
+\define@key{fullminipage}{pagebreak}{\def\fullminipage@pagebreak{#1}}
+\newenvironment{fullminipage}[1][]{%
+  \begingroup
+    \setkeys{fullminipage}{left=\z@,right=\z@,top=\z@,bottom=\z@,%
+                           alignment=t,background={},pagebreak=\newpage}%
+    \@ifundefined{twocolumn@sw}{}%
+      {\twocolumn@sw{\setkeys{fullminipage}{pagebreak=\clearpage}}{}}%
+    \if@twocolumn\setkeys{fullminipage}{pagebreak=\clearpage}\fi%
+    \setkeys{fullminipage}{#1}%
+    \fullminipage@pagebreak
+    \thispagestyle{empty}%
+    \@tempdima=-1in
+    \advance\@tempdima by-\voffset
+    \advance\@tempdima by-\topmargin
+    \advance\@tempdima by-\headheight
+    \advance\@tempdima by-\headsep
+    \@tempdimb=\@tempdima
+    \advance\@tempdima by-\parskip
+    \advance\@tempdima by-\topskip
+    \advance\@tempdima by\fullminipage@top
+    \vspace*{\@tempdima}%
+    \@tempdima=\paperheight
+    \advance\@tempdima by\@tempdimb
+    \advance\@tempdima by-\textheight
+    \advance\@tempdima by-\fullminipage@bottom
+    \enlargethispage{\@tempdima}%
+    \leftmargin=-1in
+    \advance\leftmargin by-\hoffset
+    \if@twoside
+      \ifodd\value{page}%
+        \advance\leftmargin by-\oddsidemargin
+      \else
+        \advance\leftmargin by-\evensidemargin
+      \fi
+    \else
+      \advance\leftmargin by-\oddsidemargin
+    \fi
+    \advance\leftmargin by\fullminipage@left
+    \linewidth=\paperwidth
+    \advance\linewidth by-\fullminipage@left
+    \advance\linewidth by-\fullminipage@right
+    \parshape \@ne \leftmargin \linewidth
+    \nointerlineskip
+    \noindent
+    \vsize=\paperheight
+    \advance\vsize by-\fullminipage@top
+    \advance\vsize by-\fullminipage@bottom
+    \begin{picture}(0,0)
+      \@ifundefined{fullminipage@bgcolor}{}{%
+        \put(0,0){\makebox(0,0)[bl]%
+          {\color{\fullminipage@bgcolor}{\rule{\linewidth}{\vsize}}}%
+        }%
+      }%
+      \put(0,0){\makebox(0,0)[bl]%
+        {\fullminipage@background}%
+      }%
+    \end{picture}%
+    \begin{minipage}[b][\vsize][\fullminipage@alignment]{\linewidth}
+}%
+{%
+    \end{minipage}%
+    \parfillskip=\z@
+    \fullminipage@pagebreak
+  \endgroup
+}
+\endinput
+%%
+%% End of file `fullminipage.sty'.
