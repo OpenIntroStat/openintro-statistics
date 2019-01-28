@@ -1519,7 +1519,8 @@ Multiple regression methods using the model
 generally depend on the following four assumptions:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item the residuals of the model are nearly normal,
+\item the residuals of the model are nearly normal
+    (less important for larger data sets),
 \item the variability of the residuals is nearly constant,
 \item the residuals are independent, and
 \item each variable is linearly related to the outcome.
@@ -1548,25 +1549,23 @@ there are any notable concerns:
 \end{align*}
 
 \begin{description}
-\item[Normal probability plot.]
-    A normal probability plot of the residuals is shown
-    in Figure~\ref{loansDiagNormalQuantilePlot}.
-    While the plot exhibits some minor irregularities,
-    they are very mild.
-    In a normal probability plot for residuals,
-    we tend to be most worried about residuals that appear
-    to be outliers, since these indicate long tails in the
-    distribution of residuals.
-    Additionally, if there is a lot of data, normality
-    tends to be less important.
+\item[Check for outliers.]
+    We examine a histogram of the residuals to check if there
+    are any outliers:
+    Figure~\ref{loansDiagNormalHistogram}
+    is a histogram of these outliers.
+    Since this is a very large data set,
+    only particularly extreme observations would be a concern
+    in this particular case.
+    There are no extreme observations that might cause a~concern.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.55}
+  \Figures{0.75}
       {loansDiagnostics}
-      {loansDiagNormalQuantilePlot}
-  \caption{A normal probability plot of the residuals.}
-  \label{loansDiagNormalQuantilePlot}
+      {loansDiagNormalHistogram}
+  \caption{A histogram of the residuals.}
+  \label{loansDiagNormalHistogram}
 \end{figure}
 
 \item[Absolute values of residuals against fitted values.]
@@ -1820,19 +1819,21 @@ Let's take a closer look at the diagnostics for the Mario Kart
 model to check if the model we have identified is reasonable.
 
 \begin{description}
-\item[Normal probability plot.]
-    A normal probability plot of the residuals is shown in
-    Figure~\ref{mkDiagnosticNormalQuantilePlot}.
-    While the plot exhibits some minor irregularities,
-    there are no outliers that might be cause for concern.
+\item[Check for outliers.]
+    A histogram of the residuals is shown in
+    Figure~\ref{mkDiagResHist}.
+    With a data set well over a hundred, we're primarily
+    looking for major outliers.
+    While one minor outlier appears on the upper end,
+    it is not a concern for this large of a data set.
 
 \begin{figure}[h]
   \centering
   \Figures{0.55}{marioKartDiagnostics}
-      {mkDiagnosticNormalQuantilePlot}
-  \caption{Normal probability plot of the residuals.
+      {mkDiagResHist}
+  \caption{Histogram of the residuals.
       No clear outliers are evident.}
-  \label{mkDiagnosticNormalQuantilePlot}
+  \label{mkDiagResHist}
 \end{figure}
 
 \item[Absolute values of residuals against fitted values.]

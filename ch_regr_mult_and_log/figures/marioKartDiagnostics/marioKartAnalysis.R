@@ -49,6 +49,18 @@ qqnorm(e,
        pch = 19)
 dev.off()
 
+myPDF("mkDiagResHist.pdf", width, 0.7 * height)
+histPlot(e,
+    breaks = 12,
+    xlab = "Residuals",
+    ylab = "Count",
+    col = COL[1],
+    axes = FALSE)
+axis(1, pretty(e))
+axis(2)
+dev.off()
+
+
 myPDF("mkDiagnosticInOrder.pdf", width, 0.8 * height,
       mgp = c(2.5, 0.6, 0))
 plot(e,

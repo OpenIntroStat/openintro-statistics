@@ -2,7 +2,7 @@
   \chaptertitle[30]{Distributions of random \titlebreak{} variables}
   \label{ch_distributions}
   \chaptersection{normalDist}
-  \chaptersection{assessingNormal}
+  %\chaptersection{assessingNormal}
   \chaptersection{geomDist}
   \chaptersection{binomialModel}
   \chaptersection{negativeBinomial}
@@ -38,7 +38,7 @@ closely follow the normal distribution.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\textwidth]{ch_distributions/figures/simpleNormal/simpleNormal}
+\includegraphics[width=0.5\textwidth]{ch_distributions/figures/simpleNormal/simpleNormal}
 \caption{A normal curve.}
 \label{simpleNormal}
 \end{figure}
@@ -72,7 +72,7 @@ on the same axis.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.85}{twoSampleNormals}
+  \Figure{0.75}{twoSampleNormals}
   \caption{Both curves represent the normal distribution.
       However, they differ in their center and spread.
       The normal distribution with mean 0 and standard
@@ -129,8 +129,8 @@ with\footnotemark{}
 \subsection{Standardizing with Z-scores}
 
 \noindent%
-\Add{We often want to put data onto a standardized scale,
-which can make comparisons more reasonable.}
+We often want to put data onto a standardized scale,
+which can make comparisons more reasonable.
 
 \newcommand{\satmean}{1100}
 \newcommand{\satsd}{200}
@@ -177,7 +177,7 @@ which can make comparisons more reasonable.}
 
 \begin{figure}
   \centering
-  \Figure{0.5}{satActNormals}
+  \Figure{0.55}{satActNormals}
   \caption{Ann's and Tom's scores shown with the distributions
       of SAT and ACT scores.}
   \label{satActNormals}
@@ -298,131 +298,90 @@ is more unusual?\footnotemark{}
   the second observation has a more unusual head length.}
 
 
-\subsection{Normal probability table}
+\subsection{Finding tail areas}
 
-We can use the normal model to find percentiles.
-\Add{Instructions for using statistical software are
-  provided through the
-  \oiRedirect{os2_lab_03A}{OpenIntro software labs};
-  software is the standard tool for data scientists
-  to work with the normal distribution.
-  Graphing calculators may also be used, and we provide
-  instructions for both Casio and TI calculators
-  through the links at the start of this section.
-  If you are using either of these methods when working
-  with normal distributions,
-  you should confirm you are getting the same results
-  as the examples below.}
-
-Finding percentiles may also be accomplished with a
-\term{normal probability table},
-which lists Z-scores and corresponding percentiles
-and is what is covered in this subsection.
-
-A probability table is provided in
-Appendix~\vref{normalProbabilityTable}
-and abbreviated in Figure~\ref{zTableShort}.
-We use this table to identify the percentile corresponding
-to any particular Z-score.
-For instance, the percentile of $Z = 0.45$ is shown in row
-$0.4$ and column $0.05$ in Figure~\ref{zTableShort}:
-0.6736, or the $67.36^{th}$ percentile.
-Generally, we round $Z$ to two decimals, identify the proper
-row in the normal probability table up through the first decimal,
-and then determine the column representing the second decimal
-value.
-The intersection of this row and column is the percentile
-of the observation.
-
-\begin{examplewrap}
-\begin{nexample}{Ann from Example~\ref{actSAT} earned a score
-    of \annsatscore{} on her SAT with a corresponding
-    $Z = \annsatzscore{}$.
-    She would like to know what percentile she falls in among
-    all SAT test-takers.}
-  Ann's \term{percentile} is the percentage of people who
-  earned a lower SAT score than Ann.
-  We shade the area representing those individuals in the
-  following graph:
-  \begin{center}
-  \Figure{0.47}{satBelow1300}
-  \end{center}
-  The total area under the normal curve is always equal to~1,
-  and the proportion of people who scored below Ann on the SAT
-  is equal to the \emph{area} shaded in the graph: 0.8413.
-  In other words, Ann is in the $84^{th}$ percentile of
-  SAT takers.
-\end{nexample}
-\end{examplewrap}
+It's very useful in statistics to be able to identify tail areas
+of distributions.
+For instance, how many people have an SAT score below
+Ann's score of 1300?
+We can visualize such a tail area like the curve and shading
+shown in Figure~\ref{satBelow1300}.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.8}{normalTails}
+  \Figure{0.45}{satBelow1300}
   \caption{The area to the left of $Z$ represents the
       percentile of the observation.}
-  \label{normalTails}
+  \label{satBelow1300}
 \end{figure}
 
-\begin{figure}[h]
-\centering
-\begin{tabular}{c | rrrrr | rrrrr |}
-  \cline{2-11}
-&&&& \multicolumn{4}{c}{Second decimal place of $Z$} &&& \\
-  \cline{2-11}
-$Z$ & 0.00 & 0.01 & 0.02 & 0.03 & \highlightO{0.04} & \highlightT{0.05} & 0.06 & 0.07 & 0.08 & 0.09 \\
-  \hline
-  \hline
-0.0 & \scriptsize{0.5000} & \scriptsize{0.5040} & \scriptsize{0.5080} & \scriptsize{0.5120} & \scriptsize{0.5160} & \scriptsize{0.5199} & \scriptsize{0.5239} & \scriptsize{0.5279} & \scriptsize{0.5319} & \scriptsize{0.5359} \\
-  0.1 & \scriptsize{0.5398} & \scriptsize{0.5438} & \scriptsize{0.5478} & \scriptsize{0.5517} & \scriptsize{0.5557} & \scriptsize{0.5596} & \scriptsize{0.5636} & \scriptsize{0.5675} & \scriptsize{0.5714} & \scriptsize{0.5753} \\
-  0.2 & \scriptsize{0.5793} & \scriptsize{0.5832} & \scriptsize{0.5871} & \scriptsize{0.5910} & \scriptsize{0.5948} & \scriptsize{0.5987} & \scriptsize{0.6026} & \scriptsize{0.6064} & \scriptsize{0.6103} & \scriptsize{0.6141} \\
-%  May comment out 0.0-0.2 to make extra space. Then insert the following line:
-%  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\
-  0.3 & \scriptsize{0.6179} & \scriptsize{0.6217} & \scriptsize{0.6255} & \scriptsize{0.6293} & \scriptsize{0.6331} & \scriptsize{0.6368} & \scriptsize{0.6406} & \scriptsize{0.6443} & \scriptsize{0.6480} & \scriptsize{0.6517} \\
-\highlightT{0.4} & \scriptsize{0.6554} & \scriptsize{0.6591} & \scriptsize{0.6628} & \scriptsize{0.6664} & \scriptsize{0.6700} & \highlightT{\scriptsize{0.6736}} & \scriptsize{0.6772} & \scriptsize{0.6808} & \scriptsize{0.6844} & \scriptsize{0.6879} \\
-  \hline
-  0.5 & \scriptsize{0.6915} & \scriptsize{0.6950} & \scriptsize{0.6985} & \scriptsize{0.7019} & \scriptsize{0.7054} & \scriptsize{0.7088} & \scriptsize{0.7123} & \scriptsize{0.7157} & \scriptsize{0.7190} & \scriptsize{0.7224} \\
-  0.6 & \scriptsize{0.7257} & \scriptsize{0.7291} & \scriptsize{0.7324} & \scriptsize{0.7357} & \scriptsize{0.7389} & \scriptsize{0.7422} & \scriptsize{0.7454} & \scriptsize{0.7486} & \scriptsize{0.7517} & \scriptsize{0.7549} \\
-  0.7 & \scriptsize{0.7580} & \scriptsize{0.7611} & \scriptsize{0.7642} & \scriptsize{0.7673} & \scriptsize{0.7704} & \scriptsize{0.7734} & \scriptsize{0.7764} & \scriptsize{0.7794} & \scriptsize{0.7823} & \scriptsize{0.7852} \\
-\highlightO{0.8} & \scriptsize{0.7881} & \scriptsize{0.7910} & \scriptsize{0.7939} & \scriptsize{0.7967} & \highlightO{\scriptsize{0.7995}} & \scriptsize{0.8023} & \scriptsize{0.8051} & \scriptsize{0.8078} & \scriptsize{0.8106} & \scriptsize{0.8133} \\
-  0.9 & \scriptsize{0.8159} & \scriptsize{0.8186} & \scriptsize{0.8212} & \scriptsize{0.8238} & \scriptsize{0.8264} & \scriptsize{0.8289} & \scriptsize{0.8315} & \scriptsize{0.8340} & \scriptsize{0.8365} & \scriptsize{0.8389} \\
-  \hline
-  \hline
-  1.0 & \scriptsize{0.8413} & \scriptsize{0.8438} & \scriptsize{0.8461} & \scriptsize{0.8485} & \scriptsize{0.8508} & \scriptsize{0.8531} & \scriptsize{0.8554} & \scriptsize{0.8577} & \scriptsize{0.8599} & \scriptsize{0.8621} \\
-  1.1 & \scriptsize{0.8643} & \scriptsize{0.8665} & \scriptsize{0.8686} & \scriptsize{0.8708} & \scriptsize{0.8729} & \scriptsize{0.8749} & \scriptsize{0.8770} & \scriptsize{0.8790} & \scriptsize{0.8810} & \scriptsize{0.8830} \\
-  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &
-      $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &
-      $\vdots$ &   $\vdots$ &   $\vdots$ \\
-   \hline
-\end{tabular}
-\caption{A section of the normal probability table.
-    The percentile for a normal random variable with $Z=0.45$
-    has been \highlightT{highlighted}, and the percentile
-    closest to 0.8000 has also been \highlightO{highlighted}.}
-\label{zTableShort}
-\end{figure}
+There are many techniques for doing this, and we'll discuss
+three of the options.
+\begin{enumerate}
+\item
+    The most common approach in practice is to use
+    statistical software.
+    For example, in the program \R{}, we could find the area
+    shown in Figure~\ref{satBelow1300} using the
+    following command, which takes in the Z-score
+    and returns the lower tail area: \\
+    {\color{white}.....}%
+        \texttt{> pnorm(1)} \\
+    {\color{white}.....}%
+        \texttt{[1] 0.8413447} \\
+    According to this calculation,
+    the region shaded that is below 1300
+    represents the proportion 0.841 (84.1\%) of SAT test
+    takers who had Z-scores below $Z = 1$.
+    More generally, we can also specify the cutoff explicitly
+    if we also note the mean and standard deviation: \\
+    {\color{white}.....}%
+        \texttt{> pnorm(1300, mean = 1100, sd = 200)} \\
+    {\color{white}.....}%
+        \texttt{[1] 0.8413447} %\\
+    %\Add{More examples for using \R{} are provided
+    %  at the end of the section.}
 
-We can also find the Z-score associated with a percentile.
-For example, to identify Z for the $80^{th}$ percentile,
-we look for the value closest to 0.8000 in the middle portion
-of the table: 0.7995.
-We determine the Z-score for the $80^{th}$ percentile by
-combining the row and column Z values: 0.84.
 
-\begin{exercisewrap}
-\begin{nexercise}
-Determine the proportion of SAT test takers who scored better
-than Ann on the SAT.\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{If 84\% had lower scores than Ann, the proportion
-  of people who had better scores must be 16\%.
-  (Generally ties are ignored when the normal model,
-  or any other continuous distribution, is used.)}
+    There are many other software options, such as Python or SAS;
+    even spreadsheet programs such as
+    Excel and Google Sheets support these calculations.
+\item
+    A common strategy in classrooms is to use a graphing
+    calculator, such as a TI or Casio calculator.
+    These calculators require a series of button presses
+    that are less concisely described.
+    You can find instructions on using these calculators
+    for finding tail areas of a normal distribution in the
+    OpenIntro video library:
+    \begin{center}
+    \oiRedirect{textbook-openintro_videos}
+        {www.openintro.org/videos}
+    \end{center}
+\item
+    The last option for finding tail areas is to use
+    what's called a \term{probability table};
+    these are occasionally used in classrooms
+    but rarely in practice.
+    Appendix~\ref{normalProbabilityTable}
+    contains such a table and a guide for how to use it.
+\end{enumerate}
+We will solve normal distribution problems in this section
+by always first finding the Z-score.
+The reason is that we will encounter close parallels
+called \indexthis{test statistics}{test statistic}
+beginning in Chapter~\ref{ch_foundations_for_inf};
+these are, in many instances, an equivalent of a Z-score.
+
+%No matter the approach you choose,
+%try the Guided Practice exercises in this section
+%using your preferred method.
 
 
 \subsection{Normal probability examples}
 \label{normal_probability_examples}
 
+\noindent%
 Cumulative SAT scores are approximated well by a normal model,
 $N(\mu = \satmean{}, \sigma = \satsd{})$.
 
@@ -455,12 +414,11 @@ $N(\mu = \satmean{}, \sigma = \satsd{})$.
     = \frac{90}{\satsd{}}
     = \shannonsatz{}
   \end{align*}
-  We can use software or the normal probability table
-  in Figure~\ref{zTableShort}
-  (also in Appendix~\vref{normalProbabilityTable})
-  to get 0.6736.
-  However, the percentile describes those who had a Z-score
-  \emph{lower} than \shannonsatz{}.
+  Using statistical software (or another preferred method),
+  we can area left of $Z = \shannonsatz{}$ as 0.6736.
+  %This is Shannon's \term{percentile},
+  %which is the fraction of folks who scored below her score
+  %of \shannonsat{}.
   To find the area \emph{above} $Z = \shannonsatz{}$,
   we compute one minus the area of the lower tail:
   \begin{center}
@@ -491,9 +449,8 @@ shading the lower region instead of the upper one.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{We found the probability in
-  Example~\ref{satAbove1190Exam}: 0.6736.
-  A picture for this exercise is represented by the shaded
-  area below ``0.6736'' in Example~\ref{satAbove1190Exam}.}
+  Example~\ref{satAbove1190Exam}: 0.6736. \\
+  \Figures{0.18}{subtractingArea}{subtracted}}
 
 
 \newcommand{\edwardsat}{1030}
@@ -504,8 +461,8 @@ shading the lower region instead of the upper one.\footnotemark{}
     What is his percentile?}
   \label{edwardSatBelow\edwardsat{}}%
   First, a picture is needed.
-  Edward's percentile is the proportion of people who do not
-  get as high as a \edwardsat{}.
+  Edward's \hiddenterm{percentile} is the proportion of people
+  who do not get as high as a \edwardsat{}.
   These are the scores to the left of \edwardsat{}.
 \begin{center}
 \Figure{0.3}{satBelow1030}
@@ -519,10 +476,7 @@ Z
   = \frac{\edwardsat{} - \satmean{}}{\satsd{}}
   = \edwardsatz{}
 \end{align*}
-If using the normal probability table,
-identify the row of $-0.3$ and column of $0.05$,
-which corresponds to the probability $0.3632$.
-Software will give you the same result.
+Using statistical software, we get a tail area of 0.3632.
 Edward is at the $36^{th}$ percentile.
 \end{nexample}
 \end{examplewrap}
@@ -540,8 +494,8 @@ Also draw a new picture.\footnotemark{}
   \Figures{0.25}{satBelow1030}{satAbove1030}}
 
 \begin{onebox}{Finding areas to the right}
-  The normal probability table and many software programs
-  gives the area to the left.
+  Many software programs return the area to the left
+  when given a Z-score.
   If you would like the area to the right, first find the
   area to the left and then subtract this amount from~one.
 \end{onebox}
@@ -554,30 +508,34 @@ Stuart earned an SAT score of \stuartsat{}.
 Draw a picture for each part. \\
 (a)~What is his percentile? \\
 (b)~What percent of SAT takers did better than
-Stuart?\footnotemark{}
+  Stuart?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Numerical answers: (a) 0.9772. (b) 0.0228.}
+\footnotetext{We leave the drawings to you.
+  (a) $Z = \frac{\stuartsat{} - \satmean{}}{\satsd{}}
+         = \stuarsatz{}
+         \to 0.9772$.
+  (b) $1 - 0.9772 = 0.0228$.}
 
 Based on a sample of 100 men, the heights of male adults
-between the ages 20 and 62 in the US is nearly normal with
-mean 70.0'' and standard deviation 3.3''.
+in the US is nearly normal with mean 70.0''
+and standard deviation 3.3''.
 
 \begin{exercisewrap}
 \begin{nexercise}
-Mike is 5'7'' and Jim is 6'4''. \\
+Mike is 5'7'' and Jose is 6'4'', and they both live in the US. \\
 (a) What is Mike's height percentile? \\
-(b) What is Jim's height percentile? \\
+(b) What is Jose's height percentile? \\
 Also draw one picture for each~part.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{First put the heights into inches:
   67 and 76 inches.
-  Figures are shown below.
+  Figures are shown below. \\
   (a) $Z_{\text{Mike}} = \frac{67 - 70}{3.3} = -0.91\ \to\ 0.1814$.
-  (b) $Z_{\text{Jim}} = \frac{76 - 70}{3.3} = 1.82\ \to\ 0.9656$.
+  (b) $Z_{\text{Jose}} = \frac{76 - 70}{3.3} = 1.82\ \to\ 0.9656$.
   \\
-  \Figure{0.45}{mikeAndJimPercentiles}}
+  \Figure{0.45}{mikeAndJosePercentiles}}
 
 The last several problems have focused on finding the
 percentile (or upper tail) for a particular observation.
@@ -596,22 +554,13 @@ to a particular percentile?
   We want to find the observation that corresponds to this value.
   As a first step in this direction, we determine the Z-score
   associated with the $40^{th}$ percentile.
+  Using software, we can obtain the corresponding Z-score
+  of about -0.25.
 
-  If we are using software, you should find the option to
-  take a percentile and obtain a Z-score.
-  If you are using software, confirm you get the same result!
-
-  If using the normal probability table, then because the
-  percentile is below 50\%, we know $Z$ will be negative.
-  We search for the probability \emph{inside} the table
-  closest to 0.4000.
-  We find that 0.4000 falls in row $-0.2$ and between columns
-  $0.05$ and $0.06$.
-  Since it falls closer to $0.05$, we take this one: $Z=-0.25$.
-
-  Knowing $Z_{Erik}=-0.25$ and the population parameters
-  $\mu=70$ and $\sigma=3.3$ inches, the Z-score formula can be
-  set up to determine Erik's unknown height, labeled $x_{Erik}$:
+  Knowing $Z_{Erik} = -0.25$ and the population parameters
+  $\mu = 70$ and $\sigma = 3.3$ inches, the Z-score formula can be
+  set up to determine Erik's unknown height, labeled
+  $x_{_{\text{Erik}}}$:
   \begin{align*}
   -0.25
     = Z_{_{\text{Erik}}}
@@ -631,11 +580,8 @@ to a particular percentile?
   \Figure{0.28}{height82Perc}\vspace{-1mm}
   \end{center}
   Next, we want to find the Z-score at the $82^{nd}$ percentile,
-  which will be a positive value.
-  If using the Z-table, not software,
-  we find that $Z$ falls in row $0.9$
-  and the nearest column is $0.02$, i.e. $Z = 0.92$.
-  (If you are using software, confirm you get this same result.)
+  which will be a positive value and can be found using software
+  as $Z = 0.92$.
   Finally, the height $x$ is found using the Z-score formula
   with the known mean $\mu$, standard deviation $\sigma$,
   and Z-score $Z = 0.92$:
@@ -649,9 +595,9 @@ to a particular percentile?
 
 \begin{exercisewrap}
 \begin{nexercise}
-The SAT scores follow $N(\satmean{}, \satsd{})$.
+The SAT scores follow $N(\satmean{}, \satsd{})$.\footnotemark{} \\
 (a) What is the $95^{th}$ percentile for SAT scores? \\
-(b) What is the $97.5^{th}$ percentile of the male heights?
+(b) What is the $97.5^{th}$ percentile for SAT scores?
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Short answers:
@@ -660,14 +606,17 @@ The SAT scores follow $N(\satmean{}, \satsd{})$.
 
 \begin{exercisewrap}
 \begin{nexercise}\label{more74Less69}
-Adult male heights follow $N(70.0$''$, 3.3$''$)$. \\
+Adult male heights follow $N(70.0$''$, 3.3$''$)$.\footnotemark{} \\
 (a)~What is the probability that a randomly selected male
     adult is at least 6'2'' (74 inches)? \\
 (b)~What is the probability that a male adult is shorter
-    than 5'9'' (69 inches)?\footnotemark{}
+    than 5'9'' (69 inches)?
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Numerical answers: (a) 0.1131. (b) 0.3821.}
+\footnotetext{Short answers:
+  (a) $Z = 1.21 \to 0.8869$, then subtract this value
+      from 1 to get 0.1131.
+  (b) $Z = -0.30 \to 0.3821$.}
 
 \begin{examplewrap}
 \begin{nexample}{What is the probability that a random adult
@@ -714,10 +663,10 @@ What percent of adult males are between 5'5''
 and 5'7''?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{5'5'' is 65 inches.
-  5'7'' is 67 inches.
-  Numerical solution: $1.000 - 0.0649 - 0.8183 = 0.1168$,
-  i.e. 11.68\%.}
+\footnotetext{5'5'' is 65 inches ($Z = -1.52$).
+  5'7'' is 67 inches ($Z = -0.91$).
+  Numerical solution: $1.000 - 0.0643 - 0.8186 = 0.1171$,
+  i.e. 11.71\%.}
 
 
 \subsection{68-95-99.7 rule}
@@ -733,7 +682,8 @@ Here, we present a useful rule of thumb for the probability of falling within 1,
 
 \begin{exercisewrap}
 \begin{nexercise}
-Use the Z-table to confirm that about 68\%, 95\%, and 99.7\%
+Use software, a calculator, or a probability table
+to confirm that about 68\%, 95\%, and 99.7\%
 of observations fall within 1, 2, and 3, standard deviations
 of the mean in the normal distribution, respectively.
 For instance, first find the area that falls between $Z=-1$
@@ -743,12 +693,9 @@ $Z=-2$ and $Z=2$.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{First draw the pictures.
-  To find the area between $Z=-1$ and $Z=1$,
-  we can use the normal probability table to determine
-  the areas below $Z=-1$ and above $Z=1$.
-  (Or use software!)
-  Next verify the area between $Z=-1$ and $Z=1$ is about 0.68.
-  Repeat this for $Z=-2$ to $Z=2$ and also for $Z=-3$ to $Z=3$.}
+  Using software, we get 0.6827 within 1~standard deviation,
+  0.9545 within 2~standard deviations,
+  and 0.9973 within 3~standard deviations.}
 
 It is possible for a normal random variable to fall 4,~5,
 or~even more standard deviations from the mean.
@@ -762,13 +709,14 @@ and 1-in-500 million, respectively.
 \begin{exercisewrap}
 \begin{nexercise}
 SAT scores closely follow the normal model with mean
-$\mu = \satmean{}$ and standard deviation $\sigma = \satsd{}$.
-(a) About what percent of test takers score 700 to 1500?
-(b) What percent score between \satmean{} and 1500?\footnotemark{}
+$\mu = \satmean{}$ and standard deviation
+$\sigma = \satsd{}$.\footnotemark{} \\
+(a) About what percent of test takers score 700 to 1500? \\
+(b) What percent score between \satmean{} and 1500?
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(a) 700 and 1500 represent two standard deviations
-  above and below the mean, which means about 95\% of test takers
+  below and above the mean, which means about 95\% of test takers
   will score between 700 and 1500.
   (b)~We found that 700 to 1500 represents about 95\% of test
   takers.
@@ -780,216 +728,216 @@ $\mu = \satmean{}$ and standard deviation $\sigma = \satsd{}$.
 
 
 
-%_________________
-\section{Evaluating the normal approximation}
-\label{assessingNormal}
-
-Many processes can be well approximated by the normal distribution.
-We have already seen two good examples:
-SAT scores and the heights of US adult males.
-While using a normal model can be extremely convenient
-and helpful, it is important to remember normality is
-always an approximation.
-Evaluating the appropriateness of the normal assumption
-is a key step in many data analyses.
-
-\index{normal probability plot|(}
-
-Example~\ref{normalExam40Perc} in Section~\ref{normalDist}
-suggested the distribution of heights of US males is well
-approximated by the normal model.
-We are interested in proceeding under the assumption that
-the data are normally distributed, but first we must check
-to see if this is reasonable.
-
-There are two visual methods for checking the assumption of
-normality, which can be implemented and interpreted quickly.
-The first is a simple histogram with the best fitting normal
-curve overlaid on the plot, as shown in the left panel of
-Figure~\ref{fcidMHeights}.
-The sample mean $\bar{x}$ and standard deviation $s$ are used
-as the parameters of the best fitting normal curve.
-The closer this curve fits the histogram, the more reasonable
-the normal model assumption.
-Another common method is examining a
-\term{normal probability plot},\footnote{Also commonly
-  called a \term{quantile-quantile plot}.}
-shown in the right panel of Figure~\ref{fcidMHeights}.
-The closer the points are to a perfect straight line,
-the more confident we can be that the data follow the
-normal model.
-
-\begin{figure}[h]
-  \centering
-  \Figure{0.7}{fcidMHeights}
-  \caption{A sample of 100 male heights.
-      The observations are rounded to the nearest whole inch,
-      explaining why the points appear to jump in increments
-      in the normal probability plot.}
-  \label{fcidMHeights}
-\end{figure}
-
-\begin{examplewrap}
-\begin{nexample}{Three data sets of 40, 100, and 400
-    samples were simulated from a normal distribution,
-    and the histograms and normal probability plots
-    of the data sets are shown in Figure~\ref{normalExamples}.
-    These will provide a benchmark for what to look for
-    in plots of real data.}
-  \label{normalExamplesExample}%
-  The left panels show the histogram (top) and normal
-  probability plot (bottom) for the simulated data set
-  with 40 observations.
-  The data set is too small to really see clear structure
-  in the histogram.
-  The normal probability plot also reflects this,
-  where there are some deviations from the line.
-  We should expect deviations of this amount for
-  such a small data set.
-
-  The middle panels show diagnostic plots for the
-  data set with 100 simulated observations.
-  The histogram shows more normality and the normal
-  probability plot shows a better fit.
-  While there are a few observations that deviate
-  noticeably from the line, they are not particularly
-  extreme.
-
-  The data set with 400 observations has a histogram
-  that greatly resembles the normal distribution,
-  while the normal probability plot is nearly a perfect
-  straight line.
-  Again in the normal probability plot there is one
-  observation (the largest) that deviates slightly from
-  the line.
-  If that observation had deviated 3 times further from
-  the line, it would be of greater importance in a real
-  data set.
-  Apparent outliers can occur in normally distributed
-  data but they are rare.
-
-  Notice the histograms look more normal as the sample
-  size increases, and the normal probability plot becomes
-  straighter and more stable.
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}
-  \centering
-  \Figure{0.9}{normalExamples}
-  \caption{Histograms and normal probability plots for
-      three simulated normal data sets; $n=40$ (left),
-      $n=100$ (middle), $n=400$ (right).}
-  \label{normalExamples}
-\end{figure}
-
-\begin{examplewrap}
-\begin{nexample}{Are NBA player heights normally distributed?
-    Consider all 494 NBA players presented in
-    Figure~\ref{nbaNormal}.}
-  We first create a histogram and normal probability plot
-  of the NBA player heights.
-  The histogram in the left panel appears to have too few
-  observations at the upper end since the curve is notably
-  above the histogram.
-  The points in the normal probability plot
-  follow a straight line for much of the center of the
-  distribution, and then deviates more at the upper values.
-  We can compare these characteristics to the sample of
-  400 normally distributed observations in
-  Example~\ref{normalExamplesExample} and see that they
-  represent much stronger deviations from the normal model.
-  NBA player heights do not appear to come from a normal
-  distribution.
-\end{nexample}
-\end{examplewrap}
-
-\begin{examplewrap}
-\begin{nexample}{Can we approximate poker winnings by a normal distribution? We consider the poker winnings of an individual over 50 days. A histogram and normal probability plot of these data are shown in Figure~\ref{pokerNormal}.}
-The data are very strongly right skewed\index{skew!example: very strong} in the histogram, which corresponds to the very strong deviations on the upper right component of the normal probability plot. If we compare these results to the sample of 40 normal observations in Example~\ref{normalExamplesExample}, it is apparent that these data show very strong deviations from the normal model.
-\end{nexample}
-\end{examplewrap}
-
-\begin{figure}
-  \centering
-  \Figure{0.8}{nbaNormal}
-  \caption{Histogram and normal probability plot
-      for the NBA heights from the 2008-9 season.}
-  \label{nbaNormal}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \Figure{0.9}{pokerNormal}
-  \caption{A histogram of poker data with the best
-      fitting normal plot and a normal probability plot.}
-  \label{pokerNormal}
-\end{figure}
-
-\begin{exercisewrap}
-\begin{nexercise}\label{normalQuantileExercise}%
-Determine which data sets represented in
-Figure~\ref{normalQuantileExer} plausibly come from
-a nearly normal distribution.
-Are you confident in all of your conclusions?
-There are 100 (top left), 50 (top right), 500 (bottom left),
-and 15 points (bottom right) in the four plots.\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Answers may vary a little.
-  The top-left plot shows some deviations in the smallest values
-  in the data set;
-  specifically, the left tail of the data set has some outliers
-  we should be wary of.
-  The top-right and bottom-left plots do not show any obvious
-  or extreme deviations from the lines for their respective
-  sample sizes, so a normal model would be reasonable for these
-  data sets.
-  The bottom-right plot has a consistent curvature that suggests
-  it is not from the normal distribution.
-  If we examine just the vertical coordinates of these
-  observations, we see that there is a lot of data between
-  -20 and 0, and then about five observations scattered
-  between 0 and 70.
-  This describes a distribution that has a strong right skew.}
-
-\begin{figure}
-  \centering
-  \Figure{0.7}{normalQuantileExer}
-  \caption{Four normal probability plots for
-      Guided Practice~\ref{normalQuantileExercise}.}
-  \label{normalQuantileExer}
-\end{figure}
-
-\begin{exercisewrap}
-\begin{nexercise}
-\label{normalQuantileExerciseAdditional}%
-Figure~\ref{normalQuantileExerAdditional} shows normal
-probability plots for two distributions that are skewed.
-One distribution is skewed to the low end (left skewed)
-and the other to the high end (right skewed).
-Which is which?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Examine where the points fall along the
-  vertical axis.
-  In the first plot, most points are near the low end
-  with fewer observations scattered along the high end;
-  this describes a distribution that is skewed to the
-  high end.
-  The second plot shows the opposite features,
-  and this distribution is skewed to the low end.}
-
-\begin{figure}[h]
-  \centering
-  \Figures{0.8}{normalQuantileExer}{normalQuantileExerAdditional}
-  \caption{Normal probability plots for
-      Guided Practice~\ref{normalQuantileExerciseAdditional}.}
-  \label{normalQuantileExerAdditional}
-\end{figure}
-
-\index{normal probability plot|)}
-\index{distribution!normal|)}
+%%_________________
+%\section{Evaluating the normal approximation}
+%\label{assessingNormal}
+%
+%Many processes can be well approximated by the normal distribution.
+%We have already seen two good examples:
+%SAT scores and the heights of US adult males.
+%While using a normal model can be extremely convenient
+%and helpful, it is important to remember normality is
+%always an approximation.
+%Evaluating the appropriateness of the normal assumption
+%is a key step in many data analyses.
+%
+%\index{normal probability plot|(}
+%
+%Example~\ref{normalExam40Perc} in Section~\ref{normalDist}
+%suggested the distribution of heights of US males is well
+%approximated by the normal model.
+%We are interested in proceeding under the assumption that
+%the data are normally distributed, but first we must check
+%to see if this is reasonable.
+%
+%There are two visual methods for checking the assumption of
+%normality, which can be implemented and interpreted quickly.
+%The first is a simple histogram with the best fitting normal
+%curve overlaid on the plot, as shown in the left panel of
+%Figure~\ref{fcidMHeights}.
+%The sample mean $\bar{x}$ and standard deviation $s$ are used
+%as the parameters of the best fitting normal curve.
+%The closer this curve fits the histogram, the more reasonable
+%the normal model assumption.
+%Another common method is examining a
+%\term{normal probability plot},\footnote{Also commonly
+%  called a \term{quantile-quantile plot}.}
+%shown in the right panel of Figure~\ref{fcidMHeights}.
+%The closer the points are to a perfect straight line,
+%the more confident we can be that the data follow the
+%normal model.
+%
+%\begin{figure}[h]
+%  \centering
+%  \Figure{0.7}{fcidMHeights}
+%  \caption{A sample of 100 male heights.
+%      The observations are rounded to the nearest whole inch,
+%      explaining why the points appear to jump in increments
+%      in the normal probability plot.}
+%  \label{fcidMHeights}
+%\end{figure}
+%
+%\begin{examplewrap}
+%\begin{nexample}{Three data sets of 40, 100, and 400
+%    samples were simulated from a normal distribution,
+%    and the histograms and normal probability plots
+%    of the data sets are shown in Figure~\ref{normalExamples}.
+%    These will provide a benchmark for what to look for
+%    in plots of real data.}
+%  \label{normalExamplesExample}%
+%  The left panels show the histogram (top) and normal
+%  probability plot (bottom) for the simulated data set
+%  with 40 observations.
+%  The data set is too small to really see clear structure
+%  in the histogram.
+%  The normal probability plot also reflects this,
+%  where there are some deviations from the line.
+%  We should expect deviations of this amount for
+%  such a small data set.
+%
+%  The middle panels show diagnostic plots for the
+%  data set with 100 simulated observations.
+%  The histogram shows more normality and the normal
+%  probability plot shows a better fit.
+%  While there are a few observations that deviate
+%  noticeably from the line, they are not particularly
+%  extreme.
+%
+%  The data set with 400 observations has a histogram
+%  that greatly resembles the normal distribution,
+%  while the normal probability plot is nearly a perfect
+%  straight line.
+%  Again in the normal probability plot there is one
+%  observation (the largest) that deviates slightly from
+%  the line.
+%  If that observation had deviated 3 times further from
+%  the line, it would be of greater importance in a real
+%  data set.
+%  Apparent outliers can occur in normally distributed
+%  data but they are rare.
+%
+%  Notice the histograms look more normal as the sample
+%  size increases, and the normal probability plot becomes
+%  straighter and more stable.
+%\end{nexample}
+%\end{examplewrap}
+%
+%\begin{figure}
+%  \centering
+%  \Figure{0.9}{normalExamples}
+%  \caption{Histograms and normal probability plots for
+%      three simulated normal data sets; $n=40$ (left),
+%      $n=100$ (middle), $n=400$ (right).}
+%  \label{normalExamples}
+%\end{figure}
+%
+%\begin{examplewrap}
+%\begin{nexample}{Are NBA player heights normally distributed?
+%    Consider all 494 NBA players presented in
+%    Figure~\ref{nbaNormal}.}
+%  We first create a histogram and normal probability plot
+%  of the NBA player heights.
+%  The histogram in the left panel appears to have too few
+%  observations at the upper end since the curve is notably
+%  above the histogram.
+%  The points in the normal probability plot
+%  follow a straight line for much of the center of the
+%  distribution, and then deviates more at the upper values.
+%  We can compare these characteristics to the sample of
+%  400 normally distributed observations in
+%  Example~\ref{normalExamplesExample} and see that they
+%  represent much stronger deviations from the normal model.
+%  NBA player heights do not appear to come from a normal
+%  distribution.
+%\end{nexample}
+%\end{examplewrap}
+%
+%\begin{examplewrap}
+%\begin{nexample}{Can we approximate poker winnings by a normal distribution? We consider the poker winnings of an individual over 50 days. A histogram and normal probability plot of these data are shown in Figure~\ref{pokerNormal}.}
+%The data are very strongly right skewed\index{skew!example: very strong} in the histogram, which corresponds to the very strong deviations on the upper right component of the normal probability plot. If we compare these results to the sample of 40 normal observations in Example~\ref{normalExamplesExample}, it is apparent that these data show very strong deviations from the normal model.
+%\end{nexample}
+%\end{examplewrap}
+%
+%\begin{figure}
+%  \centering
+%  \Figure{0.8}{nbaNormal}
+%  \caption{Histogram and normal probability plot
+%      for the NBA heights from the 2008-9 season.}
+%  \label{nbaNormal}
+%\end{figure}
+%
+%\begin{figure}
+%  \centering
+%  \Figure{0.9}{pokerNormal}
+%  \caption{A histogram of poker data with the best
+%      fitting normal plot and a normal probability plot.}
+%  \label{pokerNormal}
+%\end{figure}
+%
+%\begin{exercisewrap}
+%\begin{nexercise}\label{normalQuantileExercise}%
+%Determine which data sets represented in
+%Figure~\ref{normalQuantileExer} plausibly come from
+%a nearly normal distribution.
+%Are you confident in all of your conclusions?
+%There are 100 (top left), 50 (top right), 500 (bottom left),
+%and 15 points (bottom right) in the four plots.\footnotemark{}
+%\end{nexercise}
+%\end{exercisewrap}
+%\footnotetext{Answers may vary a little.
+%  The top-left plot shows some deviations in the smallest values
+%  in the data set;
+%  specifically, the left tail of the data set has some outliers
+%  we should be wary of.
+%  The top-right and bottom-left plots do not show any obvious
+%  or extreme deviations from the lines for their respective
+%  sample sizes, so a normal model would be reasonable for these
+%  data sets.
+%  The bottom-right plot has a consistent curvature that suggests
+%  it is not from the normal distribution.
+%  If we examine just the vertical coordinates of these
+%  observations, we see that there is a lot of data between
+%  -20 and 0, and then about five observations scattered
+%  between 0 and 70.
+%  This describes a distribution that has a strong right skew.}
+%
+%\begin{figure}
+%  \centering
+%  \Figure{0.7}{normalQuantileExer}
+%  \caption{Four normal probability plots for
+%      Guided Practice~\ref{normalQuantileExercise}.}
+%  \label{normalQuantileExer}
+%\end{figure}
+%
+%\begin{exercisewrap}
+%\begin{nexercise}
+%\label{normalQuantileExerciseAdditional}%
+%Figure~\ref{normalQuantileExerAdditional} shows normal
+%probability plots for two distributions that are skewed.
+%One distribution is skewed to the low end (left skewed)
+%and the other to the high end (right skewed).
+%Which is which?\footnotemark{}
+%\end{nexercise}
+%\end{exercisewrap}
+%\footnotetext{Examine where the points fall along the
+%  vertical axis.
+%  In the first plot, most points are near the low end
+%  with fewer observations scattered along the high end;
+%  this describes a distribution that is skewed to the
+%  high end.
+%  The second plot shows the opposite features,
+%  and this distribution is skewed to the low end.}
+%
+%\begin{figure}[h]
+%  \centering
+%  \Figures{0.8}{normalQuantileExer}{normalQuantileExerAdditional}
+%  \caption{Normal probability plots for
+%      Guided Practice~\ref{normalQuantileExerciseAdditional}.}
+%  \label{normalQuantileExerAdditional}
+%\end{figure}
+%
+%\index{normal probability plot|)}
+%\index{distribution!normal|)}
 
 
 

@@ -1,8 +1,8 @@
 library(openintro)
 data(COL)
 
-myPDF("simpleNormal.pdf", 4, 1.65,
-      mar = 0.5*rep(1, 4))
+myPDF("simpleNormal.pdf", 4.3, 1.5,
+      mar = 0.1 * rep(1, 4))
 
 X <- seq(-5,5,0.01)
 Y <- dnorm(X)

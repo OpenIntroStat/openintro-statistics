@@ -52,6 +52,17 @@ qqnorm(e,
     pch = 19)
 dev.off()
 
+myPDF("loansDiagNormalHistogram.pdf", 6, 3.7,
+    mgp = c(2.5,0.6,0))
+histPlot(e,
+    xlab = "Residuals",
+    ylab = "Count",
+    col = COL[1],
+    axes = FALSE)
+AxisInPercent(1, pretty(e))
+axis(2)
+dev.off()
+
 myPDF("ignore-loansDiagInOrder.pdf", 5.65, 3.9,
     mgp = c(2.5, 0.6, 0))
 plot(e,

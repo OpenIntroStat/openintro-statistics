@@ -1509,33 +1509,37 @@ There are three conditions we must check for an ANOVA analysis: all observations
 \item[Approximately normal.]
     As with one- and two-sample testing for means,
     the normality assumption is especially important
-    when the sample size is quite small.
-    The normal probability plots for each group
-    of the MLB data are shown in
-    Figure~\ref{mlbANOVADiagNormalityGroups};
-    there is some deviation from normality for outfielders,
-    but this isn't a substantial concern since there are
-    about 160 observations in that group and the outliers
-    are not extreme.
-    Sometimes in ANOVA there are so many groups or so few
-    observations per group that checking normality for each
-    group isn't reasonable.
-    See the footnote\footnote{First calculate the
-        \termsub{residuals}{residual} of the baseball
-        data, which are calculated by taking the observed
-        values and subtracting the corresponding group means.
-        For example, an outfielder with OBP of 0.405 would
-        have a residual of $0.405 - \bar{x}_{OF} = 0.071$.
-        Then to check the normality condition,
-        create a normal probability plot using all
-        the residuals simultaneously.}
-    for guidance on how to handle such instances.
+    when the sample size is quite small when it is
+    ironically difficult to check for non-normality.
+    A histogram of the observations from each group
+    is shown in Figure~\ref{mlbANOVADiagNormalityGroups}.
+    Since each of the groups we're considering have
+    relatively large sample sizes,
+    what we're looking for are major outliers.
+    None are apparent, so this conditions is reasonably met.
+%    there is some deviation from normality for outfielders,
+%    but this isn't a substantial concern since there are
+%    about 160 observations in that group and the outliers
+%    are not extreme.
+%    Sometimes in ANOVA there are so many groups or so few
+%    observations per group that checking normality for each
+%    group isn't reasonable.
+%    See the footnote\footnote{First calculate the
+%        \termsub{residuals}{residual} of the baseball
+%        data, which are calculated by taking the observed
+%        values and subtracting the corresponding group means.
+%        For example, an outfielder with OBP of 0.405 would
+%        have a residual of $0.405 - \bar{x}_{OF} = 0.071$.
+%        Then to check the normality condition,
+%        create a normal probability plot using all
+%        the residuals simultaneously.}
+%    for guidance on how to handle such instances.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{ch_inference_for_means/figures/mlbANOVA/mlbANOVADiagNormalityGroups}
-\caption{Normal probability plot of OBP for each field position.}
-\label{mlbANOVADiagNormalityGroups}
+  \centering
+  \Figures{}{mlbANOVA}{mlbANOVADiagNormalityGroups}
+  \caption{Histograms of OBP for each field position.}
+  \label{mlbANOVADiagNormalityGroups}
 \end{figure}
 
 \item[Constant variance.]

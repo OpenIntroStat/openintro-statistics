@@ -91,47 +91,28 @@ mtext("Residuals", 2, line = 3.3)
 dev.off()
 
 
-myPDF("mlbANOVADiagNormalityGroups.pdf", 7.5, 2.7,
-      mar = c(4.5, 4.4, 2, 0.5),
+myPDF("mlbANOVADiagNormalityGroups.pdf", 6, 1.7,
+      mar = c(3.4, 3.4, 2, 0.5),
+      mgp = c(2.2, 0.55, 0),
       mfrow = c(1, 3))
-qqnorm(d$OBP[d$position == "OF"],
-       main = "Outfielders",
-       xlab = "",
-       ylab = "",
-       pch = 19,
-       cex = 0.8,
-       col = COL[1,3])
-mtext("Theoretical Quantiles", 1, 2.2)
-qqnorm(d$OBP[d$position == "IF"],
-       main = "In-fielders",
-       xlab = "",
-       ylab = "",
-       pch = 19,
-       cex = 0.8,
-       col = COL[1,3])
-mtext("Theoretical Quantiles", 1, 2.2)
-# qqnorm(d$OBP[d$position == "DH"],
-       # main = "Designated Hitters",
-       # xlab = "",
-       # ylab = "",
-       # pch = 19,
-       # cex = 0.8,
-       # col = COL[1, 3],
-       # axes = FALSE)
-# axis(1)
-# axis(2, at = seq(0.3, 0.4, 0.05))
-# box()
-# mtext("Theoretical Quantiles", 1, 2.2)
-qqnorm(d$OBP[d$position == "C"],
-       main = "Catchers",
-       xlab = "",
-       ylab = "",
-       pch = 19,
-       cex = 0.8,
-       col = COL[1, 3])
-mtext("Theoretical Quantiles", 1, 2.2)
-par(las = 0)
-mtext("Residuals", 2, line = 3.3)
+xlim <- range(d$OBP)
+at <- pretty(xlim, 3)
+breaks <- pretty(xlim, 15)
+HistOfOBP <- function(x, main) {
+  histPlot(x,
+      main = main,
+      xlim = xlim,
+      breaks = breaks,
+      xlab = "On-Base Percentage",
+      ylab = "Count",
+      col = COL[1],
+      axes = FALSE)
+  axis(1, at)
+  axis(2)
+}
+HistOfOBP(d$OBP[d$position == "OF"], "Outfielders")
+HistOfOBP(d$OBP[d$position == "IF"], "In-fielders")
+HistOfOBP(d$OBP[d$position == "C"], "Catchers")
 dev.off()
 
 
