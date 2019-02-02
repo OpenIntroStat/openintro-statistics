@@ -2596,31 +2596,59 @@ For example, we might ask:
 if we look at resumes that we modeled as having
 a 10\% chance of getting a callback, do we find
 about 10\% of them actually receive a callback?
-To help us out, we'll borrow an advanced statistical
-method called \term{natural splines} that estimates
-the local probability over the region 0.04 to 0.30,
-which is the range of the predicted probabilities.
-All you need to know about natural splines to understand
-what we are doing is that they are used to fit flexible
-lines rather than straight lines.
+We can check this for groups of the data by constructing
+a plot as follows:
+\begin{enumerate}
+\item
+    Bucket the data into groups based on their
+    predicted probabilities.
+\item
+    Compute the average predicted probability for each group.
+\item
+    Compute the observed probability for each group,
+    along with a 95\% confidence interval.
+\item
+    Plot the observed probabilities
+    (with 95\% confidence intervals)
+    against the average predicted probabilities for each group.
+\end{enumerate}
+The points plotted should fall close to the line $y = x$,
+since the predicted probabilities should be similar to the
+observed probabilities.
+We can use the confidence intervals to roughly gauge whether
+anything might be amiss.
+Such a plot is shown in Figure~\ref{logisticModelBucketDiag}.
 
-The curve fit using natural splines is shown in
-Figure~\ref{logisticModelSpline} as a solid black line.
-If the logistic model fits well, the curve should closely
-follow the dashed $y = x$ line.
-We have added shading to represent the confidence bound for
-the curved line to clarify what fluctuations might plausibly
-be due to chance.
-The dashed line generally stays within the error bound
-of the solid curve, suggesting the fit is reasonable.
+%To help us out, we'll borrow an advanced statistical
+%method called \term{natural splines} that estimates
+%the local probability over the region 0.04 to 0.30,
+%which is the range of the predicted probabilities.
+%All you need to know about natural splines to understand
+%what we are doing is that they are used to fit flexible
+%lines rather than straight lines.
+%
+%The curve fit using natural splines is shown in
+%Figure~\ref{logisticModelSpline} as a solid black line.
+%If the logistic model fits well, the curve should closely
+%follow the dashed $y = x$ line.
+%We have added shading to represent the confidence bound for
+%the curved line to clarify what fluctuations might plausibly
+%be due to chance.
+%The dashed line generally stays within the error bound
+%of the solid curve, suggesting the fit is reasonable.
 
 \begin{figure}
   \centering
-  \Figures{0.95}{logisticModel}{logisticModelSpline}
+  \Figures{0.95}{logisticModel}{logisticModelBucketDiag}
+      %{logisticModelSpline}
   \caption{The dashed line is within the confidence bound
-       of the smoothed line, suggesting the logistic fit is
-       reasonable.}
-  \label{logisticModelSpline}
+       of the 95\% confidence intervals of each of the buckets,
+       suggesting the logistic fit is reasonable.}
+%  \caption{The dashed line is within the confidence bound
+%       of the smoothed line, suggesting the logistic fit is
+%       reasonable.}
+  \label{logisticModelBucketDiag}
+  %\label{logisticModelSpline}
 \end{figure}
 
 Additional diagnostics may be created that are similar to those
@@ -2630,9 +2658,12 @@ the observed outcome minus the expected outcome
 ($e_i = Y_i - \hat{p}_i$),
 and then we could create plots of these residuals
 against each predictor.
-We might also create a smoothed average like that in
-Figure~\ref{logisticModelSpline} to better understand
-deviations.
+We might also create a plot like that in
+Figure~\ref{logisticModelBucketDiag}
+to better understand the deviations.
+%We might also create a smoothed average like that in
+%Figure~\ref{logisticModelSpline} to better understand
+%deviations.
 
 \index{data!resume|)}
 \index{logistic regression|)}
