@@ -1550,14 +1550,29 @@ there are any notable concerns:
 
 \begin{description}
 \item[Check for outliers.]
-    We examine a histogram of the residuals to check if there
-    are any outliers:
+    In theory, the distribution of the residuals should
+    be nearly normal;
+    in practice, normality can be relaxed for most applications.
+    Instead, we examine a histogram of the residuals
+    to check if there are any outliers:
     Figure~\ref{loansDiagNormalHistogram}
     is a histogram of these outliers.
     Since this is a very large data set,
     only particularly extreme observations would be a concern
     in this particular case.
     There are no extreme observations that might cause a~concern.
+
+    If we intended to construct what are called
+    \termsub{prediction intervals}{prediction interval}
+    for future observations,
+    we would be more strict and
+    require the residuals to be nearly normal.
+    Prediction intervals are further discussed in
+    an online extra on the OpenIntro website:\vspace{-2mm}
+    \begin{center}
+      \oiRedirect{stat_extra_linear_regression_supp}
+          {www.openintro.org/d?id=stat\us{}extra\us{}linear\us{}regression\us{}supp}
+    \end{center}
 
 \begin{figure}[h]
   \centering

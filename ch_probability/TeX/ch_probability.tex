@@ -105,9 +105,9 @@ As more observations are collected, the proportion $\hat{p}_n$ of occurrences wi
 Occasionally the proportion will veer off from the probability and appear to defy the Law of Large Numbers, as $\hat{p}_n$ does many times in Figure~\ref{dieProp}. However, these deviations become smaller as the number of rolls increases.
 
 Above we write $p$ as the probability of rolling a \resp{1}. We can also write this probability as
-\begin{eqnarray*}
+\begin{align*}
 P(\text{rolling a \resp{1}})
-\end{eqnarray*}
+\end{align*}
 As we become more comfortable with this notation, we will abbreviate it further. For instance, if it is clear that the process is ``rolling a die'', we could abbreviate $P($rolling a \resp{1}$)$ as~$P($\resp{1}$)$. 
 
 \begin{exercisewrap}
@@ -133,15 +133,22 @@ What we think of as random processes are not necessarily random, but they may ju
 Two outcomes are called \term{disjoint} or \term{mutually exclusive} if they cannot both happen. For instance, if we roll a die, the outcomes \resp{1} and \resp{2} are disjoint since they cannot both occur. On the other hand, the outcomes \resp{1} and ``rolling an odd number'' are not disjoint since both occur if the outcome of the roll is a \resp{1}. The terms \emph{disjoint} and \emph{mutually exclusive} are equivalent and interchangeable.
 
 Calculating the probability of disjoint outcomes is easy. When rolling a die, the outcomes \resp{1} and \resp{2} are disjoint, and we compute the probability that one of these outcomes will occur by adding their separate probabilities:
-\begin{eqnarray*}
-P(\text{\resp{1} or \resp{2}}) = P(\text{\resp{1}})+P(\text{\resp{2}}) = 1/6 + 1/6 = 1/3
-\end{eqnarray*}
+\begin{align*}
+P(\text{\resp{1} or \resp{2}})
+  = P(\text{\resp{1}})+P(\text{\resp{2}})
+  = 1/6 + 1/6
+  = 1/3
+\end{align*}
 What about  the probability of rolling a \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, or \resp{6}? Here again, all of the outcomes are disjoint so we add the probabilities:
-\begin{eqnarray*}
-&&P(\text{\resp{1} or \resp{2} or \resp{3} or \resp{4} or \resp{5} or \resp{6}}) \\
-	&&\quad= P(\text{\resp{1}})+P(\text{\resp{2}})+P(\text{\resp{3}})+P(\text{\resp{4}})+P(\text{\resp{5}})+P(\text{\resp{6}}) \\
-	&&\quad= 1/6 + 1/6 + 1/6 + 1/6 + 1/6 + 1/6 = 1.
-\end{eqnarray*}
+\begin{align*}
+&P(\text{\resp{1} or \resp{2} or \resp{3} or \resp{4}
+    or \resp{5} or \resp{6}}) \\
+  &\quad = P(\text{\resp{1}})+P(\text{\resp{2}})
+      + P(\text{\resp{3}})+P(\text{\resp{4}})
+      + P(\text{\resp{5}})+P(\text{\resp{6}}) \\
+  &\quad = 1/6 + 1/6 + 1/6 + 1/6 + 1/6 + 1/6
+  = 1
+\end{align*}
 The \term{Addition Rule} guarantees the accuracy of this approach when the outcomes are disjoint. 
 
 \begin{onebox}{Addition Rule of disjoint outcomes}
@@ -276,12 +283,11 @@ Let's consider calculations for two events that are not disjoint in the context 
 \end{figure}
 
 Let $A$ represent the event that a randomly selected card is a diamond and $B$ represent the event that it is a face card. How do we compute $P(A$ or $B)$? Events $A$ and $B$ are not disjoint -- the cards {\color{redcards}$J\diamondsuit$}, {\color{redcards}$Q\diamondsuit$}, and {\color{redcards}$K\diamondsuit$} fall into both categories -- so we cannot use the Addition Rule for disjoint events. Instead we use the Venn diagram. We start by adding the probabilities of the two events:
-\begin{eqnarray*}
+\begin{align*}
 P(A) + P(B)
   = P({\color{redcards}\diamondsuit}) + P(\text{face card})
   = 13/52 + 12/52
-\label{overCountFaceDiamond}
-\end{eqnarray*}
+\end{align*}
 However, the three cards that are in both events were counted twice, once in each probability. We must correct this double counting:
 \begin{align*}
 P(A\text{ or } B)
@@ -546,15 +552,15 @@ Example~\ref{threeDice} illustrates what is called the Multiplication Rule for i
   independent processes, then the probability that both $A$
   and $B$ occur can be calculated as the product of their
   separate probabilities:
-  \begin{eqnarray}\label{eqForIndependentEvents}
+  \begin{align*}
   P(A \text{ and }B) = P(A) \times  P(B)
-  \end{eqnarray}
+  \end{align*}
   Similarly, if there are $k$ events $A_1$, ..., $A_k$
   from $k$ independent processes, then the probability
   they all occur is
-  \begin{eqnarray*}
+  \begin{align*}
   P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)
-  \end{eqnarray*}\vspace{-6mm}
+  \end{align*}\vspace{-6mm}
 \end{onebox}
 
 \begin{exercisewrap}
@@ -596,10 +602,11 @@ P(\text{not all \resp{RH}})
 \end{align*}}
 
 Suppose the variables \var{handedness} and \var{gender} are independent, i.e. knowing someone's \var{gender} provides no useful information about their \var{handedness} and vice-versa. Then we can compute whether a randomly selected person is right-handed and female\footnote{The actual proportion of the U.S. population that is \resp{female} is about 50\%, and so we use 0.5 for the probability of sampling a woman. However, this probability does differ in other countries.} using the Multiplication Rule:
-\begin{eqnarray*}
-P(\text{right-handed and female}) &=& P(\text{right-handed}) \times  P(\text{female}) \\
-&=& 0.91 \times  0.50 = 0.455
-\end{eqnarray*}
+\begin{align*}
+P(\text{right-handed and female})
+    &= P(\text{right-handed}) \times  P(\text{female}) \\
+    &= 0.91 \times  0.50 = 0.455
+\end{align*}
 
 
 \begin{exercisewrap}
@@ -726,12 +733,12 @@ Figure~\ref{contTableOfFashionPhotos} summarizes the results.
   We can estimate this probability using the data.
   Of the \fashAY{} fashion photos,
   the ML algorithm correctly classified \fashYY{} of the photos:
-\begin{eqnarray*}
+\begin{align*}
 P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
     given \var{truth} is \resp{fashion}})
   = \frac{\fashYY{}}{\fashAY{}}
   = 0.638
-\end{eqnarray*}
+\end{align*}
 \end{nexample}
 \end{examplewrap}
 
@@ -745,12 +752,12 @@ P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
   then it comes from the second row in the data set.
   Of~these \fashNA{} photos, \fashNY{} were actually
   about fashion:
-\begin{eqnarray*}
+\begin{align*}
 P(\text{\var{truth} is \resp{fashion}
     given \var{mach\us{}learn} is \resp{pred\us{}not}})
   = \frac{\fashNY{}}{\fashNA{}}
   = 0.070
-\end{eqnarray*}
+\end{align*}
 \end{nexample}
 \end{examplewrap}
 
@@ -906,12 +913,12 @@ To do so, we limit our view to only those \fashYA{} cases
 where the ML classifier predicted that the photo was about
 fashion and look at the fraction where the photo was actually
 about fashion:
-\begin{eqnarray*}
+\begin{align*}
 P(\text{\var{truth} is \resp{fashion} given
     \var{mach\us{}learn} is \resp{pred\us{}fashion}})
   = \frac{\fashYY{}}{\fashYA{}}
   = 0.900
-\end{eqnarray*}
+\end{align*}
 We call this a \term{conditional probability} because
 we computed the probability under a condition:
 the ML classifier prediction said the photo was about fashion.
@@ -1133,9 +1140,9 @@ Section~\ref{probabilityIndependence} introduced the Multiplication Rule for ind
 
 \begin{onebox}{General Multiplication Rule}
 If $A$ and $B$ represent two outcomes or events, then \vspace{-1.5mm}
-\begin{eqnarray*}
+\begin{align*}
 P(A\text{ and }B) = P(A | B)\times P(B)
-\end{eqnarray*} \vspace{-6.5mm} \par
+\end{align*} \vspace{-6.5mm} \par
 It is useful to think of $A$ as the outcome of interest and $B$ as the condition.
 \end{onebox}
 This General Multiplication Rule is simply a rearrangement of the equation for conditional probability.
@@ -1143,18 +1150,25 @@ This General Multiplication Rule is simply a rearrangement of the equation for c
 \begin{examplewrap}
 \begin{nexample}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
 We will compute our answer using the General Multiplication Rule and then verify it using Figure~\ref{smallpoxProbabilityTable}. We want to determine
-\begin{eqnarray*}
-P(\text{\var{result} = \resp{lived} and \var{inoculated} = \resp{no}})
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{result}
+    = \resp{lived} and \var{inoculated} = \resp{no}})
+\end{align*}
 and we are given that
-\begin{eqnarray*}
-P(\text{\var{result} = \resp{lived} }|\text{ \var{inoculated} = \resp{no}})=0.8588 \\
-P(\text{\var{inoculated} = \resp{no}})=0.9608
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{result}
+    = \resp{lived} }|\text{ \var{inoculated} = \resp{no}})
+    &= 0.8588 \\
+P(\text{\var{inoculated} = \resp{no}})
+    &= 0.9608
+\end{align*}
 Among the 96.08\% of people who were not inoculated, 85.88\% survived:
-\begin{eqnarray*}
-P(\text{\var{result} = \resp{lived} and \var{inoculated} = \resp{no}}) = 0.8588\times 0.9608 = 0.8251
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{result} = \resp{lived}
+        and \var{inoculated} = \resp{no}})
+    = 0.8588 \times 0.9608
+    = 0.8251
+\end{align*}
 This is equivalent to the General Multiplication Rule. We can confirm this probability in Figure~\ref{smallpoxProbabilityTable} at the intersection of \resp{no} and \resp{lived} (with a small rounding error).
 \end{nexample}
 \end{examplewrap}
@@ -1175,13 +1189,14 @@ If 97.54\% of the people who were inoculated lived, what proportion of inoculate
 
 \begin{onebox}{Sum of conditional probabilities}
 Let $A_1$, ..., $A_k$ represent all the disjoint outcomes for a variable or process. Then if $B$ is an event, possibly for another variable or process, we have: \vspace{-1mm}
-\begin{eqnarray*}
-P(A_1|B)+\cdots+P(A_k|B) = 1
-\end{eqnarray*}\vspace{-5.5mm} \par
+\begin{align*}
+P(A_1|B) + \cdots + P(A_k|B) = 1
+\end{align*}%
+\vspace{-5.5mm} \par
 The rule for complements also holds when an event and its complement are conditioned on the same information: \vspace{-1.5mm}
-\begin{eqnarray*}
+\begin{align*}
 P(A | B) = 1 - P(A^c | B)
-\end{eqnarray*}
+\end{align*}
 \end{onebox}
 
 \begin{exercisewrap}
@@ -1209,12 +1224,15 @@ Let $X$ and $Y$ represent the outcomes of rolling two dice.\footnotemark
 \footnotetext{Brief solutions: (a) $1/6$. (b) $1/36$. (c)~$\frac{P(Y = \text{ \resp{1} and }X=\text{ \resp{1}})}{P(X=\text{ \resp{1}})} = \frac{1/36}{1/6} = 1/6$. (d)~The probability is the same as in part~(c): $P(Y=1)=1/6$. The probability that $Y=1$ was unchanged by knowledge about $X$, which makes sense as $X$ and $Y$ are independent.}
 
 We can show in Guided Practice~\ref{condProbOfRollingA1AfterOne1}(c) that the conditioning information has no influence by using the Multiplication Rule for independence processes:
-\begin{eqnarray*}
+\begin{align*}
 P(Y=\text{\resp{1}}\ |\ X=\text{\resp{1}})
-	&=& \frac{P(Y=\text{\resp{1} and }X=\text{\resp{1}})}{P(X=\text{\resp{1}})} \\
-	&=& \frac{P(Y=\text{\resp{1}})\times \color{oiGB}P(X=\text{\resp{1}})}{\color{oiGB}P(X=\text{\resp{1}})} \\
-	&=& P(Y=\text{\resp{1}}) \\
-\end{eqnarray*}
+    &= \frac{P(Y=\text{\resp{1} and }X=\text{\resp{1}})}
+      {P(X=\text{\resp{1}})} \\
+    &= \frac{P(Y=\text{\resp{1}}) \times
+        \color{oiGB}P(X=\text{\resp{1}})}
+      {\color{oiGB}P(X=\text{\resp{1}})} \\
+    &= P(Y=\text{\resp{1}}) \\
+\end{align*}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1241,33 +1259,40 @@ The \data{smallpox} data fit this description. We see the population as split by
 \end{figure}
 
 Tree diagrams are annotated with marginal and conditional probabilities, as shown in Figure~\ref{smallpoxTreeDiagram}. This tree diagram splits the smallpox data by \var{inoculation} into the \resp{yes} and \resp{no} groups with respective marginal probabilities 0.0392 and 0.9608. The secondary branches are conditioned on the first, so we assign conditional probabilities to these branches. For example, the top branch in Figure~\ref{smallpoxTreeDiagram} is the probability that \var{result} = \resp{lived} conditioned on the information that \var{inoculated} = \resp{yes}. We may (and usually do) construct joint probabilities at the end of each branch in our tree by multiplying the numbers we come across as we move from left to right. These joint probabilities are computed using the General Multiplication Rule:
-\begin{eqnarray*}
-&& P(\text{\var{inoculated} = \resp{yes} and \var{result} = \resp{lived}}) \\
-	&&\quad = P(\text{\var{inoculated} = \resp{yes}})\times P(\text{\var{result} = \resp{lived}}|\text{\var{inoculated} = \resp{yes}}) \\
-	&&\quad = 0.0392\times 0.9754=0.0382
-\end{eqnarray*}
+\begin{align*}
+& P(\text{\var{inoculated} = \resp{yes}
+    and \var{result} = \resp{lived}}) \\
+  &\quad = P(\text{\var{inoculated} = \resp{yes}})\times
+      P(\text{\var{result} = \resp{lived}}|
+          \text{\var{inoculated} = \resp{yes}}) \\
+  &\quad = 0.0392\times 0.9754=0.0382
+\end{align*}
 
 \begin{examplewrap}
 \begin{nexample}{Consider the midterm and final for a statistics class. Suppose 13\% of students earned an \resp{A} on the midterm. Of those students who earned an \resp{A} on the midterm, 47\% received an \resp{A} on the final, and 11\% of the students who earned lower than an \resp{A} on the midterm received an \resp{A} on the final. You randomly pick up a final exam and notice the student received an \resp{A}. What is the probability that this student earned an \resp{A} on the midterm?} \label{exerciseForTreeDiagramOfStudentGettingAOnMidtermGivenThatSheGotAOnFinal}
 The end-goal is to find $P(\text{\var{midterm} = \resp{A}} | \text{\var{final} = \resp{A}})$. To calculate this conditional probability, we need the following probabilities:
-\begin{eqnarray*}
-P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}}) \qquad\text{and}\qquad
-P(\text{\var{final} = \resp{A}})
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}})
+  \qquad\text{and}\qquad
+  P(\text{\var{final} = \resp{A}})
+\end{align*}
 However, this information is not provided, and it is not obvious how to calculate these probabilities. Since we aren't sure how to proceed, it is useful to organize the information into a tree diagram, as shown in Figure~\ref{testTree}. When constructing a tree diagram, variables provided with marginal probabilities are often used to create the tree's primary branches; in this case, the marginal probabilities are provided for midterm grades. The final grades, which correspond to the conditional probabilities provided, will be shown on the secondary branches.
 
 With the tree diagram constructed, we may compute the required probabilities:
-\begin{eqnarray*}
-&&P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}}) = 0.0611 \\
-&&P(\text{\underline{\color{black}\var{final} = \resp{A}}})  \\
-&& \quad= P(\text{\var{midterm} = \resp{other} and \underline{\color{black}\var{final} = \resp{A}}}) + P(\text{\var{midterm} = \resp{A} and \underline{\color{black}\var{final} = \resp{A}}}) \\
-&& \quad= 0.0957 + 0.0611  = 0.1568
-\end{eqnarray*}
+\begin{align*}
+&P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}}) = 0.0611 \\
+&P(\text{\underline{\color{black}\var{final} = \resp{A}}})  \\
+& \quad= P(\text{\var{midterm} = \resp{other} and \underline{\color{black}\var{final} = \resp{A}}}) + P(\text{\var{midterm} = \resp{A} and \underline{\color{black}\var{final} = \resp{A}}}) \\
+& \quad= 0.0957 + 0.0611  = 0.1568
+\end{align*}
 The marginal probability, $P($\var{final} = \resp{A}$)$, was calculated by adding up all the joint probabilities on the right side of the tree that correspond to \var{final} = \resp{A}. We may now finally take the ratio of the two probabilities:
-\begin{eqnarray*}
-P(\text{\var{midterm} = \resp{A}} | \text{\var{final} = \resp{A}}) &=& \frac{P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}})}{P(\text{\var{final} = \resp{A}})} \\
-&=& \frac{0.0611}{0.1568} = 0.3897
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{midterm} = \resp{A}} | \text{\var{final} = \resp{A}})
+  &= \frac{P(\text{\var{midterm} = \resp{A}
+      and \var{final} = \resp{A}})}
+    {P(\text{\var{final} = \resp{A}})} \\
+  &= \frac{0.0611}{0.1568} = 0.3897
+\end{align*}
 The probability the student also earned an A on the midterm is about 0.39.
 \end{nexample}
 \end{examplewrap}
@@ -1496,11 +1521,11 @@ If there are 15 people to ask and none are skipping class, then the probability 
 \begin{examplewrap}
 \begin{nexample}{If the professor asks 3 questions, what is the probability that you will not be selected? Assume that she will not pick the same person twice in a given lecture.}\label{3woRep}
 For the first question, she will pick someone else with probability $14/15$. When she asks the second question, she only has 14 people who have not yet been asked. Thus, if you were not picked on the first question, the probability you are again not picked is $13/14$. Similarly, the probability you are again not picked on the third question is $12/13$, and the probability of not being picked for any of the three questions is
-\begin{eqnarray*}
-&&P(\text{not picked in 3 questions}) \\
-&&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
-&&\quad = \frac{14}{15}\times\frac{13}{14}\times\frac{12}{13} = \frac{12}{15} = 0.80
-\end{eqnarray*}
+\begin{align*}
+&P(\text{not picked in 3 questions}) \\
+&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
+&\quad = \frac{14}{15}\times\frac{13}{14}\times\frac{12}{13} = \frac{12}{15} = 0.80
+\end{align*}
 \end{nexample}
 \end{examplewrap}
 
@@ -1510,20 +1535,23 @@ What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\fo
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\us{}picked}$)$, and two conditional probabilities:
-\begin{eqnarray*}
-&&P(\text{\var{Q2}} =  \text{\resp{not\us{}picked} }|\text{ \var{Q1}} = \text{\resp{not\us{}picked}}) \\
-&&P(\text{\var{Q3}} =  \text{\resp{not\us{}picked} }|\text{ \var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}})
-\end{eqnarray*}
+\begin{align*}
+&P(\text{\var{Q2}} =  \text{\resp{not\us{}picked} }|
+    \text{ \var{Q1}} = \text{\resp{not\us{}picked}}) \\
+&P(\text{\var{Q3}} =  \text{\resp{not\us{}picked} }|
+    \text{ \var{Q1}} = \text{\resp{not\us{}picked}, }
+    \text{\var{Q2}} = \text{\resp{not\us{}picked}})
+\end{align*}
 Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.}
 
 \begin{examplewrap}
 \begin{nexample}{Suppose the professor randomly picks without regard to who she already selected, i.e. students can be picked more than once. What is the probability that you will not be picked for any of the three questions?}\label{3wRep}
 Each pick is independent, and the probability of not being picked for any individual question is $14/15$. Thus, we can use the Multiplication Rule for independent processes.
-\begin{eqnarray*}
-&&P(\text{not picked in 3 questions}) \\
-&&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
-&&\quad = \frac{14}{15}\times\frac{14}{15}\times\frac{14}{15} = 0.813
-\end{eqnarray*}
+\begin{align*}
+&P(\text{not picked in 3 questions}) \\
+&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
+&\quad = \frac{14}{15}\times\frac{14}{15}\times\frac{14}{15} = 0.813
+\end{align*}
 You have a slightly higher chance of not being picked compared to when she picked a new person for each question. However, you now may be picked more than once.
 \end{nexample}
 \end{examplewrap}
@@ -1577,13 +1605,13 @@ Would you be surprised if the bookstore sold slightly more or less than 105 book
 \begin{examplewrap}
 \begin{nexample}{The textbook costs \$137 and the study guide \$33. How much revenue should the bookstore expect from this class of 100 students?}\label{bookStoreRev}
 About 55 students will just buy a textbook, providing revenue of
-\begin{eqnarray*}
+\begin{align*}
 \$137 \times  55 = \$7,535
-\end{eqnarray*}
+\end{align*}
 The roughly 25 students who buy both the textbook and the study guide would pay a total of
-\begin{eqnarray*}
+\begin{align*}
 (\$137 + \$33) \times  25 = \$170 \times  25 = \$4,250
-\end{eqnarray*}
+\end{align*}
 Thus, the bookstore should expect to generate about $\$7,535 + \$4,250 = \$11,785$ from these 100 students for this one class. However, there might be some \emph{sampling variability} so the actual amount may differ by a little bit.
 \end{nexample}
 \end{examplewrap}
@@ -1637,10 +1665,11 @@ E(X) &= 0 \times  P(X=0) + 137 \times  P(X=137) + 170 \times  P(X=170) \\
 
 \begin{onebox}{Expected value of a Discrete Random Variable}
 If $X$ takes outcomes $x_1$, ..., $x_k$ with probabilities $P(X=x_1)$, ..., $P(X=x_k)$, the expected value of $X$ is the sum of each outcome multiplied by its corresponding probability:
-\begin{align}
-E(X) 	&= x_1\times P(X=x_1) + \cdots + x_k\times P(X=x_k) \notag \\
-	&= \sum_{i=1}^{k}x_iP(X=x_i)
-\end{align}
+\begin{align*}
+E(X)
+  &= x_1 \times P(X = x_1) + \cdots + x_k\times P(X = x_k) \\
+  &= \sum_{i = 1}^{k} x_i P(X = x_i)
+\end{align*}
 The Greek letter $\mu$\index{Greek!mu ($\mu$)} may be used in place of the notation $E(X)$.
 \end{onebox}
 
@@ -1676,11 +1705,11 @@ introduced a method for finding the variance and standard deviation for a data s
 
 \begin{onebox}{General variance formula}
 If $X$ takes outcomes $x_1$, ..., $x_k$ with probabilities $P(X=x_1)$, ..., $P(X=x_k)$ and expected value $\mu=E(X)$, then the variance of $X$, denoted by $Var(X)$ or the symbol $\sigma^2$, is
-\begin{align}
-\sigma^2 &= (x_1-\mu)^2\times P(X=x_1) + \cdots \notag \\
-	& \qquad\quad\cdots+ (x_k-\mu)^2\times P(X=x_k) \notag \\
+\begin{align*}
+\sigma^2 &= (x_1-\mu)^2\times P(X=x_1) + \cdots \\
+	& \qquad\quad\cdots+ (x_k-\mu)^2\times P(X=x_k) \\
 	&= \sum_{j=1}^{k} (x_j - \mu)^2 P(X=x_j)
-\end{align}
+\end{align*}
 The standard deviation of $X$, labeled $\sigma$\index{Greek!sigma ($\sigma$)}, is the square root of the variance.
 \end{onebox}
 
@@ -2040,9 +2069,9 @@ Consider again Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAu
 \begin{examplewrap}
 \begin{nexample}{What proportion of the sample is between \resp{180} cm and \resp{185} cm tall (about 5'11" to 6'1")?}\label{contDistProb}
 We can add up the heights of the bins in the range \resp{180} cm and \resp{185} and divide by the sample size. For instance, this can be done with the two shaded bins shown in Figure~\ref{usHeightsHist180185}. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the following estimate of the probability:
-\begin{eqnarray*}
-\frac{195307+156239}{\text{3,000,000}} = 0.1172
-\end{eqnarray*}
+\begin{align*}
+\frac{195307 + 156239}{\text{3,000,000}} = 0.1172
+\end{align*}
 This fraction is the same as the proportion of the histogram's area that falls in the range \resp{180} to \resp{185} cm.
 \end{nexample}
 \end{examplewrap}
@@ -2075,15 +2104,15 @@ This smooth curve represents a \term{probability density function} (also called 
 \subsection{Probabilities from continuous distributions}
 
 We computed the proportion of individuals with heights \resp{180} to \resp{185} cm in Example~\ref{contDistProb} as a fraction:
-\begin{eqnarray*}
+\begin{align*}
 \frac{\text{number of people between \resp{180} and \resp{185}}}{\text{total sample size}}
-\end{eqnarray*}
+\end{align*}
 We found the number of people with heights between \resp{180} and \resp{185} cm by determining the fraction of the histogram's area in this region. Similarly, we can use the area in the shaded region under the curve to find a probability (with the help of a computer):
-\begin{eqnarray*}
+\begin{align*}
 P(\text{\var{height} between \resp{180} and \resp{185}})
 	= \text{area between \resp{180} and \resp{185}}
 	= 0.1157
-\end{eqnarray*}
+\end{align*}
 The probability that a randomly selected person is between \resp{180} and \resp{185} cm is 0.1157. This is very close to the estimate from Example~\ref{contDistProb}: 0.1172. 
 
 \begin{figure}

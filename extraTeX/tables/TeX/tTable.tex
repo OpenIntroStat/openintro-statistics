@@ -1,6 +1,84 @@
 \section{$\mathbf{t}$-Probability Table}
 \label{tDistributionTable}
 
+A partial \term{t-table} is shown in Figure~\ref{tTableSample}.
+Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is highlighted in Figure~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
+
+\begin{figure}[hht]
+\centering
+\begin{tabular}{r | rrr rr}
+one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
+two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010 \\
+\hline
+{$df$} \hfill 1  &  {\normalsize  3.08} & {\normalsize  6.31} & {\normalsize 12.71} & {\normalsize 31.82} & {\normalsize 63.66}  \\ 
+2  &  {\normalsize  1.89} & {\normalsize  2.92} & {\normalsize  4.30} & {\normalsize  6.96} & {\normalsize  9.92}  \\ 
+3  &  {\normalsize  1.64} & {\normalsize  2.35} & {\normalsize  3.18} & {\normalsize  4.54} & {\normalsize  5.84}  \\ 
+$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ & \\
+17  &  {\normalsize  1.33} & {\normalsize  1.74} & {\normalsize  2.11} & {\normalsize  2.57} & {\normalsize  2.90}  \\ 
+\highlightO{18}  &  \highlightO{\normalsize  1.33} & \highlightO{\normalsize  1.73} & \highlightO{\normalsize  2.10} & \highlightO{\normalsize  2.55} & \highlightO{\normalsize  2.88}  \\ 
+19  &  {\normalsize  1.33} & {\normalsize  1.73} & {\normalsize  2.09} & {\normalsize  2.54} & {\normalsize  2.86}  \\ 
+20  &  {\normalsize  1.33} & {\normalsize  1.72} & {\normalsize  2.09} & {\normalsize  2.53} & {\normalsize  2.85}  \\ 
+$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ & \\
+400  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.97} & {\normalsize  2.34} & {\normalsize  2.59}  \\ 
+500  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.59}  \\ 
+$\infty$  &  {\normalsize  1.28} & {\normalsize  1.64} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.58}  \\ 
+\end{tabular}
+\caption{An abbreviated look at the $t$-table. Each row represents a different $t$-distribution. The columns describe the cutoffs for specific tail areas. The row with $df=18$ has been \highlightO{highlighted}.}
+\label{tTableSample}
+\end{figure}
+
+\begin{examplewrap}
+\begin{nexample}{What proportion of the $t$-distribution with 18 degrees of freedom falls below -2.10?}
+Just like a normal probability problem, we first draw the picture in Figure~\ref{tDistDF18LeftTail2Point10appendix} and shade the area below -2.10. To find this area, we identify the appropriate row: $df = 18$. Then we identify the column containing the absolute value of -2.10; it~is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. About 2.5\% of the distribution falls below -2.10. In the next example we encounter a case where the exact $t$ value is not listed in the table.
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{ch_inference_for_means/figures/tDistDF18LeftTail2Point10/tDistDF18LeftTail2Point10}
+\caption{The $t$-distribution with 18 degrees of freedom. The area below -2.10 has been shaded.}
+\label{tDistDF18LeftTail2Point10appendix}
+\end{figure}
+
+\begin{examplewrap}
+\begin{nexample}{A $t$-distribution with 20 degrees of freedom is shown in the left panel of Figure~\ref{tDistDF20RightTail1Point65appendix}. Estimate the proportion of the distribution falling above 1.65.}
+We identify the row in the $t$-table using the degrees of freedom: $df=20$. Then we look for 1.65; it is not listed. It falls between the first and second columns. Since these values bound 1.65, their tail areas will bound the tail area corresponding to 1.65. We identify the one tail area of the first and second columns, 0.050 and 0.10, and we conclude that between 5\% and 10\% of the distribution is more than 1.65 standard deviations above the mean. If we like, we can identify the precise area using statistical software: 0.0573.
+\end{nexample}
+\end{examplewrap}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{ch_inference_for_means/figures/tDistDF20RightTail1Point65/tDistDF20RightTail1Point65}
+\caption{Left: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Right: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded.}
+\label{tDistDF20RightTail1Point65appendix}
+\end{figure}
+
+\begin{examplewrap}
+\begin{nexample}{A $t$-distribution with 2 degrees of freedom
+    is shown in the right panel of
+    Figure~\ref{tDistDF20RightTail1Point65appendix}.
+    Estimate the proportion of the distribution falling more
+    than 3 units from the mean (above or below).}
+  As before, first identify the appropriate row: $df=2$.
+  Next, find the columns that capture 3; because
+  $2.92 < 3 < 4.30$, we use the second and third columns.
+  Finally, we find bounds for the tail areas by looking at
+  the two tail values: 0.05 and 0.10. We use the two tail
+  values because we are looking for two (symmetric) tails.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+What proportion of the $t$-distribution with 19 degrees of freedom falls above -1.79 units?\footnotemark{}
+\index{distribution!$t$|)}
+\index{t-distribution|)}
+\footnotetext{We find the shaded area \emph{above} -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.}
+
+\end{nexercise}
+\end{exercisewrap}
+
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{extraTeX/tables/figures/tTails/tTails}

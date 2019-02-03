@@ -631,11 +631,36 @@ When fitting a least squares line, we generally require
 \item[Nearly normal residuals.]
     Generally, the residuals must be nearly normal.
     When this condition is found to be unreasonable,
-    it is usually because of outliers or concerns about
-    influential points, which we will discuss in greater
-    depth in Section~\ref{typesOfOutliersInLinearRegression}.
-    An example of non-normal residuals is shown in the second
-    panel of Figure~\ref{whatCanGoWrongWithLinearModel}.
+    it is usually because of outliers or concerns
+    about influential points,
+%    The theoretical condition is that the residuals
+%    must be normally distributed.
+%    The importance of this condition depends on a few factors:
+%    \begin{enumerate}[(1)]
+%    \item
+%        Is there any interest in predicting the range of
+%        plausible values for individual observations?
+%        If yes, then normality is important.
+%    \item
+%        Are there very few observations, such as fewer than~30?
+%        If yes, then normality is important.
+%    \end{enumerate}
+%    If the answer is \emph{no} to each of these questions,
+%    then
+%    However, this condition can be taken with a grain of salt
+%    when primarily focused on the trend of the data.
+%    When the data's trend is the focus,
+%    the number of observations can be modest in number,
+%    such as 30 or more, at which point this condition
+%    can be somewhat relaxed.
+%    Generally, it is important to look for outliers,
+    which we'll talk about more in
+    Sections~\ref{typesOfOutliersInLinearRegression}.
+    An example of a residual that would be a potentially
+    concern is shown in
+    Figure~\ref{whatCanGoWrongWithLinearModel},
+    where one observation is clearly much further from the
+    regression line than the others.
 \item[Constant variability.]
     The variability of points around the least squares line
     remains roughly constant.
@@ -710,8 +735,8 @@ the parameters are estimated using observed data. In practice, this estimation i
     then the point $(\bar{x}, \bar{y})$ is on the least squares
     line.
 
-    Figure~\ref{summaryStatsOfSATGPAData} shows the sample means
-    for the family income and gift aid as \$101,800 and \$19,940,
+    Figure~\ref{summaryStatsElmhurstRegr} shows the sample means
+    for the family income and gift aid as \$101,780 and \$19,940,
     respectively.
     We could plot the point $(101.8, 19.94)$ on
     Figure~\vref{elmhurstScatterW2Lines}
@@ -734,28 +759,33 @@ of the parameters $\beta_0$ and $\beta_1$.
 \begin{tabular}{l rr}
 \hline
 \vspace{-4mm} & & \\
-\vspace{0.4mm}	&	\ \ Family Income, in \$1000s (``$x$'')	& \ \ Gift Aid, in \$1000s (``$y$'') \\
+\vspace{0.4mm}	&	\ \ Family Income (``$x$'')	& \ \ Gift Aid (``$y$'') \\
 \hline
   \vspace{-3.9mm} & & \\
-mean	& $\bar{x} = 101.8$		& $\bar{y} = 19.94$ \\
-sd		& $s_x = 63.2$		& $s_y = 5.46$\vspace{0.4mm} \\
+mean & $\bar{x} = \text{\$101,780}$ &
+    $\bar{y} = \text{\$19,940}$ \\
+sd & $s_x = \text{\$63,200}$ &
+    $s_y = \text{\$5,460}$ \vspace{0.4mm} \\
 \hline
 \vspace{-4mm}\ &\\
 	& \multicolumn{2}{r}{$R=-0.499$} \\
 \hline
 \end{tabular}
 \caption{Summary statistics for family income and gift aid.}
-\label{summaryStatsOfSATGPAData}
+\label{summaryStatsElmhurstRegr}
 \end{figure}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{findingTheSlopeOfTheLSRLineForIncomeAndAid}
-Using the summary statistics in Figure~\ref{summaryStatsOfSATGPAData}, compute the slope for the regression line of gift aid against family income.\footnotemark
+Using the summary statistics in Figure~\ref{summaryStatsElmhurstRegr}, compute the slope for the regression line of gift aid against family income.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Compute the slope using the summary statistics from Figure~\ref{summaryStatsOfSATGPAData}:
+\footnotetext{Compute the slope using the summary statistics from Figure~\ref{summaryStatsElmhurstRegr}:
 \begin{eqnarray*}
-b_1 = \frac{s_y}{s_x} R = \frac{5.46}{63.2}(-0.499) = -0.0431
+b_1
+  = \frac{s_y}{s_x} R
+  = \frac{\text{5,460}}{\text{63,200}}(-0.499)
+  = -0.0431
 \end{eqnarray*}}
 
 You might recall the \term{point-slope} form of a line
@@ -786,19 +816,29 @@ To identify the least squares line from summary statistics:\vspace{-1mm}
 \end{onebox}
 
 \begin{examplewrap}
-\begin{nexample}{Using the point $(101.8, 19.94)$ from the sample means and the slope estimate $b_1 = -0.0431$ from Guided Practice~\ref{findingTheSlopeOfTheLSRLineForIncomeAndAid}, find the least-squares line for predicting aid based on family income.} \label{exampleToFindLSRLineOfElmhurstData}
-Apply the point-slope equation using $(101.8, 19.94)$ and the slope $b_1 = -0.0431$:
-\begin{align*}
-y - y_0     &= b_1 (x - x_0) \\
-y - 19.94  &= -0.0431(x - 101.8)
-\end{align*}
-Expanding the right side and then adding 19.94 to each side, the equation simplifies:
-$$ \widehat{aid} = 24.3 - 0.0431 \times family\us{}income $$
-Here we have replaced $y$ with $\widehat{aid}$ and $x$ with
-$family\us{}income$ to put the equation in context.
-The final equation should always include a ``hat'' on the variable
-being predicted, whether it is a generic ``$y$''
-or a named variable like ``$aid$''.
+\begin{nexample}{Using the point $(101780, 19940)$
+    from the sample means and the slope estimate
+    $b_1 = -0.0431$ from Guided
+    Practice~\ref{findingTheSlopeOfTheLSRLineForIncomeAndAid},
+    find the least-squares line for predicting aid based
+    on family income.}
+  \label{exampleToFindLSRLineOfElmhurstData}%
+  Apply the point-slope equation using $(101.8, 19.94)$
+  and the slope $b_1 = -0.0431$:
+  \begin{align*}
+  y - y_0    &= b_1 (x - x_0) \\
+  y - \text{19,940}  &= -0.0431(x - \text{101,780})
+  \end{align*}
+  Expanding the right side and then adding 19,940 to each side,
+  the equation simplifies:
+  \begin{align*}
+  \widehat{aid} = \text{24,320} - 0.0431 \times family\us{}income
+  \end{align*}
+  Here we have replaced $y$ with $\widehat{aid}$ and $x$ with
+  $family\us{}income$ to put the equation in context.
+  The final equation should always include a ``hat''
+  on the variable being predicted, whether it is a generic
+  ``$y$'' or a named variable like ``$aid$''.
 \end{nexample}
 \end{examplewrap}
 
@@ -819,11 +859,14 @@ Example~\ref{exampleToFindLSRLineOfElmhurstData}.
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   \vspace{-3.6mm} & & & & \\
-(Intercept) & 24.3193 & 1.2915 & 18.83 & $<$0.0001 \\ 
+(Intercept) & 24319.3 & 1291.5 & 18.83 & $<$0.0001 \\ 
 family\us{}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\ 
   \hline
 \end{tabular}
-\caption{Summary of least squares fit for the Elmhurst data. Compare the parameter estimates in the first column to the results of Example~\ref{exampleToFindLSRLineOfElmhurstData}.}
+\caption{Summary of least squares fit for the Elmhurst data.
+    Compare the parameter estimates in the first column to
+    the results of
+    Example~\ref{exampleToFindLSRLineOfElmhurstData}.}
 \label{rOutputForIncomeAidLSRLine}
 \end{figure}
 
@@ -879,7 +922,8 @@ of the most important steps in the analysis.
 
 \begin{examplewrap}
 \begin{nexample}{The intercept and slope estimates for
-    the Elmhurst data are $b_0 = 24.3$ and $b_1 = -0.0431$.
+    the Elmhurst data are $b_0 = \text{24,319}$
+    and $b_1 = -0.0431$.
     What do these numbers really mean?}
   Interpreting the slope parameter is helpful in almost any
   application.
@@ -901,7 +945,7 @@ of the most important steps in the analysis.
   i.e. if Elmhurst College's aid decisions are partially
   based on students' family income.)
 
-  The estimated intercept $b_0 = 24.3$ (in \$1000s)
+  The estimated intercept $b_0 = \text{24,319}$
   describes the average aid if a student's family had no income.
   The meaning of the intercept is relevant to this application
   since the family income for some students at Elmhurst is~\$0.
@@ -952,17 +996,18 @@ window will behave.
 
 \begin{examplewrap}
 \begin{nexample}{Use the model
-    $\widehat{aid} = 24.3 - 0.0431\times family\us{}income$
+    $\widehat{aid}
+      = \text{24,319} - 0.0431 \times family\us{}income$
     to estimate the aid of another freshman student whose
     family had income of \$1~million.}
-  Recall that the units of family income are in \$1000s,
-  so we want to calculate the aid for $family\us{}income = 1000$:
+  We want to calculate the aid for
+  $family\us{}income = \text{1,000,000}$:
   \begin{align*}
-  24.3 - 0.0431\times family\us{}income
-    = 24.3 - 0.0431\times 1000
-    = -18.8
+  \text{24,319} - 0.0431\times family\us{}income
+    = \text{24,319} - 0.0431\times \text{1,000,000}
+    = -\text{18,781}
   \end{align*}
-  The model predicts this student will have -\$18,800 in aid (!).
+  The model predicts this student will have -\$18,781 in aid (!).
   However, Elmhurst College does not offer \emph{negative aid}
   where they select some students to pay extra on top of tuition
   to attend.
@@ -1002,21 +1047,24 @@ closely the data cluster around the linear fit.
   \label{elmhurstScatterWLSROnly}
 \end{figure}
 
+\newcommand{\mil}[0]{\text{ million}}
 The $R^2$ of a linear model describes the amount of variation
 in the response that is explained by the least squares line.
 For example, consider the Elmhurst data,
 shown in Figure~\ref{elmhurstScatterWLSROnly}.
 The variance of the response variable, aid received,
-is $s_{aid}^2=29.8$.
+is about $s_{aid}^2 \approx 29.8$ million.
 However, if we apply our least squares line, then this model
 reduces our uncertainty in predicting aid using a student's
 family income.
 The variability in the residuals describes how much variation
-remains after using the model: $s_{_{RES}}^2 = 22.4$.
+remains after using the model: $s_{_{RES}}^2 \approx 22.4$ million.
 In short, there was a reduction of
 \begin{align*}
 \frac{s_{aid}^2 - s_{_{RES}}^2}{s_{aid}^2}
-  = \frac{29.8 - 22.4}{29.8} = \frac{7.5}{29.8}
+  = \frac{\text{29,800,000} - \text{22,400,000}}
+      {\text{29,800,000}}
+  = \frac{\text{7,500,000}}{\text{29,800,000}}
   = 0.25
 \end{align*}
 or about  25\% in the data's variation by using information

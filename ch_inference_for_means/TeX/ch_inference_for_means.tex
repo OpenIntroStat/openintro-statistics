@@ -77,19 +77,22 @@ Data with strong skew or outliers require a more cautious analysis.
 In the cases where we will use a small sample to calculate the standard error, it will be useful to rely on a new distribution for inference calculations: the $t$-distribution. A $t$-distribution, shown as a solid line in Figure~\ref{tDistCompareToNormalDist}, has a bell shape. However, its tails are thicker than the normal model's. This means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.\footnote{The standard deviation of the $t$-distribution is actually a little more than 1. However, it is useful to always think of the $t$-distribution as having a standard deviation of 1 in all of our applications.} While our estimate of the standard error will be a little less accurate when we are analyzing a small data set, these extra thick tails of the $t$-distribution are exactly the correction we need to resolve the problem of a poorly estimated standard error.
 
 \begin{figure}
-\centering
-\includegraphics[height=45mm]{ch_inference_for_means/figures/tDistCompareToNormalDist/tDistCompareToNormalDist}
-\caption{Comparison of a $t$-distribution (solid line) and a normal distribution (dotted line).}
-\label{tDistCompareToNormalDist}
+  \centering
+  \Figure{0.5}{tDistCompareToNormalDist}
+  \caption{Comparison of a $t$-distribution (solid line)
+      and a normal distribution (dotted line).}
+  \label{tDistCompareToNormalDist}
 \end{figure}
 
 The $t$-distribution, always centered at zero, has a single parameter: degrees of freedom. The \termsub{degrees of freedom (df)}{degrees of freedom (df)!$t$-distribution} describe the precise form of the bell-shaped $t$-distribution. Several $t$-distributions are shown in Figure~\ref{tDistConvergeToNormalDist}. When there are more degrees of freedom, the $t$-distribution looks very much like the standard normal distribution.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/tDistConvergeToNormalDist/tDistConvergeToNormalDist}
-\caption{The larger the degrees of freedom, the more closely the $t$-distribution resembles the standard normal model.}
-\label{tDistConvergeToNormalDist}
+  \centering
+  \Figure{0.75}{tDistConvergeToNormalDist}
+  \caption{The larger the degrees of freedom, the more
+      closely the $t$-distribution resembles the standard
+      normal model.}
+  \label{tDistConvergeToNormalDist}
 \end{figure}
 
 \begin{onebox}{Degrees of freedom (df)}
@@ -98,77 +101,102 @@ The degrees of freedom describe the shape of the $t$-distribution. The larger th
 
 When the degrees of freedom is about 30 or more, the $t$-distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we relate degrees of freedom to sample size.
 
-It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data. We use a \term{t-table}, partially shown in Figure~\ref{tTableSample}, in place of the normal probability table. A larger $t$-table is in Appendix~\ref{tDistributionTable} on page~\pageref{tDistributionTable}. In~practice, it's more common to use statistical software instead of a table, and you can see some of these options at
-\begin{center}
-\oiRedirect{textbook-prob_distribution_calculations}{www.openintro.org/stat/prob-tables}
-\end{center}
-
-\begin{figure}[hht]
-\centering
-\begin{tabular}{r | rrr rr}
-one tail & \hspace{1.5mm}  0.100 & \hspace{1.5mm} 0.050 & \hspace{1.5mm} 0.025 & \hspace{1.5mm} 0.010 & \hspace{1.5mm} 0.005  \\
-two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010 \\
-\hline
-{$df$} \hfill 1  &  {\normalsize  3.08} & {\normalsize  6.31} & {\normalsize 12.71} & {\normalsize 31.82} & {\normalsize 63.66}  \\ 
-2  &  {\normalsize  1.89} & {\normalsize  2.92} & {\normalsize  4.30} & {\normalsize  6.96} & {\normalsize  9.92}  \\ 
-3  &  {\normalsize  1.64} & {\normalsize  2.35} & {\normalsize  3.18} & {\normalsize  4.54} & {\normalsize  5.84}  \\ 
-$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ & \\
-17  &  {\normalsize  1.33} & {\normalsize  1.74} & {\normalsize  2.11} & {\normalsize  2.57} & {\normalsize  2.90}  \\ 
-\highlightO{18}  &  \highlightO{\normalsize  1.33} & \highlightO{\normalsize  1.73} & \highlightO{\normalsize  2.10} & \highlightO{\normalsize  2.55} & \highlightO{\normalsize  2.88}  \\ 
-19  &  {\normalsize  1.33} & {\normalsize  1.73} & {\normalsize  2.09} & {\normalsize  2.54} & {\normalsize  2.86}  \\ 
-20  &  {\normalsize  1.33} & {\normalsize  1.72} & {\normalsize  2.09} & {\normalsize  2.53} & {\normalsize  2.85}  \\ 
-$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ & \\
-400  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.97} & {\normalsize  2.34} & {\normalsize  2.59}  \\ 
-500  &  {\normalsize  1.28} & {\normalsize  1.65} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.59}  \\ 
-$\infty$  &  {\normalsize  1.28} & {\normalsize  1.64} & {\normalsize  1.96} & {\normalsize  2.33} & {\normalsize  2.58}  \\ 
-\end{tabular}
-\caption{An abbreviated look at the $t$-table. Each row represents a different $t$-distribution. The columns describe the cutoffs for specific tail areas. The row with $df=18$ has been \highlightO{highlighted}.}
-\label{tTableSample}
-\end{figure}
-
-Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is highlighted in Figure~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
+It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data.
+In~practice, it's common to use statistical software,
+such as \R{}, Python, or SAS.
+In the classroom setting, it's more common to use
+a graphing calculator or a \term{t-table};
+the $t$-table is similar to the normal distribution table,
+and it may be found with usage instructions on
+in Appendix~\ref{tDistributionTable}
+on page~\pageref{tDistributionTable}.
+No matter the approach you choose, apply your method
+using the examples below to confirm your understanding
+of working with tail areas in the $t$-distribution.
 
 \begin{examplewrap}
-\begin{nexample}{What proportion of the $t$-distribution with 18 degrees of freedom falls below -2.10?}
-Just like a normal probability problem, we first draw the picture in Figure~\ref{tDistDF18LeftTail2Point10} and shade the area below -2.10. To find this area, we identify the appropriate row: $df = 18$. Then we identify the column containing the absolute value of -2.10; it~is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. About 2.5\% of the distribution falls below -2.10. In the next example we encounter a case where the exact $t$ value is not listed in the table.
+\begin{nexample}{What proportion of the $t$-distribution
+    with 18 degrees of freedom falls below -2.10?}
+  Just like a normal probability problem, we first draw
+  the picture in Figure~\ref{tDistDF18LeftTail2Point10}
+  and shade the area below -2.10.
+  If this were a normal distribution, the area would be
+  a little less than 0.025, since about 5\% of the area
+  under a normal curve goes out beyond $\pm 1.96$ standard
+  deviations in the two tails.
+  For a $t$-distribution, the tails are a little thicker,
+  and using statistical software, we can obtain a precise
+  value: 0.0250.
+  The tail area below -2.10 in the $t$-distribution with
+  $df = 18$ is the same as the tail area below -1.96 in
+  the normal distribution.
 \end{nexample}
 \end{examplewrap}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{ch_inference_for_means/figures/tDistDF18LeftTail2Point10/tDistDF18LeftTail2Point10}
-\caption{The $t$-distribution with 18 degrees of freedom. The area below -2.10 has been shaded.}
-\label{tDistDF18LeftTail2Point10}
+  \centering
+  \Figure{0.42}{tDistDF18LeftTail2Point10}
+  \caption{The $t$-distribution with 18 degrees of freedom.
+      The area below -2.10 has been shaded.}
+  \label{tDistDF18LeftTail2Point10}
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{A $t$-distribution with 20 degrees of freedom is shown in the left panel of Figure~\ref{tDistDF20RightTail1Point65}. Estimate the proportion of the distribution falling above 1.65.}
-We identify the row in the $t$-table using the degrees of freedom: $df=20$. Then we look for 1.65; it is not listed. It falls between the first and second columns. Since these values bound 1.65, their tail areas will bound the tail area corresponding to 1.65. We identify the one tail area of the first and second columns, 0.050 and 0.10, and we conclude that between 5\% and 10\% of the distribution is more than 1.65 standard deviations above the mean. If we like, we can identify the precise area using statistical software: 0.0573.
+\begin{nexample}{A $t$-distribution with 20 degrees of freedom
+    is shown in the left panel of
+    Figure~\ref{tDistDF20RightTail1Point65}.
+    Estimate the proportion of the distribution falling
+    above 1.65.}
+  With a normal distribution, this would correspond to
+  about~0.05, so we should expect the $t$-distribution
+  to give us a value in this neighborhood.
+  Using statistical software, we can obtain the value
+  as 0.0573.
 \end{nexample}
 \end{examplewrap}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.85\textwidth]{ch_inference_for_means/figures/tDistDF20RightTail1Point65/tDistDF20RightTail1Point65}
-\caption{Left: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Right: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded.}
-\label{tDistDF20RightTail1Point65}
+  \centering
+  \Figure{0.72}{tDistDF20RightTail1Point65}
+  \caption{Left: The $t$-distribution with 20 degrees
+      of freedom, with the area above 1.65 shaded.
+      Right:~The $t$-distribution with 2 degrees of freedom,
+      with the area further than 3 units from 0 shaded.}
+  \label{tDistDF20RightTail1Point65}
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{A $t$-distribution with 2 degrees of freedom is shown in the right panel of Figure~\ref{tDistDF20RightTail1Point65}. Estimate the proportion of the distribution falling more than 3 units from the mean (above or below).}
-As before, first identify the appropriate row: $df=2$. Next, find the columns that capture 3; because $2.92 < 3 < 4.30$, we use the second and third columns. Finally, we find bounds for the tail areas by looking at the two tail values: 0.05 and 0.10. We use the two tail values because we are looking for two (symmetric) tails.
+\begin{nexample}{A $t$-distribution with 2 degrees of freedom
+    is shown in the right panel of
+    Figure~\ref{tDistDF20RightTail1Point65}.
+    Estimate the proportion of the distribution falling more
+    than 3~units from the mean (above or below).}
+  With so few degrees of freedom, the $t$-distribution will
+  give a more notably different value than the normal
+  distribution.
+  Under a normal distribution, the area would be about
+  0.003 using the 68-95-99.7 rule.
+  For a $t$-distribution with $df = 2$, the area in both
+  tails beyond 3~units totals 0.0071.
+  While the absolute amount is similar, this area is more
+  than double that of from the normal distribution.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-What proportion of the $t$-distribution with 19 degrees of freedom falls above -1.79 units?\footnotemark
+What proportion of the $t$-distribution with 19 degrees
+of freedom falls above -1.79 units?
+Use your preferred method for finding tail areas.\footnotemark{}
 \index{distribution!$t$|)}
 \index{t-distribution|)}
-\footnotetext{We find the shaded area \emph{above} -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.}
-
 \end{nexercise}
 \end{exercisewrap}
+\footnotetext{We find the shaded area \emph{above} -1.79
+  (we leave the picture to you).
+  The lower tail area, which is the part we are not trying
+  to find, has an area of 0.0447, so the upper area would
+  have an area of $1 - 0.0447 = 0.9553$.}
 
 
 
@@ -226,15 +254,24 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{Are the independence and normality conditions satisfied for this data~set?}
-The observations are a simple random sample and consist of less than 10\% of the population, therefore independence is reasonable. The summary statistics in Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins} do not suggest any skew or outliers; all observations are within 2.5 standard deviations of the mean. Based on this evidence, the normality assumption seems reasonable.
+\begin{nexample}{Are the independence and normality
+    conditions satisfied for this data~set?}
+  The observations are a simple random sample,
+  therefore independence is reasonable.
+  The summary statistics in
+  Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}
+  do not suggest any skew or outliers;
+  all observations are within 2.5 standard deviations
+  of the mean.
+  Based on this evidence, the normality assumption
+  seems reasonable.
 \end{nexample}
 \end{examplewrap}
 
 In the normal model, we used $z^{\star}$ and the standard error to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$-distribution:
-\begin{eqnarray*}
+\begin{align*}
 \bar{x} \ \pm\  t^{\star}_{df} \times SE
-\end{eqnarray*}
+\end{align*}
 The sample mean and estimated standard error are computed just as before ($\bar{x} = 4.4$ and $SE = s/\sqrt{n} = 0.528$). The value $t^{\star}_{df}$ is a cutoff we obtain based on the confidence level and the $t$-distribution with $df$ degrees of freedom. Before determining this cutoff, we will first need the degrees of freedom.
 
 \begin{onebox}{Degrees of freedom for a single sample}
@@ -252,29 +289,27 @@ Generally the value of $t^{\star}_{df}$ is slightly larger than what we would ge
 
 
 Finally, we can substitute all our values into the confidence interval equation to create the 95\% confidence interval for the average mercury content in muscles from Risso's dolphins that pass through the Taiji area:
-\begin{eqnarray*}
+\begin{align*}
 \bar{x} \ \pm\  t^{\star}_{18} \times SE
-	\quad \to \quad
-4.4 \ \pm\  2.10 \times 0.528
-	\quad \to \quad
-(3.29, 5.51)
-\end{eqnarray*}
+  \quad \to \quad 4.4 \ \pm\  2.10 \times 0.528
+  \quad \to \quad (3.29, 5.51)
+\end{align*}
 We are 95\% confident the average mercury content of muscles in Risso's dolphins is between 3.29 and 5.51 $\mu$g/wet gram, which is considered extremely high.
 
 \index{data!dolphins and mercury|)}
 
 \begin{onebox}{Finding a $t$-confidence interval for the mean}
 Based on a sample of $n$ independent and nearly normal observations, a confidence interval for the population mean is
-\begin{eqnarray*}
+\begin{align*}
 \bar{x} \ \pm\  t^{\star}_{df} \times SE
-\end{eqnarray*}
+\end{align*}
 where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error as estimated by the sample.
 \end{onebox}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{croakerWhiteFishPacificExerConditions}
 \index{data!white fish and mercury|(}
-The FDA's webpage provides some data on mercury content of fish. Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?\footnotemark
+The FDA's webpage provides some data on mercury content of fish. Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.}
@@ -290,7 +325,7 @@ Looking in the column where two tails is 0.100 (for a 90\% confidence interval) 
 
 \begin{exercisewrap}
 \begin{nexercise}
-Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnotemark
+Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$\bar{x} \ \pm\ t^{\star}_{14} \times SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90\% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.}
@@ -314,17 +349,23 @@ The average time for all runners who finished the Cherry Blossom Race in 2006 wa
 
 \begin{exercisewrap}
 \begin{nexercise}
-What are appropriate hypotheses for this context?\footnotemark
+What are appropriate hypotheses for this context?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$H_0$: The average 10 mile run time was the same for 2006 and 2017. $\mu = 93.29$ minutes. $H_A$: The average 10 mile run time for 2017 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-The data come from a simple random sample from less than 10\% of all participants, so the observations are independent. However, should we be worried about skew in the data? See Figure~\ref{run10SampTimeHistogram} for a histogram of the differences.\footnotemark
+The data come from a simple random sample of all participants,
+so the observations are independent.
+However, should we be worried about skew in the data?
+See Figure~\ref{run10SampTimeHistogram} for a histogram
+of the differences.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{With a sample of \cherryblossomn{}, we should only be concerned if there is very strong skew. The histogram of the data doesn't show any notable skew.}
+\footnotetext{With a sample of \cherryblossomn{},
+  we should only be concerned if there is very strong skew.
+  The histogram of the data doesn't show any notable skew.}
 
 \begin{figure}[h]
 \centering
@@ -337,7 +378,7 @@ With independence satisfied and slight skew not a concern for this large of a sa
 
 \begin{exercisewrap}
 \begin{nexercise}
-The sample mean and sample standard deviation of the sample of \cherryblossomn{} runners from the 2017 Cherry Blossom Race are \cherryblossommean{} and \cherryblossomsd{} minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?\footnotemark
+The sample mean and sample standard deviation of the sample of \cherryblossomn{} runners from the 2017 Cherry Blossom Race are \cherryblossommean{} and \cherryblossomsd{} minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{With the conditions satisfied for the $t$-distribution, we can compute the standard error ($SE = \cherryblossomsd{} / \sqrt{\cherryblossomn{}} = \cherryblossomse{}$ and the \emph{T-score}: $T = \frac{\cherryblossommean{} - 93.29}{\cherryblossomse{}} = \cherryblossomz{}$. (There is more on this after the guided practice, but a T-score and Z-score are calculated in the same way.) For $df = \cherryblossomn{} - 1 = 99$, we would find $T = \cherryblossomz{}$ to falls right on the fourth column in the 90 degrees of freedom row, which corresponds to a two-tailed p-value of 0.02. The p-value could also have been calculated with statistical software and 99 degrees of freedom as 0.0195. Because the p-value is smaller than 0.05, we reject the null hypothesis. That is, the data provide strong evidence that the average run time for the Cherry Blossom Run in 2017 is different than the 2006 average. Since the observed value is above the null value and we have rejected the null hypothesis, we would conclude that runners in the race were slower on average in 2017 than in 2006.}
@@ -426,9 +467,9 @@ In the \data{textbook} data set, we look at the differences
 in prices, which is represented as the \var{diff} variable
 in the \data{textbooks} data.
 Here the differences are taken as
-\begin{eqnarray*}
+\begin{align*}
 \text{UCLA Bookstore price} - \text{Amazon price}
-\end{eqnarray*}
+\end{align*}
 for each book.
 It is important that we always subtract using
 a consistent order;
@@ -453,7 +494,7 @@ is a common and useful way to analyze paired data.
 The first difference shown in Figure~\ref{textbooksDF}
 is computed as $6.97 - 7.94 = -0.97$.
 Verify the differences are calculated correctly for
-observations~2 and~3.\footnotemark
+observations~2 and~3.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Observation~2:
@@ -554,7 +595,7 @@ UCLA Bookstore prices for UCLA courses.
 \begin{nexercise}
 Create a 95\% confidence interval for the average
 price difference between books at the UCLA bookstore
-and books on Amazon.\footnotemark
+and books on Amazon.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Conditions
@@ -584,7 +625,7 @@ on average, less expensive.
 How should this conclusion affect UCLA students'
 buying habits?
 Should UCLA students always buy their books
-on Amazon?\footnotemark
+on Amazon?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The average price difference
@@ -636,9 +677,9 @@ Does treatment using embryonic stem cells (ESCs) help improve heart function fol
 Figure~\ref{summaryStatsForSheepHeartDataWhoReceivedMiceESCs} contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured in the study. A~positive value corresponds to increased pumping capacity, which generally suggests a stronger recovery. Our goal will be to identify a 95\% confidence interval for the effect of ESCs on the change in heart pumping capacity relative to the control group.
 
 A point estimate of the difference in the heart pumping variable can be found using the difference in the sample means:
-\begin{eqnarray*}
+\begin{align*}
 \bar{x}_{esc} - \bar{x}_{control}\ =\ 3.50 - (-4.33)\ =\ 7.83
-\end{eqnarray*}
+\end{align*}
 
 \begin{figure}[h]
 \centering
@@ -696,9 +737,11 @@ Because both conditions are met, we can use the $t$-distribution to model the di
 
 We can quantify the variability in the point estimate, $\bar{x}_{esc} - \bar{x}_{control}$, using the following formula for its standard error:
 \index{standard error (SE)!difference in means}
-\begin{eqnarray*}
-SE_{\bar{x}_{esc} - \bar{x}_{control}} = \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}}
-\end{eqnarray*}
+\begin{align*}
+SE_{\bar{x}_{esc} - \bar{x}_{control}}
+  = \sqrt{\frac{\sigma_{esc}^2}{n_{esc}}
+      + \frac{\sigma_{control}^2}{n_{control}}}
+\end{align*}
 We usually estimate this standard error using standard deviation estimates  based on the samples:
 \begin{align*}
 SE_{\bar{x}_{esc} - \bar{x}_{control}}
@@ -710,11 +753,9 @@ Because we will use the $t$-distribution, we also must identify the appropriate 
 
 \begin{onebox}{Distribution of a difference of sample means}
 The sample difference of two means, $\bar{x}_1 - \bar{x}_2$, can be modeled using the $t$-distribution and the standard error
-\begin{eqnarray}
-\textstyle
+\begin{align*}
 SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
-\label{seOfDifferenceInMeans}
-\end{eqnarray}
+\end{align*}
 when each sample mean can itself be modeled using a $t$-distribution and the samples are independent. To calculate the degrees of freedom, use statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.
 \end{onebox}
 
@@ -769,17 +810,40 @@ A data set called \data{ncbirths} represents a random sample of 150 cases of mot
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{Set up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.}\label{babySmokeHTForWeight}
-The null hypothesis represents the case of no difference between the groups.
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] There is no difference in average birth weight for newborns from mothers who did and did not smoke. In statistical notation: $\mu_{n} - \mu_{s} = 0$, where $\mu_{n}$ represents non-smoking mothers and $\mu_s$ represents mothers who smoked.
-\item[$H_A$:] There is some difference in average newborn weights from mothers who did and did not smoke ($\mu_{n} - \mu_{s} \neq 0$).
-\end{itemize}
+\begin{nexample}{Set up appropriate hypotheses to evaluate
+    whether there is a relationship between a mother smoking
+    and average birth weight.}
+  \label{babySmokeHTForWeight}%
+  The null hypothesis represents the case of no difference
+  between the groups.
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item[$H_0$:]
+      There is no difference in average birth weight for
+      newborns from mothers who did and did not smoke.
+      In statistical notation: $\mu_{n} - \mu_{s} = 0$,
+      where $\mu_{n}$ represents non-smoking mothers and
+      $\mu_s$ represents mothers who smoked.
+  \item[$H_A$:]
+      There is some difference in average newborn weights
+      from mothers who did and did not smoke
+      ($\mu_{n} - \mu_{s} \neq 0$).
+  \end{itemize}
 \end{nexample}
 \end{examplewrap}
 
-We check the two conditions necessary to apply the $t$-distribution to the difference in sample means. (1) Because the data come from a simple random sample and consist of less than 10\% of all such cases, the observations are independent. Additionally, while each distribution is strongly skewed, the sample sizes of 50 and 100 would make it reasonable to model each mean separately using a $t$-distribution. The skew is reasonable for these sample sizes of 50 and 100. (2) The independence reasoning applied in (1) also ensures the observations in each sample are independent. Since both conditions are satisfied, the difference in sample means may be modeled using a $t$-distribution.
+We check the two conditions necessary to apply the
+$t$-distribution to the difference in sample means.
+(1)~Because the data come from a simple random sample,
+the observations are independent.
+Additionally, while each distribution is strongly skewed,
+the sample sizes of 50 and 100 would make it reasonable
+to model each mean separately using a $t$-distribution.
+The skew is reasonable for these sample sizes of 50 and 100.
+(2)~The independence reasoning applied in~(1) also ensures
+the observations in each sample are independent.
+Since both conditions are satisfied, the difference
+in sample means may be modeled using a $t$-distribution.
 
 %Summary statistics are shown for each sample in Figure~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}.
 
@@ -799,16 +863,17 @@ samp. size & 50 & 100 \\
 
 \begin{exercisewrap}
 \begin{nexercise}
-The summary statistics in Figure~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers} may be useful for this exercise. (a)~What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b)~Compute the standard error of the point estimate from part (a).\footnotemark
+The summary statistics in Figure~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers} may be useful for this exercise. (a)~What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b)~Compute the standard error of the point estimate from part (a).\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a)~The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b)~The standard error of the estimate can be estimated using Equation~(\ref{seOfDifferenceInMeans}):
-\begin{eqnarray*}
-SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
-	\approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
-	= \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
-	= 0.26
-\end{eqnarray*}}
+\footnotetext{(a)~The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b)~The standard error of the estimate can be estimated using the standard error formula:
+\begin{align*}
+SE
+  = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
+    \approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
+  = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
+  = 0.26
+\end{align*}}
 
 \begin{examplewrap}
 \begin{nexample}{Draw a picture to represent the p-value for the hypothesis test from Example~\ref{babySmokeHTForWeight}.} \label{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}
@@ -822,23 +887,23 @@ To depict the p-value, we draw the distribution of the point estimate as though 
 \begin{examplewrap}
 \begin{nexample}{Compute the p-value of the hypothesis test using the figure in Example~\ref{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}, and evaluate the hypotheses using a significance level of $\alpha=0.05$.} \label{babySmokeHTForWeightComputePValueAndEvalHT}
 We start by computing the T-score:
-\begin{eqnarray*}
+\begin{align*}
 T = \frac{\ 0.40 - 0\ }{0.26} = 1.54
-\end{eqnarray*}
+\end{align*}
 Next, we compare this value to values in the $t$-table in Appendix~\vref{tDistributionTable}, where we use the smaller of $n_n - 1 = 99$ and $n_s - 1 = 49$ as the degrees of freedom: $df = 49$. The T-score falls between the first and second columns in the $df = 49$ row of the $t$-table, meaning the two-sided p-value falls between 0.10 and 0.20 (reminder, find tail areas along the top of the table). This p-value is larger than the significance value, 0.05, so we fail to reject the null hypothesis. There is insufficient evidence to say there is a difference in average birth weight of newborns from North Carolina mothers who did smoke during pregnancy and newborns from North Carolina mothers who did not smoke during pregnancy.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} mean that smoking and average birth weight are unrelated?\footnotemark
+Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} mean that smoking and average birth weight are unrelated?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Absolutely not. It is possible that there is some difference but we did not detect it. If there is a difference, we made a Type~2 Error. Notice: we also don't have enough information to, if there is an actual difference, confidently say which direction that difference would be in.}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{babySmokeHTIDingHowToDetectDifferences}
-If we made a Type~2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect the difference?\footnotemark
+If we made a Type~2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect the difference?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
@@ -879,26 +944,32 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 \begin{exercisewrap}
 \begin{nexercise}
 \label{htSetupForEvaluatingTwoExamVersions}%
-Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.\footnotemark
+Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{conditionsForTDistForEvaluatingTwoExamVersions}%
-To evaluate the hypotheses in Guided Practice~\ref{htSetupForEvaluatingTwoExamVersions} using the $t$-distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?\footnotemark
+To evaluate the hypotheses in Guided Practice~\ref{htSetupForEvaluatingTwoExamVersions} using the $t$-distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(a) It is probably reasonable to conclude the scores are independent, provided there was no cheating. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn't seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.}
 
 After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$-distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated~as
-\begin{eqnarray*}
-SE = \sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}} = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}} = 4.62
-\end{eqnarray*}
+\begin{align*}
+SE
+  = \sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}}
+  = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}}
+  = 4.62
+\end{align*}
 Finally, we construct the test statistic:
-\begin{eqnarray*}
-T = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{(79.4-74.1) - 0}{4.62} = 1.15
-\end{eqnarray*}
+\begin{align*}
+T
+  = \frac{\text{point estimate} - \text{null value}}{SE}
+  = \frac{(79.4-74.1) - 0}{4.62}
+  = 1.15
+\end{align*}
 If we have a computer handy, we can identify the degrees of freedom as 45.97. Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$. 
 
 \begin{figure}[h]
@@ -968,10 +1039,11 @@ This special relationship follows from probability theory.
 \label{derivingSEForDiffOfTwoMeansExercise}%
 Prerequisite: Section~\ref{randomVariablesSection}.
 We can rewrite the equation above in a different way:
-\begin{eqnarray*}
-SE_{\bar{x}_{1} - \bar{x}_{2}}^2 = SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2
-\end{eqnarray*}
-Explain where this formula comes from using the ideas of probability theory.\footnotemark
+\begin{align*}
+SE_{\bar{x}_{1} - \bar{x}_{2}}^2
+  = SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2
+\end{align*}
+Explain where this formula comes from using the ideas of probability theory.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The standard error squared represents the variance of the estimate. If $X$ and $Y$ are two random variables with variances $\sigma_x^2$ and $\sigma_y^2$, then the variance of $X-Y$ is $\sigma_x^2 + \sigma_y^2$. Likewise, the variance corresponding to $\bar{x}_1 - \bar{x}_2$ is $\sigma_{\bar{x}_1}^2 + \sigma_{\bar{x}_2}^2$. Because $\sigma_{\bar{x}_1}^2$ and $\sigma_{\bar{x}_2}^2$ are just another way of writing $SE_{\bar{x}_1}^2$ and  $SE_{\bar{x}_2}^2$, the variance associated with $\bar{x}_1 - \bar{x}_2$ may be written as $SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2$.}
@@ -1123,7 +1195,7 @@ We want to avoid this situation, so we need to determine an appropriate sample s
 
 \begin{exercisewrap}
 \begin{nexercise}
-Calculate the power to detect a change of -3~mmHg when using a sample size of 500 per group.\footnotemark
+Calculate the power to detect a change of -3~mmHg when using a sample size of 500 per group.\footnotemark{}
 \begin{enumerate}[(a)]
 \setlength{\itemsep}{0mm}
 \item Determine the standard error (recall that the standard deviation for patients was expected to be about 12~mmHg).
@@ -1168,14 +1240,14 @@ The standard error difference of $2.8 \times SE$ is specific to a context where 
 
 \begin{exercisewrap}
 \begin{nexercise}
-Suppose the targeted power was 90\% and we were using $\alpha = 0.01$. How many standard errors should separate the centers of the null and alternative distribution, where the alternative distribution is centered at the minimum effect size of interest? Assume the test is two-sided.\footnotemark
+Suppose the targeted power was 90\% and we were using $\alpha = 0.01$. How many standard errors should separate the centers of the null and alternative distribution, where the alternative distribution is centered at the minimum effect size of interest? Assume the test is two-sided.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{First, find the Z-score such that 90\% of the distribution is below it: $Z = 1.28$. Next, find the cutoffs for the rejection regions: $\pm 2.58$. Then the difference in centers should be about $1.28 \times SE + 2.58 \times SE = 3.86 \times SE$.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-List some considerations that are important in determining what the power should be for an experiment.\footnotemark
+List some considerations that are important in determining what the power should be for an experiment.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Answers will vary, but here are a few important considerations:
@@ -1343,7 +1415,7 @@ a home run.
 \begin{nexercise} \label{nullHypForOBPAgainstPosition}
 The null hypothesis under consideration is the following: $\mu_{\resp{OF}} = \mu_{\resp{IF}} = %\mu_{\resp{DH}} = 
     \mu_{\resp{C}}$.
-Write the null and corresponding alternative hypotheses in plain language.\footnotemark
+Write the null and corresponding alternative hypotheses in plain language.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups.}
@@ -1432,7 +1504,7 @@ The $MSG$ represents a measure of the between-group variability, and $MSE$ measu
 For the baseball data, $MSG = 0.00803$ and $MSE=0.00158$.
 Identify the degrees of freedom associated with MSG and
 MSE and verify the $F$ statistic is approximately
-\mlbF{}.\footnotemark
+\mlbF{}.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{There are $k = \mlbK{}$ groups, so $df_{G} = k - 1 = \mlbDFA{}$. There are $n = n_1 + n_2 + n_3 = \mlbN{}$ total observations, so $df_{E} = n - k = \mlbDFB{}$. Then the $F$ statistic is computed as the ratio of $MSG$ and $MSE$: $F = \frac{MSG}{MSE} = \frac{0.00803}{0.00158} = 5.082 \approx \mlbF{}$. ($F = \mlbF{}$ was computed by using values for $MSG$ and $MSE$ that were not rounded.)}
@@ -1458,7 +1530,7 @@ Analysis of variance (ANOVA) is used to test whether the mean outcome differs ac
 \begin{exercisewrap}
 \begin{nexercise}
 \label{describePValueAreaForFDistributionInMLBOBPExample}%
-The test statistic for the baseball example is $F = \mlbF{}$. Shade the area corresponding to the p-value in Figure~\ref{fDist2And423}. \footnotemark
+The test statistic for the baseball example is $F = \mlbF{}$. Shade the area corresponding to the p-value in Figure~\ref{fDist2And423}. \footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{\ \vspace{-4mm}\\\includegraphics[height=20mm]{ch_inference_for_means/figures/fDist2And423/fDist2And423Shaded}}
@@ -1499,8 +1571,8 @@ There are three conditions we must check for an ANOVA analysis: all observations
 
 \begin{description}
 \item[Independence.]
-    If the data are a simple random sample from less
-    than 10\% of the population, this condition is satisfied.
+    If the data are a simple random sample,
+    this condition is satisfied.
     For processes and experiments, carefully consider whether
     the data may be independent (e.g. no pairing).
     For example, in the MLB data, the data were not sampled.
@@ -1608,7 +1680,7 @@ $s_i$		& 13.9	& 13.8	& 13.1 \\
 
 \begin{exercisewrap}
 \begin{nexercise} \label{exerExaminingAnovaSummaryTableForMidtermData}
-An ANOVA was conducted for the midterm data, and summary results are shown in Figure~\ref{anovaSummaryTableForMidtermData}. What should we conclude?\footnotemark
+An ANOVA was conducted for the midterm data, and summary results are shown in Figure~\ref{anovaSummaryTableForMidtermData}. What should we conclude?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The p-value of the test is 0.0330, less than the default significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the difference in the average midterm scores are not due to chance.}

@@ -980,7 +980,10 @@ To evaluate these hypotheses, we quantify how different the observed counts are 
 \label{chiSquareTestStatistic}
 
 In previous hypothesis tests, we constructed a test statistic of the following form:
-$$ \frac{\text{point estimate} - \text{null value}}{\text{SE of point estimate}} $$
+\begin{align*}
+\frac{\text{point estimate} - \text{null value}}
+    {\text{SE of point estimate}}
+\end{align*}
 This construction was based on (1) identifying the difference between a point estimate and an expected value if the null hypothesis was true, and (2) standardizing that difference using the standard error of the point estimate. These two ideas will help in the construction of an appropriate test statistic for count data.
 
 Our strategy will be to first compute the difference between the observed counts and the counts we would expect if the null hypothesis was true, then we will standardize the difference:
