@@ -60,6 +60,10 @@
 
 % 5.1.1 Chapter introduction
 \newcommand{\chapterintro}[1]{
+  %\fancyhead[RO,LE]{\thepage}
+  \fancyhead[RE]{}
+  \fancyhead[LO]{}
+
   ~\vspace{15mm}
 
   {\color{oiB}\titlerule[1.5mm]}\addvspace{7mm}
@@ -87,7 +91,10 @@
   \oiRedirect{os}{\textbf{\color{oiB}www.openintro.org/os}}}%
       \vspace{5mm}
 
-  ~
+  ~\newpage
+  %\fancyhead[RO,LE]{\thepage}
+  \fancyhead[RE]{\leftmark}
+  \fancyhead[LO]{\rightmark}
 }
 
 % 5.2 Section
