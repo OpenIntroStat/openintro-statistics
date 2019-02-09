@@ -192,7 +192,7 @@ in Figure~\ref{loan50Variables}.
    & \var{interest\us{}rate}
    & \var{term} & \var{grade} & \var{state}
    & \var{total\us{}income}
-   & \var{homeownership} \\ % & verified\_income \\ 
+   & \var{homeownership} \\
   \hline
   1 & 7500 & 7.34 & 36 & A & MD & 70000 & rent \\
   2 & 25000 & 9.43 & 60 & B & OH & 254000 & mortgage \\
@@ -309,18 +309,18 @@ The variables are summarized in Figure~\ref{countyVariables}.
   \hline
  & \var{name} & \var{state} & \var{pop} & \var{pop\us{}change} & \var{poverty} & \var{homeownership} & \var{multi\us{}unit} & \var{unemp\us{}rate} & \var{metro} & \var{median\us{}edu} & \var{median\us{}hh\us{}income} \\ 
   \hline
-  1 & Autauga  & Alabama &  55504 &  1.48 & 13.7 & 77.5 &  7.2 & 3.86 & yes & some\_college & 54487 \\ 
-  2 & Baldwin  & Alabama & 212628 &  9.19 & 11.8 & 76.7 & 22.6 & 3.99 & yes & some\_college & 56460 \\ 
-  3 & Barbour  & Alabama &  25270 & -6.22 & 27.2 & 68.0 & 11.1 & 5.90 & no  & hs\_diploma   & 32884 \\ 
-  4 & Bibb     & Alabama &  22668 &  0.73 & 15.2 & 82.9 &  6.6 & 4.39 & yes & hs\_diploma   & 43079 \\ 
-  5 & Blount   & Alabama &  58013 &  0.68 & 15.6 & 82.0 &  3.7 & 4.02 & yes & hs\_diploma   & 47213 \\ 
-  6 & Bullock  & Alabama &  10309 & -2.28 & 28.5 & 76.9 &  9.9 & 4.93 & no  & hs\_diploma   & 34278 \\ 
-  7 & Butler   & Alabama &  19825 & -2.69 & 24.4 & 69.0 & 13.7 & 5.49 & no  & hs\_diploma   & 35409 \\ 
-  8 & Calhoun  & Alabama & 114728 & -1.51 & 18.6 & 70.7 & 14.3 & 4.93 & yes & some\_college & 41778 \\ 
-  9 & Chambers & Alabama &  33713 & -1.20 & 18.8 & 71.4 &  8.7 & 4.08 & no  & hs\_diploma   & 39530 \\ 
-  10 & Cherokee & Alabama &  25857 & -0.60 & 16.1 & 77.5 &  4.3 & 4.05 & no  & hs\_diploma   & 41456 \\ 
+1 & Autauga  & Alabama &  55504 &  1.48 & 13.7 & 77.5 &  7.2 & 3.86 & yes & some\us{}college & 55317 \\ 
+  2 & Baldwin  & Alabama & 212628 &  9.19 & 11.8 & 76.7 & 22.6 & 3.99 & yes & some\us{}college & 52562 \\ 
+  3 & Barbour  & Alabama &  25270 & -6.22 & 27.2 & 68.0 & 11.1 & 5.90 & no  & hs\us{}diploma   & 33368 \\ 
+  4 & Bibb     & Alabama &  22668 &  0.73 & 15.2 & 82.9 &  6.6 & 4.39 & yes & hs\us{}diploma   & 43404 \\ 
+  5 & Blount   & Alabama &  58013 &  0.68 & 15.6 & 82.0 &  3.7 & 4.02 & yes & hs\us{}diploma   & 47412 \\ 
+  6 & Bullock  & Alabama &  10309 & -2.28 & 28.5 & 76.9 &  9.9 & 4.93 & no  & hs\us{}diploma   & 29655 \\ 
+  7 & Butler   & Alabama &  19825 & -2.69 & 24.4 & 69.0 & 13.7 & 5.49 & no  & hs\us{}diploma   & 36326 \\ 
+  8 & Calhoun  & Alabama & 114728 & -1.51 & 18.6 & 70.7 & 14.3 & 4.93 & yes & some\us{}college & 43686 \\ 
+  9 & Chambers & Alabama &  33713 & -1.20 & 18.8 & 71.4 &  8.7 & 4.08 & no  & hs\us{}diploma   & 37342 \\ 
+  10 & Cherokee & Alabama &  25857 & -0.60 & 16.1 & 77.5 &  4.3 & 4.05 & no  & hs\us{}diploma   & 40041 \\ 
   $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-  3143 & Weston & Wyoming & 6927 & -2.93 & 14.4 & 77.9 & 6.5 & 3.98 & no & some\_college & 56582 \\ 
+  3142 & Weston   & Wyoming &   6927 & -2.93 & 14.4 & 77.9 &  6.5 & 3.98 & no  & some\us{}college & 59605 \\  
    \hline
 \end{tabular}
 \caption{Eleven rows from the \data{county} data set.}
@@ -359,6 +359,8 @@ The variables are summarized in Figure~\ref{countyVariables}.
     Median household income for the county, where a household's
     income equals the total income of its occupants who are
     15~years or older. \\
+%\var{per\us{}capita\us{}income} &
+%    Per capita (per person) income for the county. \\
 \hline
 \end{tabular}
 \centering
@@ -602,7 +604,7 @@ to~you.\footnotemark
       \var{pop\us{}change}
       against \var{median\us{}hh\us{}income}.
       Owsley County of Kentucky, with a poverty rate of 45.2\%
-      and median household income of \$23,115, is highlighted.}
+      and median household income of \$22,736, is highlighted.}
   \label{pop_change_v_med_income}
 \end{figure}
 
@@ -620,20 +622,6 @@ in Figure~\ref{pop_change_v_med_income},
 where counties with higher median household income tend
 to have higher rates of population growth.
 
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.8\textwidth]{ch_intro_to_data/figures/medianHHIncomePoverty/medianHHIncomePoverty}
-%\caption{A scatterplot showing
-%    \var{median\us{}hh\us{}income}
-%    against \var{poverty}.
-%    Owsley County of Kentucky, with a poverty rate of 45.2\%
-%    and median household income of \$23,115, is highlighted.}
-%\label{medianHHIncomePoverty}
-%\end{figure}
-
-%Because there is a slight downward trend in
-%Figure~\ref{interest_rate_vs_income} -- counties with more units in multi-unit structures are associated with lower homeownership -- these variables are said to be \termsub{negatively associated}{negative association}. A \term{positive association} is shown in the relationship between the \var{poverty} and \var{fed\us{}spend} variables represented in Figure~\ref{interest_rate_vs_income}, where counties with higher poverty rates tend to receive more federal spending per capita.
-
 If two variables are not associated,
 then they are said to be \term{independent}.
 That is, two variables are independent if there
@@ -646,20 +634,20 @@ A pair of variables are either related in some way (associated) or not (independ
 When we ask questions about the relationship
 between two variables, we may be trying to determine
 if the change in one cause a change in the other.
-For example, consider again the second question about
-the \data{county} data set:
+Consider the following rephrasing of an earlier question
+about the \data{county} data set:
 \begin{quote}\em
-    \popchangevmedianhhincomequestion{}
+  If a county is able to increase its median household income,
+  does this drive an increase in its population?
 \end{quote}
-We're probably asking such a question since we suspect
-a county's median household income could affect the county's
-growth rate.
+In this question, we are asking whether one variable
+affects another.
 If this is our underlying belief,
-then median household income is the
+then \emph{median household income} is the
 \termsub{explanatory}{explanatory variable}
-variable and the change in the population is the
-\termsub{response}{response variable} variable in the
-relationship.
+variable and the \emph{population change} is the
+\termsub{response}{response variable} variable
+in the hypothesized relationship.
 
 \index{data!county|)}
 
@@ -677,12 +665,36 @@ in which case these labels should not be applied.
 \end{onebox}
 
 Bear in mind that
-the explanatory and response labels only considers
+the explanatory and response labels only consider
 a \emph{suspected} causal relationship, and it does not guarantee
 that such a causal relationship exists.
 A formal evaluation to check whether one variable causes
 a change in another requires an experiment.
 
+%\begin{exercisewrap}
+%\begin{nexercise}
+%Consider the earlier question:
+%\begin{quote}\em
+%  If a county has a higher median household income,
+%  does this drive an increase in its population?
+%\end{quote}
+%We could have just as easily reframed the causal relationship
+%to be in the reverse direction:
+%\begin{quote}\em
+%  If a county more population growth, does this drive
+%  it to have a higher median household income?
+%\end{quote}
+%What are the explanatory and response variables when framing
+%the variable relationship in the second question?
+%\end{nexercise}
+%\end{exercisewrap}
+%\footnotetext{In this framing, we have hypothesized
+%  that population growth drives median household income.
+%  That is, population growth is the explanatory variable,
+%  and median household income is the response.
+%  This exercise should emphasize that these variable labels
+%  do not actually define whether one variable actually affects
+%  the other.}
 
 
 

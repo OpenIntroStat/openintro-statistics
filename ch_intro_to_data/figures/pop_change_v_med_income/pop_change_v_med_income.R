@@ -4,7 +4,7 @@ data(COL)
 
 ind <- 1088
 
-myPDF("pop_change_v_med_income.pdf", 6, 3.5,
+myPDF("pop_change_v_med_income.pdf", 7, 3.5,
       mar = c(3, 5.1, 0.5, 1),
       mgp = c(2.4, 0.5, 0))
 x <- county$median_hh_income

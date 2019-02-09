@@ -601,7 +601,16 @@ P(\text{not all \resp{RH}})
 	= 1 - 0.624 = 0.376
 \end{align*}}
 
-Suppose the variables \var{handedness} and \var{gender} are independent, i.e. knowing someone's \var{gender} provides no useful information about their \var{handedness} and vice-versa. Then we can compute whether a randomly selected person is right-handed and female\footnote{The actual proportion of the U.S. population that is \resp{female} is about 50\%, and so we use 0.5 for the probability of sampling a woman. However, this probability does differ in other countries.} using the Multiplication Rule:
+Suppose the variables \var{handedness} and
+\var{sex} are independent,
+i.e. knowing someone's \var{sex} provides no useful
+information about their \var{handedness} and vice-versa.
+Then we can compute whether a randomly selected person is
+right-handed and female\footnote{The actual proportion of
+  the U.S. population that is \resp{female} is about 50\%,
+  and so we use 0.5 for the probability of sampling a woman.
+  However, this probability does differ in other countries.}
+using the Multiplication Rule:
 \begin{align*}
 P(\text{right-handed and female})
     &= P(\text{right-handed}) \times  P(\text{female}) \\
