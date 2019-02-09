@@ -12,7 +12,7 @@ plot(toy_anova$outcome,
      type = "n",
      axes = FALSE,
      xlab = "",
-     ylab = "outcome")
+     ylab = "Outcome")
 rect(-100, -100,
      100, 100,
      col = COL[7,3])

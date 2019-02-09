@@ -48,7 +48,7 @@ probDist <- function(x,
   if (is.na(labels2)[1]) {
     labels2 <- TRUE
   }
-  axis(1, at = x, labels = labels1)
+  axis(1, at = x, labels = paste0("$", labels1))
   make.bar(x, prob, thickness = thickness, col = col)
 }
 
@@ -59,11 +59,11 @@ prob <- c(0.2, .55, .25)
 par(mar = c(2.9, 4, 0.1, 0.5),
     mgp = c(1.7, 0.7, 0))
 probDist(at, prob,
-         xlab = 'Cost (US Dollars)',
+         xlab = 'Cost',
          ylab = '',
          ylim = c(-0.02, 0.55),
          col = COL[1])
-axis(2, at = seq(0,0.5, 0.1))
+axis(2, at = seq(0, 0.4, 0.2))
 lines(c(-10, 180), c(0,0))
 polygon(117.85 + c(-17, 17, 0),
         c(-0.08, -0.08, 0),

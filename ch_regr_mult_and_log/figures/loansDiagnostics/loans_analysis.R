@@ -53,14 +53,16 @@ qqnorm(e,
 dev.off()
 
 myPDF("loansDiagNormalHistogram.pdf", 6, 3.7,
-    mgp = c(2.5,0.6,0))
+    mar = c(3.9, 4, 0.5, 0.5), mgp = c(2.5,0.6,0))
 histPlot(e,
     xlab = "Residuals",
-    ylab = "Count",
+    ylab = "",
     col = COL[1],
     axes = FALSE)
 AxisInPercent(1, pretty(e))
 axis(2)
+par(las = 0)
+mtext("Frequency", 2, 2.9)
 dev.off()
 
 myPDF("ignore-loansDiagInOrder.pdf", 5.65, 3.9,
@@ -184,7 +186,7 @@ dev.off()
 myPDF("loansDebtToIncomeHist.pdf", 5, 2.7,
     mar = c(2.9, 4, 0.5, 0.5))
 histPlot(d$debt_to_income, breaks = 30, col = COL[1],
-    xlab = "")
+    xlab = "", ylab = "Frequency")
 mtext("Debt to Income", 1, 1.8)
 dev.off()
 

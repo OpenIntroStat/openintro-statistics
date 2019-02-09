@@ -25,7 +25,7 @@ legend("topright",
     fill = COL[c(3,1)],
     legend = c("joint", "individual"))
 par(las = 0)
-mtext("Count", 2, 2.9)
+mtext("Frequency", 2, 2.9)
 dev.off()
 
 myPDF("loan_app_type_home_sbs_bar.pdf",
@@ -40,7 +40,7 @@ legend("topright",
     fill = COL[c(3,1)],
     legend = c("joint", "individual"))
 par(las = 0)
-mtext("Count", 2, 2.9)
+mtext("Frequency", 2, 2.9)
 dev.off()
 
 myPDF("loan_app_type_home_seg_bar_standardized.pdf",

@@ -30,7 +30,7 @@ myPDF("mlbANOVABoxPlot.pdf", 5.4, 3,
 key <- POS[c(1, 2, 4)]
 boxPlot(d$OBP, d$position,
         xlab = "",
-        ylab = "On base percentage",
+        ylab = "On-Base Percentage",
         axes = FALSE,
         pchCex = 1,
         key = key,
@@ -104,7 +104,7 @@ HistOfOBP <- function(x, main) {
       xlim = xlim,
       breaks = breaks,
       xlab = "On-Base Percentage",
-      ylab = "Count",
+      ylab = "Frequency",
       col = COL[1],
       axes = FALSE)
   axis(1, at)

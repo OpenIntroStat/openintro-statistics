@@ -37,14 +37,14 @@ plot(p, d$callback + noise,
      xlim = 0:1,
      ylim = c(-0.5, 1.5),
      axes = FALSE,
-     xlab = "Predicted probability",
+     xlab = "Predicted Probability",
      ylab = "",
      col = fadeColor(COL[1], "22"),
      pch = 20)
 axis(1)
 axis(2,
      at = c(0,1),
-     labels = c("0 (no callback)", "1 (callback)"))
+     labels = c("0 (No Callback)", "1 (Callback)"))
 dev.off()
 
 
@@ -58,7 +58,7 @@ plot(p, d$callback + noise / 5,
      xlim = 0:1,
      ylim = c(-0.07, 1.07),
      axes = FALSE,
-     xlab = "Predicted probability",
+     xlab = "Predicted Probability",
      ylab = "")
 par(las = 0)
 mtext("Truth", 2, 5.5)
@@ -76,12 +76,12 @@ points(p, d$callback + noise / 5,
        pch = 20)
 axis(1)
 at <- seq(0, 1, length.out = 6)
-labels <- c("0 (no callback)",
+labels <- c("0 (No Callback)",
             "0.2  ",
             "0.4  ",
             "0.6  ",
             "0.8  ",
-            "1 (callback)")
+            "1 (Callback)")
 axis(2, at, labels)
 g1 <- lm(d$callback ~ ns(p, ns1))
 p  <- seq(min(p), max(p), length.out = 100)
@@ -130,7 +130,7 @@ plot(p, d$callback + noise / 5,
      xlim = 0:1,
      ylim = c(-0.07, 1.07),
      axes = FALSE,
-     xlab = "Predicted probability",
+     xlab = "Predicted Probability",
      ylab = "")
 par(las = 0)
 mtext("Truth", 2, 5.5)
@@ -148,12 +148,12 @@ points(p, d$callback + noise / 5,
        pch = 20)
 axis(1)
 at <- seq(0, 1, length.out = 6)
-labels <- c("0 (no callback)",
+labels <- c("0 (No Callback)",
             "0.2  ",
             "0.4  ",
             "0.6  ",
             "0.8  ",
-            "1 (callback)")
+            "1 (Callback)")
 axis(2, at, labels)
 eps <- 1e-4
 bucket_breaks <- quantile(p, seq(0, 1, 0.01))

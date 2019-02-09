@@ -368,10 +368,11 @@ of the differences.\footnotemark{}
   The histogram of the data doesn't show any notable skew.}
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.65\textwidth]{ch_inference_for_means/figures/run10SampTimeHistogram/run17SampTimeHistogram} 
-\caption{A histogram of \var{time} for the sample Cherry Blossom Race data.}
-\label{run10SampTimeHistogram}
+  \centering
+  \Figures{0.65}{run10SampTimeHistogram}{run17SampTimeHistogram} 
+  \caption{A histogram of \var{time} for the sample
+      Cherry Blossom Race data.}
+  \label{run10SampTimeHistogram}
 \end{figure}
 
 With independence satisfied and slight skew not a concern for this large of a sample, we can proceed with performing a hypothesis test using the $t$-distribution.
@@ -480,13 +481,13 @@ Using differences between paired observations
 is a common and useful way to analyze paired data.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/textbooksF18/diffInTextbookPricesF18}
-\caption{Histogram of the difference in price for
-    each book sampled.
-    These data are very strongly skewed.
-    \index{skew!example: very strong}}
-\label{diffInTextbookPricesF18}
+  \centering
+  \Figures{0.7}{textbooksF18}{diffInTextbookPricesF18}
+  \caption{Histogram of the difference in price for
+      each book sampled.
+      These data are very strongly skewed.
+      \index{skew!example: very strong}}
+  \label{diffInTextbookPricesF18}
 \end{figure}
 
 \begin{exercisewrap}
@@ -803,10 +804,16 @@ A data set called \data{ncbirths} represents a random sample of 150 cases of mot
 \end{figure}
 
 \begin{figure}[hhh]
-\centering
-\includegraphics[width=0.63\textwidth]{ch_inference_for_means/figures/babySmokePlotOfTwoGroupsToExamineSkew/babySmokePlotOfTwoGroupsToExamineSkew}
-\caption{The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke. The distributions exhibit moderate-to-strong and strong~skew, respectively.\index{skew!example: strong}}
-\label{babySmokePlotOfTwoGroupsToExamineSkew}
+  \centering
+  \Figure{0.63}{babySmokePlotOfTwoGroupsToExamineSkew}
+  \caption{The top panel represents birth weights for infants
+      whose mothers smoked.
+      The bottom panel represents the birth weights for
+      infants whose mothers who did not smoke.
+      The distributions exhibit moderate-to-strong and
+      strong~skew, respectively.%
+      \index{skew!example: strong}}
+  \label{babySmokePlotOfTwoGroupsToExamineSkew}
 \end{figure}
 
 \begin{examplewrap}
@@ -1459,10 +1466,14 @@ Sample SD ($s_i$) & 0.043 & 0.038 & 0.038 \\
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{ch_inference_for_means/figures/mlbANOVA/mlbANOVABoxPlot}
-\caption{Side-by-side box plot of the on-base percentage for \mlbN{} players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern.}
-\label{mlbANOVABoxPlot}
+  \centering
+  \Figures{0.7}{mlbANOVA}{mlbANOVABoxPlot}
+  \caption{Side-by-side box plot of the on-base percentage
+      for \mlbN{} players across four groups.
+      There is one prominent outlier visible in the infield
+      group, but with 154 observations in the infield group,
+      this outlier is not a concern.}
+  \label{mlbANOVABoxPlot}
 \end{figure}
 
 \begin{examplewrap}
@@ -1685,10 +1696,11 @@ $s_i$		& 13.9	& 13.8	& 13.1 \\
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.72\textwidth]{ch_inference_for_means/figures/classData/classDataSBSBoxPlot}
-\caption{Side-by-side box plot for the first midterm scores in three different  lectures of the same course.}
-\label{classDataSBSBoxPlot}
+  \centering
+  \Figures{0.72}{classData}{classDataSBSBoxPlot}
+  \caption{Side-by-side box plot for the first midterm
+      scores in three different  lectures of the same course.}
+  \label{classDataSBSBoxPlot}
 \end{figure}
 
 \begin{exercisewrap}

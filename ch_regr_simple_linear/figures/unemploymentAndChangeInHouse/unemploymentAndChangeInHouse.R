@@ -4,7 +4,8 @@ library(openintro)
 d <- midterms_house
 
 myPDF("unemploymentAndChangeInHouse.pdf", 7.2, 4.2,
-      mar = c(3.2, 5, 0.5, 0.5))
+      mar = c(3.2, 5.3, 0.5, 0.5),
+      mgp = c(3.2, 0.55, 0))
 th <- !d$year %in% c(1935, 1939)
 plot(d$unemp[th], d$house_change[th],
      # col = COL[ifelse(d$party[th] == "Republican", 4, 1)],
@@ -14,9 +15,9 @@ plot(d$unemp[th], d$house_change[th],
      axes = FALSE,
      type = 'n',
      xlab = '',
-     ylab = paste0("Percent change in seats of\n",
-                  "president's party in House of Rep."))
-mtext('Percent unemployment', 1, 2)
+     ylab = paste0("Percent Change in Seats of\n",
+                  "President's Party in House of Rep."))
+mtext('Percent Unemployment', 1, 2)
 abline(h = seq(-100, 100, 10), col = COL[7, 3], lwd = 2)
 abline(h = seq(-105, 100, 10), col = COL[7, 3], lwd = 0.7)
 abline(v = seq(-100, 100, 4), col = COL[7, 3], lwd = 2)

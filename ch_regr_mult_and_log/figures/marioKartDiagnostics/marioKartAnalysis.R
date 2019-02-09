@@ -53,7 +53,7 @@ myPDF("mkDiagResHist.pdf", width, 0.7 * height)
 histPlot(e,
     breaks = 12,
     xlab = "Residuals",
-    ylab = "Count",
+    ylab = "Frequency",
     col = COL[1],
     axes = FALSE)
 axis(1, pretty(e))
@@ -64,7 +64,7 @@ dev.off()
 myPDF("mkDiagnosticInOrder.pdf", width, 0.8 * height,
       mgp = c(2.5, 0.6, 0))
 plot(e,
-     xlab = "Order of collection",
+     xlab = "Order of Collection",
      ylab = "Residuals",
      axes = FALSE)
 axis(1)
@@ -84,10 +84,10 @@ dev.off()
 myPDF("mkDiagnosticEvsF.pdf", 0.9 * width, 0.9 * height,
       mgp = c(2.5, 0.6, 0))
 plot(f, e,
-     xlab = "Fitted values",
+     xlab = "Fitted Values",
      ylab = "Residuals",
      axes = FALSE)
-axis(1)
+AxisInDollars(1, seq(35, 65, 5))
 AxisInDollars(2, seq(-10, 10, 10))
 rect(-10, -50, 100, 50,
      col = COL[7, 3])
@@ -106,10 +106,10 @@ dev.off()
 myPDF("mkDiagnosticEvsAbsF.pdf", width, 0.9 * height,
       mgp = c(2.5, 0.6, 0))
 plot(f, abs(e),
-     xlab = "Fitted values",
-     ylab = "Absolute value of residuals",
+     xlab = "Fitted Values",
+     ylab = "Absolute Value of Residuals",
      axes = FALSE)
-axis(1)
+AxisInDollars(1, seq(35, 65, 5))
 AxisInDollars(2, seq(-10, 10, 5))
 rect(-10, -50, 100, 50,
      col = COL[7,3])
@@ -198,7 +198,7 @@ box()
 
 par(mar = c(3.1, 3.1, 1.2, 0.5))
 plot(d$wheels, e,
-     xlab = "Number of wheels",
+     xlab = "Number of Wheels",
      ylab = "Residuals",
      axes = FALSE)
 axis(1)
