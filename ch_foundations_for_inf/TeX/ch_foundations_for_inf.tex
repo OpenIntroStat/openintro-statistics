@@ -37,34 +37,142 @@
 
 \index{data!solar survey|(}
 
-\newcommand{\pewsolarpollsize}{1000}
-\newcommand{\pewsolarpollprop}{0.887}
-\newcommand{\pewsolarpollpropcomplement}{0.113}
-\newcommand{\pewsolarpollpercent}{88.7\%}
-\newcommand{\pewsolarpollpercentcomplement}{11.3\%}
-\newcommand{\pewsolarpollcount}{887}
-\newcommand{\pewsolarpollcountcomplement}{113}
-\newcommand{\pewsolarpollse}{0.0100}
+Companies such as Pew Research frequently conduct
+polls as a way to understand the state of public opinion
+or knowledge on many topics, including politics,
+scientific understanding, brand recognition, and more.
+%These polls typically reach a sample of 300 to
+%10,000 people.
+The ultimate goal in taking a poll is generally to use
+the responses to estimate the opinion or knowledge of the
+broader population.
 
-Pew Research conducted a poll of 1000
-American adults' attitudes towards different forms of energy.
-They found that \pewsolarpollpercent{} of respondents
-favored expanding
-solar energy.
-In this case, Pew Research worked to ensure
-that the sample was representative.
-However, a~natural question remains:
-\begin{quote}
-\em
-If the poll was based on only a thousand people,
-how reliable is it?
-\end{quote}
-If we took another poll, we wouldn't get the exact same answer.
-Maybe we'd get 90\%, or perhaps even 80\%.
-Ultimately, it's unlikely that the actual proportion of
-Americans who support expanding solar energy is
-\emph{exactly}~\pewsolarpollpercent{}, but the data suggest
-the actual support is close to \pewsolarpollpercent{}.
+%These polls are often based on 500 to 5000 people,
+%and a polling company such as Pew would use this sample
+%to estimate the opinions of the broader population.
+%For example, Pew frequently conducts a poll on about
+%1000 adults about their feelings about the direction
+%of their country.
+%In early 2019, they found that 
+%Through this and future sections,
+%we'll use some new notation and terminology:
+%\begin{itemize}
+%\item
+%    For all inference problems concerning proportions,
+%    the population proportion will be written as $p$.
+%    When discussing a population summary such as $p$,
+%    it is common to refer to the value as a population
+%    \term{parameter}.
+%    In the solar survey,
+%    $p$ represents the proportion of \emph{all}
+%    American adults who support solar energy.
+%\item Using Pew Research sample, we can estimate that the proportion
+%    of American adults who support expanding solar energy is
+%    somewhere near \pewsolarpollpercent{}.
+%    This is called the \term{sample proportion},
+%    and it gets a special label of $\hat{p}$
+%    (spoken as \emph{p-hat}).
+%\item The size of a sample will generally
+%    be denoted by $n$. In the case of this Pew Research poll,
+%    the \term{sample size} is $n = \pewsolarpollsize{}$.
+%\end{itemize}
+
+
+
+%In the United States, those 1000 adults would be used
+%to generalize out to a population of about \emph{250 million}
+%American adults.
+%A~natural question arises:
+%\begin{quote}
+%\em
+%If the poll was based on only a thousand people,
+%how reliable is it?
+%\end{quote}
+%For instance, if we took another poll,
+%we wouldn't get the exact same answer,
+%so how trustworthy is the result?
+%This is the topic of this first inference section,
+%where we hope to understand how variable estimates
+%are from one sample to the next,
+%which will give us an idea of how much trust we should
+%(or shouldn't) put into such polls.
+
+
+\subsection{Point estimates and error}
+
+\index{point estimate|(}
+
+Suppose a poll suggested the US President's approval
+rating is 45\%.
+We would consider 45\% to be a
+\term{point estimate}\index{estimate} of the approval
+rating we might see if we collected responses from the
+entire population.
+%\footnote{When we collect responses from the
+%  entire population, it is called a \term{census}.
+%  It is often expensive to conduct a census,
+%  which is why we often instead take a sample.}
+This entire-population response proportion is
+generally referred to as the \term{parameter}
+of interest\index{parameter of interest},
+and when the parameter is a proportion,
+it is often denoted by $p$,
+%We typically estimate the parameter by collecting
+%information from a sample of the population;
+%we compute the observed proportion in the sample;
+%also called a \term{point estimate},
+and we often refer to the sample proportion as $\hat{p}$
+(pronounced \emph{p-hat}\footnote{Not to be confused with
+  \emph{phat}, the slang term used for something cool,
+  like this book.}).
+\Comment{Joke in the footnote okay?}
+Unless we collect responses from every individual in the sample,
+$p$ remains unknown, and we use $\hat{p}$ as our estimate of~$p$.
+
+The difference we observe from the poll versus
+the parameter is called the \term{error} in the estimate.
+%There are other considerations that can influence
+%the error error in a sample's estimate can be influenced
+%by other factors, too.
+%it is not the complete story.
+%For this reason, we will also find it convenient to track
+%the \term{sample size}, which is generally referred to using
+%the letter $n$.
+Generally, the error consists of two aspects:
+sampling error and bias.
+%Throughout the rest of this section,
+%we discuss what a point estimate like
+%\pewsolarpollpercent{} represents
+%and the sampling uncertainty associated with such an estimate.
+%If we take a simple random sample of 1000 American adults
+%and ask them for their opinion about solar energy,
+%will we tend to get a result close to the
+%\pewsolarpollpercent{} value,
+%or might we see observations far from the truth?
+
+
+%
+%Suppose that we know that \pewsolarpollpercent{}
+%of American adults 
+%
+%American adults' attitudes towards different forms of energy.
+%They found that \pewsolarpollpercent{} of respondents
+%favored expanding
+%solar energy.
+%In this case, Pew Research worked to ensure
+%that the sample was representative.
+%However, a~natural question remains:
+%\begin{quote}
+%\em
+%If the poll was based on only a thousand people,
+%how reliable is it?
+%\end{quote}
+%If we took another poll, we wouldn't get the exact same answer.
+%Maybe we'd get 90\%, or perhaps even 80\%.
+%Ultimately, it's unlikely that the actual proportion of
+%Americans who support expanding solar energy is
+%\emph{exactly}~\pewsolarpollpercent{}, but the data suggest
+%the actual support is close to \pewsolarpollpercent{}.
 %This type of uncertainty --
 %the variability in the estimate from one sample to the next --
 %is called the \term{sampling error},
@@ -81,52 +189,17 @@ the actual support is close to \pewsolarpollpercent{}.
 %\pewsolarpollpercent{}, but the data suggest the actual
 %support is close to \pewsolarpollpercent{}.
 
-In this section, we discuss what a point estimate like
-\pewsolarpollpercent{} represents
-and the sampling uncertainty associated with such an estimate.
-We'll also use some new notation and terminology:
-\begin{itemize}
-\item
-    For all inference problems concerning proportions,
-    the population proportion will be written as $p$.
-    When discussing a population summary such as $p$,
-    it is common to refer to the value as a population
-    \term{parameter}.
-    In the solar survey,
-    $p$ represents the proportion of \emph{all}
-    American adults who support solar energy.
-\item Using Pew Research sample, we can estimate that the proportion
-    of American adults who support expanding solar energy is
-    somewhere near \pewsolarpollpercent{}.
-    This is called the \term{sample proportion},
-    and it gets a special label of $\hat{p}$
-    (spoken as \emph{p-hat}).
-\item The size of a sample will generally
-    be denoted by $n$. In the case of this Pew Research poll,
-    the \term{sample size} is $n = \pewsolarpollsize{}$.
-\end{itemize}
 
-\subsection{Point estimates and error}
-
-\index{point estimate|(}
-
-A sample proportion $\hat{p}$ is called
-the \term{point estimate} of the parameter $p$,
-since it is based on the sample.
-It is our single best estimate of $p$.
-
-The Pew Research poll is a point estimate
-of the actual proportion
-of American adults who support expanding solar energy.
-This estimate of \pewsolarpollpercent{} is unlikely
-to be perfect,
-and it's quite possible for the population proportion
-to be a little lower or a little higher than the
-sample proportion.
-The difference between a point estimate and
-the parameter is called the estimate's \term{error}.
-The error consists of two aspects:
-sampling error and bias.
+%The Pew Research poll is a point estimate
+%of the actual proportion
+%of American adults who support expanding solar energy.
+%This estimate of \pewsolarpollpercent{} is unlikely
+%to be perfect,
+%and it's quite possible for the population proportion
+%to be a little lower or a little higher than the
+%sample proportion.
+%The difference between a point estimate and
+%the parameter is called the estimate's \term{error}.
 
 \termsub{Sampling error}{sampling error},
 sometimes called \emph{\hiddenterm{sampling uncertainty}},
@@ -135,18 +208,29 @@ one sample to the next.
 For instance, the estimate from one sample might be 1\% too low
 while in another it may be 3\% too high.
 Much of statistics, including much of this book,
-is focused on understanding and quantifying sampling error.
+is focused on understanding and quantifying sampling error,
+and we will find it useful to consider a sample's size
+to help us quantify this error;
+the \term{sample size} is often represented by the letter $n$.
+%Intuitively, a larger sample would tend to produce a more
+%accurate estimate than what we would
+%obtain from a smaller sample.
+%This is exactly the ref
+%estimate from a smaller sample,
+%and this is generally true.
 
 \termsub{Bias}{bias} describes a systematic tendency
 to over- or under-estimate the true population value.
-For example, if we were taking a student poll about a
-new college stadium, we'd probably get a biased estimate of the
-stadium's level of student support by wording the question as,
+For~example, if we were taking a student poll asking
+about support for a new college stadium, we'd probably
+get a biased estimate of the stadium's level of student
+support by wording the question as,
 \emph{Do you support your school by supporting funding
   for the new stadium?}
-We try to minimize bias through thoughtful careful data
-collection procedures, which is the topic of many books
-and courses.
+We try to minimize bias through thoughtful data
+collection procedures, which were discussed in
+Chapter~\ref{ch_intro_to_data}
+and are the topic of many other books.
 
 %While bias is an incredibly important topic,
 %it's forms are so varied that 
@@ -175,33 +259,67 @@ and courses.
 \subsection{Understanding the variability of a point estimate}
 \label{simulationForUnderstandingVariabilitySection}
 
-We want to understand \emph{how does the
-sample proportion $\hat{p}$ behave when the true population
-proportion is about \pewsolarpollprop{}}.\footnote{Note:
-  \pewsolarpollpercent{} written as a proportion would be
-  \pewsolarpollprop{}.
-  It is common to switch between proportion and percent.}
-We could
-run the survey again to see how consistent the results
-are, but who has the time and money for that? Instead,
-we can investigate the properties of $\hat{p}$ using simulations.
+\newcommand{\pewsolarpollsize}{1000}
+\newcommand{\pewsolarparprop}{0.88}
+\newcommand{\pewsolarparpropcomplement}{0.12}
+\newcommand{\pewsolarparpercent}{88\%}
+\newcommand{\pewsolarparpercentcomplement}{12\%}
+\newcommand{\pewsolarpollprop}{0.887}
+\newcommand{\pewsolarpollpropcomplement}{0.113}
+\newcommand{\pewsolarpollpercent}{88.7\%}
+\newcommand{\pewsolarpollpercentcomplement}{11.3\%}
+\newcommand{\pewsolarpollcount}{887}
+\newcommand{\pewsolarpollexpcount}{880}
+\newcommand{\pewsolarpollcountcomplement}{113}
+\newcommand{\pewsolarpollexpcountcomplement}{120}
+\newcommand{\pewsolarpollse}{0.010}
 
-To simulate the sample, we'll suppose that the population
-proportion is exactly \pewsolarpollpercent{}.
+Suppose the proportion of American adults who support
+the expansion of solar energy is $p = \pewsolarparprop{}$,
+which is our parameter of interest.\footnote{We haven't
+  actually conducted a census to measure this value perfectly.
+  However, a very large sample has suggested the actual
+  level of support is about \pewsolarparpercent{}.}
+If we were to take a poll of \pewsolarpollsize{} American adults
+on this topic, the estimate would not be perfect,
+but how close might we expect the sample proportion
+in the poll would be to \pewsolarparpercent{}?
+We want to understand, \emph{how does the
+sample proportion $\hat{p}$ behave when the true population
+proportion is \pewsolarparprop{}}.\footnote{Note:
+  \pewsolarparpercent{} written as a proportion would be
+  \pewsolarparprop{}.
+  It is common to switch between proportion and percent.}
+Let's find out!
+We can simulate responses we would get from a simple
+random sample of 1000 American adults,
+which is only possible because we know the actual
+support expanding solar energy to be \pewsolarparprop{}.
+%
+%
+%We could
+%run the survey again to see how consistent the results
+%are, but who has the time and money for that? Instead,
+%we can investigate the properties of $\hat{p}$ using simulations.
+%
+%To simulate the sample, we'll suppose that the population
+%proportion is exactly \pewsolarpollpercent{}.
 %Now, we know
 %the population proportion isn't exactly \pewsolarpollpercent\%,
 %but we do expect it to be close, so this simulation will offer
 %us some insights about the property of $\hat{p}$.
 %If we took a random sample
 %from this population, how accurate would the point estimate be?
-Here's how we might simulate it:
+Here's how we might go about constructing such a simulation:
+%simulate it:
 \begin{enumerate}
 \item There were about 250 million American adults in 2018.
     On 250 million pieces of paper, write ``support''
-    on \pewsolarpollpercent{} of them and ``not'' on
-    the other \pewsolarpollpercentcomplement{}.
+    on \pewsolarparpercent{} of them and ``not'' on
+    the other \pewsolarparpercentcomplement{}.
 \item Mix up the pieces of paper and pull out \pewsolarpollsize{}
-    pieces to represent our sample of 1000 American adults.
+    pieces to represent our sample of \pewsolarpollsize{}
+    American adults.
 \item Compute the fraction of the sample that say ``support''.
 \end{enumerate}
 Any volunteers to conduct this simulation? Probably not. Running
@@ -211,22 +329,23 @@ using computer code; we've written a short program in
 Figure~\ref{solarPollSimulationCodeR}
 in case you are curious what the computer code looks like.
 In this simulation, the sample gave a point estimate of
-$\hat{p}_1 = 0.901$. We~know the population proportion
-for the simulation was $p = \pewsolarpollprop{}$, so we know
-the estimate had an error of +0.014.
+$\hat{p}_1 = 0.894$. We~know the population proportion
+for the simulation was $p = \pewsolarparprop{}$, so we know
+the estimate had an error of
+$0.894 - \pewsolarparprop{} = \text{+0.014}$.
 
 %\setlength\textwidth{\officialtextwidth-10mm}
-\begin{figure}
+\begin{figure}[h]
 \texttt{\# 1.\ Create a set of 250 million entries,
-where 88.7\% of them are "support" \\
-\#\ \ \ \ and 11.3\% are "not". \\
+where \pewsolarparpercent{} of them are "support" \\
+\#\ \ \ \ and \pewsolarparpercentcomplement{} are "not". \\
 pop\us{}size <- 250000000 \\
-possible\_entries <- c(rep("support", \pewsolarpollprop{}*pop\us{}size), rep("not", \pewsolarpollpropcomplement{}*pop\us{}size))\\
+possible\_entries <- c(rep("support", \pewsolarparprop{} * pop\us{}size), rep("not", \pewsolarparpropcomplement{} * pop\us{}size))
+\\[3mm]
 \# 2.\ Sample \pewsolarpollsize{} entries without replacement. \\
-sampled\_entries <- sample(possible\_entries, size = \pewsolarpollsize{}) \\
-\# 3.\ Compute p-hat:
-count the number that are "support", then divide
-by \\
+sampled\_entries <- sample(possible\_entries, size = \pewsolarpollsize{}) \\[3mm]
+\# 3.\ Compute p-hat:~count the number that are "support",
+then divide by \\
 \#\ \ \ \ the sample size. \\
 sum(sampled\_entries == "support") / \pewsolarpollsize{}}
 \caption{For those curious, this is code for
@@ -244,23 +363,28 @@ One simulation isn't enough to get a great sense of the
 distribution of estimates we might expect in the simulation,
 so we should run more simulations.
 In a second simulation,
-we get $\hat{p}_2 = 0.892$, which has an error of~+0.005.
-In another, $\hat{p}_3 = 0.885$ for an error of -0.002. And in another,
-an estimate of $\hat{p}_4 = 0.866$ with an error of -0.021.
+we get $\hat{p}_2 = 0.885$, which has an error of~+0.005.
+In another, $\hat{p}_3 = 0.878$ for an error of -0.002.
+And in another,
+an estimate of $\hat{p}_4 = 0.859$ with an error of -0.021.
 With the help of a computer, we've run the simulation 10,000 times
 and created a histogram of the results from all 10,000 simulations
-in Figure~\ref{sampling_10k_prop_887p}. This
+in Figure~\ref{sampling_10k_prop_88p}. This
 distribution of sample proportions is called a
 \term{sampling distribution}.
 We can characterize this sampling distribution as follows:
 \begin{description}
+\setlength{\itemsep}{0mm}
 \item[Center.]
     The center of the distribution is
-    $\bar{x}_{\hat{p}} = \pewsolarpollprop{}0$,
-    which is the same as the population proportion.
-    That~is, we see that the sample proportion is an
-    \termsub{unbiased estimate}{unbiased}
-    of the population proportion.
+    $\bar{x}_{\hat{p}} = \pewsolarparprop{}0$,
+    which is the same as the parameter.
+    Notice that the simulation mimicked a simple random sample
+    of the population, which is a straightforward sampling
+    strategy that helps avoid sampling bias.
+%    That~is, we see that the sample proportion is an
+%    \termsub{unbiased estimate}{unbiased}
+%    of the population proportion.
 \item[Spread.]
     The standard deviation of the distribution
     is $s_{\hat{p}} = \pewsolarpollse{}$.
@@ -275,8 +399,9 @@ We can characterize this sampling distribution as follows:
     The distribution is symmetric and bell-shaped,
     and it \emph{resembles a normal distribution}.
 \end{description}
-These findings are very encouraging! When the population
-proportion is $p = \pewsolarpollprop{}$ and the sample size is
+These findings are encouraging!
+When the population
+proportion is $p = \pewsolarparprop{}$ and the sample size is
 $n = \pewsolarpollsize{}$,
 the sample proportion $\hat{p}$ tends to give
 a pretty good estimate
@@ -286,23 +411,25 @@ that the histogram resembles a normal distribution.
 
 \begin{figure}
    \centering
-   \Figure{0.8}{sampling_10k_prop_887p}
+   \Figure{0.8}{sampling_10k_prop_88p}
+   %\Figure{0.8}{sampling_10k_prop_887p}
    \caption{A histogram of 10,000 sample proportions, where each
        sample is taken from a population where the population
-       proportion is \pewsolarpollprop{} and the sample size is
+       proportion is \pewsolarparprop{} and the sample size is
        $n = \pewsolarpollsize{}$.}
-   \label{sampling_10k_prop_887p}
+   \label{sampling_10k_prop_88p}
+   %\label{sampling_10k_prop_887p}
 \end{figure}
 
 \begin{onebox}{Sampling distributions are
     never observed, but we keep them in mind}
   In real-world applications, we never actually observe the
   sampling distribution, yet it is useful to always think of
-  the sample proportion as coming from such a hypothetical
+  a point estimate as coming from such a hypothetical
   distribution.
-  Understanding the sampling distribution will help us
-  characterize and make sense of the individual point
-  estimate that we do observe.
+  \mbox{Understanding} the sampling distribution will help us
+  characterize and make sense of the point estimates that we
+  do observe.
 \end{onebox}
 
 \begin{examplewrap}
@@ -312,15 +439,16 @@ or smaller than when we used $n = \pewsolarpollsize{}$?}
 \label{smallerSampleWhatHappensToPropErrorExercise}
 Intuitively, it seems like more data is better
 than less data, and generally that is correct! The typical error
-when $p = \pewsolarpollprop{}$ and $n = 50$ would be larger
+when $p = \pewsolarparprop{}$ and $n = 50$ would be larger
 than the error we would expect when $n = \pewsolarpollsize{}$.
 \end{nexample}
 \end{examplewrap}
 
 %\noindent
 Example~\ref{smallerSampleWhatHappensToPropErrorExercise}
-highlights an important property: a bigger sample
-tends to provide a more precise point estimates than a smaller sample.
+highlights an important property we will see again and again:
+a bigger sample tends to provide a more precise point estimates
+than a smaller sample.
 
 \index{point estimate|)}
 
@@ -328,7 +456,7 @@ tends to provide a more precise point estimates than a smaller sample.
 \subsection{Central Limit Theorem}
 
 The distribution in
-Figure~\ref{sampling_10k_prop_887p} looks an awful lot like
+Figure~\ref{sampling_10k_prop_88p} looks an awful lot like
 a normal distribution. That is no anomaly; it~is the result
 of a general principle called the
 \index{Central Limit Theorem!proportion|textbf}
@@ -366,9 +494,9 @@ be sufficiently large such that $np \geq 10$ and $n(1-p) \geq 10$.
 \begin{examplewrap}
 \begin{nexample}{Earlier we estimated the mean and standard
 error of $\hat{p}$ using simulated data when
-$p = \pewsolarpollprop{}$ and $n = \pewsolarpollsize{}$.
+$p = \pewsolarparprop{}$ and $n = \pewsolarpollsize{}$.
 Confirm that the distribution is approximately
-normal.}\label{sample_p887_n1000_confirm_normal}
+normal.}\label{sample_p88_n1000_confirm_normal}
 \begin{description}
 \item[Independence.] There are $n = \pewsolarpollsize{}$
     observations for each
@@ -383,11 +511,11 @@ normal.}\label{sample_p887_n1000_confirm_normal}
     is sufficiently large by checking the success-failure condition
     and confirming the two calculated values are greater than~10:
     \begin{align*}
-    np &= \pewsolarpollsize{} \times \pewsolarpollprop{}
-        = \pewsolarpollcount{}
+    np &= \pewsolarpollsize{} \times \pewsolarparprop{}
+        = \pewsolarpollexpcount{}
         \geq 10
-    &n(1-p) &= \pewsolarpollsize{} \times (1 - \pewsolarpollprop{})
-        = \pewsolarpollcountcomplement{}
+    &n(1-p) &= \pewsolarpollsize{} \times (1 - \pewsolarparprop{})
+        = \pewsolarpollexpcountcomplement{}
         \geq 10
     \end{align*}
 \end{description}
@@ -433,18 +561,19 @@ additional check as optional.
 \begin{examplewrap}
 \begin{nexample}{Compute the theoretical mean and standard error
 of $\hat{p}$ when
-$p = \pewsolarpollprop{}$ and $n = \pewsolarpollsize{}$,
+$p = \pewsolarparprop{}$ and $n = \pewsolarpollsize{}$,
 according to the
-Central Limit Theorem.}\label{sample_p887_n1000_mean_se}
+Central Limit Theorem.}\label{sample_p88_n1000_mean_se}
 The mean of the $\hat{p}$'s is simply the population proportion:
-$\mu_{\hat{p}} = \pewsolarpollprop{}$.
+$\mu_{\hat{p}} = \pewsolarparprop{}$.
 
 The calculation of the standard error of $\hat{p}$ uses
 the following formula:
 \begin{align*}
 SE_{\hat{p}}
     = \sqrt{\frac{p (1 - p)}{n}}
-    = \sqrt{\frac{\pewsolarpollprop{} (1 - \pewsolarpollprop{})}{1000}}
+    = \sqrt{\frac{\pewsolarparprop{} (1 - \pewsolarparprop{})}
+        {\pewsolarpollsize{}}}
     = \pewsolarpollse{}
 \end{align*}
 \end{nexample}
@@ -453,15 +582,16 @@ SE_{\hat{p}}
 \begin{examplewrap}
 \begin{nexample}{Estimate how frequently the sample proportion
 $\hat{p}$ should be within 0.02 (2\%) of the population value,
-$p = \pewsolarpollprop{}$. Based on
-Examples~\ref{sample_p887_n1000_confirm_normal}
-and~\ref{sample_p887_n1000_mean_se}, we know that the distribution is
-$N(\mu_{\hat{p}} = \pewsolarpollprop{}, SE_{\hat{p}} = \pewsolarpollse{})$.}
+$p = \pewsolarparprop{}$. Based on
+Examples~\ref{sample_p88_n1000_confirm_normal}
+and~\ref{sample_p88_n1000_mean_se},
+we know that the distribution is approximately
+$N(\mu_{\hat{p}} = \pewsolarparprop{}, SE_{\hat{p}} = \pewsolarpollse{})$.}
 \label{sampling_10k_prop_887p-prop_from_867_to_907}
 After so much practice in Section~\ref{normalDist},
 this normal distribution example will hopefully feel familiar!
 We would like to understand the fraction of $\hat{p}$'s
-between 0.867 and 0.907:
+between 0.86 and 0.90:
 \begin{center}
 \includegraphics[width=60mm]{ch_foundations_for_inf/figures/p-hat_from_867_and_907/p-hat_from_867_and_907}
 \end{center}
@@ -469,16 +599,20 @@ With $\mu_{\hat{p}} = \pewsolarpollprop{}$ and
 $SE_{\hat{p}} = \pewsolarpollse{}$,
 we can compute the Z-score for both the left and right cutoffs:
 \begin{align*}
-Z_{0.867} &= \frac{0.867 - \pewsolarpollprop{}}{\pewsolarpollse{}} = -2
-&Z_{0.907} &= \frac{0.907 - \pewsolarpollprop{}}{\pewsolarpollse{}} = 2
+Z_{0.86}
+  &= \frac{0.86 - \pewsolarparprop{}}{\pewsolarpollse{}}
+  = -2
+&Z_{0.90}
+  &= \frac{0.90 - \pewsolarparprop{}}{\pewsolarpollse{}}
+  = 2
 \end{align*}
 We can use either statistical software, a graphing calculator,
 or a table to find the areas to the tails, and in any case we
 will find that they are each 0.0228. The total tail areas are
 $2 \times 0.0228 = 0.0456$, which leaves the shaded area of
 0.9544. That is, about 95.44\% of the sampling distribution
-in Figure~\ref{sampling_10k_prop_887p} is within $\pm0.02$
-of the simulation population proportion, $p = \pewsolarpollprop{}$.
+in Figure~\ref{sampling_10k_prop_88p} is within $\pm0.02$
+of the population proportion, $p = \pewsolarparprop{}$.
 \end{nexample}
 \end{examplewrap}
 
@@ -502,37 +636,45 @@ $SE_{\hat{p}} = \sqrt{\frac{p (1 - p)}{n}}$.\footnotemark
 
 \subsection{Applying the Central Limit Theorem to a real-world setting}
 
-Think back to the 2018 poll where
-$\hat{p} = \pewsolarpollprop{}$ of American adults favored
-expanding solar energy. We might wonder: does the sample
-proportion from the poll approximately follow a normal
-distribution?
-We check the conditions from the Central Limit Theorem:
+We do not actually know the population proportion
+unless we conduct an expensive poll of all individuals
+in the population.
+Our earlier value of $p = 0.88$ was based on
+a Pew Research conducted a poll of \pewsolarpollsize{}
+American adults that found
+$\hat{p} = \pewsolarpollprop{}$ of them favored
+expanding solar energy.
+The researchers might have wondered:
+does the sample proportion from the poll approximately
+follow a normal distribution?
+We can the conditions from the Central Limit Theorem:
 \begin{description}
 \item[Independence.] The poll is a simple random sample of
     American adults, which means that the observations are
     independent.
 \item[Success-failure condition.] To check this condition,
     we need the population proportion, $p$, to check if both
-    $np$ and $n(1-p)$ are greater than 10. However, we do not
-    know the value of $p$; that's exactly why the pollsters
-    took a sample! In cases like these, we often use $\hat{p}$
+    $np$ and $n(1-p)$ are greater than 10.
+    However, we do not actually know $p$, which
+    is exactly why the pollsters would take a sample!
+    In cases like these, we often use $\hat{p}$
     as our next best way to check the success-failure condition:
     \begin{align*}
-    n\hat{p} &= \pewsolarpollsize{} \times \pewsolarpollprop{}
+    n\hat{p}
+        &= \pewsolarpollsize{} \times \pewsolarpollprop{}
         = \pewsolarpollcount{}
-    &n (1 - \hat{p}) &= \pewsolarpollsize{} \times (1 - \pewsolarpollprop{})
+    &n (1 - \hat{p})
+        &= \pewsolarpollsize{} \times (1 - \pewsolarpollprop{})
         = \pewsolarpollcountcomplement{}
     \end{align*}
-    While we cannot check the condition with $p$,
-    the sample proportion $\hat{p}$ acts as
-    a reasonable substitute, and each value is well
-    above the minimums of 10.
+    The sample proportion $\hat{p}$ acts as
+    a reasonable substitute for $p$ during this check,
+    and each value in this case is well above the minimum of 10.
 \end{description}
 
 This \term{substitution approximation} of using $\hat{p}$ in
-place of $p$ will also be useful when computing the standard error
-of the sample proportion in many situations:
+place of $p$ is also useful when computing the standard error
+of the sample proportion:
 \begin{align*}
 SE_{\hat{p}}
     = \sqrt{\frac{p (1 - p)}{n}}
@@ -543,6 +685,13 @@ SE_{\hat{p}}
 \end{align*}
 This substitution technique is sometimes
 referred to as the ``\hiddenterm{plug-in principle}''.
+In this case, $SE_{\hat{p}}$ didn't change enough to
+be detected using only 3 decimal places
+versus when we completed the calculation with
+\pewsolarparprop{} earlier.
+The computed standard error tends to be reasonably stable
+even when observing slightly different proportions in one
+sample or another.
 
 
 \subsection{More details regarding the Central Limit Theorem}
@@ -642,9 +791,6 @@ This single sampling distribution does not show that
 the success-failure condition is the perfect guideline,
 but we have found that the guideline did correctly
 identify that the normal distribution might not be appropriate.
-
-\Comment{Ensure the two full-page figures are on pages
-    facing each other for the final print version.}
 
 We can complete several additional simulations,
 shown in
@@ -786,7 +932,7 @@ from the simulation in
 Section~\ref{simulationForUnderstandingVariabilitySection},
 where 24 of the resulting confidence intervals contain
 the simulation's population proportion of
-$p = \pewsolarpollprop{}$, and one interval does not.
+$p = \pewsolarparprop{}$, and one interval does not.
 
 \begin{figure}
    \centering
@@ -795,7 +941,7 @@ $p = \pewsolarpollprop{}$, and one interval does not.
        intervals from the simulations in
        Section~\ref{simulationForUnderstandingVariabilitySection}.
        These intervals are shown relative to the population
-       proportion $p = \pewsolarpollprop{}$.
+       proportion $p = \pewsolarparprop{}$.
        Only~1 of these~25
        intervals did not capture the population
        proportion, and this interval has been bolded.}
@@ -804,9 +950,10 @@ $p = \pewsolarpollprop{}$, and one interval does not.
 
 \begin{examplewrap}
 \begin{nexample}{In Figure~\ref{95PercentConfidenceInterval},
-one interval does not contain $p = \pewsolarpollprop{}$.
-Does this imply that the population proportion cannot be
-$p = \pewsolarpollprop{}$?}
+one interval does not contain $p = \pewsolarparprop{}$.
+Does this imply that the population proportion used
+in the simulation could not have been
+$p = \pewsolarparprop{}$?}
 Just as some observations naturally
 occur more than 2~standard deviations
 from the mean, some point estimates will be more than
@@ -840,9 +987,11 @@ a 95\% confidence interval.
 
 \begin{examplewrap}
 \begin{nexample}{In Section~\ref{pointEstimates} we learned about
-    a poll where \pewsolarpollpercent{} of a random sample of
+    a Pew Research poll where
+    \pewsolarpollpercent{} of a random sample of
     \pewsolarpollsize{} American adults
-    supported expanding the role of solar power. Compute and
+    supported expanding the role of solar power.
+    Compute and
     interpret a 95\% confidence interval for the population
     proportion.} \label{95p_ci_for_pew_solar_support}
   We earlier confirmed that $\hat{p}$ follows a normal
