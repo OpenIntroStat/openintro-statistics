@@ -1983,7 +1983,9 @@ different.
 
 We will consider experiment data from a study that sought
 to understand the effect of race and sex on job application
-callback rates.
+callback rates;
+details of the study and a link to the data set may be
+found in Appendix~\ref{ch_regr_mult_and_log_data}.
 To evaluate which factors were important,
 job postings were identified in Boston and Chicago
 for the study,
@@ -1995,15 +1997,25 @@ experience and education details, and they used these
 characteristics to randomly generate the resumes.
 Finally, they randomly assigned a name to each resume,
 where the name would imply the applicant's sex and race.
-The first names used in this experiment were selected so that
-the names would predominantly be
-recognized as belonging to Black or White individuals.
+
+The first names that were used and randomly assigned
+in this experiment were selected so that they
+would predominantly be recognized as belonging
+to Black or White individuals;
+other races were not considered in this study.
+While no name would definitively be inferred as pertaining
+to a Black individual or to a White individual,
+the researchers conducted a survey to check for
+racial association of the names;
+names that did not pass this survey check were excluded
+from usage in the experiment.
+You can find the full set of names that did pass the
+survey test and were ultimately used in the study in
+Figure~\ref{resumeFirstName}.
 For example, Lakisha was a name that their survey indicated
 would be interpreted as a Black woman, while Greg was a name
 that would generally be interpreted to be associated with
 a White male.
-You can find the full set of names they used in
-Figure~\ref{resumeFirstName}.
 
 \begin{figure}[h]
 \centering\small
@@ -2407,7 +2419,7 @@ of this section.
   This positive coefficient reflects a positive gain
   in callback rate for resumes where the candidate's
   first name implied they were White.  
-  The data provide very strong evidence of racial bias
+  The data provide very strong evidence of racism
   by prospective employers that favors resumes where the
   first name is typically interpreted to be White.
 \end{nexample}
@@ -2542,7 +2554,7 @@ that collinearity it was not an issue.
 \end{examplewrap}
 
 What we've quantified in this section is alarming and disturbing.
-However, one aspect that makes this racial bias so difficult to
+However, one aspect that makes this racism so difficult to
 address is that the experiment, as well-designed as it is,
 cannot send us much signal about which employers are
 discriminating.
@@ -2703,7 +2715,7 @@ from a Black individual.
 It's unlikely that discrimination would stop there.
 
 Of course, discrimination can happen to anyone.
-Yet, discrimination against non-minority groups is
+Yet, discrimination against non-oppressed groups is
 considered to be much less impactful than
 the discrimination experienced by minorities.
 \emph{Why?}
@@ -2757,7 +2769,7 @@ the discrimination experienced by minorities.
 Example~\ref{sex_imbalance_leads_to_discrimination}
 highlights something profound:
 even if each demographic has the same degree of prejudice
-against the other demographic, minority groups
+against the other demographic, minority groups can
 experience those effects more frequently.
 Additionally, if we would complete a handful of examples
 like the one above with different numbers,
@@ -2774,6 +2786,54 @@ discriminate, the minority group would always encounter
 more discrimination, and the degree of that discrimination
 will be larger the greater the imbalance in the population.
 
+One considerable omission from the company example
+above is that discrimination can also happen for people
+from oppressed groups to discriminate against others
+within their own oppressed group.
+For an interesting study on this topic, please see
+\begin{quote}\em
+Milkman KL, Akinola M, Chugh D. 2015.
+What Happens Before?
+A Field Experiment Exploring How Pay and
+Representation Differentially Shape Bias
+on the Pathway Into Organizations.
+Journal of Applied Psychology, 100:6, p1678-1712.
+\end{quote}
+The paper's abstract summarizes the findings,
+and substantial detail of the analysis is provided
+within the paper.
+We've also made the data set available,
+which is noted in Appendix~\ref{ch_regr_mult_and_log_data}
+so that you may also explore it directly.
+\Comment{If we do not obtain the data from this study,
+  then need to delete the last sentence.}
+%That is, discrimination isn't generally symmetric,
+%which makes this topic all the more complex.
+%For example, a study published in 2015 performed an
+%experiment similar to the job discrimination experiment
+%we analyzed earlier, but in this case an email was sent
+%to each of 6,500 faculty members at top US universities.
+%The emails sent were from fictional prospective students
+%seeking to discuss research opportunities prior to applying
+%to a doctoral program.
+%The emails were identical, except for the name of the
+%fictional student sending the message was randomly assigned,
+%and each name used was chosen to suggest a specific race
+%and sex.
+%Generally, White males were more likely to receive replies.
+%What was most profound was that female faculty members
+%were also more likely to reply to male students than their
+%female students.
+%Similarly, faculty members who were from oppressed groups
+%favored white 
+%assistants than for male research assistants,
+%even though there was no difference in the fabricated
+%resumes;
+%this study was performed by surveying thousands of faculty
+%members, so while no faculty member could individually be
+%identified as being sexist, it was conclusive that the
+%females were being discriminated against in aggregate.
+
 %The 8\%-to-2\% is a direct result of the 80\%-to-20\% ratio
 %in Example~\ref{sex_imbalance_leads_to_discrimination}.
 %More generally, if 
@@ -2787,24 +2847,25 @@ prone to the negative impacts from discrimination
 than majority groups.
 While we will stand up to discrimination in all
 its forms, we recognize that the biggest problems
-we face today is discrimination against minorities.
+we face today is discrimination against minorities
+and oppressed groups.
 
-Discrimination is a complex topic and discussed
-thoughtfully by many others.
-For further reading,
-please consider the following excellent resources:
-\Comment{Need to identify appropriate resources.
-  Suggestions welcome!}
-\begin{itemize}
-\item
-     \Add{https://www.theatlantic.com/education/archive/2017/08/myth-of-reverse-racism/535689/}
-\item
-    \Comment{Resource \#1}
-\item
-    \Comment{Resource \#2}
-\item
-    \Comment{Resource \#3}
-\end{itemize}
+%Discrimination is a complex topic and discussed
+%thoughtfully by many others.
+%For further reading,
+%please consider the following excellent resources:
+%\Comment{Need to identify appropriate resources.
+%  Suggestions welcome!}
+%\begin{itemize}
+%\item
+%     \Add{https://www.theatlantic.com/education/archive/2017/08/myth-of-reverse-racism/535689/}
+%\item
+%    \Comment{Resource \#1}
+%\item
+%    \Comment{Resource \#2}
+%\item
+%    \Comment{Resource \#3}
+%\end{itemize}
 
 We close this book on this serious topic,
 and we hope it inspires you to think about

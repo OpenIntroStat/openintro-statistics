@@ -109,12 +109,12 @@ on these pages.
 \item[\ref{numericalData}]
     [\datalink{loan50}, \datalink{county}]
     These data sets are described in
-    Appendix~\ref{ch_intro_to_data_data}.
+    Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{categoricalData}]
     [\datalink{loan50}, \datalink{county}]
     These data sets are described in
-    Appendix~\ref{ch_intro_to_data_data}.
+    Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{caseStudyMalariaVaccine}]
     [\datalink{malaria}]
@@ -141,7 +141,7 @@ on these pages.
 \item[\ref{basicsOfProbability}]
     [\datalink{loan50}, \datalink{county}]
     These data sets are described in
-    Appendix~\ref{ch_intro_to_data_data}.
+    Data Appendix~\ref{ch_intro_to_data_data}.
 \item[\ref{basicsOfProbability}]
     [\datalink{playing\_cards}]
     A table describing the 52 cards in a standard deck.
@@ -409,9 +409,8 @@ on these pages.
         {www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}
 \item[\ref{hypothesisTesting}]
     [\datalink{stent30}, \datalink{stent365}]
-    See the details for this data set above
-    in the Section~\ref{basicExampleOfStentsAndStrokes}
-    data section.
+    This data is described in
+    Data Appendix~\ref{ch_intro_to_data_data}.
 
 \end{itemize}
 
@@ -606,7 +605,8 @@ on these pages.
     (Figures~\ref{posNegCorPlots} and~\ref{corForNonLinearPlots}).
 \item[\ref{fitting_line_to_data_section}]
     [\datalink{possum}]
-    See the data appendix for Section~\ref{normalDist}.
+    This data is described in
+    Data Appendix~\ref{ch_distributions_data}.
 
 \item[\ref{fittingALineByLSR}]
     [\datalink{elmhurst}]
@@ -651,18 +651,18 @@ on these pages.
 \begin{itemize}
 \item[\ref{introductionToMultipleRegression}]
     [\datalink{loans\_full\_schema}]
-    This data is described in the data appendix for
-    Section~\ref{dataBasics}.
+    This data is described in
+    Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{model_selection_section}]
     [\datalink{loans\_full\_schema}]
-    This data is described in the data appendix for
-    Section~\ref{dataBasics}.
+    This data is described in
+    Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{multipleRegressionModelAssumptions}]
     [\datalink{loans\_full\_schema}]
-    This data is described in the data appendix for
-    Section~\ref{dataBasics}.
+    This data is described in
+    Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{logisticRegression}]
     [\datalink{resume}]
@@ -672,6 +672,43 @@ on these pages.
     The American Economic Review 94:4 (991-1013).
     \oiRedirect{resume-data-2004}
         {www.nber.org/papers/w9873}
+
+    We did omit discussion of some structure in
+    the data for the analysis presented:
+    the experiment design included blocking,
+    where typically four resumes were sent to each job:
+    one for each inferred race/sex combination
+    (as inferred based on the first name).
+    We did not worry about this blocking aspect,
+    since accounting for the blocking would
+    \emph{reduce} the standard error without notably
+    changing the point estimates for the
+    \var{race} and \var{sex} variables
+    versus the analysis performed in the section.
+    That is, the most interesting conclusions in the
+    study would be unaffected even with a more
+    sophisticated analysis.
+
+\item[\ref{logisticRegression}]
+    [\datalink{research\_reply}]
+    Milkman KL, Akinola M, Chugh D. 2015.
+    What Happens Before?
+    A Field Experiment Exploring How Pay and
+    Representation Differentially Shape Bias
+    on the Pathway Into Organizations.
+    Journal of Applied Psychology, 100:6, p1678-1712.
+
+    This study highlights results where fictional students
+    contacted faculty members.
+    The outcome of interest was whether the faculty member
+    would reply, and the variables of interest were the
+    race and sex of the prospective student as well as
+    demographics of the faculty member who received the message.
+    The authors have made the data set publicly available,
+    and we've put it into a CSV file that is friendly
+    for downloading through the \data{research\_reply} data set.
+    \Comment{Either get this data set in a sharable form
+      or remove this reference.}
 
 \end{itemize}
 
