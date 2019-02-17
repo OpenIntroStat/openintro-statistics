@@ -773,12 +773,21 @@ This proportion is an estimate of the breast cancer death rate across the entire
 \begin{nexample}{Can we use the normal model to analyze this study?}\label{condFormammogramStudySummaryTableNormalInference}
 Because the patients are randomized, they can be treated as independent.
 
-We also must check the success-failure condition for each group. Under the null hypothesis, the proportions $p_{mgm}$ and $p_{ctrl}$ are equal, so we check the success-failure condition with our best estimate of these values under $H_0$, the \hiddenterm{pooled proportion} from the two samples, $\hat{p} = 0.0112$:
+We also must check the success-failure condition for each group.
+Under the null hypothesis, the proportions $p_{mgm}$
+and $p_{ctrl}$ are equal, so we check the success-failure
+condition with our best estimate of these values under $H_0$,
+the \hiddenterm{pooled proportion} from the two samples,
+$\hat{p}_{\textit{pooled}} = 0.0112$:
 \begin{align*}
-\hat{p} \times n_{mgm} &= 0.0112 \times \text{44,925} = 503
-	& (1 - \hat{p}) \times n_{mgm} &= 0.9888 \times \text{44,925} = \text{44,422} \\
-\hat{p} \times n_{ctrl} &= 0.0112 \times \text{44,910} = 503
-	& (1 - \hat{p}) \times n_{ctrl} &= 0.9888 \times \text{44,910} = \text{44,407}
+\hat{p}_{\textit{pooled}} \times n_{mgm}
+    &= 0.0112 \times \text{44,925} = 503
+  & (1 - \hat{p}_{\textit{pooled}}) \times n_{mgm}
+    &= 0.9888 \times \text{44,925} = \text{44,422} \\
+\hat{p}_{\textit{pooled}} \times n_{ctrl}
+    &= 0.0112 \times \text{44,910} = 503
+  & (1 - \hat{p}_{\textit{pooled}}) \times n_{ctrl}
+    &= 0.9888 \times \text{44,910} = \text{44,407}
 \end{align*}
 The success-failure condition is satisfied since all values are at least 10, and we can safely apply the normal model.
 \end{nexample}
@@ -787,19 +796,22 @@ The success-failure condition is satisfied since all values are at least 10, and
 \begin{onebox}{Use the pooled proportion estimate when
     $\mathbf{H_0}$ is $\mathbf{p_1 - p_2 = 0}$}
   When the null hypothesis is that the proportions are equal,
-  use the pooled proportion ($\hat{p}$) to verify the
+  use the pooled proportion ($\hat{p}_{\textit{pooled}}$)
+  to verify the
   success-failure condition and estimate the standard error:
   \begin{eqnarray*}
-  \hat{p} = \frac{\text{number of ``successes''}}
+  \hat{p}_{\textit{pooled}}
+    = \frac{\text{number of ``successes''}}
       {\text{number of cases}}
-    = \frac{\hat{p}_1n_1 + \hat{p}_2n_2}{n_1 + n_2}
+    = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
   \end{eqnarray*}
-  Here $\hat{p}_1n_1$ represents the number of successes in
+  Here $\hat{p}_1 n_1$ represents the number of successes in
   sample 1 since
   \begin{eqnarray*}
-  \hat{p}_1 = \frac{\text{number of successes in sample 1}}{n_1}
+  \hat{p}_1
+    = \frac{\text{number of successes in sample 1}}{n_1}
   \end{eqnarray*}
-  Similarly, $\hat{p}_2n_2$ represents the number of successes
+  Similarly, $\hat{p}_2 n_2$ represents the number of successes
   in sample 2.
 \end{onebox}
 
@@ -813,15 +825,23 @@ In the next example, we see the second place where the pooled
 proportion comes into play: the standard error calculation.
 
 \begin{examplewrap}
-\begin{nexample}{Compute the point estimate of the difference in breast cancer death rates in the two groups, and use the pooled proportion $\hat{p} = 0.0112$ to calculate the standard error.}
-The point estimate of the difference in breast cancer death rates is
-\begin{align*}
-\hat{p}_{mgm} - \hat{p}_{ctrl}
-	&= \frac{500}{500 + 44,425} - \frac{505}{505 + 44,405} \\
-	&= 0.01113 - 0.01125 \\
-	&= -0.00012
-\end{align*}
-The breast cancer death rate in the mammogram group was 0.012\% less than in the control group. Next, the standard error is calculated \emph{using the pooled proportion},~$\hat{p}$:
+\begin{nexample}{Compute the point estimate of the difference
+    in breast cancer death rates in the two groups,
+    and use the pooled proportion
+    $\hat{p}_{\textit{pooled}} = 0.0112$ to calculate
+    the standard error.}
+  The point estimate of the difference in breast cancer death
+  rates is
+  \begin{align*}
+  \hat{p}_{mgm} - \hat{p}_{ctrl}
+    &= \frac{500}{500 + 44,425} - \frac{505}{505 + 44,405} \\
+    &= 0.01113 - 0.01125 \\
+    &= -0.00012
+  \end{align*}
+  The breast cancer death rate in the mammogram group
+  was 0.012\% less than in the control group.
+  Next, the standard error is calculated
+  \emph{using the pooled proportion},~$\hat{p}_{\textit{pooled}}$:
 \begin{align*}
 SE = \sqrt{
       \frac{\hat{p}_{\textit{pooled}}(1-\hat{p}_{\textit{pooled}})}
@@ -1173,31 +1193,33 @@ Figure~\ref{chiSquareDistributionWithInceasingDF} shows three chi-square distrib
 
 Figure~\ref{chiSquareDistributionWithInceasingDF} and Guided Practice~\ref{exerChiSquareDistributionDescriptionWithMoreDOF} demonstrate three general properties of chi-square distributions as the degrees of freedom increases: the distribution becomes more symmetric, the center moves to the right, and the variability inflates.
 
-Our principal interest in the chi-square distribution is the calculation of p-values, which (as we have seen before) is related to finding the relevant area in the tail of a distribution. To do so, a new table is needed: the \term{chi-square table}, partially shown in Figure~\ref{chiSquareProbabilityTableShort}. A more complete table is presented in Appendix~\ref{chiSquareProbabilityTable}. This table is very similar to the $t$-table: we examine a particular row for distributions with different degrees of freedom, and we identify a range for the area. One important difference from the $t$-table is that the chi-square table only provides upper tail values.
-
-\begin{figure}[h]
-\centering
-\begin{tabular}{r | rrrr | rrrr |}
-  \hline
-Upper tail & 0.3 & 0.2 & 0.1 & 0.05 & 0.02 & 0.01 & 0.005 & 0.001 \\ 
-  \hline
-%df \hfill 1 & \footnotesize 1.07 & \footnotesize 1.64 & \footnotesize 2.71 & \footnotesize 3.84 & \footnotesize 5.41 & \footnotesize 6.63 & \footnotesize 7.88 & \footnotesize 10.83 \\ 
-df \hfill 2 & \footnotesize 2.41 & \footnotesize \highlightO{3.22} & \footnotesize \highlightO{4.61} & \footnotesize 5.99 & \footnotesize 7.82 & \footnotesize 9.21 & \footnotesize 10.60 & \footnotesize 13.82 \\ 
-  \em3 & \em\footnotesize 3.66 & \em\footnotesize 4.64 & \em\footnotesize \highlightT{6.25} & \em\footnotesize 7.81 & \em\footnotesize 9.84 & \em\footnotesize 11.34 & \em\footnotesize 12.84 & \em\footnotesize 16.27 \\ 
-  4 & \footnotesize 4.88 & \footnotesize 5.99 & \footnotesize 7.78 & \footnotesize 9.49 & \footnotesize 11.67 & \footnotesize 13.28 & \footnotesize 14.86 & \footnotesize 18.47 \\ 
-  5 & \footnotesize 6.06 & \footnotesize 7.29 & \footnotesize 9.24 & \footnotesize 11.07 & \footnotesize 13.39 & \footnotesize 15.09 & \footnotesize 16.75 & \footnotesize 20.52 \\ 
-  \hline
-  6 & \footnotesize 7.23 & \footnotesize 8.56 & \footnotesize 10.64 & \footnotesize 12.59 & \footnotesize 15.03 & \footnotesize 16.81 & \footnotesize 18.55 & \footnotesize 22.46 \\ 
-  7 & \footnotesize 8.38 & \footnotesize 9.80 & \footnotesize 12.02 & \footnotesize 14.07 & \footnotesize 16.62 & \footnotesize 18.48 & \footnotesize 20.28 & \footnotesize 24.32 \\ 
-  \hline
-\end{tabular}
-\caption{A section of the chi-square table. A complete table is in Appendix~\ref{chiSquareProbabilityTable}.}
-\label{chiSquareProbabilityTableShort}
-\end{figure}
+Our principal interest in the chi-square distribution
+is the calculation of p-values, which (as we have seen before)
+is related to finding the relevant area in the tail of
+a distribution.
+The most common ways to do this are using computer software,
+using a graphing calculator, or using a table.
+For folks wanting to use the last option, we provide an outline
+of how to read the chi-square table in
+Appendix~\ref{chiSquareProbabilityTable},
+which is also where you may find the table.
+\Comment{If giving some \R{} in the text, then put \R{} code
+  in the examples / exercises below.}
+For the examples below, use your preferred approach
+to confirm you get the same answers.
 
 \begin{examplewrap}
-\begin{nexample}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Figure~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
-This distribution has three degrees of freedom, so only the row with 3 degrees of freedom (df) is relevant. This row has been italicized in the table. Next, we see that the value -- 6.25 -- falls in the column with upper tail area 0.1. That is, the shaded upper tail of Figure~\ref{chiSquareAreaAbove6Point25WithDF3} has area 0.1.
+\begin{nexample}{Figure~\ref{chiSquareAreaAbove6Point25WithDF3}
+    shows a chi-square distribution with 3 degrees of freedom
+    and an upper shaded tail starting at 6.25.
+    Find the shaded area.}
+  Using statistical software or a graphing calculator,
+  we can find that the upper tail area for a chi-square
+  distribution with 3 degrees of freedom ($df$)
+  and a cutoff of 6.25 is 0.1001.
+  That is, the shaded upper tail of
+  Figure~\ref{chiSquareAreaAbove6Point25WithDF3}
+  has area 0.1.
 \end{nexample}
 \end{examplewrap}
 
@@ -1239,37 +1261,63 @@ This distribution has three degrees of freedom, so only the row with 3 degrees o
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{We rarely observe the \emph{exact} value in the table. For instance, Figure~\ref{chiSquareAreaAbove4Point3WithDF2} shows the upper tail of a chi-square distribution with 2 degrees of freedom. The bound for this upper tail is at 4.3, which does not fall in Figure~\ref{chiSquareProbabilityTableShort}. Find the approximate tail area.}
-The cutoff 4.3 falls between the second and third columns in the 2 degrees of freedom row. Because these columns correspond to tail areas of 0.2 and 0.1, we can be certain that the area shaded in Figure~\ref{chiSquareAreaAbove4Point3WithDF2} is between 0.1 and 0.2.
+\begin{nexample}{Figure~\ref{chiSquareAreaAbove4Point3WithDF2}
+    shows the upper tail of a chi-square distribution with
+    2~degrees of freedom.
+    The bound for this upper tail is at 4.3.
+    Find the tail area.}
+  Using software, we can find that the tail area shaded in
+  Figure~\ref{chiSquareAreaAbove4Point3WithDF2}
+  to be 0.1165.
+  If using a table, we would only be able to find
+  a range of values for the tail area:
+  between 0.1 and 0.2.
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{Figure~\ref{chiSquareAreaAbove5Point1WithDF5} shows an upper tail for a chi-square distribution with 5 degrees of freedom and a cutoff of 5.1. Find the tail area.}
-Looking in the row with 5 df, 5.1 falls below the smallest cutoff for this row (6.06). That means we can only say that the area is \emph{greater than 0.3}.
+\begin{nexample}{Figure~\ref{chiSquareAreaAbove5Point1WithDF5}
+    shows an upper tail for a chi-square distribution with
+    5~degrees of freedom and a cutoff of 5.1.
+    Find the tail area.}
+  Using software, we would obtain a tail area of 0.4038.
+  If using the table in Appendix~\ref{chiSquareProbabilityTable},
+  we would have identified that the tail area is larger than 0.3
+  but not the precise value.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Figure~\ref{chiSquareAreaAbove11Point7WithDF7} shows a cutoff of 11.7 on a chi-square distribution with 7 degrees of freedom. Find the area of the upper tail.\footnotemark
+Figure~\ref{chiSquareAreaAbove11Point7WithDF7} shows a cutoff
+of 11.7 on a chi-square distribution with 7 degrees of freedom.
+Find the area of the upper tail.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The value 11.7 falls between 9.80 and 12.02 in the 7 df row. Thus, the area is between 0.1 and 0.2.}
+\footnotetext{
+  The area is 0.1109.
+  If using a table, we would identify that it falls
+  between 0.1 and 0.2.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Figure~\ref{chiSquareAreaAbove10WithDF4} shows a cutoff of 10 on a chi-square distribution with 4 degrees of freedom. Find the area of the upper tail.\footnotemark
+Figure~\ref{chiSquareAreaAbove10WithDF4} shows a cutoff
+of 10 on a chi-square distribution with 4 degrees of freedom.
+Find the area of the upper tail.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The area is between 0.02 and 0.05.}
+\footnotetext{Precise value: 0.0404.
+  If using the table: between 0.02 and 0.05.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Figure~\ref{chiSquareAreaAbove9Point21WithDF3} shows a cutoff of 9.21 with a chi-square distribution with 3 df. Find the area of the upper tail.\footnotemark
+Figure~\ref{chiSquareAreaAbove9Point21WithDF3} shows a cutoff
+of 9.21 with a chi-square distribution with 3 df.
+Find the area of the upper tail.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Between 0.02 and 0.05.}
+\footnotetext{Precise value: 0.0266.
+  If using the table: between 0.02 and 0.05.}
 
 
 \subsection{Finding a p-value for a chi-square distribution}
@@ -1289,9 +1337,24 @@ In the jurors example, there were $k=4$ categories: white, black, Hispanic, and 
 Just like we checked sample size conditions to use the normal model in earlier sections, we must also check a sample size condition to safely apply the chi-square distribution for $X^2$. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above~5, so we can apply the chi-square model to the test statistic, $X^2=5.89$.
 
 \begin{examplewrap}
-\begin{nexample}{If the null hypothesis is true, the test statistic $X^2=5.89$ would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value.}
-The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueShown}. Because larger chi-square values correspond to stronger evidence against the null hypothesis, we shade the upper tail to represent the p-value. Using the chi-square table in Appendix~\ref{chiSquareProbabilityTable} or the short table on page~\pageref{chiSquareProbabilityTableShort}, we can determine that the area is between 0.1 and 0.2. That is, the p-value is larger than 0.1 but smaller than 0.2. Generally we do not reject the null hypothesis with such a large p-value. In other words, the data do not provide convincing evidence of racial bias in the juror selection.
-\index{data!racial make-up of jury|)}
+\begin{nexample}{If the null hypothesis is true,
+    the test statistic $X^2=5.89$ would be closely
+    associated with a chi-square distribution with
+    three degrees of freedom.
+    Using this distribution and test statistic,
+    identify the p-value.}
+  The chi-square distribution and p-value are shown in
+  Figure~\ref{jurorHTPValueShown}.
+  Because larger chi-square values correspond to stronger
+  evidence against the null hypothesis, we shade the upper
+  tail to represent the p-value.
+  Using statistical software (or the table in
+  Appendix~\ref{chiSquareProbabilityTable}),
+  we can determine that the area is 0.1171.
+  Generally we do not reject the null hypothesis
+  with such a large p-value.
+  In other words, the data do not provide convincing evidence
+  of racial bias in the juror selection.
 \end{nexample}
 \end{examplewrap}
 
@@ -1301,6 +1364,8 @@ The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueSh
 \caption{The p-value for the juror hypothesis test is shaded in the chi-square distribution with $df=3$.}
 \label{jurorHTPValueShown}
 \end{figure}
+
+\index{data!racial make-up of jury|)}
 
 \begin{onebox}{Chi-square test for one-way table}
   Suppose we are to evaluate whether there is convincing
@@ -1550,11 +1615,10 @@ we~use?\footnotemark
   \label{DNRejectGeomModelForSP500}%
   Figure~\ref{geomFitPValueForSP500} shows the
   chi-square distribution, cutoff, and the shaded p-value.
-  We could look up $X^2 = \spdaysXSq{}$ in
-  Appendix~\ref{chiSquareProbabilityTable} to determine
-  that the p-value is greater than 0.3.
-  Using software, we can get a more precise value for
-  the p-value: \spdaysPvalue{}.
+  % We could look up $X^2 = \spdaysXSq{}$ in
+  % Appendix~\ref{chiSquareProbabilityTable} to determine
+  % that the p-value is greater than 0.3.
+  Using software, we can find the p-value: \spdaysPvalue{}.
   Ultimately, we do not have sufficient evidence to reject
   the notion that the wait times follow a geometric
   distribution for the last \spyears{} years of data
@@ -1879,13 +1943,15 @@ Section~\ref{differenceOfTwoProportions}.
 \begin{nexample}{Find the p-value and draw a conclusion
     about whether the question affects the sellers likelihood
     of reporting the freezing problem.}
-  Looking in Appendix~\ref{chiSquareProbabilityTable}
-  on page~\pageref{chiSquareProbabilityTable},
-  we examine the row corresponding to 2 degrees of freedom.
-  The test statistic, $X^2 = 40.13$,
-  is larger than the value in the last column,
-  meaning the tail area and p-value are smaller than 0.001.
-  Using a computer, we can compute a more precise value:
+  % Looking in Appendix~\ref{chiSquareProbabilityTable}
+  % on page~\pageref{chiSquareProbabilityTable},
+  % we examine the row corresponding to 2 degrees of freedom.
+  % The test statistic, $X^2 = 40.13$,
+  % is larger than the value in the last column,
+  % meaning the tail area and p-value are smaller than 0.001.
+  Using a computer, we can compute a very precise value
+  for the tail area above $X^2 = 40.13$ for a chi-square
+  distribution with 2 degrees of freedom:
   0.000000002.
   Using a significance level of $\alpha=0.05$,
   the null hypothesis is rejected since the p-value is smaller.
@@ -1975,18 +2041,14 @@ Figure~\ref{diabetes2ExpMetRosiLifestyleSummary}.\footnotemark
 Because there are 3 rows and 2 columns,
 the degrees of freedom for the test is
 $df = (3 - 1) \times (2 - 1) = 2$.
-Use $X^2 = 8.16$, $df = 2$, and either software
-or the chi-square table on
-page~\pageref{chiSquareProbabilityTable} to evaluate whether
+Use $X^2 = 8.16$, $df = 2$, evaluate whether
 to reject the null hypothesis using a significance level
 of~0.05.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The test statistic
-    falls between the 5th and 6th columns, which corresponds
-    to a p-value between 0.01 and 0.02.
-    If using a computer, we'd obtain a more precise p-value
-    of 0.017.
+\footnotetext{
+    If using a computer, we can identify the p-value
+    as 0.017.
     That is, we reject the null hypothesis because
     the p-value is less than 0.05, and we conclude
     that at least one of the treatments is more or
