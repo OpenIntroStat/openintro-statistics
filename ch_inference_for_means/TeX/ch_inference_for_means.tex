@@ -26,7 +26,7 @@
 
 
 %__________________
-\section{One-sample means with the $\mathbf{t}$-distribution}
+\section[One-sample means with the $t$-distribution]{One-sample means with the $\mathbf{t}$-distribution}
 \label{oneSampleMeansWithTDistribution}
 
 \noindent%
@@ -68,7 +68,7 @@ reasonable.
 Data with strong skew or outliers require a more cautious analysis.
 
 
-\subsection{Introducing the $t$-distribution}
+\subsection{Introducing the $\mathbf{t}$-distribution}
 \label{introducingTheTDistribution}
 
 \index{t-distribution|(}
@@ -200,7 +200,8 @@ Use your preferred method for finding tail areas.\footnotemark{}
 
 
 
-\subsection{Conditions for using the $t$-distribution for inference on a sample mean}
+\subsection{Conditions for using the $\mathbf{t}$-distribution
+    for inference on a sample mean}
 \label{tDistSolutionToSEProblem}
 
 \noindent%
@@ -217,7 +218,7 @@ When examining a sample mean and estimated standard error from a sample of $n$ i
 For example, if the sample size was 19, then we would use the $t$-distribution with $df=19-1=18$ degrees of freedom and proceed in the same way as we did in Chapter~\ref{ch_foundations_for_inf}, except that \emph{now we use the $t$-distribution}.
 
 
-\subsection{One sample $t$-confidence intervals}
+\subsection{One sample $\mathbf{t}$-confidence intervals}
 \label{oneSampleTConfidenceIntervals}
 
 \index{data!dolphins and mercury|(}
@@ -298,12 +299,17 @@ We are 95\% confident the average mercury content of muscles in Risso's dolphins
 
 \index{data!dolphins and mercury|)}
 
-\begin{onebox}{Finding a $t$-confidence interval for the mean}
-Based on a sample of $n$ independent and nearly normal observations, a confidence interval for the population mean is
-\begin{align*}
-\bar{x} \ \pm\  t^{\star}_{df} \times SE
-\end{align*}
-where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error as estimated by the sample.
+\begin{onebox}{Finding a $t$-confidence interval
+    for the mean}
+  Based on a sample of $n$ independent and nearly normal
+  observations, a confidence interval for the population
+  mean is
+  \begin{align*}
+  \bar{x} \ \pm\  t^{\star}_{df} \times SE
+  \end{align*}
+  where $\bar{x}$ is the sample mean, $t^{\star}_{df}$
+  corresponds to the confidence level and degrees of freedom,
+  and $SE$ is the standard error as estimated by the sample.
 \end{onebox}
 
 \begin{exercisewrap}
@@ -323,6 +329,26 @@ Looking in the column where two tails is 0.100 (for a 90\% confidence interval) 
 \end{nexample}
 \end{examplewrap}
 
+\begin{onebox}{Confidence interval for a single mean}
+  Once you've determined a one-mean confidence interval
+  would be helpful for an application,
+  there are four steps to constructing the interval:
+  \begin{description}
+  \item[Prepare.]
+      Identify $\bar{x}$, $s$, $n$, and determine what
+      confidence level you wish to use.
+  \item[Check.]
+      Verify the conditions to ensure $\bar{x}$
+      is nearly normal.
+  \item[Calculate.]
+      If the conditions hold, compute $SE$,
+      find $t_{df}^{\star}$, and construct the interval.
+  \item[Conclude.]
+      Interpret the confidence interval in the context
+      of the problem.
+  \end{description}
+\end{onebox}
+
 \begin{exercisewrap}
 \begin{nexercise}
 Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnotemark{}
@@ -333,7 +359,7 @@ Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions}
 \index{data!white fish and mercury|)}
 
 
-\subsection{One sample $t$-tests}
+\subsection{One sample $\mathbf{t}$-tests}
 \label{oneSampleTTests}
 
 \newcommand{\cherryblossomn}{100}
@@ -384,8 +410,36 @@ The sample mean and sample standard deviation of the sample of \cherryblossomn{}
 \end{exercisewrap}
 \footnotetext{With the conditions satisfied for the $t$-distribution, we can compute the standard error ($SE = \cherryblossomsd{} / \sqrt{\cherryblossomn{}} = \cherryblossomse{}$ and the \emph{T-score}: $T = \frac{\cherryblossommean{} - 93.29}{\cherryblossomse{}} = \cherryblossomz{}$. (There is more on this after the guided practice, but a T-score and Z-score are calculated in the same way.) For $df = \cherryblossomn{} - 1 = 99$, we would find $T = \cherryblossomz{}$ to falls right on the fourth column in the 90 degrees of freedom row, which corresponds to a two-tailed p-value of 0.02. The p-value could also have been calculated with statistical software and 99 degrees of freedom as 0.0195. Because the p-value is smaller than 0.05, we reject the null hypothesis. That is, the data provide strong evidence that the average run time for the Cherry Blossom Run in 2017 is different than the 2006 average. Since the observed value is above the null value and we have rejected the null hypothesis, we would conclude that runners in the race were slower on average in 2017 than in 2006.}
 
-\begin{onebox}{When using a $t$-distribution, we use a T-score (same as Z-score)}
-To help us remember to use the $t$-distribution, we use a $T$ to represent the test statistic, and we often call this a \term{T-score}. The Z-score and T-score are computed in the exact same way and are conceptually identical: each represents how many standard errors the observed value is from the null value.
+%\begin{onebox}{When using a $t$-distribution, we use a T-score (same as Z-score)}
+To help us remember to use the $t$-distribution,
+we use a $T$ to represent the test statistic,
+and we often call this a \term{T-score}.
+The Z-score and T-score are computed in the exact same way
+and are conceptually identical:
+each represents how many standard errors the observed value
+is from the null value.
+%\end{onebox}
+
+\begin{onebox}{Hypothesis testing for a single mean}
+  Once you've determined a one-mean hypothesis test is the
+  correct procedure, there are four steps to completing the
+  test:
+  \begin{description}
+  \item[Prepare.]
+      Identify the parameter of interest,
+      list out hypotheses,
+      identify the significance level,
+      and identify $\bar{x}$, $s$, and $n$.
+  \item[Check.]
+      Verify conditions to ensure $\bar{x}$ is nearly normal.
+  \item[Calculate.]
+      If the conditions hold, compute $SE$,
+      compute the T-score, and identify the p-value.
+  \item[Conclude.]
+      Evaluate the hypothesis test by comparing the p-value
+      to $\alpha$, and provide a conclusion in the context
+      of the problem.
+  \end{description}
 \end{onebox}
 
 \CalculatorVideos{confidence intervals and hypothesis tests for a single mean}
@@ -779,6 +833,22 @@ We are 95\% confident that embryonic stem cells improve the heart's pumping func
 
 \index{data!stem cells, heart function|)}
 
+\noindent%
+As with past statistical inference applications,
+there is a well-trodden procedure.
+\begin{enumerate}
+\item Prepare: retrieve critical contextual information,
+    and if appropriate, set up hypotheses.
+\item Check: ensure the required conditions are reasonably
+    satisfied.
+\item Calculate: find the standard error, and then construct
+    a confidence interval or find a test statistic and p-value.
+\item Conclude: interpret the result in the context of the
+    application.
+\end{enumerate}
+The details change a little from one setting to the next,
+but this general approach remain the same.
+
 
 \subsection{Hypothesis tests based on a difference in means}
 
@@ -995,65 +1065,65 @@ We examine row $df=26$ in the $t$-table. Because this value is smaller than the 
 \end{examplewrap}
 
 
-\subsection{Summary for inference using the $t$-distribution}
+%\subsection{Summary for inference using the $t$-distribution}
+%
+%\Comment{This subsection should be heavily updated.}
+%
+%%When considering the difference of two means, there are two common cases: the two samples are paired or they are independent. (There are instances where the data are neither paired nor independent, e.g. see blocking in Section~\ref{experimentalDesignPrinciples}.) The paired case was treated in Section~\ref{pairedData}, where the one-sample methods were applied to the differences from the paired observations. We examined the second and more complex scenario in this section.
+%
+%\textbf{Hypothesis tests.} When applying the $t$-distribution for a hypothesis test, we proceed as follows:
+%\begin{itemize}
+%\setlength{\itemsep}{0mm}
+%\item Write appropriate hypotheses.
+%\item Verify conditions for using the $t$-distribution.
+%\begin{itemize}
+%\item One-sample or differences from paired data: the observations (or differences) must be independent and nearly normal. For larger sample sizes, we can relax the nearly normal requirement, e.g. slight skew is okay for sample sizes of 15, moderate skew for sample sizes of 30, and strong skew for sample sizes of 60.
+%\item For a difference of means when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the $t$-distribution, and the data in the groups must also be independent.
+%\end{itemize}
+%\item Compute the point estimate of interest, the standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.
+%\item Compute the T-score and p-value.
+%\item Make a conclusion based on the p-value, and write a conclusion in context and in plain language so anyone can understand the result.
+%\end{itemize}
+%\noindent\textbf{Confidence intervals.} Similarly, the following is how we generally computed a confidence interval using a $t$-distribution:
+%\begin{itemize}
+%\item Verify conditions for using the $t$-distribution. (See above.)
+%\item Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.
+%\item Calculate the confidence interval using the general formula, point estimate $\pm\ t_{df}^{\star} SE$.
+%\item Put the conclusions in context and in plain language so even non-data scientists can understand the results.
+%\end{itemize}
+%
+%\CalculatorVideos{confidence intervals and hypothesis tests for a difference of means}
 
-\Comment{This subsection should be heavily updated.}
 
-%When considering the difference of two means, there are two common cases: the two samples are paired or they are independent. (There are instances where the data are neither paired nor independent, e.g. see blocking in Section~\ref{experimentalDesignPrinciples}.) The paired case was treated in Section~\ref{pairedData}, where the one-sample methods were applied to the differences from the paired observations. We examined the second and more complex scenario in this section.
-
-\textbf{Hypothesis tests.} When applying the $t$-distribution for a hypothesis test, we proceed as follows:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item Write appropriate hypotheses.
-\item Verify conditions for using the $t$-distribution.
-\begin{itemize}
-\item One-sample or differences from paired data: the observations (or differences) must be independent and nearly normal. For larger sample sizes, we can relax the nearly normal requirement, e.g. slight skew is okay for sample sizes of 15, moderate skew for sample sizes of 30, and strong skew for sample sizes of 60.
-\item For a difference of means when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the $t$-distribution, and the data in the groups must also be independent.
-\end{itemize}
-\item Compute the point estimate of interest, the standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.
-\item Compute the T-score and p-value.
-\item Make a conclusion based on the p-value, and write a conclusion in context and in plain language so anyone can understand the result.
-\end{itemize}
-\noindent\textbf{Confidence intervals.} Similarly, the following is how we generally computed a confidence interval using a $t$-distribution:
-\begin{itemize}
-\item Verify conditions for using the $t$-distribution. (See above.)
-\item Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.
-\item Calculate the confidence interval using the general formula, point estimate $\pm\ t_{df}^{\star} SE$.
-\item Put the conclusions in context and in plain language so even non-data scientists can understand the results.
-\end{itemize}
-
-\CalculatorVideos{confidence intervals and hypothesis tests for a difference of means}
-
-
-\subsection{Examining the standard error formula (special topic)}
-
-The formula for the standard error of the difference in two means is similar to the formula for other standard errors. Recall that the standard error of a single mean, $\bar{x}_1$, can be approximated by
-\begin{align*}
-SE_{\bar{x}_1} = \frac{s_1}{\ \sqrt{n_1}\ }
-\end{align*}
-where $s_1$ and $n_1$ represent the sample standard deviation and sample size.
-
-The standard error of the difference of two sample means can be constructed from the standard errors of the separate sample means:
-\begin{align*}
-SE_{\bar{x}_{1} - \bar{x}_{2}}
-	= \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
-	= \sqrt{\frac{s_1^2}{{n_1}} + \frac{s_2^2}{{n_2}}}
-\end{align*}
-This special relationship follows from probability theory.
-
-\begin{exercisewrap}
-\begin{nexercise}
-\label{derivingSEForDiffOfTwoMeansExercise}%
-Prerequisite: Section~\ref{randomVariablesSection}.
-We can rewrite the equation above in a different way:
-\begin{align*}
-SE_{\bar{x}_{1} - \bar{x}_{2}}^2
-  = SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2
-\end{align*}
-Explain where this formula comes from using the ideas of probability theory.\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{The standard error squared represents the variance of the estimate. If $X$ and $Y$ are two random variables with variances $\sigma_x^2$ and $\sigma_y^2$, then the variance of $X-Y$ is $\sigma_x^2 + \sigma_y^2$. Likewise, the variance corresponding to $\bar{x}_1 - \bar{x}_2$ is $\sigma_{\bar{x}_1}^2 + \sigma_{\bar{x}_2}^2$. Because $\sigma_{\bar{x}_1}^2$ and $\sigma_{\bar{x}_2}^2$ are just another way of writing $SE_{\bar{x}_1}^2$ and  $SE_{\bar{x}_2}^2$, the variance associated with $\bar{x}_1 - \bar{x}_2$ may be written as $SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2$.}
+%\subsection{Examining the standard error formula (special topic)}
+%
+%The formula for the standard error of the difference in two means is similar to the formula for other standard errors. Recall that the standard error of a single mean, $\bar{x}_1$, can be approximated by
+%\begin{align*}
+%SE_{\bar{x}_1} = \frac{s_1}{\ \sqrt{n_1}\ }
+%\end{align*}
+%where $s_1$ and $n_1$ represent the sample standard deviation and sample size.
+%
+%The standard error of the difference of two sample means can be constructed from the standard errors of the separate sample means:
+%\begin{align*}
+%SE_{\bar{x}_{1} - \bar{x}_{2}}
+%	= \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
+%	= \sqrt{\frac{s_1^2}{{n_1}} + \frac{s_2^2}{{n_2}}}
+%\end{align*}
+%This special relationship follows from probability theory.
+%
+%\begin{exercisewrap}
+%\begin{nexercise}
+%\label{derivingSEForDiffOfTwoMeansExercise}%
+%Prerequisite: Section~\ref{randomVariablesSection}.
+%We can rewrite the equation above in a different way:
+%\begin{align*}
+%SE_{\bar{x}_{1} - \bar{x}_{2}}^2
+%  = SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2
+%\end{align*}
+%Explain where this formula comes from using the ideas of probability theory.\footnotemark{}
+%\end{nexercise}
+%\end{exercisewrap}
+%\footnotetext{The standard error squared represents the variance of the estimate. If $X$ and $Y$ are two random variables with variances $\sigma_x^2$ and $\sigma_y^2$, then the variance of $X-Y$ is $\sigma_x^2 + \sigma_y^2$. Likewise, the variance corresponding to $\bar{x}_1 - \bar{x}_2$ is $\sigma_{\bar{x}_1}^2 + \sigma_{\bar{x}_2}^2$. Because $\sigma_{\bar{x}_1}^2$ and $\sigma_{\bar{x}_2}^2$ are just another way of writing $SE_{\bar{x}_1}^2$ and  $SE_{\bar{x}_2}^2$, the variance associated with $\bar{x}_1 - \bar{x}_2$ may be written as $SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2$.}
 
 
 \subsection{Pooled standard deviation estimate (special topic)}
@@ -1072,10 +1142,15 @@ df = n_1 + n_2 - 2
 
 The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the $t$-distribution. Both of these changes may permit a more accurate model of the sampling distribution of $\bar{x}_1 - \bar{x}_2$, if the standard deviations of the two groups are~equal.
 
-\begin{caution}
-{Pool standard deviations only after careful consideration}
-{A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.}
-\end{caution}
+\begin{onebox}
+    {Pool standard deviations only after careful consideration}
+  A pooled standard deviation is only appropriate when
+  background research indicates the population standard
+  deviations are nearly equal.
+  When the sample size is large and the condition
+  may be adequately checked with data, the benefits
+  of pooling the standard deviations greatly diminishes.
+\end{onebox}
 
 
 

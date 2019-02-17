@@ -1141,6 +1141,31 @@ distribution corresponds to the confidence level.
 \end{nexample}
 \end{examplewrap}
 
+\newcommand{\onepropconfintsummary}[0]{
+\begin{onebox}{Confidence interval for a single proportion}
+  Once you've determined a one-proportion confidence interval
+  would be helpful for an application,
+  there are four steps to constructing the interval:
+  \begin{description}
+  \item[Prepare.]
+      Identify $\hat{p}$ and $n$, and determine what
+      confidence level you wish to use.
+  \item[Check.]
+      Verify the conditions to ensure $\hat{p}$
+      is nearly normal.
+      For one-proportion confidence intervals,
+      use $\hat{p}$ in place of $p$ to check
+      the success-failure condition.
+  \item[Calculate.]
+      If the conditions hold, compute $SE$ using $\hat{p}$,
+      find $z^{\star}$, and construct the interval.
+  \item[Conclude.]
+      Interpret the confidence interval in the context
+      of the problem.
+  \end{description}
+\end{onebox}
+}
+\onepropconfintsummary{}
 
 
 \subsection{More case studies}
@@ -2053,8 +2078,20 @@ p-value method rather than confidence intervals.
 
 \index{data!coal power support|(}
 
+\newcommand{\pewcoalpollsize}{1000}
+\newcommand{\pewcoalpollprop}{0.37}
+\newcommand{\pewcoalpollpropcomplement}{0.63}
+\newcommand{\pewcoalpollpercent}{37\%}
+\newcommand{\pewcoalpollpercentcomplement}{63\%}
+\newcommand{\pewcoalpollcount}{370}
+\newcommand{\pewcoalpollcountcomplement}{630}
+\newcommand{\pewcoalpollse}{0.0153}
+\newcommand{\pewcoalpollnullvalue}{0.5}
+\newcommand{\pewcoalpollnullse}{0.016}
+
 \begin{examplewrap}
-\begin{nexample}{Pew Research asked a random sample of 1000 American
+\begin{nexample}{Pew Research asked a random sample of
+    \pewcoalpollsize{} American
     adults whether they supported the increased usage of coal to
     produce energy.
     Set up hypotheses to evaluate whether
@@ -2075,16 +2112,79 @@ p-value method rather than confidence intervals.
 \end{nexample}
 \end{examplewrap}
 
-\newcommand{\pewcoalpollsize}{1000}
-\newcommand{\pewcoalpollprop}{0.37}
-\newcommand{\pewcoalpollpropcomplement}{0.63}
-\newcommand{\pewcoalpollpercent}{37}
-\newcommand{\pewcoalpollpercentcomplement}{63}
-\newcommand{\pewcoalpollcount}{370}
-\newcommand{\pewcoalpollcountcomplement}{630}
-\newcommand{\pewcoalpollse}{0.0153}
-\newcommand{\pewcoalpollnullvalue}{0.5}
-\newcommand{\pewcoalpollnullse}{0.016}
+%\begin{examplewrap}
+%\begin{nexample}{Suppose the null value, $p_0 = 0.5$,
+%    was the actual level of support for coal usage.
+%    Describe how we could simulate a survey of
+%    \pewcoalpollsize{} responses when $p_0 = 0.5$.}
+%  \label{simOnePropExample}%
+%  If we pick a random person to participate in the survey,
+%  then \emph{under the null hypothesis},
+%  the chances they would support coal usage is $p_0 = 0.5$.
+%  If this were true, then it's the same as flipping a fair coin.
+%  That is, we can simulate an individual person's response by
+%  flipping a coin;
+%  if it's heads, we say \resp{support},
+%  and if it's tails, \resp{oppose}.
+%  To simulate \pewcoalpollsize{} independent responses,
+%  we can flip the coin a total of 1000 times and compute the
+%  fraction of instances that were heads as the observed
+%  proportion.
+%  We did this and observed 487 heads for a proportion
+%  of $\hat{p}_{\text{sim, 1}} = 0.487$.
+%\end{nexample}
+%\end{examplewrap}
+%
+%Example~\ref{simOnePropExample} described how we could
+%simulate a survey result under the null hypothesis that
+%the population proportion is equal to $p_0$.
+%In this way, we check what kind of sample observations
+%we might expect to see \emph{if the null hypothesis were true}.
+%Of course, a single simulation is interesting, but not that
+%informative.
+%If we run the simulation again, we get a value of
+%$\hat{p}_{\text{sim, 2}} = 0.502$.
+%And again: $\hat{p}_{\text{sim, 3}} = 0.523$.
+%We can do this many times on a computer,
+%just like we did for a population proportion of 0.88
+%in Section~\ref{pointEstimates}.
+%The results of 5,000 simulated surveys are summarized
+%in a histogram in Figure~\ref{sampling_5k_prop_50p}.
+%
+%\begin{figure}[h]
+%  \centering
+%  \Figure{0.8}{sampling_5k_prop_50p}
+%  \caption{
+%      Simulated surveys proportion
+%      \emph{if} the population proportion
+%      were equal to the null value, $p_0 = 0.5$.
+%      All 5,000 simulated sample proportions
+%      lie between 0.44 and 0.56.}
+%  \label{sampling_5k_prop_50p}
+%\end{figure}
+%
+%\begin{examplewrap}
+%\begin{nexample}{The actual Pew Research survey found that
+%    \pewcoalpollpercent{} of the \pewcoalpollsize{}
+%    respondents supported increasing the use of coal.
+%    Use Figure~\ref{sampling_5k_prop_50p}
+%    to estimate how frequently we might observe a proportion
+%    of \pewcoalpollprop{} if the null hypothesis that
+%    the population proportion is 0.5 were actually true.
+%    What might you conclude from this finding?}
+%  Not one of the 5,000 simulations yielded a sample proportion
+%  of \pewcoalpollpercent{} or further from 0.5.
+%  That is, \emph{if} the actually population proportion is
+%  actually 0.5, then we observed something so rare that we
+%  wouldn't necessarily see it if we repeated the process
+%  5,000 times.
+%  Ultimately, the observed sample result is nearly
+%  impossible (extremely improbable!) if we believe that
+%  the population proportion is 0.5.
+%  This evidence casts significant doubt on the notion that
+%  $p = 0.5$, and we should reject the null hypothesis,~$H_0$.
+%\end{nexample}
+%\end{examplewrap}
 
 When evaluating hypotheses for proportions using the
 p-value method,
@@ -2096,9 +2196,9 @@ to how we use the null value, $p_0$.
 
 \begin{examplewrap}
 \begin{nexample}{Pew Research's sample found that
-    \pewcoalpollpercent{}\%
+    \pewcoalpollpercent{}
     of American adults support increased usage of coal.
-    We now wonder, does \pewcoalpollpercent{}\% represent
+    We now wonder, does \pewcoalpollpercent{} represent
     a real difference from the null hypothesis of 50\%?
     What would the sampling distribution of $\hat{p}$
     look like if the null hypothesis were true?}
@@ -2397,6 +2497,7 @@ question.\footnotemark
 
 \index{data!nuclear arms reduction|)}
 
+\newcommand{\oneprophtsummary}{
 \begin{onebox}{Hypothesis testing for a single proportion}
   Once you've determined a one-proportion hypothesis test is the
   correct procedure, there are four steps to completing the
@@ -2405,19 +2506,25 @@ question.\footnotemark
   \item[Prepare.]
       Identify the parameter of interest,
       list out hypotheses,
+      identify the significance level,
       and identify $\hat{p}$ and $n$.
-  \item[Check.] Verify the conditions
+  \item[Check.]
+      Verify conditions
       to ensure $\hat{p}$ is nearly normal under $H_0$.
       For one-proportion hypothesis tests, use the null
       value to check the success-failure condition.
-  \item[Calculate.] If the conditions hold, compute the standard
+  \item[Calculate.]
+      If the conditions hold, compute the standard
       error, again using $p_0$, compute the Z-score,
       and identify the p-value.
-  \item[Conclude.] Evaluate the hypotheses by comparing the p-value
-      to $\alpha$, and provide a conclusion in the context of the
-      problem.
+  \item[Conclude.]
+      Evaluate the hypothesis test by comparing the p-value
+      to $\alpha$, and provide a conclusion in the context
+      of the problem.
   \end{description}
 \end{onebox}
+}
+\oneprophtsummary{}
 
 \CalculatorVideos{hypothesis tests for a single proportion}
 

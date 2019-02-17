@@ -167,20 +167,25 @@ in the formula.\footnotemark
 \end{nexample}
 \end{examplewrap}
 
-\begin{onebox}{Constructing a confidence interval for a proportion}
-  There are three steps to constructing a confidence
-  interval for $p$.
-  \begin{itemize}
-  \setlength{\itemsep}{0mm}
-  \item Check independence and the success-failure condition
-      using $\hat{p}$.
-      If the conditions are met, the sampling distribution
-      of $\hat{p}$ may be well-approximated by the normal model.
-  \item Construct the standard error using $\hat{p}$
-      in place of $p$ in the standard error formula.
-  \item Apply the general confidence interval formula.
-  \end{itemize}
-\end{onebox}
+\onepropconfintsummary{}
+%\begin{onebox}{Constructing a confidence interval for a proportion}
+%  There are three steps to constructing a confidence
+%  interval for $p$.
+%  \begin{itemize}
+%  \setlength{\itemsep}{0mm}
+%  \item Check independence and the success-failure condition
+%      using $\hat{p}$.
+%      If the conditions are met, the sampling distribution
+%      of $\hat{p}$ may be well-approximated by the normal model.
+%  \item Construct the standard error using $\hat{p}$
+%      in place of $p$ in the standard error formula.
+%  \item Apply the general confidence interval formula.
+%  \end{itemize}
+%\end{onebox}
+
+\noindent%
+For additional one-proportion confidence interval examples,
+see Section~\ref{confidenceIntervals}.
 
 
 \subsection{Hypothesis testing for a proportion}
@@ -282,9 +287,15 @@ for a hypothesis test here?\footnotemark
 \end{nexample}
 \end{examplewrap}
 
-\begin{onebox}{Hypothesis test for a proportion}
-Set up hypotheses and verify the conditions using the null value, $p_0$, to ensure $\hat{p}$ is nearly normal under $H_0$. If the conditions hold, construct the standard error, again using $p_0$, and show the p-value in a drawing. Lastly, compute the p-value and evaluate the hypotheses.
-\end{onebox}
+\oneprophtsummary{}
+
+%\begin{onebox}{Hypothesis test for a proportion}
+%Set up hypotheses and verify the conditions using the null value, $p_0$, to ensure $\hat{p}$ is nearly normal under $H_0$. If the conditions hold, construct the standard error, again using $p_0$, and show the p-value in a drawing. Lastly, compute the p-value and evaluate the hypotheses.
+%\end{onebox}
+
+\noindent%
+For additional one-proportion hypothesis test examples,
+see Section~\ref{hypothesisTesting}.
 
 \index{data!Payday regulation poll|)}
 
@@ -503,7 +514,7 @@ using the normal model.
 %The standard error for the difference in two proportions takes a similar form. The reasons behind this similarity are rooted in the probability theory of Section~\ref{randomVariablesSection}, which is described for this context in Guided Practice~\vref{derivingSEForDiffOfTwoMeansExercise}.
 
 
-\subsection{Confidence intervals for $p_1 -p_2$}
+\subsection{Confidence intervals for $\mathbf{p_1 - p_2}$}
 
 \index{data!CPR and blood thinner|(}
 
@@ -517,6 +528,16 @@ in this case, just as it did in the one-proportion case:
 \begin{align*}
 \text{point estimate} \pm z^{\star} \times SE
 \end{align*}
+As with a single proportion context,
+we can follow the same Prepare, Check, Calculate, Conclude
+steps for
+computing a confidence interval
+or
+completing a hypothesis test
+for a difference of two proportions.
+The details change a little,
+but the general approach remain the same.
+Think about these steps when you apply statistical methods.
 
 \begin{examplewrap}
 \begin{nexample}{We consider an experiment for patients
@@ -601,6 +622,30 @@ Total			&& 25		& 65		&& 90 \\
 
 \index{data!CPR and blood thinner|)}
 
+%\begin{onebox}{Confidence interval for a difference
+%    of two proportions}
+%  Once you've determined a confidence interval for the
+%  difference of two proportions would be helpful for an
+%  application, there are four steps to constructing the interval:
+%  \begin{description}
+%  \item[Prepare.]
+%      Identify the sample proportions and sample sizes
+%      for each of the two groups,
+%      determine what confidence level you wish to use.
+%  \item[Check.]
+%      Verify the conditions to ensure each sample
+%      proportion is nearly normal.
+%      The success-failure condition should be checked
+%      for each group.
+%  \item[Calculate.]
+%      If the conditions hold, compute $SE$,
+%      find $z^{\star}$, and construct the interval.
+%  \item[Conclude.]
+%      Interpret the confidence interval in the context
+%      of the problem.
+%  \end{description}
+%\end{onebox}
+
 \begin{exercisewrap}
 \begin{nexercise}
 A 5-year experiment
@@ -628,14 +673,15 @@ Also interpret the interval in the context of the
 study.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The experiment randomized,
+\footnotetext{
+  The experiment randomized,
   subjects are unlikely to interact with each other,
   the observations are independent.
   The success-failure condition is also met for both
   groups as all counts are at least~10.
   Compute the sample proportions
-  ($\hat{p}_{fishoil} = 0.0112$,
-    $\hat{p}_{placebo} = 0.0155$),
+  ($\hat{p}_{\text{fish oil}} = 0.0112$,
+    $\hat{p}_{\text{placebo}} = 0.0155$),
   point estimate of the difference ($0.0112 - 0.0155 = -0.0043$),
   and standard error
   ($SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} +
@@ -661,7 +707,7 @@ study.\footnotemark
   in patients like those in the study.}
 
 
-\subsection{Hypothesis tests for $p_1 - p_2$}
+\subsection{Hypothesis tests for $\mathbf{p_1 - p_2}$}
 
 \index{data!mammography|(}
 \index{data!breast cancer|(}
@@ -738,7 +784,8 @@ The success-failure condition is satisfied since all values are at least 10, and
 \end{nexample}
 \end{examplewrap}
 
-\begin{onebox}{Use the pooled proportion estimate when $\mathbf{H_0}$ is $\mathbf{p_1 - p_2 = 0}$}
+\begin{onebox}{Use the pooled proportion estimate when
+    $\mathbf{H_0}$ is $\mathbf{p_1 - p_2 = 0}$}
   When the null hypothesis is that the proportions are equal,
   use the pooled proportion ($\hat{p}$) to verify the
   success-failure condition and estimate the standard error:
@@ -787,8 +834,6 @@ SE = \sqrt{
 \end{nexample}
 \end{examplewrap}
 
-\newpage
-
 \begin{examplewrap}
 \begin{nexample}{Using the point estimate $\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012$ and standard error $SE = 0.00070$, calculate a p-value for the hypothesis test and write a conclusion.}
 Just like in past tests, we first compute a test statistic and draw a picture:
@@ -815,6 +860,34 @@ These considerations highlight the complexity around medical care and treatment 
 
 \index{data!breast cancer|)}
 \index{data!mammography|)}
+
+%\begin{onebox}{Hypothesis testing when $\mathbf{H_0}$ is
+%    $\mathbf{p_1 - p_2 = 0}$}
+%  Once you've determined a hypothesis test for the difference
+%  of two proportions is the correct procedure, there are four
+%  steps to completing the test:
+%  \begin{description}
+%  \item[Prepare.]
+%      Identify the parameter of interest,
+%      list out hypotheses,
+%      identify the significance level,
+%      and compute summary statistics for each group.
+%  \item[Check.]
+%      Verify the conditions to ensure
+%      $\hat{p}_1 - \hat{p}_2$ is nearly normal under $H_0$.
+%      When the null hypothesis is that the difference is~0,
+%      use a pooled proportion to check the success-failure
+%      condition for each group.
+%  \item[Calculate.]
+%      If the conditions hold, compute the standard
+%      error, again using the pooled proportion,
+%      compute the Z-score, and identify the p-value.
+%  \item[Conclude.]
+%      Evaluate the hypothesis test by comparing the p-value
+%      to $\alpha$, and provide a conclusion in the context
+%      of the problem.
+%  \end{description}
+%\end{onebox}
 
 
 
@@ -884,6 +957,46 @@ Using the normal model for this test statistic, we identify the right tail area 
 \caption{Distribution of the test statistic if the null hypothesis was true. The p-value is represented by the shaded area.}
 \label{bladesTwoSampleHTPValueQC}
 \end{figure}
+
+\subsection{Examining the standard error formula (special topic)}
+
+The formula for the standard error of the difference
+in two proportions is similar to the formula for other
+standard errors.
+Recall that the standard error of a single proportion,
+$\hat{p}_1$, is
+\begin{align*}
+SE_{\hat{p}_1} = \sqrt{\frac{{p}_1 (1 - {p}_1)}{n_1}}
+\end{align*}
+The standard error of the difference of two sample proportions
+can be constructed from the standard errors of the separate
+sample proportions:
+\begin{align*}
+SE_{\hat{p}_{1} - \hat{p}_{2}}
+	= \sqrt{SE_{\hat{p}_1}^2 + SE_{\hat{p}_2}^2}
+	= \sqrt{\frac{{p}_1 (1 - {p}_1)}{n_1}
+	    + \frac{{p}_2 (1 - {p}_2)}{n_2}}
+\end{align*}
+This special relationship follows from probability theory.
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{derivingSEForDiffOfTwoMeansExercise}%
+Prerequisite: Section~\ref{randomVariablesSection}.
+We can rewrite the equation above in a different way:
+\begin{align*}
+SE_{\hat{p}_{1} - \hat{p}_{2}}^2
+  = SE_{\hat{p}_1}^2 + SE_{\hat{p}_2}^2
+\end{align*}
+Explain where this formula comes from using the ideas of probability theory.\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The standard error squared represents
+  the variance of the estimate.
+  If $X$ and $Y$ are two random variables with variances
+  $\sigma_x^2$ and $\sigma_y^2$,
+  then the variance of $X - Y$ is $\sigma_x^2 + \sigma_y^2$.
+  Likewise, the variance corresponding to $\hat{p}_1 - \hat{p}_2$ is $\sigma_{\hat{p}_1}^2 + \sigma_{\hat{p}_2}^2$. Because $\sigma_{\hat{p}_1}^2$ and $\sigma_{\hat{p}_2}^2$ are just another way of writing $SE_{\hat{p}_1}^2$ and  $SE_{\hat{p}_2}^2$, the variance associated with $\hat{p}_1 - \hat{p}_2$ may be written as $SE_{\hat{p}_1}^2 + SE_{\hat{p}_2}^2$.}
 
 
 
@@ -1225,6 +1338,39 @@ The chi-square distribution and p-value are shown in Figure~\ref{jurorHTPValueSh
   \end{description}
   Failing to check conditions may affect the test's error rates.
 \end{onebox}
+
+%\begin{onebox}{Chi-square test for one-way table}
+%  Suppose we are to evaluate whether there is convincing
+%  evidence that a set of observed counts $O_1$, $O_2$, ...,
+%  $O_k$ in $k$ categories are unusually different from what
+%  might be expected under a null hypothesis.
+%  \begin{description}
+%  \item[Prepare.]
+%      List out hypotheses and identify the significance level.
+%  \item[Check.]
+%      Verify the conditions are met,
+%      which will include finding the expected value
+%      for each of the $k$ cells based on the null hypothesis,
+%      which we'll label as $E_1$, $E_2$, ..., $E_k$.
+%  \item[Calculate.]
+%      Compute the degrees of freedom $df = k - 1$ and
+%      the test statistic using the expected values
+%      against the observed values $O_1, ..., O_k$:
+%      \begin{align*}
+%      X^2
+%        = \frac{(O_1 - E_1)^2}{E_1} +
+%            \frac{(O_2 - E_2)^2}{E_2} +
+%            \cdots +
+%            \frac{(O_k - E_k)^2}{E_k}
+%      \end{align*}
+%      Identify the p-value as the upper tail in the chi-square
+%      distribution using the test statistic as a cutoff.
+%  \item[Conclude.]
+%      Evaluate the hypothesis test by comparing the p-value
+%      to $\alpha$, and provide a conclusion in the context
+%      of the problem.
+%  \end{description}
+%\end{onebox}
 
 When examining a table with just two bins, pick a single bin and use the one-proportion methods introduced in Section~\ref{singleProportion}.
 
