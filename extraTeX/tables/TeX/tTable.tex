@@ -1,6 +1,9 @@
 \section{$\mathbf{t}$-Probability Table}
 \label{tDistributionTable}
 
+\Comment{Discuss picking the smaller $df$ row when the desired
+row isn't available.}
+
 A partial \term{t-table} is shown in Figure~\ref{tTableSample}.
 Each row in the $t$-table represents a $t$-distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$-distribution with $df=18$, we can examine row 18, which is highlighted in Figure~\ref{tTableSample}. If we want the value in this row that identifies the cutoff for an upper tail of 10\%, we can look in the column where \emph{one tail} is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10\%, we would use -1.33. Just like the normal distribution, all $t$-distributions are symmetric.
 
@@ -71,12 +74,33 @@ We identify the row in the $t$-table using the degrees of freedom: $df=20$. Then
 \begin{exercisewrap}
 \begin{nexercise}
 What proportion of the $t$-distribution with 19 degrees of freedom falls above -1.79 units?\footnotemark{}
-\index{distribution!$t$|)}
-\index{t-distribution|)}
-\footnotetext{We find the shaded area \emph{above} -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.}
-
 \end{nexercise}
 \end{exercisewrap}
+\footnotetext{We find the shaded area \emph{above} -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.}
+
+\begin{examplewrap}
+\begin{nexample}{Find the value of $t_{18}^{\star}$
+    using the $t$-table, where $t_{18}^{\star}$
+    is the cutoff for the $t$-distribution with
+    18 degrees of freedom where 95\% of the distribution
+    lies between -$t_{18}^{\star}$ and +$t_{18}^{\star}$.}
+  Identifying $t_{18}^{\star}$ is similar to how we find
+  $z^{\star}$ using a table.
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item
+      For a 95\% confidence interval, we want to find
+      the cutoff $t^{\star}_{18}$ such that 95\% of the
+      $t$-distribution is between -$t^{\star}_{18}$
+      and $t^{\star}_{18}$.
+  \item
+      We look in the $t$-table on page~\pageref{tTableSample},
+      find the column with area totaling 0.05 in the two tails
+      (third column), and then the row with 18 degrees of
+      freedom: $t^{\star}_{18} = 2.10$.
+  \end{itemize}
+\end{nexample}
+\end{examplewrap}
 
 
 \begin{figure}[h]

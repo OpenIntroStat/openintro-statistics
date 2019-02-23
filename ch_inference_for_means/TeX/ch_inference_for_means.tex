@@ -188,8 +188,6 @@ of working with tail areas in the $t$-distribution.
 What proportion of the $t$-distribution with 19 degrees
 of freedom falls above -1.79 units?
 Use your preferred method for finding tail areas.\footnotemark{}
-\index{distribution!$t$|)}
-\index{t-distribution|)}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{We find the shaded area \emph{above} -1.79
@@ -198,6 +196,8 @@ Use your preferred method for finding tail areas.\footnotemark{}
   to find, has an area of 0.0447, so the upper area would
   have an area of $1 - 0.0447 = 0.9553$.}
 
+\index{distribution!$t$|)}
+\index{t-distribution|)}
 
 
 \subsection{Conditions for using the $\mathbf{t}$-distribution
@@ -279,15 +279,14 @@ The sample mean and estimated standard error are computed just as before ($\bar{
 If the sample has $n$ observations and we are examining a single mean, then we use the $t$-distribution with $df=n-1$ degrees of freedom.
 \end{onebox}
 
-In our current example, we should use the $t$-distribution with $df=19-1=18$ degrees of freedom. Then identifying $t_{18}^{\star}$ is similar to how we found $z^{\star}$. 
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item For a 95\% confidence interval, we want to find the cutoff $t^{\star}_{18}$ such that 95\% of the $t$-distribution is between -$t^{\star}_{18}$ and $t^{\star}_{18}$.
-\item We look in the $t$-table on page~\pageref{tTableSample}, find the column with area totaling 0.05 in the two tails (third column), and then the row with 18 degrees of freedom: $t^{\star}_{18} = 2.10$.
-\end{itemize}
-Generally the value of $t^{\star}_{df}$ is slightly larger than what we would get under the normal model with~$z^{\star}$.
-
-
+In our current example, we should use the $t$-distribution
+with $df=19-1=18$ degrees of freedom.
+We can generally identify $t_{18}^{\star}$
+using statistical software.
+Alternatively, we could use the $t$ table in
+Appendix~\ref{tDistributionTable}.
+Generally the value of $t^{\star}_{df}$ is slightly larger
+than what we would get under the normal model with~$z^{\star}$.
 
 Finally, we can substitute all our values into the confidence interval equation to create the 95\% confidence interval for the average mercury content in muscles from Risso's dolphins that pass through the Taiji area:
 \begin{align*}
@@ -627,11 +626,9 @@ T
   = \frac{\uclabookM{} - 0}{\uclabookSE{}} = 2.20
 \end{align*}
 The degrees of freedom are $df = \uclabookN{} - 1 = 67$.
-If we examined Appendix~\vref{tDistributionTable},
-we would see that this value corresponds to
-a two-tail area and p-value between 0.025 and 0.05.
-If we used statistical software, we would find the
-p-value is about 0.0312.
+Using statistical software, we would find the
+one-tail area is 0.0156.
+Doubling this area gives the p-value: 0.0312.
 Because the p-value is less than 0.05,
 we reject the null hypothesis.
 Amazon prices are, on average, lower than the
@@ -658,8 +655,8 @@ and books on Amazon.\footnotemark{}
   computed in
   Example~\ref{htForDiffInUCLAAndAmazonTextbookPrices}.
   To find the interval,
-  identify $t^{\star}_{67}$
-  (use $df = 67$ in the table, $t^{\star}_{67} = 2.00$)
+  identify $t^{\star}_{67}$ using statistical software
+  or the $t$-table ($t^{\star}_{67} = 2.00$),
   and plug it, the point estimate,
   and the standard error into the confidence
   interval formula:
@@ -960,6 +957,8 @@ To depict the p-value, we draw the distribution of the point estimate as though 
 \end{center}
 \end{nexample}
 \end{examplewrap}
+
+\Comment{Fix the next example for referencing the $t$-table.}
 
 \begin{examplewrap}
 \begin{nexample}{Compute the p-value of the hypothesis test using the figure in Example~\ref{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}, and evaluate the hypotheses using a significance level of $\alpha=0.05$.} \label{babySmokeHTForWeightComputePValueAndEvalHT}

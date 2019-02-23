@@ -302,6 +302,53 @@ see Section~\ref{hypothesisTesting}.
 \CalculatorVideos{confidence intervals and hypothesis tests for a single proportion}
 
 
+\subsection{When one or more conditions aren't met}
+
+We've spent a lot of times discussing conditions for when
+$\hat{p}$ can be reasonably modeled by a normal distribution.
+What happens when the success-failure condition fails?
+What about when the independence condition fails?
+In either case, the general ideas of confidence intervals
+and hypothesis tests remain the same, but the strategy
+or technique used to generate the interval or p-value
+would change.
+
+When the success-failure condition isn't met
+for a hypothesis test, we can simulate the null distribution
+of $\hat{p}$ using the null value, $p_0$.
+The simulation concept is similar to the ideas used
+in the malaria case study presented in
+Section~\ref{caseStudyMalariaVaccine},
+and an online section outlines this strategy:
+\begin{center}
+\oiRedirect{stat_sim_prop_ht}
+    {www.openintro.org/r?go=stat\_sim\_prop\_ht}
+\end{center}
+\Comment{Port over the deleted OS3 section to be an online extra.}
+For a confidence interval when the success-failure condition
+isn't met, we can use what's called
+the \term{Clopper-Pearson interval},
+where the details of this method live an internet search away,
+even if those details are beyond the scope of this book.
+
+The independence condition is a more nuanced requirement.
+When it isn't met, it is important to understand how and why
+it isn't met.
+For example, if we took a cluster sample
+(see Section~\ref{section_obs_data_sampling}),
+suitable statistical methods are available but would
+be beyond the scope of even most second or third courses
+in statistics.
+On the other hand, we'd be stretched to find any method
+that we could confidently apply to correct the inherent biases
+of data from a convenience sample.
+
+While this book is scoped to well-constrained statistical
+problems, do remember that this is just the first
+book in what is a large library of statistical methods that
+are suitable for a very wide range of data and contexts.
+
+
 \subsection{Choosing a sample size when estimating a proportion}
 
 \index{margin of error|(}
@@ -444,7 +491,6 @@ of error of 0.04 with 95\% confidence?\footnotemark
 
 \index{data!Payday regulation poll|)}
 \index{margin of error|)}
-
 
 
 
@@ -1199,7 +1245,7 @@ is related to finding the relevant area in the tail of
 a distribution.
 The most common ways to do this are using computer software,
 using a graphing calculator, or using a table.
-For folks wanting to use the last option, we provide an outline
+For folks wanting to use the table option, we provide an outline
 of how to read the chi-square table in
 Appendix~\ref{chiSquareProbabilityTable},
 which is also where you may find the table.

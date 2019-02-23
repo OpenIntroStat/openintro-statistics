@@ -5,7 +5,7 @@
   \chaptersection{basicExampleOfStentsAndStrokes}
   \chaptersection{dataBasics}
   \chaptersection{overviewOfDataCollectionPrinciples}
-  \chaptersection{section_obs_data_sampling}
+  % \chaptersection{section_obs_data_sampling}
   \chaptersection{experimentsSection}
 \end{chapterpage}
 \renewcommand{\chapterfolder}{ch_intro_to_data}
@@ -709,10 +709,59 @@ a change in another requires an experiment.
 %  the other.}
 
 
+\subsection{Introducing observational studies and experiments}
+
+\noindent%
+There are two primary types of data collection:
+observational studies and experiments.
+
+Researchers perform an \term{observational study} when they
+collect data in a way that does not directly interfere with
+how the data arise.
+For instance, researchers may collect information via surveys,
+review medical or company records, or follow a \term{cohort}
+of many similar individuals to form hypotheses about why certain
+diseases might develop.
+In each of these situations, researchers merely observe the
+data that arise.
+In general, observational studies can provide evidence of
+a naturally occurring association between variables, but they
+cannot by themselves show a causal connection.
+
+When researchers want to investigate the possibility of
+a causal connection, they conduct an \term{experiment}.
+Usually there will be both an explanatory and a response
+variable.
+For instance, we may suspect administering a drug will reduce
+mortality in heart attack patients over the following year.
+To check if there really is a causal connection between the
+explanatory variable and the response, researchers will collect
+a sample of individuals and split them into groups.
+The individuals in each group are \emph{assigned} a treatment.
+When individuals are randomly assigned to a group,
+the experiment is called a \term{randomized experiment}.
+For example, each heart attack patient in the drug trial
+could be randomly assigned,  perhaps by flipping a coin,
+into one of two groups:
+the first group receives a \term{placebo} (fake treatment)
+and the second group receives the drug.
+See the case study in
+Section~\ref{basicExampleOfStentsAndStrokes} for another
+example of an experiment, though that study did not employ
+a~placebo.
+
+\begin{onebox}{Association $\neq$ Causation}
+  In general, association does not imply causation,
+  and causation can only be inferred from a randomized experiment.
+\end{onebox}
+
+
+
 
 %%%%%
-\section{Overview of data collection principles}
+\section{Sampling principles and strategies}
 \label{overviewOfDataCollectionPrinciples}
+\label{section_obs_data_sampling}
 
 \index{sample|(}
 \index{population|(}
@@ -724,7 +773,6 @@ what subjects or cases should be studied and what variables are
 important.
 It is also important to consider \emph{how} data are collected
 so that they are reliable and help achieve the research goals.
-
 
 
 \subsection{Populations and samples}
@@ -938,77 +986,17 @@ We can easily access ratings for products, sellers, and companies through websit
 \index{sample|)}
 
 
-\subsection{Introducing observational studies and experiments}
-
-\Comment{Should this subsection go at the end of 1.2,
-  then the rest of 1.3 can be folded together with 1.4 to make
-  a broader sampling / observational data section.}
-\Comment{If not, it's probably worth writing an extra sentence
-  at the bottom to tee up the population / sampling topic
-  as a precursor to other sampling and experiments.}
-
-\noindent%
-There are two primary types of data collection:
-observational studies and experiments.
-
-Researchers perform an \term{observational study} when they
-collect data in a way that does not directly interfere with
-how the data arise.
-For instance, researchers may collect information via surveys,
-review medical or company records, or follow a \term{cohort}
-of many similar individuals to form hypotheses about why certain
-diseases might develop.
-In each of these situations, researchers merely observe the
-data that arise.
-In general, observational studies can provide evidence of
-a naturally occurring association between variables, but they
-cannot by themselves show a causal connection.
-
-When researchers want to investigate the possibility of
-a causal connection, they conduct an \term{experiment}.
-Usually there will be both an explanatory and a response
-variable.
-For instance, we may suspect administering a drug will reduce
-mortality in heart attack patients over the following year.
-To check if there really is a causal connection between the
-explanatory variable and the response, researchers will collect
-a sample of individuals and split them into groups.
-The individuals in each group are \emph{assigned} a treatment.
-When individuals are randomly assigned to a group,
-the experiment is called a \term{randomized experiment}.
-For example, each heart attack patient in the drug trial
-could be randomly assigned,  perhaps by flipping a coin,
-into one of two groups:
-the first group receives a \term{placebo} (fake treatment)
-and the second group receives the drug.
-See the case study in
-Section~\ref{basicExampleOfStentsAndStrokes} for another
-example of an experiment, though that study did not employ
-a~placebo.
-
-\begin{onebox}{Association $\neq$ Causation}
-  In general, association does not imply causation,
-  and causation can only be inferred from a randomized experiment.
-\end{onebox}
-
-
-%%%%%
-\section{Observational data and sampling strategies}
-\label{section_obs_data_sampling}
+\subsection{Observational studies}
 
 Data where no treatment has been explicitly applied
 (or explicitly withheld) is called \term{observational data}.
 For instance, the loan data and county data described in
 Section~\ref{dataBasics}
 are both examples of observational data.
-It is important to collect such data in
-a thoughtful and rigorous manner so that statistical
-analyses based on the data can have meaningful
-and generalizable results.
-
-
-\subsection{Observational studies}
-
+%It is important to collect such data in
+%a thoughtful and rigorous manner so that statistical
+%analyses based on the data can have meaningful
+%and generalizable results.
 Making causal conclusions based on experiments is often reasonable.
 However, making the same causal conclusions based on observational
 data can be treacherous and is not recommended.
