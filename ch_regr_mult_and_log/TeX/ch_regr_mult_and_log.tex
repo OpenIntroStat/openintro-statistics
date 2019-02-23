@@ -6,6 +6,7 @@
   \chaptersection{introductionToMultipleRegression}
   \chaptersection{model_selection_section}
   \chaptersection{multipleRegressionModelAssumptions}
+  \chaptersection{mario_kart_case_study}
   \chaptersection{logisticRegression}
 \end{chapterpage}
 \renewcommand{\chapterfolder}{ch_regr_mult_and_log}
@@ -54,7 +55,7 @@ The first six observations in the data set are shown in
 Figure~\ref{loansDataMatrix},
 and descriptions for each variable are shown in
 Figure~\ref{loansVariables}.
-Notice that the past bankruptcy variable (\var{past\us{}bankr})
+Notice that the past bankruptcy variable (\var{bankruptcy})
 is an indicator variable\index{indicator variable},
 where it takes the value 1 if the borrower had a past
 bankruptcy in their record and 0 if not.
@@ -62,7 +63,7 @@ Using an indicator variable in place of a category name
 allows for these variables to be directly used in regression.
 Two of the other variables are
 categorical\index{categorical variable}
-(\var{ver\us{}income} and \var{issued}), each of which
+(\var{income\us{}ver} and \var{issued}), each of which
 can take one of a few different non-numerical values;
 we'll discuss how these are handled in the model in
 Section~\ref{ind_and_cat_vars_as_predictors}.
@@ -71,9 +72,9 @@ Section~\ref{ind_and_cat_vars_as_predictors}.
 \centering\footnotesize
 \begin{tabular}{r ccc ccc cc}
   \hline
-   & interest\us{}rate & ver\us{}income
+   & interest\us{}rate & income\us{}ver
        & debt\us{}to\us{}income & credit\us{}util
-       & past\us{}bankr & term
+       & bankruptcy & term
        & issued & credit\us{}checks \\ 
   \hline
   1 & 14.07 & verified & 18.01 & 0.55 & 0 & 60 & Mar2018 & 6 \\ 
@@ -101,18 +102,20 @@ Section~\ref{ind_and_cat_vars_as_predictors}.
 \hline
 \var{interest\us{}rate} &
     Interest rate for the loan. \\
-\var{ver\us{}income} &
+\var{income\us{}ver} &
     Categorical variable describing whether the borrower's
-    income source and amount have been verified. \\
+    income source and amount have been verified,
+    with levels \resp{verified}, \resp{source\us{}only},
+    and \resp{not}. \\
 \var{debt\us{}to\us{}income} &
-    Debt-to-income ratio, which is the ratio of total debt
+    Debt-to-income ratio, which is the percentage of total debt
     of the borrower divided by their total income. \\
 \var{credit\us{}util} &
     Of all the credit available to the borrower,
     what fraction are they utilizing.
     For example, the credit utilization on a credit card would
     be the card's balance divided by the card's credit limit. \\
-\var{past\us{}bankr} &
+\var{bankruptcy} &
     An indicator variable for whether the borrower has a past
     bankruptcy in her record. This variable takes a value of
     \resp{1} if the answer is ``yes''
@@ -130,7 +133,8 @@ Section~\ref{ind_and_cat_vars_as_predictors}.
     to run a credit check. \\
 \hline
 \end{tabular}
-\caption{Variables and their descriptions for the \data{mario\us{}kart} data set.}
+\caption{Variables and their descriptions for the
+    \data{loans} data set.}
 \label{loansVariables}
 \end{figure}
 
@@ -147,7 +151,7 @@ Let's start by fitting a linear regression model for
 interest rate with a single predictor indicating whether
 or not a person has a bankruptcy in their record:
 \begin{align*}
-\widehat{rate} &= 12.33 + \pastbankrACoef{} \times past\us{}bankr
+\widehat{rate} &= 12.33 + \pastbankrACoef{} \times bankruptcy
 \end{align*}
 Results of this model are shown in
 Figure~\ref{intRateVsPastBankrModel}.
@@ -163,7 +167,7 @@ Figure~\ref{intRateVsPastBankrModel}.
   & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
   (Intercept) & 12.3380 & 0.0533 & 231.49 & $<$0.0001 \\ 
-  past\us{}bankr & 0.7368 & 0.1529 & 4.82 & $<$0.0001 \\ 
+  bankruptcy & 0.7368 & 0.1529 & 4.82 & $<$0.0001 \\ 
   \hline
   &&&\multicolumn{2}{r}{$df=9998$}
 \end{tabular}
@@ -196,10 +200,10 @@ Figure~\ref{intRateVsPastBankrModel}.
 \begin{nexample}{Interpret the coefficient for the
      past bankruptcy variable in the model.
      Is this coefficient significantly different from 0?}
-  The \var{past\us{}bankr} variable is a two-level categorical
-  variable, taking value 1 when the borrower has a bankruptcy
+  The \var{bankruptcy} variable takes one of two values:
+  1 when the borrower has a bankruptcy
   in their history and 0 otherwise.
-  So \pastbankrACoef{} means that the model predicts a
+  A slope of \pastbankrACoef{} means that the model predicts a
   \pastbankrACoef{}\% higher
   interest rate for those borrowers with a bankruptcy in
   their record.
@@ -208,21 +212,21 @@ Figure~\ref{intRateVsPastBankrModel}.
   categorical predictor variables.)
   Examining the regression output in
   Figure~\ref{intRateVsPastBankrModel},
-  we can see that the p-value for \var{past\us{}bankr}
+  we can see that the p-value for \var{bankruptcy}
   is very close to zero, indicating there is strong evidence
-  that the coefficient is different from zero when using this
-  simple one-variable model.
+  the coefficient is different from zero when using this
+  simple one-predictor model.
 \end{nexample}
 \end{examplewrap}
 
 Suppose we had fit a model using a 3-level categorical variable,
-such as \var{ver\us{}income}.
+such as \var{income\us{}ver}.
 The output from software is shown in
 Figure~\ref{intRateVsVerIncomeModel}.
 This regression output provides multiple
-rows for the \var{ver\us{}income} variable.
+rows for the \var{income\us{}ver} variable.
 Each row represents the relative difference for
-each level of \var{ver\us{}income}.
+each level of \var{income\us{}ver}.
 However, we are missing one of the levels:
 \resp{not} (for \emph{not verified}).
 The missing level is called the \term{reference level},
@@ -239,9 +243,9 @@ other levels are measured against.
   \hline
   (Intercept) &
       11.0995 & 0.0809 & 137.18 & $<$0.0001 \\
-  ver\us{}income\lmlevel{source\us{}only} &
+  income\us{}ver\lmlevel{source\us{}only} &
       1.4160 & 0.1107 & 12.79 & $<$0.0001 \\ 
-  ver\us{}income\lmlevel{verified} &
+  income\us{}ver\lmlevel{verified} &
       3.2543 & 0.1297 & 25.09 & $<$0.0001 \\ 
   \hline
   &&&\multicolumn{2}{r}{$df=9998$}
@@ -258,26 +262,26 @@ other levels are measured against.
 \begin{nexample}{How would we write an equation for
     this regression model?}
   \label{verIncomeEquationExample}%
-  The equation for the linear model may be written as
+  The equation for the regression model may be written as
   a model with two predictors:
   \begin{align*}
   \widehat{rate} = 11.10 +
       1.42 \times
-          %1_{\var{ver\us{}income} = \resp{source\us{}only}} +
-          \indfunc{ver\us{}income}{source\us{}only} +
+          %1_{\var{income\us{}ver} = \resp{source\us{}only}} +
+          \indfunc{income\us{}ver}{source\us{}only} +
       3.25 \times
-          %1_{\var{ver\us{}income} = \resp{verified}}
-          \indfunc{ver\us{}income}{verified}
+          %1_{\var{income\us{}ver} = \resp{verified}}
+          \indfunc{income\us{}ver}{verified}
   \end{align*}
   We use the notation $\indfunc{variable}{level}$
   to represent \termsub{indicator variables}{indicator variable}
   for when the categorical variable takes a particular value.
-  For example, $\indfunc{ver\us{}income}{source\us{}only}$
-  would take a value of 1 if \var{ver\us{}income} was
+  For example, $\indfunc{income\us{}ver}{source\us{}only}$
+  would take a value of 1 if \var{income\us{}ver} was
   \resp{source\us{}only} for a loan,
   and it would take a value of 0 otherwise.
-  Likewise, $\indfunc{ver\us{}income}{verified}$ would take
-  a value of 1 if \var{ver\us{}income} took a value
+  Likewise, $\indfunc{income\us{}ver}{verified}$ would take
+  a value of 1 if \var{income\us{}ver} took a value
   of \resp{verified} and 0 if it took any other value.
   % In Example~\ref{}, we'll run through a few examples
   % of how we can use the equation for the model.
@@ -287,14 +291,14 @@ other levels are measured against.
 The notation used in Example~\ref{verIncomeEquationExample}
 may feel a bit confusing.
 Let's figure out how to use the equation for each level
-of the \var{ver\us{}income} variable.
+of the \var{income\us{}ver} variable.
 
 \begin{examplewrap}
 \begin{nexample}{Using the model from
     Example~\ref{verIncomeEquationExample},
     compute the average interest rate for borrowers
     whose income source and amount are both unverified.}
-  When \var{ver\us{}income} takes a value of \resp{not},
+  When \var{income\us{}ver} takes a value of \resp{not},
   then both indicator functions in the equation from
   Example~\ref{verIncomeEquationExample}
   are set to zero:
@@ -317,7 +321,7 @@ of the \var{ver\us{}income} variable.
     Example~\ref{verIncomeEquationExample},
     compute the average interest rate for borrowers
     whose income source is verified but the amount is not.}
-  When \var{ver\us{}income} takes a value of
+  When \var{income\us{}ver} takes a value of
   \resp{source\us{}only},
   then the corresponding indicator function is 1
   while the other ($1_{verified}$) is 0:
@@ -337,7 +341,7 @@ Compute the average interest rate for borrowers
 whose income source and amount are both verified.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{When \var{ver\us{}income} takes a value of
+\footnotetext{When \var{income\us{}ver} takes a value of
   \resp{verified},
   then the corresponding indicator function is 1
   while the other ($1_{source\_only}$) is 0:
@@ -361,7 +365,7 @@ to this reference level.
 
 \begin{exercisewrap}
 \begin{nexercise}
-Interpret the coefficients in the \var{ver\us{}income}
+Interpret the coefficients in the \var{income\us{}ver}
 model.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
@@ -380,7 +384,8 @@ their income source or amount is surprising.
 Intuitively, we'd think that a loan would look \emph{less}
 risky if the borrower's income has been verified.
 However, note that the situation may be more complex,
-and there may be confounding variables.
+and there may be confounding variables
+that we didn't account for.
 For example, perhaps lender require borrowers with
 poor credit to verify their income.
 That is, verifying income in our data set might be
@@ -390,7 +395,7 @@ back the loan.
 For this reason, the borrower could be deemed higher
 risk, resulting in a higher interest rate.
 (What other confounding variables might explain this
-counter-intuitive model?)
+counter-intuitive relationship suggested by the model?)
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -412,14 +417,15 @@ verified?\footnotemark
 \subsection{Including and assessing many variables in a model}
 \label{includingAndAssessingManyVariablesInAModel}
 
-The world is complex, and it can be helpful to be able to
+The world is complex, and it can be helpful to
 consider many factors at once in statistical modeling.
 For example, we might like to use the full context of
 borrower to predict the interest rate they receive
 rather than using a single variable.
 This is the strategy used in \term{multiple regression}.
 While we remain cautious about making any causal
-interpretations using multiple regression,
+interpretations using multiple regression
+on observational data,
 such models are a common first step in gaining insights
 or providing some evidence of a causal connection.
 
@@ -428,22 +434,22 @@ for any past bankruptcy or whether the borrower had
 their income source or amount verified,
 but simultaneously accounts for all the variables
 in the data set:
-\var{ver\us{}income},
+\var{income\us{}ver},
 \var{debt\us{}to\us{}income},
 \var{credit\us{}util},
-\var{past\us{}bankr},
+\var{bankruptcy},
 \var{term},
 \var{issued},
 and \var{credit\us{}checks}.
 \begin{align*}
 \widehat{\var{rate}}
 	&= \beta_0 +
-	    \beta_1\times \indfunc{ver\us{}income}{source\us{}only} +
-	    \beta_2\times \indfunc{ver\us{}income}{verified} +
+	    \beta_1\times \indfunc{income\us{}ver}{source\us{}only} +
+	    \beta_2\times \indfunc{income\us{}ver}{verified} +
 		\beta_3\times \var{debt\us{}to\us{}income} \\
 	&\qquad\  +
 	    \beta_4 \times \var{credit\us{}util} +
-	    \beta_5 \times \var{past\us{}bankr} +
+	    \beta_5 \times \var{bankruptcy} +
 		\beta_6 \times \var{term} \\
 	&\qquad\  +
 	    \beta_7 \times \indfunc{issued}{Jan2018} +
@@ -452,7 +458,7 @@ and \var{credit\us{}checks}.
 \end{align*}
 This equation represents a holistic approach for modeling
 all of the variables simultaneously.
-Notice that there are two coefficients for \var{ver\us{}income}
+Notice that there are two coefficients for \var{income\us{}ver}
 and also two coefficients for \var{issued}, since both are
 3-level categorical variables.
 
@@ -473,7 +479,7 @@ SSE = e_1^2 + e_2^2 + \dots + e_{\loN}^2
 where $y_i$ and $\hat{y}_i$ represent the observed
 interest rates and their estimated values according to
 the model, respectively.
-There are \loNcomma{} residuals, one for each observation.
+\loNcomma{} residuals are calculated, one for each observation.
 We typically use a computer to minimize the sum of squares
 and compute point estimates, as shown in the sample output
 in Figure~\ref{loansFullModelOutput}.
@@ -492,13 +498,13 @@ each $\beta_i$, just as we did in the one-predictor case.
   \hline
   \vspace{-3.8mm} & & & & \\
   (Intercept) & 1.9251 & 0.2102 & 9.16 & $<$0.0001 \\ 
-  ver\us{}income\lmlevel{source\us{}only} &
+  income\us{}ver\lmlevel{source\us{}only} &
       0.9750 & 0.0991 & 9.83 & $<$0.0001 \\ 
-  ver\us{}income\lmlevel{verified} &
+  income\us{}ver\lmlevel{verified} &
       2.5374 & 0.1172 & 21.65 & $<$0.0001 \\ 
   debt\us{}to\us{}income & 0.0211 & 0.0029 & 7.18 & $<$0.0001 \\ 
   credit\us{}util & 4.8959 & 0.1619 & 30.24 & $<$0.0001 \\ 
-  past\us{}bankr & 0.3864 & 0.1324 & 2.92 & 0.0035 \\ 
+  bankruptcy & 0.3864 & 0.1324 & 2.92 & 0.0035 \\ 
   term & 0.1537 & 0.0039 & 38.96 & $<$0.0001 \\ 
   issued\lmlevel{Jan2018} & 0.0276 & 0.1081 & 0.26 & 0.7981 \\ 
   issued\lmlevel{Mar2018} & -0.0397 & 0.1065 & -0.37 & 0.7093 \\ 
@@ -506,9 +512,9 @@ each $\beta_i$, just as we did in the one-predictor case.
    \hline
    &&&\multicolumn{2}{r}{$df=9990$}
 \end{tabular}
-\caption{Output for the regression model where
+\caption{Output for the regression model, where
     \var{interest\us{}rate} is the outcome and
-    variables listed are the predictors.}
+    the variables listed are the predictors.}
 \label{loansFullModelOutput}
 \end{figure}
 
@@ -535,18 +541,26 @@ each $\beta_i$, just as we did in the one-predictor case.
   {\small\begin{align*}
   \widehat{\var{rate}}
 	&= 1.925 +
-	    0.975 \times \indfunc{ver\us{}income}{source\us{}only} +
-	    2.537 \times \indfunc{ver\us{}income}{verified} +
+	    0.975 \times \indfunc{income\us{}ver}{source\us{}only} +
+	    2.537 \times \indfunc{income\us{}ver}{verified} +
 		0.021 \times \var{debt\us{}to\us{}income} \\
 	&\qquad\  +
 	    4.896 \times \var{credit\us{}util} +
-	    0.386 \times \var{past\us{}bankr} +
+	    0.386 \times \var{bankruptcy} +
 		0.154 \times \var{term} \\
 	&\qquad\  +
 	    0.028 \times \indfunc{issued}{Jan2018}
 	    -0.040 \times \indfunc{issued}{Mar2018} +
 		0.228 \times \var{credit\us{}checks}
-  \end{align*}}
+  \end{align*}}%
+  If we count up the number of predictor coefficients,
+  we get the \emph{effective} number of predictors
+  in the model:~$k = 9$.
+  Notice that the \var{issued} categorical predictor
+  counts as two, once for the two levels shown in the model.
+  In general, a categorical predictor with $p$ different
+  levels will be represented by $p - 1$ terms in a multiple
+  regression model.
 \end{nexample}
 \end{examplewrap}
 
@@ -572,9 +586,9 @@ What is the point estimate of~$\beta_4$?\footnotemark
   To compute the residual, we first need the predicted value,
   which we compute by plugging values into the equation from
   Example~\ref{loansFullModelEqWCoef}.
-  For example, $\indfunc{ver\us{}income}{source\us{}only}$
+  For example, $\indfunc{income\us{}ver}{source\us{}only}$
   takes a value of 0,
-  $\indfunc{ver\us{}income}{verified}$ takes a value of 1
+  $\indfunc{income\us{}ver}{verified}$ takes a value of 1
   (since the borrower's income source and amount were verified),
   \var{debt\us{}to\us{}income} was 18.01, and so on.
   This leads to a prediction of $\widehat{rate}_1 = 18.09$.
@@ -586,7 +600,7 @@ What is the point estimate of~$\beta_4$?\footnotemark
 
 \begin{examplewrap}
 \begin{nexample}{We estimated a coefficient for
-    \var{past\us{}bankr} in
+    \var{bankruptcy} in
     Section~\ref{ind_and_cat_vars_as_predictors}
     of $b_4 = \pastbankrACoef{}$ with a standard error
     of $SE_{b_1} = \pastbankrACoefSE{}$ when using simple
@@ -599,7 +613,7 @@ What is the point estimate of~$\beta_4$?\footnotemark
   some predictors are correlated.
   For instance, when we estimated the connection of the
   outcome \var{interest\us{}rate} and predictor
-  \var{past\us{}bankr} using simple linear regression,
+  \var{bankruptcy} using simple linear regression,
   we were unable to control for other variables like
   whether the borrower had her income verified,
   the borrower's debt-to-income ratio, and other variables.
@@ -637,21 +651,21 @@ interpretation?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Many of the variables do take a value 0
-   for at least one data point, and for those variables,
-   it is reasonable.
-   However, one variable never takes a value of zero:
-   \var{term}, which describes the length of the loan,
-   in months.
-   If \var{term} is set to zero, then the loan
-   must be paid back immediately; the borrower
-   must give the money back as soon as she receives it,
-   which means it is not a real loan.
-   Ultimately, the interpretation of the intercept in
-   this setting is not insightful.}
+  for at least one data point, and for those variables,
+  it is reasonable.
+  However, one variable never takes a value of zero:
+  \var{term}, which describes the length of the loan,
+  in months.
+  If \var{term} is set to zero, then the loan
+  must be paid back immediately; the borrower
+  must give the money back as soon as she receives it,
+  which means it is not a real loan.
+  Ultimately, the interpretation of the intercept in
+  this setting is not insightful.}
 
 
-\subsection{Adjusted $R^2$ as a better estimate
-    of explained variance}
+\subsection{Adjusted $R^2$ as a better tool
+    for multiple regression}
 
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|(}
 
@@ -668,7 +682,7 @@ where $e_i$ represents the residuals of the model and
 $y_i$ the outcomes.
 This equation remains valid in the multiple regression
 framework, but a small enhancement can make it even
-more informative.
+more informative when comparing models.
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -696,11 +710,16 @@ To get a better estimate, we use the adjusted $R^2$.
       {adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)}
   is computed as
   \begin{align*}
-  R_{adj}^{2} = 1-\frac{Var(e_i) / (n-k-1)}{Var(y_i) / (n-1)}
-      = 1-\frac{Var(e_i)}{Var(y_i)} \times \frac{n-1}{n-k-1}
+  R_{adj}^{2}
+    = 1 - \frac{s_{\text{residuals}}^2 / (n-k-1)}
+        {s_{\text{outcome}}^2 / (n-1)}
+    = 1 - \frac{s_{\text{residuals}}^2}{s_{\text{outcome}}^2}
+        \times \frac{n-1}{n-k-1}
   \end{align*}
   where $n$ is the number of cases used to fit the model
   and $k$ is the number of predictor variables in the model.
+  Remember that a categorical predictor with $p$ levels will
+  contribute $p - 1$ to the number of variables in the model.
 \end{onebox}
 
 Because $k$ is never negative, the adjusted $R^2$ will be
@@ -749,215 +768,9 @@ Chapter~\ref{linRegrForTwoVar}.
 However, when there is only $k = 1$ predictors,
 adjusted $R^2$ is very close to regular $R^2$,
 so this nuance isn't typically important when
-considering only one predictor.
+the model has only one predictor.
 
 \index{adjusted r squared@adjusted $R^2$ ($R_{adj}^2$)|)}
-
-
-\subsection{Case study: Mario Kart}
-
-We will consider Ebay auctions of a video game called \emph{Mario Kart} for the Nintendo Wii. The outcome variable of interest is the total price of an auction, which is the highest bid plus the shipping cost. We will try to determine how total price is related to each characteristic in an auction while simultaneously controlling for other variables. For instance, all other characteristics held constant, are longer auctions associated with higher or lower prices? And, on average, how much more do buyers tend to pay for additional Wii wheels (plastic steering wheels that attach to the Wii controller) in auctions? Multiple regression will help us answer these and other questions.
-
-The data set \data{mario\us{}kart} includes results from 141 auctions.\footnote{Diez DM, Barr CD, \c{C}etinkaya-Rundel M. 2015. \texttt{openintro}: OpenIntro data sets and supplement functions. \oiRedirect{textbook-github_openintro}{github.com/OpenIntroOrg/openintro-r-package}.} Four observations from this data set are shown in Figure~\ref{marioKartDataMatrix}, and descriptions for each variable are shown in Figure~\ref{marioKartVariables}. Notice that the condition and stock photo variables are indicator variables\index{indicator variable}. For instance, the \var{cond\us{}new} variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression.
-
-\begin{figure}[ht]
-\centering
-\begin{tabular}{rrrrlr}
-  \hline
- & price & cond\us{}new & stock\us{}photo & duration & wheels \\ 
-  \hline
-1 & 51.55 &   1 & 1 & 3 &   1 \\ 
-  2 & 37.04 &  0 &  1 & 7 &   1 \\ 
-$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
-  140 & 38.76 &  0 &  0 & 7 &   0 \\ 
-  141 & 54.51 &  1 &  1 & 1 &   2 \\ 
-   \hline
-\end{tabular}
-\caption{Four observations from the \data{mario\us{}kart} data set.}
-\label{marioKartDataMatrix}
-\end{figure}
-%library(openintro); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; row.names(d) <- NULL; d
-
-\begin{figure}
-\centering\small
-\begin{tabular}{lp{9.5cm}}
-\hline
-{\bf variable} & {\bf description} \\
-\hline
-\var{price} &
-  Final auction price plus shipping costs, in US dollars. \\
-\var{cond\us{}new} &
-  Indicator variable for if the game is new (\resp{1}) or used (\resp{0}). \\
-\var{stock\us{}photo} &
-  Indicator variable for if the auction's main photo
-  is a stock photo. \\
-\var{duration} &
-  The length of the auction, in days, taking values from 1 to 10. \\
-\var{wheels} &
-  The number of Wii wheels included with the auction.
-  A \emph{Wii wheel} is an optional steering wheel accessory
-  that holds the Wii controller. \\
-\hline
-\end{tabular}
-\caption{Variables and their descriptions for the
-    \data{mario\us{}kart} data set.}
-\label{marioKartVariables}
-\end{figure}
-
-% library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); xtable(lm(d$totalPr ~ d$cond)); xtable(lm(d$totalPr ~ d$duration))
-
-%\begin{figure}[h]
-%  \centering
-%  \Figure{0.5}{marioKartSingle}
-%  \caption{Scatterplot of the total auction price against the
-%      game's condition.
-%      The least squares line is also shown.}
-%  \label{marioKartSingle}
-%\end{figure}
-
-\newpage
-
-\begin{exercisewrap}
-\begin{nexercise}
-\label{condNewVarForMarioKartOnly}
-We fit a linear regression model with
-the game's condition as a predictor of auction price.
-Results of this model are summarized below:
-\begin{center}
-\begin{tabular}{rrrrr}
-  \hline
-  \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-  \vspace{-3.8mm} & & & & \\
-(Intercept) & 42.8711 & 0.8140 & 52.67 & $<$0.0001 \\ 
-  cond\us{}new & 10.8996 & 1.2583 & 8.66 & $<$0.0001 \\ 
-   \hline
-   &&&\multicolumn{2}{r}{$df=139$}
-\end{tabular}
-\end{center}
-Write down the equation for the model,
-note whether the trend is statistically different from zero,
-and interpret the coefficient.\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{The equation for the line may be written as
-  \begin{align*}
-  \widehat{price}
-      &= 42.87 + 10.90\times cond\us{}new
-  \end{align*}
-  Examining the regression output in
-  Guided Practice~\ref{condNewVarForMarioKartOnly},
-  we can see that the p-value for \var{cond\us{}new}
-  is very close to zero, indicating there is strong evidence
-  that the coefficient is different from zero when using this
-  simple one-variable model.
-
-  The \var{cond\us{}new} is a two-level
-  categorical variable that takes value 1 when the game is new
-  and value 0 when the game is used.
-  This means the 10.90 model coefficient predicts an extra
-  \$10.90 for those games that are new versus those that are used.}
-
-Sometimes there are underlying structures or relationships between predictor variables. For instance, new games sold on Ebay tend to come with more Wii wheels, which may have led to higher prices for those auctions. We would like to fit a model that includes all potentially important variables simultaneously. This would help us evaluate the relationship between a predictor variable and the outcome while controlling for the potential influence of other variables. This is the strategy used in \term{multiple regression}. While we remain cautious about making any causal interpretations using multiple regression, such models are a common first step in providing evidence of a causal connection.
-
-We want to construct a model that accounts for not only the game
-condition, as in Guided Practice~\ref{condNewVarForMarioKartOnly},
-but simultaneously accounts for three other variables:
-\begin{align*}
-\widehat{\var{price}}
-	&= \beta_0 + \beta_1\times \var{cond\us{}new} +
-		\beta_2\times \var{stock\us{}photo} \\
-	&\qquad\  + \beta_3 \times  \var{duration} +
-		\beta_4 \times  \var{wheels}
-\end{align*}
-Figure~\ref{MarioKartFullModelOutput} summarizes the full model.
-Using this output, we identify the point estimates of each
-coefficient.
-
-\begin{figure}[ht]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
-  \vspace{-3.7mm} & & & & \\
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-  \vspace{-3.8mm} & & & & \\
-(Intercept) & 36.2110 & 1.5140 & 23.92 & $<$0.0001 \\ 
-  cond\us{}new & 5.1306 & 1.0511 & 4.88 & $<$0.0001 \\ 
-  stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
-  duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
-  wheels & 7.2852 & 0.5547 & 13.13 & $<$0.0001 \\ 
-   \hline
-   &&&\multicolumn{2}{r}{$df=136$}
-\end{tabular}
-\caption{Output for the regression model where \var{price} is the outcome and \var{cond\us{}new}, \var{stock\us{}photo}, \var{duration}, and \var{wheels} are the predictors.}
-\label{MarioKartFullModelOutput}
-\end{figure}
-%library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); g <-lm(totalPr ~ cond + stockPhoto + duration + wheels, d)
-
-\begin{exercisewrap}
-\begin{nexercise}
-\label{eqForMultRegrOfTotalPrForAllPredWithCoef}%
-Write out the model in using the point estimates from
-Figure~\ref{MarioKartFullModelOutput}.
-How many predictors are there in this model?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$\widehat{price}
-    = 36.21
-        + 5.13 \times \var{cond\us{}new}
-        + 1.08 \times \var{stock\us{}photo}
-        - 0.03 \times \var{duration}
-        + 7.29 \times \var{wheels}$,
-  with the $k=4$ predictors.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-What does $\beta_4$, the coefficient of variable
-$x_4$ (Wii wheels), represent?
-What is the point estimate of $\beta_4$?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{It is the average difference in auction price
-  for each additional Wii wheel included when holding the
-  other variables constant.
-  The point estimate is $b_4 = 7.29$.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-\label{computeMultipleRegressionResidualForMarioKart}%
-Compute the residual of the first observation in
-Figure~\vref{marioKartDataMatrix} using the equation identified
-in Guided Practice~\ref{eqForMultRegrOfTotalPrForAllPredWithCoef}.\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$,
-  where 49.62 was computed using the variables values from the
-  observation and the equation identified in
-  Guided Practice~\ref{eqForMultRegrOfTotalPrForAllPredWithCoef}.}
-
-\begin{examplewrap}
-\begin{nexample}{We estimated a coefficient for
-    \var{cond\us{}new} in
-    Section~\ref{condNewVarForMarioKartOnly}
-    of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$
-    when using simple linear regression.
-    Why might there be a difference between that estimate
-    and the one in the multiple regression setting?}
-  \label{colinearityOfCondNewAndStockPhoto}%
-  If we examined the data carefully, we would see that
-  there is collinearity\index{collinear} among some predictors.
-  For instance, when we estimated the connection of the outcome
-  \var{price} and predictor \var{cond\us{}new} using simple linear
-  regression, we were unable to control for other variables like
-  the number of Wii wheels included in the auction.
-  That model was biased by the confounding variable \var{wheels}.
-  When we use both variables, this particular underlying and
-  unintentional bias is reduced or eliminated (though bias
-  from other confounding variables may still remain).
-\end{nexample}
-\end{examplewrap}
 
 
 
@@ -1007,13 +820,13 @@ all predictors, while the second does not include the
   \hline
   \vspace{-3.8mm} & & & & \\
   (Intercept) & 1.9251 & 0.2102 & 9.16 & $<$0.0001 \\ 
-  ver\us{}income\lmlevel{source\us{}only} &
+  income\us{}ver\lmlevel{source\us{}only} &
       0.9750 & 0.0991 & 9.83 & $<$0.0001 \\ 
-  ver\us{}income\lmlevel{verified} &
+  income\us{}ver\lmlevel{verified} &
       2.5374 & 0.1172 & 21.65 & $<$0.0001 \\ 
   debt\us{}to\us{}income & 0.0211 & 0.0029 & 7.18 & $<$0.0001 \\ 
   credit\us{}util & 4.8959 & 0.1619 & 30.24 & $<$0.0001 \\ 
-  past\us{}bankr & 0.3864 & 0.1324 & 2.92 & 0.0035 \\ 
+  bankruptcy & 0.3864 & 0.1324 & 2.92 & 0.0035 \\ 
   term & 0.1537 & 0.0039 & 38.96 & $<$0.0001 \\ 
   issued\lmlevel{Jan2018} & 0.0276 & 0.1081 & 0.26 & 0.7981 \\ 
   issued\lmlevel{Mar2018} & -0.0397 & 0.1065 & -0.37 & 0.7093 \\ 
@@ -1036,13 +849,13 @@ all predictors, while the second does not include the
   \hline
   \vspace{-3.8mm} & & & & \\
   (Intercept) & 1.9213 & 0.1982 & 9.69 & $<$0.0001 \\ 
-  ver\us{}income\lmlevel{source\us{}only} &
+  income\us{}ver\lmlevel{source\us{}only} &
       0.9740 & 0.0991 & 9.83 & $<$0.0001 \\ 
-  ver\us{}income\lmlevel{verified} &
+  income\us{}ver\lmlevel{verified} &
       2.5355 & 0.1172 & 21.64 & $<$0.0001 \\ 
   debt\us{}to\us{}income & 0.0211 & 0.0029 & 7.19 & $<$0.0001 \\ 
   credit\us{}util & 4.8958 & 0.1619 & 30.25 & $<$0.0001 \\ 
-  past\us{}bankr & 0.3869 & 0.1324 & 2.92 & 0.0035 \\ 
+  bankruptcy & 0.3869 & 0.1324 & 2.92 & 0.0035 \\ 
   term & 0.1537 & 0.0039 & 38.97 & $<$0.0001 \\ 
   credit\us{}checks & 0.2283 & 0.0182 & 12.51 & $<$0.0001 \\ 
   \hline
@@ -1106,10 +919,10 @@ adjusted $R^2$.
   \begin{center}
   \begin{tabular}{lllll}
   Exclude ... &
-      \var{ver\us{}income} &
+      \var{income\us{}ver} &
       \var{debt\us{}to\us{}income} &
       \var{credit\us{}util} &
-      \var{past\us{}bankr} \\
+      \var{bankruptcy} \\
   &
       $R^2_{adj} = 0.22380$ &
       $R^2_{adj} = 0.25468$ &
@@ -1139,7 +952,7 @@ adjusted $R^2$.
   \begin{center}
   \begin{tabular}{llll}
   Exclude \var{issued} and ... &
-      \var{ver\us{}income} &
+      \var{income\us{}ver} &
       \var{debt\us{}to\us{}income} &
       \var{credit\us{}util} \\
   &
@@ -1148,7 +961,7 @@ adjusted $R^2$.
       $R^2_{adj} = 0.19074$ \\
   \\
   &
-      \var{past\us{}bankr} &
+      \var{bankruptcy} &
       \var{term} &
       \var{credit\us{}checks} \\
   &
@@ -1165,12 +978,12 @@ adjusted $R^2$.
   Figure~\ref{loansModelAllButIssued}:
   \begin{align*}
   \widehat{rate} &= \ 1.921
-      + 0.974 \times \indfunc{ver\us{}income}{source\us{}only}
-      + 2.535 \times \indfunc{ver\us{}income}{verified} \\
+      + 0.974 \times \indfunc{income\us{}ver}{source\us{}only}
+      + 2.535 \times \indfunc{income\us{}ver}{verified} \\
     &\qquad
       + 0.021 \times \var{debt\us{}to\us{}income}
       + 4.896 \times \var{credit\us{}util}
-      + 0.387 \times \var{past\us{}bankr} \\
+      + 0.387 \times \var{bankruptcy} \\
     &\qquad
       + 0.154 \times \var{term}
       + 0.228 \times \var{credit\us{}check}
@@ -1187,17 +1000,17 @@ The \term{forward selection} strategy is the reverse of the backward elimination
   We start with the model that includes no variables.
   Then we fit each of the possible models with just one
   variable.
-  That is, we fit the model including just \var{ver\us{}income},
+  That is, we fit the model including just \var{income\us{}ver},
   then the model including just \var{debt\us{}to\us{}income},
   then a model with just \var{credit\us{}util}, and so on.
   Then we examine the adjusted $R^2$ for each of these models:
   \begin{center}
   \begin{tabular}{lllll}
   Add ... &
-      \var{ver\us{}income} &
+      \var{income\us{}ver} &
       \var{debt\us{}to\us{}income} &
       \var{credit\us{}util} &
-      \var{past\us{}bankr} \\
+      \var{bankruptcy} \\
   &
       $R^2_{adj} = 0.05926$ &
       $R^2_{adj} = 0.01946$ &
@@ -1231,7 +1044,7 @@ The \term{forward selection} strategy is the reverse of the backward elimination
   \begin{center}
   \begin{tabular}{llll}
   Add \var{term} and ... &
-      \var{ver\us{}income} &
+      \var{income\us{}ver} &
       \var{debt\us{}to\us{}income} &
       \var{credit\us{}util} \\
   &
@@ -1240,7 +1053,7 @@ The \term{forward selection} strategy is the reverse of the backward elimination
       $R^2_{adj} = 0.20046$ \\
   \\
   &
-      \var{past\us{}bankr} &
+      \var{bankruptcy} &
       \var{issued} &
       \var{credit\us{}checks} \\
   &
@@ -1260,14 +1073,14 @@ The \term{forward selection} strategy is the reverse of the backward elimination
   \begin{center}
   \begin{tabular}{llll}
   Add \var{term}, \var{credit\us{}util}, and ... &
-      \var{ver\us{}income} &
+      \var{income\us{}ver} &
       \var{debt\us{}to\us{}income} \\
   &
       $R^2_{adj} = 0.24183$ &
       $R^2_{adj} = 0.20810$ \\
   \\
   &
-      \var{past\us{}bankr} &
+      \var{bankruptcy} &
       \var{issued} &
       \var{credit\us{}checks} \\
   &
@@ -1276,14 +1089,14 @@ The \term{forward selection} strategy is the reverse of the backward elimination
       $R^2_{adj} = 0.21629$ \\
   \end{tabular}
   \end{center}
-  The model adding \var{ver\us{}income} improved adjusted $R^2$
-  (0.24183 to 0.20046), so we add \var{ver\us{}income} to the
+  The model adding \var{income\us{}ver} improved adjusted $R^2$
+  (0.24183 to 0.20046), so we add \var{income\us{}ver} to the
   model.
 
   We continue on in this way,
   next adding \var{debt\us{}to\us{}income},
   then \var{credit\us{}checks},
-  and \var{past\us{}bankr}.
+  and \var{bankruptcy}.
   At this point, we come again to the \var{issued} variable:
   adding this variable leads to $R_{adj}^2 = 0.25843$,
   while keeping all the other variables but excluding \var{issued}
@@ -1295,7 +1108,8 @@ The \term{forward selection} strategy is the reverse of the backward elimination
 \end{examplewrap}
 
 \begin{onebox}{Model selection strategies}
-  Backward elimination begins with the largest model
+  Backward elimination begins with the model
+  having the largest number of predictors
   and eliminates variables one-by-one until we are satisfied
   that all remaining variables are important to the model.
   Forward selection starts with no variables included in
@@ -1351,7 +1165,7 @@ Would we drop that variable, or would we keep it in the
 model?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The \var{past\us{}bankr} predictor is up for
+\footnotetext{The \var{bankruptcy} predictor is up for
   elimination since it has the largest p-value.
   However, since that p-value is smaller than 0.05,
   we would still keep it in the model.}
@@ -1377,127 +1191,6 @@ Regardless of whether you use $R_{adj}^2$ or the p-value approach,
 or if you use the backward elimination of forward selection
 strategy, our job is not done after variable selection.
 We must still verify the model conditions are reasonable.
-
-
-\subsection{Case study: Mario Kart}
-
-\noindent%
-Let's revisit the model for the Mario Kart auction and complete
-model selection using backwards selection.
-Recall that the full model took the following form:
-\begin{align*}
-\widehat{price} = 36.21
-    + 5.13 \times \var{cond\us{}new}
-    + 1.08 \times \var{stock\us{}photo}
-    - 0.03 \times \var{duration}
-    + 7.29 \times \var{wheels}
-\end{align*}
-
-
-\begin{examplewrap}
-\begin{nexample}{Results corresponding to the full model
-    for the \data{mario\us{}kart} data were shown
-    in Figure~\vref{MarioKartFullModelOutput}.
-    For this model, we consider what would happen if dropping
-    each of the variables in the model:
-    \begin{center}
-    \begin{tabular}{lllll}
-    Exclude ... &
-      \var{cond\us{}new} &
-      \var{stock\us{}photo} &
-      \var{duration} &
-      \var{wheels} \\
-    &
-      $R^2_{adj} = 0.6626$ &
-      $R^2_{adj} = 0.7107$ &
-      $R^2_{adj} = 0.7128$ &
-      $R^2_{adj} = 0.3487$ \\
-    \end{tabular}
-    \end{center}
-    For the full model, $R_{adj}^2 = 0.7108$.
-    How should we proceed under the backward elimination strategy?}
-  \label{backwardEliminationExampleWMarioKartData}%
-  The third model without \var{duration} has the highest
-  $R_{adj}^2$ of 0.7128, so we compare it to
-  $R_{adj}^2$ for the full model.
-  Because eliminating \var{duration} leads to a model with
-  a higher $R_{adj}^2$, we drop \var{duration} from the model.
-\end{nexample}
-\end{examplewrap}
-
-\begin{exercisewrap}
-\begin{nexercise}
-In Example~\ref{backwardEliminationExampleWMarioKartData},
-we eliminated the \var{duration} variable,
-which resulted in a model with $R_{adj}^2 = 0.7128$.
-Let's look at if we would eliminate another variable from the
-model using backwards elimination:
-\begin{center}
-\begin{tabular}{llll}
-Exclude \var{duration} and ... &
-	\var{cond\us{}new} &
-	\var{stock\us{}photo} &
-	\var{wheels} \\
-&
-	$R^2_{adj} = 0.6587$ &
-	$R^2_{adj} = 0.7124$ &
-	$R^2_{adj} = 0.3414$ \\
-\end{tabular}
-\end{center}
-Should we eliminate any additional variable, and if so,
-which variable should we eliminate?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Removing any of the three remaining variables
-  would lead to a decrease in $R_{adj}^2$, so we should not
-  remove any additional variables from the model after we
-  removed \var{duration}.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-\label{totPrPredictionUsedStockPhotoTwoWheels}%
-After eliminating the auction's duration from the model,
-we are left with the following reduced model:
-\begin{align*}
-\widehat{price} &= \ 36.05
-    + 5.18 \times \text{\var{cond\us{}new}}
-    + 1.12 \times \text{\var{stock\us{}photo}}
-    + 7.30 \times \text{\var{wheels}}
-\end{align*}
-How much would you predict for the total price for
-the Mario Kart game if it was used, used a stock photo,
-and included two wheels and put up for auction during
-the time period that the Mario Kart data were
-collected?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{We would plug in \resp{0} for \var{cond\us{}new}
-  \resp{1} for \var{stock\us{}photo},
-  and \resp{2} for \var{wheels} into the equation,
-  which would return \$51.77, which is the total price
-  we would expect for the auction.}
-
-\begin{exercisewrap}
-\begin{nexercise}
-Would you be surprised if the seller from
-Guided Practice~\ref{totPrPredictionUsedStockPhotoTwoWheels}
-didn't get the exact price predicted?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{No.
-  The model provides the \emph{average} auction price
-  we would expect, and the price for one auction to the next
-  will continue to vary a bit
-  (but less than what our prediction would be without the model).}
-
-
-%If we continued the process, we would not eliminate any additional  of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the remaining predictors. That is, after backward elimination, we are left with the model that keeps \var{cond\us{}new}, \var{stock\us{}photos}, and \var{wheels}, which we can summarize using the coefficients from Table~\ref{marioKartMultipleRegressionModelAllButDuration}:
-%\begin{align*}
-%\hat{y} \ &= \ b_0 + b_1x_1 + b_2x_2 + b_4x_4 \\
-%\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\us{}new}} + 1.12 \times \text{\var{stock\us{}photo}} + 7.30 \times \text{\var{wheels}}
-%\end{align*}
-
-
 
 \index{model selection|)}
 
@@ -1537,12 +1230,12 @@ there are any notable concerns:
 \Comment{Still must update the next equation.}
 \begin{align*}
 \widehat{rate} &= \ 1.921
-    + 0.974 \times \indfunc{ver\us{}income}{source\us{}only}
-    + 2.535 \times \indfunc{ver\us{}income}{verified} \\
+    + 0.974 \times \indfunc{income\us{}ver}{source\us{}only}
+    + 2.535 \times \indfunc{income\us{}ver}{verified} \\
   &\qquad
     + 0.021 \times \var{debt\us{}to\us{}income}
     + 4.896 \times \var{credit\us{}util}
-    + 0.387 \times \var{past\us{}bankr} \\
+    + 0.387 \times \var{bankruptcy} \\
   &\qquad
     + 0.154 \times \var{term}
     + 0.228 \times \var{credit\us{}check}
@@ -1783,12 +1476,12 @@ Ultimately we decided that the model was reasonable,
 and we report its final form here:
 \begin{align*}
 \widehat{rate} &= \ 1.562
-    + 1.002 \times \indfunc{ver\us{}income}{source\us{}only}
-    + 2.436 \times \indfunc{ver\us{}income}{verified} \\
+    + 1.002 \times \indfunc{income\us{}ver}{source\us{}only}
+    + 2.436 \times \indfunc{income\us{}ver}{verified} \\
   &\qquad
     + 0.048 \times \var{debt\us{}to\us{}income\us{}50}
     + 4.694 \times \var{credit\us{}util}
-    + 0.394 \times \var{past\us{}bankr} \\
+    + 0.394 \times \var{bankruptcy} \\
   &\qquad
     + 0.153 \times \var{term}
     + 0.223 \times \var{credit\us{}check}
@@ -1827,7 +1520,361 @@ where $t_{df}^{\star}$ is the appropriate $t$-value corresponding to the confide
 \end{onebox}
 
 
-\subsection{Case study: Mario Kart}
+
+\section{Multiple regression case study: Mario Kart}
+\label{mario_kart_case_study}
+
+\noindent%
+We'll consider Ebay auctions of a video game called
+\emph{Mario Kart} for the Nintendo Wii.
+The outcome variable of interest is the total price of
+an auction, which is the highest bid plus the shipping cost.
+We will try to determine how total price is related to each
+characteristic in an auction while simultaneously controlling
+for other variables.
+For instance, all other characteristics held constant,
+are longer auctions associated with higher or lower prices?
+And, on average, how much more do buyers tend to pay for
+additional Wii wheels
+(plastic steering wheels that attach to the Wii controller)
+in auctions?
+Multiple regression will help us answer these and other questions.
+
+\newcommand{\mknum}{141}
+
+
+\subsection{Data set and the full model}
+
+The \data{mario\us{}kart} data set includes results
+from \mknum{}~auctions.
+Four observations from this data set are shown in
+Figure~\ref{marioKartDataMatrix},
+and descriptions for each variable are shown in
+Figure~\ref{marioKartVariables}. 
+Notice that the condition and stock photo variables
+are indicator variables\index{indicator variable},
+similar to \var{bankruptcy} in the \data{loan} data set.
+%For instance, the \var{cond\us{}new} variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression.
+
+\begin{figure}[ht]
+\centering
+\begin{tabular}{rrrrlr}
+  \hline
+  & price & cond\us{}new & stock\us{}photo & duration & wheels \\ 
+  \hline
+  1 & 51.55 &   1 & 1 & 3 &   1 \\ 
+  2 & 37.04 &  0 &  1 & 7 &   1 \\ 
+  $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
+  140 & 38.76 &  0 &  0 & 7 &   0 \\ 
+  141 & 54.51 &  1 &  1 & 1 &   2 \\ 
+  \hline
+\end{tabular}
+\caption{Four observations from the \data{mario\us{}kart}
+    data set.}
+\label{marioKartDataMatrix}
+\end{figure}
+%library(openintro); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; row.names(d) <- NULL; d
+
+\begin{figure}[h]
+\centering\small
+\begin{tabular}{lp{9.5cm}}
+\hline
+{\bf variable} & {\bf description} \\
+\hline
+\var{price} &
+  Final auction price plus shipping costs, in US dollars. \\
+\var{cond\us{}new} &
+  Indicator variable for if the game is new (\resp{1}) or used (\resp{0}). \\
+\var{stock\us{}photo} &
+  Indicator variable for if the auction's main photo
+  is a stock photo. \\
+\var{duration} &
+  The length of the auction, in days, taking values from 1 to 10. \\
+\var{wheels} &
+  The number of Wii wheels included with the auction.
+  A \emph{Wii wheel} is an optional steering wheel accessory
+  that holds the Wii controller. \\
+\hline
+\end{tabular}
+\caption{Variables and their descriptions for the
+    \data{mario\us{}kart} data set.}
+\label{marioKartVariables}
+\end{figure}
+
+% library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); xtable(lm(d$totalPr ~ d$cond)); xtable(lm(d$totalPr ~ d$duration))
+
+%\begin{figure}[h]
+%  \centering
+%  \Figure{0.5}{marioKartSingle}
+%  \caption{Scatterplot of the total auction price against the
+%      game's condition.
+%      The least squares line is also shown.}
+%  \label{marioKartSingle}
+%\end{figure}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{condNewVarForMarioKartOnly}
+We fit a linear regression model with
+the game's condition as a predictor of auction price.
+Results of this model are summarized below:
+\begin{center}
+\begin{tabular}{rrrrr}
+  \hline
+  \vspace{-3.7mm} & & & & \\
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+  \vspace{-3.8mm} & & & & \\
+(Intercept) & 42.8711 & 0.8140 & 52.67 & $<$0.0001 \\ 
+  cond\us{}new & 10.8996 & 1.2583 & 8.66 & $<$0.0001 \\ 
+   \hline
+   &&&\multicolumn{2}{r}{$df=139$}
+\end{tabular}
+\end{center}
+Write down the equation for the model,
+note whether the slope is statistically different from zero,
+and interpret the coefficient.\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The equation for the line may be written as
+  \begin{align*}
+  \widehat{price}
+      &= 42.87 + 10.90\times cond\us{}new
+  \end{align*}
+  Examining the regression output in
+  Guided Practice~\ref{condNewVarForMarioKartOnly},
+  we can see that the p-value for \var{cond\us{}new}
+  is very close to zero, indicating there is strong evidence
+  that the coefficient is different from zero when using this
+  simple one-variable model.
+
+  The \var{cond\us{}new} is a two-level
+  categorical variable that takes value 1 when the game is new
+  and value 0 when the game is used.
+  This means the 10.90 model coefficient predicts an extra
+  \$10.90 for those games that are new versus those that are used.}
+
+Sometimes there are underlying structures or relationships between predictor variables. For instance, new games sold on Ebay tend to come with more Wii wheels, which may have led to higher prices for those auctions. We would like to fit a model that includes all potentially important variables simultaneously. This would help us evaluate the relationship between a predictor variable and the outcome while controlling for the potential influence of other variables.
+
+We want to construct a model that accounts for not only the game
+condition, as in Guided Practice~\ref{condNewVarForMarioKartOnly},
+but simultaneously accounts for three other variables:
+\begin{align*}
+\widehat{\var{price}}
+	&= \beta_0 + \beta_1\times \var{cond\us{}new} +
+		\beta_2\times \var{stock\us{}photo} \\
+	&\qquad\  + \beta_3 \times  \var{duration} +
+		\beta_4 \times  \var{wheels}
+\end{align*}
+Figure~\ref{MarioKartFullModelOutput} summarizes the full model.
+Using this output, we identify the point estimates of each
+coefficient.
+
+\begin{figure}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+  \vspace{-3.7mm} & & & & \\
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+  \vspace{-3.8mm} & & & & \\
+(Intercept) & 36.2110 & 1.5140 & 23.92 & $<$0.0001 \\ 
+  cond\us{}new & 5.1306 & 1.0511 & 4.88 & $<$0.0001 \\ 
+  stock\us{}photo & 1.0803 & 1.0568 & 1.02 & 0.3085 \\ 
+  duration & -0.0268 & 0.1904 & -0.14 & 0.8882 \\ 
+  wheels & 7.2852 & 0.5547 & 13.13 & $<$0.0001 \\ 
+   \hline
+   &&&\multicolumn{2}{r}{$df=136$}
+\end{tabular}
+\caption{Output for the regression model where \var{price} is the outcome and \var{cond\us{}new}, \var{stock\us{}photo}, \var{duration}, and \var{wheels} are the predictors.}
+\label{MarioKartFullModelOutput}
+\end{figure}
+%library(openintro); library(xtable); data(marioKart); d <- marioKart[marioKart$totalPr < 100,]; d$cond <- relevel(d$cond, "used"); g <-lm(totalPr ~ cond + stockPhoto + duration + wheels, d)
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{eqForMultRegrOfTotalPrForAllPredWithCoef}%
+Write out the model in using the point estimates from
+Figure~\ref{MarioKartFullModelOutput}.
+How many predictors are there in this model?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$\widehat{price}
+    = 36.21
+        + 5.13 \times \var{cond\us{}new}
+        + 1.08 \times \var{stock\us{}photo}
+        - 0.03 \times \var{duration}
+        + 7.29 \times \var{wheels}$,
+  with the $k=4$ predictors.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+What does $\beta_4$, the coefficient of variable
+$x_4$ (Wii wheels), represent?
+What is the point estimate of $\beta_4$?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{It is the average difference in auction price
+  for each additional Wii wheel included when holding the
+  other variables constant.
+  The point estimate is $b_4 = 7.29$.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{computeMultipleRegressionResidualForMarioKart}%
+Compute the residual of the first observation in
+Figure~\ref{marioKartDataMatrix} using the equation identified
+in Guided Practice~\ref{eqForMultRegrOfTotalPrForAllPredWithCoef}.%
+\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$,
+  where 49.62 was computed using the variables values from the
+  observation and the equation identified in
+  Guided Practice~\ref{eqForMultRegrOfTotalPrForAllPredWithCoef}.}
+
+\begin{examplewrap}
+\begin{nexample}{We estimated a coefficient for
+    \var{cond\us{}new} in
+    Section~\ref{condNewVarForMarioKartOnly}
+    of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$
+    when using simple linear regression.
+    Why might there be a difference between that estimate
+    and the one in the multiple regression setting?}
+  \label{colinearityOfCondNewAndStockPhoto}%
+  If we examined the data carefully, we would see that
+  there is collinearity\index{collinear} among some predictors.
+  For instance, when we estimated the connection of the outcome
+  \var{price} and predictor \var{cond\us{}new} using simple linear
+  regression, we were unable to control for other variables like
+  the number of Wii wheels included in the auction.
+  That model was biased by the confounding variable \var{wheels}.
+  When we use both variables, this particular underlying and
+  unintentional bias is reduced or eliminated (though bias
+  from other confounding variables may still remain).
+\end{nexample}
+\end{examplewrap}
+
+
+\subsection{Model selection}
+
+\noindent%
+Let's revisit the model for the Mario Kart auction and complete
+model selection using backwards selection.
+Recall that the full model took the following form:
+\begin{align*}
+\widehat{price} = 36.21
+    + 5.13 \times \var{cond\us{}new}
+    + 1.08 \times \var{stock\us{}photo}
+    - 0.03 \times \var{duration}
+    + 7.29 \times \var{wheels}
+\end{align*}
+
+
+\begin{examplewrap}
+\begin{nexample}{Results corresponding to the full model
+    for the \data{mario\us{}kart} data were shown
+    in Figure~\vref{MarioKartFullModelOutput}.
+    For this model, we consider what would happen if dropping
+    each of the variables in the model:
+    \begin{center}
+    \begin{tabular}{lllll}
+    Exclude ... &
+      \var{cond\us{}new} &
+      \var{stock\us{}photo} &
+      \var{duration} &
+      \var{wheels} \\
+    &
+      $R^2_{adj} = 0.6626$ &
+      $R^2_{adj} = 0.7107$ &
+      $R^2_{adj} = 0.7128$ &
+      $R^2_{adj} = 0.3487$ \\
+    \end{tabular}
+    \end{center}
+    For the full model, $R_{adj}^2 = 0.7108$.
+    How should we proceed under the backward elimination strategy?}
+  \label{backwardEliminationExampleWMarioKartData}%
+  The third model without \var{duration} has the highest
+  $R_{adj}^2$ of 0.7128, so we compare it to
+  $R_{adj}^2$ for the full model.
+  Because eliminating \var{duration} leads to a model with
+  a higher $R_{adj}^2$, we drop \var{duration} from the model.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+In Example~\ref{backwardEliminationExampleWMarioKartData},
+we eliminated the \var{duration} variable,
+which resulted in a model with $R_{adj}^2 = 0.7128$.
+Let's look at if we would eliminate another variable from the
+model using backwards elimination:
+\begin{center}
+\begin{tabular}{llll}
+Exclude \var{duration} and ... &
+	\var{cond\us{}new} &
+	\var{stock\us{}photo} &
+	\var{wheels} \\
+&
+	$R^2_{adj} = 0.6587$ &
+	$R^2_{adj} = 0.7124$ &
+	$R^2_{adj} = 0.3414$ \\
+\end{tabular}
+\end{center}
+Should we eliminate any additional variable, and if so,
+which variable should we eliminate?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Removing any of the three remaining variables
+  would lead to a decrease in $R_{adj}^2$, so we should not
+  remove any additional variables from the model after we
+  removed \var{duration}.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{totPrPredictionUsedStockPhotoTwoWheels}%
+After eliminating the auction's duration from the model,
+we are left with the following reduced model:
+\begin{align*}
+\widehat{price} &= \ 36.05
+    + 5.18 \times \text{\var{cond\us{}new}}
+    + 1.12 \times \text{\var{stock\us{}photo}}
+    + 7.30 \times \text{\var{wheels}}
+\end{align*}
+How much would you predict for the total price for
+the Mario Kart game if it was used, used a stock photo,
+and included two wheels and put up for auction during
+the time period that the Mario Kart data were
+collected?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We would plug in \resp{0} for \var{cond\us{}new}
+  \resp{1} for \var{stock\us{}photo},
+  and \resp{2} for \var{wheels} into the equation,
+  which would return \$51.77, which is the total price
+  we would expect for the auction.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Would you be surprised if the seller from
+Guided Practice~\ref{totPrPredictionUsedStockPhotoTwoWheels}
+didn't get the exact price predicted?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{No.
+  The model provides the \emph{average} auction price
+  we would expect, and the price for one auction to the next
+  will continue to vary a bit
+  (but less than what our prediction would be without the model).}
+
+%If we continued the process, we would not eliminate any additional  of these models lead to an improvement in adjusted $R^2$, so we do not eliminate any of the remaining predictors. That is, after backward elimination, we are left with the model that keeps \var{cond\us{}new}, \var{stock\us{}photos}, and \var{wheels}, which we can summarize using the coefficients from Table~\ref{marioKartMultipleRegressionModelAllButDuration}:
+%\begin{align*}
+%\hat{y} \ &= \ b_0 + b_1x_1 + b_2x_2 + b_4x_4 \\
+%\widehat{price} &= \ 36.05 + 5.18 \times \text{\var{cond\us{}new}} + 1.12 \times \text{\var{stock\us{}photo}} + 7.30 \times \text{\var{wheels}}
+%\end{align*}
+
+
+\subsection{Checking model assumptions using graphs}
 
 \noindent%
 Let's take a closer look at the diagnostics for the Mario Kart
@@ -1844,7 +1891,7 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.55}{marioKartDiagnostics}
+  \Figures{0.65}{marioKartDiagnostics}
       {mkDiagResHist}
   \caption{Histogram of the residuals.
       No clear outliers are evident.}
@@ -1860,7 +1907,7 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}
   \centering
-  \Figures{0.55}{marioKartDiagnostics}{mkDiagnosticEvsAbsF}
+  \Figures{0.7}{marioKartDiagnostics}{mkDiagnosticEvsAbsF}
   \caption{Absolute value of the residuals against
       the fitted values.
       No patterns are evident.}
@@ -1875,7 +1922,7 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.5}{marioKartDiagnostics}{mkDiagnosticInOrder}
+  \Figures{0.7}{marioKartDiagnostics}{mkDiagnosticInOrder}
   \caption{Residuals in the order that their
       corresponding observations were collected.
       There are no evident patterns.}
@@ -1902,7 +1949,7 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}
   \centering
-  \Figures{0.75}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
+  \Figures{0.9}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
   \caption{For the condition and stock photo variables, we check
       for differences in the distribution shape or variability of
       the residuals.
@@ -1939,6 +1986,7 @@ a setback to the very people who the model might assist.
 
 \index{logistic regression|(}
 
+\noindent%
 In this section we introduce \term{logistic regression}
 as a tool for building models when there is a categorical
 response variable with two levels, e.g. yes and no.
