@@ -1061,7 +1061,8 @@ In general, it is useful to think about a Bernoulli random variable as a random 
 
 \index{distribution!geometric|(}
 
-The \term{geometric distribution} is used to describe how
+The \termsub{geometric distribution}{distribution!geometric}
+is used to describe how
 many trials it takes to observe a success.
 Let's first look at an example.
 
@@ -1106,7 +1107,8 @@ Let's first look at an example.
 \end{examplewrap}
 
 Example~\ref{waitForDeductible} illustrates what the
-\term{geometric distribution}, which describes the waiting
+\termsub{geometric distribution}{distribution!geometric},
+which describes the waiting
 time until a success for
 \term{independent and identically distributed (iid)}
 Bernoulli random variables.
@@ -1249,52 +1251,159 @@ for dependent trials.
 
 \index{distribution!binomial|(}
 
+The \termsub{binomial distribution}{distribution!binomial}
+is used to describe
+the number of successes in a fixed number of trials.
+%,
+%and this distribution is occasionally used in statistics,
+%especially when doing more careful analysis of samples
+%of data where simpler tools are not helpful.
+This is different from the geometric distribution,
+which described the number of trials we must wait before
+we observe a success.
+
+
+\subsection{The binomial distribution}
+
+%\newcommand{\insureSprob}{0.7}
+%\newcommand{\insureSperc}{70\%}
+%\newcommand{\insureFprob}{0.3}
+%\newcommand{\insureFperc}{30\%}
+%\newcommand{\insureDistA}{0.7}
+%\newcommand{\insureDistB}{0.21}
+%\newcommand{\insureDistC}{0.063}
+%\newcommand{\insureDistD}{0.019}
+%\newcommand{\insureDistE}{0.006}
+%\newcommand{\insureCDistA}{0.7}
+%\newcommand{\insureCDistB}{0.91}
+%\newcommand{\insureCDistC}{0.973}
+%\newcommand{\insureCDistCComplement}{0.027}
+%\newcommand{\insureCDistD}{0.992}
+%\newcommand{\insureCDistE}{0.998}
+%\newcommand{\insureGeomMean}{1.43}
+\newcommand{\insureS}{\resp{not}}
+\newcommand{\insureF}{\resp{exceed}}
+% Doesn't consider binomial coefficient in next calculated value.
+\newcommand{\insureBinomCinDSingleScenario}{0.103}
+\newcommand{\insureBinomCinD}{0.412}
+\newcommand{\insureBinomEinHSingleScenario}{0.00454}
+\newcommand{\insureBinomEinH}{0.254}
+\newcommand{\insureBinomFourtyExpValue}{28}
+\newcommand{\insureBinomFourtySD}{2.9}
+\newcommand{\insureBinomFourtyLower}{22}
+\newcommand{\insureBinomFourtyUpper}{34}
+
+\noindent%
+Let's again imagine ourselves back at the insurance agency
+where \insureSperc{} of individuals do not exceed their
+deductible.
+
 \begin{examplewrap}
-\begin{nexample}{Suppose we randomly selected four individuals to participate in the ``shock" study. What is the chance exactly one of them will be a success?  Let's call the four people Allen ($A$), Brittany ($B$), Caroline ($C$), and Damian ($D$) for convenience. Also, suppose 35\% of people are successes as in the previous version of this example.}\label{oneRefuser}
-Let's consider a scenario where one person refuses:
-\begin{align*}
-&P(A=\text{\resp{refuse}},\text{ }B=\text{\resp{shock}},
-    \text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) \\
-  &\quad = P(A=\text{\resp{refuse}})\ 
-      P(B=\text{\resp{shock}})\ 
-      P(C=\text{\resp{shock}})\ P(D=\text{\resp{shock}}) \\
-  &\quad =  (0.35)  (0.65)  (0.65)  (0.65)
-      = (0.35)^1 (0.65)^3
-      = 0.096
-\end{align*}
-But there are three other scenarios: Brittany, Caroline, or Damian could have been the one to refuse. In each of these cases, the probability is again $(0.35)^1(0.65)^3$. These four scenarios exhaust all the possible ways that exactly one of these four people could refuse to administer the most severe shock, so the total probability is $4\times(0.35)^1(0.65)^3 = 0.38$.
+\begin{nexample}{Suppose the insurance agency is considering
+    a random sample of four individuals they insure.
+    What is the chance exactly one of them will exceed
+    the deductible and the other four will not?
+    Let's call the four people
+    Ariana ($A$),
+    Brittany ($B$),
+    Carlton ($C$),
+    and Damian ($D$)
+    for convenience.}
+  \label{insureOneOfFourExceedsDeductible}%
+  Let's consider a scenario where one person exceeds
+  the deductible:
+  \begin{align*}
+  &P(A=\text{\insureF{}},
+      \text{ }B=\text{\insureS{}},
+      \text{ }C=\text{\insureS{}},
+      \text{ }D=\text{\insureS{}}) \\
+    &\quad = P(A=\text{\insureF{}})\ 
+        P(B=\text{\insureS{}})\ 
+        P(C=\text{\insureS{}})\ 
+        P(D=\text{\insureS{}}) \\
+    &\quad =  (\insureFprob{})
+        (\insureSprob{})
+        (\insureSprob{})
+        (\insureSprob{}) \\
+    &\quad = (\insureSprob{})^3 (\insureFprob{})^1 \\
+    &\quad = \insureBinomCinDSingleScenario{}
+  \end{align*}
+  But there are three other scenarios: Brittany, Carlton,
+  or Damian could have been the one to exceed the deductible.
+  In each of these cases, the probability is again
+  $(\insureSprob{})^3 (\insureFprob{})^1$.
+  These four scenarios exhaust all the possible ways that
+  exactly one of these four people could have exceeded
+  the deductible, so the total probability is
+  $4 \times (\insureSprob{})^3 (\insureFprob{})^1
+      = \insureBinomCinD{}$.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability $(0.35)^1(0.65)^3$.~\footnotemark
+Verify that the scenario where Brittany is the only one
+exceed the deductible has probability
+$(\insureSprob{})^3 (\insureFprob{})^1$.~\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$P(A=\text{\resp{shock}},\text{ }B=\text{\resp{refuse}},\text{ }C=\text{\resp{shock}},\text{ }D=\text{\resp{shock}}) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3$.}
+\footnotetext{
+  $P(A=\text{\insureS{}},
+      \text{ }B=\text{\insureF{}},
+      \text{ }C=\text{\insureS{}},
+      \text{ }D=\text{\insureS{}})
+    = (\insureSprob{})(\insureFprob{})
+        (\insureSprob{})(\insureSprob{})
+    = (\insureSprob{})^3 (\insureFprob{})^1$.}
 
 
-\subsection{The binomial distribution}
+The scenario outlined in Example~\ref{insureOneOfFourExceedsDeductible} is an
+example of a binomial distribution scenario.
+The \termsub{binomial distribution}{distribution!binomial}
+describes the probability of having exactly $k$ successes
+in $n$ independent Bernoulli trials with probability
+of a success $p$
+(in Example~\ref{insureOneOfFourExceedsDeductible},
+$n=4$, $k=3$, $p=\insureSprob{}$).
+We would like to determine the probabilities associated
+with the binomial distribution more generally,
+i.e. we want a formula where we can use $n$, $k$, and $p$
+to obtain the probability.
+To do this, we reexamine each part of
+Example~\ref{insureOneOfFourExceedsDeductible}.
 
-The scenario outlined in Example~\ref{oneRefuser} is a special case of what is called the binomial distribution. The \termsub{binomial distribution}{distribution!binomial} describes the probability of having exactly $k$ successes in $n$ independent Bernoulli trials with probability of a success $p$  (in Example~\ref{oneRefuser}, $n=4$, $k=1$, $p=0.35$). We would like to determine the probabilities associated with the binomial distribution more generally, i.e. we want a formula where we can use $n$, $k$, and $p$ to obtain the probability. To do this, we reexamine each part of the example.
-
-There were four individuals who could have been the one to refuse, and each of these four scenarios had the same probability. Thus, we could identify the final probability as
+There were four individuals who could have been the one
+to exceed the deductible, and each of these four scenarios
+had the same probability.
+Thus, we could identify the final probability as
 \begin{align*}
 [\text{\# of scenarios}] \times P(\text{single scenario})
 \end{align*}
-The first component of this equation is the number of ways to arrange the $k=1$ successes among the $n=4$ trials. The second component is the probability of any of the four (equally probable) scenarios.
+The first component of this equation is the number of ways
+to arrange the $k=3$ successes among the $n=4$ trials.
+The second component is the probability of any of the four
+(equally probable) scenarios.
 
-Consider $P($single scenario$)$ under the general case of $k$ successes and $n-k$ failures in the $n$ trials. In any such scenario, we apply the Multiplication Rule for independent events:
+Consider $P($single scenario$)$ under the general case of
+$k$ successes and $n-k$ failures in the $n$ trials.
+In any such scenario, we apply the Multiplication Rule
+for independent events:
 \begin{align*}
-p^k(1-p)^{n-k}
+p^k (1 - p)^{n - k}
 \end{align*}
 This is our general formula for $P($single scenario$)$.
 
-Secondly, we introduce a general formula for the number of ways to choose $k$ successes in $n$ trials, i.e. arrange $k$ successes and $n-k$ failures:
+Secondly, we introduce a general formula for the number
+of ways to choose $k$ successes in $n$ trials,
+i.e. arrange $k$ successes and $n - k$ failures:
 \begin{align*}
-{n\choose k} = \frac{n!}{k!(n-k)!}
+{n\choose k} = \frac{n!}{k! (n - k)!}
 \end{align*}
-The quantity ${n\choose k}$ is read \term{n choose k}.\footnote{Other notation for $n$ choose $k$ includes $_nC_k$, $C_n^k$, and $C(n,k)$.} The exclamation point notation (e.g. $k!$) denotes a \term{factorial} expression.
+The quantity ${n\choose k}$ is read
+\term{n choose k}.\footnote{Other notation for
+  $n$ choose $k$ includes $_nC_k$, $C_n^k$, and $C(n,k)$.}
+The exclamation point notation (e.g. $k!$) denotes
+a \term{factorial} expression.
 \begin{align*}
 & 0! = 1 \\
 & 1! = 1 \\
@@ -1304,53 +1413,91 @@ The quantity ${n\choose k}$ is read \term{n choose k}.\footnote{Other notation f
 & \vdots \\
 & n! = n\times(n-1)\times...\times3\times2\times1
 \end{align*}
-Using the formula, we can compute the number of ways to choose $k=1$ successes in $n=4$ trials:
+Using the formula, we can compute the number of ways
+to choose $k = 3$ successes in $n = 4$ trials:
 \begin{align*}
-{4 \choose 1} = \frac{4!}{1!(4-1)!}
-  = \frac{4!}{1!3!} 
-  = \frac{4\times3\times2\times1}{(1)(3\times2\times1)}
+{4 \choose 3} = \frac{4!}{3!(4-3)!}
+  = \frac{4!}{3!1!} 
+  = \frac{4\times3\times2\times1}{(3\times2\times1) (1)}
   = 4
 \end{align*}
-This result is exactly what we found by carefully thinking of each possible scenario in Example~\ref{oneRefuser}.
+This result is exactly what we found by carefully thinking
+of each possible scenario in
+Example~\ref{insureOneOfFourExceedsDeductible}.
 
-Substituting $n$ choose $k$ for the number of scenarios and $p^k(1-p)^{n-k}$ for the single scenario probability yields the general binomial formula.
+Substituting $n$ choose $k$ for the number of scenarios
+and $p^k(1-p)^{n-k}$ for the single scenario probability
+yields the general binomial formula.
 
 \begin{onebox}{Binomial distribution}
-  Suppose the probability of a single trial being a success is $p$. Then the probability of observing exactly $k$ successes in $n$ independent trials is given by\vspace{-1mm}
-\begin{align*}
-{n\choose k}p^k(1-p)^{n-k} = \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}
-\end{align*}
-Additionally, the mean, variance, and standard deviation of the number of observed successes are\vspace{-2mm}
-\begin{align*}
-\mu &= np
-\sigma^2 &= np(1-p)
-\sigma &= \sqrt{np(1-p)}
-\end{align*}
+  Suppose the probability of a single trial being
+  a success is $p$.
+  Then the probability of observing exactly $k$ successes
+  in $n$ independent trials is given by\vspace{-1mm}
+  \begin{align*}
+  {n\choose k}p^k(1-p)^{n-k} = \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}
+  \end{align*}
+  The mean, variance, and standard deviation
+  of the number of observed successes are\vspace{-2mm}
+  \begin{align*}
+  \mu &= np
+  &\sigma^2 &= np(1-p)
+  &\sigma&= \sqrt{np(1-p)}
+  \end{align*}
 \end{onebox}
 
 \begin{onebox}{Is it binomial? Four conditions to check.}
-\label{isItBinomialTipBox}%
-(1) The trials are independent. \\
-(2) The number of trials, $n$, is fixed. \\
-(3) Each trial outcome can be classified as a \emph{success} or \emph{failure}. \\
-(4) The probability of a success, $p$, is the same for each trial.
+  \label{isItBinomialTipBox}%
+  (1) The trials are independent. \\
+  (2) The number of trials, $n$, is fixed. \\
+  (3) Each trial outcome can be classified as a \emph{success}
+      or \emph{failure}. \\
+  (4) The probability of a success, $p$, is the same for
+      each trial.
 \end{onebox}
 
 \begin{examplewrap}
-\begin{nexample}{What is the probability that 3 of 8 randomly selected students will refuse to administer the worst shock, i.e. 5 of 8 will?}
-We would like to apply the binomial model, so we check our conditions. The number of trials is fixed ($n=8$) (condition 2) and each trial outcome can be classified as a success or failure (condition 3). Because the sample is random, the trials are independent (condition~1) and the probability of a success is the same for each trial (condition~4).
+\begin{nexample}{What is the probability that 3 of 8 randomly
+    selected individuals will have exceeded the insurance
+    deductible, i.e. that 5 of 8 will not exceed the deductible?
+    Recall that 70\% of individuals will not exceed the
+    deductible.}
+  We would like to apply the binomial model,
+  so we check the conditions.
+  The number of trials is fixed ($n = 8$) (condition 2)
+  and each trial outcome can be classified as a success
+  or failure (condition 3).
+  Because the sample is random, the trials are independent
+  (condition~1) and the probability of a success is the same
+  for each trial (condition~4).
 
-In the outcome of interest, there are $k=3$ successes in $n=8$ trials, and the probability of a success is $p=0.35$. So the probability that 3 of 8 will refuse is given by
-\begin{align*}
-{ 8 \choose 3}(0.35)^3(1-0.35)^{8-3}
-	&= \frac{8!}{3!(8-3)!}(0.35)^3(1-0.35)^{8-3} \\
-	&= \frac{8!}{3!5!}(0.35)^3(0.65)^5
-\end{align*}
-Dealing with the factorial part:
-\begin{align*}
-\frac{8!}{3!5!} = \frac{8\times7\times6\times5\times4\times3\times2\times1}{(3\times2\times1)(5\times4\times3\times2\times1)} = \frac{8\times7\times6}{3\times2\times1} = 56
-\end{align*}
-Using $(0.35)^3(0.65)^5 \approx 0.005$, the final probability is about $56*0.005 = 0.28$.
+  In the outcome of interest, there are $k = 5$ successes
+  in $n = 8$ trials (recall that a success is an individual
+  who does \emph{not} exceed the deductible, and the
+  probability of a success is $p = \insureSprob{}$.
+  So the probability that 5 of 8 will not exceed the
+  deductible and 3 will exceed the deductible is given by
+  \begin{align*}
+  { 8 \choose 5}(\insureSprob{})^5
+  (1-\insureSprob{})^{8-5}
+    &= \frac{8!}{5!(5-3)!}
+        (\insureSprob{})^5(1-\insureSprob{})^{8-5} \\
+    &= \frac{8!}{5!3!}
+        (\insureSprob{})^5(\insureFprob{})^3
+  \end{align*}
+  Dealing with the factorial part:
+  \begin{align*}
+  \frac{8!}{5!3!}
+    = \frac{8\times7\times6\times5\times4\times3\times2\times1}
+        {(5\times4\times3\times2\times1)(3\times2\times1)}
+    = \frac{8\times7\times6}{3\times2\times1}
+    = 56
+  \end{align*}
+  Using $(\insureSprob{})^5(\insureFprob{})^3
+    \approx \insureBinomEinHSingleScenario{}$,
+  the final probability is about
+  $56 * \insureBinomEinHSingleScenario{}
+    \approx \insureBinomEinH{}$.
 \end{nexample}
 \end{examplewrap}
 
@@ -1358,8 +1505,9 @@ Using $(0.35)^3(0.65)^5 \approx 0.005$, the final probability is about $56*0.005
   The first step in using the binomial model is to check
   that the model is appropriate.
   The second step is to identify $n$, $p$, and $k$.
-  The final step is to apply the formulas and interpret
-  the results.\vspace{3mm}
+  As the last stage use software or the formulas
+  to determine the probability, then interpret the results.%
+  \vspace{3mm}
 
   If you must do calculations by hand, it's often useful
   to cancel out as many terms as possible in the top and
@@ -1368,63 +1516,153 @@ Using $(0.35)^3(0.65)^5 \approx 0.005$, the final probability is about $56*0.005
 
 \begin{exercisewrap}
 \begin{nexercise}
-If you ran a study and randomly sampled 40 students, how many would you expect to refuse to administer the worst shock?
-What is the standard deviation of the number of people who would refuse?\footnotemark{}
+If we randomly sampled 40 case files from the insurance agency
+discussed earlier, how many of the cases would you expect to not
+have exceeded the deductible in a given year?
+What is the standard deviation of the number that would not
+have exceeded the deductible?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{We are asked to determine the expected number (the mean) and the standard deviation, both of which can be directly computed from the formulas: $\mu=np = 40\times 0.35 = 14$ and $\sigma = \sqrt{np(1-p)} = \sqrt{40\times 0.35\times 0.65} = 3.02$. Because very roughly 95\% of observations fall within 2 standard deviations of the mean (see Section~\ref{variability}), we would probably observe at least 8 but less than 20 individuals in our sample who would refuse to administer the shock.}
+\footnotetext{We are asked to determine the expected number
+  (the mean) and the standard deviation, both of which can
+  be directly computed from the formulas:
+  $\mu = np = 40 \times \insureSprob{}
+    = \insureBinomFourtyExpValue$
+  and $\sigma = \sqrt{np(1-p)}
+    = \sqrt{40\times \insureSprob{}\times \insureFprob{}}
+    = \insureBinomFourtySD{}$.
+  Because very roughly 95\% of observations fall within
+  2~standard deviations of the mean
+  (see Section~\ref{variability}), we would probably observe
+  at least \insureBinomFourtyLower{}
+  but fewer than \insureBinomFourtyUpper{} individuals
+  in our sample who would not exceed the deductible.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-The probability that a random smoker will develop a severe lung condition in his or her lifetime is about $0.3$. If you have 4 friends who smoke, are the conditions for the binomial model satisfied?\footnotemark
+The probability that a random smoker will develop a severe
+lung condition in his or her lifetime is about $0.3$.
+If you have 4 friends who smoke, are the conditions for the
+binomial model satisfied?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{One possible answer: if the friends know each other, then the independence assumption is probably not satisfied. For example, acquaintances may have similar smoking habits.}
+\footnotetext{One possible answer:
+  if the friends know each other, then the independence
+  assumption is probably not satisfied.
+  For example, acquaintances may have similar smoking habits,
+  or those friends might make a pact to quit together.}
 
 \begin{exercisewrap}
 \begin{nexercise}
 \label{noMoreThanOneFriendWSevereLungCondition}%
-Suppose these four friends do not know each other and we can treat them as if they were a random sample from the population. Is the binomial model appropriate? What is the probability that (a) none of them will develop a severe lung condition? (b) One will develop a severe lung condition? (c) That no more than one will develop a severe lung condition?\footnotemark
+Suppose these four friends do not know each other
+and we can treat them as if they were a random sample
+from the population.
+Is the binomial model appropriate?
+What is the probability that\footnotemark{}
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    None of them will develop a severe lung condition?
+\item
+    One will develop a severe lung condition?
+\item
+    That no more than one will develop a severe lung condition?
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{To check if the binomial model is appropriate, we must verify the conditions. (i) Since we are supposing we can treat the friends as a random sample, they are independent. (ii) We have a fixed number of trials ($n=4$). (iii) Each outcome is a success or failure. (iv) The probability of a success is the same for each trials since the individuals are like a random sample ($p=0.3$ if we say a ``success'' is someone getting a lung condition, a morbid choice). Compute parts (a) and (b) using the binomial formula: $P(0) =  {4 \choose 0} (0.3)^0 (0.7)^4 = 1\times1\times0.7^4 = 0.2401$, $P(1) = {4 \choose 1} (0.3)^1(0.7)^{3} = 0.4116$. Note: $0!=1$, as shown on
-page~\pageref{factorialDefinitionInTheBinomialSection}.
-Part (c) can be computed as the sum of parts (a) and (b): $P(0) + P(1) = 0.2401 + 0.4116 = 0.6517$. That is, there is about a 65\% chance that no more than one of your four smoking friends will develop a severe lung condition.}
+\footnotetext{To check if the binomial model is appropriate,
+  we must verify the conditions.
+  (i)~Since we are supposing we can treat the friends
+  as a random sample, they are independent.
+  (ii)~We have a fixed number of trials ($n=4$).
+  (iii)~Each outcome is a success or failure.
+  (iv)~The probability of a success is the same for each
+  trials since the individuals are like a random sample
+  ($p=0.3$ if we say a ``success'' is someone getting
+  a lung condition, a morbid choice).
+  Compute parts~(a) and~(b) using the binomial formula:
+  $P(0)
+    = {4 \choose 0} (0.3)^0 (0.7)^4
+    = 1\times1\times0.7^4
+    = 0.2401$,
+  $P(1)
+    = {4 \choose 1} (0.3)^1(0.7)^{3}
+    = 0.4116$.
+  Note: $0!=1$.
+  Part~(c) can be computed as the sum of parts~(a) and~(b):
+  $P(0) + P(1) = 0.2401 + 0.4116 = 0.6517$.
+  That is, there is about a 65\% chance that no more than
+  one of your four smoking friends will develop a severe
+  lung condition.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-What is the probability that at least 2 of your 4 smoking friends will develop a severe lung condition in their lifetimes?\footnotemark
+What is the probability that at least 2 of your 4 smoking
+friends will develop a severe lung condition in their
+lifetimes?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The complement (no more than one will develop a severe lung condition) as computed in Guided Practice~\ref{noMoreThanOneFriendWSevereLungCondition} as 0.6517, so we compute one minus this value: 0.3483.}
+\footnotetext{The complement (no more than one will develop
+  a severe lung condition) as computed in Guided
+  Practice~\ref{noMoreThanOneFriendWSevereLungCondition}
+  as 0.6517, so we compute one minus this value:~0.3483.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Suppose you have 7 friends who are smokers and they can be treated as a random sample of smokers. (a) How many would you expect to develop a severe lung condition, i.e. what is the mean? (b) What is the probability that at most 2 of your 7 friends will develop a severe lung condition.\footnotemark
+Suppose you have 7 friends who are smokers and they can
+be treated as a random sample of smokers.\footnotemark{}
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    How many would you expect to develop a severe lung
+    condition, i.e. what is the mean?
+\item
+    What is the probability that at most 2 of your 7
+    friends will develop a severe lung condition.
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a)~$\mu=0.3\times7 = 2.1$. (b)~$P($0, 1, or 2 develop severe lung condition$) = P(k=0) + P(k=1)+P(k=2) = 0.6471$.}
+\footnotetext{(a)~$\mu=0.3\times7 = 2.1$.
+  (b)~$P($0, 1, or 2 develop severe lung condition$)
+      = P(k=0) + P(k=1)+P(k=2) = 0.6471$.}
 
-Next we consider the first term in the binomial probability, $n$ choose $k$ under some special scenarios.
+Next we consider the first term in the binomial probability,
+$n$ choose $k$ under some special scenarios.
 
 \begin{exercisewrap}
 \begin{nexercise}
-Why is it true that ${n \choose 0}=1$ and ${n \choose n}=1$ for any number $n$?\footnotemark
+Why is it true that ${n \choose 0}=1$ and ${n \choose n}=1$
+for any number $n$?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Frame these expressions into words. How many different ways are there to arrange 0 successes and $n$ failures in $n$ trials? (1 way.) How many different ways are there to arrange $n$ successes and 0 failures in $n$ trials? (1 way.)}
+\footnotetext{Frame these expressions into words.
+  How many different ways are there to arrange 0 successes
+  and $n$ failures in $n$ trials?
+  (1 way.)
+  How many different ways are there to arrange $n$ successes
+  and 0 failures in $n$ trials?
+  (1 way.)}
 
 \begin{exercisewrap}
 \begin{nexercise}
-How many ways can you arrange one success and $n-1$ failures in $n$ trials? How many ways can you arrange $n-1$ successes and one failure in $n$ trials?\footnotemark
+How many ways can you arrange one success and $n-1$ failures
+in $n$ trials?
+How many ways can you arrange $n-1$ successes and one failure
+in $n$ trials?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{One success and $n-1$ failures: there are exactly $n$ unique places we can put the success, so there are $n$ ways to arrange one success and $n-1$ failures. A similar argument is used for the second question. Mathematically, we show these results by verifying the following two equations:
-\begin{align*}
-{n \choose 1} = n, \qquad {n \choose n-1} = n
-\end{align*}}
-
-\CalculatorVideos{calculations for the binomial coefficient and binomial formula}
+\footnotetext{One success and $n-1$ failures:
+  there are exactly $n$ unique places we can put
+  the success, so there are $n$ ways to arrange one
+  success and $n-1$ failures.
+  A~similar argument is used for the second question.
+  Mathematically, we show these results by verifying
+  the following two equations:
+  \begin{align*}
+  {n \choose 1} = n,
+    \qquad {n \choose n-1} = n
+  \end{align*}}
 
 
 \subsection{Normal approximation to the binomial distribution}
