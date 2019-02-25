@@ -18,6 +18,8 @@ plot(d$bookstore_new, d$amazon_new,
      xlab = 'UCLA Bookstore Price',
      ylab = '',
      axes = FALSE)
+m <- lm(amazon_new ~ bookstore_new, d)
+abline(m)
 AxisInDollars(1, seq(0, 300, 50))
 AxisInDollars(2, seq(0, 300, 50))
 par(las = 0)
