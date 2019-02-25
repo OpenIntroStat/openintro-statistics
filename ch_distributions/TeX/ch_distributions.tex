@@ -959,19 +959,50 @@ How long should we expect to flip a coin until it turns up \resp{heads}? Or how 
 \subsection{Bernoulli distribution}
 \label{bernoulli}
 
+\newcommand{\insureSprob}{0.7}
+\newcommand{\insureSperc}{70\%}
+\newcommand{\insureFprob}{0.3}
+\newcommand{\insureFperc}{30\%}
+\newcommand{\insureDistA}{0.7}
+\newcommand{\insureDistB}{0.21}
+\newcommand{\insureDistC}{0.063}
+\newcommand{\insureDistD}{0.019}
+\newcommand{\insureDistE}{0.006}
+\newcommand{\insureCDistA}{0.7}
+\newcommand{\insureCDistB}{0.91}
+\newcommand{\insureCDistC}{0.973}
+\newcommand{\insureCDistCComplement}{0.027}
+\newcommand{\insureCDistD}{0.992}
+\newcommand{\insureCDistE}{0.998}
+\newcommand{\insureGeomMean}{1.43}
+
 \index{distribution!Bernoulli|(}
 
-Stanley Milgram\index{Milgram, Stanley} began a series of experiments in 1963 to estimate what proportion of people would willingly obey an authority and give severe shocks to a stranger. Milgram found that about 65\% of people would obey the authority and give such shocks. Over the years, additional research suggested this number is approximately consistent across communities and time.\footnote{Find further information on Milgram's experiment at \par \ \ \hspace{0.2mm}\ \oiRedirect{textbook-milgram}{www.cnr.berkeley.edu/ucce50/ag-labor/7article/article35.htm}.}
+Many health insurance plans in the United States have
+a deductible, where the insured individual is responsible
+for costs up to the deductible, and then the costs above
+the deductible are shared between the individual and
+insurance company for the remainder of the year.
 
-Each person in Milgram's experiment can be thought of as a \term{trial}. We label a person a \term{success} if she refuses to administer the worst shock. A person is labeled a \term{failure} if she administers the worst shock. Because only 35\% of individuals refused to administer the most severe shock, we denote the \term{probability of a success} with $p=0.35$. The probability of a failure is sometimes denoted with $q=1-p$.
+Suppose a health insurance company found that \insureSperc{} of the
+people they insure stay below their deductible in any given year.
+Each of these people can be thought of as a \term{trial}.
+We label a person a \term{success} if her healthcare costs
+do not exceed the deductible.
+We label a person a \term{failure} if she does exceed her
+deductible in the year.
+Because 80\% of the individuals will not hit their deductible,
+we denote the \term{probability of a success} as
+$p = \insureSprob{}$.
+The probability of a failure is sometimes denoted with
+$q = 1 - p$, which would be \insureFprob{} in for the insurance
+example.
 
-Thus, \resp{success} or \resp{failure} is recorded for
-each person in the study.
-When an individual trial only has two possible outcomes,
-it is called a
+When an individual trial only has two possible outcomes, often
+labeled as \resp{success} or \resp{failure}, it is called a
 \termsub{Bernoulli random variable}{distribution!Bernoulli}.
-We chose to label a person who refuses to administer the
-worst shock a ``success'' and all others as ``failures''.
+We chose to label a person who does not hit her deductible
+as a ``success'' and all others as ``failures''.
 However, we could just as easily have reversed these labels.
 The mathematical framework we will build does not depend
 on which outcome is labeled a success and which a failure,
@@ -983,17 +1014,17 @@ In addition to being convenient in entering data,
 it is also mathematically handy.
 Suppose we observe ten trials:
 \begin{center}
-\resp{0} \resp{1} \resp{1} \resp{1} \resp{1} \resp{0} \resp{1} \resp{1} \resp{0} \resp{0}
+\resp{1} \resp{1} \resp{1} \resp{0} \resp{1} \resp{0} \resp{0} \resp{1} \resp{1} \resp{0}
 \end{center}
 Then the \term{sample proportion}, $\hat{p}$, is the
 sample mean of these observations:
 \begin{align*}
 \hat{p} = \frac{\text{\# of successes}}{\text{\# of trials}}
-    = \frac{0+1+1+1+1+0+1+1+0+0}{10} = 0.6
+    = \frac{1+1+1+0+1+0+0+1+1+0}{10} = 0.6
 \end{align*}%
 This mathematical inquiry of Bernoulli random variables can
 be extended even further.
-\Comment{Maybe the next footnote should instead be an EOCE?}
+%\Comment{Maybe the next footnote should instead be an EOCE?}
 Because \resp{0} and \resp{1} are numerical outcomes,
 we can define the {mean} and {standard deviation}
 of a Bernoulli random variable.\footnote{If ${p}$ is the true probability of a success, then the mean of a Bernoulli random variable $X$ is given by
@@ -1030,33 +1061,68 @@ In general, it is useful to think about a Bernoulli random variable as a random 
 
 \index{distribution!geometric|(}
 
-\begin{examplewrap}
-\begin{nexample}{Dr. Smith wants to repeat Milgram's experiments but she only wants to sample people until she finds someone who will not inflict the worst shock.\footnotemark If the probability a person will \emph{not} give the most severe shock is still 0.35 and the subjects are independent, what are the chances that she will stop the study after the first person? The second person? The third? What about if it takes her $n-1$ individuals who will administer the worst shock before finding her first success, i.e. the first success is on the $n^{th}$ person? (If the first success is the fifth person, then we say $n=5$.)} \label{waitForShocker}
-The probability of stopping after the first person is just the chance the first person will not administer the worst shock: $1-0.65=0.35$. The probability it will be the second person is
-\begin{align*}
-&P(\text{second person is the first to not administer the
-    worst shock}) \\
-&\quad = P(\text{the first will, the second won't})
-    = (0.65)(0.35)
-    = 0.228
-\end{align*}
-Likewise, the probability it will be the third person is $(0.65)(0.65)(0.35) = 0.148$.
+The \term{geometric distribution} is used to describe how
+many trials it takes to observe a success.
+Let's first look at an example.
 
-If the first success is on the $n^{th}$ person, then there are $n-1$ failures and finally 1 success, which corresponds to the probability $(0.65)^{n-1}(0.35)$. This is the same as $(1-0.35)^{n-1}(0.35)$.
+\begin{examplewrap}
+\begin{nexample}{Suppose we are working at the insurance
+    company and need to find a case where the person did
+    not exceed her (or his) deductible as a case study.
+    If the probability a person will not exceed her
+    deductible is \insureSprob{} and we are drawing people
+    at random, what are the chances that the first person
+    will not have exceeded her deductible, i.e. be a success?
+    The second person?
+    The third?
+    What about we pull $n - 1$ cases before we find
+    the first success, i.e. the first success is the
+    $n^{th}$ person?
+    (If the first success is the fifth person, then we say $n=5$.)}
+  \label{waitForDeductible}%
+  The probability of stopping after the first person is just
+  the chance the first person will not hit her (or his)
+  deductible:~\insureSprob{}.
+  The probability it will be the second person is
+  \begin{align*}
+  &P(\text{second person is the first to not administer the
+      worst shock}) \\
+  &\quad
+    = P(\text{the first will, the second won't})
+    = (\insureFprob{})(\insureSprob{})
+    = \insureDistB{}
+  \end{align*}
+  Likewise, the probability it will be the third case is
+  $(\insureFprob{})(\insureFprob{})(\insureSprob{})
+    = \insureDistC$.
+
+  If the first success is on the $n^{th}$ person,
+  then there are $n-1$ failures and finally 1 success,
+  which corresponds to the probability
+  $(\insureFprob{})^{n-1}(\insureSprob{})$.
+  This is the same as
+  $(1-\insureSprob{})^{n-1}(\insureSprob{})$.
 \end{nexample}
 \end{examplewrap}
-\footnotetext{This is hypothetical since, in reality, this sort of study probably would not be permitted any longer under current ethical standards.}
 
-Example~\ref{waitForShocker} illustrates what is called the geometric distribution, which describes the waiting time until a success for \term{independent and identically distributed (iid)} Bernoulli random variables. In this case, the \emph{independence} aspect just means the individuals in the example don't affect each other, and \emph{identical} means they each have the same probability of success.
+Example~\ref{waitForDeductible} illustrates what the
+\term{geometric distribution}, which describes the waiting
+time until a success for
+\term{independent and identically distributed (iid)}
+Bernoulli random variables.
+In this case, the \emph{independence} aspect just means
+the individuals in the example don't affect each other,
+and \emph{identical} means they each have the same probability
+of success.
 
-The geometric distribution from Example~\ref{waitForShocker} is shown in Figure~\ref{geometricDist35}. In general, the probabilities for a geometric distribution decrease \term{exponentially} fast.
+The geometric distribution from Example~\ref{waitForDeductible} is shown in Figure~\ref{geometricDist70}. In general, the probabilities for a geometric distribution decrease \term{exponentially} fast.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \Figure{0.8}{geometricDist35}
+  \Figure{0.8}{geometricDist70}
   \caption{The geometric distribution when the probability
-      of success is $p = 0.35$.}
-  \label{geometricDist35}
+      of success is $p = \insureSprob{}$.}
+  \label{geometricDist70}
 \end{figure}
 
 While this text will not derive the formulas for the mean (expected) number of trials needed to find the first success or the standard deviation or variance of this distribution, we present general formulas for each.
@@ -1085,45 +1151,94 @@ It takes, on average, $1/p$ trials to get a success under the geometric distribu
 
 \begin{exercisewrap}
 \begin{nexercise}
-The probability that an individual would refuse to administer the worst shock is said to be about 0.35. If we were to examine individuals until we found one that did not administer the shock, how many people should we expect to check?\footnotemark{}
+The probability that a particular case would not exceed their
+deductible is said to be \insureSprob{}.
+If we were to examine cases until we found one that where
+the person did not hit her deductible, how many cases should
+we expect to check?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{We would expect to see about $1/0.35 = 2.86$ individuals to find the first success.}
+\footnotetext{We would expect to see about
+    $1 / \insureSprob{} \approx \insureGeomMean{}$
+    individuals to find the first success.}
 
 \begin{examplewrap}
-\begin{nexample}{What is the chance that Dr. Smith will find the first success within the first 4 people?} \label{marglimFirstSuccessIn4}
-This is the chance it is the first ($n=1$), second ($n=2$), third ($n=3$), or fourth ($n=4$) person as the first success, which are four disjoint outcomes. Because the individuals in the sample are randomly sampled from a large population, they are independent. We compute the probability of each case and add the separate results:
-\begin{align*}
-&P(n=1, 2, 3,\text{ or }4) \\
-  & \quad = P(n=1)+P(n=2)+P(n=3)+P(n=4) \\
-  & \quad = (0.65)^{1-1}(0.35) + (0.65)^{2-1}(0.35) + (0.65)^{3-1}(0.35) + (0.65)^{4-1}(0.35) \\
-  & \quad = 0.82
-\end{align*}
-There is an 82\% chance that she will end the study within 4~people.
+\begin{nexample}{What is the chance that we would find
+    the first success within the first 3 cases?}
+  \label{insureFirstSuccessInLT4}%
+  This is the chance it is the first ($n=1$), second ($n=2$),
+  or third ($n=3$) case is the first success, which are three
+  disjoint outcomes.
+  Because the individuals in the sample are randomly sampled
+  from a large population, they are independent.
+  We compute the probability of each case and add the separate
+  results:
+  \begin{align*}
+  &P(n=1, 2, \text{ or }3) \\
+    & \quad = P(n=1)+P(n=2)+P(n=3) \\
+    & \quad = (\insureFprob{})^{1-1}(\insureSprob{})
+        + (\insureFprob{})^{2-1}(\insureSprob{})
+        + (\insureFprob{})^{3-1}(\insureSprob{}) \\
+    & \quad = \insureCDistC{}
+  \end{align*}
+  There is a probability of \insureCDistC{} that we would
+  find a successful case within 3 cases.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Determine a more clever way to solve Example~\ref{marglimFirstSuccessIn4}. Show that you get the same result.\footnotemark
+Determine a more clever way to solve Example~\ref{insureFirstSuccessInLT4}.
+Show that you get the same result.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{First find the probability of the complement: $P($no success in first 4~trials$) = 0.65^4 = 0.18$. Next, compute one minus this probability: $1-P($no success in 4 trials$) = 1-0.18 = 0.82$.}
+\footnotetext{First find the probability of the complement:
+  $P($no success in first 3~trials$)
+      = \insureFprob{}^3 = \insureCDistCComplement{}$.
+  Next, compute one minus this probability:
+  $1 - P($no success in 3 trials$)
+      = 1 - \insureCDistCComplement{}
+      = \insureCDistC{}$.}
 
 \begin{examplewrap}
-\begin{nexample}{Suppose in one region it was found that the proportion of people who would administer the worst shock was ``only'' 55\%. If people were randomly selected from this region, what is the expected number of people who must be checked before one was found that would be deemed a success? What is the standard deviation of this waiting time?} \label{onlyShocking55PercOfTheTimeExample}
-A success is when someone will \textbf{not} inflict the worst shock, which has probability $p=1-0.55=0.45$ for this region. The expected number of people to be checked is $1/p = 1/0.45 = 2.22$ and the standard deviation is $\sqrt{(1-p)/p^2} = 1.65$.
+\begin{nexample}{Suppose a car insurer has determined
+    that 88\% of its drivers will not exceed their deductible
+    in a given year.
+    If someone at the company were to randomly draw
+    driver files until they found one that had not exceeded
+    their deductible, what is the expected number of drivers
+    the insurance employee must check?
+    What is the standard deviation of the number of driver files
+    that must be drawn?}
+  \label{carInsure08DrawOne}%
+  In this example, a success is again when someone will not
+  exceed the insurance deductible, which has probability
+  $p = 0.88$.
+  The expected number of people to be checked is
+  $1 / p = 1 / 0.88 = 1.14$ and the standard deviation is
+  $\sqrt{(1-p)/p^2} = 0.39$.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Using the results from Example~\ref{onlyShocking55PercOfTheTimeExample}, $\mu = 2.22$ and $\sigma = 1.65$, would it be appropriate to use the normal model to find what proportion of experiments would end in 3 or fewer trials?\footnotemark
+Using the results from Example~\ref{carInsure08DrawOne},
+$\mu = 1.14$ and $\sigma = 0.39$, would it be appropriate
+to use the normal model to find what proportion
+of experiments would end in 3 or fewer trials?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{No. The geometric distribution is always right skewed and can never be well-approximated by the normal model.}
+\footnotetext{No. The geometric distribution is always
+  right skewed and can never be well-approximated by the
+  normal model.}
 
-The independence assumption is crucial to the geometric distribution's accurate description of a scenario. Mathematically, we can see that to construct the probability of the success on the $n^{th}$ trial, we had to use the Multiplication Rule for Independent Processes. It is no simple task to generalize the geometric model for dependent trials.
+The independence assumption is crucial to the geometric
+distribution's accurate description of a scenario.
+Mathematically, we can see that to construct the probability
+of the success on the $n^{th}$ trial, we had to use the
+Multiplication Rule for Independent Processes.
+It is no simple task to generalize the geometric model
+for dependent trials.
 
 \index{distribution!geometric|)}
 
