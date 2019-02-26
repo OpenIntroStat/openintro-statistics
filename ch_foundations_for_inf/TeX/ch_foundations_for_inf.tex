@@ -1417,18 +1417,19 @@ The following question comes from a book written by
 Hans Rosling, Anna Rosling R{\"o}nnlund, and Ola Rosling
 called \emph{\oiRedirect{amazon_factfulness}{Factfulness}}:
 \begin{quote}{\em
-  In the last 20 years the proportion of the
-  world population living in extreme poverty has:
+  How many of the world's 1~year old children today
+  have been vaccinated against some disease:
   \begin{enumerate}[a.]
-  \item Almost doubled.
-  \item More or less stayed the same.
-  \item Almost halved.
+  \item 20\%
+  \item 50\%
+  \item 80\%
   \end{enumerate}
 }\end{quote}
 Write down what your answer (or guess),
 and when you're ready, find the answer in the
 footnote.\footnote{The correct answer is (c):
-extreme poverty has been nearly cut in half in the last 20~years.}
+  80\% of the world's 1~year olds have been vaccinated
+  against some disease.}
 
 In this section,
 we'll be exploring how people with a 4-year college
@@ -1482,46 +1483,6 @@ world health question, then we might like to understand~if
     than random guessing, or perhaps, they have false knowledge
     that leads them to actually do worse than random guessing.
 \end{description}
-%Let's again consider the first question from Hans Rosling:
-%\begin{quote}
-%  In the last 20 years the proportion of the
-%  world population living in extreme poverty has:
-%  \begin{enumerate}[a.]
-%  \item Almost doubled.
-%  \item More or less stayed the same.
-%  \item Almost halved.
-%  \end{enumerate}
-%\end{quote}
-%The historical return rate in the stock market is about 7\%.
-%Many fund managers believe their knowledge about the market gives
-%them a leg up and that they can get a higher return. While
-%they may invest their own money, these fund managers
-%find investors who are willing to bet on their skills,
-%and for their trouble they get a cut of any financial
-%gains.
-%
-%We all would like to know: do a majority of fund managers
-%outperform or underperform a simple index fund?
-%We'll be using the S\&P~500
-%index fund as our source of comparison.
-%Ultimately, there are two possibilities:
-%\begin{description}
-%\item[$H_0$:] %$\mathbf{H_0}$: Even chance of beating S\&P~500.]
-%  It's a flip of a coin:
-%  if we randomly picked a fund manager, there's a 50-50 chance
-%  they'll beat the S\&P~500.
-%\item[$H_A$:] %$\mathbf{H_A}$: Either fund managers or the S\&P~500 is better.]
-%  There's something more systematic: the proportion of fund
-%  managers who beat the S\&P~500 isn't 50\%. That is, the
-%  proportion is either less than 50\% or greater than 50\%.
-%%  That is, it is  fund managers or the S\&P~500 is better.
-%%  That said, we're not sure which it will be!
-%%  While we don't know which will do better, we 
-%%  We aren't sure which it might be, but one of
-%%  these investment approaches is typically better than the
-%%  other.
-%\end{description}
-%Ultimately, we don't know which is true!
 These competing ideas are called \term{hypotheses}.
 We call $H_0$ the null hypothesis and $H_A$ the alternative
 hypothesis.
@@ -1546,16 +1507,15 @@ The null hypothesis often represents a skeptical position
 or a perspective of ``no difference''.
 In our first example, we'll consider whether
 the typical person does any different than random guessing
-on Roslings' question about how extreme poverty has changed
-in the last 20~years.
+on Roslings' question about infant vaccinations.
 
 The alternative hypothesis generally represents a new
 or stronger perspective. In the case of the question
-about extreme poverty,
+about infant vaccinations,
 it would certainly be interesting to learn whether
 people do better than random guessing, since that would
 mean that the typical person knows something about
-public health trends.
+world health statistics.
 It would also be very interesting if we learned
 that people do \emph{worse} than random guessing,
 which would suggest people believe
@@ -1587,14 +1547,14 @@ Failing to find strong evidence for the alternative
 hypothesis is not equivalent to accepting
 the null hypothesis.
 
-When considering Roslings' question about extreme poverty,
+When considering Roslings' question about infant vaccination,
 the null hypothesis represents the notion that the people
 we will be considering -- college-educated adults --
 are as accurate as random guessing.
 That is, the proportion
 $p$ of respondents who pick the correct
-answer, that extreme poverty has dropped by half over the
-last 20~years, is about 33.3\%
+answer, that 80\% of 1~year olds have been vaccinated
+against some disease, is about 33.3\%
 (or 1-in-3 if wanting to be perfectly precise).
 The alternative hypothesis is that this proportion is something
 other than 33.3\%. While it's helpful to write these hypotheses
@@ -1617,7 +1577,6 @@ That is, in this case, the null value is $p_0 = 0.333$
     proportion of people who get the correct answer
     is \emph{exactly} 33.3\%. If we don't believe the
     null hypothesis, should we simply reject it?}
-  \label{fund_managers_sp500_not_reject_H0_interpretation}
   No. While we may not buy into the notion that
   the proportion is exactly 33.3\%, the hypothesis testing
   framework requires that there be strong evidence before
@@ -1641,7 +1600,7 @@ That is, in this case, the null value is $p_0 = 0.333$
   is evaluating whether a new drug is better or worse
   than an existing drug at treating a particular disease.
   What should we use for the null and alternative hypotheses in
-  this case?\footnotemark
+  this case?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The null hypothesis ($H_0$) in this case is
@@ -1660,13 +1619,13 @@ data set and put it in the R~package.}
 We will use the \data{rosling\_\hspace{0.3mm}responses}
 data set to evaluate
 the hypothesis test evaluating whether college-educated adults
-who get the question about extreme poverty correct is different
+who get the question about infant vaccination correct is different
 from 33.3\%.
 This data set summarizes the answers of \roslingAsize{}
 college-educated adults.
 Of these \roslingAsize{} adults, \roslingApercent{}\%~of
-respondents got the question correct that extreme poverty
-has dropped by~half in the last 20~years.
+respondents got the question correct that 80\% of 1~year olds
+have been vaccinated against some disease.
 
 Up until now, our discussion has been philosophical.
 However, now that we have data, we might ask ourselves:
@@ -1714,7 +1673,7 @@ for the hypothesis test.
   \end{align*}
   We are 95\% confident that the proportion of all
   college-educated adults to correctly answer this
-  particular question about extreme poverty is between
+  particular question about infant vaccination is between
   12.2\% and 35.8\%.
 \end{nexample}
 \end{examplewrap}
@@ -1736,13 +1695,13 @@ and we do not reject the null hypothesis,~$H_0$.
 
 \begin{examplewrap}
 \begin{nexample}{Explain why we cannot conclude that
-    college-educated adults simply guessed on the extreme
-    poverty question.}
+    college-educated adults simply guessed on the
+    infant vaccination question.}
   While we failed to reject $H_0$, that does not
   necessarily mean the null hypothesis is true.
   Perhaps there was an actual difference,
   but we were not able to detect it with the
-  relatively small sample of~50.
+  relatively small sample of~\roslingAsize{}.
 
 %  Second, we are only evaluating the proportion,
 %  and if the population proportion is 0.333,
