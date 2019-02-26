@@ -1665,6 +1665,9 @@ in $n$ trials?\footnotemark{}
   \end{align*}}
 
 
+\newpage
+
+
 \subsection{Normal approximation to the binomial distribution}
 \label{normalApproxBinomialDistSubsection}
 
@@ -1672,36 +1675,90 @@ in $n$ trials?\footnotemark{}
 
 The binomial formula is cumbersome when the sample size ($n$) is large, particularly when we consider a range of observations. In some cases we may use the normal distribution as an easier and faster way to estimate binomial probabilities.
 
-\Comment{\href{https://www.cdc.gov/tobacco/data_statistics/fact_sheets/adult_data/cig_smoking/index.htm}{This page} suggests the actual smoking rate is now closer to 15.5\%.}
+\newcommand{\smokeprop}{0.15}
+\newcommand{\smokeperc}{15\%}
+\newcommand{\smokepropcomp}{0.85}
+\newcommand{\smokeperccomp}{85\%}
+\newcommand{\smokex}{42}
+\newcommand{\smokexplusone}{43}
+\newcommand{\smoken}{400}
+\newcommand{\smokelowertailbinom}{0.0054}
+\newcommand{\smokemean}{60}
+\newcommand{\smokemeancomp}{340}
+\newcommand{\smokesd}{7.14}
+\newcommand{\smokez}{-2.52}
+\newcommand{\smokelowertailnormal}{0.0059}
 
 \begin{examplewrap}
-\begin{nexample}{Approximately 20\% of the US population smokes cigarettes. A local government believed their community had a lower smoker rate and commissioned a survey of 400 randomly selected individuals. The survey found that only 59 of the 400 participants smoke cigarettes. If the true proportion of smokers in the community was really 20\%, what is the probability of observing 59 or fewer smokers in a sample of 400 people?}\label{exactBinomialForN400P20SmokerExample}
-We leave the usual verification that the four conditions for the binomial model are valid as an exercise.
+\begin{nexample}{Approximately \smokeperc{} of the
+    US population smokes cigarettes.
+    A local government believed their community had
+    a lower smoker rate and commissioned a survey of
+    400 randomly selected individuals.
+    The survey found that only \smokex{} of the
+    \smoken{} participants smoke cigarettes.
+    If the true proportion of smokers in the community
+    was really \smokeperc{}, what is the probability
+    of observing \smokex{} or fewer smokers in a sample
+    of \smoken{} people?}
+  \label{exactBinomSmokerExSetup}%
+  We leave the usual verification that the four conditions
+  for the binomial model are valid as an exercise.
 
-The question posed is equivalent to asking, what is the probability of observing $k=0$, 1, ..., 58, or 59 smokers in a sample of $n=400$ when $p=0.20$? We can compute these 60 different probabilities and add them together to find the answer:
-\begin{align*}
-&P(k=0\text{ or }k=1\text{ or }\cdots\text{ or } k=59) \\
-	&\qquad= P(k=0) + P(k=1) + \cdots + P(k=59) \\
-	&\qquad=0.0041
-\end{align*}
-If the true proportion of smokers in the community is $p=0.20$, then the probability of observing 59 or fewer smokers in a sample of $n=400$ is less than 0.0041.
+  The question posed is equivalent to asking,
+  what is the probability of observing
+  $k=0$, 1, 2, ..., or \smokex{} smokers in a sample of
+  $n = \smoken{}$ when $p=\smokeprop{}$?
+  We can compute these \smokexplusone{} different
+  probabilities and add them together to find the answer:
+  \begin{align*}
+  &P(k=0\text{ or }k=1\text{ or }\cdots\text{ or } k=\smokex{}) \\
+	&\qquad = P(k=0) + P(k=1) + \cdots + P(k=\smokex{}) \\
+	&\qquad = \smokelowertailbinom{}
+  \end{align*}
+  If the true proportion of smokers in the community
+  is $p=\smokeprop{}$, then the probability of observing
+  \smokex{} or fewer smokers in a sample of $n=\smoken{}$
+  is \smokelowertailbinom{}.
 \end{nexample}
 \end{examplewrap}
 
-The computations in Example~\ref{exactBinomialForN400P20SmokerExample} are tedious and long. In general, we should avoid such work if an alternative method exists that is faster, easier, and still accurate. Recall that calculating probabilities of a range of values is much easier in the normal model. We might wonder, is it reasonable to use the normal model in place of the binomial distribution? Surprisingly, yes, if certain conditions are met.
+The computations in Example~\ref{exactBinomSmokerExSetup}
+are tedious and long.
+In general, we should avoid such work if an alternative method
+exists that is faster, easier, and still accurate.
+Recall that calculating probabilities of a range of values
+is much easier in the normal model.
+We might wonder, is it reasonable to use the normal model
+in place of the binomial distribution?
+Surprisingly, yes, if certain conditions are met.
 
 \begin{exercisewrap}
 \begin{nexercise}
-Here we consider the binomial model when the probability of a success is $p=0.10$. Figure~\ref{fourBinomialModelsShowingApproxToNormal} shows four hollow histograms for simulated samples from the binomial distribution using four different sample sizes: $n=10, 30, 100, 300$. What happens to the shape of the distributions as the sample size increases? What distribution does the last hollow histogram resemble?\footnotemark
+Here we consider the binomial model when the probability
+of a success is $p = 0.10$.
+Figure~\ref{fourBinomialModelsShowingApproxToNormal}
+shows four hollow histograms for simulated samples from
+the binomial distribution using four different sample sizes:
+$n = 10, 30, 100, 300$.
+What happens to the shape of the distributions as the sample
+size increases?
+What distribution does the last hollow histogram
+resemble?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The distribution is transformed from a blocky and skewed distribution into one that rather resembles the normal distribution in last hollow histogram}
+\footnotetext{The distribution is transformed from a blocky
+  and skewed distribution into one that rather resembles the
+  normal distribution in last hollow histogram.}
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.92\textwidth]{ch_distributions/figures/fourBinomialModelsShowingApproxToNormal/fourBinomialModelsShowingApproxToNormal}
-\caption{Hollow histograms of samples from the binomial model when $p=0.10$. The sample sizes for the four plots are $n=10$, 30, 100, and 300, respectively.}
-\label{fourBinomialModelsShowingApproxToNormal}
+  \centering
+  \Figure{0.92}{fourBinomialModelsShowingApproxToNormal}
+  \caption{Hollow histograms of samples from the binomial
+      model when $p = 0.10$.
+      The sample sizes for the four plots are
+      $n = 10$, 30, 100, and 300, respectively.}
+  \label{fourBinomialModelsShowingApproxToNormal}
 \end{figure}
 
 \begin{onebox}{Normal approximation of the binomial distribution}
@@ -1714,55 +1771,103 @@ Here we consider the binomial model when the probability of a success is $p=0.10
   the binomial distribution:\vspace{-1.5mm}
   \begin{align*}
   \mu &= np
-      &\sigma& = \sqrt{np(1-p)}
+      &\sigma& = \sqrt{np(1 - p)}
   \end{align*}
 \end{onebox}
 
-The normal approximation may be used when computing the range of many possible successes. For instance, we may apply the normal distribution to the setting of Example~\ref{exactBinomialForN400P20SmokerExample}.
+The normal approximation may be used when computing
+the range of many possible successes.
+For instance, we may apply the normal distribution to
+the setting of Example~\ref{exactBinomSmokerExSetup}.
 
 \begin{examplewrap}
-\begin{nexample}{How can we use the normal approximation to estimate the probability of observing 59 or fewer smokers in a sample of 400, if the true proportion of smokers is $p=0.20$?} \label{approxBinomialForN400P20SmokerExample}
-Showing that the binomial model is reasonable was a suggested exercise in Example~\ref{exactBinomialForN400P20SmokerExample}. We also verify that both $np$ and $n(1-p)$ are at least 10:
-\begin{align*}
-np&=400\times 0.20=80
-&n(1-p)&=400\times 0.8=320
-\end{align*}
-With these conditions checked, we may use the normal approximation in place of the binomial distribution using the mean and standard deviation from the binomial model:
-\begin{align*}
-\mu &= np = 80
-&\sigma &= \sqrt{np(1-p)} = 8
-\end{align*}
-We want to find the probability of observing fewer than 59 smokers using this model.
+\begin{nexample}{How can we use the normal approximation
+    to estimate the probability of observing \smokex{} or
+    fewer smokers in a sample of \smoken{}, if the true
+    proportion of smokers is $p = \smokeprop{}$?}
+  \label{approxNormalForSmokerBinomEx}
+  Showing that the binomial model is reasonable was a
+  suggested exercise in Example~\ref{exactBinomSmokerExSetup}.
+  We also verify that both $np$ and $n(1-p)$ are at least 10:
+  \begin{align*}
+  np &= \smoken{} \times \smokeprop{} = \smokemean{}
+  &n (1 - p) &= \smoken{} \times \smokepropcomp{}
+      = \smokemeancomp{}
+  \end{align*}
+  With these conditions checked, we may use the normal
+  approximation in place of the binomial distribution
+  using the mean and standard deviation from the binomial
+  model:
+  \begin{align*}
+  \mu &= np = \smokemean{}
+  &\sigma &= \sqrt{np(1 - p)} = \smokesd{}
+  \end{align*}
+  We want to find the probability of observing
+  \smokex{} or fewer smokers using this model.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Use the normal model $N(\mu=80, \sigma=8)$ to estimate the probability of observing fewer than 59 smokers. Your answer should be approximately equal to the solution of Example~\ref{exactBinomialForN400P20SmokerExample}: 0.0041.\footnotemark
+Use the normal model $N(\mu = \smokemean{}, \sigma = \smokesd{})$
+to estimate the probability of observing \smokex{} or fewer
+smokers.
+Your answer should be approximately equal to the solution
+of Example~\ref{exactBinomSmokerExSetup}:%
+~\smokelowertailbinom{}.~\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Compute the Z-score first: $Z=\frac{59 - 80}{8} = -2.63$. The corresponding left tail area is 0.0043.}
+\footnotetext{Compute the Z-score first:
+  $Z = \frac{\smokex{} - \smokemean{}}{\smokesd{}} = \smokez{}$.
+  The corresponding left tail area is \smokelowertailnormal{}.}
+
+
+
+\newpage
 
 
 \subsection{The normal approximation breaks down on small intervals}
 
 The normal approximation to the binomial distribution tends to perform poorly when estimating the probability of a small range of counts, even when the conditions are met.
 
-Suppose we wanted to compute the probability of observing 69, 70, or 71 smokers in 400 when $p=0.20$. With such a large sample, we might be tempted to apply the normal approximation and use the range 69 to 71. However, we would find that the binomial solution and the normal approximation notably differ:
+\newcommand{\smokeA}{49}
+\newcommand{\smokeB}{50}
+\newcommand{\smokeC}{51}
+\newcommand{\smokeABCBinom}{0.0649}
+\newcommand{\smokeABCNormal}{0.0421}
+\newcommand{\smokeABCNormalFixed}{0.0633}
+
+Suppose we wanted to compute the probability of observing
+\smokeA{}, \smokeB{}, or \smokeC{} smokers in \smoken{}
+when $p = \smokeprop{}$.
+With such a large sample, we might be tempted to apply
+the normal approximation and use the range \smokeA{} to \smokeC{}.
+However, we would find that the binomial solution and the normal
+approximation notably differ:
 \begin{align*}
-\text{Binomial:}&\ 0.0703
-&\text{Normal:}&\ 0.0476
+\text{Binomial:}&\ \smokeABCBinom{}
+&\text{Normal:}&\ \smokeABCNormal{}
 \end{align*}
-We can identify the cause of this discrepancy using Figure~\ref{normApproxToBinomFail}, which shows the areas representing the binomial probability (outlined) and normal approximation (shaded). Notice that the width of the area under the normal distribution is 0.5 units too slim on both sides of the interval.
+We can identify the cause of this discrepancy using
+Figure~\ref{normApproxToBinomFail}, which shows the areas
+representing the binomial probability (outlined) and normal
+approximation (shaded).
+Notice that the width of the area under the normal
+distribution is 0.5 units too slim on both sides of
+the interval.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{ch_distributions/figures/normApproxToBinomFail/normApproxToBinomFail}
-\caption{A normal curve with the area between 69 and 71 shaded. The outlined area represents the exact binomial probability.}
-\label{normApproxToBinomFail}
+  \centering
+  \Figure{1.0}{normApproxToBinomFail}
+  \caption{A normal curve with the area between
+      \smokeA{} and \smokeC{} shaded.
+      The outlined area represents the exact binomial
+      probability.}
+  \label{normApproxToBinomFail}
 \end{figure}
 
-\begin{onebox}{Improving the normal approximation for the binomial distribution}
+\begin{onebox}{Improving the normal approximation
+    for the binomial distribution}
   The normal approximation to the binomial distribution
   for intervals of values is usually improved if cutoff
   values are modified slightly.
@@ -1771,7 +1876,16 @@ We can identify the cause of this discrepancy using Figure~\ref{normApproxToBino
   upper end should be increased by 0.5.
 \end{onebox}
 
-The tip to add extra area when applying the normal approximation is most often useful when examining a range of observations. While it is possible to apply it when computing a tail area, the benefit of the modification usually disappears since the total interval is typically quite wide.
+The tip to add extra area when applying the normal
+approximation is most often useful when examining
+a range of observations.
+In the example above, the revised normal distribution
+estimate is \smokeABCNormalFixed{}, much closer to the
+exact value of \smokeABCBinom{}.
+While it is possible to also apply this correction when
+computing a tail area, the benefit of the modification
+usually disappears since the total interval is typically
+quite wide.
 
 \index{distribution!binomial!normal approximation|)}
 \index{distribution!binomial|)}
