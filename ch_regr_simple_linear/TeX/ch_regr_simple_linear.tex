@@ -1557,3 +1557,54 @@ family\us{}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\
 \label{rOutputForIncomeAidLSRLineInInferenceSection}
 \end{figure}
 
+
+\newpage
+
+\subsection{Confidence interval for a coefficient}
+
+\index{confidence interval!regression|(}%
+
+Similar to how we can conduct a hypothesis test for
+a model coefficient using regression output, we can also
+construct a confidence interval for that coefficient.
+
+\begin{examplewrap}
+\begin{nexample}{
+    Compute the 95\% confidence interval for the
+    \var{family\us{}income} coefficient using the
+    regression output from
+    Table~\ref{rOutputForIncomeAidLSRLineInInferenceSection}.}
+  The point estimate is -0.0431 and the standard error is
+  $SE = 0.0108$.
+  When constructing a confidence interval for a model
+  coefficient, we generally use a $t$-distribution.
+  The degrees of freedom for the distribution are noted in
+  the regression output, $df = 48$, allowing us to identify
+  $t_{48}^{\star} = 2.01$ for use in the confidence interval.
+
+  We can now construct the confidence interval in the usual way:
+  \begin{align*}
+  \text{point estimate} \pm t_{48}^{\star} \times SE
+    \qquad\to\qquad -0.0431 \pm 2.01 \times 0.0108
+    \qquad\to\qquad (-0.0648, -0.0214)
+  \end{align*}
+  We are 95\% confident that the true coefficient
+  for the \var{family\us{}income} variable is between
+  -0.0648 and -0.0214.
+\end{nexample}
+\end{examplewrap}
+
+\begin{onebox}{Confidence intervals for coefficients}
+  Confidence intervals for model coefficients can be computed
+  using the $t$-distribution:
+  \begin{align*}
+  b_i \ \pm\ t_{df}^{\star} \times SE_{b_{i}}
+  \end{align*}
+  where $t_{df}^{\star}$ is the appropriate $t$-value
+  corresponding to the confidence level and model degrees
+  of freedom, $df=n-k-1$.
+\end{onebox}
+
+
+
+
