@@ -90,10 +90,23 @@ is used in place of $p$.
 
 \index{point estimate!single proportion}
 
-In this first example, we'll use the point estimate
-$\hat{p}$ to check whether it is reasonable to model
-$\hat{p}$ using a normal distribution,
-since we will be computing a confidence interval.
+Often times we want to understand what a range of
+plausible values for the parameter, $p$.
+When this is our goal, a confidence interval is useful,
+which for a proportion usually takes the form of
+\begin{align*}
+\hat{p} \pm z^{\star} \times SE_{\hat{p}}
+\end{align*}
+%where $\hat{p}$ is the point estimate based on
+%a simple random sample.
+A core requirement is that $\hat{p}$ can be reasonably
+modeled with a normal distribution, and we check this
+requirement using conditions.
+
+%In this first example, we'll use the point estimate
+%$\hat{p}$ to check whether it is reasonable to model
+%$\hat{p}$ using a normal distribution,
+%since we will be computing a confidence interval.
 
 \index{data!Payday regulation poll|(}
 
@@ -120,16 +133,26 @@ since we will be computing a confidence interval.
   This is a random sample, so the observations are
   independent and representative of the population of interest.
 
-  We also must check the success-failure condition,
-  which we do using $\hat{p}$:
+  We also must check the success-failure condition.
+  In the example, we are defining a \emph{success}
+  as a respondent who supported new regulations
+  and a \emph{failure} as someone who did not.
+  We check this condition using $\hat{p}$ in place
+  of $p$ when computing a confidence interval:
   \begin{align*}
-  n p & \approx \paydayN{} * \paydayRegProp{} = 578.2
-  &n (1 - p) & \approx \paydayN{} * (1 - \paydayRegProp{}) = 247.8
+  \text{Successes: }
+      n p & \approx \paydayN{} * \paydayRegProp{}
+      = 578
+  &\text{Failures: }
+      n (1 - p) & \approx \paydayN{} * (1 - \paydayRegProp{})
+      = 248
   \end{align*}
   Since both values are at least 10, we can use the normal
   distribution to model $\hat{p}$.
 \end{nexample}
 \end{examplewrap}
+
+
 
 
 \begin{exercisewrap}
@@ -2029,6 +2052,11 @@ Section~\ref{differenceOfTwoProportions}.
     summarizes the results of an experiment evaluating
     three treatments for Type~2 Diabetes in patients
     aged 10-17 who were being treated with metformin.
+    The three treatments considered were
+    continued treatment with metformin (\resp{met}),
+    treatment with metformin combined with rosiglitazone
+    (\resp{rosi}),
+    or a lifestyle intervention program.
     Each patient had a primary outcome, which was either lacked
     glycemic control (failure)
     or did not lack that control (success).
@@ -2068,7 +2096,7 @@ A chi-square test for a two-way table may be used to test
 the hypotheses in
 Example~\ref{diabetes2ExpMetRosiLifestyleIntroExample}.
 As a first step, compute the expected values for each of the
-six table cells.\footnotemark
+six table cells.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The expected count for
