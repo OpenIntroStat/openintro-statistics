@@ -895,7 +895,7 @@ or a smaller interval?\footnotemark
     if we want to be more certain that we capture the
     parameter.}
 
-\subsection{An approximate 95\% confidence interval}
+\subsection{Constructing a 95\% confidence interval}
 
 Our sample proportion $\hat{p}$ is the most plausible
 value of the population proportion, so it makes sense
@@ -907,15 +907,15 @@ The standard error represents the standard deviation
 of the point estimate, and when the Central
 Limit Theorem conditions are satisfied, we also know
 that the point estimate closely follows a normal
-distribution. In a normal distribution, about 95\% of
-the data is within 2~standard deviations of the mean.
+distribution. In a normal distribution, 95\% of
+the data is within 1.96~standard deviations of the mean.
 Using this principle, we can construct a confidence
-interval that extends 2~standard errors from the sample
+interval that extends 1.96~standard errors from the sample
 proportion to be \term{95\% confident}\index{confident|textbf}
 that the interval captures the population proportion:
 \begin{align*}
-\text{point estimate}\ &\pm\ 2\times SE \\
-\hat{p}\ &\pm\ 2\times SE_{\hat{p}}
+\text{point estimate}\ &\pm\ 1.96\times SE \\
+\hat{p}\ &\pm\ 1.96\times SE_{\hat{p}}
 %\label{95PercentConfidenceIntervalFormula}
 \end{align*}
 But what does ``95\% confident'' mean? Suppose we took
@@ -951,22 +951,15 @@ Does this imply that the population proportion used
 in the simulation could not have been
 $p = \pewsolarparprop{}$?}
 Just as some observations naturally
-occur more than 2~standard deviations
+occur more than 1.96~standard deviations
 from the mean, some point estimates will be more than
-2~standard errors from the parameter of interest.
+1.96~standard errors from the parameter of interest.
 A confidence interval only provides a plausible range
 of values.
 While we might say other values are implausible
 based on the data, this does not mean they are impossible.
 \end{nexample}
 \end{examplewrap}
-
-While about 95\% of the data is within 2~standard deviations
-in a normal distribution, it would be more precise to use
-a value of 1.96~standard deviations as the area under the
-normal curve within 1.96~standard deviations is closer to~0.95.
-This more precise value is what is used to construct
-a 95\% confidence interval.
 
 \begin{onebox}{95\% confidence interval for a parameter}
   \index{confidence interval!95\%}

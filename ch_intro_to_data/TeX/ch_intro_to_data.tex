@@ -334,12 +334,20 @@ The variables are summarized in Figure~\ref{countyVariables}.
 \hline
 {\bf variable} & {\bf description} \\
 \hline
-\var{name} & County name. \\
-\var{state} & State where the county resides,
+\var{name} &
+    County name. \\
+\var{state} &
+    State where the county resides,
     or the District of Columbia. \\
-\var{pop} & Population in 2017. \\
-\var{pop\us{}change} & Population change from 2010 to 2017. \\
-\var{poverty}  &  Percent of the population in poverty. \\
+\var{pop} &
+    Population in 2017. \\
+\var{pop\us{}change} &
+    Percent change in the population from 2010 to 2017.
+    For example, the value \resp{1.48} in the first row
+    means the population for this county
+    increased by 1.48\% from 2010 to 2017. \\
+\var{poverty} &
+    Percent of the population in poverty. \\
 \var{homeownership}  &
     Percent of the population that lives in their own home
     or lives with the owner, e.g. children living with parents
@@ -347,8 +355,10 @@ The variables are summarized in Figure~\ref{countyVariables}.
 \var{multi\us{}unit}  &
     Percent of living units that are in multi-unit structures,
     e.g. apartments. \\
-\var{unemp\us{}rate} & Unemployment rate as a percent. \\
-\var{metro} & Whether the county contains a metropolitan area. \\
+\var{unemp\us{}rate} &
+    Unemployment rate as a percent. \\
+\var{metro} &
+    Whether the county contains a metropolitan area. \\
 \var{median\us{}edu} & Median education level, which
     can take a value among
     \resp{below\us{}hs},
@@ -554,8 +564,9 @@ to~you.\footnotemark
 
 \begin{examplewrap}
 \begin{nexample}{This example examines the relationship
-    between population change over a 7-year period and
-    median household income,
+    between a county's population change
+    from 2010 to 2017
+    and median household income,
     which is visualized as a scatterplot in
     Figure~\ref{pop_change_v_med_income}.
     Are these variables associated?}
@@ -603,8 +614,9 @@ to~you.\footnotemark
   \caption{A scatterplot showing
       \var{pop\us{}change}
       against \var{median\us{}hh\us{}income}.
-      Owsley County of Kentucky, with a poverty rate of 45.2\%
-      and median household income of \$22,736, is highlighted.}
+      Owsley County of Kentucky, is highlighted,
+      which lost 3.63\% of its population from 2010 to 2017
+      and had median household income of \$22,736.}
   \label{pop_change_v_med_income}
 \end{figure}
 
