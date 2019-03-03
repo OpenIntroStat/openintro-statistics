@@ -30,8 +30,8 @@ myPDF('normalTails.pdf', 4.5, 1.3,
       mar = c(1.3, 1, 0.5, 1),
       mgp = c(3, -0.2, 0),
       mfrow = 1:2)
-GeneratePlot(X, Y, "negative Z", -10, -0.801)
-GeneratePlot(X, Y, "positive Z", -10, 0.801)
+GeneratePlot(X, Y, "Negative Z", -10, -0.801)
+GeneratePlot(X, Y, "Positive Z", -10, 0.801)
 dev.off()
 
 
@@ -39,12 +39,12 @@ dev.off()
 myPDF('normalTailLeft.pdf', 2.75, 1.05,
       mar = c(0.9, 1, 0.1, 3.05),
       mgp = c(3, -0.2, 0))
-GeneratePlot(X, Y, "negative Z", -10, -0.801)
+GeneratePlot(X, Y, "Negative Z", -10, -0.801)
 dev.off()
 
 
 myPDF('normalTailRight.pdf', 2.75, 1.05,
       mar = c(0.9, 2.9, 0.1, 1),
       mgp = c(3, -0.2, 0))
-GeneratePlot(X, Y, "positive Z", -10, 0.801)
+GeneratePlot(X, Y, "Positive Z", -10, 0.801)
 dev.off()

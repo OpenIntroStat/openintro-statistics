@@ -4,47 +4,65 @@
 \section{Normal Probability Table}
 \label{normalProbabilityTable}
 
-\Comment{Should give this a good read through and update.}
-
-Finding percentiles may be accomplished with a
-\term{normal probability table},
-which lists Z-scores and corresponding percentiles.
-
+A \term{normal probability table} may be used to
+find percentiles of a normal distribution using a Z-score,
+or vice-versa.
+Such a table lists Z-scores and the corresponding percentiles.
 An abbreviated probability table is provided in
-Figure~\ref{zTableShort}.
-We use this table to identify the percentile corresponding
-to any particular Z-score.
+Figure~\ref{zTableShort} that we'll use for the examples
+in this appendix.
+A~full table may be found on page~\pageref{normTableSide1}.
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{c | rrrrr | rrrrr |}
+  \cline{2-11}
+&&&& \multicolumn{4}{c}{Second decimal place of $Z$} &&& \\
+  \cline{2-11}
+$Z$ & \highlightT{0.00} & 0.01 & 0.02 & 0.03 &
+    \highlightO{0.04} & 0.05 & 0.06 & 0.07 & 0.08 & 0.09 \\
+  \hline
+  \hline
+0.0 & \footnotesize{0.5000} & \footnotesize{0.5040} & \footnotesize{0.5080} & \footnotesize{0.5120} & \footnotesize{0.5160} & \footnotesize{0.5199} & \footnotesize{0.5239} & \footnotesize{0.5279} & \footnotesize{0.5319} & \footnotesize{0.5359} \\
+  0.1 & \footnotesize{0.5398} & \footnotesize{0.5438} & \footnotesize{0.5478} & \footnotesize{0.5517} & \footnotesize{0.5557} & \footnotesize{0.5596} & \footnotesize{0.5636} & \footnotesize{0.5675} & \footnotesize{0.5714} & \footnotesize{0.5753} \\
+  0.2 & \footnotesize{0.5793} & \footnotesize{0.5832} & \footnotesize{0.5871} & \footnotesize{0.5910} & \footnotesize{0.5948} & \footnotesize{0.5987} & \footnotesize{0.6026} & \footnotesize{0.6064} & \footnotesize{0.6103} & \footnotesize{0.6141} \\
+%  May comment out 0.0-0.2 to make extra space. Then insert the following line:
+%  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\
+  0.3 & \footnotesize{0.6179} & \footnotesize{0.6217} & \footnotesize{0.6255} & \footnotesize{0.6293} & \footnotesize{0.6331} & \footnotesize{0.6368} & \footnotesize{0.6406} & \footnotesize{0.6443} & \footnotesize{0.6480} & \footnotesize{0.6517} \\
+  0.4 & \footnotesize{0.6554} & \footnotesize{0.6591} & \footnotesize{0.6628} & \footnotesize{0.6664} & \footnotesize{0.6700} & \footnotesize{0.6736} & \footnotesize{0.6772} & \footnotesize{0.6808} & \footnotesize{0.6844} & \footnotesize{0.6879} \\
+  \hline
+  0.5 & \footnotesize{0.6915} & \footnotesize{0.6950} & \footnotesize{0.6985} & \footnotesize{0.7019} & \footnotesize{0.7054} & \footnotesize{0.7088} & \footnotesize{0.7123} & \footnotesize{0.7157} & \footnotesize{0.7190} & \footnotesize{0.7224} \\
+  0.6 & \footnotesize{0.7257} & \footnotesize{0.7291} & \footnotesize{0.7324} & \footnotesize{0.7357} & \footnotesize{0.7389} & \footnotesize{0.7422} & \footnotesize{0.7454} & \footnotesize{0.7486} & \footnotesize{0.7517} & \footnotesize{0.7549} \\
+  0.7 & \footnotesize{0.7580} & \footnotesize{0.7611} & \footnotesize{0.7642} & \footnotesize{0.7673} & \footnotesize{0.7704} & \footnotesize{0.7734} & \footnotesize{0.7764} & \footnotesize{0.7794} & \footnotesize{0.7823} & \footnotesize{0.7852} \\
+\highlightO{0.8} & \footnotesize{0.7881} & \footnotesize{0.7910} & \footnotesize{0.7939} & \footnotesize{0.7967} & \highlightO{\footnotesize{0.7995}} & \footnotesize{0.8023} & \footnotesize{0.8051} & \footnotesize{0.8078} & \footnotesize{0.8106} & \footnotesize{0.8133} \\
+  0.9 & \footnotesize{0.8159} & \footnotesize{0.8186} & \footnotesize{0.8212} & \footnotesize{0.8238} & \footnotesize{0.8264} & \footnotesize{0.8289} & \footnotesize{0.8315} & \footnotesize{0.8340} & \footnotesize{0.8365} & \footnotesize{0.8389} \\
+  \hline
+  \hline
+  \highlightT{1.0} & \highlightT{\footnotesize{0.8413}}
+    & \footnotesize{0.8438} & \footnotesize{0.8461} & \footnotesize{0.8485} & \footnotesize{0.8508} & \footnotesize{0.8531} & \footnotesize{0.8554} & \footnotesize{0.8577} & \footnotesize{0.8599} & \footnotesize{0.8621} \\
+  1.1 & \footnotesize{0.8643} & \footnotesize{0.8665} & \footnotesize{0.8686} & \footnotesize{0.8708} & \footnotesize{0.8729} & \footnotesize{0.8749} & \footnotesize{0.8770} & \footnotesize{0.8790} & \footnotesize{0.8810} & \footnotesize{0.8830} \\
+  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &
+      $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &
+      $\vdots$ &   $\vdots$ &   $\vdots$ \\
+   \hline
+\end{tabular}
+\caption{A section of the normal probability table.
+    The percentile for a normal random variable with $Z=1.00$
+    has been \highlightT{highlighted}, and the percentile
+    closest to 0.8000 has also been \highlightO{highlighted}.}
+\label{zTableShort}
+\end{figure}
+
+When using a normal probability table to find a percentile
+for $Z$ (rounded to two decimals),
+identify the proper row in the normal probability
+table up through the first decimal, and then determine the
+column representing the second decimal value.
+The intersection of this row and column is the percentile
+of the observation.
 For instance, the percentile of $Z = 0.45$ is shown in row
 $0.4$ and column $0.05$ in Figure~\ref{zTableShort}:
 0.6736, or the $67.36^{th}$ percentile.
-Generally, we round $Z$ to two decimals, identify the proper
-row in the normal probability table up through the first decimal,
-and then determine the column representing the second decimal
-value.
-The intersection of this row and column is the percentile
-of the observation.
-
-\begin{examplewrap}
-\begin{nexample}{Ann from Example~\ref{actSAT} earned a score
-    of 1300 on her SAT with a corresponding
-    $Z = 1$.
-    She would like to know what percentile she falls in among
-    all SAT test-takers.}
-  Ann's \term{percentile} is the percentage of people who
-  earned a lower SAT score than Ann.
-  We shade the area representing those individuals in the
-  following graph:
-  \begin{center}
-  \includegraphics[width=0.47\textwidth]
-      {ch_distributions/figures/satBelow1300/satBelow1300}
-  \end{center}
-  The total area under the normal curve is always equal to~1,
-  and the proportion of people who scored below Ann on the SAT
-  is equal to the \emph{area} shaded in the graph: 0.8413.
-  In other words, Ann is in the $84^{th}$ percentile of
-  SAT takers.
-\end{nexample}
-\end{examplewrap}
 
 \begin{figure}[h]
   \centering
@@ -54,46 +72,44 @@ of the observation.
       percentile of the observation.}
 \end{figure}
 
-\begin{figure}[h]
-\centering
-\begin{tabular}{c | rrrrr | rrrrr |}
-  \cline{2-11}
-&&&& \multicolumn{4}{c}{Second decimal place of $Z$} &&& \\
-  \cline{2-11}
-$Z$ & 0.00 & 0.01 & 0.02 & 0.03 & \highlightO{0.04} & \highlightT{0.05} & 0.06 & 0.07 & 0.08 & 0.09 \\
-  \hline
-  \hline
-0.0 & \footnotesize{0.5000} & \footnotesize{0.5040} & \footnotesize{0.5080} & \footnotesize{0.5120} & \footnotesize{0.5160} & \footnotesize{0.5199} & \footnotesize{0.5239} & \footnotesize{0.5279} & \footnotesize{0.5319} & \footnotesize{0.5359} \\
-  0.1 & \footnotesize{0.5398} & \footnotesize{0.5438} & \footnotesize{0.5478} & \footnotesize{0.5517} & \footnotesize{0.5557} & \footnotesize{0.5596} & \footnotesize{0.5636} & \footnotesize{0.5675} & \footnotesize{0.5714} & \footnotesize{0.5753} \\
-  0.2 & \footnotesize{0.5793} & \footnotesize{0.5832} & \footnotesize{0.5871} & \footnotesize{0.5910} & \footnotesize{0.5948} & \footnotesize{0.5987} & \footnotesize{0.6026} & \footnotesize{0.6064} & \footnotesize{0.6103} & \footnotesize{0.6141} \\
-%  May comment out 0.0-0.2 to make extra space. Then insert the following line:
-%  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ \\
-  0.3 & \footnotesize{0.6179} & \footnotesize{0.6217} & \footnotesize{0.6255} & \footnotesize{0.6293} & \footnotesize{0.6331} & \footnotesize{0.6368} & \footnotesize{0.6406} & \footnotesize{0.6443} & \footnotesize{0.6480} & \footnotesize{0.6517} \\
-\highlightT{0.4} & \footnotesize{0.6554} & \footnotesize{0.6591} & \footnotesize{0.6628} & \footnotesize{0.6664} & \footnotesize{0.6700} & \highlightT{\footnotesize{0.6736}} & \footnotesize{0.6772} & \footnotesize{0.6808} & \footnotesize{0.6844} & \footnotesize{0.6879} \\
-  \hline
-  0.5 & \footnotesize{0.6915} & \footnotesize{0.6950} & \footnotesize{0.6985} & \footnotesize{0.7019} & \footnotesize{0.7054} & \footnotesize{0.7088} & \footnotesize{0.7123} & \footnotesize{0.7157} & \footnotesize{0.7190} & \footnotesize{0.7224} \\
-  0.6 & \footnotesize{0.7257} & \footnotesize{0.7291} & \footnotesize{0.7324} & \footnotesize{0.7357} & \footnotesize{0.7389} & \footnotesize{0.7422} & \footnotesize{0.7454} & \footnotesize{0.7486} & \footnotesize{0.7517} & \footnotesize{0.7549} \\
-  0.7 & \footnotesize{0.7580} & \footnotesize{0.7611} & \footnotesize{0.7642} & \footnotesize{0.7673} & \footnotesize{0.7704} & \footnotesize{0.7734} & \footnotesize{0.7764} & \footnotesize{0.7794} & \footnotesize{0.7823} & \footnotesize{0.7852} \\
-\highlightO{0.8} & \footnotesize{0.7881} & \footnotesize{0.7910} & \footnotesize{0.7939} & \footnotesize{0.7967} & \highlightO{\footnotesize{0.7995}} & \footnotesize{0.8023} & \footnotesize{0.8051} & \footnotesize{0.8078} & \footnotesize{0.8106} & \footnotesize{0.8133} \\
-  0.9 & \footnotesize{0.8159} & \footnotesize{0.8186} & \footnotesize{0.8212} & \footnotesize{0.8238} & \footnotesize{0.8264} & \footnotesize{0.8289} & \footnotesize{0.8315} & \footnotesize{0.8340} & \footnotesize{0.8365} & \footnotesize{0.8389} \\
-  \hline
-  \hline
-  1.0 & \footnotesize{0.8413} & \footnotesize{0.8438} & \footnotesize{0.8461} & \footnotesize{0.8485} & \footnotesize{0.8508} & \footnotesize{0.8531} & \footnotesize{0.8554} & \footnotesize{0.8577} & \footnotesize{0.8599} & \footnotesize{0.8621} \\
-  1.1 & \footnotesize{0.8643} & \footnotesize{0.8665} & \footnotesize{0.8686} & \footnotesize{0.8708} & \footnotesize{0.8729} & \footnotesize{0.8749} & \footnotesize{0.8770} & \footnotesize{0.8790} & \footnotesize{0.8810} & \footnotesize{0.8830} \\
-  $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &
-      $\vdots$ &   $\vdots$ &   $\vdots$ &   $\vdots$ &
-      $\vdots$ &   $\vdots$ &   $\vdots$ \\
-   \hline
-\end{tabular}
-\caption{A section of the normal probability table.
-    The percentile for a normal random variable with $Z=0.45$
-    has been \highlightT{highlighted}, and the percentile
-    closest to 0.8000 has also been \highlightO{highlighted}.}
-\label{zTableShort}
-\end{figure}
+\begin{examplewrap}
+\begin{nexample}{
+    SAT scores follow a normal distribution, $N(1100, 200)$.
+    Ann earned a score of 1300 on her SAT with
+    a corresponding Z-score of $Z = 1$.
+    She would like to know what percentile she falls in among
+    all SAT test-takers.}
+  Ann's \term{percentile} is the percentage of people who
+  earned a lower SAT score than her.
+  We shade the area representing those individuals in the
+  following graph:
+  \begin{center}
+  \includegraphics[width=0.45\textwidth]
+      {ch_distributions/figures/satBelow1300/satBelow1300}
+  \end{center}
+  The total area under the normal curve is always equal to~1,
+  and the proportion of people who scored below Ann on the SAT
+  is equal to the \emph{area} shaded in the graph.
+  We find this area by looking in row $1.0$ and column $0.00$
+  in the normal probability table:~0.8413.
+  In other words, Ann is in the $84^{th}$ percentile of
+  SAT takers.
+\end{nexample}
+\end{examplewrap}
+
+\begin{examplewrap}
+\begin{nexample}{How do we find an upper tail area?}
+  The normal probability table \emph{always} gives the area
+  to the left.
+  This means that if we want the area to the right,
+  we first find the lower tail and then subtract it from~1.
+  For instance, 84.13\% of SAT takers scored below Ann,
+  which means 15.87\% of test takers scored higher than Ann.
+\end{nexample}
+\end{examplewrap}
 
 We can also find the Z-score associated with a percentile.
-For example, to identify Z for the $80^{th}$ percentile,
+For example, to identify $Z$ for the $80^{th}$ percentile,
 we look for the value closest to 0.8000 in the middle portion
 of the table: 0.7995.
 We determine the Z-score for the $80^{th}$ percentile by
@@ -117,10 +133,11 @@ combining the row and column Z values: 0.84.
 \end{nexample}
 \end{examplewrap}
 
-To find the area to the right, calculate 1 minus the area to the left.\vspace{1mm}
-\begin{center}
-\includegraphics[width=0.7\textwidth]{extraTeX/tables/figures/normalTails/subtractingArea/subtractingArea}\vspace{3mm}
-\end{center}
+%\noindent%
+%Remember: to find the area to the right, calculate 1 minus the area to the left.\vspace{1mm}
+%\begin{center}
+%\includegraphics[width=0.55\textwidth]{extraTeX/tables/figures/normalTails/subtractingArea/subtractingArea}\vspace{3mm}
+%\end{center}
 For additional details about working with the normal distribution and the normal probability table, see Section~\ref{normalDist}, which starts on page~\pageref{normalDist}.
 
 \begin{table}[p]
@@ -180,6 +197,7 @@ For additional details about working with the normal distribution and the normal
     \hline
 \multicolumn{11}{l}{{\normalsize$^*$For $Z \leq -3.50$, the probability is less than or equal to $0.0002$.}}
 \end{tabular}}
+\label{normTableSide1}
 \end{center}
 \end{table}
 

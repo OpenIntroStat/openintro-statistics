@@ -1,14 +1,18 @@
 \section{Chi-Square Probability Table}
 \label{chiSquareProbabilityTable}
 
+A \term{chi-square probability table} may be used
+to find tail areas of a chi-square distribution.
 The \term{chi-square table} is partially shown in
-Figure~\ref{chiSquareProbabilityTableShort}.
-A more complete table is presented at the end of this appendix.
-For this table, we examine a particular row for distributions
+Figure~\ref{chiSquareProbabilityTableShort},
+and the complete table may be found on
+page~\pageref{fullChiSqTable}.
+When using a chi-square table, we examine a particular
+row for distributions
 with different degrees of freedom, and we identify a range for
 the area (e.g. 0.025 to 0.05).
-Note that this table, unlike the normal distribution table,
-only provides upper tail values.
+Note that the chi-square table provides upper tail values,
+which is different than the normal and $t$-distribution tables.
 
 \begin{figure}[h]
 \centering
@@ -31,8 +35,25 @@ df \hfill 2 & \footnotesize 2.41 & \footnotesize \highlightO{3.22} & \footnotesi
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{Figure~\ref{app_chiSquareAreaAbove6Point25WithDF3} shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use Figure~\ref{chiSquareProbabilityTableShort} to estimate the shaded area.}
-This distribution has three degrees of freedom, so only the row with 3 degrees of freedom (df) is relevant. This row has been italicized in the table. Next, we see that the value -- 6.25 -- falls in the column with upper tail area 0.1. That is, the shaded upper tail of Figure~\ref{app_chiSquareAreaAbove6Point25WithDF3} has area 0.1.
+\begin{nexample}{Figure~\ref{app_chiSquareAreaAbove6Point25WithDF3}
+    shows a chi-square distribution with 3 degrees of freedom
+    and an upper shaded tail starting at 6.25.
+    Use Figure~\ref{chiSquareProbabilityTableShort}
+    to estimate the shaded area.}
+  This distribution has three degrees of freedom,
+  so only the row with 3 degrees of freedom (df) is relevant.
+  This row has been italicized in the table.
+  Next, we see that the value -- 6.25 -- falls in the column
+  with upper tail area 0.1.
+  That is, the shaded upper tail of
+  Figure~\ref{app_chiSquareAreaAbove6Point25WithDF3}
+  has area 0.1.
+
+  This example was unusual, in that we observed the
+  \emph{exact} value in the table.
+  In the next examples, we encounter situations where
+  we cannot precisely estimate the tail area and must
+  instead provide a range of values.
 \end{nexample}
 \end{examplewrap}
 
@@ -74,23 +95,36 @@ This distribution has three degrees of freedom, so only the row with 3 degrees o
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{We rarely observe the \emph{exact} value in the table. For instance, Figure~\ref{app_chiSquareAreaAbove4Point3WithDF2} shows the upper tail of a chi-square distribution with 2 degrees of freedom. The bound for this upper tail is at 4.3, which does not fall in Figure~\ref{chiSquareProbabilityTableShort}. Find the approximate tail area.}
-The cutoff 4.3 falls between the second and third columns in the 2 degrees of freedom row. Because these columns correspond to tail areas of 0.2 and 0.1, we can be certain that the area shaded in Figure~\ref{app_chiSquareAreaAbove4Point3WithDF2} is between 0.1 and 0.2.
+\begin{nexample}{
+    Figure~\ref{app_chiSquareAreaAbove4Point3WithDF2}
+    shows the upper tail of a chi-square distribution
+    with 2~degrees of freedom.
+    The area above value 4.3 has been shaded;
+    find this tail area.}
+  The cutoff 4.3 falls between the second and third columns
+  in the 2~degrees of freedom row.
+  Because these columns correspond to tail areas of 0.2 and 0.1,
+  we can be certain that the area shaded in
+  Figure~\ref{app_chiSquareAreaAbove4Point3WithDF2}
+  is between 0.1 and 0.2.
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
 \begin{nexample}{Figure~\ref{app_chiSquareAreaAbove5Point1WithDF5} shows an upper tail for a chi-square distribution with 5 degrees of freedom and a cutoff of 5.1. Find the tail area.}
-Looking in the row with 5 df, 5.1 falls below the smallest cutoff for this row (6.06). That means we can only say that the area is \emph{greater than 0.3}.
+Looking in the row with 5 df, 5.1 falls below the smallest cutoff for this row (6.06). That means we can only say that the area is \emph{greater than} 0.3.
 \end{nexample}
 \end{examplewrap}
 
-\begin{exercisewrap}
-\begin{nexercise}
-Figure~\ref{app_chiSquareAreaAbove11Point7WithDF7} shows a cutoff of 11.7 on a chi-square distribution with 7 degrees of freedom. Find the area of the upper tail.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{The value 11.7 falls between 9.80 and 12.02 in the 7 df row. Thus, the area is between 0.1 and 0.2.}
+\begin{examplewrap}
+\begin{nexample}{Figure~\ref{app_chiSquareAreaAbove11Point7WithDF7}
+    shows a cutoff of 11.7 on a chi-square distribution with
+    7~degrees of freedom.
+    Find the area of the upper tail.}
+  The value 11.7 falls between 9.80 and 12.02 in the 7 df row.
+  Thus, the area is between 0.1 and 0.2.
+\end{nexample}
+\end{examplewrap}
 
 %\begin{exercisewrap}
 %\begin{nexercise}
@@ -147,4 +181,5 @@ df \hfill 1 & \footnotesize 1.07 & \footnotesize 1.64 & \footnotesize 2.71 & \fo
   50 & \footnotesize 54.72 & \footnotesize 58.16 & \footnotesize 63.17 & \footnotesize 67.50 & \footnotesize 72.61 & \footnotesize 76.15 & \footnotesize 79.49 & \footnotesize 86.66 \\ 
   \hline
 \end{tabular}
+\label{fullChiSqTable}
 \end{center}
