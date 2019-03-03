@@ -235,7 +235,9 @@ might represent?\footnotemark{}
   interest rate for the first loan in the sample (\loanA\%),
   $x_2$ to the second loan's interest rate (\loanB\%),
   and $x_i$ corresponds to the interest rate for the
-  $i^{th}$ loan in the data set.}
+  $i^{th}$ loan in the data set.
+  For example, if $i = 4$, then we're examining $x_4$,
+  which refers to the fourth observation in the data set.}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -644,7 +646,7 @@ s_{}^2 &= \frac{(\loanAdev)_{}^2 + (\loanBdev)_{}^2 + (\loanCdev)_{}^2 + \cdots 
 	&= \loanVar{}
 \end{align*}
 We divide by $n - 1$, rather than dividing by $n$,
-when computing the variance;
+when computing a sample's variance;
 there's some mathematical nuance here, but the end result is that
 doing this makes this statistic slightly more reliable and useful.
 
@@ -1292,7 +1294,13 @@ with a partner or whether it was an individual application.
 \newcommand{\loanapphomeN}{\loanapphomeDD{}}
 
 Figure~\ref{loan_home_app_type_totals} summarizes two variables:
-\var{app\us{}type} and \var{homeownership}.
+\var{app\us{}type}
+%\footnote{For those readers already familiar
+%  with \emph{joint probabilities}, \resp{joint} in the table
+%  refers to a level of the \var{app\us{}type} variable
+%  for a joint application.
+%  The does not refer to a joint probability!}
+and \var{homeownership}.
 A table that summarizes data for two categorical variables in
 this way is called a \term{contingency table}.
 Each value in the table represents the number of times
@@ -1642,7 +1650,7 @@ Additionally, since the proportions of \resp{joint}
 and \resp{individual} vary across the groups,
 we can conclude that the two variables are associated.
 
-\newcommand{\loanapptypehomesegbarplotwidth}{0.48\textwidth}
+\newcommand{\loanapptypehomesegbarplotwidth}{0.46\textwidth}
 \begin{figure}[h]
   \centering
   \subfigure[]{
@@ -1663,6 +1671,61 @@ we can conclude that the two variables are associated.
         {loan_app_type_home_seg_bar_standardized}
     \label{loan_app_type_home_seg_bar_standardized}
   }
+%  \subtable{
+%    \footnotesize
+%    \begin{tabular}{l  ccc  r}
+%      \multicolumn{5}{l}{Contingency table summarizing}\\
+%      \multicolumn{5}{l}{application type and homeownership:} \\
+%      \\
+%      & \multicolumn{3}{c}{\bf \var{homeownership}} & \\
+%      \cline{2-4}
+%      \var{app\us{}type} &
+%          rent & mortgage & own & Total \\ 
+%      \hline
+%      individual &
+%          \loanapphomeAA{} &
+%          \loanapphomeAB{} &
+%          \loanapphomeAC{} &
+%          \loanapphomeAD{} \\
+%      joint &
+%          \loanapphomeBA{} &
+%          \loanapphomeBB{} &
+%    	  \loanapphomeBC{} &
+%    	  \loanapphomeBD{} \\
+%      \hline
+%      Total &
+%          \loanapphomeDA{} &
+%          \loanapphomeDB{} &
+%          \loanapphomeDC{} &
+%          \loanapphomeDD{} \\
+%      \hline
+%      \ \\
+%      \ \\
+%      \multicolumn{5}{l}{Version of the table}\\
+%      \multicolumn{5}{l}{with column proportions:} \\
+%      \\
+%      & \multicolumn{3}{c}{\bf \var{homeownership}} & \\
+%      \cline{2-4}
+%      \var{app\us{}type} &
+%          rent & mortgage & own & Total \\ 
+%      \hline
+%      individual &
+%          0.906 &
+%          0.802 &
+%          0.865 &
+%          0.851 \\
+%      joint &
+%          0.094 &
+%          0.198 &
+%          0.135 &
+%          0.150 \\
+%      \hline
+%      Total & 1.000 & 1.000 & 1.000 & 1.000 \\
+%      \hline
+%      \ \\
+%    \end{tabular}
+%    \label{loan_app_type_home_copied_table}
+%  }
   \caption{\subref{loan_app_type_home_seg_bar} Stacked
       bar plot for \var{homeownership},
       where the counts have been further broken down
@@ -1671,7 +1734,10 @@ we can conclude that the two variables are associated.
       bar plot for \var{homeownership}
       and \var{app\us{}type}.
       \subref{loan_app_type_home_seg_bar_standardized}~Standardized
-      version of the stacked bar plot.}
+      version of the stacked bar plot.
+      \subref{loan_app_type_home_copied_table}~A
+      contingency table for
+      \var{app\us{}type} and \var{homeownership}.}
   \label{loan_app_type_home_seg_bar_plot}
 \end{figure}
 
