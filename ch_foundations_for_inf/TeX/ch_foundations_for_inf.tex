@@ -1124,8 +1124,9 @@ distribution corresponds to the confidence level.
   We first find $z^{\star}$ such that 90\% of the distribution falls
   between -$z^{\star}$ and $z^{\star}$ in the standard normal model,
   $N(\mu=0, \sigma=1)$. We can do this using a graphing calculator,
-  statistical software, or a probability table by looking for an upper
-  tail of 5\% (the other 5\% is in the lower tail): $z^{\star}=1.65$.
+  statistical software, or a probability table by looking for an
+  upper tail of 5\% (the other 5\% is in the lower tail):
+  $z^{\star}=1.65$.
   The 90\% confidence interval can then be computed as
   \begin{align*}
   \hat{p}\ \pm\ 1.65\times SE_{\hat{p}}
@@ -1874,9 +1875,9 @@ Recall that there are two competing hypotheses:
 the null and the alternative.
 In a hypothesis test, we make a statement about which one might
 be true, but we might choose incorrectly. There are four possible
-scenarios, which are summarized in Table~\ref{fourHTScenarios}.
+scenarios, which are summarized in Figure~\ref{fourHTScenarios}.
 
-\begin{table}[ht]
+\begin{figure}[ht]
 \centering
 \begin{tabular}{l l c c}
 & & \multicolumn{2}{c}{\textbf{Test conclusion}} \\
@@ -1893,7 +1894,7 @@ scenarios, which are summarized in Table~\ref{fourHTScenarios}.
 \end{tabular}
 \caption{Four different scenarios for hypothesis tests.}
 \label{fourHTScenarios}
-\end{table}
+\end{figure}
 
 A \term{Type~1 Error} is rejecting the null hypothesis when
 $H_0$ is actually true.
@@ -1907,7 +1908,7 @@ In a US court, the defendant is either innocent ($H_0$) or
 guilty ($H_A$).
 What does a Type~1 Error represent in this context?
 What does a Type~2 Error represent?
-Table~\ref{fourHTScenarios} may be useful.\footnotemark
+Figure~\ref{fourHTScenarios} may be useful.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{If
@@ -2274,12 +2275,13 @@ to our point estimate.
   \begin{align*}
   Z = \frac{\pewcoalpollprop{} - 0.5}{\pewcoalpollnullse{}} = -8.125 
   \end{align*}
-  We can use the normal probability table or software to find
-  the tail area.
-  If using the table in
+  We can use software to find the tail area:
+  $2.2 \times 10^{-16}$
+  (0.00000000000000022).
+  If using the normal probability table in
   Appendix~\ref{normalProbabilityTable},
-  $Z = -8.125$ is off the table, so we will
-  use the smallest area listed: 0.0002.
+  we'd find that $Z = -8.125$ is off the table,
+  so we would use the smallest area listed: 0.0002.
 
   The potential $\hat{p}$'s in the upper tail beyond
   \pewcoalpollpropcomplement{}, which are shown
@@ -2289,7 +2291,8 @@ to our point estimate.
   To account for these values that are also more
   extreme under the hypothesis setup,
   we double the lower tail to get an estimate
-  of the p-value: 0.0004.
+  of the p-value: $4.4 \times 10^{-16}$
+  (or if using the table method, 0.0004).
 
   The p-value represents the probability of observing
   such an extreme sample proportion by chance, if the null
@@ -2316,24 +2319,23 @@ to our point estimate.
 
 \begin{examplewrap}
 \begin{nexample}{How should we evaluate the hypotheses using the
-    p-value of 0.0004? Use the standard significance level of
-    $\alpha = 0.05$.}
-  If the null hypothesis were true, there's a smaller than 0.04\%
-  chance of observing such an extreme deviation of
+    p-value of $4.4 \times 10^{-16}$?
+    Use the standard significance level of $\alpha = 0.05$.}
+  If the null hypothesis were true, there's only an incredibly
+  small chance of observing such an extreme deviation of
   $\hat{p}$ from 0.5.
   This means one of the following must be true:
   \begin{enumerate}
     \item The null hypothesis is true, and we just happened
-        to get really unlucky and observe a sample proportion
-        very far from the truth.
+        to get observe something so extreme that only happens
+        about once in every 23 quadrillion times
+        (1~quadrillion = 1~million $\times$ 1~billion).
     \item The alternative hypothesis is true,
         which would be consistent
         with observing a sample proportion far from 0.5.
   \end{enumerate}
-  The p-value tells us that what we observed is so unusual
-  with respect to null hypothesis that it casts serious doubt
-  on $H_0$.
-  Ultimately, scenario \#2 seems more plausible.
+  The first scenario is laughably improbable,
+  while the second scenario seems much more plausible.
 
   Formally, when we evaluate a hypothesis test,
   we compare the p-value to the significance level,

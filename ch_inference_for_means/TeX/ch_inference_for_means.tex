@@ -104,12 +104,11 @@ When the degrees of freedom is about 30 or more, the $t$-distribution is nearly 
 It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data.
 In~practice, it's common to use statistical software,
 such as \R{}, Python, or SAS.
-In the classroom setting, it's more common to use
-a graphing calculator or a \term{t-table};
+Alternatively, a graphing calculator or a \term{t-table}
+may be used;
 the $t$-table is similar to the normal distribution table,
-and it may be found with usage instructions on
-in Appendix~\ref{tDistributionTable}
-on page~\pageref{tDistributionTable}.
+and it may be found in Appendix~\ref{tDistributionTable}
+for those who wish to use this option.
 No matter the approach you choose, apply your method
 using the examples below to confirm your understanding
 of working with tail areas in the $t$-distribution.
@@ -283,7 +282,7 @@ In our current example, we should use the $t$-distribution
 with $df=19-1=18$ degrees of freedom.
 We can generally identify $t_{18}^{\star}$
 using statistical software.
-Alternatively, we could use the $t$ table in
+Alternatively, we could use the $t$-table in
 Appendix~\ref{tDistributionTable}.
 Generally the value of $t^{\star}_{df}$ is slightly larger
 than what we would get under the normal model with~$z^{\star}$.
@@ -919,7 +918,7 @@ the observations in each sample are independent.
 Since both conditions are satisfied, the difference
 in sample means may be modeled using a $t$-distribution.
 
-%Summary statistics are shown for each sample in Figure~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}.
+%Summary statistics are shown for each sample in Figure~\ref{SumStatsBirthWeightNewbornsSmoke}.
 
 \begin{figure}[hhh]
 \centering
@@ -932,65 +931,133 @@ samp. size & 50 & 100 \\
 \hline
 \end{tabular}
 \caption{Summary statistics for the \data{ncbirths} data set.}
-\label{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers}
+\label{SumStatsBirthWeightNewbornsSmoke}
 \end{figure}
 
 \begin{exercisewrap}
 \begin{nexercise}
-The summary statistics in Figure~\ref{summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers} may be useful for this exercise. (a)~What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b)~Compute the standard error of the point estimate from part (a).\footnotemark{}
+The summary statistics in
+Figure~\ref{SumStatsBirthWeightNewbornsSmoke} may be useful
+for this exercise.
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    What is the point estimate of the population difference,
+    $\mu_{n} - \mu_{s}$?
+\item
+    Compute the standard error of the point estimate from
+    part~(a).\footnotemark{}
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a)~The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b)~The standard error of the estimate can be estimated using the standard error formula:
-\begin{align*}
-SE
-  = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
-    \approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
-  = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
-  = 0.26
-\end{align*}}
+\footnotetext{(a)~The difference in sample means is an
+  appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$.
+  (b)~The standard error of the estimate can be estimated using
+  the standard error formula:
+  \begin{align*}
+  SE
+    = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
+      \approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
+    = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
+    = 0.26
+  \end{align*}}
 
 \begin{examplewrap}
-\begin{nexample}{Draw a picture to represent the p-value for the hypothesis test from Example~\ref{babySmokeHTForWeight}.} \label{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}
-To depict the p-value, we draw the distribution of the point estimate as though $H_0$ were true and shade areas representing at least as much evidence against $H_0$ as what was observed. Both tails are shaded because it is a two-sided test.
-\begin{center}
-\includegraphics[width=0.6\textwidth]{ch_inference_for_means/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData}
-\end{center}
+\begin{nexample}{Draw a picture to represent the p-value for
+    the hypothesis test from Example~\ref{babySmokeHTForWeight}.}
+  \label{pValueForEstOfDiffMeanBirthWeight}%
+  To depict the p-value, we draw the distribution of the point
+  estimate as though $H_0$ were true and shade areas representing
+  at least as much evidence against $H_0$ as what was observed.
+  Both tails are shaded because it is a two-sided test.
+  \begin{center}
+    \Figure{0.6}{distOfDiffOfSampleMeansForBWOfBabySmokeData}
+  \end{center}
 \end{nexample}
 \end{examplewrap}
 
-\Comment{Fix the next example for referencing the $t$-table.}
-
 \begin{examplewrap}
-\begin{nexample}{Compute the p-value of the hypothesis test using the figure in Example~\ref{pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights}, and evaluate the hypotheses using a significance level of $\alpha=0.05$.} \label{babySmokeHTForWeightComputePValueAndEvalHT}
-We start by computing the T-score:
-\begin{align*}
-T = \frac{\ 0.40 - 0\ }{0.26} = 1.54
-\end{align*}
-Next, we compare this value to values in the $t$-table in Appendix~\vref{tDistributionTable}, where we use the smaller of $n_n - 1 = 99$ and $n_s - 1 = 49$ as the degrees of freedom: $df = 49$. The T-score falls between the first and second columns in the $df = 49$ row of the $t$-table, meaning the two-sided p-value falls between 0.10 and 0.20 (reminder, find tail areas along the top of the table). This p-value is larger than the significance value, 0.05, so we fail to reject the null hypothesis. There is insufficient evidence to say there is a difference in average birth weight of newborns from North Carolina mothers who did smoke during pregnancy and newborns from North Carolina mothers who did not smoke during pregnancy.
+\begin{nexample}{Compute the p-value of the hypothesis
+    test using the figure in
+    Example~\ref{pValueForEstOfDiffMeanBirthWeight},
+    and evaluate the hypotheses using a significance
+    level of $\alpha=0.05$.}
+  \label{babySmokeHTForWeightComputePValueAndEvalHT}%
+  We start by computing the T-score:
+  \begin{align*}
+  T = \frac{\ 0.40 - 0\ }{0.26} = 1.54
+  \end{align*}
+  Next, we find the single tail area using software
+  (or the table in Appendix~\vref{tDistributionTable}).
+  We'll use the
+  smaller of $n_n - 1 = 99$ and $n_s - 1 = 49$ as the
+  degrees of freedom: $df = 49$.
+  The one tail area is 0.065;
+  doubling this value gives the two-tail area and p-value,
+  0.135.
+  This p-value is larger than the significance value, 0.05,
+  so we fail to reject the null hypothesis.
+  There is insufficient evidence to say there is a difference
+  in average birth weight of newborns from North Carolina mothers
+  who did smoke during pregnancy and newborns from North Carolina
+  mothers who did not smoke during pregnancy.
 \end{nexample}
 \end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Does the conclusion to Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT} mean that smoking and average birth weight are unrelated?\footnotemark{}
+We've seen much research suggesting smoking is harmful
+during pregnancy, so how could we fail to reject the null
+hypothesis in
+Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT}?
+\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Absolutely not. It is possible that there is some difference but we did not detect it. If there is a difference, we made a Type~2 Error. Notice: we also don't have enough information to, if there is an actual difference, confidently say which direction that difference would be in.}
+\footnotetext{It is possible that there is some difference
+  but we did not detect it.
+  If there is a difference, we made a Type~2 Error.
+  Notice: we also don't have enough information to,
+  if there is an actual difference, confidently say
+  which direction that difference would be in.}
 
 \begin{exercisewrap}
-\begin{nexercise} \label{babySmokeHTIDingHowToDetectDifferences}
-If we made a Type~2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect the difference?\footnotemark{}
+\begin{nexercise}
+\label{babySmokeHTIDingHowToDetectDifferences}%
+If we made a Type~2 Error and there is a difference,
+what could we have done differently in data collection
+to be more likely to detect the difference?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.}
+\footnotetext{We could have collected more data.
+  If the sample sizes are larger, we tend to have
+  a better shot at finding a difference if one exists.
+  In fact, this is exactly what we would find if we
+  examined a larger data set!}
 
-Public service announcement: while we have used this relatively small data set as an example, larger data sets show that women who smoke tend to have smaller newborns. In~fact, some in the tobacco industry actually had the audacity to tout that as a \emph{benefit} of~smoking:
+Public service announcement: while we have used this relatively
+small data set as an example, larger data sets show that women
+who smoke tend to have smaller newborns.
+In~fact, some in the tobacco industry actually had the audacity
+to tout that as a \emph{benefit} of~smoking:
 \begin{quotation}
-\noindent\emph{It's true. The babies born from women who smoke are smaller, but they're just as healthy as the babies born from women who do not smoke. And some women would prefer having smaller babies.} \\[2mm]
-\indent\indent\indent\indent\indent\indent- Joseph Cullman, Philip Morris' Chairman of the Board \\
-\indent\indent\indent\indent\indent\indent{\color{white}...}on CBS' \emph{Face the Nation}, Jan 3,~1971
+  \noindent%
+  \emph{It's true.
+  The babies born from women who smoke are smaller,
+  but they're just as healthy as the babies born from
+  women who do not smoke.
+  And some women would prefer having smaller babies.} \\[2mm]
+  \indent\indent\indent\indent\indent\indent%
+    - Joseph Cullman, Philip Morris' Chairman of the Board \\
+  \indent\indent\indent\indent\indent\indent%
+  {\color{white}...}on CBS' \emph{Face the Nation}, Jan 3,~1971
 \end{quotation}
-Fact check: the babies from women who smoke are not actually as healthy as the babies from women who do not smoke.\footnote{You can watch an episode of John Oliver on \emph{Last Week Tonight} to explore the present day offenses of the tobacco industry. Please be aware that there is some adult language: \oiRedirect{textbook-johnoliver_tobacco}{youtu.be/6UsHHOCH4q8}.}
+Fact check: the babies from women who smoke are not actually
+as healthy as the babies from women who do not
+smoke.\footnote{You can watch an episode of John Oliver
+  on \emph{Last Week Tonight} to explore the present day
+  offenses of the tobacco industry.
+  Please be aware that there is some adult language:
+  \oiRedirect{textbook-johnoliver_tobacco}{youtu.be/6UsHHOCH4q8}.}
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
 
@@ -1020,14 +1087,30 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 \begin{exercisewrap}
 \begin{nexercise}
 \label{htSetupForEvaluatingTwoExamVersions}%
-Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.\footnotemark{}
+Construct a hypotheses to evaluate whether the observed
+difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$,
+is due to chance. We will later evaluate these hypotheses
+using $\alpha = 0.01$.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{conditionsForTDistForEvaluatingTwoExamVersions}%
-To evaluate the hypotheses in Guided Practice~\ref{htSetupForEvaluatingTwoExamVersions} using the $t$-distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?\footnotemark{}
+To evaluate the hypotheses in Guided Practice~\ref{htSetupForEvaluatingTwoExamVersions} using the $t$-distribution, we must first verify assumptions.\footnotemark{}
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    Does it seem reasonable that the scores are independent
+    within each group?
+\item
+    What about the normality / skew condition for observations
+    in each group?
+\item
+    Do you think scores from the two groups would be independent
+    of each other, i.e. the two samples are
+    independent?
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(a) It is probably reasonable to conclude the scores are independent, provided there was no cheating. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn't seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.}
@@ -1046,23 +1129,41 @@ T
   = \frac{(79.4-74.1) - 0}{4.62}
   = 1.15
 \end{align*}
-If we have a computer handy, we can identify the degrees of freedom as 45.97. Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$. 
+If we have a computer handy, we can identify the degrees
+of freedom as 45.97.
+Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$. 
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.63\textwidth]{ch_inference_for_means/figures/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
-\caption{The $t$-distribution with 26 degrees of freedom. The shaded right tail represents values with $T \geq 1.15$. Because it is a two-sided test, we also shade the corresponding lower tail.}
-\label{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+  \centering
+  \Figure{0.63}{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+  \caption{The $t$-distribution with 26 degrees of freedom.
+      The shaded right tail represents values with $T \geq 1.15$.
+      Because it is a two-sided test, we also shade the
+      corresponding lower tail.}
+  \label{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{Identify the p-value using $df = 26$ and provide a conclusion in the context of the case study.}
-We examine row $df=26$ in the $t$-table. Because this value is smaller than the value in the left column, the p-value is larger than 0.200 (two tails!). Because the p-value is so large, we do not reject the null hypothesis. That is, the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.
-
-\index{data!two exam comparison|)}
+\begin{nexample}{Identify the p-value using $df = 26$
+    and provide a conclusion in the context of the case study.}
+  Using software, we can find the one-tail area (0.13)
+  and then double this value to get the two-tail area,
+  which is the p-value: 0.26.
+  (Alternatively, we could use the $t$-table in
+  Appendix~\ref{tDistributionTable}.)
+  We examine row $df=26$ in the $t$-table.
+  In Guided Practice~\ref{},
+  we specified that we would use $\alpha = 0.01$.
+  Since the p-value is larger than $\alpha$,
+  we do not reject the null hypothesis.
+  That is, the data do not convincingly show that one exam
+  version is more difficult than the other, and the teacher
+  should not be convinced that she should add points to the
+  Version~B exam scores.
 \end{nexample}
 \end{examplewrap}
 
+\index{data!two exam comparison|)}
 
 %\subsection{Summary for inference using the $t$-distribution}
 %
@@ -1172,159 +1273,410 @@ In this section, we focus on the context of a clinical trial, which is a health-
 We're going to go through the motions of a hypothesis test. This will help us frame our calculations for determining an appropriate sample size for the study.
 
 \begin{examplewrap}
-\begin{nexample}{Suppose a pharmaceutical company has developed a new drug for lowering blood pressure, and they are preparing a clinical trial (experiment) to test the drug's effectiveness. They recruit people who are taking a particular standard blood pressure medication. People in the control group will continue to take their current medication through generic-looking pills to ensure blinding. Write down the hypotheses for a two-sided hypothesis test in this context.}
-Generally, clinical trials use a two-sided alternative hypothesis, so below are suitable hypotheses for this context:
-\begin{description}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] The new drug performs exactly as well as the standard medication. \\
-  $\mu_{trmt} - \mu_{ctrl} = 0$.
-\item[$H_A$:] The new drug's performance differs from the standard medication. \\
-  $\mu_{trmt} - \mu_{ctrl} \neq 0$.
-\end{description}
-Some researchers might argue for a one-sided test here, where the alternative would consider only whether the new drug performs better than the standard medication. However, it would be very informative to know whether the new drug performs worse than the standard medication, so we use a two-sided test to consider this possibility during the analysis.
+\begin{nexample}{Suppose a pharmaceutical company has developed
+    a new drug for lowering blood pressure, and they are
+    preparing a clinical trial (experiment) to test the
+    drug's effectiveness.
+    They recruit people who are taking a particular standard
+    blood pressure medication.
+    People in the control group will continue to take their
+    current medication through generic-looking pills to ensure
+    blinding.
+    Write down the hypotheses for a two-sided hypothesis test
+    in this context.}
+  Generally, clinical trials use a two-sided alternative
+  hypothesis, so below are suitable hypotheses for this context:
+  \begin{description}
+  \setlength{\itemsep}{0mm}
+  \item[$H_0$:]
+      The new drug performs exactly as well as the
+      standard medication. \\
+      $\mu_{trmt} - \mu_{ctrl} = 0$.
+  \item[$H_A$:]
+      The new drug's performance differs from the
+      standard medication. \\
+      $\mu_{trmt} - \mu_{ctrl} \neq 0$.
+  \end{description}
+  Some researchers might argue for a one-sided test here,
+  where the alternative would consider only whether the
+  new drug performs better than the standard medication.
+  However, it would be very informative to know whether
+  the new drug performs worse than the standard medication,
+  so we use a two-sided test to consider this possibility
+  during the analysis.
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{The researchers would like to run the clinical trial on patients with systolic blood pressures between 140 and 180~mmHg. Suppose previously published studies suggest that the standard deviation of the patients' blood pressures will be about 12~mmHg and the distribution of patient blood pressures will be approximately symmetric.\footnote{In this particular study, we'd generally measure each patient's blood pressure at the beginning and end of the study, and then the outcome measurement for the study would be the average change in blood pressure. That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would represent average differences. This is what you might think of as a 2-sample paired testing structure, and we'd analyze it exactly just like a hypothesis test for a difference in the average change for patients. In the calculations we perform here, we'll suppose that 12~mmHg is the predicted standard deviation of a patient's blood pressure difference over the course of the study.} If~we had 100 patients per group, what would be the approximate standard error for $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
-The standard error is calculated as follows:
-\begin{align*}
-SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}
-  = \sqrt{\frac{s_{trmt}^2}{n_{trmt}} + \frac{s_{ctrl}^2}{n_{ctrl}}}
-  = \sqrt{\frac{12^2}{100} + \frac{12^2}{100}}
-  = 1.70
-\end{align*}
-This may be an imperfect estimate of $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$, since the standard deviation estimate we used may not be correct for this group of patients. However, it is sufficient for our purposes.
+\begin{nexample}{The researchers would like to run the clinical
+    trial on patients with systolic blood pressures between 140
+    and 180~mmHg.
+    Suppose previously published studies suggest that the
+    standard deviation of the patients' blood pressures will
+    be about 12~mmHg and the distribution of patient blood
+    pressures will be approximately symmetric.\footnote{In
+      this particular study, we'd generally measure each
+      patient's blood pressure at the beginning and end
+      of the study, and then the outcome measurement for
+      the study would be the average change in blood pressure.
+      That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would
+      represent average differences.
+      This is what you might think of as a 2-sample paired
+      testing structure, and we'd analyze it exactly just like
+      a hypothesis test for a difference in the average change
+      for patients.
+      In the calculations we perform here, we'll suppose
+      that 12~mmHg is the predicted standard deviation of
+      a patient's blood pressure difference over the course
+      of the study.}
+    If~we had 100 patients per group, what would be the
+    approximate standard error for
+    $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
+  The standard error is calculated as follows:
+  \begin{align*}
+  SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}
+    = \sqrt{\frac{s_{trmt}^2}{n_{trmt}} +
+        \frac{s_{ctrl}^2}{n_{ctrl}}}
+    = \sqrt{\frac{12^2}{100} + \frac{12^2}{100}}
+    = 1.70
+  \end{align*}
+  This may be an imperfect estimate of
+  $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$,
+  since the standard deviation estimate we used may not
+  be correct for this group of patients.
+  However, it is sufficient for our purposes.
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{What does the null distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ look like?}
-The degrees of freedom are greater than 30, so the distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ will be approximately normal. The standard deviation of this distribution (the standard error) would be about 1.70, and under the null hypothesis, its mean would be 0.
-\begin{center}
-\includegraphics[width=0.93\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_A_0_1-7}
-\end{center}
+\begin{nexample}{What does the null distribution of
+    $\bar{x}_{trmt} - \bar{x}_{ctrl}$ look like?}
+  The degrees of freedom are greater than 30, so the
+  distribution of $\bar{x}_{trmt} - \bar{x}_{ctrl}$
+  will be approximately normal.
+  The standard deviation of this distribution
+  (the standard error) would be about 1.70, and under
+  the null hypothesis, its mean would be 0.
+  \begin{center}
+  \Figures{0.93}{power_null_0_1-7}{power_null_A_0_1-7}
+  \end{center}
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{For what values of $\bar{x}_{trmt} - \bar{x}_{ctrl}$ would we reject the null hypothesis?}
-%If the observed difference is in the far left tail or far right tail of the null distribution, we reject the null hypothesis.
-For $\alpha = 0.05$, we would reject $H_0$ if the difference is in the lower 2.5\% or upper 2.5\% tail:
-\begin{description}
-\setlength{\itemsep}{0mm}
-\item[Lower 2.5\%:] For the normal model, this is 1.96 standard errors below 0, so any difference smaller than $-1.96 \times 1.70 = -3.332$~mmHg.
-\item[Upper 2.5\%:] For the normal model, this is 1.96 standard errors above 0, so any difference larger than $1.96 \times 1.70 = 3.332$~mmHg.
-\end{description}
-The boundaries of these \term{rejection regions} are shown below:
-\begin{center}
-\includegraphics[width=0.93\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_B_0_1-7_with_rejection_region}
-\end{center}
+\begin{nexample}{For what values of
+    $\bar{x}_{trmt} - \bar{x}_{ctrl}$ would we reject
+    the null hypothesis?}
+  For $\alpha = 0.05$, we would reject $H_0$ if the difference
+  is in the lower 2.5\% or upper 2.5\% tail:
+  \begin{description}
+  \setlength{\itemsep}{0mm}
+  \item[Lower 2.5\%:]
+      For the normal model, this is 1.96 standard errors
+      below~0, so any difference smaller than
+      $-1.96 \times 1.70 = -3.332$~mmHg.
+  \item[Upper 2.5\%:]
+      For the normal model, this is 1.96 standard errors
+      above~0, so any difference larger than
+      $1.96 \times 1.70 = 3.332$~mmHg.
+  \end{description}
+  The boundaries of these \term{rejection regions} are shown below:
+  \begin{center}
+  \Figures{0.93}{power_null_0_1-7}
+      {power_null_B_0_1-7_with_rejection_region}
+  \end{center}
 \end{nexample}
 \end{examplewrap}
 
-Next, we'll perform some hypothetical calculations to determine the probability we reject the null hypothesis, if the alternative hypothesis were actually true.
+Next, we'll perform some hypothetical calculations to determine
+the probability we reject the null hypothesis, if the alternative
+hypothesis were actually true.
 
 
 \subsection{Computing the power for a 2-sample test}
 
-When planning a study, we want to know how likely we are to detect an effect we care about. In~other words, if there is a real effect, and that effect is large enough that it has practical value, then what's the probability that we detect that effect? This probability is called the \term{power}, and we can compute it for different sample sizes or for different \emph{effect sizes}.
+When planning a study, we want to know how likely we are
+to detect an effect we care about.
+In~other words, if there is a real effect, and that effect
+is large enough that it has practical value, then what's
+the probability that we detect that effect?
+This probability is called the \term{power}, and we can
+compute it for different sample sizes or for different
+\emph{effect sizes}.
 
-We first determine what is a practically significant result. Suppose that the company researchers care about finding any effect on blood pressure that is 3~mmHg or larger vs the standard medication. Here, 3~mmHg is the minimum \term{effect size} of interest, and we want to know how likely we are to detect this size of an effect in the study.
+We first determine what is a practically significant result.
+Suppose that the company researchers care about finding any
+effect on blood pressure that is 3~mmHg or larger vs the
+standard medication.
+Here, 3~mmHg is the minimum \term{effect size} of interest,
+and we want to know how likely we are to detect this size
+of an effect in the study.
 
 \begin{examplewrap}
-\begin{nexample}{Suppose we decided to move forward with 100 patients per treatment group and the new drug reduces blood pressure by an additional 3~mmHg relative to the standard medication. What is the probability that we detect a drop?}\label{PowerFor100AtNeg3}
-Before we even do any calculations, notice that if $\bar{x}_{trmt} - \bar{x}_{ctrl} = -3$~mmHg, there wouldn't even be sufficient evidence to reject $H_0$. That's not a good sign.
+\begin{nexample}{Suppose we decided to move forward with
+    100 patients per treatment group and the new drug reduces
+    blood pressure by an additional 3~mmHg relative to the
+    standard medication.
+    What is the probability that we detect a drop?}
+  \label{PowerFor100AtNeg3}%
+  Before we even do any calculations, notice that if
+  $\bar{x}_{trmt} - \bar{x}_{ctrl} = -3$~mmHg, there
+  wouldn't even be sufficient evidence to reject $H_0$.
+  That's not a good sign.
 
-To calculate the probability that we will reject $H_0$, we need to determine a few things:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item The sampling distribution for $\bar{x}_{trmt} - \bar{x}_{ctrl}$ when the true difference is -3~mmHg. This is the same as the null distribution, except it is shifted to the left by~3:
-\begin{center}
-\includegraphics[width=0.87\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_C_0_1-7_with_alt_at_3}
-\end{center}
-\item The rejection regions, which are outside of the dotted lines above.
-\item The fraction of the distribution that falls in the rejection region.
-\end{itemize}
-In short, we need to calculate the probability that $x < -3.332$ for a normal distribution with mean -3 and standard deviation~1.7. To do so, we first shade the area we want to calculate:
-\begin{center}
-\includegraphics[width=0.93\textwidth]{ch_inference_for_means/figures/power_null_0_1-7/power_null_D_0_1-7_with_alt_at_3_and_shaded}
-\end{center}
-Then we calculate the Z-score and find the tail area using either the normal probability table or statistical software:
-\begin{align*}
-Z = \frac{-3.332 - (-3)}{1.7} = -0.20 \qquad \to \qquad 0.4207
-\end{align*}
-The power for the test is about 42\% when $\mu_{trmt} - \mu_{ctrl} = -3$ and each group has a sample size of 100.
+  To calculate the probability that we will reject $H_0$,
+  we need to determine a few things:
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item
+      The sampling distribution for
+      $\bar{x}_{trmt} - \bar{x}_{ctrl}$ when the true difference
+      is -3~mmHg.
+      This is the same as the null distribution,
+      except it is shifted to the left by~3:
+      \begin{center}
+      \Figures{0.87}{power_null_0_1-7}
+          {power_null_C_0_1-7_with_alt_at_3}
+      \end{center}
+  \item
+      The rejection regions, which are outside of the
+      dotted lines above.
+  \item
+      The fraction of the distribution that falls in the
+      rejection region.
+  \end{itemize}
+  In short, we need to calculate the probability that
+  $x < -3.332$ for a normal distribution with mean -3
+  and standard deviation~1.7.
+  To do so, we first shade the area we want to calculate:
+  \begin{center}
+    \Figures{0.93}{power_null_0_1-7}
+        {power_null_D_0_1-7_with_alt_at_3_and_shaded}
+  \end{center}
+  Then we calculate the T-score and find the tail area using
+  either statistical software or the probability table with
+  $df = 99$
+  (from the minimum of $n_1 - 1$ and $n_2 - 1$):
+  \begin{align*}
+  T = \frac{-3.332 - (-3)}{1.7} = -0.20 \qquad \to \qquad 0.4207
+  \end{align*}
+  The power for the test is about 42\% when
+  $\mu_{trmt} - \mu_{ctrl} = -3$ and each group has
+  a sample size of~100.
 \end{nexample}
 \end{examplewrap}
 
-In Example~\ref{PowerFor100AtNeg3}, we ignored the upper rejection region in the calculation, which was in the opposite direction of the hypothetical truth, i.e. -3. The reasoning? There wouldn't be any value in rejecting the null hypothesis and concluding there was an increase when in fact there was a decrease.
+In Example~\ref{PowerFor100AtNeg3}, we ignored the upper
+rejection region in the calculation, which was in the
+opposite direction of the hypothetical truth, i.e. -3.
+The reasoning?
+There wouldn't be any value in rejecting the null hypothesis
+and concluding there was an increase when in fact there was
+a decrease.
 
 
 
 \subsection{Determining a proper sample size}
 
-In the last example, we found that if we have a sample size of 100 in each group, we can only detect an effect size of 3~mmHg with a probability of about 0.42. Suppose the researchers moved forward and only used 100 patients per group, and the data did not support the alternative hypothesis, i.e. the researchers did not reject $H_0$. This is a very bad situation to be in for a few reasons:
+In the last example, we found that if we have a sample size
+of 100 in each group, we can only detect an effect size of
+3~mmHg with a probability of about 0.42.
+Suppose the researchers moved forward and only used
+100 patients per group, and the data did not support
+the alternative hypothesis,
+i.e. the researchers did not reject $H_0$.
+This is a very bad situation to be in for a few reasons:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item In the back of the researchers' minds, they'd all be wondering, \emph{maybe there is a real and meaningful difference, but we weren't able to detect it with such a small sample}. 
-\item The company probably invested hundreds of millions of dollars in developing the new drug, so now they are left with great uncertainty about its potential since the experiment didn't have a great shot at detecting effects that could still be important.
-\item Patients were subjected to the drug, and we can't even say with much certainty that the drug doesn't help (or harm) patients.
-\item Another clinical trial may need to be run to get a more conclusive answer as to whether the drug does hold any practical value, and conducting a second clinical trial may take years and many millions of dollars.
+\item
+    In the back of the researchers' minds, they'd all be
+    wondering, \emph{maybe there is a real and meaningful
+    difference, but we weren't able to detect it with such
+    a small sample}. 
+\item
+    The company probably invested hundreds of millions
+    of dollars in developing the new drug, so now they
+    are left with great uncertainty about its potential
+    since the experiment didn't have a great shot at
+    detecting effects that could still be important.
+\item
+    Patients were subjected to the drug, and we can't even
+    say with much certainty that the drug doesn't help
+    (or harm) patients.
+\item
+    Another clinical trial may need to be run to get a more
+    conclusive answer as to whether the drug does hold any
+    practical value, and conducting a second clinical trial
+    may take years and many millions of dollars.
 \end{itemize}
-We want to avoid this situation, so we need to determine an appropriate sample size to ensure we can be pretty confident that we'll detect any effects that are practically important. As mentioned earlier, a change of 3~mmHg was deemed to be the minimum difference that was practically important. As~a first step, we could calculate power for several different sample sizes. For instance, let's try 500 patients per group.
+We want to avoid this situation, so we need to determine
+an appropriate sample size to ensure we can be pretty
+confident that we'll detect any effects that are practically
+important.
+As mentioned earlier, a change of 3~mmHg was deemed to be the
+minimum difference that was practically important.
+As~a first step, we could calculate power for several
+different sample sizes.
+For instance, let's try 500 patients per group.
 
 \begin{exercisewrap}
 \begin{nexercise}
-Calculate the power to detect a change of -3~mmHg when using a sample size of 500 per group.\footnotemark{}
+Calculate the power to detect a change of -3~mmHg when using
+a sample size of 500 per group.\footnotemark{}
 \begin{enumerate}[(a)]
 \setlength{\itemsep}{0mm}
-\item Determine the standard error (recall that the standard deviation for patients was expected to be about 12~mmHg).
-\item Identify the null distribution and rejection regions.
-\item Identify the alternative distribution when $\mu_{trmt} - \mu_{ctrl} = -3$.
-\item Compute the probability we reject the null hypothesis.
+\item
+    Determine the standard error (recall that the standard
+    deviation for patients was expected to be about 12~mmHg).
+\item
+    Identify the null distribution and rejection regions.
+\item
+    Identify the alternative distribution when
+    $\mu_{trmt} - \mu_{ctrl} = -3$.
+\item
+    Compute the probability we reject the null hypothesis.
 \end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a) The standard error is given as $SE = \sqrt{\frac{12^2}{500} + \frac{12^2}{500}} = 0.76$.\\
-(b) \& (c) The null distribution, rejection boundaries, and alternative distribution are shown below: \\
-\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/power_null_0_0-76/power_null_0_0-76_with_alt_at_3_and_shaded} \\
-The rejection regions are the areas on the outside of the two dotted lines and are at $\pm 0.76 \times 1.96 = \pm 1.49$. \\
-(d) The area of the alternative distribution where $\mu_{trmt} - \mu_{ctrl} = -3$ has been shaded. We compute the Z-score and find the tail area: $Z = \frac{-1.49 - (-3)}{0.76} = 1.99 \to 0.9767$, which is the power of the test for a difference of 3 mmHg. With 500 patients per group, we would be about 97.7\% sure (or more) that we'd detect any effects that are at least 3~mmHg in size.}
+\footnotetext{(a) The standard error is given as
+  $SE = \sqrt{\frac{12^2}{500} + \frac{12^2}{500}} = 0.76$.\\
+  (b)~\&~(c)~The null distribution, rejection boundaries,
+  and alternative distribution are shown below: \\
+  \indent%
+  \Figures{0.7}{power_null_0_0-76}
+      {power_null_0_0-76_with_alt_at_3_and_shaded} \\
+  The rejection regions are the areas on the outside of the
+  two dotted lines and are at $\pm 0.76 \times 1.96 = \pm 1.49$. \\
+  (d)~The area of the alternative distribution where
+  $\mu_{trmt} - \mu_{ctrl} = -3$ has been shaded.
+  We compute the Z-score and find the tail area:
+  $T = \frac{-1.49 - (-3)}{0.76} = 1.99 \to 0.9767$
+  (can use $df = 500$ from the minimum of the two sample
+  sizes minus 1),
+  which is the power of the test for a difference of 3~mmHg.
+  With 500 patients per group, we would be about 97.7\% sure
+  (or more) that we'd detect any effects that are at least
+  3~mmHg in size.}
 
-The researchers decided 3~mmHg was the minimum difference that was practically important, and with a sample size of 500, we can be very certain (97.7\% or better) that we will detect any such difference. We now have moved to another extreme where we are exposing an unnecessary number of patients to the new drug in the clinical trial. Not only is this ethically questionable, but it would also cost a lot more money than is necessary to be quite sure we'd detect any important effects.
+The researchers decided 3~mmHg was the minimum difference
+that was practically important, and with a sample size of~500,
+we can be very certain (97.7\% or better) that we will detect
+any such difference.
+We now have moved to another extreme where we are exposing
+an unnecessary number of patients to the new drug in the
+clinical trial.
+Not only is this ethically questionable, but it would also
+cost a lot more money than is necessary to be quite sure
+we'd detect any important effects.
 
-The most common practice is to identify the sample size where the power is around 80\%, and sometimes 90\%. Other values may be reasonable for a specific context, but 80\% and 90\% are most commonly targeted as a good balance between high power and not exposing too many patients to a new treatment (or wasting too much money). We could compute the power of the test at several other possible sample sizes until we find one that's close to 80\%, but that's inefficient. Instead, we should solve the problem backwards.
+The most common practice is to identify the sample size where
+the power is around 80\%, and sometimes 90\%.
+Other values may be reasonable for a specific context,
+but 80\% and 90\% are most commonly targeted as a good
+balance between high power and not exposing too many
+patients to a new treatment (or wasting too much money).
+We could compute the power of the test at several other
+possible sample sizes until we find one that's close to~80\%,
+but that's inefficient.
+Instead, we should solve the problem backwards.
 
 \begin{examplewrap}
 \begin{nexample}{What sample size will lead to a power of 80\%?}
-We start by identifying the Z-score that would give us a lower tail of 80\%: it would be about 0.84:
-\begin{center}
-\includegraphics[width=0.93\textwidth]{ch_inference_for_means/figures/power_best_sample_size/power_best_sample_size}
-\end{center}
-Additionally, the rejection region always extends $1.96\times SE$ from the center of the null distribution for $\alpha = 0.05$. This allows us to calculate the target distance between the center of the null and alternative distributions in terms of the standard error:
-\begin{align*}
-0.84 \times SE + 1.96 \times SE = 2.8 \times SE
-\end{align*}
-In our example, we also want the distance between the null and alternative distributions' centers to equal the minimum effect size of interest, 3~mmHg, which allows us to set up an equation between this difference and the standard error:
-\begin{align*}
-3 &= 2.8 \times SE \\
-3 &= 2.8 \times \sqrt{\frac{12^2}{n} + \frac{12^2}{n}} \\
-% 3^2 &= 2.8^2 \times \left( \frac{12^2}{n} + \frac{12^2}{n} \right) \\
-n &= \frac{2.8^2}{3^2} \times \left( 12^2 + 12^2 \right) = 250.88 \\
-\end{align*}
-We should target about 251 patients per group.
+  We start by identifying the T-score that would give us a lower
+  tail of 80\%.
+  For a moderately large sample size per group,
+  the T-score for a lower tail of 80\% would be about $T = 0.84$.
+  (If our calculations suggest a very sample size,
+  we should recalculate this part and basically do the
+  problem one more time.)
+  \begin{center}
+    \Figure{0.93}{power_best_sample_size}
+  \end{center}
+  Additionally, the rejection region always extends
+  $1.96\times SE$ from the center of the null distribution
+  for $\alpha = 0.05$
+  (again supposing a larger sample size to get the value of 1.96).
+  This allows us to calculate the target distance between
+  the center of the null and alternative distributions in
+  terms of the standard error:
+  \begin{align*}
+  0.84 \times SE + 1.96 \times SE = 2.8 \times SE
+  \end{align*}
+  In our example, we also want the distance between the null
+  and alternative distributions' centers to equal the minimum
+  effect size of interest, 3~mmHg, which allows us to set up
+  an equation between this difference and the standard error:
+  \begin{align*}
+  3 &= 2.8 \times SE \\
+  3 &= 2.8 \times \sqrt{\frac{12^2}{n} + \frac{12^2}{n}} \\
+  n &= \frac{2.8^2}{3^2} \times \left( 12^2 + 12^2 \right)
+    = 250.88 \\
+  \end{align*}
+  We should target about 251 patients per group.
+
+  Had the suggested sample size been relatively small
+  -- roughly 30 or smaller -- it would have been a good idea
+  to rework the calculations using the degrees of fredom
+  for the smaller sample size under that initial sample size.
+  That is, we would have revised the 0.84 and 1.96
+  values based on degrees of freedom implied by the initial
+  sample size.
+  The revised sample size target will generally be a little
+  larger.
 \end{nexample}
 \end{examplewrap}
 
-The standard error difference of $2.8 \times SE$ is specific to a context where the targeted power is 80\% and the significance level is $\alpha = 0.05$. If the targeted power is 90\% or if we use a different significance level, then we'll use something a little different than $2.8 \times SE$.
+The standard error difference of $2.8 \times SE$ is specific
+to a context where the targeted power is 80\% and the
+significance level is $\alpha = 0.05$.
+If the targeted power is 90\% or if we use a different
+significance level, then we'll use something a little
+different than $2.8 \times SE$.
+
+%\begin{examplewrap}
+%\begin{nexample}{Suppose the suggested sample size from
+%    the power calculation was 15 per group.
+%    This is a relatively small sample size,
+%    and the assumptions about the sample size being
+%    large in Example~\ref{}
+%    wouldn't be valid.
+%    What should we do?}
+%  First, recognizing that there is \emph{something}
+%  to do is already great here:
+%  it's easy to forget the earlier assumption about
+%  a moderately large sample size.
+%  So if you catch yourself here, that is something
+%  to be commended!
+%
+%  Next, we basically update the values of 0.84 and 1.96
+%  in the calculations.
+%  First, we identify the degrees of freedom
+%  ($df = 14$ as a rough guide, though 
+%  We'd find the values
+%  corresponding to this more precise $t$-distribution.
+%  For example, had the sample-size per group been suggested
+%  as~15, we would have used $df = 14$;
+%  this would have led to a T-score of 0.87 (in place of 0.84)
+%  and a rejection region cutoff of 2.14.
+%  The reworked sample size would then have been suggested
+%  as about 16\% larger.
+%  If we did not do this extra step, our estimated power would
+%  drop from 80\% to 74\%.
+%  While that would not be the end of the world, being precise
+%  is part of the job of being a data scientist!
+%\end{nexample}
+%\end{examplewrap}
 
 \begin{exercisewrap}
 \begin{nexercise}
 Suppose the targeted power was 90\% and we were using $\alpha = 0.01$. How many standard errors should separate the centers of the null and alternative distribution, where the alternative distribution is centered at the minimum effect size of interest? Assume the test is two-sided.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{First, find the Z-score such that 90\% of the distribution is below it: $Z = 1.28$. Next, find the cutoffs for the rejection regions: $\pm 2.58$. Then the difference in centers should be about $1.28 \times SE + 2.58 \times SE = 3.86 \times SE$.}
+\footnotetext{First, find the T-score such that 90\% of the
+  distribution is below it: $Z = 1.28$ (assume large $df$).
+  Next, find the cutoffs for the rejection regions: $\pm 2.58$.
+  Then the difference in centers should be about
+  $1.28 \times SE + 2.58 \times SE = 3.86 \times SE$.}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1342,10 +1694,15 @@ List some considerations that are important in determining what the power should
 Figure~\ref{power_curve_neg-3} shows the power for sample sizes from 20~patients to 5,000~patients when $\alpha = 0.05$ and the true difference is -3. This curve was constructed by writing a program to compute the power for many different sample sizes.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/power_curve/power_curve_neg-3}
-\caption{The curve shows the power for different sample sizes in the context of the blood pressure example when the true difference is -3. Having more than about 250 to 350 observations doesn't provide much additional value in detecting an effect when $\alpha = 0.05$.}
-\label{power_curve_neg-3}
+  \centering
+  \Figures{0.9}{power_curve}{power_curve_neg-3}
+  \caption{The curve shows the power for different sample
+      sizes in the context of the blood pressure example when
+      the true difference is~-3.
+      Having more than about 250 to 350 observations doesn't
+      provide much additional value in detecting an effect when
+      $\alpha = 0.05$.}
+  \label{power_curve_neg-3}
 \end{figure}
 
 %\begin{exercisewrap}
@@ -1813,12 +2170,22 @@ where $K$ is the number of comparisons being considered (formally or informally)
 \begin{nexample}{In Guided Practice~\ref{exerExaminingAnovaSummaryTableForMidtermData}, you found strong evidence of differences in the average midterm grades between the three lectures. Complete the three possible pairwise comparisons using the Bonferroni correction and report any differences.} \label{multipleComparisonsOfThreeStatClasses}
 We use a modified significance level of $\alpha^* = 0.05/3 = 0.0167$. Additionally, we use the pooled estimate of the standard deviation: $s_{pooled}=13.61$ on $df=161$, which is provided in the ANOVA summary table.
 
-Lecture A versus Lecture B: The estimated difference and standard error are, respectively,
+Lecture A versus Lecture B: The estimated difference and
+standard error are, respectively,
 \begin{align*}
 \bar{x}_A - \bar{x}_{B} &= 75.1 - 72 = 3.1
 	&SE = \sqrt{\frac{13.61^2}{58} + \frac{13.61^2}{55}} &= 2.56
 \end{align*}
-(See Section~\vref{pooledStandardDeviations} for additional details.) This results in a $T$ score of 1.21 on $df = 161$ (we use the $df$ associated with $s_{pooled}$). Statistical software was used to precisely identify the two-sided p-value since the modified significance of 0.0167 is not found in the $t$-table. The p-value (0.228) is larger than $\alpha^*=0.0167$, so there is not strong evidence of a difference in the means of lectures A and B.
+(See Section~\vref{pooledStandardDeviations} for additional
+details.)
+This results in a T-score of 1.21 on $df = 161$
+(we use the $df$ associated with $s_{pooled}$).
+Statistical software was used to precisely identify the two-sided
+p-value since the modified significance level of 0.0167 is not
+found in the $t$-table.
+The p-value (0.228) is larger than $\alpha^*=0.0167$,
+so there is not strong evidence of a difference in the means
+of lectures A and~B.
 
 Lecture A versus Lecture C: The estimated difference and standard error are 3.8 and 2.61, respectively. This results in a $T$ score of 1.46 on $df = 161$ and a two-sided p-value of 0.1462. This p-value is larger than $\alpha^*$, so there is not strong evidence of a difference in the means of lectures A and C.
 
