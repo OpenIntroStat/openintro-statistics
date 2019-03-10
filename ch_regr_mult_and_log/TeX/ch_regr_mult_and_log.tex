@@ -1197,10 +1197,11 @@ We must still verify the model conditions are reasonable.
 
 
 %%%%%
-\section{Checking model assumptions using graphs}
+\section{Checking model conditions using graphs}
 \label{multipleRegressionModelAssumptions}
 
 \index{multiple regression!model assumptions|(}
+\index{multiple regression!model conditions|(}
 \index{multiple regression!technical conditions|(}
 \index{multiple regression!conditions|(}
 
@@ -1209,7 +1210,7 @@ Multiple regression methods using the model
 \begin{align*}
 \hat{y} &= \beta_0 + \beta_1x_1 + \beta_2x_2 + \cdots + \beta_kx_k
 \end{align*}
-generally depend on the following four assumptions:
+generally depend on the following four conditions:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
 \item the residuals of the model are nearly normal
@@ -1224,7 +1225,8 @@ generally depend on the following four assumptions:
 \label{diagnostic_plots_subsection}
 
 \termsub{Diagnostic plots}{diagnostic plots} can be used
-to check each of these assumptions. We will consider the
+to check each of these conditions.
+We will consider the
 model from the Lending Club loans data, and check whether
 there are any notable concerns:
 \Comment{Still must update the next equation.}
@@ -1502,11 +1504,16 @@ were dramatically impacting the coefficient.
   as we are clear and report the model's shortcomings.
 \end{onebox}
 
-Don't report results when assumptions are grossly violated.
-While there is a little leeway in model assumptions, don't go too far. If model assumptions are very clearly violated, consider a new model, even if it means learning more statistical methods or hiring someone who can help.
+Don't report results when conditions are grossly violated.
+While there is a little leeway in model conditions,
+don't go too far.
+If model conditions are very clearly violated,
+consider a new model, even if it means learning more
+statistical methods or hiring someone who can help.
 
 \index{multiple regression!conditions|)}
 \index{multiple regression!technical conditions|)}
+\index{multiple regression!model conditions|)}
 \index{multiple regression!model assumptions|)}
 \index{data!mario\_kart|)}
 \index{multiple regression|)}
@@ -1865,7 +1872,7 @@ didn't get the exact price predicted?\footnotemark{}
 %\end{align*}
 
 
-\subsection{Checking model assumptions using graphs}
+\subsection{Checking model conditions using graphs}
 
 \noindent%
 Let's take a closer look at the diagnostics for the Mario Kart

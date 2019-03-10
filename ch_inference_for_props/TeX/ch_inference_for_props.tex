@@ -1022,30 +1022,70 @@ A quadcopter company is considering a new manufacturer for rotor blades. The new
 %\Add{In Guided Practice~\ref{qualityCtrlEngHypothesisEval}, the null difference is 0.03. However, in the vast majority of applications for differences in means or proportions, the null difference is~0. While the details for a difference of means does not change if the null difference is zero or non-zero, that is not the case for a difference in proportions. As we'll see in Section~\ref{}, a hypothesis test for a difference in proportions where the null value is 0 requires additional~care.}
 
 \begin{examplewrap}
-\begin{nexample}{The quality control engineer from Guided Practice~\ref{carWheelBladeManufacturer} collects a sample of blades, examining 1000 blades from each company and finds that 899 blades pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, evaluate the hypothesis setup of Guided Practice~\ref{carWheelBladeManufacturer} with a significance level of 5\%.}\label{qualityCtrlEngHypothesisEval}
-First, we check the conditions. The sample is not necessarily random, so to proceed we must assume the blades are all independent; for this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. The success-failure condition also holds for each sample. Thus, the difference in sample proportions, $0.958 - 0.899 = 0.059$, can be said to come from a nearly normal distribution.
+\begin{nexample}{The quality control engineer from
+    Guided Practice~\ref{carWheelBladeManufacturer}
+    collects a sample of blades, examining 1000 blades
+    from each company and finds that 899 blades pass
+    inspection from the current supplier and 958 pass
+    inspection from the prospective supplier.
+    Using these data, evaluate the hypothesis setup of
+    Guided Practice~\ref{carWheelBladeManufacturer}
+    with a significance level of 5\%.}
+  \label{qualityCtrlEngHypothesisEval}%
+  First, we check the conditions.
+  The sample is not necessarily random, so to proceed
+  we must assume the blades are all independent;
+  for this sample we will suppose this assumption
+  is reasonable, but the engineer would be more knowledgeable
+  as to whether this assumption is appropriate.
+  The success-failure condition also holds for each sample.
+  Thus, the difference in sample proportions,
+  $0.958 - 0.899 = 0.059$, can be said to come from a nearly
+  normal distribution.
 
-The standard error is computed using the two sample proportions since we do not use a pooled proportion for this context:
-\begin{align*}
-SE = \sqrt{\frac{0.958(1-0.958)}{1000} + \frac{0.899(1-0.899)}{1000}} = 0.0114
-\end{align*}
-In this hypothesis test, because the null is that $p_1 - p_2 = 0.03$, the sample proportions were used for the standard error calculation rather than a pooled proportion.
+  The standard error is computed using the two sample
+  proportions since we do not use a pooled proportion
+  for this context:
+  \begin{align*}
+  SE
+    = \sqrt{\frac{0.958(1-0.958)}{1000} +
+        \frac{0.899(1-0.899)}{1000}}
+    = 0.0114
+  \end{align*}
+  In this hypothesis test, because the null is that
+  $p_1 - p_2 = 0.03$, the sample proportions were used
+  for the standard error calculation rather than a pooled
+  proportion.
 
-Next, we compute the test statistic and use it to find the p-value, which is depicted in Figure~\ref{bladesTwoSampleHTPValueQC}.
-\begin{align*}
-Z = \frac{\text{point estimate} - \text{null value}}{SE}
+  Next, we compute the test statistic and use it to find the
+  p-value, which is depicted in
+  Figure~\ref{bladesTwoSampleHTPValueQC}.
+  \begin{align*}
+  Z = \frac{\text{point estimate} - \text{null value}}{SE}
     = \frac{0.059 - 0.03}{0.0114} = 2.54
-\end{align*}
-Using the normal model for this test statistic, we identify the right tail area as 0.006. Since this is a one-sided test, this single tail area is also the p-value, and we reject the null hypothesis because 0.006 is less than 0.05. That is, we have statistically significant evidence that the higher-quality blades actually do pass inspection more than 3\% as often as the currently used blades. Based on these results, management will approve the switch to the new supplier.
+  \end{align*}
+  Using the normal model for this test statistic, we identify
+  the right tail area as 0.006.
+  Since this is a one-sided test, this single tail area is also
+  the p-value, and we reject the null hypothesis because 0.006
+  is less than 0.05.
+  That is, we have statistically significant evidence that the
+  higher-quality blades actually do pass inspection more
+  than 3\% as often as the currently used blades.
+  Based on these results, management will approve the switch
+  to the new supplier.
 \end{nexample}
 \end{examplewrap}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{ch_inference_for_props/figures/bladesTwoSampleHTPValueQC/bladesTwoSampleHTPValueQC}
-\caption{Distribution of the test statistic if the null hypothesis was true. The p-value is represented by the shaded area.}
-\label{bladesTwoSampleHTPValueQC}
+  \centering
+  \Figure{0.5}{bladesTwoSampleHTPValueQC}
+  \caption{Distribution of the test statistic if the null
+      hypothesis was true.
+      The p-value is represented by the shaded area.}
+  \label{bladesTwoSampleHTPValueQC}
 \end{figure}
+
 
 \subsection{Examining the standard error formula (special topic)}
 
