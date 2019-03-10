@@ -359,7 +359,12 @@ Looking in the column where two tails is 0.100 (for a 90\% confidence interval) 
 Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$\bar{x} \ \pm\ t^{\star}_{14} \times SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90\% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.}
+\footnotetext{
+  $\bar{x} \ \pm\ t^{\star}_{14} \times SE
+      \ \to\  0.287 \ \pm\  1.76\times 0.0178
+      \ \to\ (0.256, 0.318)$.
+  We are 90\% confident that the average mercury content
+  of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.}
 
 \index{data!white fish and mercury|)}
 
@@ -1304,13 +1309,9 @@ We're going to go through the motions of a hypothesis test. This will help us fr
       standard medication. \\
       $\mu_{trmt} - \mu_{ctrl} \neq 0$.
   \end{description}
-  Some researchers might argue for a one-sided test here,
-  where the alternative would consider only whether the
-  new drug performs better than the standard medication.
-  However, it would be very informative to know whether
-  the new drug performs worse than the standard medication,
-  so we use a two-sided test to consider this possibility
-  during the analysis.
+%  This two-sided test ensures we'll be alerted if either
+%  the new drug works better or worse than the standard
+%  medication.
 \end{nexample}
 \end{examplewrap}
 
@@ -1321,21 +1322,7 @@ We're going to go through the motions of a hypothesis test. This will help us fr
     Suppose previously published studies suggest that the
     standard deviation of the patients' blood pressures will
     be about 12~mmHg and the distribution of patient blood
-    pressures will be approximately symmetric.\footnote{In
-      this particular study, we'd generally measure each
-      patient's blood pressure at the beginning and end
-      of the study, and then the outcome measurement for
-      the study would be the average change in blood pressure.
-      That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would
-      represent average differences.
-      This is what you might think of as a 2-sample paired
-      testing structure, and we'd analyze it exactly just like
-      a hypothesis test for a difference in the average change
-      for patients.
-      In the calculations we perform here, we'll suppose
-      that 12~mmHg is the predicted standard deviation of
-      a patient's blood pressure difference over the course
-      of the study.}
+    pressures will be approximately symmetric.\footnotemark{}
     If~we had 100 patients per group, what would be the
     approximate standard error for
     $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
@@ -1350,10 +1337,24 @@ We're going to go through the motions of a hypothesis test. This will help us fr
   This may be an imperfect estimate of
   $SE_{\bar{x}_{trmt} - \bar{x}_{ctrl}}$,
   since the standard deviation estimate we used may not
-  be correct for this group of patients.
+  be perfectly correct for this group of patients.
   However, it is sufficient for our purposes.
 \end{nexample}
 \end{examplewrap}
+\footnotetext{In this particular study, we'd generally measure
+  each patient's blood pressure at the beginning and end
+  of the study, and then the outcome measurement for
+  the study would be the average change in blood pressure.
+  That is, both $\mu_{trmt}$ and $\mu_{ctrl}$ would
+  represent average differences.
+  This is what you might think of as a 2-sample paired
+  testing structure, and we'd analyze it exactly just like
+  a hypothesis test for a difference in the average change
+  for patients.
+  In the calculations we perform here, we'll suppose
+  that 12~mmHg is the predicted standard deviation of
+  a patient's blood pressure difference over the course
+  of the study.}
 
 \begin{examplewrap}
 \begin{nexample}{What does the null distribution of
@@ -1400,7 +1401,8 @@ the probability we reject the null hypothesis, if the alternative
 hypothesis were actually true.
 
 
-\subsection{Computing the power for a 2-sample test}
+\subsection%[Computing the power for a 2-sample test]
+    {Computing the power for a 2-sample test}
 
 When planning a study, we want to know how likely we are
 to detect an effect we care about.
@@ -1460,12 +1462,12 @@ of an effect in the study.
     \Figures{0.93}{power_null_0_1-7}
         {power_null_D_0_1-7_with_alt_at_3_and_shaded}
   \end{center}
-  Then we calculate the T-score and find the tail area using
-  either statistical software or the probability table with
-  $df = 99$
-  (from the minimum of $n_1 - 1$ and $n_2 - 1$):
+  We'll use a normal approximation, which is good approximation
+  when the degrees of freedom is about 30 or more.
+  We'll start by calculating the Z-score and find the tail area
+  using either statistical software or the probability table:
   \begin{align*}
-  T = \frac{-3.332 - (-3)}{1.7} = -0.20 \qquad \to \qquad 0.4207
+  Z = \frac{-3.332 - (-3)}{1.7} = -0.20 \qquad \to \qquad 0.42
   \end{align*}
   The power for the test is about 42\% when
   $\mu_{trmt} - \mu_{ctrl} = -3$ and each group has
@@ -1480,6 +1482,12 @@ The reasoning?
 There wouldn't be any value in rejecting the null hypothesis
 and concluding there was an increase when in fact there was
 a decrease.
+
+We've also been applying the normal distribution instead
+of the $t$-distribution.
+This is a convenience, and if the sample size is too small,
+we'd need to revert back to using the $t$-distribution.
+We'll discuss this a bit further at the end of this section.
 
 
 
@@ -1557,12 +1565,12 @@ a sample size of 500 per group.\footnotemark{}
   (d)~The area of the alternative distribution where
   $\mu_{trmt} - \mu_{ctrl} = -3$ has been shaded.
   We compute the Z-score and find the tail area:
-  $T = \frac{-1.49 - (-3)}{0.76} = 1.99 \to 0.9767$
-  (can use $df = 500$ from the minimum of the two sample
-  sizes minus 1),
-  which is the power of the test for a difference of 3~mmHg.
+  $Z = \frac{-1.49 - (-3)}{0.76} = 1.99 \to 0.977$.
+%  (can use $df = 500$ from the minimum of the two sample
+%  sizes minus 1),
+%  which is the power of the test for a difference of 3~mmHg.
   With 500 patients per group, we would be about 97.7\% sure
-  (or more) that we'd detect any effects that are at least
+  (or~more) that we'd detect any effects that are at least
   3~mmHg in size.}
 
 The researchers decided 3~mmHg was the minimum difference
@@ -1582,34 +1590,42 @@ Other values may be reasonable for a specific context,
 but 80\% and 90\% are most commonly targeted as a good
 balance between high power and not exposing too many
 patients to a new treatment (or wasting too much money).
+
 We could compute the power of the test at several other
 possible sample sizes until we find one that's close to~80\%,
-but that's inefficient.
-Instead, we should solve the problem backwards.
+but there's a better way.
+We should solve the problem backwards.
 
 \begin{examplewrap}
 \begin{nexample}{What sample size will lead to a power of 80\%?}
-  We start by identifying the T-score that would give us a lower
+  We'll assume we have a large enough sample that the normal
+  distribution is a good approximation for the test statistic,
+  since the normal distribution and the $t$-distribution
+  look almost identical when the degrees of freedom are
+  moderately large (e.g. $df \geq 30$).
+  If that doesn't turn out to be true, then we'd need to make
+  a correction.
+
+  We start by identifying the Z-score that would give us a lower
   tail of 80\%.
   For a moderately large sample size per group,
-  the T-score for a lower tail of 80\% would be about $T = 0.84$.
-  (If our calculations suggest a very sample size,
-  we should recalculate this part and basically do the
-  problem one more time.)
+  the Z-score for a lower tail of 80\% would be about $Z = 0.84$.
+%  (If our calculations suggest a very sample size,
+%  we should recalculate this part and basically do the
+%  problem one more time.)
   \begin{center}
     \Figure{0.93}{power_best_sample_size}
   \end{center}
-  Additionally, the rejection region always extends
+  Additionally, the rejection region extends
   $1.96\times SE$ from the center of the null distribution
-  for $\alpha = 0.05$
-  (again supposing a larger sample size to get the value of 1.96).
+  for $\alpha = 0.05$.
   This allows us to calculate the target distance between
   the center of the null and alternative distributions in
   terms of the standard error:
   \begin{align*}
   0.84 \times SE + 1.96 \times SE = 2.8 \times SE
   \end{align*}
-  In our example, we also want the distance between the null
+  In our example, we want the distance between the null
   and alternative distributions' centers to equal the minimum
   effect size of interest, 3~mmHg, which allows us to set up
   an equation between this difference and the standard error:
@@ -1628,8 +1644,8 @@ Instead, we should solve the problem backwards.
   That is, we would have revised the 0.84 and 1.96
   values based on degrees of freedom implied by the initial
   sample size.
-  The revised sample size target will generally be a little
-  larger.
+  The revised sample size target would generally have then
+  been a little larger.
 \end{nexample}
 \end{examplewrap}
 
@@ -1676,27 +1692,35 @@ different than $2.8 \times SE$.
 
 \begin{exercisewrap}
 \begin{nexercise}
-Suppose the targeted power was 90\% and we were using $\alpha = 0.01$. How many standard errors should separate the centers of the null and alternative distribution, where the alternative distribution is centered at the minimum effect size of interest? Assume the test is two-sided.\footnotemark{}
+Suppose the targeted power was 90\% and we were using
+$\alpha = 0.01$.
+How many standard errors should separate the centers
+of the null and alternative distribution, where the
+alternative distribution is centered at the minimum
+effect size of interest?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{First, find the T-score such that 90\% of the
-  distribution is below it: $Z = 1.28$ (assume large $df$).
+\footnotetext{First, find the Z-score such that 90\% of the
+  distribution is below it: $Z = 1.28$.
   Next, find the cutoffs for the rejection regions: $\pm 2.58$.
   Then the difference in centers should be about
   $1.28 \times SE + 2.58 \times SE = 3.86 \times SE$.}
 
 \begin{exercisewrap}
 \begin{nexercise}
-List some considerations that are important in determining what the power should be for an experiment.\footnotemark{}
+What are some considerations that are important in determining
+what the power should be for an experiment?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Answers will vary, but here are a few important considerations:
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item Whether there is any risk to patients in the study.
-\item The cost of enrolling more patients.
-\item The potential downside of not detecting an effect of interest.
-\end{itemize}}
+\footnotetext{Answers will vary, but here are a few
+  important considerations:
+  \begin{itemize}
+  \setlength{\itemsep}{0mm}
+  \item Whether there is any risk to patients in the study.
+  \item The cost of enrolling more patients.
+  \item The potential downside of not detecting an effect
+      of interest.
+  \end{itemize}}
 
 Figure~\ref{power_curve_neg-3} shows the power for sample sizes from 20~patients to 5,000~patients when $\alpha = 0.05$ and the true difference is -3. This curve was constructed by writing a program to compute the power for many different sample sizes.
 
