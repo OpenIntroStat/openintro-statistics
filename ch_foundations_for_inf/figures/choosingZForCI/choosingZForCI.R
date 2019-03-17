@@ -9,7 +9,7 @@ normTail(M = c(-1.96, 1.96),
          col = COL[1],
          xlim = 3.3 * c(-1, 1),
          ylim = c(0, 0.59),
-         xlab='standard deviations from the mean')
+         xlab='Standard Deviations from the Mean')
 X <- rev(seq(-4, 4, 0.025))
 Y <- dt(X, 10) # makes better visual
 

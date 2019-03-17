@@ -26,6 +26,7 @@
 \label{normalDist}
 
 \index{distribution!normal|(}
+\index{normal distribution|(}
 
 Among all the distributions we see in practice,
 one is overwhelmingly the most common.
@@ -33,7 +34,8 @@ The symmetric, unimodal, bell curve is ubiquitous
 throughout statistics.
 Indeed it is so common, that people often know it as the
 \term{normal curve} or
-\termsub{normal distribution}{distribution!normal},\footnote{It
+\term{normal distribution}\index{distribution!normal|textbf}%
+,\footnote{It
   is also introduced as the Gaussian distribution after Frederic
   Gauss, the first person to formalize its mathematical
   expression.}
@@ -42,10 +44,10 @@ Variables such as SAT scores and heights of US adult males
 closely follow the normal distribution.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{ch_distributions/figures/simpleNormal/simpleNormal}
-\caption{A normal curve.}
-\label{simpleNormal}
+  \centering
+  \Figure{0.5}{simpleNormal}
+  \caption{A normal curve.}
+  \label{simpleNormal}
 \end{figure}
 
 \begin{onebox}{Normal distribution facts}
@@ -59,8 +61,8 @@ closely follow the normal distribution.
 
 \subsection{Normal distribution model}
 
-The normal distribution always describes a symmetric, unimodal,
-bell-shaped curve.
+The \term{normal distribution} always describes a symmetric,
+unimodal, bell-shaped curve.
 However, these curves can look different depending on the
 details of the model.
 Specifically, the normal distribution model can be adjusted
@@ -79,17 +81,14 @@ on the same axis.
   \centering
   \Figure{0.75}{twoSampleNormals}
   \caption{Both curves represent the normal distribution.
-      However, they differ in their center and spread.
-      The normal distribution with mean 0 and standard
-      deviation 1 is called the
-      \term{standard normal distribution}.}
+      However, they differ in their center and spread.}
   \label{twoSampleNormals}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \Figure{0.6}{twoSampleNormalsStacked}
-  \caption{The normal models shown in
+  \caption{The normal distributions shown in
       Figure~\ref{twoSampleNormals} but plotted together
       and on the same scale.}
   \label{twoSampleNormalsStacked}
@@ -107,6 +106,10 @@ N(\mu=0,\sigma=1)
 Because the mean and standard deviation describe a normal
 distribution exactly, they are called the distribution's
 \termsub{parameters}{parameter}.
+The normal distribution with mean $\mu = 0$ and
+standard deviation $\sigma = 1$ is called the
+\term{standard normal distribution}%
+\index{normal distribution!standard|textbf}.
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -945,7 +948,8 @@ $\sigma = \satsd{}$.\footnotemark{} \\
 %\end{figure}
 %
 %\index{normal probability plot|)}
-%\index{distribution!normal|)}
+\index{normal distribution|)}
+\index{distribution!normal|)}
 
 
 

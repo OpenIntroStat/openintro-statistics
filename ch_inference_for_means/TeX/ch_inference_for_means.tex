@@ -607,7 +607,7 @@ While the distribution is very strongly skewed,
 we do have $n = \uclabookN{}$ observations,
 and it's reasonable to move forward here.
 Because the conditions are reasonably satisfied,
-we can apply the $t$-distribution to this setting.
+we can use the $t$-distribution to this setting.
 
 We compute the standard error associated with
 $\bar{x}_{\text{\emph{diff}}}$ using the standard
@@ -917,8 +917,8 @@ A data set called \data{ncbirths} represents a random sample of 150 cases of mot
 \end{nexample}
 \end{examplewrap}
 
-We check the two conditions necessary to apply the
-$t$-distribution to the difference in sample means.
+We check the two conditions necessary to model the difference
+in sample means using the $t$-distribution.
 (1)~Because the data come from a simple random sample,
 the observations are independent.
 Additionally, while each distribution is strongly skewed,
@@ -1483,7 +1483,7 @@ There wouldn't be any value in rejecting the null hypothesis
 and concluding there was an increase when in fact there was
 a decrease.
 
-We've also been applying the normal distribution instead
+We've also used a normal distribution instead
 of the $t$-distribution.
 This is a convenience, and if the sample size is too small,
 we'd need to revert back to using the $t$-distribution.

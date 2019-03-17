@@ -516,8 +516,8 @@ normal.}\label{sample_p88_n1000_confirm_normal}
     \end{align*}
 \end{description}
 Both of the independence and success-failure conditions are
-satisfied, so the Central Limit Theorem applies and the normal
-distribution is reasonable in this context.
+satisfied, so the Central Limit Theorem applies and a normal
+distribution are reasonable in this context.
 \end{nexample}
 \end{examplewrap}
 
@@ -786,7 +786,7 @@ n p = 10 \times 0.25 = 2.5 &&
 This single sampling distribution does not show that
 the success-failure condition is the perfect guideline,
 but we have found that the guideline did correctly
-identify that the normal distribution might not be appropriate.
+identify that a normal distribution might not be appropriate.
 
 We can complete several additional simulations,
 shown in
@@ -1023,7 +1023,7 @@ slightly slimmer.
 The 95\% confidence interval structure provides guidance in
 how to make intervals with different confidence levels.
 The general 95\% confidence interval for a point estimate
-that follows the normal distribution is
+that follows a normal distribution is
 \begin{eqnarray*}
 \text{point estimate}\ \pm\ 1.96 \times SE
 \end{eqnarray*}
@@ -1045,7 +1045,7 @@ within 2.58~standard deviations of the mean?\footnotemark
     For a picture, see Figure~\ref{choosingZForCI}.
     To determine this probability, we can use statistical software,
     a calculator, or a table to look up -2.58 and 2.58 for
-    the normal distribution: 0.0049 and 0.9951.
+    a normal distribution: 0.0049 and 0.9951.
     Thus, there is a $0.9951-0.0049 \approx 0.99$ probability
     that an unobserved normal random variable
     $X$ will be within 2.58~standard deviations of $\mu$.}
@@ -1064,12 +1064,14 @@ for a 99\% confidence interval is
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{ch_foundations_for_inf/figures/choosingZForCI/choosingZForCI}
+  \Figure{1}{choosingZForCI}
   \caption{The area between -$z^{\star}$ and $z^{\star}$ increases as
       $z^{\star}$ becomes larger. If the confidence level is 99\%,
-      we choose $z^{\star}$ such that 99\% of the normal curve is
-      between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5\%
-      in the lower tail and 0.5\% in the upper tail: $z^{\star}=2.58$.}
+      we choose $z^{\star}$ such that 99\% of a normal
+      normal distribution is between -$z^{\star}$ and $z^{\star}$,
+      which corresponds to 0.5\%
+      in the lower tail and 0.5\% in the upper tail:
+      $z^{\star}=2.58$.}
 \label{choosingZForCI}
 \index{confidence interval!confidence level|)}
 \end{figure}
@@ -1082,12 +1084,12 @@ is associated with a normal distribution.
 %normal distribution is reasonable when the sample
 %observations are independent and the success-failure condition
 %holds ($np$ and $n(1-p)$ are both at least 10).
-For some other point estimates, the normal model is not a good fit;
+For some other point estimates, a normal model is not a good fit;
 in these cases, we'll use alternative distributions that better
 represent the sampling distribution.
 
 \begin{onebox}{Confidence interval using any confidence level}
-  If a point estimate closely follows the normal model
+  If a point estimate closely follows a normal model
   with standard error $SE$, then a confidence interval
   for the population parameter is
   \begin{align*}
@@ -1099,8 +1101,9 @@ represent the sampling distribution.
 
 Figure~\ref{choosingZForCI} provides a picture of how to identify
 $z^{\star}$ based on a confidence level. We~select $z^{\star}$
-so that the area between -$z^{\star}$ and $z^{\star}$ in the normal
-distribution corresponds to the confidence level. 
+so that the area between -$z^{\star}$ and $z^{\star}$ in the
+standard normal distribution\index{standard normal distribution}\index{normal distribution!standard}\index{distribution!normal!standard},
+$N(0, 1)$, corresponds to the confidence level.
 
 \begin{onebox}{Margin of error}
   \label{marginOfErrorTermBox}%
@@ -1115,8 +1118,12 @@ distribution corresponds to the confidence level.
     adults that support expanding the use of solar power.
     We have already verified conditions for normality.}
   We first find $z^{\star}$ such that 90\% of the distribution falls
-  between -$z^{\star}$ and $z^{\star}$ in the standard normal model,
-  $N(\mu=0, \sigma=1)$. We can do this using a graphing calculator,
+  between -$z^{\star}$ and $z^{\star}$ in the
+  \index{standard normal distribution}%
+  \index{normal distribution!standard}%
+  \index{distribution!normal!standard}%
+  standard normal distribution, $N(\mu = 0, \sigma = 1)$.
+  We can do this using a graphing calculator,
   statistical software, or a probability table by looking for an
   upper tail of 5\% (the other 5\% is in the lower tail):
   $z^{\star}=1.65$.
@@ -1191,10 +1198,11 @@ Oct 26th and~28th, 2014.
 \begin{examplewrap}
 \begin{nexample}{What is the point estimate in this case,
     and is it reasonable to
-    use the normal distribution to model that point estimate?}
+    use a normal distribution to model that point estimate?}
   The point estimate, based on a sample of size $n = \wsjebolapollsize{}$,
-  is $\hat{p} = \wsjebolapollprop{}$. To check whether $\hat{p}$ can be reasonably
-  modeled using the normal distribution, we check independence
+  is $\hat{p} = \wsjebolapollprop{}$.
+  To check whether $\hat{p}$ can be reasonably
+  modeled using a normal distribution, we check independence
   (the poll is based on a simple random sample) and the
   success-failure condition
   ($\wsjebolapollsize{} \times \hat{p} \approx \wsjebolapollcount{}$
@@ -1212,7 +1220,8 @@ Oct 26th and~28th, 2014.
     $\hat{p} = \wsjebolapollprop{}$ from the Ebola survey.}
   \label{seOfPropOfNYEbolaSurvey}%
   We'll use the substitution approximation of
-  $p \approx \hat{p} = \wsjebolapollprop{}$ to compute the standard error:
+  $p \approx \hat{p} = \wsjebolapollprop{}$ to compute
+  the standard error:
   \begin{align*}
   SE_{\hat{p}}
     = \sqrt{\frac{p(1-p)}{n}}
@@ -1291,7 +1300,7 @@ from \pewwindpollpercent{}\% of the \pewwindpollsize{}
 respondents.\footnotemark{}
 \begin{enumerate}[(a)]
 \item
-    Is the normal approximation reasonable for the proportion
+    Is a normal approximation reasonable for the proportion
     of US adults who support expanding wind turbines?
 \item
     Create a 99\% confidence interval for the level of American
@@ -1309,7 +1318,7 @@ respondents.\footnotemark{}
     = \pewwindpollcountcomplement$ are both at least 10).
   Since both conditions are satisfied,
   $\hat{p} = \pewwindpollprop{}$ can be
-  modeled using the normal distribution. \\
+  modeled using a normal distribution. \\
   (b)~Guided
   Practice~\ref{pew_wind_turbine_support_normal_dist_gp}
   confirmed that that $\hat{p}$ closely follows
@@ -1654,7 +1663,8 @@ for the hypothesis test.
   at least 10 (success-failure condition).
 
   To construct the confidence interval, we will need to identify
-  the point estimate ($\hat{p} = \roslingAprop$), the critical value for
+  the point estimate ($\hat{p} = \roslingAprop$),
+  the critical value for
   the 95\% confidence level ($z^{\star} = 1.96$), and the standard
   error of $\hat{p}$
   ($SE_{\hat{p}} = \sqrt{\hat{p}(1 - \hat{p}) / n} = \roslingAse$).
@@ -1770,17 +1780,16 @@ to live longer in the future across much of the world.}
 \begin{nexercise}\label{roslingB_normality}%
 This time we took a larger sample of
 \roslingBsize{} college-educated adults,
-\roslingBcount{} (\roslingBpercent{}) selected the correct answer to the
-question in Guided
+\roslingBcount{} (\roslingBpercent{}) selected the correct
+answer to the question in Guided
 Practice~\ref{roslingB_hypothesis_setup}: 2~billion.
-Can we apply the normal model to the sample proportion
-to construct a confidence interval in this
-case?\footnotemark
+Can we model the sample proportion using a normal distribution
+and construct a confidence interval?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{We check both conditions, which are satisfied,
 so it is reasonable to use
-the normal distribution for $\hat{p}$: \\
+a normal distribution for $\hat{p}$: \\
 \textbf{Independence.} Since the data are from a simple
     random sample, the observations are independent. \\
 \textbf{Success-failure.} We'll use $\hat{p}$ in place of $p$
@@ -1805,8 +1814,9 @@ the normal distribution for $\hat{p}$: \\
           {\roslingBsize{}}}
       = \roslingBse{}
   \end{align*}
-  You showed in Guided Practice~\ref{roslingB_normality}
-  that the normal model may be applied to $\hat{p}$,
+  In Guided Practice~\ref{roslingB_normality},
+  we found that $\hat{p}$ can be modeled using
+  a normal distribution,
   which ensures a 95\% confidence interval may be accurately
   constructed as
   \begin{align*}
@@ -2410,7 +2420,7 @@ question.\footnotemark
           = \gallupnucleararmspollnullcount{} \geq 10$.
   \end{description}
   With these conditions verified,
-  the normal model may be applied to $\hat{p}$.
+  we can model $\hat{p}$ using a normal model.
 
   Next the standard error can be computed.
   The null value $p_0$ is used again here,

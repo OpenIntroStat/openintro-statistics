@@ -538,21 +538,21 @@ You may have already guessed its form:
 $\hat{p}_1 - \hat{p}_2$.
 \index{point estimate!difference of proportions}
 Next, in each example we verify that the point estimate
-follows the normal model by checking certain conditions.
+follows a normal distribution by checking certain conditions.
 Finally, we compute the estimate's standard error and
 apply our inferential framework.
 
 
 \subsection{Sample distribution of the difference of two proportions}
 
-We must check two conditions before applying the
-normal model to $\hat{p}_1 - \hat{p}_2$.
+We must check two conditions before modeling
+$\hat{p}_1 - \hat{p}_2$ using a normal distribution.
 First, the sampling distribution for each sample
 proportion must be nearly normal, and secondly,
 the samples must be independent.
 Under these two conditions, the sampling distribution
 of $\hat{p}_1 - \hat{p}_2$ may be well approximated
-using the normal model.
+using a normal distribution.
 
 \begin{onebox}{Conditions for the
     sampling distribution of $\hat{p}_1 - \hat{p}_2$
@@ -632,7 +632,7 @@ Think about these steps when you apply statistical methods.
   The success-failure condition also holds for each group,
   where we have at least 10 successes and 10 failures in
   each experiment arm.
-  With these conditions met, the normal model can be used
+  With these conditions met, a normal distribution can be used
   for the point estimate of the difference in survival
   rates, where we'll use $p_t$ corresponds to the survival
   rate in the treatment group and $p_c$ for the control
@@ -826,7 +826,12 @@ in breast cancer deaths in the mammogram and control groups.\footnotemark
     rate for patients in the control,
     $p_{mgm} - p_{ctrl} \neq 0$.}
 
-In Example~\ref{condFormammogramStudySummaryTableNormalInference}, we will check the conditions for using the normal model to analyze the results of the study. The details are very similar to that of confidence intervals. However, this time we use a special proportion called the \term{pooled proportion} to check the success-failure condition:
+In Example~\ref{condFormammogramStudySummaryTableNormalInference},
+we will check the conditions for using a normal distribution to
+analyze the results of the study.
+The details are very similar to that of confidence intervals.
+However, this time we use a special proportion called the
+\term{pooled proportion} to check the success-failure condition:
 \begin{align*}
 \hat{p}_{\textit{pooled}}
     &= \frac
@@ -839,26 +844,29 @@ In Example~\ref{condFormammogramStudySummaryTableNormalInference}, we will check
 This proportion is an estimate of the breast cancer death rate across the entire study, and it's our best estimate of the proportions $p_{mgm}$ and $p_{ctrl}$ \emph{if the null hypothesis is true that $p_{mgm} = p_{ctrl}$}. We will also use this pooled proportion when computing the standard error.
 
 \begin{examplewrap}
-\begin{nexample}{Can we use the normal model to analyze this study?}\label{condFormammogramStudySummaryTableNormalInference}
-Because the patients are randomized, they can be treated as independent.
+\begin{nexample}{Can we use a normal model to analyze this study?}
+  %\label{condFormammogramStudySummaryTableNormalInference}
+  Because the patients are randomized, they can be treated
+  as independent.
 
-We also must check the success-failure condition for each group.
-Under the null hypothesis, the proportions $p_{mgm}$
-and $p_{ctrl}$ are equal, so we check the success-failure
-condition with our best estimate of these values under $H_0$,
-the \hiddenterm{pooled proportion} from the two samples,
-$\hat{p}_{\textit{pooled}} = 0.0112$:
-\begin{align*}
-\hat{p}_{\textit{pooled}} \times n_{mgm}
-    &= 0.0112 \times \text{44,925} = 503
-  & (1 - \hat{p}_{\textit{pooled}}) \times n_{mgm}
-    &= 0.9888 \times \text{44,925} = \text{44,422} \\
-\hat{p}_{\textit{pooled}} \times n_{ctrl}
-    &= 0.0112 \times \text{44,910} = 503
-  & (1 - \hat{p}_{\textit{pooled}}) \times n_{ctrl}
-    &= 0.9888 \times \text{44,910} = \text{44,407}
-\end{align*}
-The success-failure condition is satisfied since all values are at least 10, and we can safely apply the normal model.
+  We also must check the success-failure condition for each group.
+  Under the null hypothesis, the proportions $p_{mgm}$
+  and $p_{ctrl}$ are equal, so we check the success-failure
+  condition with our best estimate of these values under $H_0$,
+  the \hiddenterm{pooled proportion} from the two samples,
+  $\hat{p}_{\textit{pooled}} = 0.0112$:
+  \begin{align*}
+  \hat{p}_{\textit{pooled}} \times n_{mgm}
+      &= 0.0112 \times \text{44,925} = 503
+    & (1 - \hat{p}_{\textit{pooled}}) \times n_{mgm}
+      &= 0.9888 \times \text{44,925} = \text{44,422} \\
+  \hat{p}_{\textit{pooled}} \times n_{ctrl}
+      &= 0.0112 \times \text{44,910} = 503
+    & (1 - \hat{p}_{\textit{pooled}}) \times n_{ctrl}
+      &= 0.9888 \times \text{44,910} = \text{44,407}
+  \end{align*}
+  The success-failure condition is satisfied since all values
+  are at least 10, and we can safely use a normal distribution.
 \end{nexample}
 \end{examplewrap}
 
@@ -1064,8 +1072,8 @@ A quadcopter company is considering a new manufacturer for rotor blades. The new
   Z = \frac{\text{point estimate} - \text{null value}}{SE}
     = \frac{0.059 - 0.03}{0.0114} = 2.54
   \end{align*}
-  Using the normal model for this test statistic, we identify
-  the right tail area as 0.006.
+  Using a standard normal distribution for this test statistic,
+  we identify the right tail area as 0.006.
   Since this is a one-sided test, this single tail area is also
   the p-value, and we reject the null hypothesis because 0.006
   is less than 0.05.
@@ -1284,7 +1292,14 @@ The final number $X^2$ summarizes how strongly the observed counts tend to devia
 
 \subsection{The chi-square distribution and finding areas}
 
-The \term{chi-square distribution} is sometimes used to characterize data sets and statistics that are always positive and typically right skewed. Recall the normal distribution had two parameters -- mean and standard deviation -- that could be used to describe its exact characteristics. The chi-square distribution has just one parameter called \termsub{degrees of freedom (df)}{degrees of freedom (df)!chi-square}, which influences the shape, center, and spread of the distribution.
+The \term{chi-square distribution} is sometimes used to
+characterize data sets and statistics that are always positive
+and typically right skewed. Recall a normal distribution had
+two parameters -- mean and standard deviation -- that could be
+used to describe its exact characteristics.
+The chi-square distribution has just one parameter called
+\termsub{degrees of freedom (df)}{degrees of freedom (df)!chi-square},
+which influences the shape, center, and spread of the distribution.
 
 \begin{exercisewrap}
 \begin{nexercise}\label{exerChiSquareDistributionDescriptionWithMoreDOF}
@@ -1443,7 +1458,14 @@ In the jurors example, there were $k=4$ categories: white, black, Hispanic, and 
 \end{nexample}
 \end{examplewrap}
 
-Just like we checked sample size conditions to use the normal model in earlier sections, we must also check a sample size condition to safely apply the chi-square distribution for $X^2$. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above~5, so we can apply the chi-square model to the test statistic, $X^2=5.89$.
+Just like we checked sample size conditions to use a normal
+distribution in earlier sections, we must also check a sample
+size condition to safely apply the chi-square distribution
+for~$X^2$.
+Each expected count must be at least 5. In the juror example,
+the expected counts were 198, 19.25, 33, and 24.75, all easily
+above~5, so we can apply the chi-square model to the test
+statistic, $X^2=5.89$.
 
 \begin{examplewrap}
 \begin{nexample}{If the null hypothesis is true,
@@ -1585,7 +1607,7 @@ for this example, but it is not a prerequisite.
 \newcommand{\spdaysDF}{6}
 \newcommand{\spdaysPvalue}{0.5951}
 
-We can apply our new chi-square testing framework to the
+We can apply the chi-square testing framework to the
 second problem in this section:
 evaluating whether a certain statistical model fits
 a data set.
@@ -1672,7 +1694,21 @@ We consider data for the S\&P500 and summarize the waiting times in Figure~\ref{
   \label{geomFitEvaluationForSP500}
 \end{figure}
 
-Because applying the chi-square framework requires expected counts to be at least~5, we have \emph{binned} together all the cases where the waiting time was at least \spdaysN{} days to ensure each expected count is well above this minimum. The actual data, shown in the \emph{Observed} row in Figure~\ref{sAndP500TimeToPosTrade2}, can be compared to the expected counts from the \emph{Geometric Model} row. The method for computing expected counts is discussed in Figure~\ref{sAndP500TimeToPosTrade2}. In general, the expected counts are determined by (1) identifying the null proportion associated with each bin, then (2) multiplying each null proportion by the total count to obtain the expected counts. That is, this strategy identifies what proportion of the total count we would expect to be in each bin.
+Because applying the chi-square framework requires expected counts
+to be at least~5, we have \emph{binned} together all the cases
+where the waiting time was at least \spdaysN{} days to ensure each
+expected count is well above this minimum.
+The actual data, shown in the \emph{Observed} row in
+Figure~\ref{sAndP500TimeToPosTrade2}, can be compared to the
+expected counts from the \emph{Geometric Model} row.
+The method for computing expected counts is discussed in
+Figure~\ref{sAndP500TimeToPosTrade2}.
+In general, the expected counts are determined by
+(1)~identifying the null proportion associated with each bin,
+then (2)~multiplying each null proportion by the total count
+to obtain the expected counts.
+That is, this strategy identifies what proportion of the total
+count we would expect to be in each bin.
 
 \begin{examplewrap}
 \begin{nexample}{Do you notice any unusually large deviations
@@ -1712,7 +1748,7 @@ Compute the chi-square test statistic, $X^2$.\footnotemark
 Because the expected counts are all at least~5,
 we can safely apply the chi-square distribution to $X^2$.
 However, how many degrees of freedom should
-we~use?\footnotemark
+we~use?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{There are $k = \spdaysN{}$ groups, so we use
