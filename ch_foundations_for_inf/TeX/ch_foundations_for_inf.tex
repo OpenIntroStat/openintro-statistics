@@ -1377,8 +1377,7 @@ it is that the parameter is in the interval.
 Another important consideration of confidence intervals is that they
 are \emph{only about the population parameter}.
 A confidence interval says nothing about individual
-observations, a proportion of the observations,
-or point estimates.
+observations or point estimates.
 Confidence intervals only provide a plausible range for
 population parameters.
 
@@ -1394,6 +1393,21 @@ help protect against bias in the examples we have considered,
 which is a common practice employed by data scientists
 to combat bias.
 \index{bias|)}
+
+\begin{exercisewrap}
+\begin{nexercise}
+Consider the 90\% confidence interval from the solar
+energy survey, which was 87.1\% to 90.4\%.
+If~we ran the survey again, can we say that we're
+90\% confident that the new survey's proportion
+will be between 87.1\% and 90.4\%?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{
+  No, a confidence interval only provides a range of plausible
+  values for a population parameter.
+  It does not describe what we might observe for future point
+  estimates.}
 
 
 \index{data!wind turbine survey|)}
