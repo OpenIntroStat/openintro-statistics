@@ -1553,7 +1553,10 @@ family\us{}income & -0.0431 & 0.0108 & -3.98 & 0.0002 \\
    \hline
    \multicolumn{5}{r}{$df=48$} \\
 \end{tabular}
-\caption{Summary of least squares fit for the Elmhurst College data.}
+\caption{Summary of least squares fit for the Elmhurst
+    College data, where we are predicting the gift aid
+    by the university based on the family income of
+    students.}
 \label{rOutputForIncomeAidLSRLineInInferenceSection}
 \end{figure}
 
@@ -1588,9 +1591,9 @@ construct a confidence interval for that coefficient.
     \qquad\to\qquad -0.0431 \pm 2.01 \times 0.0108
     \qquad\to\qquad (-0.0648, -0.0214)
   \end{align*}
-  We are 95\% confident that the true coefficient
-  for the \var{family\us{}income} variable is between
-  -0.0648 and -0.0214.
+  We are 95\% confident that with each dollar increase in
+  \var{family\us{}income}, the university's gift aid is
+  predicted to decrease on average by \$0.0214 to \$0.0648.
 \end{nexample}
 \end{examplewrap}
 
