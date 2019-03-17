@@ -267,10 +267,8 @@ other levels are measured against.
   \begin{align*}
   \widehat{rate} = 11.10 +
       1.42 \times
-          %1_{\var{income\us{}ver} = \resp{source\us{}only}} +
           \indfunc{income\us{}ver}{source\us{}only} +
       3.25 \times
-          %1_{\var{income\us{}ver} = \resp{verified}}
           \indfunc{income\us{}ver}{verified}
   \end{align*}
   We use the notation $\indfunc{variable}{level}$
@@ -323,8 +321,8 @@ of the \var{income\us{}ver} variable.
     whose income source is verified but the amount is not.}
   When \var{income\us{}ver} takes a value of
   \resp{source\us{}only},
-  then the corresponding indicator function is 1
-  while the other ($1_{verified}$) is 0:
+  then the corresponding variable takes a value of 1
+  while the other ($\indfunc{income\us{}ver}{verified}$) is 0:
   \begin{align*}
   \widehat{rate} &= 11.10 +
       1.42 \times 1 +
@@ -343,8 +341,9 @@ whose income source and amount are both verified.\footnotemark
 \end{exercisewrap}
 \footnotetext{When \var{income\us{}ver} takes a value of
   \resp{verified},
-  then the corresponding indicator function is 1
-  while the other ($1_{source\_only}$) is 0:
+  then the corresponding variable takes a value of 1
+  while the other ($\indfunc{income\us{}ver}{source\us{}only}$)
+  is~0:
   \begin{align*}
   \widehat{rate} &= 11.10 +
       1.42 \times 0 +
@@ -785,9 +784,12 @@ the model has only one predictor.
 The best model is not always the most complicated.
 Sometimes including variables that are not evidently
 important can actually reduce the accuracy of predictions.
-In this section we discuss model selection strategies,
+In this section, we discuss model selection strategies,
 which will help us eliminate variables from the model that
 are found to be less important.
+It's common (and hip, at least in the statistical world)
+to refer to models that have undergone such variable pruning
+as \term{parsimonious}.
 
 In practice, the model that includes all available explanatory
 variables is often referred to as the \term{full model}.
@@ -2494,7 +2496,7 @@ of this section.
 %\end{nexample}
 %\end{examplewrap}
 
-The coefficient of \var{racewhite} in the full model in
+The coefficient of $\indfunc{race}{white}$ in the full model in
 Figure~\ref{resumeLogisticModelResults},
 is nearly identical to the model shown in
 Figure~\ref{resumeLogisticReducedModel}.
@@ -2508,9 +2510,9 @@ In most observational data,
 it's common for point estimates to change a little,
 and sometimes a lot, depending on which other
 variables are included in the model.
-Collinearity can also occur in experiments,
-but in this case the experiment was designed in such a way
-that collinearity it was not an issue.
+%Collinearity can also occur in experiments,
+%but in this case the experiment was designed in such a way
+%that collinearity it was not an issue.
 %This might happen if predictor variables are correlated,
 %where the inclusion of one of the variables can influence.
 %\Comment{Revisit the end of this paragraph,
@@ -2534,31 +2536,31 @@ that collinearity it was not an issue.
     includes an email address,
     and has a first name that implies they are a White male.}
   \label{exampleForResumeAndWhiteQuantified}%
-  We can start by writing out the equation using indicator
-  functions and coefficients from the model, then we can
+  We can start by writing out the equation using the
+  coefficients from the model, then we can
   add in the corresponding values of each variable for this
   individual:
   \begin{align*}
-  log\left(\frac{p}{1 - p}\right)
-    &= - 2.7162
-        - 0.4364 \times 1_{Chicago}
-        + 0.0206 \times \text{(years experience)}
-        + 0.7634 \times 1_{honors} \\
-      &\qquad
-          - 0.3443 \times 1_{military}
-          + 0.2221 \times 1_{email}
-          + 0.4429 \times 1_{white}
-          - 0.1959 \times 1_{male} \\
-    &= - 2.7162
+  &log\left(\frac{p}{1 - p}\right) \\
+    &\quad= - 2.7162
+        - 0.4364 \times \indfunc{job\us{}city}{Chicago}
+        + 0.0206 \times \var{years\us{}experience}
+        + 0.7634 \times \var{honors} \\
+      &\quad\qquad
+          - 0.3443 \times \var{military}
+          + 0.2221 \times \var{email}
+          + 0.4429 \times \indfunc{race}{white}
+          - 0.1959 \times \indfunc{sex}{male} \\
+    &\quad= - 2.7162
         - 0.4364 \times 1
         + 0.0206 \times 14
         + 0.7634 \times 0 \\
-      &\qquad
+      &\quad\qquad
           - 0.3443 \times 0
           + 0.2221 \times 1
           + 0.4429 \times 1
           - 0.1959 \times 1 \\
-    &= - 2.3955
+    &\quad= - 2.3955
   \end{align*}
   We can now back-solve for $p$:
   the chance such an individual will receive
@@ -2577,7 +2579,7 @@ that collinearity it was not an issue.
   with the same characteristics who is Black,
   where the only difference in the calculation is that
   the indicator variable
-  $1_{white}$ will take a value of \resp{0}.
+  $\indfunc{race}{white}$ will take a value of \resp{0}.
   Doing so yields a probability of 0.0553.
   Let's compare the results with those of
   Example~\ref{exampleForResumeAndWhiteQuantified}.
