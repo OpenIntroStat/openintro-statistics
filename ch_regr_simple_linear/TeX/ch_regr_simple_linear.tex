@@ -10,7 +10,9 @@
 \renewcommand{\chapterfolder}{ch_regr_simple_linear}
 
 
-\index{linear regression|textbf}
+\index{regression|textbf}
+\index{regression|(}
+\index{linear regression|seealso{regression}}
 
 \chapterintro{Linear regression is a very powerful
   statistical technique.
@@ -1604,10 +1606,26 @@ construct a confidence interval for that coefficient.
   b_i \ \pm\ t_{df}^{\star} \times SE_{b_{i}}
   \end{align*}
   where $t_{df}^{\star}$ is the appropriate $t$-value
-  corresponding to the confidence level and model degrees
-  of freedom, $df=n-k-1$.
+  corresponding to the confidence level with the
+  model's degrees of freedom.
 \end{onebox}
 
+On the topic of intervals in this book, we've focused exclusively
+on confidence intervals for model parameters.
+However, there are other types of intervals that may be
+of interest, including
+prediction intervals\index{prediction intervals}
+for a response value
+and also
+confidence intervals for a
+mean response value\index{mean response value}
+in the context of regression.
+These two interval types are introduced in an online extra
+that you may download at
+\begin{center}
+\oiRedirect{stat_extra_linear_regression_supp}
+    {www.openintro.org/d?file=stat\_extra\_linear\_regression\_supp}
+\end{center}
 
-
-
+\index{confidence interval!regression|)}%
+\index{regression|)}
