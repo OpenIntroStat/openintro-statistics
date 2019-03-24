@@ -323,6 +323,8 @@ e_{\times} = y_{\times} - \hat{y}_{\times} = 85.3 -  86.4 = -1.1
 \end{eqnarray*}
 The model's error is $e_{\times} = -1.1$mm,
 which is very close to the visual estimate of -1mm.
+The negative residual indicates that the linear model
+overpredicted head length for this particular possum.
 \end{nexample}
 \end{examplewrap}
 
@@ -455,10 +457,10 @@ Figure~\ref{posNegCorPlots} shows eight plots and their
 corresponding correlations.
 Only when the relationship is perfectly linear is the
 correlation either -1 or~1.
-If the relationship is strong and positive, the correlation
+If~the relationship is strong and positive, the correlation
 will be near~+1.
-If it is strong and negative, it will be near~-1.
-If there is no apparent linear relationship between the
+If~it is strong and negative, it will be near~-1.
+If~there is no apparent linear relationship between the
 variables, then the correlation will be near zero.
 
 \begin{figure}
@@ -713,7 +715,8 @@ Should we have concerns about applying least squares regression to the Elmhurst 
 
 For the Elmhurst data, we could write the equation of the least squares regression line as
 \begin{eqnarray*}
-\widehat{aid} = \beta_0 + \beta_{1}\times family\us{}income
+\widehat{aid} = \beta_0 + \beta_{1}\times
+    \textit{family\us{}income}
 \end{eqnarray*}
 Here the equation is set up to predict gift aid based on a student's family income, which would be useful to students considering Elmhurst. These two values, $\beta_0$ and $\beta_1$, are the parameters\index{parameter} of the regression line.
 
@@ -834,10 +837,11 @@ To identify the least squares line from summary statistics:\vspace{-1mm}
   Expanding the right side and then adding 19,940 to each side,
   the equation simplifies:
   \begin{align*}
-  \widehat{aid} = \text{24,320} - 0.0431 \times family\us{}income
+  \widehat{aid} = \text{24,320} - 0.0431 \times
+      \textit{family\us{}income}
   \end{align*}
   Here we have replaced $y$ with $\widehat{aid}$ and $x$ with
-  $family\us{}income$ to put the equation in context.
+  \textit{family\us{}income} to put the equation in context.
   The final equation should always include a ``hat''
   on the variable being predicted, whether it is a generic
   ``$y$'' or a named variable like ``$aid$''.
@@ -999,13 +1003,14 @@ window will behave.
 \begin{examplewrap}
 \begin{nexample}{Use the model
     $\widehat{aid}
-      = \text{24,319} - 0.0431 \times family\us{}income$
+      = \text{24,319} - 0.0431 \times
+          \textit{family\us{}income}$
     to estimate the aid of another freshman student whose
     family had income of \$1~million.}
   We want to calculate the aid for
-  $family\us{}income = \text{1,000,000}$:
+  $\textit{family\us{}income} = \text{1,000,000}$:
   \begin{align*}
-  \text{24,319} - 0.0431\times family\us{}income
+  \text{24,319} - 0.0431\times \textit{family\us{}income}
     = \text{24,319} - 0.0431\times \text{1,000,000}
     = -\text{18,781}
   \end{align*}
