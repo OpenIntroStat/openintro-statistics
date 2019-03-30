@@ -14,7 +14,7 @@
 \chapterintro{Chapters~\ref{ch_foundations_for_inf}
   introduced a framework for statistical inference based
   on confidence intervals and hypotheses using the
-  normal distribution.
+  normal distribution for sample proportions.
   In this chapter, we encounter several new point estimates
   and a couple new distributions.
   In each case, the inference ideas remain the same:
@@ -30,42 +30,113 @@
 \label{oneSampleMeansWithTDistribution}
 
 \noindent%
-We required a large sample in Chapter~\ref{foundationsForInference} for two reasons:
-\begin{enumerate}
-\setlength{\itemsep}{0mm}
-\item The sampling distribution of $\bar{x}$ tends to be more normal when the sample is large.
-\item The calculated standard error is typically very accurate when using a large sample.
-\end{enumerate}
-So what should we do when the sample size is small? As we'll discuss in Section~\ref{normalityCond}, if the population data are nearly normal, then $\bar{x}$ will also follow a normal distribution, which addresses the first problem. The accuracy of the standard error is trickier, and for this challenge we'll introduce a new distribution called the $t$-distribution.
+Similar to how we can model the behavior of the
+sample proportion $\hat{p}$ using a normal distribution,
+the sample mean $\bar{x}$ can also be modeled using
+a normal distribution when certain conditions are met.
+However, we'll soon learn that a new distribution,
+called the $t$-distribution,
+tends to be more useful when the sample size is small.
+%This will be our main focus for much of this chapter,
+%but we will soon learn that complications can arise when
+%the sample size is relatively small:
+%\begin{enumerate}
+%\setlength{\itemsep}{0mm}
+%\item We can only be confident that the sampling distribution
+%  of $\bar{x}$ is nearly normal when the sample is large.
+%  In a special case where the distribution of the individual
+%  observations are nearly normal
+%  (or, at the very least, when outliers are rare),
+%  $\bar{x}$ will also tend to closely follow a normal distribution
+%  even when the sample size is small.
+%\item The calculated standard error for the estimate $\bar{x}$
+%  is typically very accurate when using a large sample.
+%\end{enumerate}
+%%So what should we do when the sample size is small?
+%As we'll discuss in Section~\ref{normalityCond},
+%if the population data are nearly normal, then $\bar{x}$
+%will also follow a normal distribution, which addresses
+%the first problem. The accuracy of the standard error is trickier, and for this challenge we'll introduce a new distribution called the $t$-distribution.
+%We'll introduce a new distribution called the $t$-distribution
+%to help us better model the sample mean $\bar{x}$.
+%
+%While we emphasize the use of the $t$-distribution for small samples, this distribution is also generally used for large samples, where it produces similar results to those from the normal distribution.
 
-While we emphasize the use of the $t$-distribution for small samples, this distribution is also generally used for large samples, where it produces similar results to those from the normal distribution.
+
+\subsection[The distribution of $\bar{x}$]
+    {The sampling distribution of $\mathbf{\bar{x}}$}
+
+Under certain conditions, the sample mean tends to follow
+a normal distribution centered at the the population mean, $\mu$.
+Additionally, we can compute a standard error for the sample
+mean using both the population standard deviation
+and the sample size.
+
+\begin{onebox}{Central Limit Theorem for the sample mean}
+  When we collect a sample of independent observations,
+  the sample mean $\bar{x}$ tends to follow a normal
+  distribution with the following mean and standard error:
+  \begin{align*}
+  &\text{Mean}=\mu
+  &&\text{Standard Error }(SE) = \frac{\sigma}{\sqrt{n}}
+  \end{align*}
+  The normal approximation for the sampling distribution
+  of $\bar{x}$ will generally be more accurate with a larger
+  sample size.
+\end{onebox}
+
+In practice, we cannot directly calculate the standard error
+for $\bar{x}$, since generally we do not know the population
+standard deviation $\sigma$.
+We encountered a similar issue when we worked with proportions,
+and our solution was to use the sample value to estimate the
+standard error of the point estimate;
+we'll do something similar here, using the sample
+standard deviation $s$ in place of $\sigma$ when computing
+the standard error.
+This substitution strategy tends to work well when we have
+a lot of data -- when the sample size is large --
+but it is less reliable when the sample size is smaller
+than about 30 independent observations.
+
+\Comment{Something about how skewed distributions tend
+  to converge more slowly.}
 
 
 \subsection{The normality condition}
 \label{normalityCond}
+
+\index{Central Limit Theorem!normal data|(}
 
 A special case of the Central Limit Theorem ensures
 the sample mean will be nearly normal,
 regardless of sample size, when the data come from
 a nearly normal distribution.
 
-\begin{onebox}{Central Limit Theorem for normal data}
-The sampling distribution of the mean is nearly normal when
-the sample observations are independent and come from a nearly
-normal distribution.
-This is true for any sample size.
-\index{Central Limit Theorem!normal data|)}
+\begin{onebox}{Central Limit Theorem for normally distributed data}
+  The sampling distribution of the mean is nearly normal when
+  the sample observations are independent and come from a nearly
+  normal distribution.
+  This is true for any sample size.
 \end{onebox}
 
-We should exercise caution when verifying the normality condition for small samples.
-It is important to not only examine the data but also think about where the data come from.
-For example, ask: would I expect this distribution to be symmetric, and am I confident that outliers are rare?
+We should exercise caution when verifying the normality condition
+for small samples.
+It is important to not only examine the data but also think about
+where the data come from, since it's hard to check this condition
+when we have very little data!
+For example, it's important to ask:
+would I expect this distribution to be symmetric, and am I confident that outliers are rare?
 
-You may relax the normality condition as the sample size goes up.
+\index{Central Limit Theorem!normal data|)}
+
+This normality condition on the data may be relaxed for
+larger sample sizes.
 If the sample size is~10 or more, slight skew is not problematic.
 Once the sample size hits about~30, then moderate skew is
 reasonable.
-Data with strong skew or outliers require a more cautious analysis.
+Data with strong skew or outliers require a more cautious analysis
+unless the sample size is particularly large.
 
 
 \subsection{Introducing the $\mathbf{t}$-distribution}
@@ -74,9 +145,27 @@ Data with strong skew or outliers require a more cautious analysis.
 \index{t-distribution|(}
 \index{distribution!$t$|(}
 
-In the cases where we will use a small sample to calculate the standard error, it will be useful to rely on a new distribution for inference calculations: the $t$-distribution. A $t$-distribution, shown as a solid line in Figure~\ref{tDistCompareToNormalDist}, has a bell shape. However, its tails are thicker than the normal model's. This means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.\footnote{The standard deviation of the $t$-distribution is actually a little more than 1. However, it is useful to always think of the $t$-distribution as having a standard deviation of 1 in all of our applications.} While our estimate of the standard error will be a little less accurate when we are analyzing a small data set, these extra thick tails of the $t$-distribution are exactly the correction we need to resolve the problem of a poorly estimated standard error.
+In the cases where we will use a small sample to calculate
+the standard error, it will be useful to rely on a new distribution
+for inference calculations: the $t$-distribution.
+A $t$-distribution, shown as a solid line in
+Figure~\ref{tDistCompareToNormalDist}, has a bell shape.
+However, its tails are thicker than the normal model's,
+meaning observations are more likely to fall beyond two
+standard deviations from the mean than under the normal
+distribution.\footnote{The standard deviation of the
+  $t$-distribution is actually a little more than 1.
+  However, it is useful to always think of the $t$-distribution
+  as having a standard deviation of 1 in all of our applications.}
+This distribution is important since it accounts for
+a key challenge with modeling the sample mean:
+the standard error of the sample mean isn't as
+precise when the sample size is small.
+The extra thick tails of the $t$-distribution are exactly
+the correction we need to resolve the problem of a poorly
+estimated standard error.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figure{0.65}{tDistCompareToNormalDist}
   \caption{Comparison of a $t$-distribution
@@ -106,11 +195,16 @@ looks very much like the standard normal distribution.
 The degrees of freedom describe the shape of the $t$-distribution. The larger the degrees of freedom, the more closely the distribution approximates the normal model.
 \end{onebox}
 
-When the degrees of freedom is about 30 or more, the $t$-distribution is nearly indistinguishable from the normal distribution. In Section~\ref{tDistSolutionToSEProblem}, we relate degrees of freedom to sample size.
+When the degrees of freedom is about 30 or more,
+the $t$-distribution is nearly indistinguishable
+from the normal distribution.
+\Comment{Cut this next sentence?}
+In Section~\ref{tDistSolutionToSEProblem},
+we relate degrees of freedom to sample size.
 
 It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data.
 In~practice, it's common to use statistical software,
-such as \R{}, Python, or SAS.
+such as R, Python, or SAS for these analyses.
 Alternatively, a graphing calculator or a \term{t-table}
 may be used;
 the $t$-table is similar to the normal distribution table,
