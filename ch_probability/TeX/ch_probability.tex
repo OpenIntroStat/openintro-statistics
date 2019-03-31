@@ -81,6 +81,9 @@ If $16.\bar{6}$\% of the time the first die is a \resp{1} and $1/6$ of \emph{tho
 \end{nexample}
 \end{examplewrap}
 
+
+\D{\newpage}
+
 \subsection{Probability}
 
 \index{random process|(}
@@ -102,7 +105,7 @@ Probability is defined as a proportion, and it always takes values between 0~and
 
 Probability can be illustrated by rolling a die many times. Let $\hat{p}_n$ be the proportion of outcomes that are \resp{1} after the first $n$ rolls. As the number of rolls increases, $\hat{p}_n$ will converge to the probability of rolling a \resp{1}, $p = 1/6$. Figure~\ref{dieProp} shows this convergence for 100,000 die rolls. The tendency of $\hat{p}_n$ to stabilize around $p$ is described by the \term{Law of Large Numbers}. 
 
-\begin{figure}[bt]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.85\textwidth]{ch_probability/figures/dieProp/dieProp}
 \caption{The fraction of die rolls that are 1 at each stage in a simulation. The proportion tends to get closer to the probability $1/6 \approx 0.167$ as the number of rolls increases.}
@@ -175,15 +178,14 @@ The \term{Addition Rule} guarantees the accuracy of this approach when the outco
   \end{align*}
 \end{onebox}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 We are interested in the probability of rolling a \resp{1}, \resp{4}, or \resp{5}. (a) Explain why the outcomes \resp{1}, \resp{4}, and \resp{5} are disjoint. (b) Apply the Addition Rule for disjoint outcomes to determine $P($\resp{1} or \resp{4} or \resp{5}$)$.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(a) The random process is a die roll, and at most one of these outcomes can come up. This means they are disjoint outcomes. (b)~$P($\resp{1} or \resp{4} or \resp{5}$) = P($\resp{1}$)+P($\resp{4}$)+P($\resp{5}$) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2}$}
-
-\Comment{The next Guided Practice is new, replacing one that had
-    used the \data{email} data set.}
 
 \index{data!loans|(}
 \begin{exercisewrap}
@@ -192,15 +194,21 @@ In the \data{loans} data set in Chapter~\ref{ch_summarizing_data},
 the \var{homeownership} variable described whether the borrower
 rents, has a mortgage, or owns her property.
 Of the 10,000 borrowers, 3858 rented, 4789 had a mortgage,
-and 1353 owned her home.
-(a)~Are the outcomes \resp{rent}, \resp{mortgage},
-and \resp{own} disjoint?
-(b)~Determine the proportion of loans with value \resp{mortgage}
-and \resp{own} separately.
-(c)~Use the Addition Rule for disjoint outcomes to compute
-the probability a randomly selected loan from the data set
-is for someone who has a mortgage or owns her
-home.\footnotemark
+and 1353 owned their home.\footnotemark{}
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    Are the outcomes \resp{rent}, \resp{mortgage},
+    and \resp{own} disjoint?
+\item
+    Determine the proportion of loans with value \resp{mortgage}
+    and \resp{own} separately.
+\item
+    Use the Addition Rule for disjoint outcomes to compute
+    the probability a randomly selected loan from the data set
+    is for someone who has a mortgage or owns her
+    home.
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(a)~Yes. Each loan is categorized in only one
@@ -216,7 +224,7 @@ Data scientists rarely work with individual outcomes and instead consider \index
 
 \begin{figure}[hhh]
   \centering
-  \Figure{0.55}{disjointSets}
+  \Figure{0.45}{disjointSets}
   \caption{Three events, $A$, $B$, and $D$, consist of
       outcomes from rolling a die.
       $A$ and $B$ are disjoint since they do not have
@@ -260,6 +268,9 @@ In Guided Practice~\ref{exerExaminingDisjointSetsABD}, you confirmed $B$ and $D$
 \index{event|)}
 \index{disjoint|)}
 \index{mutually exclusive|)}
+
+
+\D{\newpage}
 
 \subsection{Probabilities when events are not disjoint}
 
@@ -375,8 +386,9 @@ these attributes?\footnotemark
 \index{data!loans|)}
 
 
-\subsection{Probability distributions}
+\D{\newpage}
 
+\subsection{Probability distributions}
 
 A \term{probability distribution} is a table of all disjoint outcomes and their associated probabilities. Figure~\ref{diceProb} shows the probability distribution for the sum of two dice. 
 
@@ -434,7 +446,7 @@ Income Range & \$0-25k & \$25k-50k & \$50k-100k & \$100k+ \\
 Chapter~\ref{introductionToData} emphasized the importance of plotting data to provide quick summaries. Probability distributions can also be summarized in a bar plot. For instance, the distribution of US household incomes is shown in Figure~\ref{usHouseholdIncomeDistBar} as a bar plot. %\footnote{It is also possible to construct a distribution plot when income is not artificially binned into four groups. \emph{Continuous} distributions are considered in Section~\ref{contDist}.}
 The probability distribution for the sum of two dice is shown in Figure~\ref{diceProb} and plotted in Figure~\ref{diceSumDist}.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figure{0.7}{usHouseholdIncomeDistBar}
   \caption{The probability distribution of US household income.}
@@ -457,10 +469,13 @@ Rolling a die produces a value in the set $\{$\resp{1}, \resp{2}, \resp{3}, \res
 Let $D=\{$\resp{2}, \resp{3}$\}$ represent the event that the outcome of a die roll is \resp{2} or \resp{3}. Then the \term{complement}\index{Ac@$A^c$} of $D$ represents all outcomes in our sample space that are not in $D$, which is denoted by $D^c = \{$\resp{1}, \resp{4}, \resp{5}, \resp{6}$\}$. That is, $D^c$ is the set of all possible outcomes not already included in $D$. Figure~\ref{complementOfD} shows the relationship between $D$, $D^c$, and the sample space $S$. 
 
 \begin{figure}[hht]
-\centering
-\includegraphics[width=0.55\textwidth]{ch_probability/figures/complementOfD/complementOfD}
-\caption{Event $D=\{$\resp{2}, \resp{3}$\}$ and its complement, $D^c = \{$\resp{1}, \resp{4}, \resp{5}, \resp{6}$\}$. $S$~represents the sample space, which is the set of all possible outcomes.}
-\label{complementOfD}
+  \centering
+  \Figure{0.55}{complementOfD}
+  \caption{Event $D=\{$\resp{2}, \resp{3}$\}$ and its complement,
+      $D^c = \{$\resp{1}, \resp{4}, \resp{5}, \resp{6}$\}$.
+      $S$~represents the sample space, which is the set of
+      all possible outcomes.}
+  \label{complementOfD}
 \end{figure}
 
 \begin{exercisewrap}
@@ -666,7 +681,13 @@ Because the equation holds, the event that the card is a heart and the event tha
 \section{Conditional probability}
 \label{conditionalProbabilitySection}
 
-\Comment{Need to add an introductory paragraph.}
+There can be rich relationships between two or more
+variables that are useful to understand.
+For example a car insurance company will consider
+information about a person's driving history to assess
+the risk that they will be responsible for an accident.
+These types of relationships are the realm of conditional
+probabilities.
 
 
 \subsection{Exploring probabilities with a contingency table}
@@ -812,8 +833,7 @@ P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
 \end{align*}
 It is common to substitute a comma for ``and'' in a joint
 probability, although using either the word ``and'' or a
-comma is acceptable.
-That is,
+comma is acceptable:
 \begin{center}
 $P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion},
     \var{truth} is \resp{fashion}})$ \\[2mm]
@@ -880,6 +900,8 @@ Total & 1.0000 \\
 \caption{Joint probability distribution for the \data{photo\us{}classify} data set.}
 \label{photoClassifyDistribution}
 \end{figure}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -961,6 +983,8 @@ vertical bar:
 \end{align*}
 The vertical bar ``$|$'' is read as \emph{given}.
 
+\D{\newpage}
+
 In the last equation, we computed the probability a photo
 was about fashion based on the condition that the ML algorithm
 predicted it was about fashion as a fraction:
@@ -1029,6 +1053,8 @@ general formula for conditional probability.
   \end{align*}
 \end{onebox}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 \label{fashionProbOfMLNotGivenTruthNot}%
@@ -1058,7 +1084,8 @@ Table~\vref{photoClassifyProbTable} may be helpful.\footnotemark
   $0.1081 / 0.1696 = 0.6374$.}
 
 \begin{exercisewrap}
-\begin{nexercise}\label{whyCondProbSumTo1}
+\begin{nexercise}
+\label{whyCondProbSumTo1}%
 (a)~Determine the probability that the algorithm is incorrect
 if it is known the photo is about fashion. \\[1mm]
 (b)~Using the answers from part~(a) and
@@ -1167,6 +1194,8 @@ It is useful to think of $A$ as the outcome of interest and $B$ as the condition
 \end{onebox}
 This General Multiplication Rule is simply a rearrangement of the equation for conditional probability.
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
 We will compute our answer using the General Multiplication Rule and then verify it using Figure~\ref{smallpoxProbabilityTable}. We want to determine
@@ -1226,6 +1255,9 @@ Based on the probabilities computed above, does it appear that inoculation is ef
 \end{exercisewrap}
 \footnotetext{The samples are large relative to the difference in death rates for the ``inoculated'' and ``not inoculated'' groups, so it seems there is an association between \var{inoculated} and \var{outcome}. However, as noted in the solution to Guided Practice~\ref{SmallpoxInoculationObsExpExercise}, this is an observational study and we cannot be sure if there is a causal connection. (Further research has shown that inoculation is effective at reducing death rates.)}
 
+
+\D{\newpage}
+
 \subsection{Independence considerations in conditional probability}
 
 If two events are independent, then knowing the outcome of one should provide no information about the other. We can show this is mathematically true using conditional probabilities.
@@ -1262,6 +1294,8 @@ Ron is watching a roulette table in a casino and notices that the last five outc
 \footnotetext{He has forgotten that the next roulette spin is independent of the previous spins. Casinos do employ this practice; they post the last several outcomes of many betting games to trick unsuspecting gamblers into believing the odds are in their favor. This is called the \term{gambler's fallacy}.}
 
 
+\D{\newpage}
+
 \subsection{Tree diagrams}
 
 \index{data!smallpox|)}
@@ -1296,7 +1330,11 @@ P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}})
   \qquad\text{and}\qquad
   P(\text{\var{final} = \resp{A}})
 \end{align*}
-However, this information is not provided, and it is not obvious how to calculate these probabilities. Since we aren't sure how to proceed, it is useful to organize the information into a tree diagram, as shown in Figure~\ref{testTree}. When constructing a tree diagram, variables provided with marginal probabilities are often used to create the tree's primary branches; in this case, the marginal probabilities are provided for midterm grades. The final grades, which correspond to the conditional probabilities provided, will be shown on the secondary branches.
+However, this information is not provided, and it is not obvious how to calculate these probabilities. Since we aren't sure how to proceed, it is useful to organize the information into a tree diagram:
+\begin{center}
+\Figure{0.85}{testTree}
+\end{center}
+When constructing a tree diagram, variables provided with marginal probabilities are often used to create the tree's primary branches; in this case, the marginal probabilities are provided for midterm grades. The final grades, which correspond to the conditional probabilities provided, will be shown on the secondary branches.
 
 With the tree diagram constructed, we may compute the required probabilities:
 \begin{align*}
@@ -1317,24 +1355,24 @@ The probability the student also earned an A on the midterm is about 0.39.
 \end{nexample}
 \end{examplewrap}
 
-\begin{figure}[ht]
-  \centering
-  \Figure{0.9}{testTree}
-  \caption{A tree diagram describing the \var{midterm}
-      and \var{final} variables.}
-  \label{testTree}
-\end{figure}
+%\begin{figure}[ht]
+%  \centering
+%  \Figure{0.9}{testTree}
+%  \caption{A tree diagram describing the \var{midterm}
+%      and \var{final} variables.}
+%  \label{testTree}
+%\end{figure}
 
 \begin{exercisewrap}
 \begin{nexercise}
 After an introductory statistics course, 78\% of students can successfully construct tree diagrams. Of those who can construct tree diagrams, 97\% passed, while only 57\% of those students who could not construct tree diagrams passed. (a)~Organize this information into a tree diagram. (b)~What is the probability that a randomly selected student passed? (c)~Compute the probability a student is able to construct a tree diagram if it is known that she passed.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{\begin{minipage}[t]{0.47\linewidth}
+\footnotetext{\begin{minipage}[t]{0.27\linewidth}
 (a) The tree diagram is shown to the right.
 (b)~Identify which two joint probabilities represent students who passed, and add them: $P($passed$) = 0.7566+0.1254= 0.8820$. (c)~$P($construct tree diagram $|$ passed$) = \frac{0.7566}{0.8820} = 0.8578$. \vspace{15mm} \\\ 
 \end{minipage}
-\begin{minipage}[c]{0.5\linewidth}
+\begin{minipage}[c]{0.7\linewidth}
 \includegraphics[width=\textwidth]{ch_probability/figures/treeDiagramAndPass/treeDiagramAndPass} \vspace{-25mm}
 \end{minipage}}
 
@@ -1355,6 +1393,8 @@ P(\text{statement about variable 2 } | \text{ statement about variable 1})
 Tree diagrams can be used to find the second conditional probability when given the first. However, sometimes it is not possible to draw the scenario in a tree diagram. In these cases, we can apply a very useful and general formula: Bayes' Theorem.
 
 We first take a critical look at an example of inverting conditional probabilities where we still apply a tree diagram.
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{In Canada, about 0.35\% of women over 40
@@ -1381,7 +1421,15 @@ Notice that we are given sufficient information to quickly compute the probabili
 \begin{align*}
 P(\text{has BC } | \text{ mammogram$^+$}) = \frac{P(\text{has BC and mammogram$^+$})}{P(\text{mammogram$^+$})}
 \end{align*}
-where ``has BC'' is an abbreviation for the patient actually having breast cancer and ``mammogram$^+$'' means the mammogram screening was positive. A tree diagram is useful for identifying each probability and is shown in Figure~\ref{BreastCancerTreeDiagram}. The probability the patient has breast cancer and the mammogram is positive is
+where ``has BC'' is an abbreviation for the patient having
+breast cancer and ``mammogram$^+$'' means the mammogram screening
+was positive.
+We can construct a tree diagram for these probabilities:
+\begin{center}
+\Figure{0.9}{BreastCancerTreeDiagram}
+\end{center}
+The probability the patient has breast cancer
+and the mammogram is positive is
 \begin{align*}
 P(\text{has BC and mammogram$^+$}) &= P(\text{mammogram$^+$ } | \text{ has BC})P(\text{has BC}) \\
 	&= 0.89\times 0.0035 = 0.00312
@@ -1407,15 +1455,17 @@ That is, even if a patient has a positive mammogram screening, there is still on
 \end{nexample}
 \end{examplewrap}
 
-\begin{figure}[h]
-  \centering
-  \Figure{0.93}{BreastCancerTreeDiagram}
-  \caption{Tree diagram for
-      Example~\ref{probBreastCancerGivenPositiveTestExample},
-      computing the probability a random patient who tests
-      positive on a mammogram actually has breast cancer.}
-\label{BreastCancerTreeDiagram}
-\end{figure}
+%\begin{figure}[h]
+%  \centering
+%  \Figure{0.75}{BreastCancerTreeDiagram}
+%  \caption{Tree diagram for
+%      Example~\ref{probBreastCancerGivenPositiveTestExample}.}%,
+%      %computing the probability a random patient who tests
+%      %positive on a mammogram actually has breast cancer.}
+%\label{BreastCancerTreeDiagram}
+%\end{figure}
+
+\D{\newpage}
 
 Example~\ref{probBreastCancerGivenPositiveTestExample} highlights why doctors often run more tests regardless of a first positive test result. When a medical condition is rare, a single positive test isn't generally definitive.
 
@@ -1457,8 +1507,15 @@ Bayes' Theorem states that this conditional probability can be identified as the
 where $A_2$, $A_3$, ..., and $A_k$ represent all other possible outcomes of the first variable.\index{Bayes' Theorem|textbf}
 \end{onebox}
 
-Bayes' Theorem is just a generalization of what we have done using tree diagrams. The numerator identifies the probability of getting both $A_1$ and $B$. The denominator is the marginal probability of getting $B$. This bottom component of the fraction appears long and complicated since we have to add up probabilities from all of the different ways to get $B$. We always completed this step when using tree diagrams. However, we usually did it in a separate step so it didn't seem as complex.
+Bayes' Theorem is a generalization of what we have done
+using tree diagrams.
+The numerator identifies the probability of getting both
+$A_1$ and~$B$.
+The denominator is the marginal probability of getting~$B$.
+This bottom component of the fraction appears long and
+complicated since we have to add up probabilities from all of the different ways to get $B$. We always completed this step when using tree diagrams. However, we usually did it in a separate step so it didn't seem as complex.
 
+\noindent%
 To apply Bayes' Theorem correctly, there are two preparatory steps:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1466,21 +1523,18 @@ To apply Bayes' Theorem correctly, there are two preparatory steps:
 \item[(2)] Then identify the probability of the outcome $B$, conditioned on each possible scenario for the first variable: $P(B | A_1)$, $P(B | A_2)$, ..., $P(B | A_k)$.
 \end{enumerate}
 Once each of these probabilities are identified, they can be applied directly within the formula.
-
-\begin{tipBox}{\tipBoxTitle{Only use Bayes' Theorem when tree diagrams are difficult}
-Drawing a tree diagram makes it easier to understand how two variables are connected. Use Bayes' Theorem only when there are so many scenarios that drawing a tree diagram would be complex.}
-\end{tipBox}
+Bayes' Theorem tends to be a good option when there are so many scenarios that drawing a tree diagram would be complex.
 
 \begin{exercisewrap}
 \begin{nexercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsASportingEvent}
 Jose visits campus every Thursday evening. However, some days the parking garage is full, often due to college events. There are academic events on 35\% of evenings, sporting events on 20\% of evenings, and no events on 45\% of evenings. When there is an academic event, the garage fills up about 25\% of the time, and it fills up 70\% of evenings with sporting events. On evenings when there are no events, it only fills up about 5\% of the time. If Jose comes to campus and finds the garage full, what is the probability that there is a sporting event? Use a tree diagram to solve this problem.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{\begin{minipage}[t]{0.47\linewidth}
+\footnotetext{\begin{minipage}[t]{0.27\linewidth}
 The tree diagram, with three primary branches, is shown to the right. Next, we identify two probabilities from the tree diagram. (1) The probability that there is a sporting event and the garage is full: 0.14. (2) The probability the garage is full: $0.0875 + 0.14 + 0.0225 = 0.25$. Then the solution is the ratio of these probabilities: $\frac{0.14}{0.25} = 0.56$. If the garage is full, there is a 56\% probability that there is a sporting event. \vspace{0.1mm} \\\ 
 \end{minipage}
-\begin{minipage}[c]{0.5\linewidth}
-\includegraphics[width=\textwidth]{ch_probability/figures/treeDiagramGarage/treeDiagramGarage}\vspace{-30mm}
+\begin{minipage}[c]{0.7\linewidth}
+\Figure{}{treeDiagramGarage}\vspace{-30mm}
 \end{minipage}}
 
 \begin{examplewrap}
@@ -1499,6 +1553,8 @@ P(A_1 | B) &= \frac{P(B | A_1) P(A_1)}{P(B | A_1) P(A_1) + P(B | A_2) P(A_2) + P
 Based on the information that the garage is full, there is a 56\% probability that a sporting event is being held on campus that evening.
 \end{nexample}
 \end{examplewrap}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsAnAcademicEvent}
@@ -1696,6 +1752,8 @@ E(X)
 The Greek letter $\mu$\index{Greek!mu ($\mu$)} may be used in place of the notation $E(X)$.
 \end{onebox}
 
+\D{\newpage}
+
 The expected value for a random variable represents the average outcome. For example, $E(X)=117.85$ represents the average amount the bookstore expects to make from a single student, which we could also write as $\mu=117.85$.
 
 It is also possible to compute the expected value of a continuous random variable (see Section~\ref{contDist}). However, it requires a little calculus and we save it for a later class.\footnote{$\mu = \int xf(x)dx$ where $f(x)$ represents a function for the density curve.}
@@ -1718,6 +1776,8 @@ In physics, the expectation holds the same meaning as the center of gravity. The
 
 \index{expectation|)}
 
+
+\D{\newpage}
 
 \subsection{Variability in random variables}
 
@@ -1810,6 +1870,8 @@ Breaking the weekly travel time $W$ into pieces provides a framework for underst
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{It takes John an average of 18 minutes each day to commute to work. What would you expect his average commute time to be for the week?}
 We were told that the average (i.e. expected value) of the commute time is 18 minutes per day: $E(X_i) = 18$. To get the expected time for the sum of the five days, we can add up the expected time for each individual day:
@@ -1854,7 +1916,11 @@ where $a$ and $b$ are some fixed and known numbers. For John's commute time, the
 \begin{align*}
 1X_1 + 1 X_2 + 1 X_3 + 1 X_4 + 1 X_5
 \end{align*}
-For Elena's net gain or loss, the $X$ random variable had a coefficient of +1 and the $Y$ random variable had a coefficient of -1.
+For Elena's net gain or loss, the $X$ random variable had
+a coefficient of +1 and the $Y$ random variable had
+a coefficient of~-1.
+
+\D{\newpage}
 
 When considering the average of a linear combination of random variables, it is safe to plug in the mean of each random variable and then compute the final result. For a few examples of nonlinear combinations of random variables -- cases where we cannot simply plug in the means -- see the footnote.\footnote{If $X$ and $Y$ are random variables, consider the following combinations: $X^{1+Y}$, $X\times Y$, $X/Y$. In such cases, plugging in the average value for each random variable and computing the result will not generally lead to an accurate average value for the end result.}
 
@@ -1869,10 +1935,6 @@ a\times E(X) + b\times E(Y)
 \end{align*}
 Recall that the expected value is the same as the mean, e.g. $E(X) = \mu_X$.
 \end{onebox}
-
-\Comment{The next example about stock returns
-    have been updated and continues into the text of
-    Section~\ref{var_lin_combo_of_RVs}.}
 
 \begin{examplewrap}
 \begin{nexample}{Leonard has invested \$6000 in Caterpillar Inc
@@ -1922,6 +1984,8 @@ a loss this month?\footnotemark
   While stocks tend to rise over time, they are often
   volatile in the short term.}
 
+
+\D{\newpage}
 
 \subsection{Variability in linear combinations of random variables}
 \label{var_lin_combo_of_RVs}
@@ -1991,7 +2055,7 @@ Var(aX + bY) = a^2\times Var(X) + b^2\times Var(Y)
 \end{align*}
 It is important to note that this equality assumes the
 random variables are independent;
-\Comment{new description here about if independence is broken}
+%\Comment{new description here about if independence is broken}
 if independence doesn't hold, then a modification to
 this equation would be required that we leave as a topic
 for a future course to cover.
@@ -2083,7 +2147,7 @@ Consider again Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAu
 
 \begin{figure}[ht]
   \centering
-  \Figure{0.85}{fdicHistograms}
+  \Figure{}{fdicHistograms}
   \caption{Four hollow histograms of US adults heights
       with varying bin widths.}
   \label{fdicHistograms}
@@ -2099,7 +2163,7 @@ This fraction is the same as the proportion of the histogram's area that falls i
 \end{nexample}
 \end{examplewrap}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figure{0.9}{usHeightsHist180185}
   \caption{A histogram with bin sizes of 2.5 cm.
@@ -2108,6 +2172,8 @@ This fraction is the same as the proportion of the histogram's area that falls i
   \label{usHeightsHist180185}
 \end{figure}
 
+
+\D{\newpage}
 
 \subsection{From histograms to continuous distributions}
 
@@ -2124,6 +2190,9 @@ This smooth curve represents a \term{probability density function} (also called 
 
 \index{hollow histogram|)}
 
+
+\D{\newpage}
+
 \subsection{Probabilities from continuous distributions}
 
 We computed the proportion of individuals with heights \resp{180} to \resp{185} cm in Example~\ref{contDistProb} as a fraction:
@@ -2138,11 +2207,13 @@ P(\text{\var{height} between \resp{180} and \resp{185}})
 \end{align*}
 The probability that a randomly selected person is between \resp{180} and \resp{185} cm is 0.1157. This is very close to the estimate from Example~\ref{contDistProb}: 0.1172. 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ch_probability/figures/fdicHeightContDistFilled/fdicHeightContDistFilled}
-\caption{Density for heights in the US adult population with the area between 180 and 185 cm shaded. Compare this plot with Figure~\ref{usHeightsHist180185}.}
-\label{fdicHeightContDistFilled}
+\begin{figure}[h]
+  \centering
+  \Figure{0.7}{fdicHeightContDistFilled}
+  \caption{Density for heights in the US adult population
+      with the area between 180 and 185 cm shaded.
+      Compare this plot with Figure~\ref{usHeightsHist180185}.}
+  \label{fdicHeightContDistFilled}
 \end{figure}
 
 \begin{exercisewrap}
@@ -2155,7 +2226,9 @@ Three US adults are randomly selected. The probability a single adult is between
 \end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Brief answers: (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$. (b) $(1-0.1157)^3 = 0.692$}
+\footnotetext{Brief answers:
+  (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$.
+  (b) $(1-0.1157)^3 = 0.692$}
 
 \begin{examplewrap}
 \begin{nexample}{What is the probability that a randomly selected person is \textbf{exactly} \resp{180}~cm? Assume you can measure perfectly.}
