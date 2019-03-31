@@ -129,6 +129,8 @@ while there are a handful of borrowers with income above~\$250,000.
   \label{medianHHIncomePoverty}
 \end{figure}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 What do scatterplots reveal about the data,
@@ -191,6 +193,8 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
       distribution's mean is shown as a red triangle.}
   \label{loan_int_rate_dot_plot_stacked}
 \end{figure}
+
+\D{\newpage}
 
 The \term{mean}, often called the
 \term{average}\index{mean!average}, is a common way
@@ -264,35 +268,35 @@ $\mu$ using the sample mean, $\bar{x}$.
 
 \begin{examplewrap}
 \begin{nexample}{The average interest rate across all loans
-  in the population can be estimated using the sample data.
-  Based on the sample of 50 loans,
-  what would be a reasonable estimate of $\mu_x$,
-  the mean interest rate for all loans in the
-  full data set?}
-The sample mean, \loanAvg{}\%, provides a rough estimate
-of $\mu_x$.
-While it's not perfect, this is our single best guess
-%\emph{point estimate}\index{point estimate}
-of the average interest rate of all the loans in the
-population under study.
+    in the population can be estimated using the sample data.
+    Based on the sample of 50 loans,
+    what would be a reasonable estimate of $\mu_x$,
+    the mean interest rate for all loans in the
+    full data set?}
+  The sample mean, \loanAvg{}\%, provides a rough estimate
+  of $\mu_x$.
+  While it's not perfect, this is our single best guess
+  %\emph{point estimate}\index{point estimate}
+  of the average interest rate of all the loans in the
+  population under study.
 
-In Chapter~\ref{foundationsForInference} and beyond,
-we will develop tools to characterize the accuracy
-of \emph{point estimates}\index{point estimate}
-like the sample mean,
-and we will find that point estimates
-based on larger samples tend to be more accurate than
-those based on smaller samples.
+  In Chapter~\ref{foundationsForInference} and beyond,
+  we will develop tools to characterize the accuracy
+  of \emph{point estimates}\index{point estimate}
+  like the sample mean.
+  As you might have guessed,
+  point estimates based on larger samples tend to be
+  more accurate than those based on smaller samples.
 \end{nexample}
 \end{examplewrap}
 
-The mean is useful because it allows us to
-rescale or standardize a metric to something more easily
-interpretable and comparable.
 
 \begin{examplewrap}
-\begin{nexample}{Provide a couple examples where the mean
-    is a useful tool for making comparisons.}
+\begin{nexample}{The mean is useful because it allows us to
+    rescale or standardize a metric into something more easily
+    interpretable and comparable.
+    Provide 2 examples where the mean
+    is useful for making comparisons.}
 
   1. We would like to understand if a new drug is more
   effective at treating asthma attacks than the standard drug.
@@ -318,8 +322,10 @@ interpretable and comparable.
   Instead, we should look at the average number of asthma
   attacks per patient in each group:
   \begin{align*}
-  & \text{New drug: } \frac{200}{500} = 0.4 % \\
-  && \text{Standard drug: }\frac{300}{1000} = 0.3
+  & \text{New drug: } 200 / 500 = 0.4 % \\
+      %\frac{200}{500} = 0.4 % \\
+  && \text{Standard drug: } 300 / 1000 = 0.3
+      %\frac{300}{1000} = 0.3
   % &     &&  %\\
   % & = 0.3\text{ asthma attacks per patient}
   %     && = 0.4\text{ asthma attacks per patient}
@@ -394,17 +400,25 @@ interpretable and comparable.
   \$30,861.
   Had we computed the \emph{simple} mean of per capita income
   across counties, the result would have been just \$26,093!
+
+  This example used what is called a
+  \term{weighted mean}\index{mean!weighted mean}.
+  For more information
+  on this topic, check out the following
+  online supplement regarding weighted means
+  \oiRedirect{stat_wtd_mean}
+      {openintro.org/d?file=stat\_wtd\_mean}.
 \end{nexample}
 \end{examplewrap}
 % library(openintro); all_income <- sum(county$pop2017 * county$per_capita_income, na.rm = TRUE); all_pop <- sum(county$pop2017, na.rm = TRUE); all_income / all_pop; mean(county$per_capita_income, na.rm = TRUE)
 
-Example~\ref{wtdMeanOfIncome} used what is called
-a \term{weighted mean}\index{mean!weighted mean},
-which will not be a key topic in this textbook.
-However, we have provided an online supplement on
-weighted means for interested readers under
-\oiRedirect{stat_wtd_mean}
-    {www.openintro.org/d?file=stat\_wtd\_mean}.
+%Example~\ref{wtdMeanOfIncome} used what is called
+%a \term{weighted mean}\index{mean!weighted mean},
+%which will not be a key topic in this textbook.
+%However, we have provided an online supplement on
+%weighted means for interested readers under
+%\oiRedirect{stat_wtd_mean}
+%    {www.openintro.org/d?file=stat\_wtd\_mean}.
 
 
 
@@ -495,6 +509,8 @@ directions are called \term{symmetric}.\index{skew!symmetric}
   If a distribution has a long right tail, it is right skewed.
 \end{onebox}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 Take a look at the dot plots in
@@ -548,7 +564,7 @@ bins by a few observations.
 
 \begin{figure}[h]
   \centering
-  \Figure{}{singleBiMultiModalPlots}
+  \Figure{0.9}{singleBiMultiModalPlots}
   \caption{Counting only prominent peaks, the
       distributions are (left to right) unimodal,
       bimodal, and multimodal.
@@ -613,6 +629,8 @@ The most important part of this examination is to better
 understand your data.
 
 
+
+\D{\newpage}
 
 \subsection{Variance and standard deviation}
 \label{variability}
@@ -690,9 +708,9 @@ standard deviation.
 The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)}
 is the Greek letter \emph{sigma}.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \Figure{0.75}{sdRuleForIntRate}
+  \Figure{0.73}{sdRuleForIntRate}
   \caption{For the \var{interest\us{}rate} variable,
       34 of the 50 loans (68\%) had interest rates within
       1~standard deviation of the mean,
@@ -717,7 +735,7 @@ is the Greek letter \emph{sigma}.
 
 \begin{figure}
   \centering
-  \Figure{0.64}{severalDiffDistWithSdOf1}
+  \Figure{0.6}{severalDiffDistWithSdOf1}
   \caption{Three very different population distributions
       with the same mean $\mu=0$ and standard deviation
       $\sigma=1$.}
@@ -776,6 +794,8 @@ the standard deviation is used in calculations that help us
 understand how much a sample mean varies from one sample
 to the next.
 
+
+\D{\newpage}
 
 \subsection{Box plots, quartiles, and the median}
 
@@ -939,6 +959,8 @@ estimate the following values for
 \CalculatorVideos{how to create statistical summaries and box plots}
 
 
+\D{\newpage}
+
 \subsection{Robust statistics}
 
 How are the \indexthis{sample statistics}{sample statistic}
@@ -1041,6 +1063,8 @@ or median?\footnotemark
 
 \index{data!loan50|)}
 
+
+\D{\newpage}
 
 \subsection{Transforming data (special topic)}
 \label{transformingDataSubsection}
@@ -1147,6 +1171,8 @@ or straighten a nonlinear relationship in a scatterplot.
 
 \index{data!county|)}
 
+
+\D{\newpage}
 
 \subsection{Mapping data (special topic)}
 
@@ -1910,6 +1936,9 @@ for their ease in comparing groups.
 
 \index{data!loans|)}
 
+
+\D{\newpage}
+
 \subsection{Comparing numerical data across groups}
 \label{comparingAcrossGroups}
 
@@ -1947,7 +1976,7 @@ to give a better sense of some of the raw median
 income data.
 
 \newcommand{\npgpad}[1]{\hspace{2mm}#1\hspace{1.5mm}\ }
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{ ccc ccc c ccc }
 \multicolumn{10}{c}{\bf Median Income for 150 Counties,
@@ -1984,6 +2013,8 @@ income data.
     had no population gain are shown on the right.}
 \label{countyIncomeSplitByPopGainTable}
 \end{figure}
+
+\D{\newpage}
 
 The \term{side-by-side box plot}
 \index{box plot!side-by-side box plot}
@@ -2179,6 +2210,8 @@ and it is unclear whether the difference provides
 \emph{convincing evidence} that the vaccine is
 effective.
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{Data scientists are sometimes called
     upon to evaluate the strength of evidence.
@@ -2290,6 +2323,8 @@ world where the vaccine doesn't influence the infection.
 Let's complete another \term{randomization} using
 a simulation.
 
+\D{\newpage}
+
 In this \term{simulation}, we take 20 notecards to
 represent the 20 patients, where we write down ``infection''
 on 11 cards and ``no infection'' on 9 cards.
@@ -2398,6 +2433,8 @@ case since the sample sizes are so small in this study.
   Such a low probability indicates a rare event.
 \end{nexample}
 \end{examplewrap}
+
+\D{\newpage}
 
 The difference of \malariaIRDiffPerc{} being
 a rare event suggests two possible interpretations
