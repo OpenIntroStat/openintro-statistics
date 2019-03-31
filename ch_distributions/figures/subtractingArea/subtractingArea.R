@@ -47,7 +47,7 @@ segments(c(11, 11), c(0.17, 0.23), c(13, 13), lwd = 3)
 dev.off()
 
 
-pdf('subtracted.pdf', 2.5, 0.95)
+pdf('subtracted.pdf', 3, 0.95)
 par(las = 1,
     mar = c(1.5, 3, 0, 0),
     mgp = c(3, 0.55, 0))

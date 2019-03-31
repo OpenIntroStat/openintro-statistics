@@ -3,7 +3,7 @@ data(COL)
 
 set.seed(1)
 
-pdf('satActNormals.pdf', 6, 4)
+pdf('satActNormals.pdf', 6, 3.5)
 par(mfrow = c(2, 1),
     las = 1,
     mar = c(2.5, 0, 0.5, 0))
