@@ -36,7 +36,7 @@ the sample mean $\bar{x}$ can also be modeled using
 a normal distribution when certain conditions are met.
 However, we'll soon learn that a new distribution,
 called the $t$-distribution,
-tends to be more useful when the sample size is small.
+tends to be more useful when working with the sample mean.
 %This will be our main focus for much of this chapter,
 %but we will soon learn that complications can arise when
 %the sample size is relatively small:
@@ -66,78 +66,258 @@ tends to be more useful when the sample size is small.
 \subsection[The distribution of $\bar{x}$]
     {The sampling distribution of $\mathbf{\bar{x}}$}
 
-Under certain conditions, the sample mean tends to follow
-a normal distribution centered at the the population mean, $\mu$.
+The sample mean tends to follow
+a normal distribution centered at the the population mean, $\mu$,
+when certain conditions are met.
 Additionally, we can compute a standard error for the sample
-mean using both the population standard deviation
-and the sample size.
+mean using the population standard deviation $\sigma$
+and the sample size $n$.
 
 \begin{onebox}{Central Limit Theorem for the sample mean}
-  When we collect a sample of independent observations,
-  the sample mean $\bar{x}$ tends to follow a normal
-  distribution with the following mean and standard error:
+  When we collect a sufficiently large sample of
+  $n$~independent observations from a population with
+  standard deviation $\sigma$,
+  the sampling distribution of $\bar{x}$ will be nearly
+  normal with
   \begin{align*}
   &\text{Mean}=\mu
   &&\text{Standard Error }(SE) = \frac{\sigma}{\sqrt{n}}
   \end{align*}
-  The normal approximation for the sampling distribution
-  of $\bar{x}$ will generally be more accurate with a larger
-  sample size.
 \end{onebox}
 
-In practice, we cannot directly calculate the standard error
-for $\bar{x}$, since generally we do not know the population
-standard deviation $\sigma$.
-We encountered a similar issue when we worked with proportions,
-and our solution was to use the sample value to estimate the
-standard error of the point estimate;
-we'll do something similar here, using the sample
-standard deviation $s$ in place of $\sigma$ when computing
-the standard error.
-This substitution strategy tends to work well when we have
-a lot of data -- when the sample size is large --
-but it is less reliable when the sample size is smaller
-than about 30 independent observations.
+\noindent%
+There are two conditions noted above for the
+Central Limit Theorem\index{Central Limit Theorem}
+to apply to $\bar{x}$.
+\begin{description}
+\item[Independence.]
+    First, the sample observations must be independent,
+    such as a simple random sample from a population.
+    Second, we also must check that the sample size is
+    sufficiently large for $\bar{x}$ to be nearly normal.
+    This second condition is more nuanced and depends
+    on the population distribution itself.
+\item[Sample size.]
+    The true requirement is that the sample comes from
+    a normally distributed population,
+    where we can relax this condition for larger sample sizes.
+    This is obviously a vague guideline,
+    so we next provide a rule of thumb as a substitute.
+\end{description}
+%%Before we get to the sample size consideration, let's
+%%consider a special case of the normal distribution
+%%where any sample size is sufficient.
+%
+%%There is also a special case of the Central Limit Theorem
+%%for when the data come from a nearly normal distribution.
+%%In this case the sample mean will be nearly normal
+%%regardless of sample size.
+%
+%\begin{onebox}{Special case of the Central Limit Theorem
+%    for normally distributed data}
+%  The sampling distribution of $\bar{x}$ is nearly normal when
+%  the sample observations are independent and come from a nearly
+%  normal distribution.
+%  This is true for any sample size.
+%\end{onebox}
+%
+%%For population distributions that are not normal,
+%%the sample mean $\bar{x}$ will still look normal if the sample
+%%size is large enough.
+%%To check what is \emph{large enough}, we ask two questions:
+%%\begin{itemize}
+%%\item
+%%    Is the sample show evident skew or outliers?
+%%    If so, then if t
+%%\end{itemize}
+%
+%In practice, the population never exactly follows
+%a normal distribution,
+%and the more ``non-normal'' a population
+%distribution, the larger the required sample size required for
+%$\bar{x}$ to be reasonably modeled using a normal distribution.
+%The rough rule of thumb is, if you don't see any clear outliers
+%and we don't have reason to believe particularly extreme outliers
+%are present in population, then this condition is satisfied.
 
-\Comment{Something about how skewed distributions tend
-  to converge more slowly.}
+\begin{onebox}{Rule of thumb for $\bar{x}$ sample size check}
+  If there are no clear outliers in the data,
+  %and we don't
+  %have reason to believe particularly extreme outliers are
+  %present in population,
+  then the sample size condition is satisfied.
+  \stdvspace{}
 
-
-\subsection{The normality condition}
-\label{normalityCond}
-
-\index{Central Limit Theorem!normal data|(}
-
-A special case of the Central Limit Theorem ensures
-the sample mean will be nearly normal,
-regardless of sample size, when the data come from
-a nearly normal distribution.
-
-\begin{onebox}{Central Limit Theorem for normally distributed data}
-  The sampling distribution of the mean is nearly normal when
-  the sample observations are independent and come from a nearly
-  normal distribution.
-  This is true for any sample size.
+  If the sample size is at least $n = 30$ observations
+  and there are no \emph{particularly extreme} outliers,
+  then the sample size condition is satisfied.
 \end{onebox}
 
-We should exercise caution when verifying the normality condition
-for small samples.
-It is important to not only examine the data but also think about
-where the data come from, since it's hard to check this condition
-when we have very little data!
-For example, it's important to ask:
-would I expect this distribution to be symmetric, and am I confident that outliers are rare?
+The sample size check is nuanced, even with the rule of thumb.
+In this first course in statistics, you aren't expected
+to develop perfect judgement on this condition.
+However, you are expected to be able to handle the
+clear cut cases based on the core guidelines,
+which we introduce next to introduce the notion of
+a particularly extreme outlier.
+
+\begin{examplewrap}
+\begin{nexample}{Consider these two plots,
+    which have sample sizes of 15 and 50:
+    \begin{center}
+    \Figure{0.85}{outliers_and_ss_condition}
+    \end{center}
+    Evaluate whether the sample size condition satisfied
+    in each case.}
+  \label{outliers_and_ss_condition_ex}%
+  The first sample is relatively small ($n = 15$),
+  and no clear outliers are visible.
+  In this case, the sample size condition is reasonably met.
+
+  The second sample includes a particularly extreme outlier
+  that appears to be 5 times further from the
+  center of the distribution than the next furthest observation.
+  This is an example of a particularly extreme outlier,
+  and for a sample size of only $n = 50$,
+  the sample size condition would not be satisfied.
+\end{nexample}
+\end{examplewrap}
+
+%\begin{figure}[h]
+%  \centering
+%  \Figure{0.8}{outliers_and_ss_condition}
+%  \caption{Sample observations for
+%      Example~\ref{outliers_and_ss_condition_ex}.}
+%  \label{outliers_and_ss_condition}
+%\end{figure}
+
+%A more thorough sample size condition assessment would
+%also consider two additional aspects beyond the core
+%guidance above.
+
+%The most nuanced checks are then when the sample size
+%is very small -- and we have almost no observational data
+%to allow us to check the condition.
+%\begin{description}
+%\item[Population knowledge.]
+%    If we have information about the population beyond
+%    what we've observed in the sample, we would consider
+%    this information as well.
+%    For example, if the sample size is under 30
+%    and the population is known to be moderately skewed
+%    (something difficult to detect with a small sample
+%    in the observed data),
+%    we might still not consider the 
+%    For example, if the sample size is under 30 but the
+%    population is known to be moderately skewed,
+%    then the sample size condition is not reasonable.
+%    Likewise, if the population is known to have particularly
+%    extreme observations (examples below), then we may
+%    require a particularly large sample size if we want
+%    to use the normal model for $\bar{x}$.
+%\item[Relaxing the extreme outlier condition.]
+%    When the sample size gets very large,
+%    we may even be able to overcome issues with
+%    particularly extreme outliers.
+%    However, there isn't clear guidance, and instead,
+%    custom simulations can be helpful but are beyond
+%    the scope of this book.
+%\end{description}
+%In this first course in statistics,
+%you won't (and aren't expected to) have perfect judgement
+%on when the sample size condition is or is not met.
+%However, you are expected to be able to handle the
+%clear cut cases based on the core guidelines.
+
+%For those wanting to do more rigorous checks
+%or for the situation that the ,
+%then we add a 
+%below are slightly more careful checks, it's convenient
+%to break down 
+%\begin{description}
+%\item[Sample size under 30.]
+%    If the sample size is less than 30, then we simply follow
+%    the rule of thumb and there isn't
+%    extreme skew in the data (usually punctuated by
+%    extreme outliers), then we can proceed.
+%\item[Sample size at least 30.]
+%    If the sample size is at least 30 and there isn't
+%    extreme skew in the data (usually punctuated by
+%    extreme outliers), then we can proceed.
+%\end{description}
+%then it's generally reasonable to consider $\bar{x}$
+%as following a nearly normal distribution.
+
+\Comment{Check the ``99\%'' and ``hundreds'' claim in the
+  income example below.}
+
+\begin{examplewrap}
+\begin{nexample}{Describe a couple populations that you know
+    would have particularly extreme outliers.}
+  Wealth distributions in many countries have
+      particularly extreme outliers.
+      For example, over 99\% of the population
+      has fewer than \$10 million saved,
+      while there are hundreds individuals in the
+      United States with over \$1~billion and who
+      are unlikely to be captured in even a moderate-sized
+      sample.
+
+  Distribution of the number of subscribers for
+      anyone who has uploaded a video to YouTube.
+      Most such individuals will have built little to
+      no following, while others will have amassed tens
+      of millions of subscribers.
+
+%  So while we won't be quizzing you on a variety of applications
+%  in this book, when you apply these skills elsewhere it is
+%  important to keep this consideration in mind and do some
+%  research if you aren't sure about outliers.
+\end{nexample}
+\end{examplewrap}
+
+Generally, we do not presume you to always know when the
+underlying population has particularly extreme outliers.
+That~is, besides looking at the data itself,
+considering the mental check for whether particularly extreme
+outliers are likely to be a sanity check, not a formal check.
+
+%\begin{examplewrap}
+%\begin{nexample}{Suppose we randomly sampled 20 individuals
+%    from the United States and considered their incomes. %,
+%    % which are shown in the following distribution:
+%    However, the population is known to have particularly
+%    extreme outliers, e.g. some individuals with incomes
+%    above \$10 million.
+%    No matter what we observe in the original 20 observations,
+%    can you say whether we should proceed with modeling
+%    $\bar{x}$ using a normal distribution?}
+%  When we know the population distribution to have particularly
+%  extreme outliers, then even if we observe no outliers in our
+%  sample, we should not proceed to model $\bar{x}$ using
+%  a normal distribution.
+%
+%  Generally, we do not presume you to always know when the
+%  underlying population has particularly extreme outliers.
+%  So while we won't be quizzing you on a variety of applications
+%  in this book, when you apply these skills elsewhere it is
+%  important to keep this consideration in mind and do some
+%  research if you aren't sure about outliers.
+%\end{nexample}
+%\end{examplewrap}
+
+%However, if one or more of clear outliers are present are evidently present,
+%the guidelines around a reasonable minimum sample become murky.
+%If 
+%We'll see some other examples throughout the rest of this book,
+%which will help in developing some intuition around this topic,
+%but in many cases, data with .
 
 \index{Central Limit Theorem!normal data|)}
 
-This normality condition on the data may be relaxed for
-larger sample sizes.
-If the sample size is~10 or more, slight skew is not problematic.
-Once the sample size hits about~30, then moderate skew is
-reasonable.
-Data with strong skew or outliers require a more cautious analysis
-unless the sample size is particularly large.
 
+
+\D{\newpage}
 
 \subsection{Introducing the $\mathbf{t}$-distribution}
 \label{introducingTheTDistribution}
@@ -145,10 +325,33 @@ unless the sample size is particularly large.
 \index{t-distribution|(}
 \index{distribution!$t$|(}
 
-In the cases where we will use a small sample to calculate
-the standard error, it will be useful to rely on a new distribution
-for inference calculations: the $t$-distribution.
-A $t$-distribution, shown as a solid line in
+In practice, we cannot directly calculate the standard error
+for $\bar{x}$ since we do not know the population standard
+deviation,~$\sigma$.
+We encountered a similar issue when computing the standard error
+for a sample proportion,
+and our solution was to use sample value in place
+of the population value when computing the standard error.
+We'll employ this same strategy for computing the standard
+error of $\bar{x}$, using the sample
+standard deviation $s$ in place of $\sigma$ when computing
+the standard error:
+\begin{align*}
+SE = \frac{\sigma}{\sqrt{n}} \approx \frac{s}{\sqrt{n}}
+\end{align*}
+This substitution strategy tends to work well when we have
+a lot of data and can estimate $\sigma$ using $s$ accurately.
+However, the estimate is less precise with smaller samples,
+and this is a severe enough issue that a fix is required.
+% --
+%when the sample size is large --
+%but it is less reliable when the sample size is smaller
+%than about 30. % independent observations.
+
+When working with $\bar{x}$, we'll find it useful to rely
+on a new distribution for inference calculations called the
+\termsub{$\mathbf{t}$-distribution}{$t$-distribution}.
+A~$t$-distribution, shown as a solid line in
 Figure~\ref{tDistCompareToNormalDist}, has a bell shape.
 However, its tails are thicker than the normal model's,
 meaning observations are more likely to fall beyond two
@@ -157,10 +360,10 @@ distribution.\footnote{The standard deviation of the
   $t$-distribution is actually a little more than 1.
   However, it is useful to always think of the $t$-distribution
   as having a standard deviation of 1 in all of our applications.}
-This distribution is important since it accounts for
-a key challenge with modeling the sample mean:
-the standard error of the sample mean isn't as
-precise when the sample size is small.
+%This distribution is important since it accounts for
+%a key challenge with modeling the sample mean:
+%the standard error of the sample mean isn't as
+%precise when the sample size is small.
 The extra thick tails of the $t$-distribution are exactly
 the correction we need to resolve the problem of a poorly
 estimated standard error.
@@ -179,12 +382,19 @@ The \termsub{degrees of freedom (df)}{degrees of freedom (df)!$t$-distribution}
 describes the precise form of the bell-shaped $t$-distribution.
 Several $t$-distributions are shown in
 Figure~\ref{tDistConvergeToNormalDist}.
-When there are more degrees of freedom, the $t$-distribution
-looks very much like the standard normal distribution.
+When we have a sample size of $n$, we'll use a $t$-distribution
+with $df = n - 1$. % degrees of freedom.
+That is, when we have more observations,
+the degrees of freedom will be larger and
+the $t$-distribution will look more like the
+standard normal distribution.
+When the degrees of freedom is about 30 or more,
+the $t$-distribution is nearly indistinguishable
+from the normal distribution.
 
 \begin{figure}
   \centering
-  \Figure{0.75}{tDistConvergeToNormalDist}
+  \Figure{0.65}{tDistConvergeToNormalDist}
   \caption{The larger the degrees of freedom, the more
       closely the $t$-distribution resembles the standard
       normal model.}
@@ -192,15 +402,17 @@ looks very much like the standard normal distribution.
 \end{figure}
 
 \begin{onebox}{Degrees of freedom (df)}
-The degrees of freedom describe the shape of the $t$-distribution. The larger the degrees of freedom, the more closely the distribution approximates the normal model.
+  The degrees of freedom describe the shape of the $t$-distribution.
+  The larger the degrees of freedom, the more closely
+  the distribution approximates the normal model.
+
+  When modeling $\bar{x}$ using the $t$-distribution,
+  use $df = n - 1$.
 \end{onebox}
 
-When the degrees of freedom is about 30 or more,
-the $t$-distribution is nearly indistinguishable
-from the normal distribution.
-\Comment{Cut this next sentence?}
-In Section~\ref{tDistSolutionToSEProblem},
-we relate degrees of freedom to sample size.
+%\Comment{Cut this next sentence?}
+%In Section~\ref{tDistSolutionToSEProblem},
+%we relate degrees of freedom to sample size.
 
 It's very useful to become familiar with the $t$-distribution, because it allows us greater flexibility than the normal distribution when analyzing numerical data.
 In~practice, it's common to use statistical software,

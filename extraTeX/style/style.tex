@@ -22,6 +22,12 @@
 \raggedbottom
 
 
+\newcommand{\stdspace}[0]{3mm}
+\newcommand{\stdvspace}[0]{\vspace{\stdspace{}}}
+\newcommand{\stdaddvspace}[0]{\addvspace{\stdspace{}}}
+
+
+
 
 %-------------------------------------------------------------
 % 1 Page Parameters
@@ -251,7 +257,7 @@
 }
 {\normalsize
 
-\addvspace{3mm}
+\stdaddvspace{}
 \end{itemize}}
 % 9.1.2 Exercise Fine Tuning
 \newcommand\theexercise{\thechapter.\arabic{equation}}
@@ -271,7 +277,7 @@
 \normalsize}{
 
 \end{itemize}
-\addvspace{3mm}
+\stdaddvspace{}
 }
 % 9.2.2 Wrappers
 %\reversemarginpar
@@ -303,7 +309,7 @@
 \newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
 \selectfont{\MakeUppercase{Guided Practice~#1}}} \\[1mm]}
 % 9.2.4 NEW Example and Guided Practice Environment
-\newcommand{\exspace}{\vspace{3mm}}
+\newcommand{\exspace}{\stdvspace{}}
 \newenvironment{nexample}[1]{\addvspace{6mm}
 
 \refstepcounter{equation}\exampletitle{\theexample}
@@ -325,7 +331,7 @@
 \newenvironment{eoce}[2][]
 {\refstepcounter{eoce}\noindent\small\textbf{\textcolor{oiB}{{\hypersetup{linkcolor=oiB}\ref{eoce_sol_\arabic{chapter}_\arabic{eoce}}}\label{eoce_\arabic{chapter}_\arabic{eoce}}}}\hspace{2mm} #1#2
 
-\addvspace{3mm}
+\addvspace{\stdspace{}}
 
 }
 %{\em #2 } $\:$ \\ }
@@ -459,10 +465,6 @@
 \end{minipage}
 
 \addvspace{4mm}}
-\newcommand{\stdvspace}[0]{\vspace{3mm}}
-
-
-
 
 
 
