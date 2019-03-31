@@ -8,7 +8,7 @@ d <- as.numeric(na.omit(ucla_textbooks_f18$bookstore_new -
 (se <- s / sqrt(length(d)))
 (z <- m / se)
 
-myPDF('textbooksF18HTTails.pdf', 5, 1.6,
+myPDF('textbooksF18HTTails.pdf', 4, 1.3,
       mar = c(1.7, 0, 0, 0),
       mgp = c(3, 0.5, 0))
 normTail(L = -abs(m),
