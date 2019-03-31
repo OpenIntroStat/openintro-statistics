@@ -248,9 +248,11 @@ Each row of a data matrix corresponds to a unique case
 and each column corresponds to a variable.
 %A data matrix for the stroke study introduced in
 %Section~\ref{basicExampleOfStentsAndStrokes} is shown
-%in Table~\vref{stentStudyResultsDF}, where the cases were
+%in Figure~\vref{stentStudyResultsDF}, where the cases were
 %patients and three variables were recorded for each
 %patient.
+
+\D{\newpage}
 
 When recording data, use a data matrix unless you have
 a very good reason to use a different structure.
@@ -296,7 +298,7 @@ a data matrix?\footnotemark
   where each row represents a county and each column represents
   a particular piece of information.}
 
-\noindent The data described in Guided
+The data described in Guided
 Practice~\ref{desc_county_as_data_matrix} represents the
 \data{county} data set, which is shown as a data matrix
 in Figure~\ref{countyDF}.
@@ -428,7 +430,7 @@ type of special ordering is called a \term{nominal} variable.
 To simplify analyses, any ordinal variable in this book will
 be treated as a nominal (unordered) categorical variable.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figure{0.57}{variables}
   \caption{Breakdown of variables into their respective types.}
@@ -475,6 +477,9 @@ categorical?\footnotemark
   outcome; more specifically, since it represents a count,
   \var{num\us{}migraines} is a discrete numerical variable.}
 
+
+\D{\newpage}
+
 \subsection{Relationships between variables}
 \label{variableRelations}
 
@@ -504,7 +509,7 @@ following questions:
 \end{enumerate}
 
 To answer these questions, data must be collected, such
-as the \data{county} data set shown in Table~\ref{countyDF}.
+as the \data{county} data set shown in Figure~\ref{countyDF}.
 Examining summary statistics \index{summary statistic} could
 provide insights for each of the three questions about counties.
 Additionally, graphs can be used to visually exploring the data.
@@ -529,7 +534,7 @@ We might brainstorm as to why this relationship exists
 and investigate each idea to determine which are the most
 reasonable explanations.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figure{0.79}{multiunitsVsOwnership}
   \caption{A scatterplot of homeownership versus the percent
@@ -547,10 +552,12 @@ they are called \term{associated} variables.
 Associated variables can also be called \term{dependent}
 variables and vice-versa.
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 Examine the variables in the \data{loan50} data set,
-which are described in Table~\vref{loan50Variables}.
+which are described in Figure~\vref{loan50Variables}.
 Create two questions about possible relationships
 between variables in \data{loan50} that are of interest
 to~you.\footnotemark
@@ -643,6 +650,8 @@ is no evident relationship between the two.
 A pair of variables are either related in some way (associated) or not (independent). No pair of variables is both associated and independent.
 \end{onebox}
 
+
+\D{\newpage}
 
 \subsection{Explanatory and response variables}
 \label{explanatoryAndResponse}
@@ -790,9 +799,17 @@ so that they are reliable and help achieve the research goals.
 Consider the following three research questions:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
-\item What is the average mercury content in swordfish in the Atlantic Ocean?
-\item\label{timeToGraduationQuestionForUCLAStudents} Over the last 5 years, what is the average time to complete a degree for Duke undergraduate students?
-\item\label{identifyPopulationOfStentStudy} Does a new drug reduce the number of deaths in patients with severe heart disease?
+\item
+    What is the average mercury content in swordfish
+    in the Atlantic Ocean?
+\item
+    \label{timeToGraduationQuestionForUCLAStudents}%
+    Over the last 5 years, what is the average time
+    to complete a degree for Duke undergrads?
+\item
+    \label{identifyPopulationOfStentStudy}%
+    Does a new drug reduce the number of deaths in patients
+    with severe heart disease?
 \end{enumerate}
 Each research question refers to a target \term{population}. In the first question, the target population is all swordfish in the Atlantic ocean, and each fish represents a case. Often times, it is too expensive to collect data for every case in a population. Instead, a sample is taken. A \term{sample} represents a subset of the cases and is often a small fraction of the population. For instance, 60 swordfish (or some other number) in the population might be selected, and this sample data may be used to provide an estimate of the population average and answer the research question.
 
@@ -808,7 +825,7 @@ represents an individual case.\footnotemark
     to students who complete their degree;
     the average cannot be computed using a student
     who never finished her degree.
-    Thus, only Duke undergraduate students who
+    Thus, only Duke undergrads who
     graduated in the last five years represent cases
     in the population under consideration.
     Each such student is an individual case.
@@ -868,7 +885,9 @@ Such evidence may be true and verifiable, but it may
 only represent extraordinary cases.
 \end{onebox}
 
-Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics. For instance, we are more likely to remember the two people we met who took 7 years to graduate than the six others who graduated in four years. Instead of looking at the most unusual cases, we should examine a sample of many cases that represent the population.
+\D{\newpage}
+
+Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics. For instance, we are more likely to remember the two people we met who took 7~years to graduate than the six others who graduated in four years. Instead of looking at the most unusual cases, we should examine a sample of many cases that represent the population.
 
 \subsection{Sampling from a population}
 
@@ -926,6 +945,8 @@ We pick samples randomly to reduce the chance we introduce biases.
       health-related majors.}
   \label{popToSubSampleGraduates}
 \end{figure}
+
+\D{\newpage}
 
 If someone was permitted to pick and choose exactly which
 graduates were included in the sample, it is entirely possible
@@ -993,6 +1014,8 @@ We can easily access ratings for products, sellers, and companies through websit
 \index{population|)}
 \index{sample|)}
 
+
+\D{\newpage}
 
 \subsection{Observational studies}
 
@@ -1290,8 +1313,6 @@ Look back to the study in Section~\ref{basicExampleOfStentsAndStrokes} where res
 \end{exercisewrap}
 \footnotetext{The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.}
 
-\noindent\Comment{The next GP is new.}
-
 \begin{exercisewrap}
 \begin{nexercise}
 \label{gp_sham_surgery}%
@@ -1308,7 +1329,7 @@ If so, what would that placebo have looked like?\footnotemark{}
   but the patient does not receive the full treatment,
   though they will still get a placebo effect.}
 
-\Add{You may have many questions about the ethics of
+You may have many questions about the ethics of
 sham surgeries to create a placebo after reading
 Guided Practice~\ref{gp_sham_surgery}.
 These questions may have even arisen in your mind when
@@ -1329,6 +1350,7 @@ we may promote the use of a costly treatment that
 has no real effect;
 if this happens, money and other resources will be diverted
 away from other treatments that are known to be helpful.
-Ultimately, we cannot perfectly protect both the patients
+Ultimately, this is a difficult situation where
+we cannot perfectly protect both the patients
 who have volunteered for the study and the patients who
-may benefit (or not) from the treatment in the future.}
+may benefit (or not) from the treatment in the future.
