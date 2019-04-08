@@ -540,16 +540,22 @@ point estimate of $p_1 - p_2$ based on the sample.
 You may have already guessed its form:
 $\hat{p}_1 - \hat{p}_2$.
 \index{point estimate!difference of proportions}
-Next, in each example we verify that the point estimate
-follows a normal distribution by checking certain conditions.
-Finally, we compute the estimate's standard error and
+Next, we'll use the same process as
+what we followed in the
+single-proportion context:
+we verify that the point estimate
+follows a normal distribution,
+compute the estimate's standard error, and
 apply our inferential framework.
 
 
 \subsection{Sample distribution of the difference of two proportions}
 
-We must check two conditions before modeling
-$\hat{p}_1 - \hat{p}_2$ using a normal distribution.
+Like with $\hat{p}$, the difference of two sample proportions
+$\hat{p}_1 - \hat{p}_2$ follows a normal distribution when
+certain conditions are met.
+%We must check two conditions before modeling
+%$\hat{p}_1 - \hat{p}_2$ using a normal distribution.
 First, the sampling distribution for each sample
 proportion must be nearly normal, and secondly,
 the samples must be independent.
@@ -560,14 +566,15 @@ using a normal distribution.
 \begin{onebox}{Conditions for the
     sampling distribution of $\hat{p}_1 - \hat{p}_2$
     to be normal}
-  The difference $\hat{p}_1 - \hat{p}_2$ tends to
-  follow a normal model when
+  The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
+  using a normal distribution when
   \begin{itemize}
   \setlength{\itemsep}{0mm}
   \item each proportion separately follows a normal model, and
   \item the two samples are independent of each other.
   \end{itemize}
-  The standard error of the difference in sample proportions is
+  When these conditions are satisfied,
+  the standard error of $\hat{p}_1 - \hat{p}_2$ is
   \index{standard error (SE)!difference in proportions}
   \begin{eqnarray*}
   SE_{\hat{p}_1 - \hat{p}_2}
@@ -576,8 +583,13 @@ using a normal distribution.
   \label{seForDiffOfProp}
   \end{eqnarray*}
   where $p_1$ and $p_2$ represent the population proportions,
-  and $n_1$ and $n_2$ represent the sample sizes.
+  and $n_1$ and $n_2$ represent the sample~sizes.
 \end{onebox}
+
+In the one-proportion context, we used the point estimate
+and standard error to create confidence intervals or conduct
+hypothesis tests.
+We can do the same in two-proportion applications.
 
 %For the difference in two means, the standard error formula took the following form:
 %\begin{eqnarray*}
@@ -590,18 +602,18 @@ using a normal distribution.
 
 \index{data!CPR and blood thinner|(}
 
-In the setting of confidence intervals for a difference
-of two proportions, the two sample proportions are used
-to verify the success-failure condition and also compute
-the standard error, just as was the case with a single
-proportion.
-The generic formula of a confidence interval will apply
-in this case, just as it did in the one-proportion case:
+%In the setting of confidence intervals for a difference
+%of two proportions, the two sample proportions are used
+%to verify the success-failure condition and also compute
+%the standard error, just as was the case with a single
+%proportion.
+\noindent%
+We can use
+the generic formula of a confidence interval, just as it did in the one-proportion case:
 \begin{align*}
 \text{point estimate} \pm z^{\star} \times SE
 \end{align*}
-As with a single proportion context,
-we can follow the same Prepare, Check, Calculate, Conclude
+We can follow the same Prepare, Check, Calculate, Conclude
 steps for
 computing a confidence interval
 or
@@ -623,53 +635,33 @@ Think about these steps when you apply statistical methods.
     patients survived for at least 24 hours.
     The results are shown in
     Figure~\ref{resultsForCPRStudyInSmallSampleSection}.
-    Create and interpret a 90\% confidence interval of the
-    difference in the survival rates.}
+    Check whether we can model the difference in
+    sample proportions using the normal distribution.}
 
-  First the conditions must be verified.
-  Because the patients were randomized to their groups
-  and one heart attack patient is unlikely to influence
-  the next that was in the study, the observations are
-  independent, both within the samples and between the
-  samples.
-  The success-failure condition also holds for each group,
-  where we have at least 10 successes and 10 failures in
-  each experiment arm.
-  With these conditions met, a normal distribution can be used
-  for the point estimate of the difference in survival
-  rates, where we'll use $p_t$ corresponds to the survival
-  rate in the treatment group and $p_c$ for the control
-  group:
-  \begin{align*}
-  \hat{p}_{t} - \hat{p}_{c}
-    = \frac{14}{40} - \frac{11}{50}
-    = 0.35 - 0.22
-    = 0.13
-  \end{align*}
-  The standard error may be computed from
-  We use the standard error formula provided on
-  page~\pageref{seForDiffOfProp}.
-  As with the one-sample proportion case,
-  we use our best estimates of each proportion in the formula:
-  \begin{align*}
-  SE \approx \sqrt{\frac{0.35 (1 - 0.35)}{40} +
-      \frac{0.22 (1 - 0.22)}{50}}
-    = 0.095
-  \end{align*}
-  For a 90\% confidence interval, we use $z^{\star} = 1.65$:
-  \begin{align*}
-  \text{point estimate} \ \pm\ z^{\star} \times SE
-    \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.095
-    \quad \to \quad (-0.027, 0.287)
-  \end{align*}
-  We are 90\% confident that that blood thinners have
-  a difference of -2.7\% to +28.7\% percentage point
-  impact on survival rate for patients like those in
-  the study.
-  That is, we do not have enough information to say
-  with confidence whether blood thinners help or harm
-  heart attack patients who have been admitted after
-  they have undergone CPR.
+  %Before proceeding, the conditions must be checked.
+  First, we check if each proportion separately can be
+  modeled using a normal distribution:
+  \begin{itemize}
+  \item
+      The success-failure condition also holds for each group,
+      where we have at least 10 successes and 10 failures in
+      each experiment arm.
+  \item
+      Because the patients were randomized to their groups
+      and one heart attack patient is unlikely to influence
+      the next that was in the study, the observations are
+      independent.
+  \end{itemize}
+  With these conditions satisfied, the individual proportions
+  can be modeled using the normal distribution.
+  
+  Second, the randomization of patients into each group
+  also ensures the independence of observations across the
+  two groups.
+  
+  Both of the required conditions are satisfied,
+  so the difference in sample proportions can be
+  reasonably modeled using a normal distribution.
 \end{nexample}
 \end{examplewrap}
 
@@ -691,6 +683,47 @@ Total			&& 25		& 65		&& 90 \\
     group were not.}
 \label{resultsForCPRStudyInSmallSampleSection}
 \end{figure}
+
+\begin{examplewrap}
+\begin{nexample}{
+    Create and interpret a 90\% confidence interval of the
+    difference for the survival rates in the CPR study.}
+
+  We'll use $p_t$ for the survival
+  rate in the treatment group and $p_c$ for the control
+  group:
+  \begin{align*}
+  \hat{p}_{t} - \hat{p}_{c}
+    = \frac{14}{40} - \frac{11}{50}
+    = 0.35 - 0.22
+    = 0.13
+  \end{align*}
+  We use the standard error formula provided on
+  page~\pageref{seForDiffOfProp}.
+  As with the one-sample proportion case,
+  we use our best estimates of each proportion in the formula:
+  \begin{align*}
+  SE \approx \sqrt{\frac{0.35 (1 - 0.35)}{40} +
+      \frac{0.22 (1 - 0.22)}{50}}
+    = 0.095
+  \end{align*}
+  For a 90\% confidence interval, we use $z^{\star} = 1.65$:
+  \begin{align*}
+  \text{point estimate} \ \pm\ z^{\star} \times SE
+    \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.095
+    \quad \to \quad (-0.027, 0.287)
+  \end{align*}
+  We are 90\% confident that that blood thinners have
+  a difference of -2.7\% to +28.7\% percentage point
+  impact on survival rate for patients like those in
+  the study.
+  Because 0\% is contained in the interval,
+  we do not have enough information to say
+  with confidence whether blood thinners help or harm
+  heart attack patients who have been admitted after
+  they have undergone CPR.
+\end{nexample}
+\end{examplewrap}
 
 \index{data!CPR and blood thinner|)}
 
@@ -784,6 +817,16 @@ study.\footnotemark
 \index{data!mammography|(}
 \index{data!breast cancer|(}
 
+Next, we will conduct a hypothesis test when we model
+$\hat{p}_1 - \hat{p}_2$ using a normal distribution.
+%We will check the success-failure condition for each
+%group and compute the standard error slightly differently,
+%using what is called the
+%\emph{pooled proportion}\index{pooled proportion}
+%instead of the point estimates of each proportion separately,
+%but otherwise the procedure will feel familiar.
+We'll explore this method in the context of an experiment
+evaluating the benefits of mammograms.
 A mammogram is an X-ray procedure used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it's the topic of our next example where we examine 2-proportion hypothesis test when $H_0$~is~$p_1 - p_2 = 0$ (or equivalently, $p_1 = p_2$).
 
 A 30-year study was conducted with nearly 90,000 female participants. During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure~\ref{mammogramStudySummaryTable}.
@@ -848,7 +891,7 @@ This proportion is an estimate of the breast cancer death rate across the entire
 
 \begin{examplewrap}
 \begin{nexample}{Can we use a normal model to analyze this study?}
-  %\label{condFormammogramStudySummaryTableNormalInference}
+  \label{condFormammogramStudySummaryTableNormalInference}%
   Because the patients are randomized, they can be treated
   as independent.
 
