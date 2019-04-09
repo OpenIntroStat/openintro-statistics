@@ -570,8 +570,8 @@ using a normal distribution.
   using a normal distribution when
   \begin{itemize}
   \setlength{\itemsep}{0mm}
-  \item each proportion separately follows a normal model, and
-  \item the two samples are independent of each other.
+  \item the two samples are independent of each other, and
+  \item each proportion separately follows a normal model.
   \end{itemize}
   When these conditions are satisfied,
   the standard error of $\hat{p}_1 - \hat{p}_2$ is
@@ -639,28 +639,21 @@ Think about these steps when you apply statistical methods.
     sample proportions using the normal distribution.}
 
   %Before proceeding, the conditions must be checked.
-  First, we check if each proportion separately can be
+  We check if each proportion separately can be
   modeled using a normal distribution:
-  \begin{itemize}
-  \item
+%  \begin{itemize}
+%  \setlength{\itemsep}{0mm}
+%  \item
+      Because the patients were randomized to their groups,
+      the observations in the two samples are independent,
+      both within and between groups.
+%  \item
       The success-failure condition also holds for each group,
       where we have at least 10 successes and 10 failures in
       each experiment arm.
-  \item
-      Because the patients were randomized to their groups
-      and one heart attack patient is unlikely to influence
-      the next that was in the study, the observations are
-      independent.
-  \end{itemize}
-  With these conditions satisfied, the individual proportions
-  can be modeled using the normal distribution.
-  
-  Second, the randomization of patients into each group
-  also ensures the independence of observations across the
-  two groups.
-  
-  Both of the required conditions are satisfied,
-  so the difference in sample proportions can be
+%  \end{itemize}
+  With these conditions satisfied,
+  the difference in sample proportions can be
   reasonably modeled using a normal distribution.
 \end{nexample}
 \end{examplewrap}
@@ -779,11 +772,14 @@ study.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{
-  The experiment randomized,
-  subjects are unlikely to interact with each other,
-  the observations are independent.
+  Because the patients were randomized,
+  the subjects are independent, both within and between
+  the two groups.
   The success-failure condition is also met for both
   groups as all counts are at least~10.
+  This satisfies the conditions necessary to model
+  the difference in proportions using a normal distribution.
+
   Compute the sample proportions
   ($\hat{p}_{\text{fish oil}} = 0.0112$,
     $\hat{p}_{\text{placebo}} = 0.0155$),
@@ -817,16 +813,8 @@ study.\footnotemark
 \index{data!mammography|(}
 \index{data!breast cancer|(}
 
-Next, we will conduct a hypothesis test when we model
-$\hat{p}_1 - \hat{p}_2$ using a normal distribution.
-%We will check the success-failure condition for each
-%group and compute the standard error slightly differently,
-%using what is called the
-%\emph{pooled proportion}\index{pooled proportion}
-%instead of the point estimates of each proportion separately,
-%but otherwise the procedure will feel familiar.
-We'll explore this method in the context of an experiment
-evaluating the benefits of mammograms.
+%We'll explore an experiment evaluating the benefits
+%of mammograms using a hypothesis test.
 A mammogram is an X-ray procedure used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it's the topic of our next example where we examine 2-proportion hypothesis test when $H_0$~is~$p_1 - p_2 = 0$ (or equivalently, $p_1 = p_2$).
 
 A 30-year study was conducted with nearly 90,000 female participants. During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure~\ref{mammogramStudySummaryTable}.
@@ -857,6 +845,8 @@ Is this study an experiment or an observational study?\footnotemark
     to receive mammograms or a standard breast cancer exam.
     We will be able to make causal conclusions based on this study.}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise} \label{htFormammogramStudySummaryTable}
 Set up hypotheses to test whether there was a difference
@@ -876,7 +866,8 @@ In Example~\ref{condFormammogramStudySummaryTableNormalInference},
 we will check the conditions for using a normal distribution to
 analyze the results of the study.
 The details are very similar to that of confidence intervals.
-However, this time we use a special proportion called the
+However, when the null hypothesis is that $p_1 - p_2 = 0$,
+we use a special proportion called the
 \term{pooled proportion} to check the success-failure condition:
 \begin{align*}
 \hat{p}_{\textit{pooled}}
@@ -887,14 +878,18 @@ However, this time we use a special proportion called the
 	&= \frac{500 + 505}{500 + \text{44,425} + 505 + \text{44,405}} \\
 	&= 0.0112
 \end{align*}
-This proportion is an estimate of the breast cancer death rate across the entire study, and it's our best estimate of the proportions $p_{mgm}$ and $p_{ctrl}$ \emph{if the null hypothesis is true that $p_{mgm} = p_{ctrl}$}. We will also use this pooled proportion when computing the standard error.
+This proportion is an estimate of the breast cancer death rate
+across the entire study, and it's our best estimate of the
+proportions $p_{mgm}$ and $p_{ctrl}$
+\emph{if the null hypothesis is true that $p_{mgm} = p_{ctrl}$}.
+We~will also use this pooled proportion when computing
+the standard error.
 
 \begin{examplewrap}
 \begin{nexample}{Can we use a normal model to analyze this study?}
   \label{condFormammogramStudySummaryTableNormalInference}%
   Because the patients are randomized, they can be treated
-  as independent.
-
+  as independent, both within and between groups.
   We also must check the success-failure condition for each group.
   Under the null hypothesis, the proportions $p_{mgm}$
   and $p_{ctrl}$ are equal, so we check the success-failure
@@ -911,7 +906,8 @@ This proportion is an estimate of the breast cancer death rate across the entire
     & (1 - \hat{p}_{\textit{pooled}}) \times n_{ctrl}
       &= 0.9888 \times \text{44,910} = \text{44,407}
   \end{align*}
-  The success-failure condition is satisfied since all values
+  With independence (within and between groups) and
+  the success-failure condition satisfied since all values
   are at least 10, and we can safely use a normal distribution.
 \end{nexample}
 \end{examplewrap}
@@ -992,7 +988,9 @@ The lower tail area is 0.4325, which we double to get the p-value:~0.8650. Becau
 \end{nexample}
 \end{examplewrap}
 
-Can we conclude that mammograms have no benefits or harm? Here are a few important considerations to keep in mind when reviewing the mammogram study as well as any other medical study:
+Can we conclude that mammograms have no benefits or harm?
+Here are a few considerations to keep in mind when reviewing
+the mammogram study as well as any other medical study:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item If mammograms are helpful or harmful, the data suggest the effect isn't very large. So while we do not accept the null hypothesis, we also don't have sufficient evidence to conclude that mammograms reduce or increase breast cancer deaths.
@@ -1043,33 +1041,50 @@ usually $H_0$ is $p_1 - p_2 = 0$. However, there are rare
 situations where we want to check for some difference in
 $p_1$ and $p_2$ that is some value other than 0.
 For example, maybe we care about checking a null hypothesis
-where $p_1 - p_2 = 0.1$.\footnote{We can
-  also encounter a similar situation with a difference of
-  two means, though no such example is given in
-  Chapter~\ref{inferenceForNumericalData} since the methods
-  remain exactly the same in the context of sample means.
-  On the other hand, the success-failure condition and the
-  calculation of the standard error vary slightly in different
-  proportion contexts.}
+where $p_1 - p_2 = 0.1$. %\footnote{We can
+%  also encounter a similar situation with a difference of
+%  two means, though no such example is given in
+%  Chapter~\ref{inferenceForNumericalData} since the methods
+%  remain exactly the same in the context of sample means.
+%  On the other hand, the success-failure condition and the
+%  calculation of the standard error vary slightly in different
+%  proportion contexts.}
 In contexts like these, we generally use $\hat{p}_1$ and
 $\hat{p}_2$ to check the success-failure condition and
 construct the standard error.
 
 \begin{exercisewrap}
-\begin{nexercise}\label{carWheelBladeManufacturer}
-A quadcopter company is considering a new manufacturer for rotor blades. The new manufacturer would be more expensive but their higher-quality blades are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive blades are worth the conversion before they approve the switch. If there is strong evidence of a more than 3\% improvement in the percent of blades that pass inspection, management says they will switch suppliers, otherwise they will maintain the current supplier. Set up appropriate hypotheses for the test.\footnotemark
+\begin{nexercise}
+\label{carWheelBladeManufacturer}%
+A quadcopter company is considering a new manufacturer
+for rotor blades.
+The new manufacturer would be more expensive but claims
+their higher-quality blades are more reliable,
+with 3\% more blades passing inspection than their
+competitor.
+Set up appropriate hypotheses for the test.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$H_0$: The higher-quality blades will pass inspection just 3\% more frequently than the standard-quality blades. $p_{highQ} - p_{standard} = 0.03$. $H_A$: The higher-quality blades will pass inspection $>$3\% more often than the standard-quality blades. $p_{highQ} - p_{standard} > 0.03$.}
+\footnotetext{$H_0$: The higher-quality blades will pass
+  inspection 3\% more frequently than the standard-quality blades.
+  $p_{highQ} - p_{standard} = 0.03$.
+  $H_A$: The higher-quality blades will pass inspection
+  some amount different than 3\% more often than the
+  standard-quality blades.
+  $p_{highQ} - p_{standard} \neq 0.03$.}
 
 \setlength{\captionwidth}{85mm}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.6\textwidth]{ch_inference_for_props/figures/quadcopter/quadcopter_david_j}
+\Figures{0.6}{quadcopter}{quadcopter_david_j}
 \caption{A Phantom quadcopter.\vspace{-1mm} \\
    -----------------------------\vspace{-2mm}\\
-   {\footnotesize Photo by David J (\oiRedirect{textbook-quadcopter_david_j}{http://flic.kr/p/oiWLNu}). \oiRedirect{textbook-CC_BY_2}{CC-BY 2.0 license.} This photo has been cropped and a border has been added.}}
+   {\footnotesize Photo by David J
+   (\oiRedirect{textbook-quadcopter_david_j}
+       {http://flic.kr/p/oiWLNu}).
+   \oiRedirect{textbook-CC_BY_2}{CC-BY 2.0 license.}
+   This photo has been cropped and a border has been added.}}
 \label{quadcopter_david_j}
 \end{figure}
 
@@ -1121,24 +1136,23 @@ A quadcopter company is considering a new manufacturer for rotor blades. The new
     = \frac{0.059 - 0.03}{0.0114} = 2.54
   \end{align*}
   Using a standard normal distribution for this test statistic,
-  we identify the right tail area as 0.006.
-  Since this is a one-sided test, this single tail area is also
-  the p-value, and we reject the null hypothesis because 0.006
-  is less than 0.05.
-  That is, we have statistically significant evidence that the
-  higher-quality blades actually do pass inspection more
-  than 3\% as often as the currently used blades.
-  Based on these results, management will approve the switch
-  to the new supplier.
+  we identify the right tail area as 0.006,
+  and we double it to get the p-value: 0.012.
+  We reject the null hypothesis because 0.012 is less than 0.05.
+  Since we observed a larger-than-3\% increase in blades
+  that pass inspection, we have statistically significant
+  evidence that the higher-quality blades pass inspection
+  \emph{more than} 3\% as often as the currently used blades,
+  exceeding the company's claims.
 \end{nexample}
 \end{examplewrap}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figure{0.5}{bladesTwoSampleHTPValueQC}
   \caption{Distribution of the test statistic if the null
       hypothesis was true.
-      The p-value is represented by the shaded area.}
+      The p-value is represented by the shaded areas.}
   \label{bladesTwoSampleHTPValueQC}
 \end{figure}
 
@@ -1148,8 +1162,8 @@ A quadcopter company is considering a new manufacturer for rotor blades. The new
 \subsection{Examining the standard error formula (special topic)}
 
 The formula for the standard error of the difference
-in two proportions is similar to the formula for other
-standard errors.
+in two proportions can be deconstructed into the formulas
+for the standard errors of the individual sample proportions.
 Recall that the standard error of a single proportion,
 $\hat{p}_1$, is
 \begin{align*}
