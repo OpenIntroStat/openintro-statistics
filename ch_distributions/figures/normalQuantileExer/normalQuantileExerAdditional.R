@@ -3,11 +3,9 @@ data(COL)
 
 source("QQNorm.R")
 
-set.seed(1)
-obs1 <- 0.3 * rchisq(25, 1.4)
+obs1 <- simulated_dist$d5
+obs2 <- simulated_dist$d6
 
-set.seed(5)
-obs2 <- 16 - 2 * rlnorm(50, sdlog = 0.8)
 
 myPDF("normalQuantileExerAdditional.pdf", 7.2, 3.18,
       mfrow = c(1, 2),

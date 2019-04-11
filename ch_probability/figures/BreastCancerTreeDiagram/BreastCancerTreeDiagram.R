@@ -1,6 +1,6 @@
 library(openintro)
 
-myPDF("BreastCancerTreeDiagram.pdf", 7.5, 3)
+myPDF("BreastCancerTreeDiagram.pdf", 7.5, 2.5)
 treeDiag(c('Truth', 'Mammogram'),
          c(0.0035, 0.9965),
          list(c(0.89, 0.11),

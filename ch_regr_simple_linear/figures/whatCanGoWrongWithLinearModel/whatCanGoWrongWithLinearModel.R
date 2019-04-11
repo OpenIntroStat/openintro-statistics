@@ -3,9 +3,9 @@ source("makeTubeAdv.R")
 data(COL)
 
 # load the makeTube function (ch7 folder)
-pch=20
-cex=1.75
-col='#22558888'
+pch <- 20
+cex <- 1.75
+col <- COL[1, 3]
 
 myPDF('whatCanGoWrongWithLinearModel.pdf', 10, 2.8,
       mar = rep(0.5, 4))
@@ -13,9 +13,9 @@ layout(matrix(1:8, 2),
        rep(1, 4),
        c(2, 1))
 
-set.seed(1)
-x <- runif(100)
-y <- 25 * x - 20 * x^2 + rnorm(length(x), sd = 1.5)
+these <- simulated_scatter$group == 20
+x <- simulated_scatter$x[these]
+y <- simulated_scatter$y[these]
 plot(x, y,
      axes = FALSE,
      pch = pch,
@@ -43,11 +43,9 @@ plot(x, g$residuals,
 abline(h = 0, lty = 2)
 box()
 
-set.seed(2)
-x <- c(-0.6, -0.46, -0.091, runif(97))
-y <- 25 * x + rnorm(length(x))
-y[2] <- y[2] + 8
-y[1] <- y[1] + 1
+these <- simulated_scatter$group == 21
+x <- simulated_scatter$x[these]
+y <- simulated_scatter$y[these]
 plot(x, y,
      axes = FALSE,
      pch = pch,
@@ -74,9 +72,9 @@ plot(x, g$residuals,
 abline(h = 0, lty = 2)
 box()
 
-set.seed(3)
-x <- runif(100)
-y <- 5 * x + rnorm(length(x), sd = x)
+these <- simulated_scatter$group == 22
+x <- simulated_scatter$x[these]
+y <- simulated_scatter$y[these]
 plot(x, y,
      axes = FALSE,
      pch = pch,
@@ -106,13 +104,9 @@ plot(x, g$residuals,
 abline(h = 0, lty = 2)
 box()
 
-library(stockPortfolio)
-gr <- getReturns("MSFT",
-                 "day",
-                 start = "2005-01-01",
-                 end = "2005-05-01")
-x <- 1:length(gr$R)
-y <- cumprod(1 + rev(gr$R))
+these <- simulated_scatter$group == 23
+x <- simulated_scatter$x[these]
+y <- simulated_scatter$y[these]
 plot(x, y,
      axes = FALSE,
      pch = pch,

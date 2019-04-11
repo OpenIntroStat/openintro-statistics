@@ -11,8 +11,8 @@ if(w3){
         cex = 2)
 } else {
   myPDF("multiunitsVsOwnership.pdf", 6, 3.5,
-        mar = c(3, 3.5, 0.5, 0.5),
-        mgp = c(2.4, 0.4, 0))
+        mar = c(3, 3.8, 0.5, 0.5),
+        mgp = c(2.7, 0.4, 0))
 }
 pch    <- 1
 cex    <- sqrt(county$pop2017 / 1e6)

@@ -2,7 +2,7 @@ require(openintro)
 data(COL)
 data(possum)
 
-myPDF('scattHeadLTotalLResidualPlot.pdf', 6.51, 3.786,
+myPDF('scattHeadLTotalLResidualPlot.pdf', 5.5, 2.7,
       mar = c(3, 3, 0.5, 1),
       mgp = c(1.8, 0.6, 0))
 these <- c(48, 42, 3)
@@ -10,7 +10,7 @@ plot(possum$totalL[-these],
      possum$headL[-these] - (41 + 0.59 * possum$totalL[-these]),
      pch = 19,
      col = COL[1, 2],
-     xlab = 'Total length (cm)',
+     xlab = 'Total Length (cm)',
      ylab = 'Residuals',
      ylim = c(-7, 9))
 y.extra <- 0.59 * possum$totalL[these] + rnorm(1,0,0.01)

@@ -3,20 +3,20 @@ data(COL)
 
 set.seed(1)
 
-pdf('satActNormals.pdf', 4, 4)
+pdf('satActNormals.pdf', 6, 3.5)
 par(mfrow = c(2, 1),
     las = 1,
     mar = c(2.5, 0, 0.5, 0))
 
 # _____ Curve 1 _____ #
-m <- 1500
-s <- 300
-X <- m + s * seq(-4, 4, 0.01)
+m <- 1100
+s <- 200
+X <- m + s * seq(-6, 6, 0.01)
 Y <- dnorm(X, m, s)
 plot(X, Y,
      type = 'l',
      axes = FALSE,
-     xlim = m + s * c(-2.7, 2.7))
+     xlim = m + s * 2.7 * c(-1, 1))
 axis(1, at = m + s * (-3:3))
 abline(h = 0)
 lines(c(m, m),
@@ -36,13 +36,13 @@ text(m + s,
 # _____ Curve 2 _____ #
 par(mar = c(2, 0, 1, 0))
 m <- 21
-s <- 5
-X <- m + s * seq(-4, 4, 0.01)
+s <- 6
+X <- m + s * seq(-6, 6, 0.01)
 Y <- dnorm(X, m, s)
 plot(X, Y,
      type = 'l',
      axes = FALSE,
-     xlim = m + s * c(-2.7, 2.7))
+     xlim = m + s * 2.7 * c(-1, 1))
 axis(1, at = m + s * (-3:3))
 abline(h = 0)
 lines(c(m, m),

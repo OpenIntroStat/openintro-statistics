@@ -7,7 +7,6 @@ main.idx
 main.ilg
 main.ind
 main.out
-main.pdf
 main.run.xml
 main.synctex.gz
 main.toc
@@ -22,3 +21,4 @@ _README
 *-deprecated*
 *.Rhistory
 .Rproj.user
+OS4-201[89]-[01][0-9]-[0-3][0-9] [A-Z].pdf

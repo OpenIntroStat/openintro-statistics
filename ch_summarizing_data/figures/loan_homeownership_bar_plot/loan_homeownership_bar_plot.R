@@ -13,7 +13,7 @@ names(t) <- tolower(names(t))
 barplot(t,
         axes = TRUE,
         xlab = '',
-        ylab = 'Count',
+        ylab = 'Frequency',
         main = '',
         # ylim = c(0,2700),
         col = COL[1])

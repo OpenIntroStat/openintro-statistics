@@ -35,7 +35,7 @@ axis(1,
 lines(x, y,
       lwd = 1.5)
 
-par(mar = c(3, 2, 0.5, 0.5),
+par(mar = c(3, 4, 0.5, 0.5),
     mgp = c(2.8, 0.5, 0),
     cex.axis = 0.8)
 qqnorm(obs,
@@ -43,8 +43,8 @@ qqnorm(obs,
        main = '',
        axes = FALSE,
        xlab = '',
-       ylab = '')
-mtext('Theoretical quantiles',
+       ylab = 'Observed')
+mtext('Theoretical Quantiles',
       line = 2,
       side = 1)
 axis(1)

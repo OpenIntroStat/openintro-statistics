@@ -48,7 +48,7 @@ myPDF('diceSumDist.pdf', 5.5, 3,
       mar = c(3.3, 4.5, 0.8, 1),
       mgp = c(2, 0.55, 0))
 probDist(at, prob,
-         xlab = 'Dice sum',
+         xlab = 'Dice Sum',
          ylab = '',
          thickness = 0.5,
          col = COL[1])

@@ -3,6 +3,8 @@ countyMap <- function(values, FIPS,
                       col = c("red", "green", "blue"),
                       varTrans = I,
                       gtlt = "",
+                      label = "",
+                      units = c("percent", "dollars"),
                       ...){
   if(missing(FIPS)){
     stop("Must provide the county FIPS")
@@ -80,13 +82,14 @@ countyMap <- function(values, FIPS,
   map("county", col = col, fill = TRUE, resolution = 0,
     lty = 0, projection = "polyconic", mar = rep(0.1,4), add = TRUE, ...)
   
-  x1 <- 0.335
-  x2 <- 0.365
+  x1 <- 0.305
+  x2 <- 0.335
   for(i in 1:50){
-    y1 <- i/50 * 0.25 + 0.5
-    y2 <- (i-1)/50 * 0.25 + 0.5
+    y1 <- i/50 * 0.25 + 0.48
+    y2 <- (i-1)/50 * 0.25 + 0.48
     rect(x1, y1, x2, y2, border = "#00000000", col = COL[i])
   }
+  
   
   VR    <- range(VAL)
   VR[3] <- VR[2]
@@ -97,16 +100,24 @@ countyMap <- function(values, FIPS,
   VR1[2] <- values[which.min(abs(VAL - VR[2]))]
   VR1[2] <- values[which.min(abs(VAL - VR[3]))]
   
-  VR    <- round(VR)
+  VR  <- round(VR)
+  units <- match.arg(units)
+  if (units == "percent") {
+    VR <- paste0(VR, "%")
+  } else if (units == "dollars") {
+    VR <- paste0("$", VR)
+  }
   if(gtlt %in% c(">", "><")){
-    VR[3] <- paste(">", VR[3], sep = "")
+    VR[3] <- paste0(">", VR[3])
   }
   if(gtlt %in% c("<", "><")){
-    VR[1] <- paste("<", VR[1], sep = "")
+    VR[1] <- paste0("<", VR[1])
   }
-  text(0.365, 0.51, VR[1], pos = 4)
-  text(0.365, 0.625, VR[2], pos = 4)
-  text(0.365, 0.74, VR[3], pos = 4)
+  text(0.335, 0.49, VR[1], pos = 4, cex = 0.9)
+  text(0.335, 0.605, VR[2], pos = 4, cex = 0.9)
+  text(0.335, 0.72, VR[3], pos = 4, cex = 0.9)
+  par(srt = 90)
+  text(0.395, 0.615, label, pos = 1)
 }
 
 

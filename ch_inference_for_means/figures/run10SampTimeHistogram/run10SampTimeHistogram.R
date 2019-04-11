@@ -10,7 +10,7 @@ myPDF("run10SampTimeHistogram.pdf", 5, 2.8,
       mgp = c(2.2, 0.55, 0))
 histPlot(d$time,
          main = "",
-         xlab = "Time (minutes)",
+         xlab = "Time (Minutes)",
          ylab = "Frequency",
          col = COL[1])
 dev.off()
@@ -25,7 +25,7 @@ myPDF("run17SampTimeHistogram.pdf", 5, 2.8,
       mgp = c(2.2, 0.55, 0))
 histPlot(d$net_sec / 60,
          main = "",
-         xlab = "Time (minutes)",
+         xlab = "Time (Minutes)",
          ylab = "Frequency",
          col = COL[1])
 dev.off()

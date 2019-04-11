@@ -13,7 +13,7 @@ mean(results)
 sd(results)
 
 myPDF('sampling_10_prop_25p.pdf', 9, 2.4,
-    mar = c(3.5, 3, 0.7, 0.2),
+    mar = c(3.5, 4, 0.7, 0.2),
     mgp = c(2.3, 0.6, 0),
     yaxs = "i",
     mfrow = c(1, 2))
@@ -27,6 +27,9 @@ axis(1, at = seq(0, 1, 0.1), labels = rep("", 11))
 axis(1, at = at)
 axis(2, at = seq(0, 2000, 1000))
 abline(h = 0, lwd = 2)
+par(las = 0)
+mtext("Frequency", 2, 2.9)
+par(las = 1)
 # x <- seq(-1, 2, 0.001)
 # y <- dnorm(x, prop, sd(results))
 # bin.max <- max(table(results))

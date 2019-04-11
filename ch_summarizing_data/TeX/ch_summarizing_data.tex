@@ -1,21 +1,24 @@
-\chapter{Summarizing data}
-\label{summarizingData}
-\label{ch_summarizing_data}
+\begin{chapterpage}{Summarizing data}
+  \chaptertitle{Summarizing data}
+  \label{summarizingData}
+  \label{ch_summarizing_data}
+  \chaptersection{numericalData}
+  \chaptersection{categoricalData}
+  \chaptersection{caseStudyMalariaVaccine}
+\end{chapterpage}
 \renewcommand{\chapterfolder}{ch_summarizing_data}
 
-\Comment{Do a search for "email" to see if it still appears
-anywhere in this file. Do the same for the other chapters.}
+\chapterintro{This chapter focuses on the mechanics
+  and construction of summary statistics and graphs.
+  In practice, we use statistical software for generating
+  most of the summaries and graphs presented in this chapter.
+  However since this might be your first exposure to these
+  concepts, we take our time in this chapter to detail
+  how to compute them.
+  Mastery of the content presented in this chapter
+  will be crucial for understanding the methods and
+  techniques introduced in future chapters of the book.}
 
-\Comment{This intro was rewritten.}
-
-This chapter focuses on the mechanics and construction
-of summary statistics and graphs.
-However, don't be fooled into thinking that the formulas
-or graphing rules are a mathematical exercise.
-These tools are applied throughout the rest of this book,
-and to attain statistical excellence,
-it's important to understand how these basic tools
-are constructed.
 
 
 %%%%%
@@ -33,9 +36,9 @@ are constructed.
 \newcommand{\loanVar}{25.52}
 \newcommand{\loanSD}{5.05}
 \newcommand{\loanN}{50}
-\newcommand{\loanMedianBelow}{9.93}
-\newcommand{\loanMedianAbove}{9.93}
-\newcommand{\loanMedian}{9.93}
+\newcommand{\loanMedianBelow}{9.93\%}
+\newcommand{\loanMedianAbove}{9.93\%}
+\newcommand{\loanMedian}{9.93\%}
 \newcommand{\loanQA}{7.96}
 \newcommand{\loanQC}{13.72}
 \newcommand{\loanIQR}{5.76}
@@ -49,29 +52,21 @@ are constructed.
 \newcommand{\loanLargestValue}{26.30}
 
 
-
 In this section we will explore techniques for
 summarizing numerical variables.
-The \data{loan50} and \data{county} data sets from
-Section~\ref{dataBasics} provide rich opportunities
-for examples.
-\Comment{Figures~\ref{} and~\ref{} show example entries of the
-variables that we'll consider from those tables along
-with a reminder on what each variable represents.}
-If you'd like to refresh yourself on these two data
-sets, see pages~\pageref{loan50DF} and~\pageref{countyDF}.
-Recall that outcomes of numerical variables are numbers
-on which it is reasonable to perform basic arithmetic
-operations.
-For example, consider the
-\var{loan\_\hspace{0.3mm}amount} variable
-from the \data{loan50} data set,
-which represents the loan size for all 50 loans
-in the data set.
+For example, consider the \var{loan\us{}amount} variable
+from the \data{loan50} data set, which represents the loan
+size for all 50 loans in the data set.
 This variable is numerical since we can sensibly discuss
 the numerical difference of the size of two loans.
 On the other hand, area codes and zip codes are not numerical,
 but rather they are categorical variables.
+
+Throughout this section and the next, we will apply these
+methods using the \data{loan50} and \data{county} data sets,
+which were introduced in Section~\ref{dataBasics}.
+If you'd like to review the variables from either data set,
+see pages~\ref{loan50DF} and~\ref{countyDF}.
 
 
 \subsection{Scatterplots for paired data}
@@ -81,7 +76,7 @@ but rather they are categorical variables.
 
 A \term{scatterplot} provides a case-by-case view of data
 for two numerical variables.
-In Figure~\vref{multiunitsVsOwnership} on
+In Figure~\ref{multiunitsVsOwnership} on
 page~\pageref{multiunitsVsOwnership}, a scatterplot
 was used to examine the homeownership rate against
 the fraction of housing units that were part of
@@ -89,37 +84,30 @@ multi-unit properties
 (e.g. apartments) in the \data{county} data set.
 Another scatterplot is shown in Figure~\ref{loan50_amt_vs_income},
 comparing the total income of a borrower
-(\var{total\_\hspace{0.3mm}income}) and the amount they borrowed
-(\var{loan\_\hspace{0.3mm}amount}) for the \data{loan50} data set.
+(\var{total\us{}income}) and the amount they borrowed
+(\var{loan\us{}amount}) for the \data{loan50} data set.
 In any scatterplot, each point represents a single case.
 Since there are \loanN{} cases in \data{loan50},
 there are \loanN{} points in Figure~\ref{loan50_amt_vs_income}.
 
-%\textC{\setlength{\captionwidth}{0.9\textwidth}}
-
 \begin{figure}[h]
   \centering
   \Figure{0.8}{loan50_amt_vs_income}
-  \caption{A scatterplot of \var{total\_\hspace{0.3mm}income}
-      versus \var{loan\_\hspace{0.3mm}amount} for the
+  \caption{A scatterplot of \var{total\us{}income}
+      versus \var{loan\us{}amount} for the
       \data{loan50} data set.}
   \label{loan50_amt_vs_income}
 \end{figure}
-
-%\textC{\setlength{\captionwidth}{\mycaptionwidth}}
 
 Looking at Figure~\ref{loan50_amt_vs_income},
 we see that there are many borrowers with an income below
 \$100,000 on the left side of the graph,
 while there are a handful of borrowers with income above~\$250,000.
-%Additionally, the relationship appears to be \term{nonlinear},
-%where bigger loans seem to be associated with increased income,
-%but that it appears to taper off,
-%as shown by the dashed line.
 
-\begin{example}{Figure~\ref{medianHHIncomePoverty}
+\begin{examplewrap}
+\begin{nexample}{Figure~\ref{medianHHIncomePoverty}
     shows a plot of median household income
-    against the poverty rate for 3,143 counties.
+    against the poverty rate for 3,142 counties.
     What can be said about the relationship between
     these variables?}
   The relationship is evidently \term{nonlinear},
@@ -127,7 +115,8 @@ while there are a handful of borrowers with income above~\$250,000.
   This is different from previous scatterplots we've seen,
   which show relationships that do not show much, if any,
   curvature in the trend.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}[h]
   \centering
@@ -140,25 +129,35 @@ while there are a handful of borrowers with income above~\$250,000.
   \label{medianHHIncomePoverty}
 \end{figure}
 
-\begin{exercise}
-What do scatterplots reveal about the data,
-and how are they useful?\footnote{Answers may vary.
-Scatterplots are helpful in quickly spotting associations
-relating variables,
-whether those associations come in the form of simple
-trends or whether those relationships are more complex.}
-\end{exercise}
+\D{\newpage}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+What do scatterplots reveal about the data,
+and how are they useful?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Answers may vary.
+  Scatterplots are helpful in quickly spotting associations
+  relating variables,
+  whether those associations come in the form of simple
+  trends or whether those relationships are more complex.}
+
+\begin{exercisewrap}
+\begin{nexercise}
 Describe two variables that would have a horseshoe-shaped
-association in a scatterplot.\footnote{Consider the case
+association in a scatterplot ($\cap$ or $\frown$).\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Consider the case
   where your vertical axis represents something ``good'' and
   your horizontal axis represents something that is only good
   in moderation.
   Health and water consumption fit this description: we require
   some water to survive, but consume too much and it becomes
   toxic and can kill a person.}
-\end{exercise}
+
+
 
 \subsection{Dot plots and the mean}
 \label{dotPlot}
@@ -175,7 +174,7 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
 \begin{figure}[h]
   \centering
   \Figure{0.76}{loan_int_rate_dot_plot}
-  \caption{A dot plot of \var{interest\_\hspace{0.3mm}rate}
+  \caption{A dot plot of \var{interest\us{}rate}
       for the \data{loan50} data set.
       The distribution's mean is shown as a red triangle.}
   \label{loan_int_rate_dot_plot}
@@ -187,7 +186,7 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
       {loan_int_rate_dot_plot}
       {loan_int_rate_dot_plot_stacked}
   \caption{A stacked dot plot of
-      \var{interest\_\hspace{0.3mm}rate}
+      \var{interest\us{}rate}
       for the \data{loan50} data set.
       The~rates have been rounded to the nearest
       percent in this plot, and the
@@ -195,9 +194,11 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
   \label{loan_int_rate_dot_plot_stacked}
 \end{figure}
 
-The \term{mean}, sometimes called the
-\indexthis{average}{mean!average}, is a common way
-to measure the center of a \term{distribution} of data.
+\D{\newpage}
+
+The \term{mean}, often called the
+\term{average}\index{mean!average}, is a common way
+to measure the center of a \mbox{\term{distribution}} of data.
 To compute the mean interest rate, we add up all the interest
 rates and divide by the number of observations:
 \begin{align*}
@@ -209,38 +210,46 @@ rates and divide by the number of observations:
 \end{align*}
 The sample mean is often labeled $\bar{x}$.
 The letter $x$ is being used as a generic placeholder
-for the variable of interest, \var{interest\_\hspace{0.3mm}rate},
+for the variable of interest, \var{interest\us{}rate},
 and the bar over the $x$ communicates we're looking at the
 average interest rate, which for these 50 loans was \loanAvg{}\%.
 It is useful to think of the mean as the balancing point
-of the distribution, and it is shown as a triangle in Figures~\ref{loan_int_rate_dot_plot}
+of the distribution, and it's shown as a triangle in Figures~\ref{loan_int_rate_dot_plot}
 and~\ref{loan_int_rate_dot_plot_stacked}.
 
-\begin{termBox}{\tBoxTitle{Mean}%
+\begin{onebox}{Mean}%
 The sample mean can be computed as the sum of the
 observed values divided by the number of observations:
 \begin{align*}
 \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n}
 \end{align*}
 where $x_1$, $x_2$, $\dots$, $x_n$ represent
-the $n$ observed values.}
-\end{termBox}
+the $n$ observed values.
+\end{onebox}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Examine the equation for the mean.
 What does $x_1$ correspond to? And $x_2$?
 Can you infer a general meaning to what $x_i$
-might represent?\footnote{$x_1$ corresponds to the
+might represent?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$x_1$ corresponds to the
   interest rate for the first loan in the sample (\loanA\%),
   $x_2$ to the second loan's interest rate (\loanB\%),
   and $x_i$ corresponds to the interest rate for the
-  $i^{th}$ loan in the data set.}
-\end{exercise}
+  $i^{th}$ loan in the data set.
+  For example, if $i = 4$, then we're examining $x_4$,
+  which refers to the fourth observation in the data set.}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 What was $n$ in this sample of
-loans?\footnote{The sample size was $n = 50$.}
-\end{exercise}
+loans?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The sample size was $n = 50$.}
 
 The \data{loan50} data set represents a sample from
 a larger population of loans made through Lending Club.
@@ -257,58 +266,72 @@ Often times it is too expensive to measure the
 population mean precisely, so we often estimate
 $\mu$ using the sample mean, $\bar{x}$.
 
-\begin{example}{The average interest rate across all loans
-  in the population can be estimated using the sample data.
-  Based on the sample of 50 loans,
-  what would be a reasonable estimate of $\mu_x$,
-  the mean interest rate for all loans in the
-  full data set?}
-The sample mean, \loanAvg{}\%, may provide a reasonable estimate
-of $\mu_x$.
-While this number will not be perfect,
-it provides a \emph{point estimate} \index{point estimate}
-of the average interest rate of all the loans in the
-population under study.
-In Chapter~\ref{foundationsForInference} and beyond,
-we will develop tools to characterize the accuracy
-of point estimates, and we will find that point estimates
-based on larger samples tend to be more accurate than
-those based on smaller samples.
-\end{example}
+\begin{examplewrap}
+\begin{nexample}{The average interest rate across all loans
+    in the population can be estimated using the sample data.
+    Based on the sample of 50 loans,
+    what would be a reasonable estimate of $\mu_x$,
+    the mean interest rate for all loans in the
+    full data set?}
+  The sample mean, \loanAvg{}\%, provides a rough estimate
+  of $\mu_x$.
+  While it's not perfect, this is our single best guess
+  %\emph{point estimate}\index{point estimate}
+  of the average interest rate of all the loans in the
+  population under study.
 
-\Comment{Next example is new and tries to highlight
-\emph{why} the mean is so useful.}
+  In Chapter~\ref{foundationsForInference} and beyond,
+  we will develop tools to characterize the accuracy
+  of \emph{point estimates}\index{point estimate}
+  like the sample mean.
+  As you might have guessed,
+  point estimates based on larger samples tend to be
+  more accurate than those based on smaller samples.
+\end{nexample}
+\end{examplewrap}
 
-The mean is useful because it allows us to
-rescale or standardize a metric to something more easily
-interpretable and comparable.
 
-\begin{example}{Provide a couple examples where the mean
-  is a useful tool for making comparisons.}
+\begin{examplewrap}
+\begin{nexample}{The mean is useful because it allows us to
+    rescale or standardize a metric into something more easily
+    interpretable and comparable.
+    Provide 2 examples where the mean
+    is useful for making comparisons.}
 
   1. We would like to understand if a new drug is more
-  effective at treating asthma attacks than the standard
-  treatment.
-  A trial of 1500 adults is set up,
-  where 500 receive the new drug in the treatment group,
-  and 1000 receive a standard drug in the control group.
-  Suppose we observe 200 asthma attacks in the treatment
-  group and 300 asthma attacks in the control group.
-  We cannot reasonably compare 200 to 300
-  since the group sizes are different.
-  However, we can control for the imbalanced group sizes
-  by computing the average number of asthma attacks per
-  patient in each group.
-  The standard drug has a lower
-  average number of asthma attacks per patient % (0.3 per patient)
-  than the average in the treatment group: % (0.4 per patient).
+  effective at treating asthma attacks than the standard drug.
+  A trial of 1000 adults is set up, where 500 receive the new
+  drug, and 1000 receive a standard drug in the control
+  group:\vspace{-2mm}
+  \begin{center}
+  \begin{tabular}{l cc}
+  %\hline
+  &           New drug & Standard drug \\
+  \hline
+  Number of patients   & 500 & 1000 \\
+  Total asthma attacks & 200 & 300 \\
+  \hline
+  %average attacks
+  %per patient    & 0.4 & 0.2 \\
+  %\hline
+  \end{tabular}
+  \end{center}
+  Comparing the raw counts of 200 to 300 asthma attacks
+  would make it appear that the new drug is better,
+  but this is an artifact of the imbalanced group sizes.
+  Instead, we should look at the average number of asthma
+  attacks per patient in each group:
   \begin{align*}
-  & \text{Control Group: }\frac{300}{1000} = 0.3
-      && \text{Treatment Group: } \frac{200}{500} = 0.4 % \\
+  & \text{New drug: } 200 / 500 = 0.4 % \\
+      %\frac{200}{500} = 0.4 % \\
+  && \text{Standard drug: } 300 / 1000 = 0.3
+      %\frac{300}{1000} = 0.3
   % &     &&  %\\
   % & = 0.3\text{ asthma attacks per patient}
   %     && = 0.4\text{ asthma attacks per patient}
   \end{align*}
+  The standard drug has a lower average number of asthma
+  attacks per patient than the average in the treatment group.
 
   2. Emilio opened a food truck last year where he sells burritos,
   and his business has stabilized over the last 3 months.
@@ -316,17 +339,18 @@ interpretable and comparable.
   working 625 hours.
   Emilio's average hourly earnings provides
   a useful statistic for evaluating whether his venture is,
-  at least from a financial perspective, worth it:
+  at~least from a financial perspective, worth it:
   \begin{align*}
   \frac{\$11000}{625\text{ hours}} = \$17.60\text{ per hour}
   \end{align*}
   By knowing his average hourly wage,
   Emilio now has put his earnings into a standard unit that
-  is easier to compare with many other jobs that he could
-  apply for.
-\end{example}
+  is easier to compare with many other jobs that he might
+  consider.
+\end{nexample}
+\end{examplewrap}
 
-%\begin{example}{What are some contexts that highlight
+%{What are some contexts that highlight
 %    the value of the mean?}
 %  Here are a few scenarios highlighting why the mean can be
 %  particularly useful.
@@ -354,12 +378,14 @@ interpretable and comparable.
 %  \end{itemize}
 %  The average provides us a sensible value to think
 %  about scaling gains and losses.
-%\end{example}
 
-\begin{example}{We might like to compute the average income
-    per person in the US. To do so, we might first think to take
-    the mean of the per capita incomes across the 3,143 counties
-    in the \data{county} data set. What would be a better approach?}
+\begin{examplewrap}
+\begin{nexample}{Suppose we want to compute the average income
+    per person in the US.
+    To do so, we might first think to take
+    the mean of the per capita incomes across the 3,142 counties
+    in the \data{county} data set.
+    What would be a better approach?}
     \label{wtdMeanOfIncome}
   The \data{county} data set is special in that each county
   actually represents many individual people.
@@ -371,18 +397,30 @@ interpretable and comparable.
   of people in all the counties.
   If we completed these steps with the \data{county} data,
   we would find that the per capita income for the US is
-  \$27,348.43.
+  \$30,861.
   Had we computed the \emph{simple} mean of per capita income
-  across counties, the result would have been just \$22,504.70!
-\end{example}
+  across counties, the result would have been just \$26,093!
 
-Example~\ref{wtdMeanOfIncome} used what is called
-a \term{weighted mean}\index{mean!weighted mean},
-which will not be a key topic in this textbook.
-However, we have provided an online supplement on
-weighted means for interested readers under
-\Comment{Extra Content at
-\oiRedirect{os}{openintro.org/os}}.
+  This example used what is called a
+  \term{weighted mean}\index{mean!weighted mean}.
+  For more information
+  on this topic, check out the following
+  online supplement regarding weighted means
+  \oiRedirect{stat_wtd_mean}
+      {openintro.org/d?file=stat\_wtd\_mean}.
+\end{nexample}
+\end{examplewrap}
+% library(openintro); all_income <- sum(county$pop2017 * county$per_capita_income, na.rm = TRUE); all_pop <- sum(county$pop2017, na.rm = TRUE); all_income / all_pop; mean(county$per_capita_income, na.rm = TRUE)
+
+%Example~\ref{wtdMeanOfIncome} used what is called
+%a \term{weighted mean}\index{mean!weighted mean},
+%which will not be a key topic in this textbook.
+%However, we have provided an online supplement on
+%weighted means for interested readers under
+%\oiRedirect{stat_wtd_mean}
+%    {www.openintro.org/d?file=stat\_wtd\_mean}.
+
+
 
 \subsection{Histograms and shape}
 \label{histogramsAndShape}
@@ -421,7 +459,7 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
   \hline
 \end{tabular}
 \caption{Counts for the binned
-    \var{interest\_\hspace{0.3mm}rate} data.}
+    \var{interest\us{}rate} data.}
 \label{binnedIntRateAmountTable}
 \end{figure}
 % library(openintro); library(xtable); d <- loan50$interest_rate; max(d); t1 <- table(cut(d, seq(5, 27.5, 2.5), right = TRUE)); t1; xtable(rbind(t1))
@@ -429,7 +467,7 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
 \begin{figure}[bth]
   \centering
   \Figure{0.76}{loan50IntRateHist}
-  \caption{A histogram of \var{interest\_\hspace{0.3mm}rate}.
+  \caption{A histogram of \var{interest\us{}rate}.
       This distribution is strongly skewed to the right.
       \index{skew!example: strong}}
   \label{loan50IntRateHist}
@@ -441,9 +479,9 @@ For instance, there are many more loans with rates between
 5\%~and~10\% than loans with rates between 20\% and~25\%
 in the data set.
 The bars make it easy to see how the density of the data
-changes relative to the number of characters.
+changes relative to the interest rate.
 
-Histograms are especially convenient for describing the
+Histograms are especially convenient for understanding the
 shape of the data distribution\label{shapeFirstDiscussed}.
 Figure~\ref{loan50IntRateHist} suggests that most loans
 have rates under 15\%, while only a handful
@@ -464,42 +502,52 @@ We also say that such a distribution has a long left tail.
 Data sets that show roughly equal trailing off in both
 directions are called \term{symmetric}.\index{skew!symmetric}
 
-\begin{termBox}{\tBoxTitle{Long tails to identify skew}%
+\begin{onebox}{Long tails to identify skew}
   When data trail off in one direction, the distribution
   has a \term{long tail}. \index{skew!long tail|textbf}
   If a distribution has a long left tail, it is left skewed.
-  If a distribution has a long right tail, it is right skewed.}
-\end{termBox}
+  If a distribution has a long right tail, it is right skewed.
+\end{onebox}
 
-\begin{exercise}
+\D{\newpage}
+
+\begin{exercisewrap}
+\begin{nexercise}
 Take a look at the dot plots in
 Figures~\ref{loan_int_rate_dot_plot}
 and~\ref{loan_int_rate_dot_plot_stacked}.
 Can you see the skew in the data? Is it easier to see the
-skew in this histogram or the dot plots?\footnote{The skew
+skew in this histogram or the dot plots?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The skew
   is visible in all three plots, though the flat dot plot
   is the least useful.
   The stacked dot plot and histogram are helpful
   visualizations for identifying skew.}
-\end{exercise}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Besides the mean (since it was labeled), what can you see
 in the dot plots that you cannot see in the
-histogram?\footnote{The interest rates for individual loans.}
-\end{exercise}
+histogram?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The interest rates for individual loans.}
 
 In addition to looking at whether a distribution is skewed
 or symmetric, histograms can be used to identify modes.
 A \term{mode} is represented by a prominent peak in the
-distribution.\footnote{A definition of \emph{mode} sometimes
-  taught in math classes is the value with the
-  most occurrences in the data set.
-  However, for many real-world data sets, it is common to have
-  \emph{no} observations with the same value in a data set,
-  making this definition less practical in data analysis.}
+distribution.
 There is only one prominent peak in the histogram of
-\var{loan\_\hspace{0.3mm}amount}.
+\var{loan\us{}amount}.
+
+A definition of \emph{mode} sometimes
+taught in math classes is the value with the
+most occurrences in the data set.
+However, for many real-world data sets, it is common to have
+\emph{no} observations with the same value in a data set,
+making this definition impractical in data analysis.
 
 Figure~\ref{singleBiMultiModalPlots} shows histograms that
 have one, two, or three prominent peaks.
@@ -516,7 +564,7 @@ bins by a few observations.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.76}{singleBiMultiModalPlots}
+  \Figure{0.9}{singleBiMultiModalPlots}
   \caption{Counting only prominent peaks, the
       distributions are (left to right) unimodal,
       bimodal, and multimodal.
@@ -527,17 +575,19 @@ bins by a few observations.
   \label{singleBiMultiModalPlots}
 \end{figure}
 
-\begin{example}{Figure~\ref{loan50IntRateHist}
+\begin{examplewrap}
+\begin{nexample}{Figure~\ref{loan50IntRateHist}
     reveals only one prominent mode in the interest rate.
     Is the distribution unimodal, bimodal, or multimodal?}
   Unimodal.
   Remember that \emph{uni} stands for 1 (think \emph{uni}cycles).
   Similarly, \emph{bi} stands for~2 (think \emph{bi}cycles).
-  (We're hoping a \emph{multicycle} will be invented to complete
-  this analogy.)
-\end{example}
+  We're hoping a \emph{multicycle} will be invented to complete
+  this analogy.
+\end{nexample}
+\end{examplewrap}
 
-%\begin{example}{Looking back the stacked dot plot in
+%{Looking back the stacked dot plot in
 %    Figure~\ref{loan_int_rate_dot_plot_stacked},
 %    it would be reasonable to wonder if the distribution
 %    of loan amounts is actually bimodal or even multimodal.
@@ -558,34 +608,46 @@ bins by a few observations.
 %  when we plot data in multiple ways,
 %  we learn about different properties of the data
 %  that no one plot would reveal all on its own.
-%\end{example}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Height measurements of young students and adult teachers
 at a K-3 elementary school were taken.
-How many modes would you expect in this height data
-set?\footnote{There might be two height groups visible
+How many modes would you expect in this height
+data set?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{There might be two height groups visible
   in the data set: one of the students and one of the adults.
   That is, the data are probably bimodal.}
-\end{exercise}
 
 Looking for modes isn't about finding a clear and correct
 answer about the number of modes in a distribution,
 which is why \emph{prominent}\index{prominent} is not
 rigorously defined in this book.
-The important part of this examination is to better
+The most important part of this examination is to better
 understand your data.
 
 
 
+\D{\newpage}
+
 \subsection{Variance and standard deviation}
 \label{variability}
 
-The mean was introduced as a method to describe the center of a data set, and \indexthis{variability}{variability} in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though their formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to understand, and it roughly describes how far away the typical observation is from the mean.
+The mean was introduced as a method to describe the center of
+a data set, and \indexthis{variability}{variability} in the
+data is also important.
+Here, we introduce two measures of variability:
+the variance and the standard deviation.
+Both of these are very useful in data analysis,
+even though their formulas are a bit tedious to calculate
+by hand.
+The standard deviation is the easier of the two to comprehend,
+and it roughly describes how far away the typical observation
+is from the mean.
 
-We call the distance of an observation from its mean its \term{deviation}. Below are the deviations for the $1^{st}_{}$, $2^{nd}_{}$, $3^{rd}$, and $50^{th}_{}$ observations in the \var{loan\_\hspace{0.3mm}amount} variable.
-For computational convenience, we'll perform the calculations
-in thousands of dollars rounded to the nearest \$100:
+We call the distance of an observation from its mean its \term{deviation}. Below are the deviations for the $1^{st}_{}$, $2^{nd}_{}$, $3^{rd}$, and $50^{th}_{}$ observations in the \var{interest\us{}rate} variable:
 \begin{align*}
 x_1^{}-\bar{x} &= \loanA - \loanAvg{} = \loanAdev \hspace{5mm}\text{ } \\
 x_2^{}-\bar{x} &= \loanB - \loanAvg{} = \loanBdev \\
@@ -593,9 +655,6 @@ x_3^{}-\bar{x} &= \loanC - \loanAvg{} = \loanCdev \\
 			&\ \vdots \\
 x_{50}^{}-\bar{x} &= \loanZ - \loanAvg{} = \loanZdev
 \end{align*}
-\Comment{Next sentence says ``average'' even though
-  it is dividing by $n - 1$.
-  Same change in the term box below. Thoughts?}
 If we square these deviations and then take an average,
 the result is equal to the sample
 \term{variance}\label{varianceIsDefined},
@@ -606,9 +665,10 @@ s_{}^2 &= \frac{(\loanAdev)_{}^2 + (\loanBdev)_{}^2 + (\loanCdev)_{}^2 + \cdots 
 	&= \loanVar{}
 \end{align*}
 We divide by $n - 1$, rather than dividing by $n$,
-when computing the variance;
-you need not worry about this mathematical nuance
-for the material in this textbook.
+when computing a sample's variance;
+there's some mathematical nuance here, but the end result is that
+doing this makes this statistic slightly more reliable and useful.
+
 Notice that squaring the deviations does two things.
 First, it makes large values relatively much larger,
 seen by comparing $(\loanAdev)^2$, $(\loanBdev)^2$, $(\loanCdev)^2$,
@@ -619,35 +679,28 @@ The \term{standard deviation} is defined as the square root of the variance:
 \begin{align*}
 s = \sqrt{\loanVar{}} = \loanSD{}
 \end{align*}
-A subscript of $_x$ may be added to the variance
-and standard deviation,
-i.e. $s_x^2$ and $s_x^{}$, as a reminder that these
-are the variance and standard deviation of the observations
-represented by $x_1^{}$, $x_2^{}$, ..., $x_n^{}$.
-The $_{x}$ subscript is usually omitted when it is clear
-which data is being referenced.
+While often omitted, a subscript of $_x$ may be added
+to the variance and standard deviation,
+i.e. $s_x^2$ and $s_x^{}$, if it is useful as a reminder
+that these are the variance and standard deviation of the
+observations represented by $x_1^{}$, $x_2^{}$, ..., $x_n^{}$.
 
-\begin{termBox}{\tBoxTitle{Variance and standard deviation}
+\begin{onebox}{Variance and standard deviation}
   The variance is the average squared distance from the mean.
   The standard deviation is the square root of the variance.
   The standard deviation is useful when considering how far
-  the data are distributed from the mean.}
-\end{termBox}
+  the data are distributed from the mean.\vspace{3mm}
 
-\Comment{This paragraph has been shortened to focus
-  exclusively on the notation for the population and
-  omits the $n - 1$ and $n$ distinction.}
-%The formula for computing a population's variance
-%and standard deviation are similar
-%to those used for a sample.\footnote{The only difference
-%  is that the population variance has a division by $n$
-%  instead of $n-1$.}
-%However, like the mean, the population values have
-%special symbols:
-%$\sigma_{}^2$ for the variance and $\sigma$ for the
-%standard deviation.
-%The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)}
-%is the Greek letter \emph{sigma}.
+  The standard deviation represents the typical deviation
+  of observations from the mean.
+  Usually about 70\% of the data will be within one standard
+  deviation of the mean and about 95\% will be within two
+  standard deviations.
+  However, as seen in Figures~\ref{sdRuleForIntRate}
+  and~\ref{severalDiffDistWithSdOf1}, these percentages are
+  not strict rules.
+\end{onebox}
+
 Like the mean, the population values for variance
 and standard deviation have special symbols:
 $\sigma_{}^2$ for the variance and $\sigma$ for the
@@ -655,10 +708,10 @@ standard deviation.
 The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)}
 is the Greek letter \emph{sigma}.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \Figure{0.75}{sdRuleForIntRate}
-  \caption{For the \var{interest\_\hspace{0.3mm}rate} variable,
+  \Figure{0.73}{sdRuleForIntRate}
+  \caption{For the \var{interest\us{}rate} variable,
       34 of the 50 loans (68\%) had interest rates within
       1~standard deviation of the mean,
       and 48 of the 50 loans (96\%) had rates within
@@ -669,33 +722,28 @@ is the Greek letter \emph{sigma}.
   \label{sdRuleForIntRate}
 \end{figure}
 
-\Comment{The following box was changed from a Tip Box
-  to a Term Box since the design of OS4 will not distinguish
-  between the two.
-  The title was also updated}
-
-\begin{termBox}{
-  \tBoxTitle{How to think about the standard deviation}
-  The standard deviation represents the typical deviation
-  of observations from the mean.
-  Usually about 70\% of the data will be within one standard
-  deviation of the mean and about 95\% will be within two
-  standard deviations.
-  However, as seen in Figures~\ref{sdRuleForLoanAmount}
-  and~\ref{severalDiffDistWithSdOf1}, these percentages are
-  not strict rules.}
-\end{termBox}
+%\begin{onebox}{How to think about the standard deviation}
+%  The standard deviation represents the typical deviation
+%  of observations from the mean.
+%  Usually about 70\% of the data will be within one standard
+%  deviation of the mean and about 95\% will be within two
+%  standard deviations.
+%  However, as seen in Figures~\ref{sdRuleForIntRate}
+%  and~\ref{severalDiffDistWithSdOf1}, these percentages are
+%  not strict rules.
+%\end{onebox}
 
 \begin{figure}
   \centering
-  \Figure{0.64}{severalDiffDistWithSdOf1}
+  \Figure{0.6}{severalDiffDistWithSdOf1}
   \caption{Three very different population distributions
       with the same mean $\mu=0$ and standard deviation
       $\sigma=1$.}
   \label{severalDiffDistWithSdOf1}
 \end{figure}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 On page~\pageref{shapeFirstDiscussed}, the concept of
 shape of a distribution was introduced.
 A good description of the shape of a distribution should
@@ -703,7 +751,10 @@ include modality and whether the distribution is symmetric
 or skewed to one side.
 Using Figure~\ref{severalDiffDistWithSdOf1} as an example,
 explain why such a description is
-important.\footnote{Figure~\ref{severalDiffDistWithSdOf1}
+important.\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Figure~\ref{severalDiffDistWithSdOf1}
   shows three distributions that look quite different,
   but all have the same mean, variance,
   and standard deviation.
@@ -715,10 +766,10 @@ important.\footnote{Figure~\ref{severalDiffDistWithSdOf1}
   complete story, we can use modality and shape
   (symmetry/skew) to characterize basic information
   about a~distribution.}
-\end{exercise}
 
-\begin{example}{Describe the distribution of the
-    \var{interest\_\hspace{0.3mm}rate} variable using
+\begin{examplewrap}
+\begin{nexample}{Describe the distribution of the
+    \var{interest\us{}rate} variable using
     the histogram in Figure~\ref{loan50IntRateHist}.
     The description should incorporate the center,
     variability, and shape of the distribution,
@@ -731,7 +782,8 @@ important.\footnote{Figure~\ref{severalDiffDistWithSdOf1}
   of the mean.
   There are a few exceptionally large interest rates
   in the sample that are above 20\%.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 In practice, the variance and standard deviation are sometimes
 used as a means to an end, where the ``end'' is being able to
@@ -743,22 +795,23 @@ understand how much a sample mean varies from one sample
 to the next.
 
 
+\D{\newpage}
+
 \subsection{Box plots, quartiles, and the median}
 
 A \term{box plot} summarizes a data set using five
 statistics while also plotting unusual observations.
 Figure~\ref{loan_int_rate_box_plot_layout} provides
 a vertical dot plot alongside a box plot of the
-\var{interest\_\hspace{0.3mm}rate} variable from
+\var{interest\us{}rate} variable from
 the \data{loan50} data set.
 
 \begin{figure}[h]
   \centering
   \Figure{0.86}{loan_int_rate_box_plot_layout}
-  \caption{A vertical dot plot next to a labeled box plot
-      for the interest rates of the \loanN{} loans.
-      The median (\loanMedian{}), splits the data into the
-      bottom 50\% and the top 50\%.}
+  \caption{A vertical dot plot, where points have been
+      horizontally stacked, next to a labeled box plot
+      for the interest rates of the \loanN{} loans.}
   \label{loan_int_rate_box_plot_layout}
 \end{figure}
 
@@ -767,7 +820,7 @@ denoting the \term{median}, which splits the data in half.
 Figure~\ref{loan_int_rate_box_plot_layout} shows 50\% of the
 data falling below the median and other 50\% falling above
 the median.
-There are \loanN{} character counts in the data set
+There are \loanN{} loans in the data set
 (an even number) so the data are perfectly split into two
 groups of~25.
 We take the median in this case to be the average of the
@@ -780,13 +833,13 @@ there will be exactly one observation that splits the data
 into two halves, and in such a case that observation
 is the median (no average needed).
 
-\begin{termBox}{\tBoxTitle{Median: the number in the middle}
+\begin{onebox}{Median: the number in the middle}
   If the data are ordered from smallest to largest,
   the \term{median} is the observation right in the middle.
   If there are an even number of observations,
   there will be two values in the middle,
-  and the median is taken as their average.}
-\end{termBox}
+  and the median is taken as their average.
+\end{onebox}
 
 The second step in building a box plot is drawing
 a rectangle to represent the middle 50\% of the data.
@@ -806,7 +859,7 @@ and the \term{third quartile} \index{quartile!third quartile}
 (the $75^{th}$ percentile), and these are often labeled $Q_1$
 \index{Q$_1$} and $Q_3$\index{Q$_3$}, respectively.
 
-\begin{termBox}{\tBoxTitle{Interquartile range (IQR)}
+\begin{onebox}{Interquartile range (IQR)}
   The IQR\index{interquartile range} is the length
   of the box in a box plot.
   It is computed as
@@ -814,17 +867,20 @@ and the \term{third quartile} \index{quartile!third quartile}
   IQR = Q_3 - Q_1
   \end{eqnarray*}
   where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$
-  percentiles.}
-\end{termBox}
+  percentiles.
+\end{onebox}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 What percent of the data fall between $Q_1$ and the median?
-What percent is between the median and $Q_3$?\footnote{Since
+What percent is between the median and $Q_3$?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Since
   $Q_1$ and $Q_3$ capture the middle 50\% of the data and
   the median splits the data in the middle, 25\% of the data
   fall between $Q_1$ and the median, and another 25\% falls
   between the median and $Q_3$.}
-\end{exercise}
 
 Extending out from the box, the \term{whiskers} attempt
 to capture the data outside of the box.
@@ -857,7 +913,7 @@ interest rates of 24.85\% and \loanLargestValue{}\%
 as outliers since they are numerically distant from
 most of the data.
 
-\begin{termBox}{\tBoxTitle{Outliers are extreme}
+\begin{onebox}{Outliers are extreme}
   An \term{outlier} is an observation that appears
   extreme relative to the rest of the data. \vspace{3mm}
   
@@ -868,29 +924,30 @@ most of the data.
   \item Identifying
       \indexthis{strong skew}{skew!example: strong}
       in the distribution.
-  \item Identifying possible data collection or entry
-      errors.
+  \item Identifying possible data collection or
+      data entry errors.
   \item Providing insight into interesting properties
       of the data.\vspace{-1mm}
-  \end{enumerate}}
-\end{termBox}
+  \end{enumerate}
+\end{onebox}
 
-%\begin{exercise}
 %The observation \loanLargestValue{}\%, a suspected outlier,
 %was found to be an accurate observation.
 %What would such an observation suggest about the nature
 %of interest rates through Lending Club?\footnote{That
 %  occasionally there may be very long emails.}
-%\end{exercise}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Using Figure~\ref{loan_int_rate_box_plot_layout},
 estimate the following values for
-\var{interest\_\hspace{0.3mm}rate} in the
-\data{loan50} data set:
+\var{interest\us{}rate} in the \data{loan50} data set: \\
 (a) $Q_1$,
 (b) $Q_3$, and
-(c) IQR.\footnote{These
+(c) IQR.\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{These
   visual estimates will vary a little from one person
   to the next:
   $Q_1=$ 8\%,
@@ -898,22 +955,23 @@ estimate the following values for
   $\text{IQR} = Q_3 - Q_1 = 6\%$.
   (The true values: $Q_1= \loanQA{}\%$, $Q_3 = \loanQC{}\%$,
   $\text{IQR} = \loanIQR{}\%$.)}
-\end{exercise}
 
 \CalculatorVideos{how to create statistical summaries and box plots}
 
 
+\D{\newpage}
+
 \subsection{Robust statistics}
 
 How are the \indexthis{sample statistics}{sample statistic}
-of the \data{interest\_\hspace{0.3mm}rate} data set affected
-by the observation, 26.30\%?
+of the \data{interest\us{}rate} data set affected
+by the observation, 26.3\%?
 What would have happened if this loan had instead
-been only 15.00\%?
+been only 15\%?
 What would happen to these
 \indexthis{summary statistics}{summary statistic}
-if the observation at 26.30\% had been even larger,
-say 35.00\%? These scenarios are plotted alongside the
+if the observation at 26.3\% had been even larger,
+say 35\%? These scenarios are plotted alongside the
 original data in Figure~\ref{loan_int_rate_robust_ex},
 and sample statistics are computed under each scenario in
 Figure~\ref{robustOrNotTable}.
@@ -937,75 +995,81 @@ Figure~\ref{robustOrNotTable}.
 scenario && median & IQR && $\bar{x}$ & $s$ \\ 
 \hline
 %   & & \multicolumn{2}{c|} & & \multicolumn{2}{c|} \\
-original \var{num\_\hspace{0.3mm}char} data
+original \var{interest\us{}rate} data
     && 9.93\% & 5.76\% && 11.57\% & 5.05\% \\
-move 26.30\% $\to$ 15.00\%
+move 26.3\% $\to$ 15\%
     && 9.93\% & 5.76\% && 11.34\% & 4.61\% \\
-move 26.30\% $\to$ 35.00\%
+move 26.3\% $\to$ 35\%
     && 9.93\% & 5.76\% && 11.74\% & 5.68\% \\
    \hline
 \end{tabular}
 \caption{A comparison of how the median, IQR,
   mean ($\bar{x}$), and standard deviation ($s$) change
-  when an extreme observations is shifted.}
+  had an extreme observations from the \var{interest\us{}rate}
+  variable been different.}
 \label{robustOrNotTable}
 \end{figure}
 
-\begin{exercise} \label{interestRateWhichIsMoreRobust}
+\begin{exercisewrap}
+\begin{nexercise} \label{interestRateWhichIsMoreRobust}
 (a)~Which is more affected by extreme observations,
 the mean or median?
 Figure~\ref{robustOrNotTable} may be helpful.
 (b)~Is the standard deviation or IQR more affected by
-extreme observations?\footnote{(a)~Mean is affected more.
-(b)~Standard deviation is affected more.
+extreme observations?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a)~Mean is affected more.
+  (b)~Standard deviation is affected more.
   Complete explanations are provided in the material
   following Guided Practice~\ref{interestRateWhichIsMoreRobust}.}
-\end{exercise}
 
 The median and IQR are called \term{robust statistics} because
 extreme observations have little effect on their values:
 moving the most extreme value generally has little influence
 on these statistics.
 On the other hand, the mean and standard deviation
-are more heavily influenced by changes in extreme observations.
+are more heavily influenced by changes in extreme observations,
+which can be important in some situations.
 
-\begin{example}{The median and IQR did not change under the
+\begin{examplewrap}
+\begin{nexample}{The median and IQR did not change under the
     three scenarios in Figure~\ref{robustOrNotTable}.
     Why might this be the case?}
   The median and IQR are only sensitive to numbers
   near $Q_1$, the median, and $Q_3$.
   Since values in these regions are stable in the three
   data sets, the median and IQR estimates are also stable.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\Comment{The next exercise hits on one possible distinction
-  between median / mean: use the median if we care about
-  understanding the typical individual case.
-  However, if we care about something that scales
-  or will be more impactful to a full business,
-  then the mean is probably more useful.}
-
-\begin{exercise}
-The distribution of loan amounts in \data{loan50}
-is right skewed, with a few large loans lingering
-out into the right tail.
+\begin{exercisewrap}
+\begin{nexercise}
+The distribution of loan amounts in the \data{loan50} data set
+is right skewed, with a few large loans lingering out into the
+right tail.
 If you were wanting to understand the typical loan size,
 should you be more interested in the mean
-or median?\footnote{Answers will vary!
-  If looking to simply understand what a typical individual
+or median?\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Answers will vary!
+  If we're looking to simply understand what a typical individual
   loan looks like, the median is probably more useful.
   However, if the goal is to understand something that
   scales well, such as the total amount of money we might
   need to have on hand if we were to offer 1,000 loans,
   then the mean would be more useful.}
-\end{exercise}
 
 \index{data!loan50|)}
 
 
+\D{\newpage}
+
 \subsection{Transforming data (special topic)}
 \label{transformingDataSubsection}
 
+\noindent%
 When data are very strongly skewed, we sometimes transform
 them so they are easier to model.
 
@@ -1033,14 +1097,16 @@ them so they are easier to model.
     \label{county_pop_transformed}
 \end{figure}
 
-\begin{example}{Consider the histogram of county populations
+\begin{examplewrap}
+\begin{nexample}{Consider the histogram of county populations
     shown in Figure~\ref{county_pop_transformed_i},
     which shows extreme skew\index{skew!example: extreme}.
     What isn't useful about this plot?}
   Nearly all of the data fall into the left-most bin,
   and the extreme skew obscures many of the potentially
   interesting details in the data.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 There are some standard transformations that may be
 useful for strongly right skewed data where much of the
@@ -1086,11 +1152,11 @@ lines in Chapter~\ref{linRegrForTwoVar}.
     \label{county_pop_change_v_pop_transform_log}
   }
   \caption{\subref{county_pop_change_v_pop_transform_i}
-      Scatterplot of \var{line\_\hspace{0.3mm}breaks}
-      against \var{num\_\hspace{0.3mm}char} for 50 emails.
+      Scatterplot of population change
+      against the population before the change.
       \subref{county_pop_change_v_pop_transform_log}~A~scatterplot
-      of the same data but where each variable
-      has been log-transformed.}
+      of the same data but where the population
+      size has been log-transformed.}
   \label{county_pop_change_v_pop_transform_main}
 \end{figure}
 
@@ -1106,6 +1172,8 @@ or straighten a nonlinear relationship in a scatterplot.
 \index{data!county|)}
 
 
+\D{\newpage}
+
 \subsection{Mapping data (special topic)}
 
 \index{data!county|(}
@@ -1114,21 +1182,58 @@ or straighten a nonlinear relationship in a scatterplot.
 The \data{county} data set offers many numerical variables
 that we could plot using dot plots, scatterplots,
 or box plots, but these miss the true nature of the data.
-Rather, when we encounter geographic data, we should map
-it using an \term{intensity map}, where colors are used
+Rather, when we encounter geographic data, we should create
+an \term{intensity map}, where colors are used
 to show higher and lower values of a variable.
 Figures~\ref{countyIntensityMaps1}
 and~\ref{countyIntensityMaps2} shows intensity maps for
 poverty rate in percent (\var{poverty}),
-unemployment rate (\var{unemployment\_\hspace{0.3mm}rate}),
+unemployment rate (\var{unemployment\us{}rate}),
 homeownership rate in percent (\var{homeownership}),
 and median household income
-(\var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income}).
+(\var{median\us{}hh\us{}income}).
 The color key indicates which colors correspond to which values.
 The intensity maps are not generally very helpful
 for getting precise values in any given county,
 but they are very helpful for seeing geographic trends
 and generating interesting research questions or hypotheses.
+
+\begin{examplewrap}
+\begin{nexample}{What interesting features are evident in the
+    \var{poverty} and \var{unemployment\us{}rate}
+    intensity maps?}
+  Poverty rates are evidently higher in a few locations.
+  Notably, the deep south shows higher poverty rates,
+  as does much of Arizona and New Mexico.
+  High poverty rates are evident in the Mississippi
+  flood plains a little north of New Orleans and
+  also in a large section of Kentucky.
+
+  The unemployment rate follows similar trends,
+  and we can see correspondence between the two
+  variables. In fact, it makes sense for higher rates
+  of unemployment to be closely related to poverty rates.
+  One observation that stand out when comparing the two maps:
+  the poverty rate is much higher than the unemployment
+  rate, meaning while many people may be working,
+  they are not making enough to break out of poverty.
+\end{nexample}
+\end{examplewrap}
+
+\begin{exercisewrap}
+\begin{nexercise}
+What interesting features are evident in the
+\var{median\us{}hh\us{}income} intensity map in
+Figure~\ref{countyMedIncomeMap}?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Note: answers will vary.
+  There is some correspondence between high earning
+  and metropolitan areas, where we can see darker spots
+  (higher median household income),
+  though there are several exceptions.
+  You might look for large cities you are familiar with and
+  try to spot them on the map as dark spots.}
 
 \begin{figure}
   \centering
@@ -1172,32 +1277,6 @@ and generating interesting research questions or hypotheses.
 \label{countyIntensityMaps2}
 \end{figure}
 
-\begin{example}{What interesting features are evident in the
-    \var{poverty} and \var{unemployment\_\hspace{0.3mm}rate}
-    intensity maps?}
-  Poverty rates are evidently higher in a few locations.
-  Notably, the deep south shows higher poverty rates,
-  as does the southwest border of Texas.
-  The vertical strip of eastern Utah and Arizona
-  appears to have higher rates of poverty.
-  High poverty rates are evident in the Mississippi
-  flood plains a little north of New Orleans and
-  also in a large section of Kentucky and West Virginia.
-
-  The unemployment rate follows similar trends,
-  and we can see correspondence between the two
-  variables. In fact, it makes sense for higher rates
-  of unemployment to be closely related to poverty rates.
-  One observation that stand out when comparing the two maps:
-  the poverty rate is much higher than the unemployment
-  rate, meaning while many people may be working,
-  they are not making enough to break out of poverty.
-\end{example}
-
-\begin{exercise}
-What interesting features are evident in the \var{median\_\hspace{0.3mm}hh\_\hspace{0.3mm}income} intensity map in Figure~\ref{countyMedIncomeMap}?\footnote{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.}
-\end{exercise}
-
 \index{intensity map|)}
 \index{data!county|)}
 
@@ -1208,22 +1287,19 @@ What interesting features are evident in the \var{median\_\hspace{0.3mm}hh\_\hsp
 
 \index{data!loans|(}
 
-Like numerical data, categorical data can also be organized
-and analyzed.
 In this section, we will introduce tables and other basic tools
 for categorical data that are used throughout this book.
 The \data{loan50} data set represents a sample from a larger
 loan data set called \data{loans}.
 This larger data set contains information on 10,000 loans made
 through Lending Club.
-In this section we will examine the relationship between
+We~will examine the relationship between
 \var{homeownership}, which for the \data{loans} data can take
 a value of \resp{rent}, \resp{mortgage}
 (owns but has a mortgage), or \resp{own},
-and \var{app\_\hspace{0.3mm}type},
-which indicates whether the borrower reported joint income
-with a partner or whether that reported income was
-individual only.
+and \var{app\us{}type},
+which indicates whether the loan application was made
+with a partner or whether it was an individual application.
 % library(openintro); dim(loans_full_schema)
 
 
@@ -1245,7 +1321,13 @@ individual only.
 \newcommand{\loanapphomeN}{\loanapphomeDD{}}
 
 Figure~\ref{loan_home_app_type_totals} summarizes two variables:
-\var{app\_\hspace{0.3mm}type} and \var{homeownership}.
+\var{app\us{}type}
+%\footnote{For those readers already familiar
+%  with \emph{joint probabilities}, \resp{joint} in the table
+%  refers to a level of the \var{app\us{}type} variable
+%  for a joint application.
+%  The does not refer to a joint probability!}
+and \var{homeownership}.
 A table that summarizes data for two categorical variables in
 this way is called a \term{contingency table}.
 Each value in the table represents the number of times
@@ -1260,12 +1342,11 @@ provide the total counts across each row
   \loanapphomeAC{} = \loanapphomeAD{}$),
 and \term{column totals} \index{contingency table!column totals}
 are total counts down each column.
-
-A table for a single variable is called a \term{frequency table}.
-Figure~\ref{loan_homeownership_totals} is a frequency table for
-the \var{homeownership} variable.
-If we replaced the counts with percentages or proportions,
-the table would be called a \term{relative frequency table}.
+We can also create a table that shows only the overall 
+percentages or proportions for each combination of categories,
+or we can create a table for a single variable,
+such as the one shown in Figure~\ref{loan_homeownership_totals}
+for the \var{homeownership} variable.
 
 \begin{figure}[ht]
 \centering
@@ -1279,7 +1360,7 @@ the table would be called a \term{relative frequency table}.
       \loanapphomeAB{} &
       \loanapphomeAC{} &
       \loanapphomeAD{} \\
-  \raisebox{1.5ex}[0pt]{\var{app\_\hspace{0.3mm}type}} &
+  \raisebox{1.5ex}[0pt]{\var{app\us{}type}} &
   joint &
       \loanapphomeBA{} &
       \loanapphomeBB{} &
@@ -1294,7 +1375,7 @@ the table would be called a \term{relative frequency table}.
   \cline{2-6}
 \end{tabular}
 \caption{A contingency table for
-    \var{app\_\hspace{0.3mm}type} and \var{homeownership}.}
+    \var{app\us{}type} and \var{homeownership}.}
 \label{loan_home_app_type_totals}
 %library(openintro); library(xtable); tab <- table(loans_full_schema[,c("application_type", "homeownership")])[, c("RENT", "MORTGAGE", "OWN")]; xtable(tab); rowSums(tab); colSums(tab); sum(tab)
 \end{figure}
@@ -1312,8 +1393,8 @@ the table would be called a \term{relative frequency table}.
   Total & \loanapphomeDD{} \\ 
   \hline
 \end{tabular}
-\caption{A frequency table for the \var{homeownership}
-    variable.}
+\caption{A table summarizing the frequencies of each
+    value for the \var{homeownership} variable.}
 \label{loan_homeownership_totals}
 \end{figure}
 
@@ -1321,15 +1402,14 @@ A bar plot is a common way to display a single
 categorical variable.
 The left panel of Figure~\ref{loan_homeownership_bar_plot}
 shows a \term{bar plot} for the \var{homeownership} variable.
-In the right panel, the counts are converted into proportions
-(e.g. $\loanapphomeDA{} / \loanapphomeDD{} = 0.3858$ for
-  \resp{rent}),
+In the right panel, the counts are converted into proportions,
 showing the proportion of observations that are in each level
-(i.e. in each category).
+(e.g. $\loanapphomeDA{} / \loanapphomeDD{} = 0.3858$ for
+  \resp{rent}).
 
 \begin{figure}[bht]
   \centering
-  \Figure{0.9}{loan_homeownership_bar_plot}
+  \Figure{0.82}{loan_homeownership_bar_plot}
   \caption{Two bar plots of \var{number}.
       The left panel shows the counts, and the right panel
       shows the proportions in each group.}
@@ -1339,11 +1419,14 @@ showing the proportion of observations that are in each level
 
 \subsection{Row and column proportions}
 
+Sometimes it is useful to understand the fractional breakdown
+of one variable in another,
+and we can modify our contingency table to provide such a view.
 Figure~\ref{rowPropAppTypeHomeownership}
-shows the row proportions for
-Figure~\ref{loan_home_app_type_totals}.
-The \termsub{row proportions}{contingency table!row proportions}
-are computed as the counts divided by their row totals.
+shows the
+\termsub{row proportions}{contingency table!row proportions}
+for Figure~\ref{loan_home_app_type_totals},
+which are computed as the counts divided by their row totals.
 The value \loanapphomeAA{} at the intersection of
 \resp{individual} and \resp{rent} is replaced by
 $\loanapphomeAA{}/\loanapphomeAD{} = 0.411$,
@@ -1360,91 +1443,128 @@ applicants who rent.
   & rent & mortgage & own & Total \\
   \hline
   individual & 
-      $\loanapphomeAA{}/\loanapphomeAD{} = 0.411$ &
-      $\loanapphomeAB{}/\loanapphomeAD{} = 0.451$ &
-      $\loanapphomeAC{}/\loanapphomeAD{} = 0.138$ &
+%      $\loanapphomeAA{}/\loanapphomeAD{} = 0.411$ &
+%      $\loanapphomeAB{}/\loanapphomeAD{} = 0.451$ &
+%      $\loanapphomeAC{}/\loanapphomeAD{} = 0.138$ &
+      0.411 &
+      0.451 &
+      0.138 &
       1.000 \\
   joint &
-      $\loanapphomeBA{}/\loanapphomeBD{} = 0.242$ &
-      $\loanapphomeBB{}/\loanapphomeBD{} = 0.635$ &
-      $\loanapphomeBC{}/\loanapphomeBD{} = 0.122$ &
+%      $\loanapphomeBA{}/\loanapphomeBD{} = 0.242$ &
+%      $\loanapphomeBB{}/\loanapphomeBD{} = 0.635$ &
+%      $\loanapphomeBC{}/\loanapphomeBD{} = 0.122$ &
+      0.242 &
+      0.635 &
+      0.122 &
       1.000 \\
   \hline
   Total &
-      $\loanapphomeDA{}/\loanapphomeDD{} = 0.386$ &
-      $\loanapphomeDB{}/\loanapphomeDD{} = 0.479$ &
-      $\loanapphomeDC{}/\loanapphomeDD{} = 0.135$ &
+%      $\loanapphomeDA{}/\loanapphomeDD{} = 0.386$ &
+%      $\loanapphomeDB{}/\loanapphomeDD{} = 0.479$ &
+%      $\loanapphomeDC{}/\loanapphomeDD{} = 0.135$ &
+      0.386 &
+      0.479 &
+      0.135 &
       1.000 \\
   \hline
 \end{tabular}
 \caption{A contingency table with row proportions
-    for the \var{app\_\hspace{0.3mm}type} and
+    for the \var{app\us{}type} and
     \var{homeownership} variables.
-    The totals for some rows are off by 0.001
-    due to rounding errors.}
+    The row total is off by 0.001 for the
+    \resp{joint} row due to a rounding error.}
 \label{rowPropAppTypeHomeownership}
 \end{figure}
 
-A contingency table of the column proportions is computed in a similar way, where each \termsub{column proportion}{contingency table!column proportion} is computed as the count divided by the corresponding column total. Figure~\ref{colPropAppTypeHomeownership} shows such a table, and here the value 0.906 indicates that 90.6\% of renters applied as individuals for the loan. This rate is higher compared to loans from people with mortgages (80.2\%) or who own their home (85.1\%). Because these rates vary between the three levels of \var{homeownership} (\resp{rent}, \resp{mortgage}, \resp{own}), this provides evidence that the \var{app\_\hspace{0.3mm}type} and \var{homeownership} variables are associated.
+A contingency table of the column proportions is computed in a similar way, where each \termsub{column proportion}{contingency table!column proportion} is computed as the count divided by the corresponding column total. Figure~\ref{colPropAppTypeHomeownership} shows such a table, and here the value 0.906 indicates that 90.6\% of renters applied as individuals for the loan. This rate is higher compared to loans from people with mortgages (80.2\%) or who own their home (85.1\%). Because these rates vary between the three levels of \var{homeownership} (\resp{rent}, \resp{mortgage}, \resp{own}), this provides evidence that the \var{app\us{}type} and \var{homeownership} variables are associated.
 
 \begin{figure}[h]
-\centering\small
+\centering%\small
 \begin{tabular}{l rrr r}
   \hline
   & rent & mortgage & own & Total \\
   \hline
   individual &
-      $\loanapphomeAA{}/\loanapphomeDA{} = 0.906$ &
-      $\loanapphomeAB{}/\loanapphomeDB{} = 0.802$ &
-      $\loanapphomeAC{}/\loanapphomeDC{} = 0.865$ &
-      $\loanapphomeAD{}/\loanapphomeDD{} = 0.851$ \\
+%      $\loanapphomeAA{}/\loanapphomeDA{} = 0.906$ &
+%      $\loanapphomeAB{}/\loanapphomeDB{} = 0.802$ &
+%      $\loanapphomeAC{}/\loanapphomeDC{} = 0.865$ &
+%      $\loanapphomeAD{}/\loanapphomeDD{} = 0.851$ \\
+      0.906 &
+      0.802 &
+      0.865 &
+      0.851 \\
   joint &
-      $\loanapphomeBA{}/\loanapphomeDA{} = 0.094$ &
-      $\loanapphomeBB{}/\loanapphomeDB{} = 0.198$ &
-      $\loanapphomeBC{}/\loanapphomeDC{} = 0.135$ &
-      $\loanapphomeBD{}/\loanapphomeDD{} = 0.150$ \\
+%      $\loanapphomeBA{}/\loanapphomeDA{} = 0.094$ &
+%      $\loanapphomeBB{}/\loanapphomeDB{} = 0.198$ &
+%      $\loanapphomeBC{}/\loanapphomeDC{} = 0.135$ &
+%      $\loanapphomeBD{}/\loanapphomeDD{} = 0.150$ \\
+      0.094 &
+      0.198 &
+      0.135 &
+      0.150 \\
   \hline
   Total & 1.000 & 1.000 & 1.000 & 1.000 \\
   \hline
 \end{tabular}
 \caption{A contingency table with column proportions for the
-    \var{app\_\hspace{0.3mm}type} and \var{homeownership}
+    \var{app\us{}type} and \var{homeownership}
     variables.
     The total for the last column is off by 0.001 due
     to a rounding error.}
 \label{colPropAppTypeHomeownership}
 \end{figure}
 
-We could also have checked for an association between \var{app\_\hspace{0.3mm}type} and \var{homeownership} in Figure~\ref{rowPropAppTypeHomeownership} using row proportions. When comparing these row proportions, we would look down columns to see if the fraction of loans where the borrower rents, has a mortgage, or owns varied across the \resp{individual} to \resp{joint} application types.
+We could also have checked for an association between \var{app\us{}type} and \var{homeownership} in Figure~\ref{rowPropAppTypeHomeownership} using row proportions. When comparing these row proportions, we would look down columns to see if the fraction of loans where the borrower rents, has a mortgage, or owns varied across the \resp{individual} to \resp{joint} application types.
 
-\Comment{These next exercises must be checked \textbf{very} carefully.}
+\begin{exercisewrap}
+\begin{nexercise}
+(a)~What does 0.451 represent in
+Figure~\ref{rowPropAppTypeHomeownership}?
 
-\begin{exercise}
-What does 0.451 represent in Figure~\ref{rowPropAppTypeHomeownership}? What does 0.802 represent in Figure~\ref{colPropAppTypeHomeownership}?\footnote{0.451 represents the proportion of individual applicants who have a mortgage. 0.802 represents the fraction of applicants with mortgages who applied as individuals.}
-\end{exercise}
+(b)~What does 0.802 represent in
+Figure~\ref{colPropAppTypeHomeownership}?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a)~0.451 represents the proportion of individual
+  applicants who have a mortgage.
+  (b)~0.802 represents the fraction
+  of applicants with mortgages who applied as individuals.}
 
-\begin{exercise}
-What does 0.122 at the intersection of \resp{joint} and \resp{own} represent in Figure~\ref{rowPropAppTypeHomeownership}? What does 0.135 represent in the Figure~\ref{colPropAppTypeHomeownership}?\footnote{0.122 represents the fraction of joint borrowers who own their home. 0.135 represents the home-owning borrowers who had a joint application for the loan.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+(a)~What does 0.122 at the intersection of \resp{joint} and
+\resp{own} represent in
+Figure~\ref{rowPropAppTypeHomeownership}?
 
-\begin{example}{
+(b)~What does 0.135 represent in the
+Figure~\ref{colPropAppTypeHomeownership}?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a)~0.122 represents the fraction of joint borrowers
+  who own their home.
+  (b)~0.135 represents the home-owning borrowers
+  who had a joint application for the loan.}
+
+\begin{examplewrap}
+\begin{nexample}{
     Data scientists use statistics to filter spam from incoming
     email messages.
     By noting specific characteristics of an email,
     a data scientist may be able to classify some emails as spam
     or not spam with high accuracy.
-    One of those characteristics is whether the email
+    One such characteristic is whether the email
     contains no numbers, small numbers, or big numbers.
-    Another characteristic is whether or not an email
-    has any HTML content.
-    A contingency table for the \var{spam} and \var{format}
-    variables from the \data{email} data set are shown in
+    Another characteristic is the email format, which
+    indicates whether or not an email has any HTML content,
+    such as bolded text.
+    We'll focus on email format and spam status using the
+    \data{email} data set, and these variables are summarized
+    in a contingency table in
     Figure~\ref{emailSpamHTMLTableTotals}.
-    For reference, an HTML email is an email with the capacity
-    for special formatting, e.g. bold text.
-    In Figure~\ref{emailSpamHTMLTableTotals},
-    which would be more helpful to someone hoping to classify
-    email as spam or regular email: row or column proportions?}
+    Which would be more helpful to someone hoping to classify
+    email as spam or regular email for this table:
+    row or column proportions?}
   \label{weighingRowColumnProportions}
   A data scientist would be interested in how the proportion
   of spam changes within each email format.
@@ -1460,10 +1580,11 @@ What does 0.122 at the intersection of \resp{joint} and \resp{own} represent in 
   an email as spam or not spam, as over 80\% of plain text
   emails are not spam.
   Yet, when we carefully combine this information with many
-  other characteristics, such as \var{number} and other variables,
-  we stand a reasonable chance of being able to classify some
-  email as spam or not spam.
-\end{example}
+  other characteristics,
+  we stand a reasonable chance of being able to classify
+  some emails as spam or not spam with confidence.
+\end{nexample}
+\end{examplewrap}
 
 \begin{figure}[ht]
 \centering
@@ -1482,8 +1603,6 @@ What does 0.122 at the intersection of \resp{joint} and \resp{own} represent in 
 %library(openintro); library(xtable); data(email); tab <- table(email[,c("spam", "format")])[2:1,]; tab; colSums(tab); rowSums(tab)
 \end{figure}
 
-\Comment{This next discussion and following example
-  are relatively new.}
 Example~\ref{weighingRowColumnProportions} points out
 that row and column proportions are not equivalent.
 Before settling on one form for a table,
@@ -1492,32 +1611,34 @@ most useful table is constructed.
 However, sometimes it simply isn't clear which, if either,
 is more useful.
 
-\begin{example}{Look back to
+\begin{examplewrap}
+\begin{nexample}{Look back to
     Tables~\ref{rowPropAppTypeHomeownership}
     and~\ref{colPropAppTypeHomeownership}.
     Are there any obvious scenarios where one might be more
     useful than the other?}
   None that we thought were obvious!
-  What is distinct about \var{app\_\hspace{0.3mm}type}
+  What is distinct about \var{app\us{}type}
   and \var{homeownership} vs the email example is that
   these two variables don't have a clear explanatory-response
   variable relationship that we might hypothesize
-  (these terms were introduced in
-    Section~\ref{explanatoryAndResponse}).
+  (see Section~\ref{explanatoryAndResponse} for these terms).
   Usually it is most useful to ``condition'' on the
   explanatory variable.
   For instance, in the email example, the email format
   was seen as a possible explanatory variable of whether
-  the message was spam, so we computed the relative
-  frequencies for each email format.
-\end{example}
+  the message was spam, so we would find it more interesting
+  to compute the relative frequencies (proportions)
+  for each email format.
+\end{nexample}
+\end{examplewrap}
 
-\Comment{Any risk with the above example that students
-  would think they need not know how to describe (what
-  are effectively) conditional probabilities based
-  on row or column proportions?
-  If so, we could add in an exercise that calls this
-  out and requires them to create such a description.}
+%\Comment{Any risk with the above example that students
+%  would think they need not know how to describe (what
+%  are effectively) conditional probabilities based
+%  on row or column proportions?
+%  If so, we could add in an exercise that calls this
+%  out and requires them to create such a description.}
 
 
 \subsection{Using a bar plot with two variables}
@@ -1532,26 +1653,31 @@ the information in these tables.
 A \termsub{stacked bar plot}{bar plot!stacked bar plot}
 \index{bar plot!segmented bar plot}
 is a graphical display of contingency table information.
-For example, a stacked bar plot representing
+For example, a~stacked bar plot representing
 Figure~\ref{colPropAppTypeHomeownership}
 is shown in Figure~\ref{loan_app_type_home_seg_bar},
 where we have first created a bar plot using the
 \var{homeownership} variable and then divided each group
-by the levels of \var{app\_\hspace{0.3mm}type}.
-One related visualization is a
+by the levels of \mbox{\var{app\us{}type}}.
+
+One related visualization to the stacked bar plot is the
 \termsub{side-by-side bar plot}{bar plot!side-by-side},
-which is shown in
+where an example is shown in
 Figure~\ref{loan_app_type_home_sbs_bar}.
-The column proportions of
-Figure~\ref{colPropAppTypeHomeownership}
+
+For the last type of bar plot we introduce,
+the column proportions for the
+\var{app\us{}type} and \var{homeownership} contingency table
 have been translated into a standardized stacked bar plot
-in Figure~\ref{loan_app_type_home_seg_bar_standardized},
-which is a helpful visualization of the fraction of individual
-or joint loan applications for borrowers in each level of
-\var{homeownership}.
+in Figure~\ref{loan_app_type_home_seg_bar_standardized}.
+This type of visualization is helpful in understanding
+the fraction of individual or joint loan applications
+for borrowers in each level of \var{homeownership}.
+Additionally, since the proportions of \resp{joint}
+and \resp{individual} vary across the groups,
+we can conclude that the two variables are associated.
 
-
-\newcommand{\loanapptypehomesegbarplotwidth}{0.48\textwidth}
+\newcommand{\loanapptypehomesegbarplotwidth}{0.46\textwidth}
 \begin{figure}[h]
   \centering
   \subfigure[]{
@@ -1572,23 +1698,82 @@ or joint loan applications for borrowers in each level of
         {loan_app_type_home_seg_bar_standardized}
     \label{loan_app_type_home_seg_bar_standardized}
   }
+%  \subtable{
+%    \footnotesize
+%    \begin{tabular}{l  ccc  r}
+%      \multicolumn{5}{l}{Contingency table summarizing}\\
+%      \multicolumn{5}{l}{application type and homeownership:} \\
+%      \\
+%      & \multicolumn{3}{c}{\bf \var{homeownership}} & \\
+%      \cline{2-4}
+%      \var{app\us{}type} &
+%          rent & mortgage & own & Total \\ 
+%      \hline
+%      individual &
+%          \loanapphomeAA{} &
+%          \loanapphomeAB{} &
+%          \loanapphomeAC{} &
+%          \loanapphomeAD{} \\
+%      joint &
+%          \loanapphomeBA{} &
+%          \loanapphomeBB{} &
+%    	  \loanapphomeBC{} &
+%    	  \loanapphomeBD{} \\
+%      \hline
+%      Total &
+%          \loanapphomeDA{} &
+%          \loanapphomeDB{} &
+%          \loanapphomeDC{} &
+%          \loanapphomeDD{} \\
+%      \hline
+%      \ \\
+%      \ \\
+%      \multicolumn{5}{l}{Version of the table}\\
+%      \multicolumn{5}{l}{with column proportions:} \\
+%      \\
+%      & \multicolumn{3}{c}{\bf \var{homeownership}} & \\
+%      \cline{2-4}
+%      \var{app\us{}type} &
+%          rent & mortgage & own & Total \\ 
+%      \hline
+%      individual &
+%          0.906 &
+%          0.802 &
+%          0.865 &
+%          0.851 \\
+%      joint &
+%          0.094 &
+%          0.198 &
+%          0.135 &
+%          0.150 \\
+%      \hline
+%      Total & 1.000 & 1.000 & 1.000 & 1.000 \\
+%      \hline
+%      \ \\
+%    \end{tabular}
+%    \label{loan_app_type_home_copied_table}
+%  }
   \caption{\subref{loan_app_type_home_seg_bar} Stacked
       bar plot for \var{homeownership},
       where the counts have been further broken down
-      by \var{app\_\hspace{0.3mm}type}.
+      by \var{app\us{}type}.
       \subref{loan_app_type_home_sbs_bar}~Side-by-side
       bar plot for \var{homeownership}
-      and \var{app\_\hspace{0.3mm}type}.
+      and \var{app\us{}type}.
       \subref{loan_app_type_home_seg_bar_standardized}~Standardized
-      version of the stacked bar plot.}
+      version of the stacked bar plot.
+      \subref{loan_app_type_home_copied_table}~A
+      contingency table for
+      \var{app\us{}type} and \var{homeownership}.}
   \label{loan_app_type_home_seg_bar_plot}
 \end{figure}
 
-\begin{example}{Examine the three bar plots in
+\begin{examplewrap}
+\begin{nexample}{Examine the three bar plots in
     Figure~\ref{loan_app_type_home_seg_bar_plot}.
     When is the stacked, side-by-side, or standardized
     stacked bar plot the most useful?}
-  This stacked bar plot is most useful when it is reasonable
+  The stacked bar plot is most useful when it's reasonable
   to assign one variable as the explanatory variable and
   the other variable as the response, since we are effectively
   grouping by one variable first and then breaking it down by
@@ -1598,29 +1783,28 @@ or joint loan applications for borrowers in each level of
   about which variable, if any, represents the explanatory
   and which the response variable.
   It is also easy to discern the number of cases
-  in of the six different group combinations shown than
-  in a stacked bar plot.
-  However, one downside of the side-by-side visualization
+  in of the six different group combinations.
+  However, one downside
   is that it tends to require more horizontal space;
   the narrowness of Figure~\ref{loan_app_type_home_sbs_bar}
   makes the plot feel a bit cramped.
   Additionally, when two groups are of very different sizes,
-  as we see in the \resp{mortgage} and \resp{own} groups,
-  it is difficult to discern if there is any association
+  as we see in the \resp{own} group relative to either of the
+  other two groups,
+  it is difficult to discern if there is an association
   between the variables.
 
-  The standardized stacked bar plot is helpful if primary
+  The standardized stacked bar plot is helpful if the primary
   variable in the stacked bar plot is relatively imbalanced,
-  e.g. as we see where the \resp{own} category has only
-  a third of the observations in the \resp{mortgage}
-  category, making it a bit more difficult
-  to discern whether the proportion of borrowers
-  in each group that are individual or joint borrowers
-  is stable across the two groups.
-  That said, the major downside of the standardized version
+  e.g. the \resp{own} category has only a third of the
+  observations in the \resp{mortgage} category,
+  making the simple stacked bar plot less useful for
+  checking for an association.
+  The major downside of the standardized version
   is that we lose all sense of how many cases each of the
   bars represents.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 %Before settling on a particular bar plot, consider each
 %carefully.
@@ -1635,7 +1819,7 @@ A \term{mosaic plot} is a visualization technique
 suitable for contingency tables that resembles
 a standardized stacked bar plot with the benefit
 that we still see the relative group sizes of the
-primary variable.
+primary variable as well.
 
 To get started in creating our first mosaic plot,
 we'll break a square into columns for each category
@@ -1667,14 +1851,14 @@ to represent the number of cases in each category.
       plot for \var{homeownership}.
       \subref{loan_app_type_home_mosaic}~Two-variable mosaic
       plot for both \var{homeownership}
-      and \var{app\_\hspace{0.3mm}type}.}
+      and \var{app\us{}type}.}
   \label{loan_app_type_home_mosaic_plot}
 \end{figure}
 
 To create a completed mosaic plot, the single-variable
 mosaic plot is further divided into pieces in
 Figure~\ref{loan_app_type_home_mosaic} using the
-\var{app\_\hspace{0.3mm}type} variable.
+\var{app\us{}type} variable.
 Each column is split proportional to the
 number of loans from individual and joint
 borrowers.
@@ -1684,10 +1868,11 @@ and it was divided into individual loans (upper)
 and joint loans (lower).
 As another example, the bottom segment of the third column
 represents loans where the borrower owns their home
-and applied jointly, while the upper segment represents
+and applied jointly, while the upper segment
+of this column represents
 borrowers who are homeowners and filed individually.
 We can again use this plot to see that
-the \var{homeownership} and \var{app\_\hspace{0.3mm}type}
+the \var{homeownership} and \var{app\us{}type}
 variables are associated, since some columns are divided
 in different vertical locations than others,
 which was the same technique used for checking an
@@ -1703,7 +1888,9 @@ Like with the bar plots, it's common to use
 the explanatory variable to represent the
 first split in a mosaic plot,
 and then for the response to break
-up each level of the explanatory variable.
+up each level of the explanatory variable,
+if these labels are reasonable to attach to
+the variables under consideration.
 
 \begin{figure}[h]
   \centering
@@ -1722,19 +1909,19 @@ up each level of the explanatory variable.
 
 \subsection{The only pie chart you will see in this book}
 
-\Comment{Softening the language against pie charts.}
-
 A \term{pie chart} is shown in
 Figure~\ref{loan_homeownership_pie_chart} alongside
 a bar plot representing the same information.
 Pie charts can be useful for giving a high-level overview
 to show how a set of cases break down.
-However, it is also difficult to decipher close details
+However, it is also difficult to decipher details
 in a pie chart.
-For example, it takes a little longer to recognize
+For example, it takes a couple seconds longer to recognize
 that there are more loans where the borrower has
 a mortgage than rent when looking at the pie chart,
 while this detail is very obvious in the bar plot.
+While pie charts can be useful, we prefer bar plots
+for their ease in comparing groups.
 %One benefit of pie charts is that they to make it easier
 %to see when a series of groups make up at least 50\%,
 %e.g. \Comment{would need to show a pie chart with
@@ -1742,12 +1929,15 @@ while this detail is very obvious in the bar plot.
 
 \begin{figure}[h]
   \centering
-  \Figure{1.00}{loan_homeownership_pie_chart}
+  \Figure{}{loan_homeownership_pie_chart}
   \caption{A pie chart and bar plot of \var{homeownership}.}
   \label{loan_homeownership_pie_chart}
 \end{figure}
 
 \index{data!loans|)}
+
+
+\D{\newpage}
 
 \subsection{Comparing numerical data across groups}
 \label{comparingAcrossGroups}
@@ -1756,20 +1946,19 @@ while this detail is very obvious in the bar plot.
 
 Some of the more interesting investigations can be considered
 by examining numerical data across groups.
-The methods required here aren't really new.
-All that is required is to make a numerical plot for each group.
-Here two convenient methods are introduced: side-by-side
-box plots and hollow histograms.
+The methods required here aren't really new:
+all that's required is to make a numerical plot for each group
+in the same graph.
+Here two convenient methods are introduced:
+side-by-side box plots and hollow histograms.
 
 We will take a look again at the \data{county} data set
 and compare the median household income for counties that
 gained population from 2010 to 2017 versus counties that
-had no gain.\footnote{Some counties are excluded since
-  they did not have available population data for one
-  or both years.}
+had no gain.
 While we might like to make a causal connection here,
 remember that these are observational data and so such
-an interpretation would not be justified.
+an interpretation would be, at best, half-baked.
 
 \newcommand{\numcountieswithgains}{1454}
 \newcommand{\numcountieswithgainsC}{1,454}
@@ -1786,30 +1975,35 @@ Figure~\ref{countyIncomeSplitByPopGainTable}
 to give a better sense of some of the raw median
 income data.
 
-\begin{figure}
+\newcommand{\npgpad}[1]{\hspace{2mm}#1\hspace{1.5mm}\ }
+\begin{figure}[h]
 \centering
 \begin{tabular}{ ccc ccc c ccc }
-\multicolumn{6}{c}{\bf population gain} &&
-    \multicolumn{3}{c}{\bf no gain} \\ 
+\multicolumn{10}{c}{\bf Median Income for 150 Counties,
+    in \$1000s} \\
+\hline
+\vspace{-2mm} \\
+\multicolumn{6}{c}{\bf Population Gain} &\hspace{5mm}\ &
+    \multicolumn{3}{c}{\bf No Population Gain} \\ 
   \cline{1-6} \cline{8-10}
-62.7 & 61.2 & 32.4 & 74.2 & 44.6 & 38.8 &\hspace{5mm}\ &
-    55.2 & 49.6 & 44.1 \\
-26.7 & 63.6 & 42.9 & 45.3 & 52.8 & 77 && 41.1 & 45.8 & 49 \\
-41.5 & 45.3 & 55.5 & 49 & 38.2 & 51 && 53.9 & 44.8 & 38.8 \\
-48.1 & 45.6 & 74.1 & 50.6 & 45.6 & 97.5 && 54.6 & 41.5 & 44.1 \\
-73.3 & 52.6 & 73.7 & 42.4 & 77.9 & 43.5 && 45.2 & 53.9 & 45.8 \\
-74.3 & 49.4 & 55.9 & 57.5 & 36.7 & 54.3 && 36.4 & 49.6 & 47.1 \\
-38.9 & 44.9 & 46.6 & 42.1 & 51.8 & 46.2 && 44.8 & 38.7 & 34.5 \\
-70.2 & 36.9 & 54.9 & 85.7 & 50.7 & 42 && 56.1 & 53.3 & 37.8 \\
-43.2 & 66 & 53 & 40.8 & 48 & 81.6 && 29 & 32.7 & 44.5 \\
-58.5 & 45.4 & 47.4 & 94.7 & 65.5 & 54.9 && 39.7 & 26.6 & 38.4 \\
-76.8 & 60.8 & 40.5 & 52 & 45.9 & 67.7 && 51.6 & 35 & 44.6 \\
-52.3 & 61.1 & 55.9 & 52.2 & 54.3 & 52.7 && 57.2 & 40.6 & 54.7 \\
-56.8 & 76 & 53.4 & 71.2 & 54.7 & 56.8 && 48.1 & 55.3 & 40.3 \\
-56.2 & 57.9 & 44.5 & 58 & 101.9 & 63.9 && 46.2 & 33 & 56.7 \\
-51.1 & 53.4 & 45.7 & 38.6 & 42 & 55.3 && 41.8 & 47.3 & 56.5 \\
-57.6 & 59.6 & 44.6 & 59.2 & 54 &  && 37.6 & 42.9 & 38.9 \\
-50.2 & 38.4 & 61.3 & 53.8 & 45.1 &  && 44.3 & 56.3 &  \\
+38.2 & 43.6 & 42.2 & 61.5 & 51.1 & 45.7 &&
+    \npgpad{48.3} & \npgpad{60.3} & \npgpad{50.7} \\
+44.6 & 51.8 & 40.7 & 48.1 & 56.4 & 41.9 && 39.3 & 40.4 & 40.3 \\
+40.6 & 63.3 & 52.1 & 60.3 & 49.8 & 51.7 && 57 & 47.2 & 45.9 \\
+51.1 & 34.1 & 45.5 & 52.8 & 49.1 & 51 && 42.3 & 41.5 & 46.1 \\
+80.8 & 46.3 & 82.2 & 43.6 & 39.7 & 49.4 && 44.9 & 51.7 & 46.4 \\
+75.2 & 40.6 & 46.3 & 62.4 & 44.1 & 51.3 && 29.1 & 51.8 & 50.5 \\
+51.9 & 34.7 & 54 & 42.9 & 52.2 & 45.1 && 27 & 30.9 & 34.9 \\
+61 & 51.4 & 56.5 & 62 & 46 & 46.4 && 40.7 & 51.8 & 61.1 \\
+53.8 & 57.6 & 69.2 & 48.4 & 40.5 & 48.6 && 43.4 & 34.7 & 45.7 \\
+53.1 & 54.6 & 55 & 46.4 & 39.9 & 56.7 && 33.1 & 21 & 37 \\
+63 & 49.1 & 57.2 & 44.1 & 50 & 38.9 && 52 & 31.9 & 45.7 \\
+46.6 & 46.5 & 38.9 & 50.9 & 56 & 34.6 && 56.3 & 38.7 & 45.7 \\
+74.2 & 63 & 49.6 & 53.7 & 77.5 & 60 && 56.2 & 43 & 21.7 \\
+63.2 & 47.6 & 55.9 & 39.1 & 57.8 & 42.6 && 44.5 & 34.5 & 48.9 \\
+50.4 & 49 & 45.6 & 39 & 38.8 & 37.1 && 50.9 & 42.1 & 43.2 \\
+57.2 & 44.7 & 71.7 & 35.3 & 100.2 &  && 35.4 & 41.3 & 33.6 \\
+42.6 & 55.5 & 38.6 & 52.7 & 63 &  && 43.4 & 56.5 &  \\
 \cline{1-6} \cline{8-10}
 \end{tabular}
 \caption{In this table, median household income (in \$1000s)
@@ -1819,6 +2013,8 @@ income data.
     had no population gain are shown on the right.}
 \label{countyIncomeSplitByPopGainTable}
 \end{figure}
+
+\D{\newpage}
 
 The \term{side-by-side box plot}
 \index{box plot!side-by-side box plot}
@@ -1833,7 +2029,7 @@ placed into one plotting window and drawn on the same scale.
   \Figure{1.00}{countyIncomeSplitByPopGain}
   \caption{Side-by-side box plot (left panel)
       and hollow histograms (right panel) for
-      \var{med\_\hspace{0.3mm}hh\_\hspace{0.3mm}income},
+      \var{med\us{}hh\us{}income},
       where the counties are split by whether there was
       a population gain or loss.}
   \label{countyIncomeSplitByPopGain}
@@ -1841,14 +2037,18 @@ placed into one plotting window and drawn on the same scale.
 
 Another useful plotting method uses \termsub{hollow histograms}{hollow histogram} to compare numerical data across groups. These are just the outlines of histograms of each group put on the same plot, as shown in the right panel of Figure~\ref{countyIncomeSplitByPopGain}.
 
-\begin{exercise} \label{comparingPriceByTypeExercise}
+\begin{exercisewrap}
+\begin{nexercise} \label{comparingPriceByTypeExercise}
 Use the plots in Figure~\ref{countyIncomeSplitByPopGain}
 to compare the incomes for counties across the two groups.
 What do you notice about the approximate center of each group?
 What do you notice about the variability between groups?
 Is the shape relatively consistent between groups?
 How many \emph{prominent} modes are there for each
-group?\footnote{Answers may vary a little.
+group?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Answers may vary a little.
   The counties with population gains tend to have higher
   income (median of about \$45,000) versus counties without
   a gain (median of about \$40,000).
@@ -1862,41 +2062,72 @@ group?\footnote{Answers may vary a little.
   The box plots indicate there are many observations
   far above the median in each group, though we should
   anticipate that many observations will fall beyond
-  the whiskers when using such most data sets that
+  the whiskers when examining any data set that
   contain more than a couple hundred data points.}
-\end{exercise}
 
-\begin{exercise}
-What components of each plot in Figure~\ref{countyIncomeSplitByPopGain} do you find most useful?\footnote{Answers will vary. The side-by-side box plots are especially useful for comparing centers and spreads, while the hollow histograms are more useful for seeing distribution shape, skew, and potential anomalies.}
-\end{exercise}
-
+\begin{exercisewrap}
+\begin{nexercise}
+What components of each plot in
+Figure~\ref{countyIncomeSplitByPopGain}
+do you find most useful?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{Answers will vary.
+  The side-by-side box plots are especially useful for comparing
+  centers and spreads, while the hollow histograms are more useful
+  for seeing distribution shape, skew, and potential anomalies.}
 \index{data!county|)}
+
+
+
+%%___________________________________________
+%\section{Exploratory data analysis}
+%\label{eda_section}
+%
+%Over the last two sections, we've learned fundamental
+%methods for graphing data.
+%In this section, we leverage what we've learned to expand
+%into more advanced techniques.
+%We'll learn more graphical methods, and importantly,
+%examine more complex relationships.
+%
+%
+%\subsection{}
+
+
+
+
 
 
 %___________________________________________
 \section{Case study: malaria vaccine}
-%\label{caseStudyMalariaVaccine}
+\label{caseStudyMalariaVaccine}
 
-\begin{example}{Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not {exactly} equal $\hat{p}_{_R}$?}\label{classRightLeftSideApple}
+\begin{examplewrap}
+\begin{nexample}{Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not {exactly} equal $\hat{p}_{_R}$?}\label{classRightLeftSideApple}
 While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to {chance}.
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
-\begin{exercise}
-If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?\footnote{We would be assuming that these two variables are independent.}
-\end{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
+If we don't think the side of the room a person sits on
+in class is related to whether the person owns an Apple product,
+what assumption are we making about the relationship between
+these two variables?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{We would be assuming that these two variables
+  are independent.}
+
 
 \subsection{Variability within data}
 \label{variabilityWithinData}
 
 \index{data!malaria vaccine|(}
 
-We consider a study from 2017 on a new malaria vaccine
-called PfSPZ.\footnote{Lyke et al. 2017.
-  \href{http://www.pnas.org/content/114/10/2711}
-      {PfSPZ vaccine induces strain-transcending T cells
-      and durable protection against heterologous controlled
-      human malaria infection}.
-  PNAS 114(10):2711-2716.}
+We consider a study on a new malaria vaccine
+called PfSPZ.
 In this study, volunteer patients were randomized
 into one of two experiment groups:
 14 patients received an experimental vaccine
@@ -1956,27 +2187,33 @@ signs of infection.
 \label{malaria_vaccine_20_exp_summary}
 \end{figure}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 Is this an observational study or an experiment?
 What implications does the study type have on what can
-be inferred from the results?\footnote{The
+be inferred from the results?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{The
   study is an experiment, as patients were randomly
   assigned an experiment group.
   Since this is an experiment, the results can be used
   to evaluate a causal relationship between the malaria
   vaccine and whether patients showed signs
   of an infection.}
-\end{exercise}
 
 In this study, a smaller proportion of patients
 who received the vaccine showed signs of an infection
-(\malariaVIR{} versus \malariaPIRPerc{}).
+(\malariaVIRPerc{} versus \malariaPIRPerc{}).
 However, the sample is very small,
 and it is unclear whether the difference provides
 \emph{convincing evidence} that the vaccine is
 effective.
 
-\begin{example}{Data scientists are sometimes called
+\D{\newpage}
+
+\begin{examplewrap}
+\begin{nexample}{Data scientists are sometimes called
     upon to evaluate the strength of evidence.
     When looking at the rates of infection for patients
     in the two groups in this study,
@@ -1998,7 +2235,8 @@ effective.
   Additionally, with such small samples,
   perhaps it's common to observe such large differences
   when we randomly split a group due to chance alone!
-\end{example}
+\end{nexample}
+\end{examplewrap}
 
 Example~\ref{malaria_vaccine_20_what_is_convincing}
 is a reminder that the observed outcomes in the data
@@ -2009,7 +2247,8 @@ is large, the sample size for the study is small,
 making it unclear if this observed difference represents
 efficacy of the vaccine or whether it is simply due to
 chance.
-We label these two competing claims, $H_0$ and $H_A$:
+We label these two competing claims, $H_0$ and $H_A$,
+which are spoken as ``H-nought'' and ``H-A'':
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item[$H_0$:] \textbf{Independence model.}
@@ -2030,7 +2269,7 @@ We label these two competing claims, $H_0$ and $H_A$:
 What would it mean if the independence model,
 which says the vaccine had no influence on the
 rate of infection, is true?
-It would mean 11~patients were going to develop
+It would mean 11~patients were going to
 develop an infection \emph{no matter which group
 they were randomized into},
 and 9~patients would not develop an infection
@@ -2084,6 +2323,8 @@ world where the vaccine doesn't influence the infection.
 Let's complete another \term{randomization} using
 a simulation.
 
+\D{\newpage}
+
 In this \term{simulation}, we take 20 notecards to
 represent the 20 patients, where we write down ``infection''
 on 11 cards and ``no infection'' on 9 cards.
@@ -2115,18 +2356,21 @@ Figure~\ref{malaria_vaccine_20_exp_summary_rand_1}.
 \label{malaria_vaccine_20_exp_summary_rand_1}
 \end{figure}
 
-\begin{exercise}
+\begin{exercisewrap}
+\begin{nexercise}
 \label{malaria_vaccine_20_exp_summary_rand_1_diff}
 What is the difference in infection rates between
 the two simulated groups in
 Figure~\ref{malaria_vaccine_20_exp_summary_rand_1}?
 How does this compare to the observed
 \malariaIRDiffPerc{} difference
-in the actual data?\footnote{$4 / 6 - 7 / 14 = 0.167$
-or about 16.7\% in favor of the vaccine.
-This difference due to chance is much smaller than the
-difference observed in the actual groups.}
-\end{exercise}
+in the actual data?\footnotemark{}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{$4 / 6 - 7 / 14 = 0.167$
+  or about 16.7\% in favor of the vaccine.
+  This difference due to chance is much smaller than the
+  difference observed in the actual groups.}
 
 
 \subsection{Checking for independence}
@@ -2177,7 +2421,8 @@ we expect the difference to be near zero with some random
 fluctuation, where \emph{near} is pretty generous in this
 case since the sample sizes are so small in this study.
 
-\begin{example}{How often would you observe a difference
+\begin{examplewrap}
+\begin{nexample}{How often would you observe a difference
     of at least \malariaIRDiffPerc{} (\malariaIRDiff{})
     according to Figure~\ref{malaria_rand_dot_plot}?
     Often, sometimes, rarely, or never?}
@@ -2186,7 +2431,10 @@ case since the sample sizes are so small in this study.
   happen about 2\% of the time according to
   Figure~\ref{malaria_rand_dot_plot}.
   Such a low probability indicates a rare event.
-\end{example}
+\end{nexample}
+\end{examplewrap}
+
+\D{\newpage}
 
 The difference of \malariaIRDiffPerc{} being
 a rare event suggests two possible interpretations

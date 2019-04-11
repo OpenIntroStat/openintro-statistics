@@ -9,9 +9,9 @@ pov <- cc$median_hh_income
 
 set.seed(1)
 these <- sample(sum(pop == -1, na.rm = TRUE), 50)
-sampL <- round(pov[pop == -1][these], 1)
+sampL <- round(pov[pop == -1][these] / 1000, 1)
 these <- sample(sum(pop == 1, na.rm = TRUE), 100)
-sampG <- round(pov[pop == 1][these], 1)
+sampG <- round(pov[pop == 1][these] / 1000, 1)
 M  <- matrix(c(sampG, rep("", 2), sampL, rep("", 1)), 17)
 DB <- 6
 for(i in 1:nrow(M)){

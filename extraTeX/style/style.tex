@@ -9,7 +9,23 @@
 % 9 Examples and Exercises
 % 10 Special Boxes
 
+%\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+%                    \thispagestyle{fancy}%
+%                    \global\@topnum\z@
+%                    \@afterindentfalse
+%                    \secdef\@chapter\@schapter}
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyhead[RO,RE]{\thepage} %RO=right odd, RE=right even
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
 \raggedbottom
+
+
+\newcommand{\stdspace}[0]{3mm}
+\newcommand{\stdvspace}[0]{\vspace{\stdspace{}}}
+\newcommand{\stdaddvspace}[0]{\addvspace{\stdspace{}}}
+
 
 
 
@@ -17,12 +33,16 @@
 % 1 Page Parameters
 % 1.1
 \setlength\paperheight{11in}
-\newcommand{\officialtextheight}{9.7in}
-\setlength\textheight{\officialtextheight}
 \setlength\paperwidth{8.5in}
+\newcommand{\officialtextheight}{9.7in}
 \newcommand{\officialtextwidth}{6in}
-\setlength\textwidth{\officialtextwidth}
+%\setlength\paperheight{10in}
+%\setlength\paperwidth{8in}
+%\newcommand{\officialtextheight}{8.7in}
+%\newcommand{\officialtextwidth}{6in}
 \newcommand{\officialvoffset}{-0.6in}
+\setlength\textheight{\officialtextheight}
+\setlength\textwidth{\officialtextwidth}
 \setlength\voffset{\officialvoffset}
 \renewcommand{\baselinestretch}{1.0}
 % 1.2 Margin Size
@@ -51,6 +71,7 @@
 \setlength{\marginparwidth}{20mm}
 % 1.5 Page Header
 \pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
 \fancyhead[RO,LE]{\thepage}
 \fancyhead[RE]{\leftmark}
 \fancyhead[LO]{\rightmark}
@@ -67,10 +88,12 @@
 
 %-------------------------------------------------------------
 % 2 Special Commands for Editions
-\newcommand{\vspaceB}[1]{\vspace{#1}}
-\newcommand{\hspaceB}[1]{\hspace{#1}}
+\newcommand{\referrer}{os4_pdf}
+\newcommand{\vspaceB}[1]{}
+\newcommand{\hspaceB}[1]{}
 \newcommand{\textB}[1]{}
-\newcommand{\textC}[1]{#1}
+\newcommand{\textC}[1]{}
+\newcommand{\D}[1]{#1}
 
 
 
@@ -120,46 +143,30 @@
   \addtocounter{chapter}{-1}
   \normalsize
   \include{#2/TeX/#2}
-  \include{#2/TeX/#2_ex}}
+  %\include{#2/TeX/#2_ex}
+  }
 
 
 
 %-------------------------------------------------------------
 % 5 Section Headers
-% 5.1 Chapter
-\titleformat{\chapter}[display]
-{\color{oiB}\normalfont\Huge\bfseries\raggedright}{\chaptertitlename\
-\thechapter}{20pt}{{\Huge #1}}
-% 5.2 Section
-\let\oldsection\section
-\renewcommand\section{\clearpage\oldsection}
-\titleformat{\section}
-    {{\color{oiR}\titlerule[1mm]}\addvspace{0mm}\color{oiB}\normalfont\LARGE\bfseries%
-        \fontfamily{phv}%
-        \selectfont}
-    {\color{oiB}\thesection \quad #1}
-    {1em}
-    {}
-    [{\color{oiR}\titlerule[1mm]}]
-\titlespacing{\section}
-   {0pt}% left
-   {0pt}% before sep
-   {\baselineskip}% after sep% 5.3 Subsection
-\titleformat{\subsection}
-    {{\color{grayDark}\titlerule[0.1mm]}\vspace{2mm}\color{oiB}\normalfont\large%
-        \bfseries\fontfamily{phv}%
-        \selectfont}
-    {\color{oiB}\thesubsection}
-    {1em}
-    {#1}
-\titlespacing{\subsection}
-   {0pt}% left
-   {8mm}% before sep
-   {\baselineskip}% after sep% 5.3 Subsection
-% 5.4 Section Introduction
-\newcommand{\sectionintro}[1]{\begin{spacing}{1.1}\large
-#1
-\end{spacing}}
+%
+% See headers.tex file for main chapters.
+
+%% 5.1 Chapter
+%\titleformat{\chapter}[display]
+%{\color{oiB}\normalfont\huge\bfseries\raggedright}{\chaptertitlename\
+%\thechapter}{20pt}{\Huge}
+%% 5.2 Section
+%\titleformat{\section}
+%{\color{oiB}\normalfont\Large\bfseries}
+%{\color{oiB}\thesection}{1em}{}
+%% 5.3 Subsection
+%\titleformat{\subsection}
+%{\color{oiB}\normalfont\large\bfseries}
+%{\color{oiB}\thesubsection}{1em}{}
+
+
 
 
 %-------------------------------------------------------------
@@ -180,8 +187,10 @@
 \newcommand{\indexthis}[2]{#1\index{#2}}
 \newcommand{\termO}[1]{\textbf{\color{termOColor}#1}}
 \newenvironment{data}[1]{\texttt{#1}}{}
+\newcommand{\datalink}[1]{\index{#1|textbf}\texttt{\href{http://www.openintro.org/redirect.php?go=data_#1&referrer=\referrer}{#1}}}
 \newenvironment{var}[1]{\texttt{#1}}{}
 \newenvironment{resp}[1]{\texttt{#1}}{}
+\newcommand{\lmlevel}[1]{:~\emph{#1}}{}
 \newenvironment{calctext}[1]{{\color{oiB}\texttt{#1}}}{}
 \newenvironment{calctextmath}[1]{{\color{oiB}\mathtt{#1}}}{}
 \newenvironment{calcbutton}[1]{{\color{oiB}\texttt{#1}}}{}
@@ -194,18 +203,21 @@
 \setlength{\parindent}{0.3in}
 % 6.6 Hyperreferences
 \newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
-\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=os3_pdf}{#2}}
-\newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera}~}
+\newcommand{\oiRedirect}[2]{\href{http://www.openintro.org/redirect.php?go=#1&referrer=\referrer}{#2}}
+\newcommand{\videoicon}[1][4.5mm]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}~}
 \newcommand{\CalculatorVideos}[1]{}%{\begin{tipBox}{\tipBoxTitle[\videoicon]{Calculator videos}
 %Videos covering #1 using TI and Casio graphing calculators are available at \mbox{\oiRedirect{textbook-openintro_videos}{openintro.org/videos}}.}
 %\end{tipBox}}
-\newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
-\newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera}}}}
-\newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides}}}}
+\newcommand{\videohref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
+\newcommand{\slideshref}[2][4.5mm]{\oiRedirect{#2}{\raisebox{-0.3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
+\newcommand{\videomarginhref}[2][4mm]{\oiRedirect{#2}{\raisebox{-3mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
+\newcommand{\sectionvideohref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/video_camera.png}}}}
+\newcommand{\sectionslideshref}[2][6mm]{\oiRedirect{#2}{\raisebox{-0.5mm}[0pt]{\includegraphics[height=#1]{extraTeX/icons/slides.png}}}}
 \newcommand{\MarginVideo}[1]{\marginpar[{\videomarginhref{#1}}]{{\videomarginhref{#1}}}}
-
+% 6.7 Helper commands
+\newcommand{\us}[0]{\_\hspace{0.3mm}}
+%\newcommand{\quadplus}[0]{\quad + \quad}
+\newcommand{\indfunc}[2]{\var{#1}_{\resp{#2}}}
 
 
 %-------------------------------------------------------------
@@ -245,7 +257,7 @@
 }
 {\normalsize
 
-\addvspace{3mm}
+\stdaddvspace{}
 \end{itemize}}
 % 9.1.2 Exercise Fine Tuning
 \newcommand\theexercise{\thechapter.\arabic{equation}}
@@ -265,18 +277,18 @@
 \normalsize}{
 
 \end{itemize}
-\addvspace{3mm}
+\stdaddvspace{}
 }
 % 9.2.2 Wrappers
 %\reversemarginpar
 \def\warningsymbol{\protect\marginsymbolhelper}
 \def\marginsymbolhelper{\tabto*{0mm} {\dbend} \tabto*{0mm}}
-\newcommand{\exampleicon}[1]{\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example}\hspace{2mm}\ }
+\newcommand{\exampleicon}[1]{\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example.png}\hspace{2mm}\ }
 \newenvironment{gpewrapper}[1]{\addvspace{4mm}
 
 \noindent\hspace{-12.45mm}\begin{minipage}[c]{\textwidth+8mm}
 \begin{minipage}[c]{8.4mm}
-\hspace{0.5mm}\includegraphics[width=5mm]{extraTeX/icons/#1}
+\hspace{0.5mm}\includegraphics[width=5mm]{extraTeX/icons/#1.png}
 \end{minipage}\begin{minipage}[c]{\textwidth-0.45mm}\begin{mdframed}[%
     topline=false,
     rightline=false,
@@ -297,6 +309,7 @@
 \newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
 \selectfont{\MakeUppercase{Guided Practice~#1}}} \\[1mm]}
 % 9.2.4 NEW Example and Guided Practice Environment
+\newcommand{\exspace}{\stdvspace{}}
 \newenvironment{nexample}[1]{\addvspace{6mm}
 
 \refstepcounter{equation}\exampletitle{\theexample}
@@ -318,7 +331,7 @@
 \newenvironment{eoce}[2][]
 {\refstepcounter{eoce}\noindent\small\textbf{\textcolor{oiB}{{\hypersetup{linkcolor=oiB}\ref{eoce_sol_\arabic{chapter}_\arabic{eoce}}}\label{eoce_\arabic{chapter}_\arabic{eoce}}}}\hspace{2mm} #1#2
 
-\addvspace{3mm}
+\addvspace{\stdspace{}}
 
 }
 %{\em #2 } $\:$ \\ }
@@ -452,9 +465,6 @@
 \end{minipage}
 
 \addvspace{4mm}}
-
-
-
 
 
 

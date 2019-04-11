@@ -4,7 +4,7 @@ data(COL)
 
 ind <- 1088
 
-myPDF("pop_change_v_med_income.pdf", 6, 3.5,
+myPDF("pop_change_v_med_income.pdf", 7, 3.5,
       mar = c(3, 5.1, 0.5, 1),
       mgp = c(2.4, 0.5, 0))
 x <- county$median_hh_income
@@ -27,7 +27,7 @@ points(x, y, pch = 20, cex = 0.7, col = COL[1, 3])
 points(x, y, pch = ".")
 mtext("Median Household Income", 1, 1.9)
 par(las = 0)
-mtext("Population Change\nover 7 Years (Percent)", 2, 3)
+mtext("Population Change\nover 7 Years", 2, 3)
 t1 <- x[ind]
 t2 <- y[ind]
 lines(c(t1, t1), c(-1e5, t2),

@@ -1,5 +1,4 @@
 library(openintro)
-data(COL)
 
 AddShadedPlot <- function(x, y, offset,
                           shade.start = -8,
@@ -32,11 +31,11 @@ plot(X, Y,
 AddShadedPlot(X, Y, 0)
 AddText(0, format(c(1, 0.0001), scientific = FALSE)[1])
 
-AddShadedPlot(X, Y, 8, -8, 0.43)
-AddText(8, format(0.6664, scientific = FALSE)[1])
+AddShadedPlot(X, Y, 8, -8, 0.45)
+AddText(8, format(0.6736, scientific = FALSE)[1])
 
-AddShadedPlot(X, Y, 16, 0.43, 8)
-AddText(16, format(0.3336, scientific = FALSE)[1])
+AddShadedPlot(X, Y, 16, 0.45, 8)
+AddText(16, format(0.3264, scientific = FALSE)[1])
 
 lines(c(3.72, 4.28), rep(0.549283, 2), lwd = 2)
 lines(c(3, 8 - 3), c(0.2, 0.2), lwd = 3)
@@ -45,4 +44,13 @@ text(12, 0.549283,
      ' = ',
      cex = 2)
 segments(c(11, 11), c(0.17, 0.23), c(13, 13), lwd = 3)
+dev.off()
+
+
+pdf('subtracted.pdf', 3, 0.95)
+par(las = 1,
+    mar = c(1.5, 3, 0, 0),
+    mgp = c(3, 0.55, 0))
+normTail(1100, 200, L = 1190, col = COL[1], axes = FALSE)
+axis(1, at = c(700, 1100, 1500))
 dev.off()

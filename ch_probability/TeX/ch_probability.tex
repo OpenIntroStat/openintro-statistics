@@ -1,38 +1,88 @@
-\chapter{Probability}
-\label{probability}
-\label{ch_probability}
+\begin{chapterpage}{Probability}
+  \chaptertitle{Probability}
+  \label{probability}
+  \label{ch_probability}
+  \chaptersection{basicsOfProbability}
+  \chaptersection{conditionalProbabilitySection}
+  \chaptersection{smallPop}
+  \chaptersection{randomVariablesSection}
+  \chaptersection{contDist}
+\end{chapterpage}
+\renewcommand{\chapterfolder}{ch_probability}
 
 \index{probability|(}
 
-Probability forms a foundation for statistics, and you might already be familiar with many aspects of probability. However, formalization of the concepts is new for most. This chapter aims to introduce probability on familiar terms using processes most people have seen before.
+\chapterintro{Probability forms a foundation for statistics.
+  and you're probably already familiar with many of the ideas.
+  However, formalization of the concepts is new for most.
+  This chapter aims to introduce probability concepts using
+  many examples that will be familiar to most people. \\
+
+  \noindent%
+  While this chapter provides a theoretical foundation
+  for the ideas introduced in later chapters,
+  mastery of all concepts introduced in this chapter
+  is not strictly required to understand or apply the
+  methods introduced in the rest of this book.}
+
+%  This chapter provides a theoretical foundation for
+%  the ideas introduced in later chapters.
+%  However, this chapter is not strictly required to
+%  understand or apply the methods introduced in the
+%  rest of this book.}
+
+
+
 
 \section{Defining probability}
 \label{basicsOfProbability}
-\renewcommand{\chapterfolder}{ch_probability}
+
+Statistics is based on probability,
+and while probability is not required for the applied
+techniques in this book, it may help you gain a deeper
+understanding of the methods and set a better foundation
+for future courses.
+
+
+\subsection{Introductory examples}
+
+Before we get into technical ideas, let's walk through
+some basic examples that may feel more familiar.
 
 \begin{examplewrap}
 \begin{nexample}{A ``die'', the singular of dice, is a cube with six faces numbered \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, and \resp{6}. What is the chance of getting \resp{1} when rolling a die?}\label{probOf1}
 If the die is fair, then the chance of a \resp{1} is as good as the chance of any other number. Since there are six outcomes, the chance must be 1-in-6 or, equivalently, $1/6$.
 \end{nexample}
+\end{examplewrap}
 
+\begin{examplewrap}
 \begin{nexample}{What is the chance of getting a \resp{1} or \resp{2} in the next roll?}\label{probOf1Or2}
 \resp{1} and \resp{2} constitute two of the six equally likely possible outcomes, so the chance of getting one of these two outcomes must be $2/6 = 1/3$.
 \end{nexample}
+\end{examplewrap}
 
+\begin{examplewrap}
 \begin{nexample}{What is the chance of getting either \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, or \resp{6} on the next roll?}\label{probOf123456}
 100\%. The outcome must be one of these numbers.
 \end{nexample}
+\end{examplewrap}
 
+\begin{examplewrap}
 \begin{nexample}{What is the chance of not rolling a \resp{2}?}\label{probNot2}
 Since the chance of rolling a \resp{2} is $1/6$ or $16.\bar{6}\%$, the chance of not rolling a \resp{2} must be $100\% - 16.\bar{6}\%=83.\bar{3}\%$ or $5/6$.
 
 Alternatively, we could have noticed that not rolling a \resp{2} is the same as getting a \resp{1}, \resp{3}, \resp{4}, \resp{5}, or \resp{6}, which makes up five of the six equally likely outcomes and has probability $5/6$.
 \end{nexample}
+\end{examplewrap}
 
+\begin{examplewrap}
 \begin{nexample}{Consider rolling two dice. If $1/6$ of the time the first die is a \resp{1} and $1/6$ of those times the second die is a \resp{1}, what is the chance of getting two \resp{1}s?}\label{probOf2Ones}
 If $16.\bar{6}$\% of the time the first die is a \resp{1} and $1/6$ of \emph{those} times the second die is also a \resp{1}, then the chance that both dice are \resp{1} is $(1/6)\times (1/6)$ or $1/36$.
 \end{nexample}
 \end{examplewrap}
+
+
+\D{\newpage}
 
 \subsection{Probability}
 
@@ -55,7 +105,7 @@ Probability is defined as a proportion, and it always takes values between 0~and
 
 Probability can be illustrated by rolling a die many times. Let $\hat{p}_n$ be the proportion of outcomes that are \resp{1} after the first $n$ rolls. As the number of rolls increases, $\hat{p}_n$ will converge to the probability of rolling a \resp{1}, $p = 1/6$. Figure~\ref{dieProp} shows this convergence for 100,000 die rolls. The tendency of $\hat{p}_n$ to stabilize around $p$ is described by the \term{Law of Large Numbers}. 
 
-\begin{figure}[bt]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.85\textwidth]{ch_probability/figures/dieProp/dieProp}
 \caption{The fraction of die rolls that are 1 at each stage in a simulation. The proportion tends to get closer to the probability $1/6 \approx 0.167$ as the number of rolls increases.}
@@ -69,21 +119,17 @@ As more observations are collected, the proportion $\hat{p}_n$ of occurrences wi
 Occasionally the proportion will veer off from the probability and appear to defy the Law of Large Numbers, as $\hat{p}_n$ does many times in Figure~\ref{dieProp}. However, these deviations become smaller as the number of rolls increases.
 
 Above we write $p$ as the probability of rolling a \resp{1}. We can also write this probability as
-\begin{eqnarray*}
+\begin{align*}
 P(\text{rolling a \resp{1}})
-\end{eqnarray*}
-\marginpar[\raggedright\vspace{-13mm}
-
-$P(A)$\vspace{1mm}\\\footnotesize Probability of\\outcome $A$]{\raggedright\vspace{-13mm}
-
-$P(A)$\vspace{1mm}\\\footnotesize Probability of\\outcome $A$}As we become more comfortable with this notation, we will abbreviate it further. For instance, if it is clear that the process is ``rolling a die'', we could abbreviate $P($rolling a \resp{1}$)$ as~$P($\resp{1}$)$. 
+\end{align*}
+As we become more comfortable with this notation, we will abbreviate it further. For instance, if it is clear that the process is ``rolling a die'', we could abbreviate $P($rolling a \resp{1}$)$ as~$P($\resp{1}$)$. 
 
 \begin{exercisewrap}
 \begin{nexercise} \label{randomProcessExercise}
 Random processes include rolling a die and flipping a coin. (a) Think of another random process. (b) Describe all the possible outcomes of that process. For instance, rolling a die is a random process with possible outcomes \mbox{\resp{1}, \resp{2}, ..., \resp{6}}.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Here are four examples. (i) Whether someone gets sick in the next month or not is an apparently random process with outcomes \resp{sick} and \resp{not}. (ii) We can \emph{generate} a random process by randomly picking a person and measuring that person's height. The outcome of this process will be a positive number. (iii) Whether the stock market goes up or down next week is a seemingly random process with possible outcomes \resp{up}, \resp{down}, and \resp{no\_\hspace{0.3mm}change}. Alternatively, we could have used the percent change in the stock market as a numerical outcome. (iv) Whether your roommate cleans her dishes tonight probably seems like a random process with possible outcomes \resp{cleans\_\hspace{0.3mm}dishes} and \resp{leaves\_\hspace{0.3mm}dishes}.}
+\footnotetext{Here are four examples. (i) Whether someone gets sick in the next month or not is an apparently random process with outcomes \resp{sick} and \resp{not}. (ii) We can \emph{generate} a random process by randomly picking a person and measuring that person's height. The outcome of this process will be a positive number. (iii) Whether the stock market goes up or down next week is a seemingly random process with possible outcomes \resp{up}, \resp{down}, and \resp{no\us{}change}. Alternatively, we could have used the percent change in the stock market as a numerical outcome. (iv) Whether your roommate cleans her dishes tonight probably seems like a random process with possible outcomes \resp{cleans\us{}dishes} and \resp{leaves\us{}dishes}.}
 
 What we think of as random processes are not necessarily random, but they may just be too difficult to understand exactly. The fourth example in the footnote solution to Guided Practice~\ref{randomProcessExercise} suggests a roommate's behavior is a random process. However, even if a roommate's behavior is not truly random, modeling her behavior as a random process can still be useful. 
 
@@ -101,27 +147,38 @@ What we think of as random processes are not necessarily random, but they may ju
 Two outcomes are called \term{disjoint} or \term{mutually exclusive} if they cannot both happen. For instance, if we roll a die, the outcomes \resp{1} and \resp{2} are disjoint since they cannot both occur. On the other hand, the outcomes \resp{1} and ``rolling an odd number'' are not disjoint since both occur if the outcome of the roll is a \resp{1}. The terms \emph{disjoint} and \emph{mutually exclusive} are equivalent and interchangeable.
 
 Calculating the probability of disjoint outcomes is easy. When rolling a die, the outcomes \resp{1} and \resp{2} are disjoint, and we compute the probability that one of these outcomes will occur by adding their separate probabilities:
-\begin{eqnarray*}
-P(\text{\resp{1} or \resp{2}}) = P(\text{\resp{1}})+P(\text{\resp{2}}) = 1/6 + 1/6 = 1/3
-\end{eqnarray*}
+\begin{align*}
+P(\text{\resp{1} or \resp{2}})
+  = P(\text{\resp{1}})+P(\text{\resp{2}})
+  = 1/6 + 1/6
+  = 1/3
+\end{align*}
 What about  the probability of rolling a \resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, or \resp{6}? Here again, all of the outcomes are disjoint so we add the probabilities:
-\begin{eqnarray*}
-&&P(\text{\resp{1} or \resp{2} or \resp{3} or \resp{4} or \resp{5} or \resp{6}}) \\
-	&&\quad= P(\text{\resp{1}})+P(\text{\resp{2}})+P(\text{\resp{3}})+P(\text{\resp{4}})+P(\text{\resp{5}})+P(\text{\resp{6}}) \\
-	&&\quad= 1/6 + 1/6 + 1/6 + 1/6 + 1/6 + 1/6 = 1.
-\end{eqnarray*}
+\begin{align*}
+&P(\text{\resp{1} or \resp{2} or \resp{3} or \resp{4}
+    or \resp{5} or \resp{6}}) \\
+  &\quad = P(\text{\resp{1}})+P(\text{\resp{2}})
+      + P(\text{\resp{3}})+P(\text{\resp{4}})
+      + P(\text{\resp{5}})+P(\text{\resp{6}}) \\
+  &\quad = 1/6 + 1/6 + 1/6 + 1/6 + 1/6 + 1/6
+  = 1
+\end{align*}
 The \term{Addition Rule} guarantees the accuracy of this approach when the outcomes are disjoint. 
 
-\begin{onebox}{Addition Rule of disjoint outcomes} If $A_1$ and $A_2$ represent two disjoint outcomes, then the probability that one of them occurs is given by
-\begin{eqnarray*}
-P(A_1\text{ or } A_2) = P(A_1) + P(A_2)
-\end{eqnarray*}
-If there are many disjoint outcomes $A_1$, ..., $A_k$, then the probability that one of these outcomes will occur is
-\begin{eqnarray}
-P(A_1) + P(A_2) + \cdots + P(A_k)
-\end{eqnarray}
-
+\begin{onebox}{Addition Rule of disjoint outcomes}
+  If $A_1$ and $A_2$ represent two disjoint outcomes,
+  then the probability that one of them occurs is given by
+  \begin{align*}
+  P(A_1\text{ or } A_2) = P(A_1) + P(A_2)
+  \end{align*}
+  If there are many disjoint outcomes $A_1$, ..., $A_k$,
+  then the probability that one of these outcomes will occur is
+  \begin{align*}
+  P(A_1) + P(A_2) + \cdots + P(A_k)
+  \end{align*}
 \end{onebox}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -130,9 +187,6 @@ We are interested in the probability of rolling a \resp{1}, \resp{4}, or \resp{5
 \end{exercisewrap}
 \footnotetext{(a) The random process is a die roll, and at most one of these outcomes can come up. This means they are disjoint outcomes. (b)~$P($\resp{1} or \resp{4} or \resp{5}$) = P($\resp{1}$)+P($\resp{4}$)+P($\resp{5}$) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2}$}
 
-\Comment{The next Guided Practice is new, replacing one that had
-    used the \data{email} data set.}
-
 \index{data!loans|(}
 \begin{exercisewrap}
 \begin{nexercise}
@@ -140,15 +194,21 @@ In the \data{loans} data set in Chapter~\ref{ch_summarizing_data},
 the \var{homeownership} variable described whether the borrower
 rents, has a mortgage, or owns her property.
 Of the 10,000 borrowers, 3858 rented, 4789 had a mortgage,
-and 1353 owned her home.
-(a)~Are the outcomes \resp{rent}, \resp{mortgage},
-and \resp{own} disjoint?
-(b)~Determine the proportion of loans with value \resp{mortgage}
-and \resp{own} separately.
-(c)~Use the Addition Rule for disjoint outcomes to compute
-the probability a randomly selected loan from the data set
-is for someone who has a mortgage or owns her
-home.\footnotemark
+and 1353 owned their home.\footnotemark{}
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    Are the outcomes \resp{rent}, \resp{mortgage},
+    and \resp{own} disjoint?
+\item
+    Determine the proportion of loans with value \resp{mortgage}
+    and \resp{own} separately.
+\item
+    Use the Addition Rule for disjoint outcomes to compute
+    the probability a randomly selected loan from the data set
+    is for someone who has a mortgage or owns her
+    home.
+\end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{(a)~Yes. Each loan is categorized in only one
@@ -164,7 +224,7 @@ Data scientists rarely work with individual outcomes and instead consider \index
 
 \begin{figure}[hhh]
   \centering
-  \Figure{0.55}{disjointSets}
+  \Figure{0.45}{disjointSets}
   \caption{Three events, $A$, $B$, and $D$, consist of
       outcomes from rolling a die.
       $A$ and $B$ are disjoint since they do not have
@@ -209,6 +269,9 @@ In Guided Practice~\ref{exerExaminingDisjointSetsABD}, you confirmed $B$ and $D$
 \index{disjoint|)}
 \index{mutually exclusive|)}
 
+
+\D{\newpage}
+
 \subsection{Probabilities when events are not disjoint}
 
 Let's consider calculations for two events that are not disjoint in the context of a \indexthis{regular deck of 52 cards}{deck of cards}, represented in Figure~\ref{deckOfCards}. If you are unfamiliar with the cards in a regular deck, please see the footnote.\footnote{The 52 cards are split into four \term{suits}: $\clubsuit$ (club), {\color{redcards}$\diamondsuit$} (diamond), {\color{redcards}$\heartsuit$} (heart), $\spadesuit$ (spade). Each suit has its 13 cards labeled: \resp{2}, \resp{3}, ..., \resp{10}, \resp{J} (jack), \resp{Q} (queen), \resp{K} (king), and \resp{A} (ace). Thus, each card is a unique combination of a suit and a label, e.g. {\color{redcards}\resp{4$\heartsuit$}} and \resp{J$\clubsuit$}. The 12 cards represented by the jacks, queens, and kings are called \termsub{\resp{face cards}}{face card}. The cards that are {\color{redcards}$\diamondsuit$} or {\color{redcards}$\heartsuit$} are typically colored {\color{redcards}red} while the other two suits are typically colored black.}
@@ -242,27 +305,29 @@ Let's consider calculations for two events that are not disjoint in the context 
 \end{figure}
 
 Let $A$ represent the event that a randomly selected card is a diamond and $B$ represent the event that it is a face card. How do we compute $P(A$ or $B)$? Events $A$ and $B$ are not disjoint -- the cards {\color{redcards}$J\diamondsuit$}, {\color{redcards}$Q\diamondsuit$}, and {\color{redcards}$K\diamondsuit$} fall into both categories -- so we cannot use the Addition Rule for disjoint events. Instead we use the Venn diagram. We start by adding the probabilities of the two events:
-\begin{eqnarray*}
+\begin{align*}
 P(A) + P(B)
   = P({\color{redcards}\diamondsuit}) + P(\text{face card})
   = 13/52 + 12/52
-\label{overCountFaceDiamond}
-\end{eqnarray*}
+\end{align*}
 However, the three cards that are in both events were counted twice, once in each probability. We must correct this double counting:
-\begin{eqnarray}
-P(A\text{ or } B) &=&P({\color{redcards}\diamondsuit}\text{ or face card})  \notag \\
-  &=& P({\color{redcards}\diamondsuit}) + P(\text{face card}) - P({\color{redcards}\diamondsuit}\text{ and face card}) \label{diamondFace} \\
-  &=& 13/52 + 12/52 - 3/52 \notag \\
-  &=& 22/52 = 11/26 \notag
-\end{eqnarray}
-Equation~(\ref{diamondFace}) is an example of the \term{General Addition Rule}. 
+\begin{align*}
+P(A\text{ or } B)
+  &= P({\color{redcards}\diamondsuit}\text{ or face card}) \\
+  &= P({\color{redcards}\diamondsuit}) + P(\text{face card})
+      - P({\color{redcards}\diamondsuit}\text{ and face card}) \\
+  &= 13/52 + 12/52 - 3/52 \\
+  &= 22/52 = 11/26
+\end{align*}
+This equation is an example of the \term{General Addition Rule}. 
 
-\begin{onebox}{General Addition Rule} If $A$ and $B$ are any two events, disjoint or not, then the probability that at least one of them will occur is
-\begin{eqnarray}
-P(A\text{ or }B) = P(A) + P(B) - P(A\text{ and }B)
-\label{generalAdditionRule}
-\end{eqnarray}
-where $P(A$ and $B)$ is the probability that both events occur.
+\begin{onebox}{General Addition Rule}
+  If $A$ and $B$ are any two events, disjoint or not, then
+  the probability that at least one of them will occur is
+  \begin{align*}
+  P(A\text{ or }B) = P(A) + P(B) - P(A\text{ and }B)
+  \end{align*}
+  where $P(A$ and $B)$ is the probability that both events occur.
 \end{onebox}
 
 \begin{tipBox}{\tipBoxTitle{``or'' is inclusive}
@@ -274,7 +339,7 @@ When we write ``or'' in statistics, we mean ``and/or'' unless we explicitly stat
 (a) If $A$ and $B$ are disjoint, describe why this implies $P(A$ and $B) = 0$. (b) Using part (a), verify that the General Addition Rule simplifies to the simpler Addition Rule for disjoint events if $A$ and $B$ are disjoint.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a) If $A$ and $B$ are disjoint, $A$ and $B$ can never occur simultaneously. (b) If $A$ and $B$ are disjoint, then the last term of Equation~(\ref{generalAdditionRule}) is 0 (see part (a)) and we are left with the Addition Rule for disjoint events.}
+\footnotetext{(a) If $A$ and $B$ are disjoint, $A$ and $B$ can never occur simultaneously. (b) If $A$ and $B$ are disjoint, then the last $P(A\text{ and }B)$ term of in the General Addition Rule formula is 0 (see part (a)) and we are left with the Addition Rule for disjoint events.}
 
 \index{data!loans|(}
 
@@ -321,8 +386,9 @@ these attributes?\footnotemark
 \index{data!loans|)}
 
 
-\subsection{Probability distributions}
+\D{\newpage}
 
+\subsection{Probability distributions}
 
 A \term{probability distribution} is a table of all disjoint outcomes and their associated probabilities. Figure~\ref{diceProb} shows the probability distribution for the sum of two dice. 
 
@@ -364,9 +430,9 @@ Figure~\ref{usHouseholdIncomeDists} suggests three distributions for household i
 
 \begin{figure}
 \centering
-\begin{tabular}{r | rr rr}
+\begin{tabular}{r | cc cc}
   \hline
-Income range (\$1000s) & 0-25    & 25-50    & 50-100     & 100+    \\
+Income Range & \$0-25k & \$25k-50k & \$50k-100k & \$100k+ \\
   \hline
 (a)\hspace{0.2mm}	 & 0.18 & 0.39 & 0.33 & 0.16 \\
 (b)				 & 0.38 & -0.27 & 0.52 & 0.37 \\
@@ -380,41 +446,36 @@ Income range (\$1000s) & 0-25    & 25-50    & 50-100     & 100+    \\
 Chapter~\ref{introductionToData} emphasized the importance of plotting data to provide quick summaries. Probability distributions can also be summarized in a bar plot. For instance, the distribution of US household incomes is shown in Figure~\ref{usHouseholdIncomeDistBar} as a bar plot. %\footnote{It is also possible to construct a distribution plot when income is not artificially binned into four groups. \emph{Continuous} distributions are considered in Section~\ref{contDist}.}
 The probability distribution for the sum of two dice is shown in Figure~\ref{diceProb} and plotted in Figure~\ref{diceSumDist}.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \Figure{0.68}{usHouseholdIncomeDistBar}
+  \Figure{0.7}{usHouseholdIncomeDistBar}
   \caption{The probability distribution of US household income.}
   \label{usHouseholdIncomeDistBar}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.73\textwidth]{ch_probability/figures/diceSumDist/diceSumDist}
-\caption{The probability distribution of the sum of two dice.}
-\label{diceSumDist}
+  \centering
+  \Figure{0.73}{diceSumDist}
+  \caption{The probability distribution of the sum of two dice.}
+  \label{diceSumDist}
 \end{figure}
 
 In these bar plots, the bar heights represent the probabilities of outcomes. If the outcomes are numerical and discrete, it is usually (visually) convenient to make a bar plot that resembles a histogram, as in the case of the sum of two dice. Another example of plotting the bars at their respective locations is shown in Figure~\ref{bookCostDist} on page~\pageref{bookCostDist}.
 
 \subsection{Complement of an event}
 
-Rolling a die produces a value in the set $\{$\resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, \resp{6}$\}$. This set of all possible outcomes is called the \term{sample space} ($S$)\marginpar[\raggedright\vspace{-5mm}
+Rolling a die produces a value in the set $\{$\resp{1}, \resp{2}, \resp{3}, \resp{4}, \resp{5}, \resp{6}$\}$. This set of all possible outcomes is called the \term{sample space} ($S$)\index{S@$S$} for rolling a die. We often use the sample space to examine the scenario where an event does not occur.
 
-$S$\\\footnotesize Sample space]{\raggedright\vspace{-5mm}
-
-$S$\\\footnotesize Sample space}\index{S@$S$} for rolling a die. We often use the sample space to examine the scenario where an event does not occur.
-
-Let $D=\{$\resp{2}, \resp{3}$\}$ represent the event that the outcome of a die roll is \resp{2} or \resp{3}. Then the \term{complement}\marginpar[\raggedright\vspace{0.2mm}
-
-$A^c$\\\footnotesize Complement\\of outcome $A$]{\raggedright\vspace{0.2mm}
-
-$A^c$\\\footnotesize Complement\\of outcome $A$}\index{Ac@$A^c$} of $D$ represents all outcomes in our sample space that are not in $D$, which is denoted by $D^c = \{$\resp{1}, \resp{4}, \resp{5}, \resp{6}$\}$. That is, $D^c$ is the set of all possible outcomes not already included in $D$. Figure~\ref{complementOfD} shows the relationship between $D$, $D^c$, and the sample space $S$. 
+Let $D=\{$\resp{2}, \resp{3}$\}$ represent the event that the outcome of a die roll is \resp{2} or \resp{3}. Then the \term{complement}\index{Ac@$A^c$} of $D$ represents all outcomes in our sample space that are not in $D$, which is denoted by $D^c = \{$\resp{1}, \resp{4}, \resp{5}, \resp{6}$\}$. That is, $D^c$ is the set of all possible outcomes not already included in $D$. Figure~\ref{complementOfD} shows the relationship between $D$, $D^c$, and the sample space $S$. 
 
 \begin{figure}[hht]
-\centering
-\includegraphics[width=0.55\textwidth]{ch_probability/figures/complementOfD/complementOfD}
-\caption{Event $D=\{$\resp{2}, \resp{3}$\}$ and its complement, $D^c = \{$\resp{1}, \resp{4}, \resp{5}, \resp{6}$\}$. $S$~represents the sample space, which is the set of all possible outcomes.}
-\label{complementOfD}
+  \centering
+  \Figure{0.55}{complementOfD}
+  \caption{Event $D=\{$\resp{2}, \resp{3}$\}$ and its complement,
+      $D^c = \{$\resp{1}, \resp{4}, \resp{5}, \resp{6}$\}$.
+      $S$~represents the sample space, which is the set of
+      all possible outcomes.}
+  \label{complementOfD}
 \end{figure}
 
 \begin{exercisewrap}
@@ -432,22 +493,24 @@ Events $A=\{$\resp{1}, \resp{2}$\}$ and $B=\{$\resp{4}, \resp{6}$\}$ are shown i
 \footnotetext{Brief solutions: (a)~$A^c=\{$\resp{3}, \resp{4}, \resp{5}, \resp{6}$\}$ and $B^c=\{$\resp{1}, \resp{2}, \resp{3}, \resp{5}$\}$. (b)~Noting that each outcome is disjoint, add the individual outcome probabilities to get $P(A^c)=2/3$ and $P(B^c)=2/3$. (c)~$A$~and~$A^c$ are disjoint, and the same is true of $B$~and~$B^c$. Therefore, $P(A) + P(A^c) = 1$ and $P(B) + P(B^c) = 1$.}
 
 A complement of an event $A$ is constructed to have two very important properties: (i) every possible outcome not in $A$ is in $A^c$, and (ii) $A$ and $A^c$ are disjoint. Property (i) implies
-\begin{eqnarray}
+\begin{align*}
 P(A\text{ or }A^c) = 1
-\label{complementSumTo1}
-\end{eqnarray}
+\end{align*}
 That is, if the outcome is not in $A$, it must be represented in $A^c$. We use the Addition Rule for disjoint events to apply Property (ii):
-\begin{eqnarray}
+\begin{align*}
 P(A\text{ or }A^c) = P(A) + P(A^c)
-\label{complementDisjointEquation}
-\end{eqnarray}
-Combining Equations~(\ref{complementSumTo1}) and~(\ref{complementDisjointEquation}) yields a very useful relationship between the probability of an event and its complement.
+\end{align*}
+Combining the last two equations yields a very useful
+relationship between the probability of an event and
+its complement.
 
 \begin{onebox}{Complement}
-The complement of event $A$ is denoted $A^c$, and $A^c$ represents all outcomes not in~$A$. $A$ and $A^c$ are mathematically related: \vspace{-2mm}
-\begin{eqnarray}\label{complement}
-P(A) + P(A^c) = 1, \quad\text{i.e.}\quad P(A) = 1-P(A^c)
-\end{eqnarray}\vspace{-6.5mm}
+  The complement of event $A$ is denoted $A^c$, and $A^c$
+  represents all outcomes not in~$A$. $A$ and $A^c$ are
+  mathematically related:
+  \begin{align*}
+  P(A) + P(A^c) = 1, \quad\text{i.e.}\quad P(A) = 1-P(A^c)
+  \end{align*}
 \end{onebox}
 
 In simple examples, computing $A$ or $A^c$ is feasible in a few steps. However, using the complement can save a lot of time as problems grow in complexity.
@@ -457,7 +520,7 @@ In simple examples, computing $A$ or $A^c$ is feasible in a few steps. However, 
 Let $A$ represent the event where we roll two dice and their total is less than \resp{12}. (a)~What does the event $A^c$ represent? (b)~Determine $P(A^c)$ from Figure~\ref{diceProb} on page~\pageref{diceProb}. (c)~Determine $P(A)$.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a)~The complement of $A$: when the total is equal to \resp{12}. (b)~$P(A^c) = 1/36$. (c)~Use the probability of the complement from part (b), $P(A^c) = 1/36$, and Equation~(\ref{complement}): $P($less than \resp{12}$) = 1 - P($\resp{12}$) = 1 - 1/36 = 35/36$.}
+\footnotetext{(a)~The complement of $A$: when the total is equal to \resp{12}. (b)~$P(A^c) = 1/36$. (c)~Use the probability of the complement from part (b), $P(A^c) = 1/36$, and the equation for the complement: $P($less than \resp{12}$) = 1 - P($\resp{12}$) = 1 - 1/36 = 35/36$.}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -511,14 +574,19 @@ Example~\ref{threeDice} illustrates what is called the Multiplication Rule for i
 
 \begin{onebox}{Multiplication Rule for independent processes}
   \index{Multiplication Rule|textbf}%
-If $A$ and $B$ represent events from two different and independent processes, then the probability that both $A$ and $B$ occur can be calculated as the product of their separate probabilities: \vspace{-1.5mm}
-\begin{eqnarray}\label{eqForIndependentEvents}
-P(A \text{ and }B) = P(A) \times  P(B)
-\end{eqnarray}
-Similarly, if there are $k$ events $A_1$, ..., $A_k$ from $k$ independent processes, then the probability they all occur is\vspace{-1.5mm}
-\begin{eqnarray*}
-P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)
-\end{eqnarray*}\vspace{-6mm}
+  If $A$ and $B$ represent events from two different and
+  independent processes, then the probability that both $A$
+  and $B$ occur can be calculated as the product of their
+  separate probabilities:
+  \begin{align*}
+  P(A \text{ and }B) = P(A) \times  P(B)
+  \end{align*}
+  Similarly, if there are $k$ events $A_1$, ..., $A_k$
+  from $k$ independent processes, then the probability
+  they all occur is
+  \begin{align*}
+  P(A_1) \times  P(A_2)\times  \cdots \times  P(A_k)
+  \end{align*}\vspace{-6mm}
 \end{onebox}
 
 \begin{exercisewrap}
@@ -559,11 +627,21 @@ P(\text{not all \resp{RH}})
 	= 1 - 0.624 = 0.376
 \end{align*}}
 
-Suppose the variables \var{handedness} and \var{gender} are independent, i.e. knowing someone's \var{gender} provides no useful information about their \var{handedness} and vice-versa. Then we can compute whether a randomly selected person is right-handed and female\footnote{The actual proportion of the U.S. population that is \resp{female} is about 50\%, and so we use 0.5 for the probability of sampling a woman. However, this probability does differ in other countries.} using the Multiplication Rule:
-\begin{eqnarray*}
-P(\text{right-handed and female}) &=& P(\text{right-handed}) \times  P(\text{female}) \\
-&=& 0.91 \times  0.50 = 0.455
-\end{eqnarray*}
+Suppose the variables \var{handedness} and
+\var{sex} are independent,
+i.e. knowing someone's \var{sex} provides no useful
+information about their \var{handedness} and vice-versa.
+Then we can compute whether a randomly selected person is
+right-handed and female\footnote{The actual proportion of
+  the U.S. population that is \resp{female} is about 50\%,
+  and so we use 0.5 for the probability of sampling a woman.
+  However, this probability does differ in other countries.}
+using the Multiplication Rule:
+\begin{align*}
+P(\text{right-handed and female})
+    &= P(\text{right-handed}) \times  P(\text{female}) \\
+    &= 0.91 \times  0.50 = 0.455
+\end{align*}
 
 
 \begin{exercisewrap}
@@ -580,11 +658,14 @@ Three people are selected at random.\footnotemark \vspace{-1.5mm}
 \end{exercisewrap}
 \footnotetext{Brief answers are provided. (a)~This can be written in probability notation as $P($a randomly selected person is male and right-handed$)=0.455$. (b)~0.207. (c)~0.045. (d)~0.0093.}
 
-Sometimes we wonder if one outcome provides useful information about another outcome. The question we are asking is, are the occurrences of the two events independent? We say that two events $A$ and $B$ are independent if they satisfy Equation~\eqref{eqForIndependentEvents}.
+Sometimes we wonder if one outcome provides useful information about another outcome. The question we are asking is, are the occurrences of the two events independent? We say that two events $A$ and $B$ are independent if they satisfy
+$P(A \text{ and }B) = P(A) \times  P(B)$.
 
 \begin{examplewrap}
 \begin{nexample}{If we shuffle up a deck of cards and draw one, is the event that the card is a heart independent of the event that the card is an ace?}
-The probability the card is a heart is $1/4$ and the probability that it is an ace is $1/13$. The probability the card is the ace of hearts is $1/52$. We check whether Equation~\ref{eqForIndependentEvents} is satisfied:
+The probability the card is a heart is $1/4$ and the probability that it is an ace is $1/13$. The probability the card is the ace of hearts is $1/52$.
+We check whether $P(A \text{ and }B) = P(A) \times  P(B)$
+is satisfied:
 \begin{align*}
 P({\color{redcards}\heartsuit})\times P(\text{ace}) = \frac{1}{4}\times \frac{1}{13} = \frac{1}{52} 
 					= P({\color{redcards}\heartsuit}\text{ and ace})
@@ -593,58 +674,131 @@ Because the equation holds, the event that the card is a heart and the event tha
 \end{nexample}
 \end{examplewrap}
 
+
+
+
 %_________________
 \section{Conditional probability}
 \label{conditionalProbabilitySection}
 
-\index{data!family\_college|(}
+There can be rich relationships between two or more
+variables that are useful to understand.
+For example a car insurance company will consider
+information about a person's driving history to assess
+the risk that they will be responsible for an accident.
+These types of relationships are the realm of conditional
+probabilities.
 
-The \data{family\_\hspace{0.3mm}college} data set contains a sample of 792 cases with two variables, \var{teen} and \var{parents}, and is summarized in Figure~\ref{contTableOfParStCollege}.\footnote{A simulated data set based on real population summaries at \oiRedirect{textbook-student_parent_college_2001}{nces.ed.gov/pubs2001/2001126.pdf}.} The \var{teen} variable is either \resp{college} or \resp{not}, where the \var{college} label means the teen went to college immediately after high school. The~\var{parents} variable takes the value \resp{degree} if at least one parent of the teenager completed a college degree.
+
+\subsection{Exploring probabilities with a contingency table}
+
+\index{data!photo\_classify|(}
+
+\newcommand{\fashN}{1822}
+% In order of ML, then Human
+\newcommand{\fashYY}{197}
+\newcommand{\fashYN}{22}
+\newcommand{\fashYA}{219}
+\newcommand{\fashNY}{112}
+\newcommand{\fashNN}{1491}
+\newcommand{\fashNA}{1603}
+\newcommand{\fashAY}{309}
+\newcommand{\fashAN}{1513}
+\newcommand{\fashAA}{\fashN{}}
+%\newcommand{\fashPYY}{}
+%\newcommand{\fashPYN}{}
+%\newcommand{\fashPNY}{}
+%\newcommand{\fashPNN}{}
+%\newcommand{\fashPYA}{0.12}
+%\newcommand{\fashPNA}{0.88}
+%\newcommand{\fashPAY}{}
+%\newcommand{\fashPAN}{}
+%\newcommand{\fashPYCY}{}
+%\newcommand{\fashPYCN}{}
+%\newcommand{\fashPNCY}{}
+%\newcommand{\fashPNCN}{}
+\newcommand{\fashCYPY}{0.96}
+\newcommand{\fashCYPN}{0.04}
+\newcommand{\fashCNPY}{0.07}
+\newcommand{\fashCNPN}{0.93}
+
+The \data{photo\us{}classify} data set represents
+a classifier a sample of \fashN{} photos from photo sharing website.
+Data scientists have been working to improve a classifier for
+whether the photo is about fashion or not, and these 659 photos
+represent a test for their classifier.
+Each photo gets two classifications:
+the first is called \var{mach\us{}learn} and gives
+a classification from a machine
+learning~(ML)\index{machine learning (ML)} system of
+either \resp{pred\us{}fashion} or \resp{pred\us{}not}.
+Each of these \fashN{} photos have also been classified carefully
+by a team of people, which we take to be the source of truth;
+this variable is called \var{truth} and takes values
+\resp{fashion} and \resp{not}.
+Figure~\ref{contTableOfFashionPhotos} summarizes the results.
 
 \begin{figure}[ht]
 \centering
-\begin{tabular}{ll rr r rr}
-  && \multicolumn{2}{c}{\var{parents}} & \hspace{1cm} &  \\
-  \cline{3-4}
-	&& \resp{degree} & \resp{not} & Total  \\
-  \cline{2-5}
-	& \resp{college}     & 231 & 214 & 445 \\
-\raisebox{1.5ex}[0pt]{\var{teen}}	& \resp{not} \hspace{0.5cm} & 49 & 298 & 347   \\
-  \cline{2-5}
-	& Total & 280 & 512 & 792 \\
+\begin{tabular}{ll ccc rr}
+&& \multicolumn{2}{c}{\var{truth}} & \hspace{1cm} &  \\
+\cline{3-4}
+&& \resp{fashion} & \resp{not} & Total  \\
+\cline{2-5}
+& \resp{pred\us{}fashion} &
+    \fashYY{} & \fashYN{} & \fashYA{} \\
+\raisebox{1.5ex}[0pt]{\var{pred\us{}not}}
+    & \resp{not} \hspace{0.5cm} &
+    \fashNY{} & \fashNN{} & \fashNA{}   \\
+\cline{2-5}
+& Total & \fashAY{} & \fashAN{} & \fashN{} \\
 \end{tabular}
-\caption{Contingency table summarizing the \data{family\_\hspace{0.3mm}college} data set.}
-\label{contTableOfParStCollege}
+\caption{Contingency table summarizing the
+    \data{photo\us{}classify} data set.}
+\label{contTableOfFashionPhotos}
 \end{figure}
-%set.seed(5); n <- 792
-%parents <- sample(c("college", "not"), n, replace = TRUE, prob = c(0.35, 0.65))
-%p <- ifelse(parents == "college", 0.82, 0.45)
-%teen <- ifelse(runif(n) < p, "college", "not")
-%table(teen, parents)
-%table(teen, parents) / n
+% library(openintro); table(photo_classify)
 
 \begin{figure}[ht]
-\centering
-\includegraphics[width=0.7\textwidth]{ch_probability/figures/familyCollegeVenn/familyCollegeVenn}
-\caption{A Venn diagram using boxes for the \data{family\_\hspace{0.3mm}college} data set.}
-\label{familyCollegeVenn}
+  \centering
+  \Figure{0.65}{photoClassifyVenn}
+  \caption{A Venn diagram using boxes for the
+      \data{photo\us{}classify} data set.}
+  \label{photoClassifyVenn}
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{If at least one parent of a teenager completed a college degree, what is the chance the teenager attended college right after high school?}
-We can estimate this probability using the data. Of the 280 cases in this data set where \var{parents} takes value \resp{degree}, 231 represent cases where the \var{teen} variable takes value \resp{college}:
-\begin{eqnarray*}
-P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
-\end{eqnarray*}
+\begin{nexample}{If a photo is actually about fashion,
+    what is the chance the ML classifier correctly identified
+    the photo as being about fashion?}
+  We can estimate this probability using the data.
+  Of the \fashAY{} fashion photos,
+  the ML algorithm correctly classified \fashYY{} of the photos:
+\begin{align*}
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    given \var{truth} is \resp{fashion}})
+  = \frac{\fashYY{}}{\fashAY{}}
+  = 0.638
+\end{align*}
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{A teenager is randomly selected from the sample and she did not attend college right after high school. What is the probability that at least one of her parents has a college degree?}\label{collegeProbOfParentsGivenStudentNot}
-If the teenager did not attend, then she is one of the 347 teens in the second row. Of~these 347 teens, 49 had at least one parent who got a college degree:
-\begin{eqnarray*}
-P(\text{\var{parents} \resp{degree} given \var{teen} \resp{not}}) = \frac{49}{347} = 0.141
-\end{eqnarray*}
+\begin{nexample}{We sample a photo from the data set
+    and learn the ML algorithm predicted this photo
+    was not about fashion.
+    What is the probability that it was incorrect and
+    the photo is about fashion?}
+  If the ML classifier suggests a photo is not about fashion,
+  then it comes from the second row in the data set.
+  Of~these \fashNA{} photos, \fashNY{} were actually
+  about fashion:
+\begin{align*}
+P(\text{\var{truth} is \resp{fashion}
+    given \var{mach\us{}learn} is \resp{pred\us{}not}})
+  = \frac{\fashNY{}}{\fashNA{}}
+  = 0.070
+\end{align*}
 \end{nexample}
 \end{examplewrap}
 
@@ -654,41 +808,75 @@ P(\text{\var{parents} \resp{degree} given \var{teen} \resp{not}}) = \frac{49}{34
 \index{marginal probability|(}
 \index{joint probability|(}
 
-Figure~\ref{contTableOfParStCollege} includes row and column totals for each variable separately in the \data{family\_\hspace{0.3mm}college} data set. These totals represent \termsub{marginal probabilities}{marginal probability} for the sample, which are the probabilities based on a single variable without regard to any other variables. For instance, a probability based solely on the \var{teen} variable is a marginal probability:
+Figure~\ref{contTableOfFashionPhotos} includes row and
+column totals for each variable separately in the
+\data{photo\us{}classify} data set.
+These totals represent
+\termsub{marginal probabilities}{marginal probability}
+for the sample, which are the probabilities based on a
+single variable without regard to any other variables.
+For instance, a probability based solely on the
+\var{mach\us{}learn} variable is a marginal probability:
 \begin{align*}
-P(\text{\var{teen} \resp{college}}) = \frac{445}{792} = 0.56
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}})
+    = \frac{\fashYA{}}{\fashN{}}
+    = 0.12
 \end{align*}
-A probability of outcomes for two or more variables or processes is called a \termsub{joint \mbox{probability}}{joint probability}:
+A probability of outcomes for two or more variables
+or processes is called a
+\termsub{joint \mbox{probability}}{joint probability}:
 \begin{align*}
-P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}}) = \frac{214}{792} = 0.27
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}})
+  = \frac{\fashYY{}}{\fashN{}}
+  = 0.11
 \end{align*}
-It is common to substitute a comma for ``and'' in a joint probability, although either is acceptable. That is,
+It is common to substitute a comma for ``and'' in a joint
+probability, although using either the word ``and'' or a
+comma is acceptable:
 \begin{center}
-$P(\text{\var{teen} \resp{college}, \var{parents} \resp{not}})$ \\[2mm]
+$P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion},
+    \var{truth} is \resp{fashion}})$ \\[2mm]
 means the same thing as \\[2mm]
-$P(\text{\var{teen} \resp{college} and \var{parents} \resp{not}})$
+$P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}})$
 \end{center}
 
 \begin{onebox}{Marginal and joint probabilities}
-If a probability is based on a single variable, it is a \emph{\hiddenterm{marginal probability}}. The probability of outcomes for two or more variables or processes is called a \emph{\hiddenterm{joint probability}}.
+  If a probability is based on a single variable,
+  it is a \emph{\hiddenterm{marginal probability}}.
+  The probability of outcomes for two or more variables
+  or processes is called a \emph{\hiddenterm{joint probability}}.
 \end{onebox}
 
-We use \term{table proportions} to summarize joint probabilities for the \data{family\_\hspace{0.3mm}college} sample. These proportions are computed by dividing each count in Figure~\ref{contTableOfParStCollege} by the table's total, 792, to obtain the proportions in Figure~\ref{familyCollegeProbTable}. The joint probability distribution of the \var{parents} and \var{teen} variables is shown in Figure~\ref{familyCollegeDistribution}.
+We use \term{table proportions} to summarize joint probabilities
+for the \data{photo\us{}classify} sample.
+These proportions are computed by dividing each count in
+Figure~\ref{contTableOfFashionPhotos} by the table's total,
+\fashN{}, to obtain the proportions in
+Figure~\ref{photoClassifyProbTable}.
+The joint probability distribution of the \var{mach\us{}learn}
+and \var{truth} variables is shown in
+Figure~\ref{photoClassifyDistribution}.
 
 \begin{figure}[h]
 \centering
 \begin{tabular}{l rr r}
-  \hline
-& \var{parents}: \resp{degree} & \var{parents}: \resp{not} & Total  \\
-  \hline
-\var{teen}: \resp{college}     & 0.29 & 0.27 & 0.56 \\
-\var{teen}: \resp{not} \hspace{0.5cm} & 0.06 & 0.38 & 0.44  \\
-   \hline
-Total & 0.35 & 0.65 & 1.00 \\
+\hline
+& \var{truth}: \resp{fashion} &
+    \var{truth}: \resp{not} & Total  \\
+\hline
+\var{mach\us{}learn}: \resp{pred\us{}fashion} \hspace{0.5cm}
+    & 0.1081 & 0.0121 & 0.1202 \\
+\var{mach\us{}learn}: \resp{pred\us{}not}
+    & 0.0615 & 0.8183 & 0.8798  \\
+\hline
+Total & 0.1696 & 0.8304 & 1.00 \\
 \hline
 \end{tabular}
-\caption{Probability table summarizing whether at least one parent had a college degree and the teenager attended college.}
-\label{familyCollegeProbTable}
+\caption{Probability table summarizing the
+    \var{photo\us{}classify} data set.}
+\label{photoClassifyProbTable}
 \end{figure}
 
 \begin{figure}[h]
@@ -697,32 +885,52 @@ Total & 0.35 & 0.65 & 1.00 \\
   \hline
 Joint outcome & Probability \\
   \hline
-\var{parents} \resp{degree} and \var{teen} \resp{college} & 0.29 \\
-\var{parents} \resp{degree} and \var{teen} \resp{not} & 0.06 \\
-\var{parents} \resp{not} and \var{teen} \resp{college} & 0.27 \\
-\var{parents} \resp{not} and \var{teen} \resp{not} & 0.38 \\
+\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion} & 0.1081 \\
+\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{not} & 0.0121 \\
+\var{mach\us{}learn} is \resp{pred\us{}not}
+    and \var{truth} is \resp{fashion} & 0.0615 \\
+\var{mach\us{}learn} is \resp{pred\us{}not}
+    and \var{truth} is \resp{not} & 0.8183 \\
    \hline
-Total & 1.00 \\
+Total & 1.0000 \\
 \hline
 \end{tabular}
-\caption{Joint probability distribution for the \data{family\_\hspace{0.3mm}college} data set.}
-\label{familyCollegeDistribution}
+\caption{Joint probability distribution for the \data{photo\us{}classify} data set.}
+\label{photoClassifyDistribution}
 \end{figure}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
-Verify Figure~\ref{familyCollegeDistribution} represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to~1.\footnotemark
+Verify Figure~\ref{photoClassifyDistribution} represents
+a probability distribution: events are disjoint,
+all probabilities are non-negative, and the probabilities
+sum to~1.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is $0.29 + 0.06 + 0.27 + 0.38 = 1.00$.}
+\footnotetext{Each of the four outcome combination are disjoint,
+   all probabilities are indeed non-negative, and the sum of
+   the probabilities is $0.1081 + 0.0121 + 0.0615 + 0.8183 = 1.00$.}
 
-We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes where \var{teen} takes value \resp{college}:\index{marginal probability|)}\index{joint probability|)}
+We can compute marginal probabilities using joint probabilities
+in simple cases.
+For example, the probability a randomly selected photo from the
+data set is about fashion is found by summing the outcomes where
+\var{truth} takes value \resp{fashion}:%
+\index{marginal probability|)}\index{joint probability|)}
+\newcommand{\ultruthfashion}[0]
+    {\underline{\var{truth} is \resp{fashion}}}%
 \begin{align*}
-P(\text{\underline{\color{black}\var{teen} \resp{college}}})
-&=  P(\text{\var{parents} \resp{degree} and \underline{\color{black}\var{teen} \resp{college}}}) \\
-& \quad \quad + P(\text{\var{parents} \resp{not} and \underline{\color{black}\var{teen} \resp{college}}}) \\
-&= 0.29 + 0.27 \\
-&= 0.56
+P(\text{\ultruthfashion{}})
+  &= P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+        and \ultruthfashion{}}) \\
+    & \qquad + P(\text{\var{mach\us{}learn} is \resp{pred\us{}not}
+        and \ultruthfashion{}}) \\
+  &= 0.1081 + 0.0615 \\
+  &= 0.1696
 \end{align*}
 
 
@@ -730,96 +938,192 @@ P(\text{\underline{\color{black}\var{teen} \resp{college}}})
 
 \index{conditional probability|(}
 
-There is some connection between education level of parents and of the teenager: a college degree by a parent is associated with college attendance of the teenager. In this section, we discuss how to use information about associations between two variables to improve probability estimation.
+The ML classifier predicts whether a photo is about fashion,
+even if it is not perfect.
+We would like to better understand how to use information
+from a variable like \var{mach\us{}learn} to improve our
+probability estimation of a second variable, which in this
+example is \var{truth}.
 
-The probability that a random teenager from the study attended college is 0.56. Could we update this probability if we knew that one of the teen's parents has a college degree? Absolutely. To do so, we limit our view to only those 280 cases where a parent has a college degree and look at the fraction where the teenager attended college:
-\begin{eqnarray*}
-P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
-\end{eqnarray*}
-We call this a \term{conditional probability} because we computed the probability under a condition: a parent has a college degree. There are two parts to a conditional probability, the \term{outcome of interest} and the \term{condition}. It is useful to think of the condition as information we know to be true, and this information usually can be described as a known outcome or~event.
-
-We separate the text inside our probability notation into the outcome of interest and the condition:
-\begin{eqnarray}
-&& P(\text{\var{teen} \resp{college} given \var{parents} \resp{degree}}) \notag \\
-&& = P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) = \frac{231}{280} = 0.825
-\label{probStudentUsedIfParentsUsedInFormalNotation}
-\end{eqnarray}
-\marginpar[\raggedright\vspace{-10mm}
-
-$P(A | B)$\vspace{1mm}\\\footnotesize Probability of\\outcome $A$\\given $B$]{\raggedright\vspace{-10mm}
-
-$P(A | B)$\vspace{1mm}\\\footnotesize Probability of\\outcome $A$\\given $B$}The vertical bar ``$|$'' is read as \emph{given}.
-
-In Equation~\eqref{probStudentUsedIfParentsUsedInFormalNotation}, we computed the probability a teen attended college based on the condition that at least one parent has a college degree as a fraction:\vspaceB{-1mm}
-\begin{eqnarray}
-&& P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
-&&\quad = \frac{\text{\# cases where \var{teen} \resp{college} and \var{parents} \resp{degree}}}{\text{\# cases where \var{parents} \resp{degree}}} \label{ratioOfBothToRatioOfConditionalForParentsAndStudent} \\
-&&\quad = \frac{231}{280} = 0.825 \notag
-\end{eqnarray}
-We considered only those cases that met the condition, \var{parents} \resp{degree}, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
-
-Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation~\eqref{ratioOfBothToRatioOfConditionalForParentsAndStudent} as a template to understand this technique.
-
-We considered only those cases that satisfied the condition, \var{parents} \resp{degree}. Of these cases, the conditional probability was the fraction who represented the outcome of interest, \var{teen} \resp{college}. Suppose we were provided only the information in Figure~\ref{familyCollegeProbTable}, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35\% or $0.35\times 1000 = 350$ would meet the information criterion (\var{parents} \resp{degree}). Similarly, we would expect about 29\% or $0.29\times 1000 = 290$ to meet both the information criteria and represent our outcome of interest. Then the conditional probability can be computed as
-\begin{align}
-&P(\text{\var{teen} \resp{college}}\ |\ \text{\var{parents} \resp{degree}}) \notag \\
-	&= \frac{\text{\# (\var{teen} \resp{college} and \var{parents} \resp{degree})}}{\text{\# (\var{parents} \resp{degree})}} \notag \\
-	&= \frac{290}{350}
-		= \frac{0.29}{0.35}
-		= 0.829\quad\text{(different from 0.825 due to rounding error)}
-\label{stUserPUsedHypSampSize}
-\end{align}
-In Equation~(\ref{stUserPUsedHypSampSize}), we examine exactly the fraction of two probabilities, 0.29 and 0.35, which we can write as
+The probability that a random photo from the data set is about
+fashion is about 0.17.
+If we knew the machine learning classifier predicted the
+photo was about fashion, could we get a better estimate of the
+probability the photo is actually about fashion?
+Absolutely.
+To do so, we limit our view to only those \fashYA{} cases
+where the ML classifier predicted that the photo was about
+fashion and look at the fraction where the photo was actually
+about fashion:
 \begin{align*}
-P(\text{\var{teen} \resp{college} and \var{parents} \resp{degree}})
-	\quad\text{and}\quad
-	P(\text{\var{parents} \resp{degree}}).
+P(\text{\var{truth} is \resp{fashion} given
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+  = \frac{\fashYY{}}{\fashYA{}}
+  = 0.900
 \end{align*}
-The fraction of these probabilities is an example of the general formula for conditional probability.
+We call this a \term{conditional probability} because
+we computed the probability under a condition:
+the ML classifier prediction said the photo was about fashion.
+
+There are two parts to a conditional probability,
+the \term{outcome of interest} and the \term{condition}.
+It is useful to think of the condition as information we know
+to be true, and this information usually can be described as
+a known outcome or~event.
+We generally separate the text inside our probability notation
+into the outcome of interest and the condition with a
+vertical bar:
+\begin{align*}
+&& P(\text{\var{truth} is \resp{fashion} given
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+&& \quad = P(\text{\var{truth} is \resp{fashion}\ }|
+    \text{\ \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+  = \frac{\fashYY{}}{\fashYA{}}
+  = 0.900
+\end{align*}
+The vertical bar ``$|$'' is read as \emph{given}.
+
+\D{\newpage}
+
+In the last equation, we computed the probability a photo
+was about fashion based on the condition that the ML algorithm
+predicted it was about fashion as a fraction:
+\begin{align*}
+& P(\text{\var{truth} is \resp{fashion}\ }|
+    \text{\ \var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+  &\quad = \frac{\text{\# cases where \var{truth} is \resp{fashion}
+       and \var{mach\us{}learn} is \resp{pred\us{}fashion}}}
+     {\text{\# cases where \var{truth} is \resp{fashion}}} \\
+  &\quad = \frac{\fashYY{}}{\fashYA{}}
+      = 0.900
+\end{align*}
+We considered only those cases that met the condition,
+\var{mach\us{}learn} is \resp{pred\us{}fashion}, and then
+we computed the ratio of those cases that satisfied our
+outcome of interest, photo was actually about fashion.
+
+Frequently, marginal and joint probabilities are provided
+instead of count data.
+For example, disease rates are commonly listed in percentages
+rather than in a count format.
+We would like to be able to compute conditional probabilities
+even when no counts are available, and we use the last equation
+as a template to understand this technique.
+
+We considered only those cases that satisfied the condition,
+where the ML algorithm predicted fashion.
+Of these cases, the conditional probability was the
+fraction representing the outcome of interest, that the
+photo was about fashion.
+Suppose we were provided only the information in
+Figure~\ref{photoClassifyProbTable}, i.e. only probability data.
+Then if we took a sample of 1000 photos, we would anticipate
+about 12.0\% or $0.120\times 1000 = 120$ would be predicted to be
+about fashion (\var{mach\us{}learn} is \resp{pred\us{}fashion}).
+Similarly, we would expect about 10.8\% or
+$0.108\times 1000 = 108$ to meet both the information criteria
+and represent our outcome of interest.
+Then the conditional probability can be computed as
+\begin{align*}
+&P(\text{\var{truth} is \resp{fashion}}\ |\ 
+    \text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}) \\
+  &= \frac{\text{\# (\var{truth} is \resp{fashion}
+      and \var{mach\us{}learn} is \resp{pred\us{}fashion})}}
+    {\text{\# (\var{mach\us{}learn} is \resp{pred\us{}fashion})}} \\
+  &= \frac{108}{120}
+		= \frac{0.108}{0.120}
+		= 0.90
+\end{align*}
+Here we are examining exactly the fraction of two probabilities,
+0.108 and 0.120, which we can write as
+\begin{align*}
+P(\text{\var{truth} is \resp{fashion} and
+    \var{mach\us{}learn} is \resp{pred\us{}fashion}})
+\quad\text{and}\quad
+P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}).
+\end{align*}
+The fraction of these probabilities is an example of the
+general formula for conditional probability.
 
 \begin{onebox}{Conditional probability}
-The conditional probability of the outcome of interest $A$ given condition $B$ is computed as the following:
-\begin{align}
-P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
-\label{condProbEq}
-\end{align}
+  The conditional probability of the outcome of interest $A$
+  given condition $B$ is computed as the following:
+  \begin{align*}
+  P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
+  \end{align*}
 \end{onebox}
 
-\begin{exercisewrap}
-\begin{nexercise}\label{familyCollegeProbOfParentsEqualNotGivenTeen}
-(a) Write out the following statement in conditional probability notation: ``\emph{The probability a random case where neither parent has a college degree if it is known that the teenager didn't attend college right after high school}''. Notice that the condition is now based on the {teenager}, not the {parent}. \\[1mm]
-(b)~Determine the probability from part (a). Table~\vref{familyCollegeProbTable} may be helpful.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{(a) $P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})$. (b)~Equation~(\ref{condProbEq}) for conditional probability indicates we should first find $P(\text{\var{parents} \resp{not} and \var{teen} \resp{not}}) = 0.38$ and $P(\text{\var{teen} \resp{not}}) = 0.44$. Then the ratio represents the conditional probability: $0.38 / 0.44 = 0.864$.}
-
-\begin{exercisewrap}
-\begin{nexercise}\label{whyCondProbSumTo1}
-(a)~Determine the probability that one of the parents has a college degree if it is known the teenager did not attend college. \\[1mm]
-(b)~Using the answers from part~(a) and Guided Practice~\ref{familyCollegeProbOfParentsEqualNotGivenTeen}(b), compute\\[1mm]
-\textC{{\color{white}.\hspace{5mm}}}$P(\text{\var{parents} \resp{degree}}\ |\ \text{\var{teen} \resp{not}})
-\ + \ P(\text{\var{parents} \resp{not}}\ |\ \text{\var{teen} \resp{not}})$\\[1mm]
-(c)~Provide an intuitive argument to explain why the sum in (b) is~1.\footnotemark
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{(a)~This probability is $\frac{P(\text{\var{parents} \resp{degree}, \var{teen} \resp{not}})}{P(\text{\var{teen} \resp{not}})} = \frac{0.06}{0.44} = 0.136$. (b)~The total equals~1. (c)~Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works for conditional probabilities, provided the probabilities are conditioned on the same information.}
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
-The data indicate there is an association between parents having a college degree and their teenager attending college. Does this mean the parents' college degree(s) \emph{caused} the teenager to go to college?\footnotemark
+\label{fashionProbOfMLNotGivenTruthNot}%
+(a) Write out the following statement in conditional
+probability notation:
+``\emph{The probability that the ML prediction was correct,
+if the photo was about fashion}''.
+Here the condition is now based on the photo's
+\var{truth} status, not the ML algorithm. \\[1mm]
+(b)~Determine the probability from part (a).
+Table~\vref{photoClassifyProbTable} may be helpful.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{No. While there is an association, the data are observational. Two potential confounding variables include \var{income} and \var{region}. Can you think of others?}
+\footnotetext{(a) If the photo is about fashion and the
+  ML algorithm prediction was correct, then the ML algorithm
+  my have a value of \resp{pred\us{}fashion}:
+  \begin{align*}
+  P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}\ |
+      \ \text{\var{truth} is \resp{fashion}})
+  \end{align*}
+  (b)~The equation for conditional probability indicates we
+  should first find
+  $P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
+    and \var{truth} is \resp{fashion}}) = 0.1081$
+  and $P(\text{\var{truth} is \resp{not}}) = 0.1696$.
+  Then the ratio represents the conditional probability:
+  $0.1081 / 0.1696 = 0.6374$.}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{whyCondProbSumTo1}%
+(a)~Determine the probability that the algorithm is incorrect
+if it is known the photo is about fashion. \\[1mm]
+(b)~Using the answers from part~(a) and
+Guided Practice~\ref{fashionProbOfMLNotGivenTruthNot}(b),
+compute
+\begin{align*}
+&P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}}
+    \ |\ \text{\var{truth} is \resp{fashion}}) \\
+&\qquad  +\ P(\text{\var{mach\us{}learn} is \resp{pred\us{}not}}
+    \ |\ \text{\var{truth} is \resp{fashion}})
+\end{align*}
+(c)~Provide an intuitive argument to explain why the sum
+in~(b) is~1.\footnotemark
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a)~This probability is
+  $\frac{P(\text{\var{mach\us{}learn} is \resp{pred\us{}not},
+      \var{truth} is \resp{fashion}})}
+    {P(\text{\var{truth} is \resp{fashion}})}
+  = \frac{0.0615}{0.1696} = 0.3626$.
+  (b)~The total equals~1.
+  (c)~Under the condition the photo is about fashion,
+      the ML algorithm must have either predicted it was
+      about fashion or predicted it was not about fashion.
+      The complement still works for conditional probabilities,
+      provided the probabilities are conditioned on the same
+      information.}
 
 \index{conditional probability|)}
-\index{data!family\_college|)}
+\index{data!photo\_classify|)}
 
 
 \subsection{Smallpox in Boston, 1721}
 
 \index{data!smallpox|(}
 
-The \data{smallpox} data set provides a sample of 6,224 individuals from the year 1721 who were exposed to smallpox in Boston.\footnote{Fenner F. 1988. \emph{Smallpox and Its Eradication (History of International Public Health, No. 6)}. Geneva: World Health Organization. ISBN 92-4-156110-6.} Doctors at the time believed that inoculation, which involves exposing a person to the disease in a controlled form, could reduce the likelihood of death.
+The \data{smallpox} data set provides a sample of 6,224 individuals from the year 1721 who were exposed to smallpox in Boston.
+Doctors at the time believed that inoculation, which involves exposing a person to the disease in a controlled form, could reduce the likelihood of death.
 
 Each case represents one person with two variables: \var{inoculated} and \var{result}. The variable \var{inoculated} takes two levels: \resp{yes} or \resp{no}, indicating whether the person was inoculated or not. The variable \var{result} has outcomes \resp{lived} or \resp{died}. These data are summarized in Tables~\ref{smallpoxContingencyTable} and~\ref{smallpoxProbabilityTable}.
 
@@ -883,28 +1187,37 @@ Section~\ref{probabilityIndependence} introduced the Multiplication Rule for ind
 
 \begin{onebox}{General Multiplication Rule}
 If $A$ and $B$ represent two outcomes or events, then \vspace{-1.5mm}
-\begin{eqnarray*}
+\begin{align*}
 P(A\text{ and }B) = P(A | B)\times P(B)
-\end{eqnarray*} \vspace{-6.5mm} \par
+\end{align*} \vspace{-6.5mm} \par
 It is useful to think of $A$ as the outcome of interest and $B$ as the condition.
 \end{onebox}
-This General Multiplication Rule is simply a rearrangement of the definition for conditional probability in Equation~(\ref{condProbEq}) on page~\pageref{condProbEq}.
+This General Multiplication Rule is simply a rearrangement of the equation for conditional probability.
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
 We will compute our answer using the General Multiplication Rule and then verify it using Figure~\ref{smallpoxProbabilityTable}. We want to determine
-\begin{eqnarray*}
-P(\text{\var{result} = \resp{lived} and \var{inoculated} = \resp{no}})
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{result}
+    = \resp{lived} and \var{inoculated} = \resp{no}})
+\end{align*}
 and we are given that
-\begin{eqnarray*}
-P(\text{\var{result} = \resp{lived} }|\text{ \var{inoculated} = \resp{no}})=0.8588 \\
-P(\text{\var{inoculated} = \resp{no}})=0.9608
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{result}
+    = \resp{lived} }|\text{ \var{inoculated} = \resp{no}})
+    &= 0.8588 \\
+P(\text{\var{inoculated} = \resp{no}})
+    &= 0.9608
+\end{align*}
 Among the 96.08\% of people who were not inoculated, 85.88\% survived:
-\begin{eqnarray*}
-P(\text{\var{result} = \resp{lived} and \var{inoculated} = \resp{no}}) = 0.8588\times 0.9608 = 0.8251
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{result} = \resp{lived}
+        and \var{inoculated} = \resp{no}})
+    = 0.8588 \times 0.9608
+    = 0.8251
+\end{align*}
 This is equivalent to the General Multiplication Rule. We can confirm this probability in Figure~\ref{smallpoxProbabilityTable} at the intersection of \resp{no} and \resp{lived} (with a small rounding error).
 \end{nexample}
 \end{examplewrap}
@@ -925,13 +1238,14 @@ If 97.54\% of the people who were inoculated lived, what proportion of inoculate
 
 \begin{onebox}{Sum of conditional probabilities}
 Let $A_1$, ..., $A_k$ represent all the disjoint outcomes for a variable or process. Then if $B$ is an event, possibly for another variable or process, we have: \vspace{-1mm}
-\begin{eqnarray*}
-P(A_1|B)+\cdots+P(A_k|B) = 1
-\end{eqnarray*}\vspace{-5.5mm} \par
+\begin{align*}
+P(A_1|B) + \cdots + P(A_k|B) = 1
+\end{align*}%
+\vspace{-5.5mm} \par
 The rule for complements also holds when an event and its complement are conditioned on the same information: \vspace{-1.5mm}
-\begin{eqnarray*}
+\begin{align*}
 P(A | B) = 1 - P(A^c | B)
-\end{eqnarray*}
+\end{align*}
 \end{onebox}
 
 \begin{exercisewrap}
@@ -940,6 +1254,9 @@ Based on the probabilities computed above, does it appear that inoculation is ef
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The samples are large relative to the difference in death rates for the ``inoculated'' and ``not inoculated'' groups, so it seems there is an association between \var{inoculated} and \var{outcome}. However, as noted in the solution to Guided Practice~\ref{SmallpoxInoculationObsExpExercise}, this is an observational study and we cannot be sure if there is a causal connection. (Further research has shown that inoculation is effective at reducing death rates.)}
+
+
+\D{\newpage}
 
 \subsection{Independence considerations in conditional probability}
 
@@ -959,12 +1276,15 @@ Let $X$ and $Y$ represent the outcomes of rolling two dice.\footnotemark
 \footnotetext{Brief solutions: (a) $1/6$. (b) $1/36$. (c)~$\frac{P(Y = \text{ \resp{1} and }X=\text{ \resp{1}})}{P(X=\text{ \resp{1}})} = \frac{1/36}{1/6} = 1/6$. (d)~The probability is the same as in part~(c): $P(Y=1)=1/6$. The probability that $Y=1$ was unchanged by knowledge about $X$, which makes sense as $X$ and $Y$ are independent.}
 
 We can show in Guided Practice~\ref{condProbOfRollingA1AfterOne1}(c) that the conditioning information has no influence by using the Multiplication Rule for independence processes:
-\begin{eqnarray*}
+\begin{align*}
 P(Y=\text{\resp{1}}\ |\ X=\text{\resp{1}})
-	&=& \frac{P(Y=\text{\resp{1} and }X=\text{\resp{1}})}{P(X=\text{\resp{1}})} \\
-	&=& \frac{P(Y=\text{\resp{1}})\times \color{oiGB}P(X=\text{\resp{1}})}{\color{oiGB}P(X=\text{\resp{1}})} \\
-	&=& P(Y=\text{\resp{1}}) \\
-\end{eqnarray*}
+    &= \frac{P(Y=\text{\resp{1} and }X=\text{\resp{1}})}
+      {P(X=\text{\resp{1}})} \\
+    &= \frac{P(Y=\text{\resp{1}}) \times
+        \color{oiGB}P(X=\text{\resp{1}})}
+      {\color{oiGB}P(X=\text{\resp{1}})} \\
+    &= P(Y=\text{\resp{1}}) \\
+\end{align*}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -973,6 +1293,8 @@ Ron is watching a roulette table in a casino and notices that the last five outc
 \end{exercisewrap}
 \footnotetext{He has forgotten that the next roulette spin is independent of the previous spins. Casinos do employ this practice; they post the last several outcomes of many betting games to trick unsuspecting gamblers into believing the odds are in their favor. This is called the \term{gambler's fallacy}.}
 
+
+\D{\newpage}
 
 \subsection{Tree diagrams}
 
@@ -991,55 +1313,66 @@ The \data{smallpox} data fit this description. We see the population as split by
 \end{figure}
 
 Tree diagrams are annotated with marginal and conditional probabilities, as shown in Figure~\ref{smallpoxTreeDiagram}. This tree diagram splits the smallpox data by \var{inoculation} into the \resp{yes} and \resp{no} groups with respective marginal probabilities 0.0392 and 0.9608. The secondary branches are conditioned on the first, so we assign conditional probabilities to these branches. For example, the top branch in Figure~\ref{smallpoxTreeDiagram} is the probability that \var{result} = \resp{lived} conditioned on the information that \var{inoculated} = \resp{yes}. We may (and usually do) construct joint probabilities at the end of each branch in our tree by multiplying the numbers we come across as we move from left to right. These joint probabilities are computed using the General Multiplication Rule:
-\begin{eqnarray*}
-&& P(\text{\var{inoculated} = \resp{yes} and \var{result} = \resp{lived}}) \\
-	&&\quad = P(\text{\var{inoculated} = \resp{yes}})\times P(\text{\var{result} = \resp{lived}}|\text{\var{inoculated} = \resp{yes}}) \\
-	&&\quad = 0.0392\times 0.9754=0.0382
-\end{eqnarray*}
+\begin{align*}
+& P(\text{\var{inoculated} = \resp{yes}
+    and \var{result} = \resp{lived}}) \\
+  &\quad = P(\text{\var{inoculated} = \resp{yes}})\times
+      P(\text{\var{result} = \resp{lived}}|
+          \text{\var{inoculated} = \resp{yes}}) \\
+  &\quad = 0.0392\times 0.9754=0.0382
+\end{align*}
 
 \begin{examplewrap}
 \begin{nexample}{Consider the midterm and final for a statistics class. Suppose 13\% of students earned an \resp{A} on the midterm. Of those students who earned an \resp{A} on the midterm, 47\% received an \resp{A} on the final, and 11\% of the students who earned lower than an \resp{A} on the midterm received an \resp{A} on the final. You randomly pick up a final exam and notice the student received an \resp{A}. What is the probability that this student earned an \resp{A} on the midterm?} \label{exerciseForTreeDiagramOfStudentGettingAOnMidtermGivenThatSheGotAOnFinal}
 The end-goal is to find $P(\text{\var{midterm} = \resp{A}} | \text{\var{final} = \resp{A}})$. To calculate this conditional probability, we need the following probabilities:
-\begin{eqnarray*}
-P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}}) \qquad\text{and}\qquad
-P(\text{\var{final} = \resp{A}})
-\end{eqnarray*}
-However, this information is not provided, and it is not obvious how to calculate these probabilities. Since we aren't sure how to proceed, it is useful to organize the information into a tree diagram, as shown in Figure~\ref{testTree}. When constructing a tree diagram, variables provided with marginal probabilities are often used to create the tree's primary branches; in this case, the marginal probabilities are provided for midterm grades. The final grades, which correspond to the conditional probabilities provided, will be shown on the secondary branches.
+\begin{align*}
+P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}})
+  \qquad\text{and}\qquad
+  P(\text{\var{final} = \resp{A}})
+\end{align*}
+However, this information is not provided, and it is not obvious how to calculate these probabilities. Since we aren't sure how to proceed, it is useful to organize the information into a tree diagram:
+\begin{center}
+\Figure{0.85}{testTree}
+\end{center}
+When constructing a tree diagram, variables provided with marginal probabilities are often used to create the tree's primary branches; in this case, the marginal probabilities are provided for midterm grades. The final grades, which correspond to the conditional probabilities provided, will be shown on the secondary branches.
 
 With the tree diagram constructed, we may compute the required probabilities:
-\begin{eqnarray*}
-&&P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}}) = 0.0611 \\
-&&P(\text{\underline{\color{black}\var{final} = \resp{A}}})  \\
-&& \quad= P(\text{\var{midterm} = \resp{other} and \underline{\color{black}\var{final} = \resp{A}}}) + P(\text{\var{midterm} = \resp{A} and \underline{\color{black}\var{final} = \resp{A}}}) \\
-&& \quad= 0.0957 + 0.0611  = 0.1568
-\end{eqnarray*}
+\begin{align*}
+&P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}}) = 0.0611 \\
+&P(\text{\underline{\color{black}\var{final} = \resp{A}}})  \\
+& \quad= P(\text{\var{midterm} = \resp{other} and \underline{\color{black}\var{final} = \resp{A}}}) + P(\text{\var{midterm} = \resp{A} and \underline{\color{black}\var{final} = \resp{A}}}) \\
+& \quad= 0.0957 + 0.0611  = 0.1568
+\end{align*}
 The marginal probability, $P($\var{final} = \resp{A}$)$, was calculated by adding up all the joint probabilities on the right side of the tree that correspond to \var{final} = \resp{A}. We may now finally take the ratio of the two probabilities:
-\begin{eqnarray*}
-P(\text{\var{midterm} = \resp{A}} | \text{\var{final} = \resp{A}}) &=& \frac{P(\text{\var{midterm} = \resp{A} and \var{final} = \resp{A}})}{P(\text{\var{final} = \resp{A}})} \\
-&=& \frac{0.0611}{0.1568} = 0.3897
-\end{eqnarray*}
+\begin{align*}
+P(\text{\var{midterm} = \resp{A}} | \text{\var{final} = \resp{A}})
+  &= \frac{P(\text{\var{midterm} = \resp{A}
+      and \var{final} = \resp{A}})}
+    {P(\text{\var{final} = \resp{A}})} \\
+  &= \frac{0.0611}{0.1568} = 0.3897
+\end{align*}
 The probability the student also earned an A on the midterm is about 0.39.
 \end{nexample}
 \end{examplewrap}
 
-\begin{figure}[ht]
-  \centering
-  \Figure{0.9}{testTree}
-  \caption{A tree diagram describing the \var{midterm}
-      and \var{final} variables.}
-  \label{testTree}
-\end{figure}
+%\begin{figure}[ht]
+%  \centering
+%  \Figure{0.9}{testTree}
+%  \caption{A tree diagram describing the \var{midterm}
+%      and \var{final} variables.}
+%  \label{testTree}
+%\end{figure}
 
 \begin{exercisewrap}
 \begin{nexercise}
 After an introductory statistics course, 78\% of students can successfully construct tree diagrams. Of those who can construct tree diagrams, 97\% passed, while only 57\% of those students who could not construct tree diagrams passed. (a)~Organize this information into a tree diagram. (b)~What is the probability that a randomly selected student passed? (c)~Compute the probability a student is able to construct a tree diagram if it is known that she passed.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{\begin{minipage}[t]{0.47\linewidth}
+\footnotetext{\begin{minipage}[t]{0.27\linewidth}
 (a) The tree diagram is shown to the right.
 (b)~Identify which two joint probabilities represent students who passed, and add them: $P($passed$) = 0.7566+0.1254= 0.8820$. (c)~$P($construct tree diagram $|$ passed$) = \frac{0.7566}{0.8820} = 0.8578$. \vspace{15mm} \\\ 
 \end{minipage}
-\begin{minipage}[c]{0.5\linewidth}
+\begin{minipage}[c]{0.7\linewidth}
 \includegraphics[width=\textwidth]{ch_probability/figures/treeDiagramAndPass/treeDiagramAndPass} \vspace{-25mm}
 \end{minipage}}
 
@@ -1061,10 +1394,26 @@ Tree diagrams can be used to find the second conditional probability when given 
 
 We first take a critical look at an example of inverting conditional probabilities where we still apply a tree diagram.
 
-\Comment{Ensure the footnote in the next example stays on the proper page.}
+\D{\newpage}
 
 \begin{examplewrap}
-\begin{nexample}{In Canada, about 0.35\% of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11\% of patients with breast cancer, the test gives a \term{false negative}: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a \term{false positive} in 7\% of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.\footnotemark
+\begin{nexample}{In Canada, about 0.35\% of women over 40
+    will develop breast cancer in any given year.
+    A common screening test for cancer is the mammogram,
+    but this test is not perfect.
+    In about 11\% of patients with breast cancer, the test
+    gives a \term{false negative}:
+    it indicates a woman does not have breast cancer when
+    she does have breast cancer.
+    Similarly, the test gives a \term{false positive}
+    in 7\% of patients who do not have breast cancer:
+    it indicates these patients have breast cancer when
+    they actually do not.
+    If we tested a random woman over 40 for breast cancer
+    using a mammogram and the test came back positive
+    -- that is, the test suggested the patient has cancer --
+    what is the probability that the patient actually has
+    breast cancer?}
 
 \label{probBreastCancerGivenPositiveTestExample}
 
@@ -1072,17 +1421,29 @@ Notice that we are given sufficient information to quickly compute the probabili
 \begin{align*}
 P(\text{has BC } | \text{ mammogram$^+$}) = \frac{P(\text{has BC and mammogram$^+$})}{P(\text{mammogram$^+$})}
 \end{align*}
-where ``has BC'' is an abbreviation for the patient actually having breast cancer and ``mammogram$^+$'' means the mammogram screening was positive. A tree diagram is useful for identifying each probability and is shown in Figure~\ref{BreastCancerTreeDiagram}. The probability the patient has breast cancer and the mammogram is positive is
+where ``has BC'' is an abbreviation for the patient having
+breast cancer and ``mammogram$^+$'' means the mammogram screening
+was positive.
+We can construct a tree diagram for these probabilities:
+\begin{center}
+\Figure{0.9}{BreastCancerTreeDiagram}
+\end{center}
+The probability the patient has breast cancer
+and the mammogram is positive is
 \begin{align*}
 P(\text{has BC and mammogram$^+$}) &= P(\text{mammogram$^+$ } | \text{ has BC})P(\text{has BC}) \\
 	&= 0.89\times 0.0035 = 0.00312
 \end{align*}
 The probability of a positive test result is the sum of the two corresponding scenarios:
 \begin{align*}
-P(\text{\underline{\color{black}mammogram$^+$}}) &= P(\text{\underline{\color{black}mammogram$^+$} and has BC}) + P(\text{\underline{\color{black}mammogram$^+$} and no BC}) \\
-	&= P(\text{has BC})P(\text{mammogram$^+$ } | \text{ has BC}) \\
-	&\qquad\qquad	+ P(\text{no BC})P(\text{mammogram$^+$ } | \text{ no BC}) \\
-	&= 0.0035\times 0.89 + 0.9965\times 0.07 = 0.07288
+P(\text{\underline{\color{black}mammogram$^+$}})
+  &= P(\text{\underline{\color{black}mammogram$^+$} and has BC}) \\
+  &\qquad\qquad
+      + P(\text{\underline{\color{black}mammogram$^+$} and no BC})\\
+  &= P(\text{has BC})P(\text{mammogram$^+$ } | \text{ has BC}) \\
+  &\qquad\qquad
+      + P(\text{no BC})P(\text{mammogram$^+$ } | \text{ no BC}) \\
+  &= 0.0035\times 0.89 + 0.9965\times 0.07 = 0.07288
 \end{align*}
 Then if the mammogram screening is positive for a patient, the probability the patient has breast cancer is
 \begin{align*}
@@ -1093,17 +1454,18 @@ P(\text{has BC } | \text{ mammogram$^+$})
 That is, even if a patient has a positive mammogram screening, there is still only a~4\%~chance that she has breast cancer.
 \end{nexample}
 \end{examplewrap}
-\footnotetext{The probabilities reported here were obtained using studies reported at \oiRedirect{textbook-breastCancerDotOrg_20090831b}{www.breastcancer.org} and \oiRedirect{textbook-ncbi_nih_breast_cancer}{www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}.} If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive -- that is, the test suggested the patient has cancer -- what is the probability that the patient actually has breast cancer?}
 
-\begin{figure}[h]
-  \centering
-  \Figure{0.93}{BreastCancerTreeDiagram}
-  \caption{Tree diagram for
-      Example~\ref{probBreastCancerGivenPositiveTestExample},
-      computing the probability a random patient who tests
-      positive on a mammogram actually has breast cancer.}
-\label{BreastCancerTreeDiagram}
-\end{figure}
+%\begin{figure}[h]
+%  \centering
+%  \Figure{0.75}{BreastCancerTreeDiagram}
+%  \caption{Tree diagram for
+%      Example~\ref{probBreastCancerGivenPositiveTestExample}.}%,
+%      %computing the probability a random patient who tests
+%      %positive on a mammogram actually has breast cancer.}
+%\label{BreastCancerTreeDiagram}
+%\end{figure}
+
+\D{\newpage}
 
 Example~\ref{probBreastCancerGivenPositiveTestExample} highlights why doctors often run more tests regardless of a first positive test result. When a medical condition is rare, a single positive test isn't generally definitive.
 
@@ -1138,16 +1500,22 @@ Consider the following conditional probability for variable 1 and variable 2:\vs
 P(\text{outcome $A_1$ of variable 1 } | \text{ outcome $B$ of variable 2})
 \end{align*}
 Bayes' Theorem states that this conditional probability can be identified as the following fraction:\vspace{-1.5mm}
-\begin{align}
+\begin{align*}
 \frac{P(B | A_1) P(A_1)}
 	{P(B | A_1) P(A_1) + P(B | A_2) P(A_2) + \cdots + P(B | A_k) P(A_k)}
-	\label{equationOfBayesTheorem}
-\end{align}
+\end{align*}
 where $A_2$, $A_3$, ..., and $A_k$ represent all other possible outcomes of the first variable.\index{Bayes' Theorem|textbf}
 \end{onebox}
 
-Bayes' Theorem is just a generalization of what we have done using tree diagrams. The numerator identifies the probability of getting both $A_1$ and $B$. The denominator is the marginal probability of getting $B$. This bottom component of the fraction appears long and complicated since we have to add up probabilities from all of the different ways to get $B$. We always completed this step when using tree diagrams. However, we usually did it in a separate step so it didn't seem as complex.
+Bayes' Theorem is a generalization of what we have done
+using tree diagrams.
+The numerator identifies the probability of getting both
+$A_1$ and~$B$.
+The denominator is the marginal probability of getting~$B$.
+This bottom component of the fraction appears long and
+complicated since we have to add up probabilities from all of the different ways to get $B$. We always completed this step when using tree diagrams. However, we usually did it in a separate step so it didn't seem as complex.
 
+\noindent%
 To apply Bayes' Theorem correctly, there are two preparatory steps:
 \begin{enumerate}
 \setlength{\itemsep}{0mm}
@@ -1155,21 +1523,18 @@ To apply Bayes' Theorem correctly, there are two preparatory steps:
 \item[(2)] Then identify the probability of the outcome $B$, conditioned on each possible scenario for the first variable: $P(B | A_1)$, $P(B | A_2)$, ..., $P(B | A_k)$.
 \end{enumerate}
 Once each of these probabilities are identified, they can be applied directly within the formula.
-
-\begin{tipBox}{\tipBoxTitle{Only use Bayes' Theorem when tree diagrams are difficult}
-Drawing a tree diagram makes it easier to understand how two variables are connected. Use Bayes' Theorem only when there are so many scenarios that drawing a tree diagram would be complex.}
-\end{tipBox}
+Bayes' Theorem tends to be a good option when there are so many scenarios that drawing a tree diagram would be complex.
 
 \begin{exercisewrap}
 \begin{nexercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsASportingEvent}
 Jose visits campus every Thursday evening. However, some days the parking garage is full, often due to college events. There are academic events on 35\% of evenings, sporting events on 20\% of evenings, and no events on 45\% of evenings. When there is an academic event, the garage fills up about 25\% of the time, and it fills up 70\% of evenings with sporting events. On evenings when there are no events, it only fills up about 5\% of the time. If Jose comes to campus and finds the garage full, what is the probability that there is a sporting event? Use a tree diagram to solve this problem.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{\begin{minipage}[t]{0.47\linewidth}
+\footnotetext{\begin{minipage}[t]{0.27\linewidth}
 The tree diagram, with three primary branches, is shown to the right. Next, we identify two probabilities from the tree diagram. (1) The probability that there is a sporting event and the garage is full: 0.14. (2) The probability the garage is full: $0.0875 + 0.14 + 0.0225 = 0.25$. Then the solution is the ratio of these probabilities: $\frac{0.14}{0.25} = 0.56$. If the garage is full, there is a 56\% probability that there is a sporting event. \vspace{0.1mm} \\\ 
 \end{minipage}
-\begin{minipage}[c]{0.5\linewidth}
-\includegraphics[width=\textwidth]{ch_probability/figures/treeDiagramGarage/treeDiagramGarage}\vspace{-30mm}
+\begin{minipage}[c]{0.7\linewidth}
+\Figure{}{treeDiagramGarage}\vspace{-30mm}
 \end{minipage}}
 
 \begin{examplewrap}
@@ -1188,6 +1553,8 @@ P(A_1 | B) &= \frac{P(B | A_1) P(A_1)}{P(B | A_1) P(A_1) + P(B | A_2) P(A_2) + P
 Based on the information that the garage is full, there is a 56\% probability that a sporting event is being held on campus that evening.
 \end{nexample}
 \end{examplewrap}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsAnAcademicEvent}
@@ -1230,11 +1597,11 @@ If there are 15 people to ask and none are skipping class, then the probability 
 \begin{examplewrap}
 \begin{nexample}{If the professor asks 3 questions, what is the probability that you will not be selected? Assume that she will not pick the same person twice in a given lecture.}\label{3woRep}
 For the first question, she will pick someone else with probability $14/15$. When she asks the second question, she only has 14 people who have not yet been asked. Thus, if you were not picked on the first question, the probability you are again not picked is $13/14$. Similarly, the probability you are again not picked on the third question is $12/13$, and the probability of not being picked for any of the three questions is
-\begin{eqnarray*}
-&&P(\text{not picked in 3 questions}) \\
-&&\quad = P(\text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q3}} = \text{\resp{not\_\hspace{0.3mm}picked}.}) \\
-&&\quad = \frac{14}{15}\times\frac{13}{14}\times\frac{12}{13} = \frac{12}{15} = 0.80
-\end{eqnarray*}
+\begin{align*}
+&P(\text{not picked in 3 questions}) \\
+&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
+&\quad = \frac{14}{15}\times\frac{13}{14}\times\frac{12}{13} = \frac{12}{15} = 0.80
+\end{align*}
 \end{nexample}
 \end{examplewrap}
 
@@ -1243,21 +1610,24 @@ For the first question, she will pick someone else with probability $14/15$. Whe
 What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\_\hspace{0.3mm}picked}$)$, and two conditional probabilities:
-\begin{eqnarray*}
-&&P(\text{\var{Q2}} =  \text{\resp{not\_\hspace{0.3mm}picked} }|\text{ \var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}}) \\
-&&P(\text{\var{Q3}} =  \text{\resp{not\_\hspace{0.3mm}picked} }|\text{ \var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}})
-\end{eqnarray*}
+\footnotetext{The three probabilities we computed were actually one marginal probability, $P($\var{Q1}$ = $\resp{not\us{}picked}$)$, and two conditional probabilities:
+\begin{align*}
+&P(\text{\var{Q2}} =  \text{\resp{not\us{}picked} }|
+    \text{ \var{Q1}} = \text{\resp{not\us{}picked}}) \\
+&P(\text{\var{Q3}} =  \text{\resp{not\us{}picked} }|
+    \text{ \var{Q1}} = \text{\resp{not\us{}picked}, }
+    \text{\var{Q2}} = \text{\resp{not\us{}picked}})
+\end{align*}
 Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.}
 
 \begin{examplewrap}
 \begin{nexample}{Suppose the professor randomly picks without regard to who she already selected, i.e. students can be picked more than once. What is the probability that you will not be picked for any of the three questions?}\label{3wRep}
 Each pick is independent, and the probability of not being picked for any individual question is $14/15$. Thus, we can use the Multiplication Rule for independent processes.
-\begin{eqnarray*}
-&&P(\text{not picked in 3 questions}) \\
-&&\quad = P(\text{\var{Q1}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q2}} = \text{\resp{not\_\hspace{0.3mm}picked}, }\text{\var{Q3}} = \text{\resp{not\_\hspace{0.3mm}picked}.}) \\
-&&\quad = \frac{14}{15}\times\frac{14}{15}\times\frac{14}{15} = 0.813
-\end{eqnarray*}
+\begin{align*}
+&P(\text{not picked in 3 questions}) \\
+&\quad = P(\text{\var{Q1}} = \text{\resp{not\us{}picked}, }\text{\var{Q2}} = \text{\resp{not\us{}picked}, }\text{\var{Q3}} = \text{\resp{not\us{}picked}.}) \\
+&\quad = \frac{14}{15}\times\frac{14}{15}\times\frac{14}{15} = 0.813
+\end{align*}
 You have a slightly higher chance of not being picked compared to when she picked a new person for each question. However, you now may be picked more than once.
 \end{nexample}
 \end{examplewrap}
@@ -1311,22 +1681,25 @@ Would you be surprised if the bookstore sold slightly more or less than 105 book
 \begin{examplewrap}
 \begin{nexample}{The textbook costs \$137 and the study guide \$33. How much revenue should the bookstore expect from this class of 100 students?}\label{bookStoreRev}
 About 55 students will just buy a textbook, providing revenue of
-\begin{eqnarray*}
+\begin{align*}
 \$137 \times  55 = \$7,535
-\end{eqnarray*}
+\end{align*}
 The roughly 25 students who buy both the textbook and the study guide would pay a total of
-\begin{eqnarray*}
+\begin{align*}
 (\$137 + \$33) \times  25 = \$170 \times  25 = \$4,250
-\end{eqnarray*}
+\end{align*}
 Thus, the bookstore should expect to generate about $\$7,535 + \$4,250 = \$11,785$ from these 100 students for this one class. However, there might be some \emph{sampling variability} so the actual amount may differ by a little bit.
 \end{nexample}
 \end{examplewrap}
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.65\textwidth]{ch_probability/figures/bookCostDist/bookCostDist}
-\caption{Probability distribution for the bookstore's revenue from a single student. The distribution balances on a triangle representing the average revenue per student.}
-\label{bookCostDist}
+  \centering
+  \Figure{0.65}{bookCostDist}
+  \caption{Probability distribution for the bookstore's
+      revenue from a single student.
+      The distribution balances on a triangle representing
+      the average revenue per student.}
+  \label{bookCostDist}
 \end{figure}
 
 \begin{examplewrap}
@@ -1361,11 +1734,9 @@ $P(X=x_i)$ & 0.20 & 0.55 & 0.25 & 1.00 \\
 \label{statSpendDist}
 \end{figure}
 
-We computed the average outcome of $X$ as \$117.85 in Example~\ref{revFromStudent}. We call this average the \term{expected value} of $X$, denoted by $E(X)$\index{EX@$E(X)$}\marginpar[\raggedright\vspace{-3mm}
-
-$E(X)$\vspace{1mm}\\\footnotesize Expected\\value of $X$]{\raggedright\vspace{-3mm}
-
-$E(X)$\vspace{1mm}\\\footnotesize Expected\\value of $X$}. The expected value of a random variable is computed by adding each outcome weighted by its probability:
+We computed the average outcome of $X$ as \$117.85 in Example~\ref{revFromStudent}.
+We call this average the \term{expected value} of $X$, denoted by $E(X)$\index{EX@$E(X)$}.
+The expected value of a random variable is computed by adding each outcome weighted by its probability:
 \begin{align*}
 E(X) &= 0 \times  P(X=0) + 137 \times  P(X=137) + 170 \times  P(X=170) \\
 	&= 0 \times  0.20 + 137 \times  0.55 + 170 \times  0.25 = 117.85
@@ -1373,12 +1744,15 @@ E(X) &= 0 \times  P(X=0) + 137 \times  P(X=137) + 170 \times  P(X=170) \\
 
 \begin{onebox}{Expected value of a Discrete Random Variable}
 If $X$ takes outcomes $x_1$, ..., $x_k$ with probabilities $P(X=x_1)$, ..., $P(X=x_k)$, the expected value of $X$ is the sum of each outcome multiplied by its corresponding probability:
-\begin{align}
-E(X) 	&= x_1\times P(X=x_1) + \cdots + x_k\times P(X=x_k) \notag \\
-	&= \sum_{i=1}^{k}x_iP(X=x_i)
-\end{align}
+\begin{align*}
+E(X)
+  &= x_1 \times P(X = x_1) + \cdots + x_k\times P(X = x_k) \\
+  &= \sum_{i = 1}^{k} x_i P(X = x_i)
+\end{align*}
 The Greek letter $\mu$\index{Greek!mu ($\mu$)} may be used in place of the notation $E(X)$.
 \end{onebox}
+
+\D{\newpage}
 
 The expected value for a random variable represents the average outcome. For example, $E(X)=117.85$ represents the average amount the bookstore expects to make from a single student, which we could also write as $\mu=117.85$.
 
@@ -1403,6 +1777,8 @@ In physics, the expectation holds the same meaning as the center of gravity. The
 \index{expectation|)}
 
 
+\D{\newpage}
+
 \subsection{Variability in random variables}
 
 Suppose you ran the university bookstore. Besides how much revenue you expect to generate, you might also want to know the volatility (variability) in your revenue. 
@@ -1412,18 +1788,13 @@ introduced a method for finding the variance and standard deviation for a data s
 
 \begin{onebox}{General variance formula}
 If $X$ takes outcomes $x_1$, ..., $x_k$ with probabilities $P(X=x_1)$, ..., $P(X=x_k)$ and expected value $\mu=E(X)$, then the variance of $X$, denoted by $Var(X)$ or the symbol $\sigma^2$, is
-\begin{align}
-\sigma^2 &= (x_1-\mu)^2\times P(X=x_1) + \cdots \notag \\
-	& \qquad\quad\cdots+ (x_k-\mu)^2\times P(X=x_k) \notag \\
+\begin{align*}
+\sigma^2 &= (x_1-\mu)^2\times P(X=x_1) + \cdots \\
+	& \qquad\quad\cdots+ (x_k-\mu)^2\times P(X=x_k) \\
 	&= \sum_{j=1}^{k} (x_j - \mu)^2 P(X=x_j)
-\end{align}
+\end{align*}
 The standard deviation of $X$, labeled $\sigma$\index{Greek!sigma ($\sigma$)}, is the square root of the variance.
 \end{onebox}
-\marginpar[\raggedright\vspace{-47mm}
-
-$Var(X)$\vspace{1mm}\\\footnotesize Variance\\of $X$]{\raggedright\vspace{-47mm}
-
-$Var(X)$\vspace{1mm}\\\footnotesize Variance\\of $X$}
 
 \begin{examplewrap}
 \begin{nexample}{Compute the expected value, variance, and standard deviation of $X$, the revenue of a single statistics student for the bookstore.}
@@ -1492,10 +1863,14 @@ So far, we have thought of each variable as being a complete story in and of its
 \begin{examplewrap}
 \begin{nexample}{John travels to work five days a week. We will use $X_1$ to represent his travel time on Monday, $X_2$ to represent his travel time on Tuesday, and so on. Write an equation using $X_1$, ..., $X_5$ that represents his travel time for the week, denoted by $W$.}
 His total weekly travel time is the sum of the five daily values:
-$$ W = X_1 + X_2 + X_3 + X_4 + X_5 $$
+\begin{align*}
+W = X_1 + X_2 + X_3 + X_4 + X_5
+\end{align*}
 Breaking the weekly travel time $W$ into pieces provides a framework for understanding each source of randomness and is useful for modeling $W$.
 \end{nexample}
 \end{examplewrap}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{It takes John an average of 18 minutes each day to commute to work. What would you expect his average commute time to be for the week?}
@@ -1534,18 +1909,26 @@ Would you be surprised if John's weekly commute wasn't exactly 90 minutes or if 
 Two important concepts concerning combinations of random variables have so far been introduced. First, a final value can sometimes be described as the sum of its parts in an equation. Second, intuition suggests that putting the individual average values into this equation gives the average value we would expect in total. This second point needs clarification -- it is guaranteed to be true in what are called \emph{linear combinations of random variables}.
 
 A \term{linear combination} of two random variables $X$ and $Y$ is a fancy phrase to describe a combination
-$$ aX + bY$$
+\begin{align*}
+aX + bY
+\end{align*}
 where $a$ and $b$ are some fixed and known numbers. For John's commute time, there were five random variables -- one for each work day -- and each random variable could be written as having a fixed coefficient of 1:
-$$ 1X_1 + 1 X_2 + 1 X_3 + 1 X_4 + 1 X_5 $$
-For Elena's net gain or loss, the $X$ random variable had a coefficient of +1 and the $Y$ random variable had a coefficient of -1.
+\begin{align*}
+1X_1 + 1 X_2 + 1 X_3 + 1 X_4 + 1 X_5
+\end{align*}
+For Elena's net gain or loss, the $X$ random variable had
+a coefficient of +1 and the $Y$ random variable had
+a coefficient of~-1.
+
+\D{\newpage}
 
 When considering the average of a linear combination of random variables, it is safe to plug in the mean of each random variable and then compute the final result. For a few examples of nonlinear combinations of random variables -- cases where we cannot simply plug in the means -- see the footnote.\footnote{If $X$ and $Y$ are random variables, consider the following combinations: $X^{1+Y}$, $X\times Y$, $X/Y$. In such cases, plugging in the average value for each random variable and computing the result will not generally lead to an accurate average value for the end result.}
 
 \begin{onebox}{Linear combinations of random variables and the average result}
 If $X$ and $Y$ are random variables, then a linear combination of the random variables is given by
-\begin{align}\label{linComboOfRandomVariablesXAndY}
+\begin{align*}
 aX + bY
-\end{align}
+\end{align*}
 where $a$ and $b$ are some fixed numbers. To compute the average value of a linear combination of random variables, plug in the average of each individual random variable and compute the result:
 \begin{align*}
 a\times E(X) + b\times E(Y)
@@ -1601,7 +1984,11 @@ a loss this month?\footnotemark
   While stocks tend to rise over time, they are often
   volatile in the short term.}
 
+
+\D{\newpage}
+
 \subsection{Variability in linear combinations of random variables}
+\label{var_lin_combo_of_RVs}
 
 Quantifying the average outcome from a linear combination
 of random variables is helpful, but it is also important
@@ -1668,7 +2055,7 @@ Var(aX + bY) = a^2\times Var(X) + b^2\times Var(Y)
 \end{align*}
 It is important to note that this equality assumes the
 random variables are independent;
-\Comment{Updating this...}
+%\Comment{new description here about if independence is broken}
 if independence doesn't hold, then a modification to
 this equation would be required that we leave as a topic
 for a future course to cover.
@@ -1760,7 +2147,7 @@ Consider again Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAu
 
 \begin{figure}[ht]
   \centering
-  \Figure{0.85}{fdicHistograms}
+  \Figure{}{fdicHistograms}
   \caption{Four hollow histograms of US adults heights
       with varying bin widths.}
   \label{fdicHistograms}
@@ -1769,14 +2156,14 @@ Consider again Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAu
 \begin{examplewrap}
 \begin{nexample}{What proportion of the sample is between \resp{180} cm and \resp{185} cm tall (about 5'11" to 6'1")?}\label{contDistProb}
 We can add up the heights of the bins in the range \resp{180} cm and \resp{185} and divide by the sample size. For instance, this can be done with the two shaded bins shown in Figure~\ref{usHeightsHist180185}. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the following estimate of the probability:
-\begin{eqnarray*}
-\frac{195307+156239}{\text{3,000,000}} = 0.1172
-\end{eqnarray*}
+\begin{align*}
+\frac{195307 + 156239}{\text{3,000,000}} = 0.1172
+\end{align*}
 This fraction is the same as the proportion of the histogram's area that falls in the range \resp{180} to \resp{185} cm.
 \end{nexample}
 \end{examplewrap}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figure{0.9}{usHeightsHist180185}
   \caption{A histogram with bin sizes of 2.5 cm.
@@ -1785,6 +2172,8 @@ This fraction is the same as the proportion of the histogram's area that falls i
   \label{usHeightsHist180185}
 \end{figure}
 
+
+\D{\newpage}
 
 \subsection{From histograms to continuous distributions}
 
@@ -1801,25 +2190,30 @@ This smooth curve represents a \term{probability density function} (also called 
 
 \index{hollow histogram|)}
 
+
+\D{\newpage}
+
 \subsection{Probabilities from continuous distributions}
 
 We computed the proportion of individuals with heights \resp{180} to \resp{185} cm in Example~\ref{contDistProb} as a fraction:
-\begin{eqnarray*}
+\begin{align*}
 \frac{\text{number of people between \resp{180} and \resp{185}}}{\text{total sample size}}
-\end{eqnarray*}
+\end{align*}
 We found the number of people with heights between \resp{180} and \resp{185} cm by determining the fraction of the histogram's area in this region. Similarly, we can use the area in the shaded region under the curve to find a probability (with the help of a computer):
-\begin{eqnarray*}
+\begin{align*}
 P(\text{\var{height} between \resp{180} and \resp{185}})
 	= \text{area between \resp{180} and \resp{185}}
 	= 0.1157
-\end{eqnarray*}
+\end{align*}
 The probability that a randomly selected person is between \resp{180} and \resp{185} cm is 0.1157. This is very close to the estimate from Example~\ref{contDistProb}: 0.1172. 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{ch_probability/figures/fdicHeightContDistFilled/fdicHeightContDistFilled}
-\caption{Density for heights in the US adult population with the area between 180 and 185 cm shaded. Compare this plot with Figure~\ref{usHeightsHist180185}.}
-\label{fdicHeightContDistFilled}
+\begin{figure}[h]
+  \centering
+  \Figure{0.7}{fdicHeightContDistFilled}
+  \caption{Density for heights in the US adult population
+      with the area between 180 and 185 cm shaded.
+      Compare this plot with Figure~\ref{usHeightsHist180185}.}
+  \label{fdicHeightContDistFilled}
 \end{figure}
 
 \begin{exercisewrap}
@@ -1832,7 +2226,9 @@ Three US adults are randomly selected. The probability a single adult is between
 \end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Brief answers: (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$. (b) $(1-0.1157)^3 = 0.692$}
+\footnotetext{Brief answers:
+  (a) $0.1157 \times 0.1157 \times 0.1157 = 0.0015$.
+  (b) $(1-0.1157)^3 = 0.692$}
 
 \begin{examplewrap}
 \begin{nexample}{What is the probability that a randomly selected person is \textbf{exactly} \resp{180}~cm? Assume you can measure perfectly.}

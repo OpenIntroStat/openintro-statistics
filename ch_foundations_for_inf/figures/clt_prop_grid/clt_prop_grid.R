@@ -29,7 +29,7 @@ PlotSampDist <- function(n, p, main) {
   plot(p.hat, y, type = "n", axes = FALSE,
       xlab = "", ylab = "")
   axis(1)
-  rect(p.hat - width, 0, p.hat + width, y, col = COL[1])
+  rect(p.hat - width, 0, p.hat + width, y, border = COL[1], col = COL[1])
   abline(h = 0)
 }
 

@@ -12,7 +12,7 @@ mean(results)
 sd(results)
 
 myPDF('sampling_10k_prop_887p.pdf', 6.5, 3.2,
-    mar = c(3.5, 3.5, 0.7, 0.7),
+    mar = c(3.5, 3.8, 1.8, 0.7),
     mgp = c(2.3, 0.6, 0),
     yaxs = "i")
 histPlot(results,
@@ -26,5 +26,6 @@ axis(1, at = at)
 # axis(2, at = seq(0, 1200, 100), label = rep("", 13))
 axis(2, at = seq(0, 750, 250))
 # abline(v = 0.89, col = COL[4])
-
+par(las = 0)
+mtext("Frequency", 2, 2.7)
 dev.off()

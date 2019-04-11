@@ -36,7 +36,11 @@ xtable(summary(fit))
 e <- fit$res
 f <- fit$fit
 
-myPDF("mkDiagnosticNormalQuantilePlot.pdf", 5.5, 4.4,
+width <- 4.7
+height <- 4
+
+
+myPDF("mkDiagnosticNormalQuantilePlot.pdf", width, height,
       mgp = c(2.5,0.6,0))
 qqnorm(e,
        ylab = "Residuals",
@@ -45,14 +49,26 @@ qqnorm(e,
        pch = 19)
 dev.off()
 
-myPDF("mkDiagnosticInOrder.pdf", 5.65, 3.9,
+myPDF("mkDiagResHist.pdf", width, 0.7 * height)
+histPlot(e,
+    breaks = 12,
+    xlab = "Residuals",
+    ylab = "Frequency",
+    col = COL[1],
+    axes = FALSE)
+axis(1, pretty(e))
+axis(2)
+dev.off()
+
+
+myPDF("mkDiagnosticInOrder.pdf", width, 0.8 * height,
       mgp = c(2.5, 0.6, 0))
 plot(e,
-     xlab = "Order of collection",
+     xlab = "Order of Collection",
      ylab = "Residuals",
      axes = FALSE)
 axis(1)
-axis(2, c(-10, 0, 10))
+AxisInDollars(2, c(-10, 0, 10))
 rect(-10, -50, 200, 50,
      col = COL[7,3])
 abline(h = seq(-50, 50, 10),
@@ -65,14 +81,14 @@ points(e, col = COL[1, 2], pch = 19)
 box()
 dev.off()
 
-myPDF("mkDiagnosticEvsF.pdf", 5.65, 4.61,
+myPDF("mkDiagnosticEvsF.pdf", 0.9 * width, 0.9 * height,
       mgp = c(2.5, 0.6, 0))
 plot(f, e,
-     xlab = "Fitted values",
+     xlab = "Fitted Values",
      ylab = "Residuals",
      axes = FALSE)
-axis(1)
-axis(2, seq(-10, 10, 10))
+AxisInDollars(1, seq(35, 65, 5))
+AxisInDollars(2, seq(-10, 10, 10))
 rect(-10, -50, 100, 50,
      col = COL[7, 3])
 abline(h = seq(-50, 50, 10),
@@ -87,14 +103,14 @@ points(f, e,
 box()
 dev.off()
 
-myPDF("mkDiagnosticEvsAbsF.pdf", 5.5, 3.7,
+myPDF("mkDiagnosticEvsAbsF.pdf", width, 0.9 * height,
       mgp = c(2.5, 0.6, 0))
 plot(f, abs(e),
-     xlab = "Fitted values",
-     ylab = "Absolute value of residuals",
+     xlab = "Fitted Values",
+     ylab = "Absolute Value of Residuals",
      axes = FALSE)
-axis(1)
-axis(2, seq(-10, 10, 5))
+AxisInDollars(1, seq(35, 65, 5))
+AxisInDollars(2, seq(-10, 10, 5))
 rect(-10, -50, 100, 50,
      col = COL[7,3])
 abline(h = seq(-50, 50, 10),
@@ -109,16 +125,16 @@ points(f, abs(e),
 box()
 dev.off()
 
-myPDF("mkDiagnosticEvsVariables.pdf", 5.4, 6.9,
-      mgp = c(2, 0.6, 0),
+myPDF("mkDiagnosticEvsVariables.pdf", width, 1.5 * height,
+      mgp = c(2, 0.55, 0),
       mfrow = c(3, 1),
-      mar = c(5.1, 3.1, 0.9, 0.5))
+      mar = c(4.1, 3.1, 0.9, 0.5))
 boxPlot(e, d$condNew,
         xlab = "Condition",
         ylab = "Residuals",
         axes = FALSE)
 axis(1, at = 1:2, c("Used", "New"))
-axis(2, seq(-10, 10, 10))
+AxisInDollars(2, seq(-10, 10, 10))
 rect(-10, -50, 100, 50,
      col = COL[7, 3])
 abline(h = seq(-50, 50, 10),
@@ -146,13 +162,13 @@ dotPlot(e[d$condNew == 1],
         cex = 0.7)
 box()
 
-par(mar = c(3.8, 3.1, 2.2, 0.5))
+par(mar = c(3.8, 3.1, 1.2, 0.5))
 boxPlot(e, d$stockPhoto,
         xlab = "Photo Type",
         ylab = "Residuals",
         axes = FALSE)
 axis(1, at = 1:2, c("Unique Photo", "Stock Photo"))
-axis(2, seq(-10, 10, 10))
+AxisInDollars(2, seq(-10, 10, 10))
 rect(-10, -50, 100, 50,
      col = COL[7, 3])
 abline(h = seq(-50, 50, 10),
@@ -180,13 +196,13 @@ dotPlot(e[d$stockPhoto == 1],
         cex = 0.7)
 box()
 
-par(mar = c(3.8, 3.1, 2.2, 0.5))
+par(mar = c(3.1, 3.1, 1.2, 0.5))
 plot(d$wheels, e,
-     xlab = "Number of wheels",
+     xlab = "Number of Wheels",
      ylab = "Residuals",
      axes = FALSE)
 axis(1)
-axis(2, seq(-10, 10, 10))
+AxisInDollars(2, seq(-10, 10, 10))
 rect(-10, -50, 100, 50,
      col = COL[7, 3])
 abline(h = seq(-50, 50, 10),

@@ -19,6 +19,8 @@ barplot(tab,
         ylab = '',
         main = '',
         col = COL[c(2, 1, 4)])
-axis(2)
+axis(2) #, at = seq(0, 4000, 1000), labels = c(0, paste0(1:4, "k")))
 abline(h = 0)
+par(las = 0)
+mtext("Frequency", 2, line = 2.9)
 dev.off()

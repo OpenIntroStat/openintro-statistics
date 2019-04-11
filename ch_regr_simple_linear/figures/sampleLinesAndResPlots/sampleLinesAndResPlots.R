@@ -1,6 +1,4 @@
 library(openintro)
-data(COL)
-set.seed(1)
 
 GenerateLmPlot <- function(x, y, xlim, ylim1, ylim2.mult) {
   plot(x, y,
@@ -34,26 +32,25 @@ layout(mat = MyLayOut,
        heights = c(2, 1),
        respect = TRUE)
 
-n <- 25
-x <- runif(n[1])
-y <- -8 * x + rnorm(n[1])
+these <- simulated_scatter$group == 6
+x <- simulated_scatter$x[these]
+y <- simulated_scatter$y[these]
 GenerateLmPlot(x, y,
                xlim = c(-0.03, 1.03),
                ylim1 = c(-10, 1),
                ylim2.mult = 2.5)
 
-n <- 30
-x <- c(runif(n[1] - 2, 0, 4), 2, 2.1)
-y <- -2 * x^2 + rnorm(n[1])
+these <- simulated_scatter$group == 7
+x <- simulated_scatter$x[these]
+y <- simulated_scatter$y[these]
 GenerateLmPlot(x, y,
                xlim = c(-0.2, 4.2),
                ylim1 = c(-35, 2),
                ylim2.mult = 1.8)
 
-n <- 40
-x <- runif(n[1])
-y <- 0.2 * x + rnorm(n[1])
-y[y < -2] <- -1.5
+these <- simulated_scatter$group == 8
+x <- simulated_scatter$x[these]
+y <- simulated_scatter$y[these]
 GenerateLmPlot(x, y,
                xlim = c(-0.03, 1.03),
                ylim1 = c(-2, 2),

@@ -1,7 +1,22 @@
 library(openintro)
 data(COL)
 
-source("normalExamples-data.R")
+obs1 <- simulated_normal$n40
+obs2 <- simulated_normal$n100
+obs3 <- simulated_normal$n400
+
+hold1 <- hist(obs1, plot=FALSE)
+M1    <- mean(obs1)
+SD1   <- sd(obs1)
+
+hold2 <- hist(obs2, breaks=10, plot=FALSE)
+M2    <- mean(obs2)
+SD2   <- sd(obs2)
+
+hold3 <- hist(obs3, breaks=12, plot=FALSE)
+M3    <- mean(obs3)
+SD3   <- sd(obs3)
+
 source("normalExamples-helpers.R")
 
 myPDF("normalExamples.pdf", 7.3, 4.4,

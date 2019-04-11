@@ -9,7 +9,7 @@ myPDF("classDataSBSBoxPlot.pdf", 5.5, 2.7,
 boxPlot(classData$m1, classData$lecture,
         axes = FALSE,
         xlab = "Lecture",
-        ylab = "Scores",
+        ylab = "Midterm Scores",
         lcol = COL[1],
         lwd = 1.3,
         medianLwd = 2.5)

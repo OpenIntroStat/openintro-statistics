@@ -6,7 +6,7 @@ d <- stem.cells
 change <- d$after - d$before
 t.test(change ~ d[,1])
 
-myPDF('stemCellTherapyForHearts.pdf', 4, 3.5,
+myPDF('stemCellTherapyForHearts.pdf', 4.8, 4.2,
       mar=c(3.2, 1.8, 1.7, 0.7),
       mgp=c(2, 0.3, 0),
       mfrow=c(2, 1))
