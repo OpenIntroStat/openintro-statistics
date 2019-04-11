@@ -5,7 +5,7 @@ data(possum)
 myPDF('scattHeadLTotalL.pdf', 6, 4,
       mar = c(3.7, 3.7, 0.5, 0.5),
       mgp = c(2.6, 0.55, 0))
-plot(possum$totalL, possum$headL,
+plot(possum$total_l, possum$head_l,
      pch = 19,
      col = COL[1, 2],
      cex = 1.2,

@@ -1,11 +1,11 @@
 library(openintro)
 data(COL)
-data(run10Samp)
+data(run10samp)
 
 set.seed(1)
-m <- run10Samp$time[run10Samp$gender=='M']
+m <- run10samp$time[run10samp$gender=='M']
 mean(m); sd(m)
-f <- run10Samp$time[run10Samp$gender=='F']
+f <- run10samp$time[run10samp$gender=='F']
 mean(f); sd(f)
 
 myPDF('cbrRunTimesMenWomen.pdf', 3.8, 3,

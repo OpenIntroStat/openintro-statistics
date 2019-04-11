@@ -2,8 +2,8 @@ library(openintro)
 data(COL)
 
 
-data(run10Samp)
-d <- run10Samp
+data(run10samp)
+d <- run10samp
 
 myPDF("run10SampTimeHistogram.pdf", 5, 2.8,
       mar = c(3.5, 3.5, 0.5, 1),

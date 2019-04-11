@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
-data(stem.cells)
-d <- stem.cells
+data(stemcell)
+d <- stem_cell
 
 change <- d$after - d$before
 t.test(change ~ d[,1])

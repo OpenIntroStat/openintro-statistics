@@ -1,12 +1,12 @@
 library(openintro)
 data(COL)
 data(possum)
-data(cars)
+
 myPDF('scattHeadLTotalLTube.pdf', 7.3, 3,
       mar = c(3.2, 3.8, 1, 2),
       mgp = c(2.4, 0.55, 0),
       mfrow = 1:2)
-plot(possum$totalL, possum$headL,
+plot(possum$total_l, possum$head_l,
      pch = 20,
      col = COL[1, 2],
      cex = 1.7,
@@ -20,7 +20,7 @@ y <- 42.71 + c(-5, 0.5729 * 200 - 5, 0.5729 * 200 + 5, 5, -5)
 polygon(x, y,
         col = COL[7],
         border = '#00000000')
-points(possum$totalL, possum$headL,
+points(possum$total_l, possum$head_l,
        pch = 20,
        col = COL[1, 2],
        cex = 1.7)

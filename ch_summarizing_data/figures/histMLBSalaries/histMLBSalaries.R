@@ -1,5 +1,5 @@
 library(openintro)
-data(MLB)
+data(mlb)
 data(COL)
 
 myPDF("histMLBSalariesReg.pdf",
@@ -7,7 +7,7 @@ myPDF("histMLBSalariesReg.pdf",
       3,
       mar = c(3.4, 2.4, 0.5, 0.5),
       mgp = c(2.1, 0.5, 0))
-hist(MLB$salary/1000,
+hist(mlb$salary/1000,
      breaks = 15,
      main = "",
      xlab = "Salary (millions of dollars)",
@@ -28,7 +28,7 @@ myPDF("histMLBSalariesLog.pdf",
       mar = c(3.4, 2.4, 0.5, 0.5),
       mgp = c(2.2, 0.5, 0))
 expr <- expression(log[e]*"(Salary), where Salary is in millions USD")
-hist(log(MLB$salary/1000),
+hist(log(mlb$salary/1000),
      main = "",
      breaks = 15,
      xlab = expr,

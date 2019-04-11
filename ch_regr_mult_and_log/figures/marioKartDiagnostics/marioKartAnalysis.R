@@ -1,36 +1,36 @@
 library(xtable)
 library(openintro)
 data(COL)
-data(marioKart)
-toss <- which(marioKart$totalPr > 80)
-keep <- c("totalPr",
+data(mariokart)
+toss <- which(mariokart$total_pr > 80)
+keep <- c("total_pr",
           "cond",
-          "stockPhoto",
+          "stock_photo",
           "duration",
           "wheels",
-          "shipSp")
-d <- marioKart[-toss, keep]
-d$stockPhoto <- (d$stockPhoto == "yes") + 0
+          "ship_sp")
+d <- mariokart[-toss, keep]
+d$stock_photo <- (d$stock_photo == "yes") + 0
 d$cond <- (d$cond == "new") + 0
 thisOne <- names(d) == "cond"
 names(d)[thisOne] <- "condNew"
-d$shipSp <- as.character(d$shipSp)
-these <- d$shipSp %in%
+d$ship_sp <- as.character(d$ship_sp)
+these <- d$ship_sp %in%
          c("firstClass", "priority", "parcel", "media")
-d$shipSp[these] <- "usps"
-d$shipSp[grep("ups", d$shipSp)] <- "ups"
-these <- d$shipSp %in% c("other", "standard")
-d$shipSp[these] <- "unknown"
-d$shipSp <- as.factor(d$shipSp)
-d <- d[,-which(colnames(d) == "shipSp")]
+d$ship_sp[these] <- "usps"
+d$ship_sp[grep("ups", d$ship_sp)] <- "ups"
+these <- d$ship_sp %in% c("other", "standard")
+d$ship_sp[these] <- "unknown"
+d$ship_sp <- as.factor(d$ship_sp)
+d <- d[,-which(colnames(d) == "ship_sp")]
 
-summary(lm(totalPr ~ ., d))
-summary(lm(totalPr ~ condNew +
-                     stockPhoto +
+summary(lm(total_pr ~ ., d))
+summary(lm(total_pr ~ condNew +
+                     stock_photo +
                      duration +
                      wheels,
            data = d))
-fit <- lm(totalPr ~ condNew + stockPhoto + wheels, data = d)
+fit <- lm(total_pr ~ condNew + stock_photo + wheels, data = d)
 xtable(summary(fit))
 
 e <- fit$res
@@ -163,7 +163,7 @@ dotPlot(e[d$condNew == 1],
 box()
 
 par(mar = c(3.8, 3.1, 1.2, 0.5))
-boxPlot(e, d$stockPhoto,
+boxPlot(e, d$stock_photo,
         xlab = "Photo Type",
         ylab = "Residuals",
         axes = FALSE)
@@ -177,17 +177,17 @@ abline(h = seq(-50, 50, 10),
 abline(h = seq(-50, 50, 5),
        col = "#FFFFFF",
        lwd = 1)
-boxPlot(e, d$stockPhoto,
+boxPlot(e, d$stock_photo,
         add = 1:2,
         axes = FALSE)
-dotPlot(e[d$stockPhoto == 0],
+dotPlot(e[d$stock_photo == 0],
         vertical = TRUE,
         at = 1.05,
         add = TRUE,
         col = COL[1, 2],
         pch = 19,
         cex = 0.7)
-dotPlot(e[d$stockPhoto == 1],
+dotPlot(e[d$stock_photo == 1],
         vertical = TRUE,
         at = 2.05,
         add = TRUE,
@@ -218,95 +218,95 @@ box()
 dev.off()
 
 
-fit <- lm(totalPr ~ condNew + wheels + I(wheels^2), d)
+fit <- lm(total_pr ~ condNew + wheels + I(wheels^2), d)
 plot(fit)
 
 
-fit1 <- lm(totalPr ~
-           duration + condNew + stockPhoto + wheels,
+fit1 <- lm(total_pr ~
+           duration + condNew + stock_photo + wheels,
            d)
-fit2 <- lm(totalPr ~
-           condNew + stockPhoto + wheels,
+fit2 <- lm(total_pr ~
+           condNew + stock_photo + wheels,
            d)
 anova(fit1, fit2)
 
-fit1 <- lm(totalPr ~ condNew + stockPhoto, d)
-fit2 <- lm(totalPr ~ stockPhoto, d)
+fit1 <- lm(total_pr ~ condNew + stock_photo, d)
+fit2 <- lm(total_pr ~ stock_photo, d)
 anova(fit1, fit2)
 
 
 
-fit <- lm(totalPr ~
-          condNew + stockPhoto + duration + wheels,
+fit <- lm(total_pr ~
+          condNew + stock_photo + duration + wheels,
           d)
 xtable(fit)
 summary(fit)
-fit <- lm(totalPr ~
-          condNew + stockPhoto + wheels,
+fit <- lm(total_pr ~
+          condNew + stock_photo + wheels,
           d)
 xtable(fit)
 summary(fit)
 
 # _____ Backward-Selection, Stage 1 _____ #
-fit <- lm(totalPr ~
-          stockPhoto + duration + wheels,
+fit <- lm(total_pr ~
+          stock_photo + duration + wheels,
           d)
 summary(fit)
-fit <- lm(totalPr ~
+fit <- lm(total_pr ~
           condNew + duration + wheels,
           d)
 summary(fit)
-fit <- lm(totalPr ~
-          condNew + stockPhoto + wheels,
+fit <- lm(total_pr ~
+          condNew + stock_photo + wheels,
           d)
 summary(fit)
-fit <- lm(totalPr ~
-          condNew + stockPhoto + duration,
+fit <- lm(total_pr ~
+          condNew + stock_photo + duration,
           d)
 summary(fit)
 
 # _____ Backward-Selection, Stage 2 _____ #
-fit <- lm(totalPr ~ stockPhoto + wheels, d)
+fit <- lm(total_pr ~ stock_photo + wheels, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ condNew + wheels, d)
+fit <- lm(total_pr ~ condNew + wheels, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ condNew + stockPhoto, d)
+fit <- lm(total_pr ~ condNew + stock_photo, d)
 summary(fit)$adj.r.squared
 
 
 # _____ Forward-Selection, Stage 1 _____ #
-fit <- lm(totalPr ~ 1, d)
+fit <- lm(total_pr ~ 1, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ condNew, d)
+fit <- lm(total_pr ~ condNew, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ stockPhoto, d)
+fit <- lm(total_pr ~ stock_photo, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ duration, d)
+fit <- lm(total_pr ~ duration, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ wheels, d)
+fit <- lm(total_pr ~ wheels, d)
 summary(fit)$adj.r.squared
 
 # _____ Forward-Selection, Stage 2 _____ #
-fit <- lm(totalPr ~ wheels, d)
+fit <- lm(total_pr ~ wheels, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ wheels + condNew, d)
+fit <- lm(total_pr ~ wheels + condNew, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ wheels + stockPhoto, d)
+fit <- lm(total_pr ~ wheels + stock_photo, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ wheels + duration, d)
+fit <- lm(total_pr ~ wheels + duration, d)
 summary(fit)$adj.r.squared
 
 # _____ Forward-Selection, Stage 3 _____ #
-fit <- lm(totalPr ~ wheels + condNew, d)
+fit <- lm(total_pr ~ wheels + condNew, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ wheels + condNew + stockPhoto, d)
+fit <- lm(total_pr ~ wheels + condNew + stock_photo, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ wheels + condNew + duration, d)
+fit <- lm(total_pr ~ wheels + condNew + duration, d)
 summary(fit)$adj.r.squared
 
 # _____ Forward-Selection, Stage 4 _____ #
-fit <- lm(totalPr ~ wheels + condNew + stockPhoto, d)
+fit <- lm(total_pr ~ wheels + condNew + stock_photo, d)
 summary(fit)$adj.r.squared
-fit <- lm(totalPr ~ wheels + condNew + stockPhoto + duration, d)
+fit <- lm(total_pr ~ wheels + condNew + stock_photo + duration, d)
 summary(fit)$adj.r.squared
 

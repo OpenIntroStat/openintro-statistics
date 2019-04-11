@@ -1,5 +1,5 @@
 library(openintro)
-data(countyComplete)
+data(county_complete)
 data(COL)
 
 cc  <- county

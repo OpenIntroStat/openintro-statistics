@@ -1,6 +1,6 @@
 library(openintro)
 data(COL)
-data(possum)
+data(simulated_scatter)
 source("CorrelationPlot.R")
 set.seed(1)
 
