@@ -1,4 +1,4 @@
-require(openintro)
+library(openintro)
 data(COL)
 data(possum)
 
@@ -6,16 +6,16 @@ myPDF('scattHeadLTotalLResidualPlot.pdf', 5.5, 2.7,
       mar = c(3, 3, 0.5, 1),
       mgp = c(1.8, 0.6, 0))
 these <- c(48, 42, 3)
-plot(possum$totalL[-these],
-     possum$headL[-these] - (41 + 0.59 * possum$totalL[-these]),
+plot(possum$total_l[-these],
+     possum$head_l[-these] - (41 + 0.59 * possum$total_l[-these]),
      pch = 19,
      col = COL[1, 2],
      xlab = 'Total Length (cm)',
      ylab = 'Residuals',
      ylim = c(-7, 9))
-y.extra <- 0.59 * possum$totalL[these] + rnorm(1,0,0.01)
-points(possum$totalL[these] + rnorm(1, 0, 0.01),
-       possum$headL[these] - (41 + y.extra),
+y.extra <- 0.59 * possum$total_l[these] + rnorm(1,0,0.01)
+points(possum$total_l[these] + rnorm(1, 0, 0.01),
+       possum$head_l[these] - (41 + y.extra),
        pch = c(3, 4, 2),
        col = COL[4],
        cex = 1.3,

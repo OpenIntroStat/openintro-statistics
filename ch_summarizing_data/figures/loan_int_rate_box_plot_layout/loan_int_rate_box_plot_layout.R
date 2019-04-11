@@ -1,4 +1,4 @@
-require(openintro)
+library(openintro)
 data(COL)
 d <- loan50$interest_rate
 the.seed <- 2

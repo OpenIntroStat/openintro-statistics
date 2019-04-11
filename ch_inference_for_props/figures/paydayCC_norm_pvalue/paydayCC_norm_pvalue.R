@@ -1,4 +1,4 @@
-require(openintro)
+library(openintro)
 
 fn <- 'paydayCC_norm_pvalue.pdf'
 myPDF(fn, 4, 1.5,

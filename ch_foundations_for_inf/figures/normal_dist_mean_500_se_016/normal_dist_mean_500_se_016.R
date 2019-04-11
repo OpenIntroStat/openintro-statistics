@@ -1,4 +1,4 @@
-require(openintro)
+library(openintro)
 data(COL)
 
 fn1 <- 'normal_dist_mean_500_se_016.pdf'

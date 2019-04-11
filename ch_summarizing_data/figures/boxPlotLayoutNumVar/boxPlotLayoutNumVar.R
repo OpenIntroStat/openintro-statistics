@@ -1,4 +1,4 @@
-require(openintro)
+library(openintro)
 data(email50)
 data(COL)
 d   <- email50$num_char

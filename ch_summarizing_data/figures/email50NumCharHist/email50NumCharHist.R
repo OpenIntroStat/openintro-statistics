@@ -9,7 +9,7 @@ counts <- rbind(H$counts)
 from   <- head(H$breaks, -1)
 to     <- tail(H$breaks, -1)
 colnames(counts) <- paste(from, 'to', to)
-require(xtable)
+library(xtable)
 xtable(counts)
 
 myPDF("email50NumCharHist.pdf",

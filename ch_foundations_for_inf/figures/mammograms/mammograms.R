@@ -1,4 +1,4 @@
-require(openintro)
+library(openintro)
 data(COL)
 
 fn <- 'mammogramPValue.pdf'

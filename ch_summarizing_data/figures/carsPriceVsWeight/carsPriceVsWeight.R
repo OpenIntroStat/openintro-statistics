@@ -1,4 +1,3 @@
-library(openintro)
 data(cars)
 data(COL)
 

@@ -1,4 +1,4 @@
-require(openintro)
+library(openintro)
 
 x <- loans_full_schema$homeownership
 
