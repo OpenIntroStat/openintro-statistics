@@ -493,7 +493,8 @@ be sufficiently large such that $np \geq 10$ and $n(1-p) \geq 10$.
 \begin{nexample}{Earlier we estimated the mean and standard
 error of $\hat{p}$ using simulated data when
 $p = \pewsolarparprop{}$ and $n = \pewsolarpollsize{}$.
-Confirm that the distribution is approximately
+Confirm that the Central Limit Theorem applies
+and the sampling  distribution is approximately
 normal.}\label{sample_p88_n1000_confirm_normal}
 \begin{description}
 \item[Independence.] There are $n = \pewsolarpollsize{}$
@@ -517,9 +518,9 @@ normal.}\label{sample_p88_n1000_confirm_normal}
         \geq 10
     \end{align*}
 \end{description}
-Both of the independence and success-failure conditions are
-satisfied, so the Central Limit Theorem applies and a normal
-distribution are reasonable in this context.
+The independence and success-failure conditions are both
+satisfied, so the Central Limit Theorem applies, and it's
+reasonable to model $\hat{p}$ using a normal distribution.
 \end{nexample}
 \end{examplewrap}
 
@@ -862,10 +863,12 @@ within this~book.
 The sample proportion $\hat{p}$ provides a single plausible value
 for the population proportion $p$. However, the sample proportion
 isn't perfect and will have some \emph{standard error}
-associated with it. Instead of supplying just this point estimate
-of the population proportion, a next logical step would be
-to provide a plausible \emph{range of values} for the population
-proportion.
+associated with it.
+When stating an estimate for the population  proportion,
+it is better practice to provide a plausible
+\emph{range of values} instead of supplying just the point
+estimate.
+
 
 \subsection{Capturing the population parameter}
 
@@ -1019,8 +1022,8 @@ level of~99\%. Think back to the analogy about trying to catch a fish:
 if~we want to be more sure that we will catch the fish, we should use
 a wider net. To create a 99\% confidence level, we must also widen our
 95\% interval. On the other hand, if we want an interval with lower
-confidence, such as 90\%, we could make our original 95\% interval
-slightly slimmer.
+confidence, such as 90\%, we could use a slightly narrower
+interval than our original 95\% interval.
 
 The 95\% confidence interval structure provides guidance in
 how to make intervals with different confidence levels.
@@ -1374,7 +1377,7 @@ as capturing the population parameter with a certain probability.
 Making a probability interpretation is a common error:
 while it might be useful to think of it as a probability,
 the confidence level only quantifies how plausible
-it is that the parameter is in the interval.
+it is that the parameter is in the given interval.
 
 Another important consideration of confidence intervals is that they
 are \emph{only about the population parameter}.
@@ -1498,7 +1501,7 @@ world health question, then we might like to understand~if
     People never learn these particular topics and their
     responses are simply equivalent to random guesses.
 \item[$\mathbf{H_A}$:]
-    Folks have knowledge that helps them do better
+    People have knowledge that helps them do better
     than random guessing, or perhaps, they have false knowledge
     that leads them to actually do worse than random guessing.
 \end{description}
@@ -2038,7 +2041,8 @@ The p-value is a way of quantifying the strength of the
 evidence against the null hypothesis and in favor of the
 alternative hypothesis.
 Statistical hypothesis testing typically uses the
-p-value method rather than confidence intervals.
+p-value method rather than making a decision based
+on  confidence intervals.
 
 \begin{onebox}{p-value}
   The \term{p-value}\index{hypothesis testing!p-value|textbf}
@@ -2170,7 +2174,7 @@ These changes aren't dramatic, but pay close attention
 to how we use the null value, $p_0$.
 
 \begin{examplewrap}
-\begin{nexample}{Pew Research's sample found that
+\begin{nexample}{Pew Research's sample show that
     \pewcoalpollpercent{}
     of American adults support increased usage of coal.
     We now wonder, does \pewcoalpollpercent{} represent
@@ -2416,7 +2420,7 @@ question.\footnotemark
 \begin{examplewrap}
 \begin{nexample}{A simple random sample of
     \gallupnucleararmspollsize{} US adults
-    in March 2013 found that
+    in March 2013 show that
     \gallupnucleararmspollpercent{}\% support nuclear arms
     reduction.
     Does this provide convincing evidence that a majority
@@ -2481,7 +2485,7 @@ question.\footnotemark
   \begin{description}
   \item[Prepare.]
       Identify the parameter of interest,
-      list out hypotheses,
+      list hypotheses,
       identify the significance level,
       and identify $\hat{p}$ and $n$.
   \item[Check.]
@@ -2742,7 +2746,7 @@ conclusion.
 We could have made a similar error when reviewing
 the Roslings' question data this section;
 if we had a pre-conceived notion that
-college-educated folks wouldn't do worse than random
+college-educated people wouldn't do worse than random
 guessing and so used a one-sided test,
 we would have missed the really interesting finding
 that many people have incorrect knowledge about
