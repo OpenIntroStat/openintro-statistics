@@ -93,16 +93,18 @@ tests using $\bar{x}$, we first need to cover two topics:
     When we modeled $\hat{p}$ using the normal distribution,
     certain conditions had to be satisfied.
     The conditions for working with $\bar{x}$
-    are a bit more complex, and we'll spend
+    are a little more complex, and we'll spend
     Section~\ref{x_bar_conditions} discussing
-    rules of thumb.
+    how to check conditions for inference.
 \item
     The standard error is dependent on the population
     standard deviation, $\sigma$.
-    However, we generally do not know $\sigma$ perfectly.
-    A new distribution, called the $t$-distribution,
-    will play a critical role in fixing this problem
-    and is discussed in
+    However, we rarely know $\sigma$, and instead
+    we must estimate it.
+    Because this estimation is itself imperfect,
+    we use a new distribution called the
+    $t$-distribution\index{$t$-distribution}
+    to fix this problem, which we discuss in
 %    While we can use the plug-in principle,
 %    using the sample standard deviation $s$ in place of $\sigma$,
 %    this is not quite enough to resolve the issue entirely.
@@ -119,9 +121,10 @@ tests using $\bar{x}$, we first need to cover two topics:
 \label{x_bar_conditions}
 
 \noindent%
-Two conditions are nestled into the
+Two conditions are nestled are important for
+applying the
 Central Limit Theorem\index{Central Limit Theorem}
-for the sample mean:
+for the sample mean~$\bar{x}$:
 \begin{description}
 \item[Independence.]
     The sample observations must be independent,
@@ -132,12 +135,25 @@ for the sample mean:
     analogous to rolling a die,
     this would also satisfy the independence condition.
 \item[Normality.]
-    We also require that the sample observations
-    come from a normally distributed population,
-    where we can relax this condition for larger sample sizes.
-    This condition is vague and very difficult to evaluate
-    for small samples (when it is most important), so we next
-    provide a rule of thumb for checking this condition.
+    When a sample is small,
+    we also require that the sample observations
+    come from a normally distributed population.
+    We can relax this condition more and more
+    for larger and larger sample sizes.
+    This condition is obviously vague,
+    making it difficult to evaluate,
+    so next we introduce a couple rules of thumb
+    to make checking this condition easier.
+    \Comment{I'm a bit torn on this condition.
+    It's not reasonable for this to refer
+    to the sampling distribution itself, since
+    that is also contingent on the independence
+    of observations, but we're also not requiring
+    normality in all cases.
+    I was tempted to label it the
+    ``normality / sample size'' condition.
+    Or maybe the ``distribution'' condition.
+    Thoughts here are welcome and appreciated.}
 \end{description}
 %%Before we get to the sample size consideration, let's
 %%consider a special case of the normal distribution
@@ -181,17 +197,19 @@ for the sample mean:
   so instead we use two rules of thumb: %,
 %  one for small samples ($n < 30$)
 %  and another for large samples ($n \geq 30$):
-  \begin{itemize}
+  \begin{description}
   \setlength{\itemsep}{0mm}
-  \item
+  \item[$\mathbf{n < 30}$:]
       If the sample size $n$ is less than 30
       and there are no clear outliers in the data,
-      then the normality condition is satisfied.
-  \item
+      then we typically assume the data come from
+      a nearly distribution to satisfy the condition.
+  \item[$\mathbf{n \geq 30}$:]
       If the sample size $n$ is at least 30
       and there are no \emph{particularly extreme} outliers,
-      then the normality condition is satisfied.
-  \end{itemize}
+      then we typically assume the the sampling distribution
+      of $\bar{x}$ is nearly normal.
+  \end{description}
 \end{onebox}
 
 In this first course in statistics, you aren't expected
@@ -211,19 +229,23 @@ clear cut cases based on the rules of thumb.\footnote{More
     \begin{center}
     \Figure{0.85}{outliers_and_ss_condition}
     \end{center}
-    Is it reasonable to model $\bar{x}$ using a normal distribution
-    in each of these cases?}
+    Are the independence and normality conditions met
+    in each case?}
   \label{outliers_and_ss_condition_ex}%
-  Both samples are said to be from a simple random sample
-  on their respective populations, so the independence condition
-  is satisfied. Let's next check the normality condition for
+  Each samples is from a simple random sample of its
+  respective population, so the independence condition
+  is satisfied.
+  Let's next check the normality condition for
   each using the rule of thumb.
   
   The first sample has fewer than 30 observations,
   so we are watching for any clear outliers.
-  None are present, so the normality condition
-  is reasonably met and it is reasonable to model
-  $\bar{x}_1$ using a normal distribution.
+  None are present; while there is a small gap in the
+  histogram on the right, 3 of the 15 observations
+  are represented in that far right bar of the histogram,
+  so we can hardly call these outliers.
+  With no clear outliers, the normality condition
+  is reasonably met.
 
   The second sample has a sample size greater than 30 and
   includes an outlier that appears to be 5 times further from the
@@ -238,11 +260,19 @@ whether we have reason to believe the underlying population
 would have moderate skew (if $n < 30$)
 or have particularly extreme outliers ($n \geq 30$)
 beyond what we observe in the data.
-For example, consider the distribution of the number of
-followers for anyone who has ever posted on Twitter.
-Most such individuals will have built up relatively
-few followers, while others will have amassed
-tens of millions of followers.
+For example, consider the number of followers
+for each individual account on Twitter,
+and then imagine this distribution.
+The large majority of accounts have built up
+relatively a couple thousand followers or fewer,
+while a relatively tiny fraction have amassed
+tens of millions of followers,
+meaning the distribution is extremely skewed.
+When we know the data come from such an extremely
+skewed distribution,
+it takes some effort to understand what sample
+size is large enough for the normality condition
+to be satisfied.
 
 %if we were sampling accounts from Twitter
 %and examining the distribution of followers on the sampled
