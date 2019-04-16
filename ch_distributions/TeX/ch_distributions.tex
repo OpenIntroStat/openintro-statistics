@@ -1096,12 +1096,12 @@ Let's first look at an example.
   The probability of stopping after the first person is just
   the chance the first person will not hit her (or his)
   deductible:~\insureSprob{}.
-  The probability it will be the second person is
+  The probability the second person is the first to hit
+  her deductible is
   \begin{align*}
-  &P(\text{second person is the first to not administer the
-      worst shock}) \\
+  &P(\text{second person is the first to hit deductible}) \\
   &\quad
-    = P(\text{the first will, the second won't})
+    = P(\text{the first won't, the second will})
     = (\insureFprob{})(\insureSprob{})
     = \insureDistB{}
   \end{align*}
