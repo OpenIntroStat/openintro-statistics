@@ -21,6 +21,7 @@
   setspace, soul,
   tabto,
   textcomp,
+  %tocloft,
   varioref, verbatim,
   wasysym, wrapfig
 }
@@ -48,7 +49,10 @@
 %\include{extraTeX/style/tablet} % This is currently busted.
 \include{extraTeX/preamble/title}%_derivative}
 \date{}
-\setcounter{tocdepth}{1}
+\renewcommand\contentsname{Table of Contents}
+\setcounter{tocdepth}{2}
+%\renewcommand{\cftchapfont}{\scshape}
+%\renewcommand{\cftsecfont}{\bfseries}
 
 \begin{document}
 %\include{extraTeX/preamble/review_copy}
@@ -76,7 +80,7 @@
 
 \include{extraTeX/style/style_appendices}
 \appendix{}
-\include{extraTeX/eoceSolutions/eoceSolutions}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}\include{extraTeX/eoceSolutions/eoceSolutions}
 \include{extraTeX/data/data}
 \include{extraTeX/tables/TeX/zTable}
 \include{extraTeX/tables/TeX/tTable}
