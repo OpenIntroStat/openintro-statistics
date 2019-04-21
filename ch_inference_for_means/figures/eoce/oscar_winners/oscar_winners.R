@@ -4,34 +4,23 @@ library(openintro)
 # load data ---------------------------------------------------------
 data(oscars)
 
-# create male and female subsets ------------------------------------
-oscar_f <- oscars$age[oscars$gender == "female"]
-oscar_m <- oscars$age[oscars$gender == "male"]
-
 # plot of oscar winner women and men ages ---------------------------
-pdf("oscars_winners_hist.pdf", height = 6, width = 8)
+p <- oscars %>%
+  mutate(award = ifelse(gender == "female", "Best Actress", "Best Actor")) %>%
+  ggplot(aes(x = age)) +
+    geom_histogram(binwidth = 10, fill = COL[1,1], color = COL[5,1], size = 0.3) +
+    facet_wrap(~award, nrow = 2) +
+    theme_minimal() +
+    labs(x = "Age (in years)", y = "")
 
-par(mar=c(3.7,2,1,1), las=1, mgp=c(2.5,0.7,0), mfrow = c(2,1), cex.lab = 1.25, cex.axis = 1.25)
-
-histPlot(oscar_f, ylab = "", xlab = "", 
-         col = COL[1], xlim = c(20,80), breaks = 12, axes = FALSE)
-axis(1, at = seq(20,80,20))
-axis(2, at = seq(0,20,10))
-text(x = 60, y = 18, labels = "Best actress", pos = 4, cex = 1.25)
-
-histPlot(oscar_m, ylab = "", xlab = "Ages (in years)", 
-         col = COL[1], xlim = c(20,80), breaks = 12, axes = FALSE)
-axis(1, at = seq(20,80,20))
-axis(2, at = seq(0,20,10))
-text(x = 60, y = 18, labels = "Best actor", pos = 4, cex = 1.25)
-
-dev.off()
+ggsave(p, file = "ch_inference_for_means/oscar_winners/figures/oscars_winners_hist.pdf",
+       height = 6, width = 8)
 
 # summary stats -----------------------------------------------------
-mean(oscar_f, na.rm = TRUE)
-sd(oscar_f, na.rm = TRUE)
-length(oscar_f)
-
-mean(oscar_m, na.rm = TRUE)
-sd(oscar_m, na.rm = TRUE)
-length(oscar_m)
+oscars %>%
+  group_by(gender) %>%
+  summarise(
+    mean = mean(age),
+    sd = sd(age),
+    n = n()
+  )

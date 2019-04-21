@@ -1,17 +1,14 @@
 # load openintro package for colors ---------------------------------
 library(openintro)
 
-# load data ---------------------------------------------------------
-data(countyComplete)
-
 # number of observations --------------------------------------------
-nrow(countyComplete) # n = 3143
+nrow(county_complete) # n = 3142
 
 # scatterplot of income vs. % with bachelor's degree ----------------
 pdf("county_income_education_scatterplot.pdf", 5.5, 4.3)
 par(mar = c(4, 4.1, 1, 1), las = 1, mgp = c(2.9, 0.7, 0), 
     cex.axis = 1.5, cex.lab = 1.5)
-plot(countyComplete$per_capita_income/1000 ~ countyComplete$bachelors, 
+plot(county_complete$per_capita_income_2010/1000 ~ county_complete$bachelors_2010, 
     xlab = "Percent with Bachelor's degree", 
     ylab = "Per capita income (in $1,000)", 
     pch = 20, col = COL[1,3], axes = FALSE, 
