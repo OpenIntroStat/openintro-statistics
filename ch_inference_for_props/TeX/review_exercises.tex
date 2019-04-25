@@ -19,35 +19,45 @@ analysis? Explain your reasoning.
 
 % 2
 
-\eoce{\qt{TITLE\label{ID}}
-\textbf{\color{red}REPLACE THIS EXERCISE}
-A Gallup Poll asked 1,019 adults living in the Continental U.S.
-about their belief in the origin of humans.
-These results, along with results from a more comprehensive poll
-from 2001 (that we will assume to be exactly accurate),
-are summarized in the table below: \footfullcite{CreationismGallup}
+\eoce{\qt{Website experiment\label{web_ctr_exp_chisq}}
+\textbf{\color{red}ADD SOLUTION.}
+The OpenIntro website occasionally experiments with design
+and link placement.
+We conducted one experiment testing three different placements
+of a download link for this textbook on the book's main page
+to see which location, if any, led to the most downloads.
+The number of site visitors included in the experiment
+was~701 and is captured in one of the response combinations
+in the following table:
 \begin{center}
-\begin{tabular}{l c c}
-	& \multicolumn{2}{c}{\textit{Year}} \\
-\cline{2-3}
-\textit{Response}								& 2010	& 2001 \\
-\hline
-Humans evolved, with God guiding (1)				& 38\% 	& 37\% \\
-Humans evolved, but God had no part in process (2) 	& 16\% 	& 12\% \\
-God created humans  in present form (3) 				& 40\% 	& 45\% \\
-Other / No opinion (4)							& 6\% 	& 6\% \\
-\hline
+\begin{tabular}{r cc}
+  \hline
+            & Download & No Download \\ 
+  \hline
+Position 1  & 13.8\%   & 18.3\% \\ 
+Position 2  & 14.6\%   & 18.5\% \\ 
+Position 3  & 12.1\%   & 22.7\% \\ 
+  \hline
 \end{tabular}
-\end{center} 
+\end{center}
+% x <- matrix(c(97, 102, 85, 128, 130, 159), 3, 2)
 \begin{parts}
-\item Calculate the actual number of respondents in 2010 that fall in each 
-response category.
-\item State hypotheses for the following research question: have beliefs on 
-the origin of human life changed since 2001?
-\item Calculate the expected number of respondents in each category under the 
-condition that the null hypothesis from part~(b) is true.
-\item Conduct a chi-square test and state your conclusion. (Reminder: Verify 
-conditions.)
+\item
+    Calculate the actual number of site visitors in each
+    of the six response categories.
+\item
+    Each individual in the experiment had an equal chance of
+    being in any of the three experiment groups.
+    However, we see that there are slightly different
+    totals for the groups.
+    Is there any evidence that the groups were actually imbalanced?
+    Make sure to clearly state hypotheses, check conditions,
+    calculate the appropriate test statistic and the p-value,
+    and make your conclusion in context of the data.
+\item
+   Complete an appropriate hypothesis test to check whether
+   there is evidence that there is a higher rate of site visitors
+   clicking on the textbook link in any of the three groups.
 \end{parts}
 }{}
 
