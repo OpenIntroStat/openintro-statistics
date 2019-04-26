@@ -1,21 +1,18 @@
-# load openintro package for colors ---------------------------------
 library(openintro)
-
-# load data ---------------------------------------------------------
-data(heartTr)
+heartTr <- heart_transplant
 
 # mosaic plot -------------------------------------------------------
 pdf("randomization_heart_transplants_mosaic.pdf", 5.5, 4.3)
 par(mar = c(0, 0, 0, 0), las = 1, mgp = c(2.7, 0.9, 0))
 mosaicplot(transplant ~ survived, data = heartTr, 
            main = "", xlab = "", ylab = "", color = COL[1],
-           cex.axis = 1.5)
+           cex.axis = 1.25)
 dev.off()
 
 # box plot ----------------------------------------------------------
 pdf("randomization_heart_transplants_box.pdf", 5.5, 4.3)
 par(mar = c(2, 4.8, 0, 0), las = 1, mgp = c(3.5, 0.7, 0), 
-    cex.lab = 1.5, cex.axis = 1.5)
+    cex.lab = 1.5, cex.axis = 1.25)
 boxPlot(heartTr$survtime, fact = heartTr$transplant, 
         ylab = "Survival Time (days)", col = COL[1,2])
 dev.off()
@@ -33,7 +30,7 @@ diffs = inference(heartTr$survived, heartTr$transplant,
 pdf("randomization_heart_transplants_rando.pdf", height = 3, width = 7)
 
 par(mar = c(3.6, 2.2, 1, 1), las = 1, mgp = c(2.5, 0.7, 0), 
-    cex.axis = 1.5, cex.lab = 1.5)
+    cex.axis = 1.25, cex.lab = 1.5)
 
 values  <- table(diffs)
 plot(diffs, type = "n", xlim = c(-0.25, 0.25), 

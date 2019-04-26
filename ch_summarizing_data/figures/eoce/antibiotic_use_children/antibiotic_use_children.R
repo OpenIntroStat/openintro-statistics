@@ -17,7 +17,7 @@ summary_table = sort(table(conditions))/sum(table(conditions))
 
 # barplot -----------------------------------------------------------
 pdf("antibiotic_use_children_bar.pdf", height = 3, width = 6)
-par(mar = c(3.2, 10.5, 0, 0.5), las = 1, mgp = c(2, 0.45, 0),
+par(mar = c(3.7, 11.3, 0, 0.5), las = 1, mgp = c(2.5, 1, 0),
     cex.lab = 1.25, cex.axis = 1.25)
 barplot(summary_table, ylab = "", xlab = "Relative frequency", 
         col = COL[1], horiz = TRUE)

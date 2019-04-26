@@ -24,13 +24,20 @@ y_poscur = x^2 + rnorm(length(x), mean = 0, sd = runif(1, min = 3, max = 4))
 y_none = x + rnorm(length(x), mean = 0, sd = runif(1, min = 30, max = 40))
 
 # plot the associations --------------------------------------------- 
+Plot <- function(x, y, i) {
+  plot(y ~ x,
+      xlab = paste0("(", i, ")"),
+      ylab = "",
+      col = COL[1, 2],
+      cex = 1.5)
+}
 
-pdf("association_plots.pdf", 5.5, 4.3)
-par(mar = c(2.5, 0.5, 0.5, 0.5), las = 1, mgp = c(1, 0.5, 0), 
-    cex.lab = 1.75, pch = 20, mfrow = c(2,2), 
+pdf("association_plots.pdf", 10, 2.5)
+par(mar = c(2.4, 0.5, 0.5, 0.5), las = 1, mgp = c(0.9, 0.5, 0), 
+    cex.lab = 1.75, pch = 19, mfrow = c(1, 4), 
     yaxt = "n", xaxt = "n")
-plot(y_poslin ~ x,  xlab = "(1)", ylab = "", col = COL[1])
-plot(y_none ~ x, xlab = "(2)", ylab = "", col = COL[1])
-plot(y_poscur ~ x, xlab = "(3)", ylab = "", col = COL[1])
-plot(y_neglin ~ x, xlab = "(4)", ylab = "", col = COL[1])
+Plot(x, y_poslin, 1)
+Plot(x, y_none, 2)
+Plot(x, y_poscur, 3)
+Plot(x, y_neglin, 4)
 dev.off()

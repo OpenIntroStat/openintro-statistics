@@ -6,31 +6,7 @@
 
 % 1
 
-\eoce{\qt{Title\label{mult_regr_ex}}
-\textbf{\color{red}CREATE THIS QUESTION.}
-\begin{parts}
-\item Fact 1.
-\item Fact 2.
-\item Fact 3.
-\item Fact 4.
-\end{parts}
-}{}
-
-% 2
-
-\eoce{\qt{TITLE\label{log_regr_ex}}
-\textbf{\color{red}CREATE THIS QUESTION.}
-\begin{parts}
-\item Fact 1.
-\item Fact 2.
-\item Fact 3.
-\item Fact 4.
-\end{parts}
-}{}
-
-% 3
-
-\eoce{\qt{Multiple regression facts\label{mult_regr_facts}}
+\eoce{\qt{Multiple regression fact checking\label{mult_regr_facts}}
 \textbf{\color{red}PROOF READ and ADD SOLUTIONS.}
 Determine which of the following statements are
 true and false.
@@ -70,9 +46,9 @@ explain why it is false.
 \end{parts}
 }{}
 
-% 4
+% 2
 
-\eoce{\qt{Logistic regression facts\label{log_regr_facts}}
+\eoce{\qt{Logistic regression fact checking\label{log_regr_facts}}
 \textbf{\color{red}PROOF READ and ADD SOLUTIONS.}
 Determine which of the following statements are
 true and false.
@@ -105,5 +81,153 @@ explain why it is false.
     Because logistic regression predicts probabilities
     of outcomes, observations used to build a logistic
     regression model need not be independent.
+\item
+    When fitting logistic regression,
+    we typically complete model selection using
+    adjusted $R^2$.
+\end{parts}
+}{}
+
+% 3
+
+\eoce{\qt{Title\label{mult_regr_ex}}
+\textbf{\color{red}CREATE THIS QUESTION.}
+\begin{parts}
+\item Fact 1.
+\item Fact 2.
+\item Fact 3.
+\item Fact 4.
+\end{parts}
+}{}
+
+% 4
+
+\eoce{\qt{Spam filtering, Part I\label{spam_filtering_model_sel}}
+\textbf{\color{red}ADD SOLUTION.}
+Spam filters are built on principles similar to those
+used in logistic regression.
+Each message gets a probability to represent the
+model's prediction that it is spam or not spam.
+We have a set of variables for a large number of
+emails:
+to\us{}multiple, cc, attach, dollar, winner,
+inherit, password, format, re\us{}subj,
+exclaim\us{}subj, and sent\us{}email.
+We won't describe what each variable means
+here for the sake of brevity, but each is
+either a numerical variable or an indicator variable.
+\begin{parts}
+\item
+    For variable selection,
+    we fit the full model, which includes all
+    variables, and then we fit each model where
+    we've dropped exactly one of the variables
+    and identified the AIC value for each such
+    model.
+    Based on the results below, which variable,
+    if any, should we drop as part of model
+    selection?
+    Explain.
+    \begin{center}
+    \begin{tabular}{lc}
+      \hline
+      Variable Dropped & AIC \\ 
+      \hline
+      Keep All & 1863.50 \\ 
+      to\us{}multiple & 2023.50 \\ 
+      cc & 1863.18 \\ 
+      attach & 1871.89 \\ 
+      dollar & 1879.70 \\ 
+      winner & 1885.03 \\ 
+      inherit & 1865.55 \\ 
+      password & 1879.31 \\ 
+      format & 2008.85 \\ 
+      re\us{}subj & 1904.60 \\ 
+      exclaim\us{}subj & 1862.76 \\ 
+      sent\us{}email & 1958.18 \\ 
+      \hline
+    \end{tabular}
+    \end{center}
+
+\item
+    Consider the following version of the model.
+    Here again we've computed the AIC
+    for each leave-one-variable-out model.
+    Based on the results, which variable,
+    if any, should we drop as part of model
+    selection?
+    Explain.
+    \begin{center}
+    \begin{tabular}{lc}
+      \hline
+      Variable Dropped & AIC \\ 
+      \hline
+      Keep All & 1862.41 \\ 
+      to\us{}multiple & 2019.55 \\ 
+      attach & 1871.17 \\ 
+      dollar & 1877.73 \\ 
+      winner & 1884.95 \\ 
+      inherit & 1864.52 \\ 
+      password & 1878.19 \\ 
+      format & 2007.45 \\ 
+      re\us{}subj & 1902.94 \\ 
+      sent\us{}email & 1957.56 \\ 
+      \hline
+    \end{tabular}
+    \end{center}
+\end{parts}
+}{}
+
+% 5
+
+\eoce{\qt{Spam filtering, Part 2\label{spam_filtering_predict}}
+\textbf{\color{red}ADD SOLUTION.}
+In Exercise~\ref{spam_filtering_model_sel}
+we encountered a data set where we were applying
+logistic regression to aid in spam classification
+for individual emails.
+In this exercise, we've taken a small set of these
+variables and fit a formal model with the following
+output:
+\begin{center}
+\begin{tabular}{rrrrr}
+  \hline
+  & Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\ 
+  \hline
+  (Intercept) & -0.8124 & 0.0870 & -9.34 & 0.0000 \\ 
+  to\us{}multiple & -2.6351 & 0.3036 & -8.68 & 0.0000 \\ 
+  winner & 1.6272 & 0.3185 & 5.11 & 0.0000 \\ 
+  format & -1.5881 & 0.1196 & -13.28 & 0.0000 \\ 
+  re\us{}subj & -3.0467 & 0.3625 & -8.40 & 0.0000 \\ 
+  \hline
+\end{tabular}
+\end{center}
+\begin{parts}
+\item
+    Write down the model using the coefficients
+    from the model fit.
+    (Remember: this is logistic regression,
+    so the output is not simply ``$y_i$''!)
+
+\item
+    Suppose we have an observation where
+    $\var{to\us{}multiple} = 0$,
+    $\var{winner} = 1$,
+    $\var{format} = 0$, and
+    $\var{re\us{}subj} = 0$.
+    What is the predicted probability that this message
+    is spam?
+
+\item
+    Put yourself in the shoes of a data scientist
+    working on a spam filter.
+    For a given message, how high must the probability
+    a message is spam be before you think it would be
+    reasonable to put it in a \emph{spambox}
+    (which the user is unlikely to check)?
+    What tradeoffs might you consider?
+    Any ideas about how you might make your spam-filtering
+    system even better from the perspective of someone
+    using your email service?
 \end{parts}
 }{}

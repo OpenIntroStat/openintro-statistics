@@ -11,20 +11,20 @@ options(scipen=2)
 
 # histograms --------------------------------------------------------
 pdf("income_coffee_shop.pdf", 5.5, 4.3)
-par(mar = c(3.6, 1, 0.5, 1), las = 1, mgp = c(2.5, 0.7, 0), 
-    mfrow = c(2,1), cex.lab = 1.5, cex.axis = 1.5)
+par(mar = c(3.6, 2, 0.5, 1), las = 1, mgp = c(2.5, 0.7, 0), 
+    mfrow = c(2,1), cex.lab = 1.5, cex.axis = 1)
 
 histPlot(sal_symmetric, xlim = c(60000, 70000), 
          xlab = "(1)", ylim = c(0,12), col = COL[1], 
          axes = FALSE, ylab = "")
-axis(1, at = seq(60000, 70000, 2500))
-axis(2, at = seq(0,12,4), labels = NA)
+AxisInDollars(1, at = seq(0, 1000000, 2500))
+axis(2, at = seq(0,12,4))
 
 histPlot(sal_skewed, xlab = "(2)", ylim = c(0,12), 
          breaks = seq(0, 260000, by = 1000), col = COL[1], 
          axes = FALSE, xlim = c(60000,260000), ylab = "")
-axis(1, at = seq(60000, 260000, 50000))
-axis(2, at = seq(0,12,4), labels = NA)
+AxisInDollars(1, at = seq(60000, 260000, 50000))
+axis(2, at = seq(0,12,4))
 
 dev.off()
 
