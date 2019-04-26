@@ -31,23 +31,79 @@
 % 3
 
 \eoce{\qt{Multiple regression facts\label{mult_regr_facts}}
-\textbf{\color{red}CREATE THIS QUESTION.}
+\textbf{\color{red}PROOF READ and ADD SOLUTIONS.}
+Determine which of the following statements are
+true and false.
+For those statements that are false,
+explain why it is false.
 \begin{parts}
-\item Fact 1.
-\item Fact 2.
-\item Fact 3.
-\item Fact 4.
+\item
+    If variables are collinear, then removing
+    one variable will have no influence on the
+    point estimate of another variable's coefficient.
+\item
+    Suppose a numerical variable $x$ has a coefficient of
+    $b_1 = 2.5$ in the multiple regression model.
+    Suppose also that the first observation has $x_1 = 7.2$
+    the second observation has a value of $x_1 = 8.2$,
+    and these two observations have the same values
+    for all other predictors.
+    Then the predicted value of the second observation
+    will be 2.5 higher than the prediction of the first
+    observation based on the multiple regression model.
+\item
+    If a regression model's first variable has
+    a coefficient of $b_1 = 5.7$, then if we are
+    able to modify an observation so that $x_1$
+    takes a value of 1 more than it would otherwise,
+    the value $y_1$ for this observation would
+    increase by 5.7.
+\item
+    Suppose we fit a multiple regression model
+    based on a data set of 472 observations.
+    We also notice that the distribution of the
+    residuals includes some skew but does not
+    include any particularly extreme outliers.
+    Because the residuals are not nearly normal,
+    we should not use this model and require
+    more advanced methods to model these data.
 \end{parts}
 }{}
 
 % 4
 
 \eoce{\qt{Logistic regression facts\label{log_regr_facts}}
-\textbf{\color{red}CREATE THIS QUESTION.}
+\textbf{\color{red}PROOF READ and ADD SOLUTIONS.}
+Determine which of the following statements are
+true and false.
+For those statements that are false,
+explain why it is false.
 \begin{parts}
-\item Fact 1.
-\item Fact 2.
-\item Fact 3.
-\item Fact 4.
+\item
+    Suppose we consider the first two observations
+    based on a logistic regression model,
+    where the first variable in observation~1
+    takes a value of $x_1 = 6$ and observation~2
+    has $x_1 = 4$.
+%    Each observation has all the same values for the
+%    other variables used in the model.
+    Suppose we realized we made an error for these
+    two observations, and the first observation
+    was actually $x_1 = 7$ (instead of~6)
+    and the second observation actually had
+    $x_1 = 5$ (instead of~4).
+    Then the predicted probability from the
+    logistic regression model would increase
+    the same amount for each observation after
+    we correct these variables.
+\item
+    When using a logistic regression model,
+    it is impossible for the model to predict
+    a probability that is negative or a probability
+    that is greater than 1.
+\item
+    Because logistic regression predicts probabilities
+    of outcomes, observations used to build a logistic
+    regression model need not be independent.
 \end{parts}
 }{}
