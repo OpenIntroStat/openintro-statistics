@@ -123,11 +123,22 @@
 \newcounter{withinChNum}[chapter]
 \setcounter{withinChNum}{0}
 \newcounter{eoce}[chapter]
-\renewcommand{\theeoce}{\arabic{chapter}.\arabic{eoce}}
+\renewcommand{\theeoce}
+    {\arabic{chapter}.\arabic{eoce}}
 \newcounter{eocesolch}
 \setcounter{eocesolch}{0}
 \newcounter{eocesol}[eocesolch]
-\renewcommand{\theeocesol}{\arabic{eocesolch}.\arabic{eocesol}}
+\renewcommand{\theeocesol}
+     {\arabic{eocesolch}.\arabic{eocesol}}
+\newcounter{eoceNeedSolution}[chapter]
+\renewcommand{\theeoceNeedSolution}
+    {\arabic{chapter}.\arabic{eoceNeedSolution}}
+\newcounter{eoceReplace}[chapter]
+\renewcommand{\theeoceReplace}
+    {\arabic{chapter}.\arabic{eoceReplace}}
+\newcounter{eoceFF}[chapter]
+\renewcommand{\theeoceFF}
+    {\arabic{chapter}.\arabic{eoceFF}}
 % 4.2 Parameters
 \newlength{\exampleAboveBar}
 \newlength{\exampleBelowBar}
@@ -382,6 +393,14 @@
 }
 {\end{enumerate}
 }
+% 9.3.9 Exercise fixes required.
+\newcommand{\eoceNeedSolution}[1][]
+{\textbf{\refstepcounter{eoceNeedSolution} \color{red}ADD SOLUTION. #1}}
+\newcommand{\eoceReplace}[1][]
+{\textbf{\refstepcounter{eoceReplace} \color{red}REPLACE THIS EXERCISE. #1}}
+\newcommand{\eoceFF}[1][]
+{\textbf{\refstepcounter{eoceFF} \color{red}FINAL FORMATTING.}}
+
 
 
 

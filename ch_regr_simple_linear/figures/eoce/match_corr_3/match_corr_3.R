@@ -22,8 +22,8 @@ y <- lapply(1:n.plots, function(i) {
 })
 sapply(x, length)
 sapply(y, length)
-par(mfrow = rep(sqrt(n.plots), 2))
-tmp <- lapply(1:n.plots, function(i) {
+# par(mfrow = rep(sqrt(n.plots), 2))
+tmp <- sapply(1:n.plots, function(i) {
   # plot(x[[i]], y[[i]])
   cor(x[[i]], y[[i]])
 })
@@ -37,13 +37,13 @@ tmp[these]
 for (j in 1:length(these)) {
   i <- these[j]
   myPDF(paste0("scatter_", j, ".pdf"),
-      5.5, 4.3,
-      mar = c(2, 1, 1, 1),
-      mgp = c(0.9, 0.7, 0),
-      cex.lab = 1.75)
+      4.5, 3.7,
+      mar = c(2.6, 1, 0.5, 1),
+      mgp = c(1.2, 0.7, 0),
+      cex.lab = 2)
   plot(y[[i]] ~ x[[i]],
       xlab = paste0("(", j, ")"), ylab = "", 
       yaxt = "n", xaxt = "n", 
-      pch = 19, col = COL[1, 2])
+      pch = 19, col = COL[1, 2], cex = 1.5)
   dev.off()
 }

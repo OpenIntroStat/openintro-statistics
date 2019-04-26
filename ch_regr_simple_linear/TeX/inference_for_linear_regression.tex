@@ -188,27 +188,25 @@ age? Explain.
 
 % 5
 
-\eoce{$\:$ \\
-\noindent \begin{minipage}[c]{0.56\textwidth}
-\qt{Urban homeowners, Part II\label{urban_homeowners_cond}}
-\textbf{\color{red}FINAL FORMATTING REQUIRED.}
+\eoce{\qt{Urban homeowners, Part II\label{urban_homeowners_cond}}
 Exercise~\ref{urban_homeowners_outlier} gives a scatterplot displaying the 
 relationship between the percent of families that own their home and 
 the percent of the population living in urban areas. Below is a 
 similar scatterplot, excluding District of Columbia, as well as the 
 residuals plot. There were 51 cases.
-\begin{parts}
+
+\noindent\begin{minipage}[c]{0.45\textwidth}
+{\raggedright\begin{parts}
 \item For these data, $R^2=0.28$. What is the correlation? How can 
 you tell if it is positive or negative?
 \item Examine the residual plot. What do you observe? Is a simple 
 least squares fit appropriate for these data?
-\end{parts}
-\vspace{15mm}
+\end{parts}\vspace{15mm}}
 \end{minipage}
-\begin{minipage}[c]{0.02\textwidth}
+\begin{minipage}[c]{0.1\textwidth}
 $\:$ \\
 \end{minipage}
-\begin{minipage}[c]{0.4\textwidth}
+\begin{minipage}[c]{0.43\textwidth}
 \begin{center}
 \includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/urban_homeowners_cond/urban_homeowners_cond.pdf}
 \end{center}
@@ -217,25 +215,28 @@ $\:$ \\
 
 % 6
 
-\eoce{\qt{Rate my professor\label{rate_my_prof}} Many college courses conclude by giving 
-students the opportunity to evaluate the course and the instructor 
-anonymously. However, the use of these student evaluations as an 
-indicator of course quality and teaching effectiveness is often 
-criticized because these measures may reflect the influence of non-
-teaching related characteristics, such as the physical appearance of 
-the instructor. Researchers at University of Texas, Austin collected 
-data on teaching evaluation score (higher score means better) and 
-standardized beauty score (a score of 0 means average, negative score 
-means below average, and a positive score means above average) for a 
-sample of 463 professors.\footfullcite{Hamermesh:2005} The 
-scatterplot below shows the relationship between these variables, and 
-also provided is a regression output for predicting teaching 
-evaluation score from beauty score.
-
-\noindent\begin{minipage}[c]{0.4\textwidth}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_eval_beauty.pdf} \\
-\end{minipage}
-\begin{minipage}[c]{0.6\textwidth}
+\eoce{\qt{Rate my professor\label{rate_my_prof}}
+Many college courses conclude by giving students
+the opportunity to evaluate the course and the
+instructor anonymously.
+However, the use of these student evaluations
+as an indicator of course quality and teaching
+effectiveness is often criticized because these
+measures may reflect the influence of
+non-teaching related characteristics,
+such as the physical appearance of the instructor.
+Researchers at University of Texas, Austin
+collected data on teaching evaluation score
+(higher score means better) and standardized
+beauty score (a score of 0 means average, negative
+score means below average, and a positive score
+means above average) for a sample of 463
+professors.\footfullcite{Hamermesh:2005}
+The scatterplot below shows the relationship
+between these variables, and regression output
+is provided for predicting teaching evaluation
+score from beauty score.
+\begin{center}
 \begin{tabular}{rrrrr}
     \hline
             & Estimate  & Std. Error    & t value   & Pr($>$$|$t$|$) \\ 
@@ -245,25 +246,38 @@ beauty      &  \fbox{\textcolor{white}{{\footnotesize Cell 1}}}
                         & 0.0322        & 4.13      & 0.0000\vspace{0.8mm} \\ 
    \hline
 \end{tabular}
-\end{minipage}
-\begin{parts}
-\item Given that the average standardized beauty score is -0.0883 and 
-average teaching evaluation score is 3.9983, calculate the slope. 
-Alternatively, the slope may be computed using just the information 
-provided in the model summary table.
-\item Do these data provide convincing evidence that the slope of the 
-relationship between teaching evaluation and beauty is positive? 
-Explain your reasoning.
-\item List the conditions required for linear regression and check if 
-each one is satisfied for this model based on the following 
-diagnostic plots.
-\begin{center}
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals.pdf}
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals_hist.pdf} \\
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals_qq.pdf}
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals_order.pdf}
 \end{center}
-\end{parts}
+\noindent\begin{minipage}[c]{0.45\textwidth}
+{\raggedright\begin{parts}
+\item
+    Given that the average standardized beauty score
+    is -0.0883 and average teaching evaluation score
+    is 3.9983, calculate the slope.
+    Alternatively, the slope may be computed using just
+    the information provided in the model summary table.
+\item
+    Do these data provide convincing evidence that the
+    slope of the relationship between teaching evaluation
+    and beauty is positive?
+    Explain your reasoning.
+\item
+    List the conditions required for linear regression
+    and check if each one is satisfied for this model
+    based on the following diagnostic plots.
+\end{parts}}
+\end{minipage}
+\begin{minipage}[c]{0.07\textwidth}
+$\:$ \\
+\end{minipage}
+\begin{minipage}[c]{0.45\textwidth}
+\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_eval_beauty.pdf} \\
+\end{minipage}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals}
+\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals_hist} \\
+\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals_qq}
+\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals_order}
+\end{center}
 }{}
 
 % 7

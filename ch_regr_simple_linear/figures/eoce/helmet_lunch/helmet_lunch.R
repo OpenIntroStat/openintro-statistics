@@ -27,17 +27,21 @@ round(summary(m_helmet_lunch)$r.squared, 2)
   
 # plot helmet vs. lunch ---------------------------------------------
 
-pdf("helmet_lunch.pdf", 5.5, 4.3)
-
-par(mar = c(3.7, 3.7, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0), 
-    cex.lab = 1.5, cex.axis = 1.5)
+myPDF("helmet_lunch.pdf", 5.5, 4.3,
+    mar = c(3.7, 5, 0.5, 0.5),
+    mgp = c(2.5, 0.7, 0), 
+    cex.lab = 1.3,
+    cex.axis = 1.5)
 
 plot(helmet ~ lunch, 
-     xlab = "% Receiving reduced-fee lunch", ylab = "% Wearing helmets", 
-     pch = 19, col = COL[1],
-     ylim = c(0, 60), axes = FALSE)
-axis(1, at = seq(0, 80, 20))
-axis(2, at = seq(0, 60, 20))
+    xlab = "Rate of Receiving a Reduced-Fee Lunch",
+    ylab = "",
+    pch = 19, col = COL[1],
+    ylim = c(0, 60), axes = FALSE)
+AxisInPercent(1, at = seq(0, 80, 20))
+AxisInPercent(2, at = seq(0, 60, 20))
+par(las = 0)
+mtext("Rate of Wearing a Helmet", 2, 3.8, cex = 1.5)
 box()
 
 dev.off()

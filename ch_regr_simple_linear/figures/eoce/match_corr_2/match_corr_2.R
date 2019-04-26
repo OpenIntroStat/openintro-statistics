@@ -22,38 +22,26 @@ round(cor(x, y_2_weak_pos), 2)
 round(cor(x, y_3_n), 2)
 round(cor(x, y_4_weak_neg), 2)
 
-# plot strong negative curved ---------------------------------------
+# plot -----------------------------------------------------
+width <- 4.5
+height <- 3.7
+cex.lab <- 2
+mgp <- c(1.2,0.7,0)
+mar <- c(2.6,1,0.5,1)
+pch <- 19
+cex <- 1.5
+col <- COL[1, 2]
 
-pdf("match_corr_1_strong_neg_curved.pdf", 5.5, 4.3)
-par(mar = c(2,1,1,1), las = 1, mgp = c(0.9,0.7,0), cex.lab = 1.75)
-plot(y_1_strong_neg_curved ~ x, xlab = "(1)", ylab = "", 
-     yaxt = "n", xaxt = "n", 
-     pch=19, col=COL[1])
-dev.off()
-
-# plot weak positive ------------------------------------------------
-
-pdf("match_corr_2_weak_pos.pdf", 5.5, 4.3)
-par(mar = c(2,1,1,1), las = 1, mgp = c(0.9,0.7,0), cex.lab = 1.75)
-plot(y_2_weak_pos ~ x, xlab = "(2)", ylab = "", 
-     yaxt = "n", xaxt = "n", 
-     pch=19, col=COL[1])
-dev.off()
-
-# plot n-shaped -----------------------------------------------------
-
-pdf("match_corr_3_n.pdf", 5.5, 4.3)
-par(mar = c(2,1,1,1), las = 1, mgp = c(0.9,0.7,0), cex.lab = 1.75)
-plot(y_3_n ~ x, xlab = "(3)", ylab = "", 
-     yaxt = "n", xaxt = "n", 
-     pch=19, col=COL[1])
-dev.off()
-
-# plot weak negative ------------------------------------------------
-
-pdf("match_corr_4_weak_neg.pdf", 5.5, 4.3)
-par(mar = c(2,1,1,1), las = 1, mgp = c(0.9,0.7,0), cex.lab = 1.75)
-plot(y_4_weak_neg ~ x, xlab = "(4)", ylab = "", 
-     yaxt = "n", xaxt = "n", 
-     pch=19, col=COL[1])
-dev.off()
+MyPlot <- function(fn, x, y, i) {
+  myPDF(fn, width, height,
+      mar = mar, mgp = mgp, cex.lab = cex.lab)
+  plot(x, y,
+      xlab = paste0("(", i, ")"), ylab = "", 
+      yaxt = "n", xaxt = "n", 
+      pch = pch, col = col, cex = cex)
+  dev.off()
+}
+MyPlot("match_corr_1_strong_neg_curved.pdf", x, y_1_strong_neg_curved, 1)
+MyPlot("match_corr_2_weak_pos.pdf", x, y_2_weak_pos, 2)
+MyPlot("match_corr_3_n.pdf", x, y_3_n, 3)
+MyPlot("match_corr_4_weak_neg.pdf", x, y_4_weak_neg, 4)
