@@ -116,12 +116,79 @@ variability of the original distribution?
 
 % 6
 
-\eoce{\qt{TITLE\label{ID}}
-\textbf{\color{red}WRITE NEW ANOVA EXERCISE}
+\eoce{\qt{Torque on a rusty bolt\label{torque_on_rusty_bolt}}
+\textbf{\color{red}ADD SOLUTION.}
+Project Farm is a YouTube channel that routinely does
+comparisons of different products.
+In one episode, the channel evaluated different
+penetrating oils and options for loosening rusty
+bolts.\footfullcite{youtube:torque_on_rusty_bolt}
+Eight options were evaluated,
+including a control group where no treatment was given,
+to determine which was most effective.
+For all treatments, there were four bolts tested,
+except for a treatment of heat with a blow torch,
+where only two data points were collected.
+The results are shown in the figure below:
+\begin{center}
+\includegraphics[width = 0.8\textwidth]{ch_inference_for_means/figures/eoce/torque_on_rusty_bolt/torque_on_rusty_bolt_dot_plot}
+\end{center}
 \begin{parts}
-\item Part (a).
-\item Part (b).
-\item Part (c).
+\item\label{torque_on_rusty_bolt_appropriate}
+    Do you think it is reasonable to apply ANOVA in this case?
+\item
+    Regardless of your answer from
+    part~(\ref{torque_on_rusty_bolt_appropriate}),
+    describe hypotheses for ANOVA in this context,
+    and use the table below to carry out the test.
+    \begin{center}
+    \begin{tabular}{lrrrrr}
+    \hline
+    & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
+    \hline
+    treatment & 7 & 3603.43 & 514.78 & 4.03 & 0.0056 \\ 
+    Residuals & 22 & 2812.80 & 127.85 &  &  \\ 
+    \hline
+    \end{tabular}
+    \end{center}
+\item\label{torque_on_rusty_bolt_pvalues}
+    The table below are p-values or pairwise $t$-tests
+    comparing each of the different groups.
+    These tests assume the variability across the groups
+    is the same, so the test is slightly different than
+    $t$-tests we've compared in this book, but the p-value
+    interpretation remains the same.
+    These p-values have not been corrected for multiple
+    comparisons.
+    Which pair of groups appears most likely to represent
+    a difference?
+    \begin{center}\footnotesize
+    \begin{tabular}{l ccc ccc c}
+    \hline
+    & AeroKroil & Heat & Liquid Wrench & none &
+        PB Blaster & Royal Purple & WD-40 \\ 
+    \hline
+    Acetone/ATF & 0.2026 & 0.0308 & 0.0476 & 0.1542 &
+        0.3294 & 0.5222 & 0.3744 \\ 
+    AeroKroil &  & 0.0027 & 0.0025 & 0.8723 & 0.7551 &
+        0.5143 & 0.6883 \\ 
+    Heat &  &  & 0.5580 & 0.0020 & 0.0050 & 0.0096 &
+        0.0059 \\ 
+    Liquid Wrench &  &  &  & 0.0017 & 0.0053 &
+        0.0117 & 0.0065 \\ 
+    none &  &  &  &  & 0.6371 & 0.4180 & 0.5751 \\ 
+    PB Blaster &  &  &  &  &  & 0.7318 & 0.9286 \\ 
+    Royal Purple &  &  &  &  &  &  & 0.8000 \\
+    \hline
+    \end{tabular}
+    \end{center}
+\item
+    There are 28 p-values shown in the table from
+    part~(\ref{torque_on_rusty_bolt_pvalues}).
+    Were any of them statistically significant after
+    correcting for multiple comparisons?
+    If so, which one(s)?
+    Explain your answer.
 \end{parts}
 }{}
 
