@@ -7,20 +7,18 @@
 % 1
 
 \eoce{\qt{Multiple regression fact checking\label{mult_regr_facts}}
-\textbf{\color{red}PROOF READ and ADD SOLUTIONS.}
 Determine which of the following statements are
 true and false.
-For those statements that are false,
-explain why it is false.
+For each statement that is false, explain why it is false.
 \begin{parts}
 \item
-    If variables are collinear, then removing
+    If predictors are collinear, then removing
     one variable will have no influence on the
     point estimate of another variable's coefficient.
 \item
     Suppose a numerical variable $x$ has a coefficient of
     $b_1 = 2.5$ in the multiple regression model.
-    Suppose also that the first observation has $x_1 = 7.2$
+    Suppose also that the first observation has $x_1 = 7.2$,
     the second observation has a value of $x_1 = 8.2$,
     and these two observations have the same values
     for all other predictors.
@@ -30,10 +28,10 @@ explain why it is false.
 \item
     If a regression model's first variable has
     a coefficient of $b_1 = 5.7$, then if we are
-    able to modify an observation so that $x_1$
-    takes a value of 1 more than it would otherwise,
-    the value $y_1$ for this observation would
-    increase by 5.7.
+    able to influence the data so that an observation
+    will have its $x_1$ be 1 larger than it would
+    otherwise, the value $y_1$ for this observation
+    would increase by 5.7.
 \item
     Suppose we fit a multiple regression model
     based on a data set of 472 observations.
@@ -49,11 +47,9 @@ explain why it is false.
 % 2
 
 \eoce{\qt{Logistic regression fact checking\label{log_regr_facts}}
-\textbf{\color{red}PROOF READ and ADD SOLUTIONS.}
 Determine which of the following statements are
 true and false.
-For those statements that are false,
-explain why it is false.
+For each statement that is false, explain why it is false.
 \begin{parts}
 \item
     Suppose we consider the first two observations
@@ -90,41 +86,35 @@ explain why it is false.
 
 % 3
 
-\eoce{\qt{Title\label{mult_regr_ex}}
-\textbf{\color{red}CREATE THIS QUESTION.}
-\begin{parts}
-\item Fact 1.
-\item Fact 2.
-\item Fact 3.
-\item Fact 4.
-\end{parts}
-}{}
-
-% 4
-
 \eoce{\qt{Spam filtering, Part I\label{spam_filtering_model_sel}}
-\textbf{\color{red}ADD SOLUTION.}
 Spam filters are built on principles similar to those
 used in logistic regression.
-Each message gets a probability to represent the
-model's prediction that it is spam or not spam.
-We have a set of variables for a large number of
-emails:
-to\us{}multiple, cc, attach, dollar, winner,
-inherit, password, format, re\us{}subj,
-exclaim\us{}subj, and sent\us{}email.
+We fit a probability that each message is spam
+or not spam.
+We have several email variables for this problem:
+\resp{to\us{}multiple},
+\resp{cc},
+\resp{attach},
+\resp{dollar},
+\resp{winner},
+\resp{inherit},
+\resp{password},
+\resp{format},
+\resp{re\us{}subj},
+\resp{exclaim\us{}subj}, and
+\resp{sent\us{}email}.
 We won't describe what each variable means
 here for the sake of brevity, but each is
-either a numerical variable or an indicator variable.
+either a numerical or indicator variable.
 \begin{parts}
 \item
     For variable selection,
     we fit the full model, which includes all
-    variables, and then we fit each model where
-    we've dropped exactly one of the variables
-    and identified the AIC value for each such
-    model.
-    Based on the results below, which variable,
+    variables, and then we also fit each model
+    where we've dropped exactly one of the variables.
+    In each of these reduced models, the AIC value
+    for the model is reported below.
+    Based on these results, which variable,
     if any, should we drop as part of model
     selection?
     Explain.
@@ -133,18 +123,18 @@ either a numerical variable or an indicator variable.
       \hline
       Variable Dropped & AIC \\ 
       \hline
-      Keep All & 1863.50 \\ 
-      to\us{}multiple & 2023.50 \\ 
-      cc & 1863.18 \\ 
-      attach & 1871.89 \\ 
-      dollar & 1879.70 \\ 
-      winner & 1885.03 \\ 
-      inherit & 1865.55 \\ 
-      password & 1879.31 \\ 
-      format & 2008.85 \\ 
-      re\us{}subj & 1904.60 \\ 
-      exclaim\us{}subj & 1862.76 \\ 
-      sent\us{}email & 1958.18 \\ 
+      None Dropped & 1863.50 \\ 
+      \resp{to\us{}multiple} & 2023.50 \\ 
+      \resp{cc} & 1863.18 \\ 
+      \resp{attach} & 1871.89 \\ 
+      \resp{dollar} & 1879.70 \\ 
+      \resp{winner} & 1885.03 \\ 
+      \resp{inherit} & 1865.55 \\ 
+      \resp{password} & 1879.31 \\ 
+      \resp{format} & 2008.85 \\ 
+      \resp{re\us{}subj} & 1904.60 \\ 
+      \resp{exclaim\us{}subj} & 1862.76 \\ 
+      \resp{sent\us{}email} & 1958.18 \\ 
       \hline
     \end{tabular}
     \end{center}
@@ -162,28 +152,46 @@ either a numerical variable or an indicator variable.
       \hline
       Variable Dropped & AIC \\ 
       \hline
-      Keep All & 1862.41 \\ 
-      to\us{}multiple & 2019.55 \\ 
-      attach & 1871.17 \\ 
-      dollar & 1877.73 \\ 
-      winner & 1884.95 \\ 
-      inherit & 1864.52 \\ 
-      password & 1878.19 \\ 
-      format & 2007.45 \\ 
-      re\us{}subj & 1902.94 \\ 
-      sent\us{}email & 1957.56 \\ 
+      None Dropped & 1862.41 \\ 
+      \resp{to\us{}multiple} & 2019.55 \\ 
+      \resp{attach} & 1871.17 \\ 
+      \resp{dollar} & 1877.73 \\ 
+      \resp{winner} & 1884.95 \\ 
+      \resp{inherit} & 1864.52 \\ 
+      \resp{password} & 1878.19 \\ 
+      \resp{format} & 2007.45 \\ 
+      \resp{re\us{}subj} & 1902.94 \\ 
+      \resp{sent\us{}email} & 1957.56 \\ 
       \hline
     \end{tabular}
     \end{center}
 \end{parts}
 }{}
 
+% 4
+
+\eoce{\qt{Movie returns, Part 2\label{movie_returns_by_genre}}
+The student from
+Exercise~\ref{movie_returns_altogether} analyzed
+return-on-investment (ROI) for movies based on
+release year and genre of movies.
+The plots below show the predicted ROI vs. actual
+ROI for each of the genres separately.
+Do these figures support the comment in the
+FiveThirtyEight.com article that states,
+``The return-on-investment potential for horror movies
+is absurd.''
+Note that the x-axis range varies for each plot.
+\begin{center}
+\includegraphics[width=0.6\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_by_genre/horror_movies_by_genre}
+\end{center}
+}{}
+
 % 5
 
 \eoce{\qt{Spam filtering, Part 2\label{spam_filtering_predict}}
-\textbf{\color{red}ADD SOLUTION.}
-In Exercise~\ref{spam_filtering_model_sel}
-we encountered a data set where we were applying
+In Exercise~\ref{spam_filtering_model_sel},
+we encountered a data set where we applied
 logistic regression to aid in spam classification
 for individual emails.
 In this exercise, we've taken a small set of these
@@ -206,8 +214,6 @@ output:
 \item
     Write down the model using the coefficients
     from the model fit.
-    (Remember: this is logistic regression,
-    so the output is not simply ``$y_i$''!)
 
 \item
     Suppose we have an observation where

@@ -6,34 +6,48 @@
 
 % 1
 
-\eoce{\qt{Baby weights, Part V\label{baby_weights_conds}} 
+\eoce{\qt{Baby weights, Part VI\label{baby_weights_conds}} 
 Exercise~\ref{baby_weights_mlr} presents a regression model for predicting the 
 average birth weight of babies based on length of gestation, parity, height, 
 weight, and smoking status of the mother. Determine if the model assumptions are 
 met using the plots below. If not, describe how to proceed with the analysis.
+\newcommand{\babyplot}[1]{\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/#1}\hspace{5mm}}
 \begin{center}
-\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_normal_qq.pdf} \hspace{5mm}
-\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_abs_res_fitted.pdf}\\[3mm]
-\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_order.pdf} \hspace{5mm}
-\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_gestation.pdf}\\[3mm]  
-\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_parity.pdf} \hspace{5mm}
-\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_height.pdf}\\[3mm]
-\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_weight.pdf} \hspace{5mm}
-\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_smoke.pdf} 
+\babyplot{baby_weights_conds_normal_hist}
+\babyplot{baby_weights_conds_abs_res_fitted}
+\babyplot{baby_weights_conds_res_order}
+\babyplot{baby_weights_conds_res_gestation}
+\babyplot{baby_weights_conds_res_parity}
+\babyplot{baby_weights_conds_res_height}
+\babyplot{baby_weights_conds_res_weight}
+\babyplot{baby_weights_conds_res_smoke}
 \end{center}
 }{}
 
 % 2
 
-\eoce{\qt{GPA and IQ\label{gpa_iq_gender_cond}} A regression model for predicting GPA from 
-gender and IQ was fit, and both predictors were found to be statistically 
-significant. Using the plots given below, determine if this regression model is 
-appropriate for these data.
+\eoce{\qt{Movie returns, Part 1\label{movie_returns_altogether}}
+A FiveThirtyEight.com article reports that
+``Horror movies get nowhere near as much draw at the box 
+office as the big-time summer blockbusters or
+action/adventure movies ... but there’s a huge incentive
+for studios to continue pushing them out.
+The return-on-investment potential for horror movies
+is absurd."
+To investigate how the return-on-investment compares
+between genres and how this relationship has changed over
+time, an introductory statistics student fit a model
+predicting the ratio of gross revenue of movies from
+genre and release year for 1,070 movies released between
+2000 and 2018.
+Using the plots given below, determine if this regression
+model is appropriate for these
+data.\footfullcite{webpage:horrormovies}
 \begin{center}
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/gpa_iq_conds/gpa_iq_conds_normal_qq.pdf}\hspace{3mm}
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/gpa_iq_conds/gpa_iq_conds_abs_res_fitted.pdf}\\[5mm]
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/gpa_iq_conds/gpa_iq_conds_res_order.pdf}\hspace{3mm}
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/gpa_iq_conds/gpa_iq_conds_res_iq.pdf}\\[5mm]
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/gpa_iq_conds/gpa_iq_conds_res_gender.pdf} 
+\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_hist_res.pdf}\hspace{3mm}
+\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_genre_fitted.pdf}\\[5mm]
+\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_genre.pdf}\hspace{3mm}
+\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_order.pdf}\\[5mm]
+\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_year.pdf} 
 \end{center}
 }{}

@@ -33,6 +33,18 @@ qqline(m_bwt_mlr$residuals, col = COL[1])
 
 dev.off()
 
+# histogram for residuals ------------------------------------
+
+pdf("baby_weights_conds_normal_hist.pdf", 5.5, 4.3)
+par(mar = c(3.7,3.9, 0.5, 0.5), las = 1, mgp = c(2.7,0.7,0),
+    cex.lab = 1.5, cex.axis = 1.5)
+histPlot(m_bwt_mlr$residuals,
+    xlab = "Residuals",
+    ylab = "",
+    col = COL[1])
+box()
+dev.off()
+
 # absolute values of residuals against fitted -----------------------
 
 pdf("baby_weights_conds_abs_res_fitted.pdf", 5.5, 4.3)

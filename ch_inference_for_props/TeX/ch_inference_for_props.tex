@@ -34,16 +34,15 @@ in Chapter~\ref{ch_foundations_for_inf},
 exploring point estimates, confidence intervals,
 and hypothesis tests.
 In this section, we'll do a review of these topics
-and also explore how to perform sample size calculations
-for data collection purposes in the context of a single
-proportion.
+and also how to choose an appropriate sample size
+when collecting data for single proportion contexts.
 
 
 \subsection{Identifying when the sample proportion is nearly normal}
 
-A sample proportion $\hat{p}$ will tend to be well-modeled
-using a normal distribution when the observations in the
-sample are independent and the sample size is sufficiently
+A sample proportion $\hat{p}$ can be modeled using
+a normal distribution when the sample observations
+are independent and the sample size is sufficiently
 large.
 
 
@@ -54,12 +53,12 @@ large.
 %The distribution of $\hat{p}$ is nearly normal when the distribution of 0's and 1's is not too strongly skewed for the sample size. The most common guideline for sample size and skew when working with proportions is to ensure that we expect to observe a minimum number of successes (1's) and failures (0's), typically at least 10 of each. The labels \term{success} and \term{failure} need not mean something positive or negative. These terms are just convenient words that are frequently used when discussing proportions.
 
 \begin{onebox}{Sampling distribution of $\mathbf{\hat{p}}$}
-  The sampling distribution for $\hat{p}$, taken from
+  The sampling distribution for $\hat{p}$ based on
   a sample of size $n$ from a population with a true
-  proportion $p$, is nearly normal when:
+  proportion $p$ is nearly normal when:
   \begin{enumerate}
   \setlength{\itemsep}{0mm}
-  \item The sample observations are independent,
+  \item The sample's observations are independent,
       e.g. are from a simple random sample.
   \item We expected to see at least 10 successes and
       10 failures in the sample, i.e. $np\geq10$ and
@@ -70,13 +69,13 @@ large.
   distribution of $\hat{p}$ is nearly normal with mean
   $p$ and standard error
   \index{standard error (SE)!single proportion}%
-  $SE_{\hat{p}} = \sqrt{\frac{\ p(1-p)\ }{n}}$.
+  $SE = \sqrt{\frac{\ p(1-p)\ }{n}}$.
 \end{onebox}
 
-Typically we don't know the true proportion, $p$,
+Typically we don't know the true proportion $p$,
 so we substitute some value to check conditions
 and estimate the standard error.
-For confidence intervals, usually the sample proportion
+For confidence intervals, the sample proportion
 $\hat{p}$ is used to check the success-failure condition
 and compute the standard error.
 For hypothesis tests, typically the null value --
@@ -89,23 +88,14 @@ is used in place of $p$.
 
 \index{point estimate!single proportion}
 
-Often times we want to understand what a range of
-plausible values for the parameter, $p$.
-When this is our goal, a confidence interval is useful,
-which for a proportion usually takes the form of
+A confidence interval provides a range of
+plausible values for the parameter $p$,
+and when $\hat{p}$ can be modeled using a
+normal distribution, the confidence interval
+for $p$ takes the form
 \begin{align*}
-\hat{p} \pm z^{\star} \times SE_{\hat{p}}
+\hat{p} \pm z^{\star} \times SE
 \end{align*}
-%where $\hat{p}$ is the point estimate based on
-%a simple random sample.
-A core requirement is that $\hat{p}$ can be reasonably
-modeled with a normal distribution, and we check this
-requirement using conditions.
-
-%In this first example, we'll use the point estimate
-%$\hat{p}$ to check whether it is reasonable to model
-%$\hat{p}$ using a normal distribution,
-%since we will be computing a confidence interval.
 
 \index{data!Payday regulation poll|(}
 
@@ -129,20 +119,18 @@ requirement using conditions.
     regulations on payday lenders.
     Is it reasonable to model $\hat{p} = \paydayRegProp{}$
     using a normal distribution?}
-  This is a random sample, so the observations are
-  independent and representative of the population of interest.
+  The data are a random sample, so the observations are
+  independent and representative of the population of
+  interest.
 
-  We also must check the success-failure condition.
-  In the example, we are defining a \emph{success}
-  as a respondent who supported new regulations
-  and a \emph{failure} as someone who did not.
-  We check this condition using $\hat{p}$ in place
+  We also must check the success-failure condition,
+  which we do using $\hat{p}$ in place
   of $p$ when computing a confidence interval:
   \begin{align*}
-  \text{Successes: }
+  \text{Support: }
       n p & \approx \paydayN{} * \paydayRegProp{}
       = 578
-  &\text{Failures: }
+  &\text{Not: }
       n (1 - p) & \approx \paydayN{} * (1 - \paydayRegProp{})
       = 248
   \end{align*}
@@ -170,10 +158,12 @@ in the formula.\footnotemark
 \begin{nexample}{Construct a 95\% confidence interval for $p$,
     the proportion of payday borrowers who support increased
     regulation for payday lenders.}
-  Using the standard error $SE = \paydayRegSE{}$ from
-  Guided Practice~\ref{seOfPropOfPDBorrowersSupportReg},
+  Using
   the point estimate \paydayRegProp{},
-  and $z^{\star} = 1.96$ for a 95\% confidence interval,
+  $z^{\star} = 1.96$ for a 95\% confidence interval,
+  and
+  the standard error $SE = \paydayRegSE{}$ from
+  Guided Practice~\ref{seOfPropOfPDBorrowersSupportReg},
   the confidence interval is
   \begin{eqnarray*}
   \text{point estimate} \ \pm\ z^{\star} \times SE
@@ -246,27 +236,29 @@ checked using the null proportion:
 we verify $np_0$ and $n(1-p_0)$ are at least 10,
 where $p_0$ is the null value.
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 \label{paydayCC_conditions_gp}%
-We consider another question asked
-of the payday loan borrowers:
-Do you support a regulation that would
-require lenders to pull your credit report
-and evaluate your debt payments?
-Of the \paydayN{} borrowers, \paydayCCPerc{}
-said they supported such a regulation.
+Do payday loan borrowers support a regulation
+that would
+require lenders to pull their credit report
+and evaluate their debt payments?
+From a random sample of \paydayN{} borrowers,
+\paydayCCPerc{} said they would support such
+a regulation.
 Is it reasonable to model $\hat{p} = \paydayCCProp{}$
 for a hypothesis test here?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Independence holds since the poll
     is based on a random sample.
-    The success failure also holds, which we check
-    using the null proportion, $p_0 = 0.5$ from the
-    null hypothesis:
-    $np \approx \paydayN{} \times 0.5 = \paydayNHalf$,
-    $n(1 - p) \approx \paydayN{} \times 0.5 = \paydayNHalf$.}
+    The success-failure condition also holds,
+    which is checked
+    using the null value ($p_0 = 0.5$) from $H_0$:
+    $np_0 = \paydayN{} \times 0.5 = \paydayNHalf$,
+    $n(1 - p_0) = \paydayN{} \times 0.5 = \paydayNHalf$.}
     
 \begin{examplewrap}
 \begin{nexample}{Using the hypotheses and data from
@@ -335,7 +327,7 @@ What about when the independence condition fails?
 In either case, the general ideas of confidence intervals
 and hypothesis tests remain the same, but the strategy
 or technique used to generate the interval or p-value
-would change.
+change.
 
 When the success-failure condition isn't met
 for a hypothesis test, we can simulate the null distribution
@@ -348,12 +340,11 @@ and an online section outlines this strategy:
 \oiRedirect{stat_sim_prop_ht}
     {www.openintro.org/r?go=stat\_sim\_prop\_ht}
 \end{center}
-\Comment{Port over the deleted OS3 section to be an online extra.}
 For a confidence interval when the success-failure condition
 isn't met, we can use what's called
-the \term{Clopper-Pearson interval},
-where the details of this method live an internet search away,
-even if those details are beyond the scope of this book.
+the \term{Clopper-Pearson interval}.
+While the details are beyond the scope of this book,
+there are many internet resources covering this topic.
 
 The independence condition is a more nuanced requirement.
 When it isn't met, it is important to understand how and why
@@ -379,7 +370,16 @@ are suitable for a very wide range of data and contexts.
 
 \index{margin of error|(}
 
-When collecting data, we choose a sample size suitable for the purpose of the study. Often times this means choosing a sample size large enough that the \term{margin of error} -- which is the part we add and subtract from the point estimate in a confidence interval -- is sufficiently small that the sample is useful. More explicitly, our task is to find a sample size $n$ so that the sample proportion is within some margin of error $m$ of the actual proportion with a certain level of confidence.
+When collecting data, we choose a sample size suitable
+for the purpose of the study.
+Often times this means choosing a sample size large
+enough that the \term{margin of error} --
+which is the part we add and subtract from the point
+estimate in a confidence interval --
+is sufficiently small that the sample is useful.
+For example, our task might be to find a sample size
+$n$ so that the sample proportion is within $\pm 0.04$
+of the actual proportion in a 95\% confidence interval.
 
 % For example, the margin of error for a point estimate using 95\% confidence can be written as $1.96\times SE$. We set up a general equation to represent the problem:
 %\begin{align*}
@@ -390,29 +390,51 @@ When collecting data, we choose a sample size suitable for the purpose of the st
 \index{data!Student football stadium|(}
 
 \begin{examplewrap}
-\begin{nexample}{A university newspaper is conducting a survey to determine what fraction of students support a \$200 per year increase in fees to pay for a new football stadium. How big of a sample is required to ensure the margin of error is smaller than 0.04 using a 95\% confidence level?}
-The margin of error for a sample proportion is
-\begin{align*}
-z^{\star} \sqrt{\frac{p (1 - p)}{n}}
-\end{align*}
-Our goal is to find the smallest sample size $n$ so that this margin of error is smaller than $m=0.04$. For a 95\% confidence level, the value $z^{\star}$ corresponds to 1.96:
-\begin{align*}
-1.96\times \sqrt{\frac{p(1-p)}{n}} \ < \ 0.04
-\end{align*}
-There are two unknowns in the equation: $p$ and $n$. If we have an estimate of $p$, perhaps from a similar survey, we could enter in that value and solve for $n$. If we have no such estimate, we must use some other value for $p$. It turns out that the margin of error is largest when $p$ is 0.5, so we typically use this \emph{worst case value} if no estimate of the proportion is available:
-\begin{align*}
+\begin{nexample}{A university newspaper is conducting
+    a survey to determine what fraction of students
+    support a \$200 per year increase in fees to pay
+    for a new football stadium.
+    How big of a sample is required to ensure the
+    margin of error is smaller than 0.04 using a
+    95\% confidence level?}
+  The margin of error for a sample proportion is
+  \begin{align*}
+  z^{\star} \sqrt{\frac{p (1 - p)}{n}}
+  \end{align*}
+  Our goal is to find the smallest sample size $n$
+  so that this margin of error is smaller than $0.04$.
+  For a 95\% confidence level, the value $z^{\star}$
+  corresponds to 1.96:
+  \begin{align*}
+  1.96\times \sqrt{\frac{p(1-p)}{n}} \ < \ 0.04
+  \end{align*}
+  There are two unknowns in the equation: $p$ and $n$.
+  If we have an estimate of $p$, perhaps from a prior
+  survey, we could enter in that value and solve for~$n$.
+  If we have no such estimate, we must use some other
+  value for~$p$.
+  It turns out that the margin of error is largest
+  when $p$ is 0.5, so we typically use this
+  \emph{worst case value} if no estimate of the
+  proportion is available:
+  \begin{align*}
 	1.96\times \sqrt{\frac{0.5(1-0.5)}{n}} &\ < \ 0.04 \\
 	1.96^2\times \frac{0.5(1-0.5)}{n} &\ < \ 0.04^2 \\
 	1.96^2\times \frac{0.5(1-0.5)}{0.04^2} &\ < \ n \\
 	600.25 &\ < \  n
-\end{align*}
-We would need over 600.25 participants, which means we need 601 participants or more, to ensure the sample proportion is within 0.04 of the true proportion with 95\% confidence.
+  \end{align*}
+  We would need over 600.25 participants, which means
+  we need 601 participants or more, to ensure the
+  sample proportion is within 0.04 of the true proportion
+  with 95\% confidence.
 \end{nexample}
 \end{examplewrap}
 
 \index{data!Student football stadium|)}
 
 When an estimate of the proportion is available, we use it in place of the worst case proportion value,~0.5.
+
+\D{\newpage}
 
 \index{data!Tire failure rate|(}
 
@@ -466,7 +488,7 @@ and identify three sample sizes to consider.\footnotemark
   size.
   Or if two of the previous estimates are based on small
   samples while the other is based on a larger sample,
-  we should consider the value corresponding to the larger
+  we might consider the value corresponding to the larger
   sample.
   There are also other reasonable approaches.
 
@@ -513,7 +535,7 @@ of error of 0.04 with 95\% confidence?\footnotemark
   Given that we plan to track this poll over time,
   we also may want to periodically repeat these calculations
   to ensure that we're being thoughtful in our sample
-  size recommendations.}
+  size recommendations in case the baseline rate fluctuates.}
 
 \index{data!Payday regulation poll|)}
 \index{margin of error|)}
@@ -528,43 +550,41 @@ of error of 0.04 with 95\% confidence?\footnotemark
 \section{Difference of two proportions}
 \label{differenceOfTwoProportions}
 
-We would like to make conclusions about the difference
-in two population proportions: \mbox{$p_1 - p_2$}.
-We consider three examples.
-In the first, we compare the utility of a blood thinner
-for heart attack patients.
-In the second application, we examine the efficacy of
-mammograms in reducing deaths from breast cancer.
-In the last example, a quadcopter company weighs whether
-to switch to a higher quality manufacturer of rotor blades.
-
-In our investigations, we first identify a reasonable
-point estimate of $p_1 - p_2$ based on the sample.
-You may have already guessed its form:
+We would like to extend the methods from
+Section~\ref{singleProportion}
+to apply confidence intervals and hypothesis tests
+to differences in population proportions:
+\mbox{$p_1 - p_2$}.
+%We~consider three examples.
+%In the first, we compare the utility of a blood thinner
+%for heart attack patients.
+%In the second application, we examine the efficacy of
+%mammograms in reducing deaths from breast cancer.
+%In the last example, a quadcopter company weighs whether
+%to switch to a higher quality manufacturer of rotor blades.
+In our investigations, we'll identify a reasonable
+point estimate of $p_1 - p_2$ based on the sample,
+and you may have already guessed its form:
 $\hat{p}_1 - \hat{p}_2$.
-\index{point estimate!difference of proportions}
-Next, we'll use the same process as
-what we followed in the
-single-proportion context:
+\index{point estimate!difference of proportions}%
+Next, we'll apply the same processes we used in
+thesingle-proportion context:
 we verify that the point estimate
-follows a normal distribution,
-compute the estimate's standard error, and
-apply our inferential framework.
+can be modeled using a normal distribution,
+we compute the estimate's standard error, and
+we apply our inferential framework.
 
 
-\subsection{Sample distribution of the difference of two proportions}
+\subsection{Sampling distribution of the difference
+    of two proportions}
 
-Like with $\hat{p}$, the difference of two sample proportions
-$\hat{p}_1 - \hat{p}_2$ follows a normal distribution when
-certain conditions are met.
-%We must check two conditions before modeling
-%$\hat{p}_1 - \hat{p}_2$ using a normal distribution.
-First, the sampling distribution for each sample
-proportion must be nearly normal, and secondly,
-the samples must be independent.
-Under these two conditions, the sampling distribution
-of $\hat{p}_1 - \hat{p}_2$ may be well approximated
-using a normal distribution.
+Like with $\hat{p}$, the difference of two sample
+proportions $\hat{p}_1 - \hat{p}_2$ can be modeled
+using a normal distribution when certain conditions
+are met.
+First, the samples must be independent of each other,
+and secondly, the sampling distribution for each sample
+proportion must be nearly normal.
 
 \begin{onebox}{Conditions for the
     sampling distribution of $\hat{p}_1 - \hat{p}_2$
@@ -589,10 +609,23 @@ using a normal distribution.
   and $n_1$ and $n_2$ represent the sample~sizes.
 \end{onebox}
 
-In the one-proportion context, we used the point estimate
-and standard error to create confidence intervals or conduct
-hypothesis tests.
-We can do the same in two-proportion applications.
+%\noindent%
+Ultimately, we can check the two conditions by
+thinking of it as a broader independence check
+along with a check on the success-failure condition
+for each group:
+\begin{description}
+\item[Independence, extended.]
+    The data are independent within and between
+    the two groups.
+    Generally this is satisfied if the data come
+    from two independent random samples
+    or if the data come from a randomized experiment.
+\item[Success-failure condition.]
+    The success-failure condition holds for both
+    groups, where we check successes and failures
+    in each group separately.
+\end{description}
 
 %For the difference in two means, the standard error formula took the following form:
 %\begin{eqnarray*}
@@ -601,6 +634,7 @@ We can do the same in two-proportion applications.
 %The standard error for the difference in two proportions takes a similar form. The reasons behind this similarity are rooted in the probability theory of Section~\ref{randomVariablesSection}, which is described for this context in Guided Practice~\vref{derivingSEForDiffOfTwoMeansExercise}.
 
 
+\D{\newpage}
 \subsection[Confidence intervals for $p_1 - p_2$]
     {Confidence intervals for $\mathbf{p_1 - p_2}$}
 
@@ -612,17 +646,22 @@ We can do the same in two-proportion applications.
 %the standard error, just as was the case with a single
 %proportion.
 \noindent%
-We can use
-the generic formula of a confidence interval, just as it did in the one-proportion case:
+We can apply the generic confidence interval formula
+for a difference of two proportions,
+where we use $\hat{p}_1 - \hat{p}_2$ as the point
+estimate and apply the $SE$ formula from
+page~\pageref{seForDiffOfProp}:
 \begin{align*}
-\text{point estimate} \pm z^{\star} \times SE
+&\text{point estimate} \ \pm\  z^{\star} \times SE
+&&\to
+&&\hat{p}_1 - \hat{p}_2 \ \pm\ 
+    z^{\star} \times
+   \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
 \end{align*}
-We can follow the same Prepare, Check, Calculate, Conclude
-steps for
+We can also follow the same
+Prepare, Check, Calculate, Conclude steps for
 computing a confidence interval
-or
-completing a hypothesis test
-for a difference of two proportions.
+or completing a hypothesis test.
 The details change a little,
 but the general approach remain the same.
 Think about these steps when you apply statistical methods.
@@ -642,23 +681,20 @@ Think about these steps when you apply statistical methods.
     Check whether we can model the difference in
     sample proportions using the normal distribution.}
 
-  %Before proceeding, the conditions must be checked.
-  We check if each proportion separately can be
-  modeled using a normal distribution:
-%  \begin{itemize}
-%  \setlength{\itemsep}{0mm}
-%  \item
-      Because the patients were randomized to their groups,
-      the observations in the two samples are independent,
-      both within and between groups.
-%  \item
-      The success-failure condition also holds for each group,
-      where we have at least 10 successes and 10 failures in
-      each experiment arm.
-%  \end{itemize}
-  With these conditions satisfied,
+  We first check for independence:
+  since this is a randomized experiment,
+  this condition is satisfied.
+  
+  Next, we check the success-failure condition for
+  each group.
+  We have at least 10 successes and 10 failures in
+  each experiment arm (11, 14, 39, 26),
+  so this condition is also satisfied.
+
+  With both conditions satisfied,
   the difference in sample proportions can be
-  reasonably modeled using a normal distribution.
+  reasonably modeled using a normal distribution
+  for these data.
 \end{nexample}
 \end{examplewrap}
 
@@ -698,7 +734,8 @@ Total			&& 25		& 65		&& 90 \\
   We use the standard error formula provided on
   page~\pageref{seForDiffOfProp}.
   As with the one-sample proportion case,
-  we use our best estimates of each proportion in the formula:
+  we use the sample estimates of each proportion
+  in the formula in the confidence interval context:
   \begin{align*}
   SE \approx \sqrt{\frac{0.35 (1 - 0.35)}{40} +
       \frac{0.22 (1 - 0.22)}{50}}
@@ -712,11 +749,11 @@ Total			&& 25		& 65		&& 90 \\
   \end{align*}
   We are 90\% confident that that blood thinners have
   a difference of -2.7\% to +28.7\% percentage point
-  impact on survival rate for patients like those in
-  the study.
+  impact on survival rate for patients who are like
+  those in the study.
   Because 0\% is contained in the interval,
   we do not have enough information to say
-  with confidence whether blood thinners help or harm
+  whether blood thinners help or harm
   heart attack patients who have been admitted after
   they have undergone CPR.
 \end{nexample}
@@ -806,10 +843,10 @@ study.\footnotemark
   (off of a baseline of about 1.55\%)
   over a 5-year period for subjects who are similar
   to those in the study.
-  Because the interval is entirely below 0,
+  Because the interval is entirely below~0,
   the data provide strong evidence
   that fish oil supplements reduce heart attacks
-  in patients like those in the study.}
+  in patients like those in the~study.}
 
 
 \subsection[Hypothesis tests for $p_1 - p_2$]
@@ -820,7 +857,13 @@ study.\footnotemark
 
 %We'll explore an experiment evaluating the benefits
 %of mammograms using a hypothesis test.
-A mammogram is an X-ray procedure used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it's the topic of our next example where we examine 2-proportion hypothesis test when $H_0$~is~$p_1 - p_2 = 0$ (or equivalently, $p_1 = p_2$).
+A mammogram is an X-ray procedure used to check for
+breast cancer.
+Whether mammograms should be used is part of a
+controversial discussion, and it's the topic of our
+next example where we learn about 2-proportion
+hypothesis tests when $H_0$~is~$p_1 - p_2 = 0$
+(or equivalently, $p_1 = p_2$).
 
 A 30-year study was conducted with nearly 90,000 female participants. During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure~\ref{mammogramStudySummaryTable}.
 
@@ -843,7 +886,7 @@ Control && 505 & 44,405 \\
 
 \begin{exercisewrap}
 \begin{nexercise}
-Is this study an experiment or an observational study?\footnotemark
+Is this study an experiment or an observational study?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{This is an experiment. Patients were randomized
@@ -891,7 +934,9 @@ We~will also use this pooled proportion when computing
 the standard error.
 
 \begin{examplewrap}
-\begin{nexample}{Can we use a normal model to analyze this study?}
+\begin{nexample}{Is it reasonable to model the difference
+    in proportions using a normal distribution in this
+    study?}
   \label{condFormammogramStudySummaryTableNormalInference}%
   Because the patients are randomized, they can be treated
   as independent, both within and between groups.
@@ -911,14 +956,16 @@ the standard error.
     & (1 - \hat{p}_{\textit{pooled}}) \times n_{ctrl}
       &= 0.9888 \times \text{44,910} = \text{44,407}
   \end{align*}
-  With independence (within and between groups) and
-  the success-failure condition satisfied since all values
-  are at least 10, and we can safely use a normal distribution.
+  The success-failure condition is satisfied since
+  all values are at least 10.
+  With both conditions satisfied, we can safely model
+  the difference in proportions using a normal
+  distribution.
 \end{nexample}
 \end{examplewrap}
 
-\begin{onebox}{Use the pooled proportion estimate when
-    $\mathbf{H_0}$ is $\mathbf{p_1 - p_2 = 0}$}
+\begin{onebox}{Use the pooled proportion when
+    $\pmb{H_0}$ is $\pmb{\MakeLowercase{p_1 - p_2 = 0}}$}
   When the null hypothesis is that the proportions are equal,
   use the pooled proportion ($\hat{p}_{\textit{pooled}}$)
   to verify the
@@ -935,8 +982,8 @@ the standard error.
   \hat{p}_1
     = \frac{\text{number of successes in sample 1}}{n_1}
   \end{eqnarray*}
-  Similarly, $\hat{p}_2 n_2$ represents the number of successes
-  in sample 2.
+  Similarly, $\hat{p}_2 n_2$ represents the number
+  of successes in sample~2.
 \end{onebox}
 
 In Example~\ref{condFormammogramStudySummaryTableNormalInference},
@@ -947,6 +994,8 @@ condition.\footnote{For an example of a two-proportion
   Section~\ref{caseStudyMalariaVaccine}.}
 In the next example, we see the second place where the pooled
 proportion comes into play: the standard error calculation.
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Compute the point estimate of the difference
@@ -998,9 +1047,34 @@ Here are a few considerations to keep in mind when reviewing
 the mammogram study as well as any other medical study:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
-\item If mammograms are helpful or harmful, the data suggest the effect isn't very large. So while we do not accept the null hypothesis, we also don't have sufficient evidence to conclude that mammograms reduce or increase breast cancer deaths.
-\item Are mammograms more or less expensive than a non-mammogram breast exam? If~one option is much more expensive than the other and doesn't offer clear benefits, then we should lean towards the less expensive option.
-\item The study's authors also found that mammograms led to overdiagnosis of breast cancer, which means some breast cancers were found (or thought to be found) but that these cancers would not cause symptoms during patients' lifetimes. That is, something else would kill the patient before breast cancer symptoms appeared. This means some patients may have been treated for breast cancer unnecessarily, and this treatment is another cost to consider. It is also important to recognize that overdiagnosis can cause unnecessary physical or emotional harm to patients.
+\item
+    We do not accept the null hypothesis, which means
+    we don't have sufficient evidence to conclude that
+    mammograms reduce or increase breast cancer deaths.
+\item
+    If mammograms are helpful or harmful, the data
+    suggest the effect isn't very large.
+\item
+    Are mammograms more or less expensive than
+    a non-mammogram breast exam?
+    If~one option is much more expensive than the
+    other and doesn't offer clear benefits,
+    then we should lean towards the less expensive
+    option.
+\item
+    The study's authors also found that mammograms
+    led to overdiagnosis of breast cancer,
+    which means some breast cancers were found
+    (or thought to be found) but that these cancers
+    would not cause symptoms during patients' lifetimes.
+    That is, something else would kill the patient
+    before breast cancer symptoms appeared.
+    This means some patients may have been treated
+    for breast cancer unnecessarily, and this
+    treatment is another cost to consider.
+    It is also important to recognize that
+    overdiagnosis can cause unnecessary physical
+    or emotional harm to patients.
 \end{itemize}
 These considerations highlight the complexity around medical care and treatment recommendations. Experts and medical boards who study medical treatments use considerations like those above to provide their best recommendation based on the current evidence.
 
@@ -1063,7 +1137,8 @@ construct the standard error.
 \label{carWheelBladeManufacturer}%
 A quadcopter company is considering a new manufacturer
 for rotor blades.
-The new manufacturer would be more expensive but claims
+The new manufacturer would be more expensive,
+but they claim
 their higher-quality blades are more reliable,
 with 3\% more blades passing inspection than their
 competitor.
@@ -1095,16 +1170,18 @@ Set up appropriate hypotheses for the test.\footnotemark
 
 \setlength{\captionwidth}{\mycaptionwidth}
 
+\D{\newpage}
+
 %\Add{In Guided Practice~\ref{qualityCtrlEngHypothesisEval}, the null difference is 0.03. However, in the vast majority of applications for differences in means or proportions, the null difference is~0. While the details for a difference of means does not change if the null difference is zero or non-zero, that is not the case for a difference in proportions. As we'll see in Section~\ref{}, a hypothesis test for a difference in proportions where the null value is 0 requires additional~care.}
 
 \begin{examplewrap}
 \begin{nexample}{The quality control engineer from
     Guided Practice~\ref{carWheelBladeManufacturer}
     collects a sample of blades, examining 1000 blades
-    from each company and finds that 899 blades pass
+    from each company, and she finds that 899 blades pass
     inspection from the current supplier and 958 pass
     inspection from the prospective supplier.
-    Using these data, evaluate the hypothesis setup of
+    Using these data, evaluate the hypotheses from
     Guided Practice~\ref{carWheelBladeManufacturer}
     with a significance level of 5\%.}
   \label{qualityCtrlEngHypothesisEval}%
@@ -1164,18 +1241,30 @@ Set up appropriate hypotheses for the test.\footnotemark
 
 \D{\newpage}
 
-\subsection{Examining the standard error formula (special topic)}
+\subsection{Examining the standard error formula
+    (special topic)}
+
+This subsection covers more theoretical topics
+that offer deeper insights into the origins of the
+standard error formula for the difference of two
+proportions.
+Ultimately, all of the standard error formulas
+we encounter in this chapter and in
+Chapter~\ref{ch_inference_for_means}
+can be derived from the probability principles of
+Section~\ref{randomVariablesSection}.
 
 The formula for the standard error of the difference
 in two proportions can be deconstructed into the formulas
 for the standard errors of the individual sample proportions.
-Recall that the standard error of a single proportion,
-$\hat{p}_1$, is
+Recall that the standard error of the individual
+sample proportions $\hat{p}_1$ and $\hat{p}_2$ are
 \begin{align*}
-SE_{\hat{p}_1} = \sqrt{\frac{{p}_1 (1 - {p}_1)}{n_1}}
+&SE_{\hat{p}_1} = \sqrt{\frac{{p}_1 (1 - {p}_1)}{n_1}}
+&&SE_{\hat{p}_2} = \sqrt{\frac{{p}_2 (1 - {p}_2)}{n_2}}
 \end{align*}
 The standard error of the difference of two sample proportions
-can be constructed from the standard errors of the separate
+can be deconstructed from the standard errors of the separate
 sample proportions:
 \begin{align*}
 SE_{\hat{p}_{1} - \hat{p}_{2}}
@@ -1194,7 +1283,9 @@ We can rewrite the equation above in a different way:
 SE_{\hat{p}_{1} - \hat{p}_{2}}^2
   = SE_{\hat{p}_1}^2 + SE_{\hat{p}_2}^2
 \end{align*}
-Explain where this formula comes from using the ideas of probability theory.\footnotemark{}
+Explain where this formula comes from using
+the formula for the variability of the sum of
+two random variables.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The standard error squared represents

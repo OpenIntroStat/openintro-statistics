@@ -12,16 +12,22 @@ m_gpa <- lm(gpa ~ iq + gender, data = gpa_iq_data)
 # normal prob plot for residuals ------------------------------------
 
 pdf("gpa_iq_conds_normal_qq.pdf", 5.5, 4.3)
-
 par(mar = c(3.7,3.9, 0.5, 0.5), las = 1, mgp = c(2.7,0.7,0),
     cex.lab = 1.5, cex.axis = 1.5)
-
 qqnorm(m_gpa$residuals, 
        ylab = "Residuals", main = "",
        pch = 19, col = COL[1,2])
-
 qqline(m_gpa$residuals, col = COL[1])
+dev.off()
 
+# Histogram for residuals ------------------------------------
+
+pdf("gpa_iq_conds_normal_hist.pdf", 5.5, 4.3)
+par(mar = c(3.7,3.9, 0.5, 0.5), las = 1, mgp = c(2.7,0.7,0),
+    cex.lab = 1.5, cex.axis = 1.5)
+histPlot(m_gpa$residuals, 
+       xlab = "Residuals", ylab = "",
+       col = COL[1])
 dev.off()
 
 # absolute values of residuals against fitted -----------------------

@@ -80,25 +80,16 @@ interval agree? Explain.
 
 % 5
 
-\eoce{$\:$ \\
-\noindent \begin{minipage}[c]{0.56\textwidth}
-\qt{Nutrition at Starbucks, Part II\label{starbucks_cals_protein}} 
+\eoce{\qt{Nutrition at Starbucks, Part II\label{starbucks_cals_protein}} 
 Exercise~\ref{starbucks_cals_carbos} introduced a data set on nutrition 
 information on Starbucks food menu items. Based on the scatterplot 
 and the residual plot provided, describe the relationship between the 
 protein content and calories of these menu items, and determine if a 
 simple linear model is appropriate to predict amount of protein from 
 the number of calories.
-\vspace{34mm}
-\end{minipage}
-\begin{minipage}[c]{0.02\textwidth}
-$\:$ \\
-\end{minipage}
-\begin{minipage}[c]{0.4\textwidth}
 \begin{center}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/starbucks_cals_protein/starbucks_cals_protein.pdf} \\
+\includegraphics[width=0.35\textwidth]{ch_regr_simple_linear/figures/eoce/starbucks_cals_protein/starbucks_cals_protein}
 \end{center}
-\end{minipage}
 }{}
 
 % 6
@@ -164,27 +155,28 @@ Match each correlation to the corresponding scatterplot.
 
 % 8
 
-\eoce{\qt{TITLE\label{ID}}
-\textbf{\color{red}REPLACE EXERCISE}
-Many college courses conclude by giving 
-students the opportunity to evaluate the course and the instructor 
-anonymously. However, the use of these student evaluations as an 
-indicator of course quality and teaching effectiveness is often 
-criticized because these measures may reflect the influence of non-
-teaching related characteristics, such as the physical appearance of 
-the instructor. Researchers at University of Texas, Austin collected 
-data on teaching evaluation score (higher score means better) and 
-standardized beauty score (a score of 0 means average, negative score 
-means below average, and a positive score means above average) for a 
-sample of 463 professors.\footfullcite{Hamermesh:2005} The 
-scatterplot below shows the relationship between these variables, and 
-also provided is a regression output for predicting teaching 
-evaluation score from beauty score.
-
-\noindent\begin{minipage}[c]{0.4\textwidth}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/full_lin_regr_2/rate_my_prof_eval_beauty.pdf} \\
-\end{minipage}
-\begin{minipage}[c]{0.6\textwidth}
+\eoce{\qt{Rate my professor\label{rate_my_prof}}
+Many college courses conclude by giving students
+the opportunity to evaluate the course and the
+instructor anonymously.
+However, the use of these student evaluations
+as an indicator of course quality and teaching
+effectiveness is often criticized because these
+measures may reflect the influence of
+non-teaching related characteristics,
+such as the physical appearance of the instructor.
+Researchers at University of Texas, Austin
+collected data on teaching evaluation score
+(higher score means better) and standardized
+beauty score (a score of 0 means average, negative
+score means below average, and a positive score
+means above average) for a sample of 463
+professors.\footfullcite{Hamermesh:2005}
+The scatterplot below shows the relationship
+between these variables, and regression output
+is provided for predicting teaching evaluation
+score from beauty score.
+\begin{center}
 \begin{tabular}{rrrrr}
     \hline
             & Estimate  & Std. Error    & t value   & Pr($>$$|$t$|$) \\ 
@@ -194,23 +186,83 @@ beauty      &  \fbox{\textcolor{white}{{\footnotesize Cell 1}}}
                         & 0.0322        & 4.13      & 0.0000\vspace{0.8mm} \\ 
    \hline
 \end{tabular}
+\end{center}
+\noindent\begin{minipage}[c]{0.45\textwidth}
+{\raggedright\begin{parts}
+\item
+    Given that the average standardized beauty score
+    is -0.0883 and average teaching evaluation score
+    is 3.9983, calculate the slope.
+    Alternatively, the slope may be computed using just
+    the information provided in the model summary table.
+\item
+    Do these data provide convincing evidence that the
+    slope of the relationship between teaching evaluation
+    and beauty is positive?
+    Explain your reasoning.
+\item
+    List the conditions required for linear regression
+    and check if each one is satisfied for this model
+    based on the following diagnostic plots.
+\end{parts}}
+\end{minipage}
+\begin{minipage}[c]{0.07\textwidth}
+$\:$ \\
+\end{minipage}
+\begin{minipage}[c]{0.45\textwidth}
+\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_eval_beauty.pdf} \\
+\end{minipage}
+\begin{center}
+\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals}
+\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals_hist}
+\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/rate_my_prof/rate_my_prof_residuals_order}
+\end{center}
+}{}
+
+% 9
+
+\eoce{\qt{Husbands and wives, Part III\label{husbands_wives_age_inf}}
+Exercise~\ref{husbands_wives_height_inf} presents a scatterplot displaying the 
+relationship between husbands' and wives' ages in a random sample of 
+170 married couples in Britain, where both partners' ages are below 65 
+years. Given below is summary output of the least squares fit for 
+predicting wife's age from husband's age.
+
+\noindent\begin{minipage}[c]{0.4\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/husbands_wives_age_inf/husbands_wives_age.pdf}
+\end{center}
+\end{minipage}
+\begin{minipage}[c]{0.6\textwidth}
+{\scriptsize
+\begin{center}
+\begin{tabular}{rrrrr}
+  \hline
+                & Estimate  & Std. Error    & t value   & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept)     & 1.5740    & 1.1501        & 1.37      & 0.1730 \\ 
+age\_\hspace{0.3mm}husband  & 0.9112    & 0.0259        & 35.25     & 0.0000 \\ 
+   \hline
+\multicolumn{5}{r}{$df = 168$} \\
+\end{tabular}
+\end{center}
+}
 \end{minipage}
 \begin{parts}
-\item Given that the average standardized beauty score is -0.0883 and 
-average teaching evaluation score is 3.9983, calculate the slope. 
-Alternatively, the slope may be computed using just the information 
-provided in the model summary table.
-\item Do these data provide convincing evidence that the slope of the 
-relationship between teaching evaluation and beauty is positive? 
-Explain your reasoning.
-\item List the conditions required for linear regression and check if 
-each one is satisfied for this model based on the following 
-diagnostic plots.
-\begin{center}
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/full_lin_regr_2/rate_my_prof_residuals.pdf}
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/full_lin_regr_2/rate_my_prof_residuals_hist.pdf} \\
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/full_lin_regr_2/rate_my_prof_residuals_qq.pdf}
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/full_lin_regr_2/rate_my_prof_residuals_order.pdf}
-\end{center}
+\item We might wonder, is the age difference between husbands and 
+wives consistent across ages? If this were the case, then the slope 
+parameter would be $\beta_1 = 1$. Use the information above to evaluate 
+if there is strong evidence that the difference in husband and wife ages 
+differs for different ages.
+\item Write the equation of the regression line for predicting wife's 
+age from husband's age.
+\item Interpret the slope and intercept in context.
+\item Given that $R^2 = 0.88$, what is the correlation of ages  in 
+this data set?
+\item You meet a married man from Britain who is 55 years old. What 
+would you predict his wife's age to be? How reliable is this prediction?
+\item You meet another married man from Britain who is 85 years old. 
+Would it be wise to use the same linear model to predict his wife's 
+age? Explain.
 \end{parts}
 }{}
