@@ -71,15 +71,15 @@ from each high school.
 % 5
 
 \eoce{\qt{Global warming, Part I\label{global_warming_v2_1}}
-\textbf{\color{red}ADD SOLUTION}
-Is there strong evidence of global warming?
-Let's consider a small scale example.
-We sampled 197 locations from the NOAA's historical data
-(NOAA stands for National Oceanic and Atmospheric Administration),
-where the data was available for both 1948 and 2018.
+Let's consider a limited set of climate data,
+examining temperature differences in 1948 vs~2018.
+We sampled 197 locations from the
+National Oceanic and Atmospheric Administration's
+(NOAA) historical data,
+where the data was available for both both years of interest.
 We want to know: were there more days with temperatures
-exceeding 90\textdegree{}F in 2018 than
-in~1948.\footfullcite{webpage:noaa_1948_2018}
+exceeding 90\textdegree{}F in 2018 or
+in~1948?\footfullcite{webpage:noaa_1948_2018}
 The difference in number of days exceeding 90\textdegree{}F
 (number of days in 2018 - number of days in 1948) was calculated
 for each of the 197 locations.
@@ -87,7 +87,11 @@ The average of these differences was 2.9 days with
 a standard deviation of 17.2 days.
 We are interested in determining whether these data provide
 strong evidence that there were more days in 2018 that
-exceeded 90\textdegree{}F from NOAA's weather stations.
+exceeded 90\textdegree{}F from NOAA's weather
+stations.\vspace{3mm}
+
+\noindent%
+\begin{minipage}[c]{0.65\textwidth}
 \begin{parts}
 \item
     Is there a relationship between the observations collected
@@ -98,11 +102,12 @@ exceeded 90\textdegree{}F from NOAA's weather stations.
     Write hypotheses for this research in symbols and in words.
 \item
     Check the conditions required to complete this test.
+    A histogram of the differences is given to the right.
 \item
     Calculate the test statistic and find the p-value.
 \item
-    What do you conclude?
-    Interpret your conclusion in context.
+    Use $\alpha = 0.05$ to evaluate the test,
+    and interpret your conclusion in context.
 \item
     What type of error might we have made?
     Explain in context what the error means.
@@ -114,6 +119,13 @@ exceeded 90\textdegree{}F from NOAA's weather stations.
     to include 0?
     Explain your reasoning.
 \end{parts}
+\end{minipage}
+\begin{minipage}[c]{0.02\textwidth}
+\ 
+\end{minipage}
+\begin{minipage}[c]{0.32\textwidth}
+\includegraphics[width=\textwidth]{ch_inference_for_means/figures/eoce/global_warming_v2_1/global_warming_v2_1_diffs}
+\end{minipage}
 % library(openintro); d <- climate70$dx90_2018 - climate70$dx90_1948; mean(d); sd(d); length(d); t.test(d)
 }{}
 
@@ -153,7 +165,6 @@ scores to include 0? Explain your reasoning.
 % 7
 
 \eoce{\qt{Global warming, Part II\label{global_warming_v2_2}}
-\textbf{\color{red}ADD SOLUTION.}
 We considered the change in the number of days exceeding
 90\textdegree{}F from 1948 and 2018 at 197 randomly sampled
 locations from the NOAA database in
@@ -165,12 +176,13 @@ are 2.9 days and 17.2 days.
     Calculate a 90\% confidence interval for the average
     difference between number of days exceeding 90\textdegree{}F
     between 1948 and 2018.
+    We've already checked the conditions for you.
 \item
-    Interpret this interval in context.
+    Interpret the interval in context.
 \item
     Does the confidence interval provide convincing evidence
-    that the temperature was higher in 2008 than in 1968 in
-    the continental US?
+    that there were more days exceeding 90\textdegree{}F
+    in 2018 than in 1948 at NOAA stations?
     Explain.
 \end{parts}
 }{}
