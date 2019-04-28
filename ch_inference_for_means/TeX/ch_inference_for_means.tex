@@ -1402,6 +1402,12 @@ is straightforward to find: it is the difference in the sample means.
 \end{align*}
 For the question of whether we can model this difference
 using a $t$-distribution, we'll need to check new conditions.
+Like the 2-proportion cases, we will require a more
+robust version of independence so we are confident
+the two groups are also independent.
+Secondly, we also check for normality in each
+group separately, which in practice is a check
+for outliers.
 
 \index{point estimate!difference of means|)}
 
@@ -1422,26 +1428,37 @@ using a $t$-distribution, we'll need to check new conditions.
   with the standardized difference of two means if
   \begin{itemize}
   \setlength{\itemsep}{0mm}
-  \item
-      the two samples are independent of each other, and
-  \item
-      each sample mean separately follows a normal model.
-  \end{itemize}
-\end{onebox}
-
-We can simplify the checking of the two conditions
-by reorganizing them as a broader check for independence
-and a check for outliers in each group:
-\begin{description}
-\item[Independence, extended.]
+  \item \emph{Independence, extended.}
     The data are independent within and between
-    the two groups, e.g. the data come from two
+    the two groups, e.g. the data come from
     independent random samples or from a
     randomized experiment.
-\item[Normality.]
+  \item \emph{Normality.}
     We check the outliers rules of thumb for
     each group separately.
-\end{description}
+  \end{itemize}
+  The standard error may be computed as
+  \begin{align*}
+  SE%_{\bar{x}_{1} - \bar{x}_{2}}
+    = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
+    %\approx \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+  \index{standard error (SE)!difference in means}
+  \end{align*}
+  The official formula for the degrees of freedom is quite
+  complex %\footnotemark{}
+  and is generally computed using software,
+  so instead you may use the smaller of
+  $n_1 - 1$ and $n_2 - 1$ for the degrees of freedom
+  if software isn't readily available.
+\end{onebox}
+%\footnotetext{$df = 
+%    \left.
+%    \left[\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right]^2
+%    \middle/
+%    \left[\frac{(s_1^2 / n_1)^2}{n_1 - 1} +
+%        \frac{(s_2^2 / n_2)^2}{n_2 - 1}\right]
+%    \right.$}
+
 
 \D{\newpage}
 
@@ -1467,7 +1484,7 @@ and a check for outliers in each group:
 
 \begin{figure}[h]
   \centering
-  \Figure{0.55}{stemCellTherapyForHearts}
+  \Figure{0.63}{stemCellTherapyForHearts}
   \caption{Histograms for both the embryonic stem cell
       and control group.}
   \label{stemCellTherapyForHearts}
@@ -1477,35 +1494,33 @@ and a check for outliers in each group:
 %If the sample means, $\bar{x}_1$ and $\bar{x}_2$, each meet the criteria for using the $t$-distribution and the observations in the two samples are independent, then we can analyze the difference in sample means using the $t$-distribution.
 %\end{onebox}
 
-In addition to new conditions, we also will need an updated
-formula for the standard error for the difference of two means.
-
-\begin{onebox}{Distribution of a difference of sample means}
-  The sample difference of two means, $\bar{x}_1 - \bar{x}_2$,
-  can be modeled using the $t$-distribution and the standard error
-  \begin{align*}
-  SE%_{\bar{x}_{1} - \bar{x}_{2}}
-    = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
-    %\approx \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
-  \end{align*}
-  when each sample mean can itself be modeled using
-  a $t$-distribution and the samples are independent.
-  The official formula for the degrees of freedom is quite
-  complex %\footnotemark{}
-  and is generally computed using software,
-  so instead you may use the smaller of
-  $n_1 - 1$ and $n_2 - 1$ for the degrees of freedom
-  if software isn't readily available.
-\end{onebox}
-%\footnotetext{$df = 
-%    \left.
-%    \left[\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right]^2
-%    \middle/
-%    \left[\frac{(s_1^2 / n_1)^2}{n_1 - 1} +
-%        \frac{(s_2^2 / n_2)^2}{n_2 - 1}\right]
-%    \right.$}
-
-\index{standard error (SE)!difference in means}
+%In addition to new conditions, we also will need an updated
+%formula for the standard error for the difference of two means.
+%
+%\begin{onebox}{Distribution of a difference of sample means}
+%  The sample difference of two means, $\bar{x}_1 - \bar{x}_2$,
+%  can be modeled using the $t$-distribution and the standard error
+%  \begin{align*}
+%  SE%_{\bar{x}_{1} - \bar{x}_{2}}
+%    = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
+%    %\approx \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+%  \end{align*}
+%  when each sample mean can itself be modeled using
+%  a $t$-distribution and the samples are independent.
+%  The official formula for the degrees of freedom is quite
+%  complex %\footnotemark{}
+%  and is generally computed using software,
+%  so instead you may use the smaller of
+%  $n_1 - 1$ and $n_2 - 1$ for the degrees of freedom
+%  if software isn't readily available.
+%\end{onebox}
+%%\footnotetext{$df = 
+%%    \left.
+%%    \left[\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right]^2
+%%    \middle/
+%%    \left[\frac{(s_1^2 / n_1)^2}{n_1 - 1} +
+%%        \frac{(s_2^2 / n_2)^2}{n_2 - 1}\right]
+%%    \right.$}
 
 %We can quantify the variability in the point estimate,
 %$\bar{x}_{esc} - \bar{x}_{\text{control}}$,

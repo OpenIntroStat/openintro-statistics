@@ -582,26 +582,36 @@ Like with $\hat{p}$, the difference of two sample
 proportions $\hat{p}_1 - \hat{p}_2$ can be modeled
 using a normal distribution when certain conditions
 are met.
-First, the samples must be independent of each other,
-and secondly, the sampling distribution for each sample
-proportion must be nearly normal.
+First, we require a broader independence condition,
+and secondly,
+the success-failure condition must be met by both groups.
 
 \begin{onebox}{Conditions for the
-    sampling distribution of $\hat{p}_1 - \hat{p}_2$
+    sampling distribution of
+    $\pmb{\hat{\MakeLowercase{p}}_1 -
+        \hat{\MakeLowercase{p}}_2}$
     to be normal}
   The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
   using a normal distribution when
   \begin{itemize}
   \setlength{\itemsep}{0mm}
-  \item the two samples are independent of each other, and
-  \item each proportion separately follows a normal model.
+  \item \emph{Independence, extended.}
+    The data are independent within and between
+    the two groups.
+    Generally this is satisfied if the data come
+    from two independent random samples
+    or if the data come from a randomized experiment.
+  \item \emph{Success-failure condition.}
+    The success-failure condition holds for both
+    groups, where we check successes and failures
+    in each group separately.
   \end{itemize}
   When these conditions are satisfied,
   the standard error of $\hat{p}_1 - \hat{p}_2$ is
   \index{standard error (SE)!difference in proportions}
   \begin{eqnarray*}
-  SE_{\hat{p}_1 - \hat{p}_2}
-    = \sqrt{SE_{\hat{p}_1}^2 + SE_{\hat{p}_2}^2}
+  SE %_{\hat{p}_1 - \hat{p}_2}
+    %= \sqrt{SE_{\hat{p}_1}^2 + SE_{\hat{p}_2}^2}
     = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
   \label{seForDiffOfProp}
   \end{eqnarray*}
@@ -610,22 +620,22 @@ proportion must be nearly normal.
 \end{onebox}
 
 %\noindent%
-Ultimately, we can check the two conditions by
-thinking of it as a broader independence check
-along with a check on the success-failure condition
-for each group:
-\begin{description}
-\item[Independence, extended.]
-    The data are independent within and between
-    the two groups.
-    Generally this is satisfied if the data come
-    from two independent random samples
-    or if the data come from a randomized experiment.
-\item[Success-failure condition.]
-    The success-failure condition holds for both
-    groups, where we check successes and failures
-    in each group separately.
-\end{description}
+%Ultimately, we can check the two conditions by
+%thinking of it as a broader independence check
+%along with a check on the success-failure condition
+%for each group:
+%\begin{description}
+%\item[Independence, extended.]
+%    The data are independent within and between
+%    the two groups.
+%    Generally this is satisfied if the data come
+%    from two independent random samples
+%    or if the data come from a randomized experiment.
+%\item[Success-failure condition.]
+%    The success-failure condition holds for both
+%    groups, where we check successes and failures
+%    in each group separately.
+%\end{description}
 
 %For the difference in two means, the standard error formula took the following form:
 %\begin{eqnarray*}
@@ -634,7 +644,7 @@ for each group:
 %The standard error for the difference in two proportions takes a similar form. The reasons behind this similarity are rooted in the probability theory of Section~\ref{randomVariablesSection}, which is described for this context in Guided Practice~\vref{derivingSEForDiffOfTwoMeansExercise}.
 
 
-\D{\newpage}
+%\D{\newpage}
 \subsection[Confidence intervals for $p_1 - p_2$]
     {Confidence intervals for $\mathbf{p_1 - p_2}$}
 
@@ -649,8 +659,7 @@ for each group:
 We can apply the generic confidence interval formula
 for a difference of two proportions,
 where we use $\hat{p}_1 - \hat{p}_2$ as the point
-estimate and apply the $SE$ formula from
-page~\pageref{seForDiffOfProp}:
+estimate and substitute the $SE$ formula:
 \begin{align*}
 &\text{point estimate} \ \pm\  z^{\star} \times SE
 &&\to
@@ -1036,7 +1045,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 	= -0.17
 \end{align*}
 \begin{center}
-\Figures{0.5}{mammograms}{mammogramPValue}
+\Figures{0.45}{mammograms}{mammogramPValue}
 \end{center}
 The lower tail area is 0.4325, which we double to get the p-value:~0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.
 \end{nexample}
@@ -1231,7 +1240,7 @@ Set up appropriate hypotheses for the test.\footnotemark
 
 \begin{figure}[h]
   \centering
-  \Figure{0.5}{bladesTwoSampleHTPValueQC}
+  \Figure{0.45}{bladesTwoSampleHTPValueQC}
   \caption{Distribution of the test statistic if the null
       hypothesis was true.
       The p-value is represented by the shaded areas.}
@@ -1493,8 +1502,8 @@ For folks wanting to use the table option,
 we provide an outline of how to read the chi-square table in
 Appendix~\ref{chiSquareProbabilityTable},
 which is also where you may find the table.
-\Comment{If giving some \R{} in the text, then put \R{} code
-  in the examples / exercises below.}
+%\Comment{If giving some \R{} in the text, then put \R{} code
+%  in the examples / exercises below.}
 For the examples below, use your preferred approach
 to confirm you get the same answers.
 
