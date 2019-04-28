@@ -3,7 +3,7 @@ data(COL)
 data(births)
 d <- births
 
-myPDF('distOfDiffOfSampleMeansForBWOfBabySmokeData.pdf', 4, 1.6,
+myPDF('distOfDiffOfSampleMeansForBWOfBabySmokeData.pdf', 3.5, 1.2,
       mar=c(1.6, 0, 0, 0),
       mgp=c(3, 0.5, 0))
 normTail(0, 1,

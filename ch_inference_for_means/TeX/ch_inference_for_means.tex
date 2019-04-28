@@ -1041,7 +1041,7 @@ distribution, and double it.
 \CalculatorVideos{confidence intervals and hypothesis tests for a single mean}
 
 
-\input{ch_inference_for_means/TeX/one-sample_means_with_the_t-distribution.tex}
+{\input{ch_inference_for_means/TeX/one-sample_means_with_the_t-distribution.tex}}
 
 
 
@@ -1094,7 +1094,8 @@ where prices are in US dollars.
   \uclabookN{} & Jewish Studies & M10 & 35.96 & 32.40 & 3.56 \\
   \hline
 \end{tabular}
-\caption{Five cases of the \data{textbooks} data set.}
+\caption{Five cases of the \data{textbooks} data set.%
+    \vspace{-3mm}}
 \label{textbooksDF}
 \end{figure}
 % library(openintro); library(xtable); library(dplyr); d <- select(ucla_textbooks_f18, subject, course_num, bookstore_new, amazon_new); d$price_diff <- d$bookstore_new - d$amazon_new; d <- subset(d, !is.na(bookstore_new) & !is.na(amazon_new)); rownames(d) <- NULL; xtable(d[c(1:3, nrow(d) - 1:0),])
@@ -1134,11 +1135,9 @@ is a common and useful way to analyze paired data.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.53}{textbooksF18}{diffInTextbookPricesF18}
+  \Figures{0.45}{textbooksF18}{diffInTextbookPricesF18}
   \caption{Histogram of the difference in price for
-      each book sampled.
-      These data are very strongly skewed.
-      \index{skew!example: very strong}}
+      each book sampled.}
   \label{diffInTextbookPricesF18}
 \end{figure}
 
@@ -1325,7 +1324,7 @@ on Amazon?\footnotemark{}
 \index{data!textbooks|)}
 \index{paired data|)}
 
-\input{ch_inference_for_means/TeX/paired_data.tex}
+{\input{ch_inference_for_means/TeX/paired_data.tex}}
 
 
 
@@ -1384,10 +1383,10 @@ capacity relative to the control group.
 \centering
 \begin{tabular}{l rrrrr}
 \hline
-\hspace{10mm}	& $n$	& $\bar{x}$	& $s$  	 \\
+\hspace{10mm}	& $n$	& $\bar{x}$	& $s$  \\
 \hline
-ESCs		& 9		& 3.50		& 5.17  	\\
-control		& 9		& -4.33		& 2.76  	 \\
+ESCs     & 9  & 3.50   & 5.17  \\
+control  & 9  & -4.33  & 2.76  \\
 \hline
 \end{tabular}
 \caption{Summary statistics of the embryonic stem cell study.}
@@ -1421,38 +1420,46 @@ using a $t$-distribution, we'll need to check new conditions.
   \label{ConditionsForTwoSampleTDist}%
   The $t$-distribution can be used for inference when working
   with the standardized difference of two means if
-  \begin{enumerate}
+  \begin{itemize}
   \setlength{\itemsep}{0mm}
   \item
-      each sample meets the conditions for using the
-      $t$-distribution and
+      the two samples are independent of each other, and
   \item
-      the samples are independent.
-  \end{enumerate}
+      each sample mean separately follows a normal model.
+  \end{itemize}
 \end{onebox}
+
+We can simplify the checking of the two conditions
+by reorganizing them as a broader check for independence
+and a check for outliers in each group:
+\begin{description}
+\item[Independence, extended.]
+    The data are independent within and between
+    the two groups, e.g. the data come from two
+    independent random samples or from a
+    randomized experiment.
+\item[Normality.]
+    We check the outliers rules of thumb for
+    each group separately.
+\end{description}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Can the $t$-distribution be used to make
     inference using the point estimate,
     $\bar{x}_{esc} - \bar{x}_{control} = 7.83$?}
-  We check the two required conditions:
-  \begin{enumerate}
-  \setlength{\itemsep}{0mm}
-  \item
-      The fact that the sheep were randomized into
-      the two groups will satisfy the independence
-      consideration.
-      Additionally, no observations in either group
-      in Figure~\ref{stemCellTherapyForHearts}
-      appears to be a clear outlier
-      (even if the ESC group has more variability).
-      Therefore, each sample mean could itself
-      be modeled using a $t$-distribution.
-  \item
-      Here again, the random assignment of the
-      sheep to the groups also ensures the groups
-      are independent.
-  \end{enumerate}
+  First, we check for independence.
+  Because the sheep were randomized into
+  the groups, independence within
+  and between groups is satisfied.
+
+  Figure~\ref{stemCellTherapyForHearts}
+  does not reveal any clear outliers
+  in either group.
+  (The ESC group does look a bit more variability,
+  but this is not the same as having clear outliers.)
+
   With both conditions met, we can use the
   $t$-distribution to model the difference of sample means.
 \end{nexample}
@@ -1460,13 +1467,9 @@ using a $t$-distribution, we'll need to check new conditions.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.65}{stemCellTherapyForHearts}
-  \caption{Histograms for both the embryonic stem cell group
-      and the control group.
-      Higher values are associated with greater improvement.
-      We don't see any evidence of skew in these data;
-      however, it is worth noting that skew would be difficult
-      to detect with such a small sample.}
+  \Figure{0.55}{stemCellTherapyForHearts}
+  \caption{Histograms for both the embryonic stem cell
+      and control group.}
   \label{stemCellTherapyForHearts}
 \end{figure}
 
@@ -1487,11 +1490,20 @@ formula for the standard error for the difference of two means.
   \end{align*}
   when each sample mean can itself be modeled using
   a $t$-distribution and the samples are independent.
-  The official standard formula for the standard error is quite
-  complex and is generally computed using software.
-  However, if necessary, you may use the smaller of
-  $n_1 - 1$ and $n_2 - 1$ instead for the degrees of freedom.
+  The official formula for the degrees of freedom is quite
+  complex %\footnotemark{}
+  and is generally computed using software,
+  so instead you may use the smaller of
+  $n_1 - 1$ and $n_2 - 1$ for the degrees of freedom
+  if software isn't readily available.
 \end{onebox}
+%\footnotetext{$df = 
+%    \left.
+%    \left[\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right]^2
+%    \middle/
+%    \left[\frac{(s_1^2 / n_1)^2}{n_1 - 1} +
+%        \frac{(s_2^2 / n_2)^2}{n_2 - 1}\right]
+%    \right.$}
 
 \index{standard error (SE)!difference in means}
 
@@ -1514,9 +1526,8 @@ SE%_{\bar{x}_{esc} - \bar{x}_{control}}
 	= \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
 \end{align*}
 Generally, we use statistical software to find the appropriate
-degrees of freedom. %;
-%in the ESC example, software yields $df = 12.225$.
-If software isn't available, we can use the smaller
+degrees of freedom, or if software isn't available,
+we can use the smaller
 of $n_1 - 1$ and $n_2 - 1$ for the degrees of freedom,
 e.g. if using a $t$-table to find tail areas.
 For transparency in the Examples and Guided Practice,
@@ -1546,6 +1557,10 @@ in the case of the ESC example, this means we'll use $df = 8$.
   We are 95\% confident that embryonic stem cells improve
   the heart's pumping function in sheep that have suffered
   a heart attack by 3.32\% to 12.34\%.
+  
+%  Had we used software to get a more precise degrees
+%  of freedom ($df = 12.225$), the confidence interval
+%  would have been slightly slimmer.
 \end{nexample}
 \end{examplewrap}
 
@@ -1554,28 +1569,35 @@ in the case of the ESC example, this means we'll use $df = 8$.
 \noindent%
 As with past statistical inference applications,
 there is a well-trodden procedure.
-\begin{enumerate}
+\begin{description}
 \setlength{\itemsep}{0mm}
-\item Prepare: retrieve critical contextual information,
+\item[Prepare.]
+    Retrieve critical contextual information,
     and if appropriate, set up hypotheses.
-\item Check: ensure the required conditions are reasonably
+\item[Check.]
+    Ensure the required conditions are reasonably
     satisfied.
-\item Calculate: find the standard error, and then construct
-    a confidence interval or find a test statistic and p-value.
-\item Conclude: interpret the result in the context of the
+\item[Calculate.]
+    Find the standard error, and then construct
+    a confidence interval, or if conducting
+    a hypothesis test, find a test statistic
+    and p-value.
+\item[Conclude.]
+    Interpret the results in the context of the
     application.
-\end{enumerate}
+\end{description}
 The details change a little from one setting to the next,
 but this general approach remain the same.
 
 
-\D{\newpage}
+%\D{\newpage}
 
 \subsection{Hypothesis tests based on a difference in means}
 
 \index{data!baby\_smoke|(}
 
-A data set called \data{ncbirths} represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Figure~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases, represented in Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
+A data set called \data{ncbirths} represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Figure~\ref{babySmokeDF}. We are particularly interested in two variables: \var{weight} and \var{smoke}. The \var{weight} variable represents the weights of the newborns and the \var{smoke} variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases.
+%Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}.
 
 \begin{figure}[h]
 \centering
@@ -1592,19 +1614,6 @@ A data set called \data{ncbirths} represents a random sample of 150 cases of mot
 \end{tabular}
 \caption{Four cases from the \data{ncbirths} data set. The value ``NA'', shown for the first two entries of the first variable, indicates that piece of data is missing.}
 \label{babySmokeDF}
-\end{figure}
-
-\begin{figure}[hhh]
-  \centering
-  \Figure{0.55}{babySmokePlotOfTwoGroupsToExamineSkew}
-  \caption{The top panel represents birth weights for infants
-      whose mothers smoked.
-      The bottom panel represents the birth weights for
-      infants whose mothers who did not smoke.
-      The distributions exhibit moderate-to-strong and
-      strong~skew, respectively.%
-      \index{skew!example: strong}}
-  \label{babySmokePlotOfTwoGroupsToExamineSkew}
 \end{figure}
 
 \begin{examplewrap}
@@ -1632,17 +1641,63 @@ A data set called \data{ncbirths} represents a random sample of 150 cases of mot
 
 We check the two conditions necessary to model the difference
 in sample means using the $t$-distribution.
-(1)~Because the data come from a simple random sample,
-the observations are independent.
-Additionally, with both data sets over 30 observations
-and no particularly extreme outliers evident,
-normality of each sample mean is satisfied.
-(2)~The independence reasoning applied in~(1) also ensures
-the observations in each sample are independent.
+\begin{itemize}
+\item
+    Because the data come from a simple random sample,
+    the observations are independent,
+    both within and between samples.
+\item
+    With both data sets over 30 observations,
+    we inspect the data in
+    Figure~\ref{babySmokePlotOfTwoGroupsToExamineSkew}
+    for any particularly extreme outliers
+    and find none.
+\end{itemize}
 Since both conditions are satisfied, the difference
 in sample means may be modeled using a $t$-distribution.
 
+\begin{figure}[hhh]
+  \centering
+  \Figure{}{babySmokePlotOfTwoGroupsToExamineSkew}
+  \caption{The top panel represents birth weights for infants
+      whose mothers smoked.
+      The bottom panel represents the birth weights for
+      infants whose mothers who did not smoke.}
+  \label{babySmokePlotOfTwoGroupsToExamineSkew}
+\end{figure}
+
 %Summary statistics are shown for each sample in Figure~\ref{SumStatsBirthWeightNewbornsSmoke}.
+
+%\D{\newpage}
+
+\begin{exercisewrap}
+\begin{nexercise}
+\label{babySmokeCalcForWeight}
+The summary statistics in
+Figure~\ref{SumStatsBirthWeightNewbornsSmoke} may be useful
+for this Guided Practice.\footnotemark{}
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
+\item
+    What is the point estimate of the population difference,
+    $\mu_{n} - \mu_{s}$?
+\item
+    Compute the standard error of the point estimate from
+    part~(a).
+\end{enumerate}
+\end{nexercise}
+\end{exercisewrap}
+\footnotetext{(a)~The difference in sample means is an
+  appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$.
+  (b)~The standard error of the estimate can be
+  calculated using the standard error formula:
+  \begin{align*}
+  SE
+    = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
+      \approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
+    = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
+    = 0.26
+  \end{align*}}
 
 \begin{figure}[hhh]
 \centering
@@ -1659,75 +1714,46 @@ samp. size & 50 & 100 \\
 \label{SumStatsBirthWeightNewbornsSmoke}
 \end{figure}
 
-\begin{exercisewrap}
-\begin{nexercise}
-The summary statistics in
-Figure~\ref{SumStatsBirthWeightNewbornsSmoke} may be useful
-for this exercise.
-\begin{enumerate}[(a)]
-\setlength{\itemsep}{0mm}
-\item
-    What is the point estimate of the population difference,
-    $\mu_{n} - \mu_{s}$?
-\item
-    Compute the standard error of the point estimate from
-    part~(a).\footnotemark{}
-\end{enumerate}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{(a)~The difference in sample means is an
-  appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$.
-  (b)~The standard error of the estimate can be estimated using
-  the standard error formula:
-  \begin{align*}
-  SE
-    = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
-      \approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
-    = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
-    = 0.26
-  \end{align*}}
-
 \begin{examplewrap}
-\begin{nexample}{Draw a picture to represent the p-value for
-    the hypothesis test from Example~\ref{babySmokeHTForWeight}.}
-  \label{pValueForEstOfDiffMeanBirthWeight}%
-  To depict the p-value, we draw the distribution of the point
-  estimate as though $H_0$ were true and shade areas representing
-  at least as much evidence against $H_0$ as what was observed.
-  Both tails are shaded because it is a two-sided test.
-  \begin{center}
-    \Figure{0.6}{distOfDiffOfSampleMeansForBWOfBabySmokeData}
-  \end{center}
-\end{nexample}
-\end{examplewrap}
-
-\begin{examplewrap}
-\begin{nexample}{Compute the p-value of the hypothesis
-    test using the figure in
-    Example~\ref{pValueForEstOfDiffMeanBirthWeight},
-    and evaluate the hypotheses using a significance
-    level of $\alpha=0.05$.}
+\begin{nexample}{Complete the
+    hypothesis test started in
+    Example~\ref{babySmokeHTForWeight}
+    and Guided Practice~\ref{babySmokeCalcForWeight}.
+    Use a significance level of $\alpha=0.05$.
+    For reference, $\bar{x}_{n} - \bar{x}_{s} = 0.40$,
+    $SE = 0.26$, and the sample sizes were $n_n = 100$
+    and $n_s = 50$.}
   \label{babySmokeHTForWeightComputePValueAndEvalHT}%
-  We start by computing the T-score:
+  We can find the test statistic for this test
+  using the values from
+  Guided Practice~\ref{babySmokeCalcForWeight}:
   \begin{align*}
   T = \frac{\ 0.40 - 0\ }{0.26} = 1.54
   \end{align*}
-  Next, we find the single tail area using software
-  (or the table in Appendix~\vref{tDistributionTable}).
+  The p-value is represented by the two shaded tails
+  in the following plot:
+  \begin{center}
+    \Figure{0.5}{distOfDiffOfSampleMeansForBWOfBabySmokeData}
+  \end{center}
+  We find the single tail area using software
+  (or the $t$-table in Appendix~\ref{tDistributionTable}).
   We'll use the
   smaller of $n_n - 1 = 99$ and $n_s - 1 = 49$ as the
   degrees of freedom: $df = 49$.
   The one tail area is 0.065;
   doubling this value gives the two-tail area and p-value,
   0.135.
-  This p-value is larger than the significance value, 0.05,
-  so we fail to reject the null hypothesis.
+
+  The p-value is larger than the significance value, 0.05,
+  so we do not reject the null hypothesis.
   There is insufficient evidence to say there is a difference
   in average birth weight of newborns from North Carolina mothers
   who did smoke during pregnancy and newborns from North Carolina
   mothers who did not smoke during pregnancy.
 \end{nexample}
 \end{examplewrap}
+
+%\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1738,12 +1764,9 @@ Example~\ref{babySmokeHTForWeightComputePValueAndEvalHT}?
 \footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{It is possible that there is some difference
+\footnotetext{It is possible that there is a difference
   but we did not detect it.
-  If there is a difference, we made a Type~2 Error.
-  Notice: we also don't have enough information to,
-  if there is an actual difference, confidently say
-  which direction that difference would be in.}
+  If there is a difference, we made a Type~2 Error.}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1814,13 +1837,15 @@ B		& 27		& 74.1		& 20		& 32		& 100 \\
 \begin{exercisewrap}
 \begin{nexercise}
 \label{htSetupForEvaluatingTwoExamVersions}%
-Construct a hypotheses to evaluate whether the observed
+Construct hypotheses to evaluate whether the observed
 difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$,
 is due to chance. We will later evaluate these hypotheses
 using $\alpha = 0.01$.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
+\footnotetext{$H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.}
+
+%\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{conditionsForTDistForEvaluatingTwoExamVersions}%
@@ -1828,24 +1853,18 @@ To evaluate the hypotheses in Guided Practice~\ref{htSetupForEvaluatingTwoExamVe
 \begin{enumerate}[(a)]
 \setlength{\itemsep}{0mm}
 \item
-    Does it seem reasonable that the scores are independent
-    within each group?
+    Does it seem reasonable that the scores are independent?
 \item
-    What about the normality condition for each group?
-\item
-    Do you think scores from the two groups would be independent
-    of each other, i.e. the two samples are
-    independent?
+    Any concerns about outliers?
 \end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a)~It is probably reasonable to conclude the
-  scores are independent, provided there was no cheating.
+\footnotetext{(a)~Since the exams were shuffled,
+  the ``treatment'' in this case was randomly assigned,
+  so independence within and between groups is satisfied.
   (b)~The summary statistics suggest the data are roughly
-  symmetric about the mean, and the min/max values don't suggest
-  outliers of concern.
-  (c)~It seems reasonable to suppose that the samples are
-  independent since the exams were handed out randomly.}
+  symmetric about the mean, and the min/max values don't
+  suggest any outliers of concern.}
 
 After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$-distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated~as
 \begin{align*}
@@ -1868,23 +1887,25 @@ Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$.
 \begin{figure}[h]
   \centering
   \Figure{0.63}{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
-  \caption{The $t$-distribution with 26 degrees of freedom.
-      The shaded right tail represents values with $T \geq 1.15$.
-      Because it is a two-sided test, we also shade the
-      corresponding lower tail.}
+  \caption{The $t$-distribution with 26 degrees of freedom
+      and the p-value from exam example represented
+      as the shaded areas.}
   \label{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
 \end{figure}
 
 \begin{examplewrap}
-\begin{nexample}{Identify the p-value using $df = 26$
-    and provide a conclusion in the context of the case study.}
+\begin{nexample}{Identify the p-value depicted in
+    Figure~\ref{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+    using $df = 26$, and provide a conclusion in the
+    context of the case study.}
   Using software, we can find the one-tail area (0.13)
   and then double this value to get the two-tail area,
   which is the p-value: 0.26.
   (Alternatively, we could use the $t$-table in
   Appendix~\ref{tDistributionTable}.)
-  We examine row $df=26$ in the $t$-table.
-  In Guided Practice~\ref{htSetupForEvaluatingTwoExamVersions},
+
+  In Guided
+  Practice~\ref{htSetupForEvaluatingTwoExamVersions},
   we specified that we would use $\alpha = 0.01$.
   Since the p-value is larger than $\alpha$,
   we do not reject the null hypothesis.
@@ -1958,6 +1979,8 @@ Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$.
 %\footnotetext{The standard error squared represents the variance of the estimate. If $X$ and $Y$ are two random variables with variances $\sigma_x^2$ and $\sigma_y^2$, then the variance of $X-Y$ is $\sigma_x^2 + \sigma_y^2$. Likewise, the variance corresponding to $\bar{x}_1 - \bar{x}_2$ is $\sigma_{\bar{x}_1}^2 + \sigma_{\bar{x}_2}^2$. Because $\sigma_{\bar{x}_1}^2$ and $\sigma_{\bar{x}_2}^2$ are just another way of writing $SE_{\bar{x}_1}^2$ and  $SE_{\bar{x}_2}^2$, the variance associated with $\bar{x}_1 - \bar{x}_2$ may be written as $SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2$.}
 
 
+%\D{\newpage}
+
 \subsection{Pooled standard deviation estimate (special topic)}
 \label{pooledStandardDeviations}
 
@@ -2006,7 +2029,7 @@ if the standard deviations of the two groups are indeed equal.
 \end{onebox}
 
 
-\input{ch_inference_for_means/TeX/difference_of_two_means.tex}
+{\input{ch_inference_for_means/TeX/difference_of_two_means.tex}}
 
 
 
@@ -2528,7 +2551,7 @@ of the feature's effect, such as helping guide the
 development of the next useful feature.
 
 
-\input{ch_inference_for_means/TeX/power_calculations_for_a_difference_of_means.tex}
+{\input{ch_inference_for_means/TeX/power_calculations_for_a_difference_of_means.tex}}
 
 
 
@@ -3352,4 +3375,4 @@ stand back and consider all the groups simultaneously.
 \index{analysis of variance (ANOVA)|)}
 
 
-\input{ch_inference_for_means/TeX/comparing_many_means_with_anova.tex}
+{\input{ch_inference_for_means/TeX/comparing_many_means_with_anova.tex}}

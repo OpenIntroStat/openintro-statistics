@@ -5,7 +5,7 @@ data(COL)
 d <- as.numeric(na.omit(ucla_textbooks_f18$bookstore_new -
     ucla_textbooks_f18$amazon_new))
 
-myPDF('diffInTextbookPricesF18.pdf', 5, 2.4,
+myPDF('diffInTextbookPricesF18.pdf', 4.2, 2,
       mar = c(3, 3.5, 0.5, 0.5),
       mgp = c(1.8, 0.5, 0))
 histPlot(d, axes = FALSE, # breaks = 20,
