@@ -84,51 +84,44 @@ Do not know	& 104		& 131			\\
 
 % 4
 
-\eoce{\qtq{TITLE\label{ID}}
-\textbf{\color{red}REPLACE THIS EXERCISE}
-The American 
-National Election Studies (ANES) collects data on voter attitudes and intentions 
-as well as demographic information. In this question we will focus on two 
-variables from the ANES dataset:\footfullcite{data:anes:2012} 
-\begin{itemize}
-\item region (levels: Northeast, North Central, South, and West), and
-\item whether the respondent feels things in this country are generally going 
-in the right direction or things have pretty seriously gotten off on the wrong track.
-\end{itemize}
-To keep calculations simple we will work with a random sample of 500 
-respondents from the ANES dataset. The distribution of responses are as follows:
+\eoce{\qt{Parasitic worm\label{parasitic_worm_chisq}}
+Lymphatic filariasis is a disease caused by a parasitic worm.
+Complications of the disease can lead to extreme swelling
+and other complications.
+Here we consider results from a randomized experiment
+that compared three
+different drug treatment options to clear people of the
+this parasite, which people are working to eliminate entirely.
+The results for the second year of the study are
+given below:\footfullcite{King_Suamani_2018}
 \begin{center}
-\begin{tabular}{rrr|r}
+\begin{tabular}{l cc}
   \hline
-                & Right     & Wrong     &  \\ 
-                & Direction &  Track    & Total \\ 
+  & Clear at Year 2 & Not Clear at Year 2 \\ 
   \hline
-Northeast       & 29        & 54        & 83 \\ 
-North Central   & 44        & 77        & 121 \\ 
-South           & 62        & 131       & 193 \\ 
-West            & 36        & 67        & 103 \\ 
-  \hline
-Total           & 171       & 329       & 500 \\ 
+  Three drugs & 52 & 2 \\ 
+  Two drugs & 31 & 24 \\ 
+  Two drugs annually & 42 & 14 \\ 
   \hline
 \end{tabular}
 \end{center}
 \begin{parts}
-\item Region: According to the 2010 Census, 18\% of US residents live in 
-the Northeast, 22\% live in the North Central region, 37\% live in the South, 
-and 23\% live in the West. Evaluate whether the ANES sample is representative 
-of the population distribution of US residents. Make sure to clearly state 
-the hypotheses, check conditions, calculate the appropriate test statistic 
-and the p-value, and make your conclusion in context of the data. Also comment 
-on what your conclusion says about whether or not this sample can be 
-considered to be representative.
-\item Region and direction:
-\begin{enumerate}[(i)]
-\item We would like to evaluate the relationship between region and feeling 
-about the country's direction. What is the response variable and what is the 
-explanatory variable?
-\item What are the hypotheses for evaluating this relationship?
-\item Complete the hypothesis test and interpret your results in context of 
-the data and the research question.
-\end{enumerate}
+\item\label{parasitic_worm_chisq_hyp}
+    Set up hypotheses for evaluating
+    whether there is any difference in the
+    performance of the treatments,
+    and also check conditions.
+\item
+    Statistical software was used to run
+    a chi-square test, which output:
+    \begin{align*}
+    &X^2 = 23.7
+    &&df = 2
+    &&\text{p-value} = \text{7.2e-6}
+    \end{align*}
+    Use these results to evaluate the hypotheses
+    from part~(\ref{parasitic_worm_chisq_hyp}),
+    and provide a conclusion
+    in the context of the problem.
 \end{parts}
 }{}
