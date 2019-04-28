@@ -590,7 +590,7 @@ this normal distribution example will hopefully feel familiar!
 We would like to understand the fraction of $\hat{p}$'s
 between 0.86 and 0.90:
 \begin{center}
-\includegraphics[width=60mm]{ch_foundations_for_inf/figures/p-hat_from_867_and_907/p-hat_from_867_and_907}
+\Figure{0.3}{p-hat_from_867_and_907}
 \end{center}
 With $\mu_{\hat{p}} = \pewsolarpollprop{}$ and
 $SE_{\hat{p}} = \pewsolarpollse{}$,
@@ -865,9 +865,8 @@ difference in product prices for two websites,
 we might take a random sample of products available
 on both sites, check the prices on each,
 and use then compute the average difference;
-this strategy certainly wouldn't give us a perfect
-measurement of the actual difference, but it would
-give us a point estimate.
+this strategy certainly would give us some idea
+of the actual difference through a point estimate.
 
 While this chapter emphases a single proportion
 context, we'll encounter many different contexts
@@ -875,6 +874,9 @@ throughout this book where these methods will be
 applied.
 The principles and general ideas are the same,
 even if the details change a little.
+We've also sprinkled some other contexts into
+the exercises to help you start thinking about
+how the ideas generalize.
 
 
 {\input{ch_foundations_for_inf/TeX/variability_in_estimates.tex}}
@@ -939,9 +941,9 @@ large we should make the confidence interval.
 
 The standard error represents the standard deviation
 of the point estimate, and when the Central
-Limit Theorem conditions are satisfied, we also know
-that the point estimate closely follows a normal
-distribution. In a normal distribution, 95\% of
+Limit Theorem conditions are satisfied,
+the point estimate closely follows a normal distribution.
+In a normal distribution, 95\% of
 the data is within 1.96~standard deviations of the mean.
 Using this principle, we can construct a confidence
 interval that extends 1.96~standard errors from the sample
@@ -949,7 +951,7 @@ proportion to be \term{95\% confident}\index{confident|textbf}
 that the interval captures the population proportion:
 \begin{align*}
 \text{point estimate}\ &\pm\ 1.96 \times SE \\
-\hat{p}\ &\pm\ 1.96 \times SE_{\hat{p}}
+\hat{p}\ &\pm\ 1.96 \times \sqrt{\frac{p (1 - p)}{n}}
 %\label{95PercentConfidenceIntervalFormula}
 \end{align*}
 But what does ``95\% confident'' mean? Suppose we took
@@ -1040,6 +1042,8 @@ based on the data, this does not mean they are impossible.
 \end{examplewrap}
 
 
+\D{\newpage}
+
 \subsection{Changing the confidence level}
 \label{changingTheConfidenceLevelSection}
 
@@ -1096,7 +1100,7 @@ for a 99\% confidence interval is
 %\label{99PercCIForProp}
 \end{align*}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figure{1}{choosingZForCI}
   \caption{The area between -$z^{\star}$ and $z^{\star}$ increases as
@@ -1109,6 +1113,8 @@ for a 99\% confidence interval is
 \label{choosingZForCI}
 \index{confidence interval!confidence level|)}
 \end{figure}
+
+\D{\newpage}
 
 This approach -- using the Z-scores in the
 normal model to compute confidence levels --
@@ -1198,6 +1204,8 @@ $N(0, 1)$, corresponds to the confidence level.
 }
 \onepropconfintsummary{}
 
+
+\D{\newpage}
 
 \subsection{More case studies}
 
@@ -1344,14 +1352,14 @@ turbines.\footnotemark{}
 \end{enumerate}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{(a)~We
-  check independence, which is okay since this survey was a simple
-  random sample, and also the success-failure condition
+\footnotetext{(a)~The survey was a random sample
+  and counts are both $\geq 10$
   ($\pewwindpollsize{} \times \pewwindpollprop{}
     = \pewwindpollcount{}$
   and $\pewwindpollsize{} \times \pewwindpollpropcomplement{}
-    = \pewwindpollcountcomplement$ are both at least 10).
-  Since both conditions are satisfied,
+    = \pewwindpollcountcomplement$),
+  so independence and the success-failure condition
+  are satisfied, and
   $\hat{p} = \pewwindpollprop{}$ can be
   modeled using a normal distribution. \\
   (b)~Guided
@@ -1426,8 +1434,8 @@ population parameters.
 \index{bias|(}
 Lastly, keep in mind the methods we discussed only apply
 to sampling error, not to bias.
-If a data set is collected in a way that will tend to result
-in a bias that tends to systematically under-estimate
+If a data set is collected in a way that will tend to
+systematically under-estimate
 (or over-estimate) the population parameter, the techniques
 we have discussed will not address that problem.
 Instead, we rely on careful data collection procedures to
@@ -1438,8 +1446,8 @@ to combat bias.
 
 \begin{exercisewrap}
 \begin{nexercise}
-Consider the 90\% confidence interval from the solar
-energy survey, which was 87.1\% to 90.4\%.
+Consider the 90\% confidence interval for the solar
+energy survey: 87.1\% to 90.4\%.
 If~we ran the survey again, can we say that we're
 90\% confident that the new survey's proportion
 will be between 87.1\% and 90.4\%?\footnotemark{}
@@ -1447,9 +1455,8 @@ will be between 87.1\% and 90.4\%?\footnotemark{}
 \end{exercisewrap}
 \footnotetext{
   No, a confidence interval only provides a range of plausible
-  values for a population parameter.
-  It does not describe what we might observe for future point
-  estimates.}
+  values for a parameter,
+  not future point estimates.}
 
 
 
@@ -1476,21 +1483,19 @@ will be between 87.1\% and 90.4\%?\footnotemark{}
 
 \index{hypothesis testing|(}
 
-\Comment{Update OpenIntro's site to handle all new redirect links,
-    many of which are currently broken in this edition.}
-
 The following question comes from a book written by
 Hans Rosling, Anna Rosling R{\"o}nnlund, and Ola Rosling
 called \emph{\oiRedirect{amazon_factfulness}{Factfulness}}:
-\begin{quote}{\em
-  How many of the world's 1~year old children today
+\begin{quote}
+  {\em How many of the world's 1~year old children today
   have been vaccinated against some disease:
   \begin{enumerate}[a.]
+  \setlength{\itemsep}{0mm}
   \item 20\%
   \item 50\%
   \item 80\%
-  \end{enumerate}
-}\end{quote}
+  \end{enumerate}}
+\end{quote}
 Write down what your answer (or guess),
 and when you're ready, find the answer in the
 footnote.\footnote{The correct answer is (c):
@@ -1499,7 +1504,10 @@ footnote.\footnote{The correct answer is (c):
 
 In this section,
 we'll be exploring how people with a 4-year college
-degree perform on this and other world health questions.
+degree perform on this and other world health questions
+as we learn about hypothesis tests, which are
+a framework used to rigorously evaluate competing
+ideas and claims.
 
 \newcommand{\roslingAsize}{50}
 \newcommand{\roslingAprop}{0.24}
@@ -1676,13 +1684,12 @@ That is, in this case, the null value is $p_0 = 0.333$
     i.e. it could perform better or worse.}
 
 
+\D{\newpage}
+
 \subsection{Testing hypotheses using confidence intervals}
 \label{utilizingOurCI}
 
-\Comment{Build the \data{rosling\_\hspace{0.3mm}responses}
-data set and put it in the R~package.}
-
-We will use the \data{rosling\_\hspace{0.3mm}responses}
+We will use the \data{rosling\us{}responses}
 data set to evaluate
 the hypothesis test evaluating whether college-educated adults
 who get the question about infant vaccination correct is different
@@ -2078,9 +2085,6 @@ later sections.
 
 \index{hypothesis testing!p-value|(}
 
-\Comment{Jon suggested we use a simulation to introduce
-  the p-value. Seems like it could ease some of the concepts.}
-
 The p-value is a way of quantifying the strength of the
 evidence against the null hypothesis and in favor of the
 alternative hypothesis.
@@ -2283,12 +2287,13 @@ to how we use the null value, $p_0$.
 \end{examplewrap}
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/normal_dist_mean_500_se_016/normal_dist_mean_500_se_016}
-\caption{
-  If the null hypothesis were true, this normal distribution
-  describes the distribution of $\hat{p}$.}
-\label{normal_dist_mean_500_se_016}
+  \centering
+  \Figure{0.7}{normal_dist_mean_500_se_016}
+  \caption{
+      If the null hypothesis were true,
+      this normal distribution describes the
+      distribution of $\hat{p}$.}
+  \label{normal_dist_mean_500_se_016}
 \end{figure}
 
 \begin{onebox}{Checking success-failure and computing
@@ -2368,17 +2373,14 @@ to our point estimate.
 \end{examplewrap}
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/normal_dist_mean_500_se_016/normal_dist_mean_500_se_016_with_upper}
-\caption{
-  If $H_0$ were true, then the values above
-  \pewcoalpollpropcomplement{} are just
-  as unlikely as values below \pewcoalpollprop{}.}
-  %, so we double the lower
-  %tail to get the p-value. This represents the probability
-  %of observing something at least as extreme as
-  %$\hat{p} = 0.37$, if the null hypothesis were true.}
-\label{normal_dist_mean_500_se_016_with_upper}
+  \centering
+  \Figures{0.7}{normal_dist_mean_500_se_016}
+      {normal_dist_mean_500_se_016_with_upper}
+  \caption{
+      If $H_0$ were true, then the values above
+      \pewcoalpollpropcomplement{} are just
+      as unlikely as values below \pewcoalpollprop{}.}
+  \label{normal_dist_mean_500_se_016_with_upper}
 \end{figure}
 
 
@@ -2721,6 +2723,8 @@ costs or potential risks, such as possible health impacts
 to volunteers in a medical study.
 
 
+\D{\newpage}
+
 \subsection{One-sided hypothesis tests (special topic)}
 
 So far we've only considered what are called \term{two-sided
@@ -2822,13 +2826,7 @@ direction of a one-sided test, then a two-sided hypothesis
 test should actually be used.
 These considerations can be subtle, so exercise caution.
 We will only apply two-sided tests in the rest of
-this book. \Comment{If planning to add some EOCEs
-that touch on this topic, then will want to tweak the
-text here.}
-
-\Comment{The current plan is to cut this example.
-    @Mine, what do you think about making this
-    example into an odd-numbered EOCE?}
+this book.
 
 \begin{examplewrap}
 \begin{nexample}{

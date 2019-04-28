@@ -2888,6 +2888,8 @@ could have happened just by chance even if there was no
 difference in the respective population means.
 
 
+\D{\newpage}
+
 \subsection{Analysis of variance (ANOVA) and the F test}
 
 The method of analysis of variance in this context focuses
@@ -2999,14 +3001,17 @@ $df_{1} = df_{G}$ and $df_{2} = df_{E}$.
 An $F$ distribution with \mlbDFA{} and \mlbDFB{} degrees
 of freedom, corresponding to the $F$ statistic for the
 baseball hypothesis test, is shown in
-Figure~\ref{fDist2And423}.
+Figure~\ref{fDist2And423Shaded}.
 
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
-  \Figure{0.65}{fDist2And423}
+  %\Figure{0.5}{fDist2And423}
+  \Figures{0.6}{fDist2And423}{fDist2And423Shaded}
   \caption{An $F$ distribution with $df_1=3$ and $df_2=323$.}
-  \label{fDist2And423}
+  \label{fDist2And423Shaded}
 \end{figure}
+
+\D{\newpage}
 
 The larger the observed variability in the sample
 means ($MSG$) relative to the within-group observations ($MSE$),
@@ -3029,23 +3034,24 @@ to compute a p-value.
   represent the p-value.
 \end{onebox}
 
-\begin{exercisewrap}
-\begin{nexercise}
-\label{describePValueAreaForFDistributionInMLBOBPExample}%
-The test statistic for the baseball example is $F = \mlbF{}$.
-Shade the area corresponding to the p-value in
-Figure~\ref{fDist2And423}. \footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{\ \vspace{-4mm}\\%
-  \Figures{0.6}{fDist2And423}{fDist2And423Shaded}}
+%\begin{exercisewrap}
+%\begin{nexercise}
+%\label{describePValueAreaForFDistributionInMLBOBPExample}%
+%The test statistic for the baseball example is $F = \mlbF{}$.
+%Shade the area corresponding to the p-value in
+%Figure~\ref{fDist2And423}. \footnotemark{}
+%\end{nexercise}
+%\end{exercisewrap}
+%\footnotetext{\ \vspace{-4mm}\\%
+%  \Figures{0.5}{fDist2And423}{fDist2And423Shaded}}
 
 \begin{examplewrap}
-\begin{nexample}{The p-value corresponding to the shaded area
-    in the solution of Guided
-    Practice~\ref{describePValueAreaForFDistributionInMLBOBPExample}
+\begin{nexample}{The p-value corresponding to
+    the shaded area in
+    Figure~\ref{fDist2And423Shaded}
     is equal to about \mlbPvalue{}.
-    Does this provide strong evidence against the null hypothesis?}
+    Does this provide strong evidence against the
+    null hypothesis?}
   The p-value is smaller than 0.05, indicating the evidence
   is strong enough to reject the null hypothesis
   at a significance level of 0.05.
@@ -3071,7 +3077,7 @@ shows an ANOVA summary to test whether the mean of on-base
 percentage varies by player positions in the MLB.
 Many of these values should look familiar;
 in particular, the $F$ test statistic and p-value
-can be retrieved from the last columns.
+can be retrieved from the last two columns.
 
 \begin{figure}[ht]
 \centering
@@ -3204,7 +3210,7 @@ Figure~\ref{anovaSummaryTableForOBPAgainstPosition}.
 \end{nexample}
 \end{examplewrap}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{lrrr}
   \hline
@@ -3220,7 +3226,7 @@ $s_i$		& 13.9	& 13.8	& 13.1 \\
 \label{summaryStatisticsForClassTestData}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figures{0.72}{classData}{classDataSBSBoxPlot}
   \caption{Side-by-side box plot for the first midterm
@@ -3231,7 +3237,7 @@ $s_i$		& 13.9	& 13.8	& 13.1 \\
 \begin{exercisewrap}
 \begin{nexercise}
 \label{exerExaminingAnovaSummaryTableForMidtermData}%
-An ANOVA was conducted for the midterm data,
+ANOVA was conducted for the midterm data,
 and summary results are shown in
 Figure~\ref{anovaSummaryTableForMidtermData}.
 What should we conclude?\footnotemark{}
@@ -3243,7 +3249,7 @@ What should we conclude?\footnotemark{}
   that the difference in the average midterm scores are
   not due to chance.}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{lrrrrr}
   \hline
@@ -3336,6 +3342,9 @@ This issue is resolved by using a modified significance level.
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
+\noindent%
 We might summarize the findings of the analysis from
 Example~\ref{multipleComparisonsOfThreeStatClasses}
 using the following notation:

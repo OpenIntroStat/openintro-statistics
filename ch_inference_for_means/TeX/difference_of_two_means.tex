@@ -11,7 +11,7 @@ intersection on Friday the 6$^{\text{th}}$ and Friday the 13$^{\text{th}}$ for
 many such date pairs. Also given are some sample statistics, where the 
 difference is the number of cars on the 6th minus the number of cars on the 13th.\footfullcite{Scanlon:1993}
 \begin{center}
-\includegraphics[width=0.9\textwidth]{ch_inference_for_means/figures/eoce/friday_13th_traffic/friday_13th_traffic_qq.pdf} \\
+\includegraphics[width=\textwidth]{ch_inference_for_means/figures/eoce/friday_13th_traffic/friday_13th_traffic_hist} \\
 $\:$ \\
 {\small
 \begin{tabular}{l c c c}
@@ -63,8 +63,8 @@ in context of the data. \\[2mm]
 \hline
         & 0.99 carats       & 1 carat\\
 \hline  
-Mean    & \$ 44.51          & \$ 56.81           \\
-SD      & \$ 13.32          &\$ 16.13            \\
+Mean    & \$44.51          & \$56.81           \\
+SD      & \$13.32          &\$16.13            \\
 n       &23             & 23 \\
 \hline
 \end{tabular}
@@ -78,18 +78,19 @@ n       &23             & 23 \\
 
 % 3
 
-\eoce{\qt{Friday the 13$^{\text{th}}$, Part II\label{friday_13th_accident}} The 
-Friday the $13^{th}$ study reported in Exercise~\ref{friday_13th_traffic} also 
-provides data on traffic accident related emergency room admissions. The 
-distributions of these counts from Friday the 6$^{\text{th}}$ and Friday the 
-13$^{\text{th}}$ are shown below for six such paired dates along with summary 
-statistics. You may assume that conditions for inference are met.
-
+\eoce{\qt{Friday the 13$^{\text{th}}$, Part II\label{friday_13th_accident}}
+The Friday the $13^{th}$ study reported in
+Exercise~\ref{friday_13th_traffic} also provides data on traffic
+accident related emergency room admissions.
+The distributions of these counts from Friday the 6$^{\text{th}}$ and
+Friday the 13$^{\text{th}}$ are shown below for six such paired dates
+along with summary statistics.
+You may assume that conditions for inference are met.
 \begin{center}
-\includegraphics[width=0.74\textwidth]{ch_inference_for_means/figures/eoce/friday_13th_accident/friday_13th_accident_qq.pdf} \\
+\includegraphics[width=0.74\textwidth]{ch_inference_for_means/figures/eoce/friday_13th_accident/friday_13th_accident_hist} \\
 $\:$ \\
 \begin{minipage}[c]{0.36\textwidth}
-\includegraphics[width=\textwidth]{ch_inference_for_means/figures/eoce/friday_13th_accident/friday_13th_accident_diff_qq.pdf}
+\includegraphics[width=\textwidth]{ch_inference_for_means/figures/eoce/friday_13th_accident/friday_13th_accident_hist_diff}
 \end{minipage}
 \begin{minipage}[c]{0.36\textwidth}
 \ \ \begin{tabular}{l c c c}
@@ -131,8 +132,8 @@ inference are met.
 \hline
         & 0.99 carats       & 1 carat\\
 \hline  
-Mean    & \$ 44.51          & \$ 56.81           \\
-SD      & \$ 13.32          &\$ 16.13            \\
+Mean    & \$44.51          & \$56.81           \\
+SD      & \$13.32          &\$16.13            \\
 n       &23             & 23 \\
 \hline
 \end{tabular}
@@ -141,15 +142,20 @@ n       &23             & 23 \\
 
 % 5
 
-\eoce{\qt{Chicken diet and weight, Part I\label{chick_wts_linseed_horsebean}} Chicken 
-farming is a multi-billion dollar industry, and any methods that increase the 
-growth rate of young chicks can reduce consumer costs while increasing company 
-profits, possibly by millions of dollars. An experiment was conducted to 
-measure and compare the effectiveness of various feed supplements on the growth 
-rate of chickens. Newly hatched chicks were randomly allocated into six groups, 
-and each group was given a different feed supplement. Below are some summary 
-statistics from this data set along with box plots showing the distribution of 
-weights by feed type. \footfullcite{data:chickwts}
+\eoce{\qt{Chicken diet and weight,
+    Part I\label{chick_wts_linseed_horsebean}}
+Chicken farming is a multi-billion dollar industry,
+and any methods that increase the growth rate of young
+chicks can reduce consumer costs while increasing
+company profits, possibly by millions of dollars.
+An experiment was conducted to measure and compare
+the effectiveness of various feed supplements on the
+growth rate of chickens.
+Newly hatched chicks were randomly allocated into six groups, 
+and each group was given a different feed supplement.
+Below are some summary statistics from this data set along
+with box plots showing the distribution of weights by
+feed type.\footfullcite{data:chickwts}
 
 \noindent\begin{minipage}[c]{0.65\textwidth}
 \begin{center}
@@ -265,9 +271,10 @@ n       & 26            & 26 \\
 
 % 9
 
-\eoce{\qt{Prison isolation experiment, Part I\label{prison_isolation_T}} Subjects 
-from Central Prison in Raleigh,  NC, volunteered for an experiment involving an 
-``isolation'' experience. The goal of the experiment was to find a treatment 
+\eoce{\qt{Prison isolation experiment, Part I\label{prison_isolation_T}}
+Subjects from Central Prison in Raleigh, NC, volunteered
+for an experiment involving an ``isolation'' experience.
+The goal of the experiment was to find a treatment 
 that reduces subjects' psychopathic deviant T scores.
 This score measures a person's need for control or their rebellion against 
 control, and it is part of a commonly used mental health test called the 
@@ -275,11 +282,15 @@ Minnesota Multiphasic Personality Inventory (MMPI) test. The experiment had
 three treatment groups: 
 \begin{enumerate}[(1)]
 \setlength{\itemsep}{0mm}
-\item Four hours of sensory restriction plus a 15 minute ``therapeutic"  tape 
-advising that professional help is available.
-\item Four hours of sensory restriction plus a 15 minute ``emotionally neutral'' 
-tape on training hunting dogs.
-\item Four hours of  sensory restriction but no taped message. 
+\item
+    Four hours of sensory restriction plus a 15 minute
+    ``therapeutic" tape advising that professional help
+    is available.
+\item
+    Four hours of sensory restriction plus a 15 minute
+    ``emotionally neutral'' tape on training hunting dogs.
+\item
+    Four hours of  sensory restriction but no taped message.
 \end{enumerate}
 Forty-two subjects were randomly assigned to these treatment groups, and an 
 MMPI test was administered before and after the treatment. Distributions of the 
@@ -289,7 +300,7 @@ the effectiveness of each treatment. Make sure to clearly state your
 hypotheses, check conditions, and interpret results in the context of the data.\footfullcite{data:prison}
 
 \begin{center}
-\includegraphics[width=\textwidth]{ch_inference_for_means/figures/eoce/prison_isolation_T/prison_isolation_qq.pdf} \\
+\includegraphics[width=\textwidth]{ch_inference_for_means/figures/eoce/prison_isolation_T/prison_isolation_hist} \\
 $\:$ \\
 \begin{tabular}{l  r  r  r  r  }
 \hline

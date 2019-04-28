@@ -13,32 +13,26 @@ diff3 = prison$PreTrt3 - prison$PostTrt3
 diff = c(diff1, diff2, diff3)
 tr = c(rep("Tr 1", 14), rep("Tr 2", 14), rep("Tr 3", 14))
 
-# normal probability plots ------------------------------------------
+# hists ------------------------------------------
+H <- function(x, xlab) {
+  tmp <- hist(x,
+      col = COL[1],
+      xlab = xlab,
+      ylab = "",
+      main = "",
+      axes = FALSE)
+  axis(1, at = pretty(tmp$breaks, n = 3))
+  axis(2, at = pretty(c(0, max(tmp$counts)), n = 3))
+  # rug(x)
+  return(tmp)
+}
 
-pdf("prison_isolation_qq.pdf", height = 2.5, width = 9)
-
-par(mar = c(2,6,1.5,1), las = 1, mgp = c(4.5,0.7,0), 
-    mfrow = c(1,3), cex.axis = 1.5, cex.lab = 1.5, cex.main = 1.5)
-
-qqnorm(diff[tr == "Tr 1"], col = COL[1], pch = 19, 
-       main = "Tr 1", axes = FALSE, xlab = "", ylab = "")
-axis(2)
-axis(1, at = c(-1,0,1))
-box()
-qqline(diff[tr == "Tr 1"], col = COL[1])
-
-qqnorm(diff[tr == "Tr 2"], col = COL[1], pch = 19, 
-       main = "Tr 2", axes = FALSE, xlab = "", ylab = "")
-axis(2)
-axis(1, at = c(-1,0,1))
-box()
-qqline(diff[tr == "Tr 2"], col = COL[1])
-
-qqnorm(diff[tr == "Tr 3"], col = COL[1], pch = 19, 
-       main = "Tr 3", axes = FALSE, xlab = "", ylab = "")
-axis(2)
-axis(1, at = c(-1,0,1))
-box()
-qqline(diff[tr == "Tr 3"], col = COL[1])
-
+myPDF("prison_isolation_hist.pdf", 9, 2,
+    mar = c(4, 2.5, 0.5, 2.5),
+    mgp = c(2.9, 0.7, 0),
+    mfrow = c(1,3),
+    cex.lab = 1.25)
+for (i in 1:3) {
+  H(diff[tr == paste("Tr", i)], paste("Treatment", i))
+}
 dev.off()

@@ -7,30 +7,27 @@ data(friday)
 # subset for accidents ----------------------------------------------
 friday_tr <- friday[friday$type == "traffic",]
 
-# qq plots of 6th vs. 13th vs. diff traffic -------------------------
-pdf("friday_13th_traffic_qq.pdf", height = 2.5, width = 9)
+# Hist of 6th vs. 13th vs. diff traffic -------------------------
+H <- function(x, xlab) {
+  tmp <- hist(x,
+      col = COL[1],
+      xlab = xlab,
+      ylab = "",
+      main = "",
+      axes = FALSE)
+  axis(1, at = pretty(tmp$breaks, n = 3))
+  axis(2, at = seq(0, max(tmp$counts)))
+  # rug(x)
+  return(tmp)
+}
 
-par(mar = c(2, 6, 1.5, 1), las = 1, mgp = c(4.5, 0.7, 0), 
-    mfrow = c(1,3), cex.axis = 1.5, cex.lab = 1.5, cex.main = 1.5)
-
-qqnorm(friday_tr$sixth, col = COL[1], 
-       pch = 19, main = "6th", axes = FALSE, xlab = "", ylab = "")
-axis(2)
-axis(1, at = c(-1,0,1))
-box()
-qqline(friday_tr$sixth, col = COL[1,2])
-qqnorm(friday_tr$thirteenth, col = COL[1], 
-       pch = 19, main = "13th", axes = FALSE, xlab = "", ylab = "")
-axis(2)
-axis(1, at = c(-1,0,1))
-box()
-qqline(friday_tr$thirteenth, col = COL[1,2])
-qqnorm(friday_tr$sixth - friday_tr$thirteenth, col = COL[1], 
-       pch = 19, main = "Diff.", axes = FALSE, xlab = "", ylab = "")
-axis(2)
-axis(1, at = c(-1,0,1))
-box()
-qqline((friday_tr$sixth - friday_tr$thirteenth), col = COL[1,2])
-
+myPDF("friday_13th_traffic_hist.pdf", 9, 2,
+    mar = c(4, 2.5, 0.5, 2.5),
+    mgp = c(2.9, 0.7, 0),
+    mfrow = c(1,3),
+    cex.lab = 1.25)
+H(friday_tr$sixth, "Friday the 6th")
+H(friday_tr$thirteenth, "Friday the 13th")
+H(friday_tr$sixth - friday_tr$thirteenth, "Difference")
 dev.off()
 
