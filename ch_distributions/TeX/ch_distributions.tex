@@ -1042,17 +1042,9 @@ be extended even further.
 %\Comment{Maybe the next footnote should instead be an EOCE?}
 Because \resp{0} and \resp{1} are numerical outcomes,
 we can define the {mean} and {standard deviation}
-of a Bernoulli random variable.\footnote{If ${p}$ is the true probability of a success, then the mean of a Bernoulli random variable $X$ is given by
-\begin{align*}
-\mu = E[X] &= P(X = 0) \times 0 + P(X = 1) \times 1 \\
-	&= (1 - p) \times 0 + p\times 1 = 0 + p = p
-\end{align*}
-Similarly, the variance of $X$ can be computed:
-\begin{align*}
-\sigma^2 &= {P(X=0)(0-p)^2 + P(X=1)(1-p)^2} \\
-	&= {(1-p)p^2 + p(1-p)^2} = {p(1-p)}
-\end{align*}
-The standard deviation is $\sigma=\sqrt{p(1-p)}$.}
+of a Bernoulli random variable.
+(See Exercises~\ref{bernoulli_mean_derivation}
+and~\ref{bernoulli_sd_derivation}.)
 
 \begin{onebox}{Bernoulli random variable}
 %  A Bernoulli random variable has exactly two possible
@@ -1071,6 +1063,9 @@ The standard deviation is $\sigma=\sqrt{p(1-p)}$.}
 In general, it is useful to think about a Bernoulli random variable as a random process with only two outcomes: a success or failure. Then we build our mathematical framework using the numerical labels \resp{1} and \resp{0} for successes and failures, respectively.
 
 \index{distribution!Bernoulli|)}
+
+
+\D{\newpage}
 
 \subsection{Geometric distribution}
 

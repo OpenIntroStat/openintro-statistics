@@ -263,3 +263,67 @@ H_0&: \bar{x} \neq 23.44~years~old \\
 H_A&: \bar{x} = 23.44~years~old
 \end{align*}
 }{}
+
+% 11
+
+\eoce{\qt{Experiment resizing\label{tech_exp_resizing}}
+\textbf{\color{red}ADD SOLUTIONS.}
+At a startup company running a new weather app, an engineering
+team generally runs experiments where a random sample of 1\%
+of the app's visitors in the control group and another
+1\% were in the treatment group to test each new feature.
+The team's core goal is to increase a metric
+called \emph{daily visitors},
+which is essentially the number of visitors to the app
+each day.
+They track this metric in each experiment arm and
+as their core experiment metric.
+In their most recent experiment, the team tested
+including a new animation when the app started,
+and the number of daily visitors in this experiment
+stabilized at +1.2\% with a 95\% confidence interval
+of (-0.2\%, +2.6\%).
+This means if this new app start animation was launched,
+the team thinks they might lose as many as 0.2\% of daily
+visitors or gain as many as 2.6\% more daily visitors.
+Suppose you are consulting as the team's data scientist,
+and after discussing with the team,
+you and they agree that they should run
+another experiment that is bigger.
+You also agree that this new experiment
+should be able to detect a gain in the daily visitors
+metric of 1.0\% or more with 80\% power.
+Now they turn to you and ask,
+``How big of an experiment do we need to run
+to ensure we can detect this effect?''
+\begin{parts}
+\item\label{tech_exp_resizing_target_se}
+    How small must the standard error be if
+    the team is to be able to detect an effect
+    of 1.0\% with 80\% power and a significance
+    level of $\alpha = 0.05$?
+    You may safely assume the percent change in
+    daily visitors metric follows a normal distribution.
+\item\label{tech_exp_resizing_original_se}
+    Consider the first experiment, where
+    the point estimate was +1.2\% and the
+    95\% confidence interval was (-0.2\%, +2.6\%).
+    If that point estimate followed a normal
+    distribution, what was the standard error
+    of the estimate?
+\item\label{tech_exp_resizing_ratio}
+    The ratio of the standard error from
+    part~(\ref{tech_exp_resizing_target_se})
+    vs the standard error from
+    part~(\ref{tech_exp_resizing_original_se})
+    should be~2.03.
+    How much bigger of an experiment is needed
+    to shrink a standard error by a factor of~2.03?
+\item
+    Using your answer from
+    part~(\ref{tech_exp_resizing_ratio})
+    and that the original experiment was
+    a 1\% vs 1\% experiment to recommend
+    an experiment size to the team.
+\end{parts}
+}{}
