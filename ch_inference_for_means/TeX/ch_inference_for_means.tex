@@ -37,34 +37,13 @@ a normal distribution when certain conditions are met.
 However, we'll soon learn that a new distribution,
 called the $t$-distribution,
 tends to be more useful when working with the sample mean.
-%This will be our main focus for much of this chapter,
-%but we will soon learn that complications can arise when
-%the sample size is relatively small:
-%\begin{enumerate}
-%\setlength{\itemsep}{0mm}
-%\item We can only be confident that the sampling distribution
-%  of $\bar{x}$ is nearly normal when the sample is large.
-%  In a special case where the distribution of the individual
-%  observations are nearly normal
-%  (or, at the very least, when outliers are rare),
-%  $\bar{x}$ will also tend to closely follow a normal distribution
-%  even when the sample size is small.
-%\item The calculated standard error for the estimate $\bar{x}$
-%  is typically very accurate when using a large sample.
-%\end{enumerate}
-%%So what should we do when the sample size is small?
-%As we'll discuss in Section~\ref{normalityCond},
-%if the population data are nearly normal, then $\bar{x}$
-%will also follow a normal distribution, which addresses
-%the first problem. The accuracy of the standard error is trickier, and for this challenge we'll introduce a new distribution called the $t$-distribution.
-%We'll introduce a new distribution called the $t$-distribution
-%to help us better model the sample mean $\bar{x}$.
-%
-%While we emphasize the use of the $t$-distribution for small samples, this distribution is also generally used for large samples, where it produces similar results to those from the normal distribution.
+We'll first learn about this new distribution,
+then we'll use it to construct confidence intervals
+and conduct hypothesis tests for the mean.
 
 
 \subsection[The distribution of $\bar{x}$]
-    {The sampling distribution of $\mathbf{\bar{x}}$}
+    {The sampling distribution of $\pmb{\bar{x}}$}
 
 The sample mean tends to follow
 a normal distribution centered at the the population mean,~$\mu$,
@@ -76,7 +55,7 @@ and the sample size $n$.
 \begin{onebox}{Central Limit Theorem for the sample mean}
   When we collect a sufficiently large sample of
   $n$~independent observations from a population with
-  standard deviation $\sigma$,
+  mean $\mu$ and standard deviation $\sigma$,
   the sampling distribution of $\bar{x}$ will be nearly
   normal with
   \begin{align*}
@@ -117,14 +96,13 @@ tests using $\bar{x}$, we first need to cover two topics:
 \subsection[Evaluating the two conditions required for
     modeling $\bar{x}$]
   {Evaluating the two conditions required for
-      modeling $\mathbf{\bar{x}}$}
+      modeling $\pmb{\bar{x}}$}
 \label{x_bar_conditions}
 
 \noindent%
-Two conditions are nestled are important for
-applying the
+Two conditions are required to apply the
 Central Limit Theorem\index{Central Limit Theorem}
-for the sample mean~$\bar{x}$:
+for a sample mean~$\bar{x}$:
 \begin{description}
 \item[Independence.]
     The sample observations must be independent,
@@ -193,12 +171,14 @@ for the sample mean~$\bar{x}$:
       If the sample size $n$ is less than 30
       and there are no clear outliers in the data,
       then we typically assume the data come from
-      a nearly distribution to satisfy the condition.
+      a nearly normal distribution to satisfy the
+      condition.
   \item[$\mathbf{n \geq 30}$:]
       If the sample size $n$ is at least 30
       and there are no \emph{particularly extreme} outliers,
       then we typically assume the the sampling distribution
-      of $\bar{x}$ is nearly normal.
+      of $\bar{x}$ is nearly normal, even if the underlying
+      distribution of individual observations is not.
   \end{description}
 \end{onebox}
 
@@ -231,15 +211,17 @@ clear cut cases based on the rules of thumb.\footnote{More
   The first sample has fewer than 30 observations,
   so we are watching for any clear outliers.
   None are present; while there is a small gap in the
-  histogram on the right, 3 of the 15 observations
+  histogram on the right, this gap is small and
+  20\% of the observations in this small sample
   are represented in that far right bar of the histogram,
-  so we can hardly call these outliers.
+  so we can hardly call these clear outliers.
   With no clear outliers, the normality condition
   is reasonably met.
 
   The second sample has a sample size greater than 30 and
-  includes an outlier that appears to be 5 times further from the
-  center of the distribution than the next furthest observation.
+  includes an outlier that appears to be roughly 5 times
+  further from the center of the distribution than the
+  next furthest observation.
   This is an example of a particularly extreme outlier,
   so the normality condition would not be satisfied.
 \end{nexample}
@@ -254,7 +236,7 @@ For example, consider the number of followers
 for each individual account on Twitter,
 and then imagine this distribution.
 The large majority of accounts have built up
-relatively a couple thousand followers or fewer,
+a couple thousand followers or fewer,
 while a relatively tiny fraction have amassed
 tens of millions of followers,
 meaning the distribution is extremely skewed.
@@ -417,7 +399,7 @@ to be satisfied.
 
 
 \subsection[Introducing the $t$-distribution]
-    {Introducing the $\mathbf{t}$-distribution}
+    {Introducing the $\pmb{t}$-distribution}
 \label{introducingTheTDistribution}
 
 \index{t-distribution|(}
@@ -428,8 +410,9 @@ for $\bar{x}$ since we do not know the population standard
 deviation,~$\sigma$.
 We encountered a similar issue when computing the standard
 error for a sample proportion, which relied on the population
-proportion,~$p$;
-our solution in that case was to use sample value in place
+proportion,~$p$.
+Our solution in the proportion context was to use sample
+value in place
 of the population value when computing the standard error.
 We'll employ a similar strategy for computing the standard
 error of $\bar{x}$, using the sample
@@ -499,12 +482,14 @@ from the normal distribution.
   \Figure{0.75}{tDistConvergeToNormalDist}
   \caption{The larger the degrees of freedom, the more
       closely the $t$-distribution resembles the standard
-      normal model.}
+      normal distribution.}
   \label{tDistConvergeToNormalDist}
 \end{figure}
 
-\begin{onebox}{Degrees of freedom (df)}
-  The degrees of freedom describe the shape of the $t$-distribution.
+\begin{onebox}{Degrees of freedom
+    ($\pmb{\MakeLowercase{df}}$)}
+  The degrees of freedom describes the shape of the
+  $t$-distribution.
   The larger the degrees of freedom, the more closely
   the distribution approximates the normal model. \stdvspace{}
 
@@ -520,10 +505,11 @@ The $t$-distribution allows us greater flexibility than
 the normal distribution when analyzing numerical data.
 In~practice, it's common to use statistical software,
 such as R, Python, or SAS for these analyses.
-Alternatively, a graphing calculator or a \term{t-table}
-may be used;
+Alternatively, a graphing calculator or a
+\term{$\pmb{t}$-table} may be used;
 the $t$-table is similar to the normal distribution table,
-and it may be found in Appendix~\ref{tDistributionTable}
+and it may be found in Appendix~\ref{tDistributionTable},
+which includes usage instructions and examples
 for those who wish to use this option.
 No matter the approach you choose, apply your method
 using the examples below to confirm your working
@@ -539,9 +525,7 @@ understanding of the $t$-distribution.
 %  a little less than 0.025, since about 5\% of the area
 %  under a normal curve goes out beyond $\pm 1.96$ standard
 %  deviations.
-  The $t$-distribution has thicker tails than the
-  normal distribution,
-  and using statistical software, we can obtain a precise
+  Using statistical software, we can obtain a precise
   value: 0.0250.
 %  The tail area below -2.10 in the $t$-distribution with
 %  $df = 18$ is the same as the tail area below -1.96 in
@@ -566,8 +550,7 @@ understanding of the $t$-distribution.
   With a normal distribution, this would correspond to
   about~0.05, so we should expect the $t$-distribution
   to give us a value in this neighborhood.
-  Using statistical software, we can obtain the value
-  as 0.0573.
+  Using statistical software: 0.0573.
 \end{nexample}
 \end{examplewrap}
 
@@ -649,7 +632,7 @@ Use your preferred method for finding tail areas.\footnotemark{}
 \D{\newpage}
 
 \subsection[One sample $t$-confidence intervals]
-    {One sample $\mathbf{t}$-confidence intervals}
+    {One sample $\pmb{t}$-confidence intervals}
 \label{oneSampleTConfidenceIntervals}
 
 \index{data!dolphins and mercury|(}
@@ -701,7 +684,7 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
   therefore independence is reasonable.
   The summary statistics in
   Figure~\ref{summaryStatsOfHgInMuscleOfRissosDolphins}
-  do not suggest any skew or outliers;
+  do not suggest any clear outliers, with
   all observations are within 2.5 standard deviations
   of the mean.
   Based on this evidence, the normality condition
@@ -711,13 +694,12 @@ $n$ & $\bar{x}$ & $s$ & minimum & maximum \\
 
 In the normal model, we used $z^{\star}$ and the standard error to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$-distribution:
 \begin{align*}
-\bar{x} \ \pm\  t^{\star}_{df} \times SE
+&\text{point estimate} \ \pm\  t^{\star}_{df} \times SE
+&&\to
+&&\bar{x} \ \pm\  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
 \end{align*}
-The sample mean is the point estimate of interest.
-The standard error is computed using $SE = s/\sqrt{n}$.
-The value $t^{\star}_{df}$ is a cutoff we obtain based on the
-confidence level and the $t$-distribution with $df$ degrees
-of freedom.
+%The sample mean is the point estimate of interest.
+%The standard error is computed using $SE = s/\sqrt{n}$.
 
 \begin{examplewrap}
 \begin{nexample}{Using the summary statistics in
@@ -736,6 +718,15 @@ of freedom.
 \end{nexample}
 \end{examplewrap}
 
+The value $t^{\star}_{df}$ is a cutoff we obtain based on the
+confidence level and the $t$-distribution with $df$ degrees
+of freedom.
+That cutoff is found in the same way as with a normal
+distribution: we find $t^{\star}_{df}$ such that
+the fraction of the $t$-distribution with $df$ degrees
+of freedom within a distance $t^{\star}_{df}$
+of 0 matches the confidence level of interest.
+
 \begin{examplewrap}
 \begin{nexample}{When $n = 19$, what is the appropriate
     degrees of freedom?
@@ -744,8 +735,10 @@ of freedom.
   The degrees of freedom is easy to calculate:
   $df = n - 1 = 18$.
   
-  Using statistical software or a $t$-table,
-  we can find that $t^{\star}_{18} = 2.10$.
+  Using statistical software, we find the cutoff where
+  the upper tail is equal to 2.5\%:
+  $t^{\star}_{18} = 2.10$.
+  The area below -2.10 will also be equal to 2.5\%.
   That is, 95\% of the $t$-distribution with $df = 18$
   lies within 2.10 units of~0.
 \end{nexample}
@@ -781,17 +774,21 @@ of freedom.
 
 \index{data!dolphins and mercury|)}
 
-\begin{onebox}{Finding a $\mathbf{t}$-confidence interval
+\begin{onebox}{Finding a
+    $\pmb{\MakeLowercase{t}}$-confidence interval
     for the mean}
   Based on a sample of $n$ independent and nearly normal
   observations, a confidence interval for the population
   mean is
   \begin{align*}
-  \bar{x} \ \pm\  t^{\star}_{df} \times SE
+  &\text{point estimate} \ \pm\  t^{\star}_{df} \times SE
+  &&\to
+  &&\bar{x} \ \pm\  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
   \end{align*}
   where $\bar{x}$ is the sample mean, $t^{\star}_{df}$
-  corresponds to the confidence level and degrees of freedom,
-  and $SE$ is the standard error as estimated by the sample.
+  corresponds to the confidence level and degrees of freedom
+  $df$, and $SE$ is the standard error as estimated by
+  the sample.
 \end{onebox}
 
 \begin{exercisewrap}
@@ -819,8 +816,8 @@ of the individual observations?\footnotemark{}
     Guided Practice~\ref{croakerWhiteFishPacificExerConditions}.
     If we are to use the $t$-distribution to create a
     90\% confidence interval for the actual mean of the
-    mercury content, identify the degrees of freedom we
-    should use and also find $t^{\star}_{df}$.}
+    mercury content, identify the degrees of freedom
+    and $t^{\star}_{df}$.}
   \label{croakerWhiteFishPacificExerSEDFTStar}%
   The standard error: $SE = \frac{0.069}{\sqrt{15}} = 0.0178$.
 
@@ -856,7 +853,7 @@ of the individual observations?\footnotemark{}
 \begin{exercisewrap}
 \begin{nexercise}
 \label{croakerWhiteFish90ci}
-Using the results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnotemark{}
+Using the information and results of Guided Practice~\ref{croakerWhiteFishPacificExerConditions} and Example~\ref{croakerWhiteFishPacificExerSEDFTStar}, compute a 90\% confidence interval for the average mercury content of croaker white fish (Pacific).\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{
@@ -910,7 +907,7 @@ The average time for all runners who finished the Cherry Blossom Race in 2006 wa
 What are appropriate hypotheses for this context?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$H_0$: The average 10 mile run time was the same for 2006 and 2017. $\mu = 93.29$ minutes. $H_A$: The average 10 mile run time for 2017 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.}
+\footnotetext{$H_0$: The average 10-mile run time was the same for 2006 and 2017. $\mu = 93.29$ minutes. $H_A$: The average 10-mile run time for 2017 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -918,7 +915,8 @@ The data come from a simple random sample of all participants,
 so the observations are independent.
 However, should we be worried about the normality condition?
 See Figure~\ref{run10SampTimeHistogram} for a histogram
-of the differences.\footnotemark{}
+of the differences and evaluate if we can move
+forward.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{With a sample of \cherryblossomn{},
@@ -960,35 +958,42 @@ distribution, and double it.
 %\end{nexercise}
 %\end{exercisewrap}
 
-\begin{exercisewrap}
-\begin{nexercise}
-With both the independence and normality conditions satisfied,
-we can proceed with a hypothesis test using
-the $t$-distribution.
-The sample mean and sample standard deviation of the sample
-of \cherryblossomn{} runners from the 2017 Cherry Blossom Race
-are \cherryblossommean{} and \cherryblossomsd{} minutes,
-respectively.
-Recall that the sample size is 100
-and the average run time in 2006 was 93.29 minutes.
-Find the test statistic and p-value.
-What is your conclusion?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{To find the test statistic (T-score),
+\begin{examplewrap}
+\begin{nexample}{With both the independence
+    and normality conditions satisfied,
+    we can proceed with a hypothesis test using
+    the $t$-distribution.
+    The sample mean and sample standard deviation
+    of the sample
+    of \cherryblossomn{} runners from the
+    2017 Cherry Blossom Race
+    are \cherryblossommean{} and \cherryblossomsd{} minutes,
+    respectively.
+    Recall that the sample size is 100
+    and the average run time in 2006 was 93.29 minutes.
+    Find the test statistic and p-value.
+    What is your conclusion?}
+
+  To find the test statistic (T-score),
   we first must determine the standard error:
-  $SE
+  \begin{align*}
+  SE
     = \cherryblossomsd{} / \sqrt{\cherryblossomn{}}
-    = \cherryblossomse{}$.
+    = \cherryblossomse{}
+  \end{align*}
   Now we can compute the \emph{T-score}
   using the sample mean (\cherryblossommean{}),
   null value (98.29), and $SE$:
-  $T
+  \begin{align*}
+  T
     = \frac{\cherryblossommean{} - 93.29}{\cherryblossomse{}}
-    = \cherryblossomz{}$.
-  For $df = \cherryblossomn{} - 1 = 99$, we would find
-  a one-tail area of 0.01 (using statistical software or $t$-table),
+    = \cherryblossomz{}
+  \end{align*}
+  For $df = \cherryblossomn{} - 1 = 99$,
+  we can determine using statistical software
+  (or a $t$-table) that the one-tail area is 0.01,
   which we double to get the p-value:~0.02.
+
   Because the p-value is smaller than 0.05,
   we reject the null hypothesis.
   That is, the data provide strong evidence that the average
@@ -997,7 +1002,9 @@ What is your conclusion?\footnotemark{}
   Since the observed value is above the null value
   and we have rejected the null hypothesis, we would conclude
   that runners in the race were slower on average in 2017
-  than in 2006.}
+  than in 2006.
+\end{nexample}
+\end{examplewrap}
 
 %%\begin{onebox}{When using a $t$-distribution, we use a T-score (same as Z-score)}
 %To help us remember to use the $t$-distribution,
@@ -1064,7 +1071,7 @@ how is the UCLA Bookstore doing today?
 
 We sampled 201 UCLA courses.
 Of those, \uclabookN{}
-required books that could be found on Amazon.
+required books could be found on Amazon.
 A~portion of the data set from these courses
 is shown in Figure~\ref{textbooksDF},
 where prices are in US dollars.
@@ -1083,7 +1090,7 @@ where prices are in US dollars.
   2 & Anthropology & 2 & 14.26 & 13.55 & 0.71 \\ 
   3 & Arts and Architecture & 10 & 13.50 & 12.53 & 0.97 \\
   $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-  \uclabookDF{} & Korean & 1 & 24.96 & 23.79 & 1.17 \\ 
+  %\uclabookDF{} & Korean & 1 & 24.96 & 23.79 & 1.17 \\ 
   \uclabookN{} & Jewish Studies & M10 & 35.96 & 32.40 & 3.56 \\
   \hline
 \end{tabular}
@@ -1096,9 +1103,6 @@ where prices are in US dollars.
 
 Each textbook has two corresponding prices in the data set:
 one for the UCLA Bookstore and one for Amazon.
-Therefore, each textbook price from the UCLA bookstore
-has a natural correspondence with a textbook price from
-Amazon.
 When two sets of observations have this special
 correspondence, they are said to be \term{paired}.
 
@@ -1111,9 +1115,10 @@ correspondence, they are said to be \term{paired}.
 
 To analyze paired data, it is often useful to look
 at the difference in outcomes of each pair of observations.
-In the \data{textbook} data set, we look at the differences
-in prices, which is represented as the \var{diff} variable
-in the \data{textbooks} data.
+In the textbook data, we look at the differences
+in prices, which is represented as the
+\var{price\us{}difference} variable
+in the data set.
 Here the differences are taken as
 \begin{align*}
 \text{UCLA Bookstore price} - \text{Amazon price}
@@ -1129,7 +1134,7 @@ is a common and useful way to analyze paired data.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.7}{textbooksF18}{diffInTextbookPricesF18}
+  \Figures{0.53}{textbooksF18}{diffInTextbookPricesF18}
   \caption{Histogram of the difference in price for
       each book sampled.
       These data are very strongly skewed.
@@ -1151,13 +1156,13 @@ observations~2 and~3.\footnotemark{}
 
 
 \D{\newpage}
-
 \subsection{Inference for paired data}
 
 To analyze a paired data set,
 we simply analyze the differences.
 We can use the same $t$-distribution techniques
-we applied in the last section.
+we applied in
+Section~\ref{oneSampleMeansWithTDistribution}.
 
 \begin{figure}[h]
 \centering
@@ -1193,21 +1198,21 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
       There is a difference in average prices.
   \end{itemize}
 
-  Next we check the independence and normality conditions.
+  Next, we check the independence and normality conditions.
   The observations are based on a simple random sample,
   so independence is reasonable.
   While there are some outliers,
   $n = \uclabookN{}$ and none of the outliers
-  are particularly extreme, so normality is satisfied.
+  are particularly extreme, so the normality
+  of $\bar{x}$ is satisfied.
   With these conditions satisfied,
   we can move forward with the $t$-distribution.
 \end{nexample}
 \end{examplewrap}
 
 \begin{examplewrap}
-\begin{nexample}{Compute the standard error and test statistic
-    from the hypothesis test started in
-    Example~\ref{htSetupTextbookPriceDiff}.}
+\begin{nexample}{Complete the hypothesis test started
+    in Example~\ref{htSetupTextbookPriceDiff}.}
   \label{SEAndTScoreTextbookPriceDiff}
   To compute the test  compute the standard error associated with
   $\bar{x}_{\text{\emph{diff}}}$ using the standard
@@ -1230,32 +1235,27 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
         {SE_{x_{\text{\emph{diff}}}}}
     = \frac{\uclabookM{} - 0}{\uclabookSE{}} = 2.20
   \end{align*}
-\end{nexample}
-\end{examplewrap}
-
-\begin{examplewrap}
-\begin{nexample}{Continue the hypothesis test from
-    Examples~\ref{htSetupTextbookPriceDiff}-\ref{SEAndTScoreTextbookPriceDiff},
-    computing the p-value and making a conclusion in the
-    context of the data.}
   To visualize the p-value, the sampling distribution
   of $\bar{x}_{\text{\emph{diff}}}$ is drawn as though
   $H_0$ is true,
   and the p-value is represented by the two shaded tails:
   \begin{center}
-  \Figures{0.43}{textbooksF18}{textbooksF18HTTails}
+  \Figures{0.53}{textbooksF18}{textbooksF18HTTails}
   \end{center}
   The degrees of freedom is
   $df = \uclabookN{} - 1 = \uclabookDF{}$.
   Using statistical software, we find the
   one-tail area of 0.0156.
   Doubling this area gives the p-value: 0.0312.
+
   Because the p-value is less than 0.05,
   we reject the null hypothesis.
   Amazon prices are, on average, lower than the
   UCLA Bookstore prices for UCLA courses.
 \end{nexample}
 \end{examplewrap}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1299,15 +1299,15 @@ on Amazon?\footnotemark{}
   Examine the distribution shown in
   Figure~\ref{diffInTextbookPricesF18}.
   There are certainly a handful of cases where
-  Amazon prices are much below the UCLA Bookstore's,
+  Amazon prices are far below the UCLA Bookstore's,
   which suggests it is worth checking Amazon
-  or other online sites before purchasing.
+  (and probably other online sites) before purchasing.
   However, in many cases the Amazon price is
   above what the UCLA Bookstore charges,
   and most of the time the price isn't that different.
   Ultimately, if getting a book immediately from
   the bookstore is notably more convenient,
-  e.g. to get started on homework,
+  e.g. to get started on reading or homework,
   it's likely a good idea to go with the UCLA
   Bookstore unless the price difference on a
   specific book happens to be quite large.
@@ -1318,7 +1318,9 @@ on Amazon?\footnotemark{}
   At that time, Amazon prices were almost uniformly
   lower than those of the UCLA Bookstore's and by
   a large margin, making the case to use Amazon over
-  the UCLA Bookstore quite compelling at that time.}
+  the UCLA Bookstore quite compelling at that time.
+  Now we frequently check multiple websites
+  to find the best price.}
 
 \index{data!textbooks|)}
 \index{paired data|)}
