@@ -26,7 +26,9 @@
 
 
 %__________________
-\section[One-sample means with the $t$-distribution]{One-sample means with the $\mathbf{t}$-distribution}
+\section[One-sample means with the $t$-distribution]
+    {One-sample means with the
+        $\pmb{\MakeLowercase{t}}$-distribution}
 \label{oneSampleMeansWithTDistribution}
 
 \noindent%
@@ -82,7 +84,7 @@ tests using $\bar{x}$, we first need to cover two topics:
     we must estimate it.
     Because this estimation is itself imperfect,
     we use a new distribution called the
-    $t$-distribution\index{$t$-distribution}
+    $t$-distribution\index{t-distribution@$t$-distribution}
     to fix this problem, which we discuss in
 %    While we can use the plug-in principle,
 %    using the sample standard deviation $s$ in place of $\sigma$,
@@ -402,8 +404,8 @@ to be satisfied.
     {Introducing the $\pmb{t}$-distribution}
 \label{introducingTheTDistribution}
 
-\index{t-distribution|(}
-\index{distribution!$t$|(}
+\index{t-distribution@$t$-distribution|(}
+\index{distribution!t@$t$|(}
 
 In practice, we cannot directly calculate the standard error
 for $\bar{x}$ since we do not know the population standard
@@ -432,7 +434,7 @@ distribution to model $\bar{x}$.
 
 We'll find it useful to use a new distribution for
 inference calculations called the
-\termsub{$\mathbf{t}$-distribution}{$t$-distribution}.
+\termsub{$\pmb{t}$-distribution}{t-distribution@$t$-distribution}.
 A~$t$-distribution, shown as a solid line in
 Figure~\ref{tDistCompareToNormalDist}, has a bell shape.
 However, its tails are thicker than the normal distribution's,
@@ -460,7 +462,8 @@ in place of $\sigma$ in the $SE$ calculation.
 
 The $t$-distribution is always centered at zero and
 has a single parameter: degrees of freedom.
-The \termsub{degrees of freedom (df)}{degrees of freedom (df)!$t$-distribution}
+The \termsub{degrees of freedom ($\pmb{df}$)}
+    {degrees of freedom ($df$)!$t$-distribution}
 describes the precise form of the bell-shaped $t$-distribution.
 Several $t$-distributions are shown in
 Figure~\ref{tDistConvergeToNormalDist}
@@ -506,7 +509,7 @@ the normal distribution when analyzing numerical data.
 In~practice, it's common to use statistical software,
 such as R, Python, or SAS for these analyses.
 Alternatively, a graphing calculator or a
-\term{$\pmb{t}$-table} may be used;
+\termsub{$\pmb{t}$-table}{t-table@$t$-table} may be used;
 the $t$-table is similar to the normal distribution table,
 and it may be found in Appendix~\ref{tDistributionTable},
 which includes usage instructions and examples
@@ -594,8 +597,8 @@ Use your preferred method for finding tail areas.\footnotemark{}
   The lower tail area has an area of 0.0447,
   so the upper area would have an area of $1 - 0.0447 = 0.9553$.}
 
-\index{distribution!$t$|)}
-\index{t-distribution|)}
+\index{distribution!t@$t$|)}
+\index{t-distribution@$t$-distribution|)}
 
 
 %\subsection{Conditions for using the $\mathbf{t}$-distribution
@@ -887,7 +890,7 @@ have mercury levels between 0.256 and 0.318 ppm?\footnotemark{}
 
 
 \subsection[One sample $t$-tests]
-    {One sample $\mathbf{t}$-tests}
+    {One sample $\pmb{t}$-tests}
 \label{oneSampleTTests}
 
 \newcommand{\cherryblossomn}{100}
@@ -1422,7 +1425,9 @@ for outliers.
 %\end{nexample}
 %\end{examplewrap}
 
-\begin{onebox}{Using the $t$-distribution for a difference in means}
+\begin{onebox}{Using the
+    $\pmb{\MakeLowercase{t}}$-distribution
+    for a difference in means}
   \label{ConditionsForTwoSampleTDist}%
   The $t$-distribution can be used for inference when working
   with the standardized difference of two means if
@@ -2891,7 +2896,8 @@ difference in the respective population means.
 
 \D{\newpage}
 
-\subsection{Analysis of variance (ANOVA) and the F test}
+\subsection{Analysis of variance (ANOVA)
+    and the $\pmb{F}$-test}
 
 The method of analysis of variance in this context focuses
 on answering one question:
@@ -2993,7 +2999,7 @@ MSE and verify the $F$ statistic is approximately
   and $MSE$ that were not rounded.)}
 
 We can use the $F$ statistic to evaluate the hypotheses in
-what is called an \term{F test}.
+what is called an \termsub{$\pmb{F}$-test}{F-test@$F$-test}.
 A p-value can be computed from the $F$ statistic using
 an $F$~distribution, which has two associated parameters:
 $df_{1}$ and~$df_{2}$.
@@ -3022,7 +3028,8 @@ Because larger values of $F$ represent stronger evidence against
 the null hypothesis, we use the upper tail of the distribution
 to compute a p-value.
 
-\begin{onebox}{The $F$ statistic and the $F$ test}
+\begin{onebox}{The $\pmb{F}$ statistic and the
+    $\pmb{F}$-test}
   Analysis of variance (ANOVA) is used to test whether
   the mean outcome differs across 2~or more groups.
   ANOVA uses a test statistic $F$, which represents
@@ -3077,7 +3084,7 @@ Figure~\ref{anovaSummaryTableForOBPAgainstPosition}
 shows an ANOVA summary to test whether the mean of on-base
 percentage varies by player positions in the MLB.
 Many of these values should look familiar;
-in particular, the $F$ test statistic and p-value
+in particular, the $F$-test statistic and p-value
 can be retrieved from the last two columns.
 
 \begin{figure}[ht]
@@ -3277,7 +3284,7 @@ when we run so many tests, the Type~1 Error rate increases.
 This issue is resolved by using a modified significance level.
 
 \begin{onebox}{Multiple comparisons and the Bonferroni
-    correction for $\alpha$}
+    correction for $\pmb{\alpha}$}
   The scenario of testing many pairs of groups is called
   \term{multiple comparisons}.
   The \term{Bonferroni correction} suggests that a more
@@ -3362,7 +3369,7 @@ In~the first two pairwise comparisons, we did not have
 sufficient evidence to reject the null hypothesis.
 Recall that failing to reject $H_0$ does not imply $H_0$ is true.
 
-\begin{onebox}{Reject $\mathbf{H_0}$ with ANOVA
+\begin{onebox}{Reject $\pmb{H_0}$ with ANOVA
     but find no group differences}
   It is possible to reject the null hypothesis using ANOVA
   and then to not subsequently identify differences in the
