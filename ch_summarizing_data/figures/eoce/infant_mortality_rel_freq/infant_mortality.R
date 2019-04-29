@@ -9,7 +9,7 @@ load("factbook.rda")
 
 # calculate # of countries with life exp. & internet data -----------
 cia_factbook %>%
-  filter(!is.na(infant_mortality_rate)) %>%
+  subset(!is.na(infant_mortality_rate)) %>%
   nrow() # n = 224
 
 # histogram parameters ----------------------------------------------
@@ -27,7 +27,9 @@ pdf("infant_mortality_rel_freq_hist.pdf", 5.5, 3)
 par(mar = c(4, 4.1, 1, 1), las = 1, mgp = c(2.9, 0.7, 0), 
     cex.axis = 1.5, cex.lab = 1.5)
 hist(cia_factbook$infant_mortality_rate, 
-     main = "", xlab = "Infant mortality", ylab = "",
+     main = "",
+     xlab = "Infant Mortality (per 1000 Live Births)",
+     ylab = "Fraction of Countries",
      col = COL[1], axes = FALSE, ylim = c(0,five_perc*8))
 axis(1)
 axis(2, at = seq(0, 8 * five_perc, 2 * five_perc),
@@ -43,11 +45,13 @@ dev.off()
 # rel. freq. histogram of infant mortality  - solution --------------
 summary(cia_factbook$infant_mortality_rate)
 
-pdf("infant_mortality_rel_freq_hist_soln.pdf", height = 4.3, width = 8)
+pdf("infant_mortality_rel_freq_hist_soln.pdf", 6, 3.2)
 par(mar = c(4, 4.1, 1, 1), las = 1, mgp = c(2.9, 0.7, 0), 
     cex.axis = 1.5, cex.lab = 1.5)
 hist(cia_factbook$infant_mortality_rate, 
-     main = "", xlab = "Infant mortality", ylab = "",
+     main = "",
+     xlab = "Infant Mortality (per 1000 Live Births)",
+     ylab = "Fraction of Countries",
      col = COL[1], axes = FALSE, ylim = c(0,five_perc*8))
 axis(1)
 axis(2, at = seq(0, five_perc*8, five_perc), label = c(0, NA, 0.1, NA, 0.2, NA, 0.3, NA, 0.4))

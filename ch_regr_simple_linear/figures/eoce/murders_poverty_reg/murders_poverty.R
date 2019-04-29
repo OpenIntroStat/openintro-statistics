@@ -23,10 +23,11 @@ par(mar = c(3.7, 3.7, 0.5, 0.5), las = 1, mgp = c(2.5, 0.7, 0),
     cex.lab = 1.5, cex.axis = 1.5)
 
 plot(murders$annual_murders_per_mil ~ murders$perc_pov, 
-     xlab = "% in Poverty", ylab = "Annual murders / million", 
+     xlab = "Percent in Poverty",
+     ylab = "Annual Murders per Million", 
      pch = 19, col = COL[1],
      xlim = c(14, 27), ylim = c(5, 40), axes = FALSE)
-axis(1, at = seq(14, 26, 4))
+AxisInPercent(1, at = seq(14, 26, 4))
 axis(2, at = seq(10, 40, 10))
 box()
 

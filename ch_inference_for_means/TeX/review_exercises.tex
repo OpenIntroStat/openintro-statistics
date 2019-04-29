@@ -126,6 +126,94 @@ variability of the original distribution?
 
 % 6
 
+\eoce{\qt{Forest management\label{forest_mgmt_tree_growth}}
+Forest rangers wanted to better understand the rate
+of growth for younger trees in the park.
+They took measurements of a random sample of 50 young trees
+in 2009 and again measured those same trees in 2019.
+The data below summarize their measurements,
+where the heights are in feet:
+\begin{center}
+\begin{tabular}{l c c c}
+\hline
+          & 2009   & 2019  & Differences\\
+\hline  
+$\bar{x}$ & 12.0  & 24.5  & 12.5 \\
+$s$       & 3.5   & 9.5   & 7.2 \\
+$n$       & 50    & 50    & 50 \\
+\hline
+\end{tabular}
+\end{center}
+Construct a 99\% confidence interval for the
+average growth of (what had been) younger trees
+in the park over 2009-2019.
+}{}
+
+% 7
+
+\eoce{\qt{Experiment resizing\label{tech_exp_resizing}}
+At a startup company running a new weather app, an engineering
+team generally runs experiments where a random sample of 1\%
+of the app's visitors in the control group and another
+1\% were in the treatment group to test each new feature.
+The team's core goal is to increase a metric
+called \emph{daily visitors},
+which is essentially the number of visitors to the app
+each day.
+They track this metric in each experiment arm and
+as their core experiment metric.
+In their most recent experiment, the team tested
+including a new animation when the app started,
+and the number of daily visitors in this experiment
+stabilized at +1.2\% with a 95\% confidence interval
+of (-0.2\%, +2.6\%).
+This means if this new app start animation was launched,
+the team thinks they might lose as many as 0.2\% of daily
+visitors or gain as many as 2.6\% more daily visitors.
+Suppose you are consulting as the team's data scientist,
+and after discussing with the team,
+you and they agree that they should run
+another experiment that is bigger.
+You also agree that this new experiment
+should be able to detect a gain in the daily visitors
+metric of 1.0\% or more with 80\% power.
+Now they turn to you and ask,
+``How big of an experiment do we need to run
+to ensure we can detect this effect?''
+\begin{parts}
+\item\label{tech_exp_resizing_target_se}
+    How small must the standard error be if
+    the team is to be able to detect an effect
+    of 1.0\% with 80\% power and a significance
+    level of $\alpha = 0.05$?
+    You may safely assume the percent change in
+    daily visitors metric follows a normal distribution.
+\item\label{tech_exp_resizing_original_se}
+    Consider the first experiment, where
+    the point estimate was +1.2\% and the
+    95\% confidence interval was (-0.2\%, +2.6\%).
+    If that point estimate followed a normal
+    distribution, what was the standard error
+    of the estimate?
+\item\label{tech_exp_resizing_ratio}
+    The ratio of the standard error from
+    part~(\ref{tech_exp_resizing_target_se})
+    vs the standard error from
+    part~(\ref{tech_exp_resizing_original_se})
+    should be~2.03.
+    How much bigger of an experiment is needed
+    to shrink a standard error by a factor of~2.03?
+\item
+    Using your answer from
+    part~(\ref{tech_exp_resizing_ratio})
+    and that the original experiment was
+    a 1\% vs 1\% experiment to recommend
+    an experiment size to the team.
+\end{parts}
+}{}
+
+% 8
+
 \eoce{\qt{Torque on a rusty bolt\label{torque_on_rusty_bolt}}
 Project Farm is a YouTube channel that routinely
 compares different products.
@@ -200,7 +288,7 @@ The results are shown in the figure below:
 \end{parts}
 }{}
 
-% 7
+% 9
 
 \eoce{\qt{Exclusive relationships\label{exclusive_relationships}} A survey conducted 
 on a reasonably random sample of 203 undergraduates asked, among many other 
@@ -216,7 +304,7 @@ Check any conditions required for inference, and note any assumptions you must
 make as you proceed with your calculations and conclusions.
 }{}
 
-% 8
+% 10
 
 \eoce{\qt{Age at first marriage, Part I\label{age_at_first_marriage_intro}} 
 The National Survey of Family Growth conducted by the Centers for Disease 
@@ -234,7 +322,7 @@ interval, and interpret this interval in context. Discuss any relevant
 assumptions.
 }{}
 
-% 9
+% 11
 
 \eoce{\qt{Online communication\label{online_communication}} A study suggests that the 
 average college student spends 10 hours per week communicating with others 
@@ -249,7 +337,7 @@ H_A&: \bar{x} > 13.5~hours
 \end{align*}
 }{}
 
-% 10
+% 12
 
 \eoce{\qt{Age at first marriage, Part II\label{age_at_first_marriage_hyp_errors}} Exercise~\ref{age_at_first_marriage_intro} presents the results 
 of a 2006 - 2010 survey showing that the average age of women at first marriage 
@@ -262,68 +350,4 @@ Indicate any errors you see.
 H_0&: \bar{x} \neq 23.44~years~old \\
 H_A&: \bar{x} = 23.44~years~old
 \end{align*}
-}{}
-
-% 11
-
-\eoce{\qt{Experiment resizing\label{tech_exp_resizing}}
-\textbf{\color{red}ADD SOLUTIONS.}
-At a startup company running a new weather app, an engineering
-team generally runs experiments where a random sample of 1\%
-of the app's visitors in the control group and another
-1\% were in the treatment group to test each new feature.
-The team's core goal is to increase a metric
-called \emph{daily visitors},
-which is essentially the number of visitors to the app
-each day.
-They track this metric in each experiment arm and
-as their core experiment metric.
-In their most recent experiment, the team tested
-including a new animation when the app started,
-and the number of daily visitors in this experiment
-stabilized at +1.2\% with a 95\% confidence interval
-of (-0.2\%, +2.6\%).
-This means if this new app start animation was launched,
-the team thinks they might lose as many as 0.2\% of daily
-visitors or gain as many as 2.6\% more daily visitors.
-Suppose you are consulting as the team's data scientist,
-and after discussing with the team,
-you and they agree that they should run
-another experiment that is bigger.
-You also agree that this new experiment
-should be able to detect a gain in the daily visitors
-metric of 1.0\% or more with 80\% power.
-Now they turn to you and ask,
-``How big of an experiment do we need to run
-to ensure we can detect this effect?''
-\begin{parts}
-\item\label{tech_exp_resizing_target_se}
-    How small must the standard error be if
-    the team is to be able to detect an effect
-    of 1.0\% with 80\% power and a significance
-    level of $\alpha = 0.05$?
-    You may safely assume the percent change in
-    daily visitors metric follows a normal distribution.
-\item\label{tech_exp_resizing_original_se}
-    Consider the first experiment, where
-    the point estimate was +1.2\% and the
-    95\% confidence interval was (-0.2\%, +2.6\%).
-    If that point estimate followed a normal
-    distribution, what was the standard error
-    of the estimate?
-\item\label{tech_exp_resizing_ratio}
-    The ratio of the standard error from
-    part~(\ref{tech_exp_resizing_target_se})
-    vs the standard error from
-    part~(\ref{tech_exp_resizing_original_se})
-    should be~2.03.
-    How much bigger of an experiment is needed
-    to shrink a standard error by a factor of~2.03?
-\item
-    Using your answer from
-    part~(\ref{tech_exp_resizing_ratio})
-    and that the original experiment was
-    a 1\% vs 1\% experiment to recommend
-    an experiment size to the team.
-\end{parts}
 }{}
