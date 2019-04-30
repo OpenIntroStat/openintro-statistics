@@ -469,7 +469,7 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
   \Figure{0.76}{loan50IntRateHist}
   \caption{A histogram of \var{interest\us{}rate}.
       This distribution is strongly skewed to the right.
-      \index{skew!example: strong}}
+      \index{skew!strong}}
   \label{loan50IntRateHist}
 \end{figure}
 
@@ -552,9 +552,9 @@ making this definition impractical in data analysis.
 Figure~\ref{singleBiMultiModalPlots} shows histograms that
 have one, two, or three prominent peaks.
 Such distributions are called
-\termsub{unimodal}{modality!unimodal},
-\termsub{bimodal}{modality!bimodal}, and
-\termsub{multimodal}{modality!multimodal}, respectively.
+\term{unimodal},
+\term{bimodal}, and
+\term{multimodal}, respectively.
 Any distribution with more than 2~prominent peaks is
 called multimodal.
 Notice that there was one prominent peak in the unimodal
@@ -705,7 +705,7 @@ Like the mean, the population values for variance
 and standard deviation have special symbols:
 $\sigma_{}^2$ for the variance and $\sigma$ for the
 standard deviation.
-The symbol $\sigma$ \index{Greek!sigma@sigma ($\sigma$)}
+The symbol $\sigma$\index{Greek!sigma@sigma ($\sigma$)}
 is the Greek letter \emph{sigma}.
 
 \begin{figure}[h]
@@ -857,7 +857,8 @@ The two boundaries of the box are called the
 i.e. 25\% of the data fall below this value)
 and the \term{third quartile} \index{quartile!third quartile}
 (the $75^{th}$ percentile), and these are often labeled $Q_1$
-\index{Q$_1$} and $Q_3$\index{Q$_3$}, respectively.
+\index{quartile!Q1@Q$_1$} and $Q_3$\index{quartile!Q3@Q$_3$},
+respectively.
 
 \begin{onebox}{Interquartile range (IQR)}
   The IQR\index{interquartile range} is the length
@@ -922,7 +923,7 @@ most of the data.
   \begin{enumerate}
   \setlength{\itemsep}{0mm}
   \item Identifying
-      \indexthis{strong skew}{skew!example: strong}
+      \indexthis{strong skew}{skew!strong}
       in the distribution.
   \item Identifying possible data collection or
       data entry errors.
@@ -1100,7 +1101,7 @@ them so they are easier to model.
 \begin{examplewrap}
 \begin{nexample}{Consider the histogram of county populations
     shown in Figure~\ref{county_pop_transformed_i},
-    which shows extreme skew\index{skew!example: extreme}.
+    which shows extreme skew\index{skew!extreme}.
     What isn't useful about this plot?}
   Nearly all of the data fall into the left-most bin,
   and the extreme skew obscures many of the potentially
@@ -1177,7 +1178,7 @@ or straighten a nonlinear relationship in a scatterplot.
 \subsection{Mapping data (special topic)}
 
 \index{data!county|(}
-\index{intensity map|(}
+%\index{intensity map|(}
 
 The \data{county} data set offers many numerical variables
 that we could plot using dot plots, scatterplots,
@@ -1277,7 +1278,7 @@ Figure~\ref{countyMedIncomeMap}?\footnotemark{}
 \label{countyIntensityMaps2}
 \end{figure}
 
-\index{intensity map|)}
+%\index{intensity map|)}
 \index{data!county|)}
 
 
@@ -2060,8 +2061,7 @@ group?\footnotemark{}
   gain group.
   This is evident in the IQR, which is about 50\% bigger
   in the \emph{gain} group.
-  Both distributions show slight to moderate right
-  skew\index{skew!example: slight to moderate}
+  Both distributions show slight to moderate right skew
   and are unimodal.
   The box plots indicate there are many observations
   far above the median in each group, though we should

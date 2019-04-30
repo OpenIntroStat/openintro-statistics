@@ -390,7 +390,7 @@ these attributes?\footnotemark
 
 \subsection{Probability distributions}
 
-A \term{probability distribution} is a table of all disjoint outcomes and their associated probabilities. Figure~\ref{diceProb} shows the probability distribution for the sum of two dice. 
+A \termsub{probability distribution}{probability!distribution} is a table of all disjoint outcomes and their associated probabilities. Figure~\ref{diceProb} shows the probability distribution for the sum of two dice. 
 
 \begin{figure}[h] \small
 \centering
@@ -1306,7 +1306,7 @@ Ron is watching a roulette table in a casino and notices that the last five outc
 
 \termsub{Tree diagrams}{tree diagram} are a tool to organize outcomes and probabilities around the structure of the data. They are most useful when two or more processes occur in a sequence and each process is conditioned on its predecessors.
 
-The \data{smallpox} data fit this description. We see the population as split by \var{inoculation}: \resp{yes} and \resp{no}. Following this split, survival rates were observed for each group. This structure is reflected in the \term{tree diagram} shown in Figure~\ref{smallpoxTreeDiagram}. The first branch for \var{inoculation} is said to be the \term{primary} branch while the other branches are \term{secondary}.
+The \data{smallpox} data fit this description. We see the population as split by \var{inoculation}: \resp{yes} and \resp{no}. Following this split, survival rates were observed for each group. This structure is reflected in the \term{tree diagram} shown in Figure~\ref{smallpoxTreeDiagram}. The first branch for \var{inoculation} is said to be the \term{primary} branch while the other branches are \termni{secondary}.
 
 \begin{figure}[ht]
 \centering
@@ -1762,7 +1762,8 @@ E(X)
   &= x_1 \times P(X = x_1) + \cdots + x_k\times P(X = x_k) \\
   &= \sum_{i = 1}^{k} x_i P(X = x_i)
 \end{align*}
-The Greek letter $\mu$\index{Greek!mu ($\mu$)} may be used in place of the notation $E(X)$.
+The Greek letter $\mu$\index{Greek!mu@mu ($\mu$)}
+may be used in place of the notation $E(X)$.
 \end{onebox}
 
 \D{\newpage}
@@ -1806,7 +1807,9 @@ If $X$ takes outcomes $x_1$, ..., $x_k$ with probabilities $P(X=x_1)$, ..., $P(X
 	& \qquad\quad\cdots+ (x_k-\mu)^2\times P(X=x_k) \\
 	&= \sum_{j=1}^{k} (x_j - \mu)^2 P(X=x_j)
 \end{align*}
-The standard deviation of $X$, labeled $\sigma$\index{Greek!sigma ($\sigma$)}, is the square root of the variance.
+The standard deviation of $X$, labeled
+$\sigma$\index{Greek!sigma@sigma ($\sigma$)},
+is the square root of the variance.
 \end{onebox}
 
 \begin{examplewrap}
@@ -2199,7 +2202,10 @@ This fraction is the same as the proportion of the histogram's area that falls i
 
 Examine the transition from a boxy hollow histogram in the top-left of Figure~\ref{fdicHistograms} to the much smoother plot in the lower-right. In this last plot, the bins are so slim that the hollow histogram is starting to resemble a smooth curve. This suggests the population height as a \emph{continuous} numerical variable might best be explained by a curve that represents the outline of extremely slim bins.
 
-This smooth curve represents a \term{probability density function} (also called a \term{density} or \term{distribution}), and such a curve is shown in Figure~\ref{fdicHeightContDist} overlaid on a histogram of the sample. A density has a special property: the total area under the density's curve is 1. 
+This smooth curve represents a
+\termsub{probability density function}
+    {probability!density function}
+(also called a \term{density} or \term{distribution}), and such a curve is shown in Figure~\ref{fdicHeightContDist} overlaid on a histogram of the sample. A density has a special property: the total area under the density's curve is 1. 
 
 \begin{figure}[tbh]
 \centering
