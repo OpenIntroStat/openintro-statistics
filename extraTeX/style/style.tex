@@ -340,9 +340,9 @@
 % 9.3 EOCEs: End of Chapter Exercises
 % 9.3.1 Environment
 \newenvironment{eoce}[2][]
-{\refstepcounter{eoce}\noindent\small\textbf{\textcolor{oiB}{{\hypersetup{linkcolor=oiB}\ref{eoce_sol_\arabic{chapter}_\arabic{eoce}}}\label{eoce_\arabic{chapter}_\arabic{eoce}}}}\hspace{2mm} #1#2
+{\refstepcounter{eoce}\noindent\small\textbf{\textcolor{oiB}{{\hypersetup{linkcolor=oiB}{\fontfamily{phv}\selectfont\ref{eoce_sol_\arabic{chapter}_\arabic{eoce}}}}\label{eoce_\arabic{chapter}_\arabic{eoce}}}}\hspace{2mm} #1#2
 
-\addvspace{\stdspace{}}
+\addvspace{4mm}
 
 }
 %{\em #2 } $\:$ \\ }
@@ -355,14 +355,14 @@
 
 }
 {
-\newcommand{\eocesol}[1]{\refstepcounter{eocesol}\noindent\textbf{\color{oiB}{\hypersetup{linkcolor=oiB}\ref{eoce_\arabic{eocesolch}_\arabic{eocesol}}}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}\hspace{2mm}{\small#1}\makebox[0pt]{\color{white}\tiny \refstepcounter{eocesol}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}
+\newcommand{\eocesol}[1]{\refstepcounter{eocesol}\noindent\textbf{\color{oiB}{\hypersetup{linkcolor=oiB}{\fontfamily{phv}\selectfont\ref{eoce_\arabic{eocesolch}_\arabic{eocesol}}}}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}\hspace{2mm}{\small#1}\makebox[0pt]{\color{white}\tiny \refstepcounter{eocesol}\label{eoce_sol_\arabic{eocesolch}_\arabic{eocesol}}}
 
 \addvspace{1mm}
 
 }
 % 9.3.3 EOCE Utilities
-\newcommand{\qt}[2][.]{\textcolor{oiB}{\textbf{#2#1}}}
-\newcommand{\qtq}[1]{\textcolor{oiB}{\textbf{#1?}}}
+\newcommand{\qt}[2][.]{{\fontfamily{phv}\selectfont\textcolor{oiB}{\textbf{#2#1}}}}
+\newcommand{\qtq}[1]{{\fontfamily{phv}\selectfont\textcolor{oiB}{\textbf{#1?}}}}
 \newcommand{\ec}[1]{\textcolor{oiB}{\footnotesize{~(#1)}}}% 9.3.4 EOCE Roman Parts
 \newenvironment{romanparts}{
 \begin{enumerate}[I.]
