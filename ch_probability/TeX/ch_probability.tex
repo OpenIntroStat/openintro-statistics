@@ -310,6 +310,10 @@ P(A) + P(B)
   = P({\color{redcards}\diamondsuit}) + P(\text{face card})
   = 13/52 + 12/52
 \end{align*}
+
+\D{\newpage}
+
+\noindent%
 However, the three cards that are in both events were counted twice, once in each probability. We must correct this double counting:
 \begin{align*}
 P(A\text{ or } B)
@@ -428,7 +432,7 @@ Figure~\ref{usHouseholdIncomeDists} suggests three distributions for household i
     distribution of US household incomes,
     so it must be~(c).}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{r | cc cc}
   \hline
@@ -448,14 +452,14 @@ The probability distribution for the sum of two dice is shown in Figure~\ref{dic
 
 \begin{figure}[h]
   \centering
-  \Figure{0.7}{usHouseholdIncomeDistBar}
+  \Figure{0.65}{usHouseholdIncomeDistBar}
   \caption{The probability distribution of US household income.}
   \label{usHouseholdIncomeDistBar}
 \end{figure}
 
 \begin{figure}
   \centering
-  \Figure{0.73}{diceSumDist}
+  \Figure{0.67}{diceSumDist}
   \caption{The probability distribution of the sum of two dice.}
   \label{diceSumDist}
 \end{figure}
@@ -491,6 +495,8 @@ Events $A=\{$\resp{1}, \resp{2}$\}$ and $B=\{$\resp{4}, \resp{6}$\}$ are shown i
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Brief solutions: (a)~$A^c=\{$\resp{3}, \resp{4}, \resp{5}, \resp{6}$\}$ and $B^c=\{$\resp{1}, \resp{2}, \resp{3}, \resp{5}$\}$. (b)~Noting that each outcome is disjoint, add the individual outcome probabilities to get $P(A^c)=2/3$ and $P(B^c)=2/3$. (c)~$A$~and~$A^c$ are disjoint, and the same is true of $B$~and~$B^c$. Therefore, $P(A) + P(A^c) = 1$ and $P(B) + P(B^c) = 1$.}
+
+\D{\newpage}
 
 A complement of an event $A$ is constructed to have two very important properties: (i) every possible outcome not in $A$ is in $A^c$, and (ii) $A$ and $A^c$ are disjoint. Property (i) implies
 \begin{align*}
@@ -1049,14 +1055,14 @@ The fraction of these probabilities is an example of the
 general formula for conditional probability.
 
 \begin{onebox}{Conditional probability}
-  The conditional probability of the outcome of interest $A$
+  The conditional probability of outcome $A$
   given condition $B$ is computed as the following:
   \begin{align*}
   P(A | B) = \frac{P(A\text{ and }B)}{P(B)}
   \end{align*}
 \end{onebox}
 
-\D{\newpage}
+%\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1162,6 +1168,8 @@ Each case represents one person with two variables: \var{inoculated} and \var{re
 \label{smallpoxProbabilityTable}
 \end{figure}
 
+%\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise} \label{probDiedIfNotInoculated}
 Write out, in formal notation, the probability a randomly selected person who was not inoculated died from smallpox, and find this \mbox{probability.}\footnotemark
@@ -1195,9 +1203,11 @@ P(A\text{ and }B) = P(A | B)\times P(B)
 \end{align*} \vspace{-6.5mm} \par
 It is useful to think of $A$ as the outcome of interest and $B$ as the condition.
 \end{onebox}
-This General Multiplication Rule is simply a rearrangement of the equation for conditional probability.
 
-\D{\newpage}
+\noindent%
+This General Multiplication Rule is simply a rearrangement of the conditional probability equation.
+
+%\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Consider the \data{smallpox} data set. Suppose we are given only two pieces of information: 96.08\% of residents were not inoculated, and 85.88\% of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?}
@@ -1210,9 +1220,9 @@ and we are given that
 \begin{align*}
 P(\text{\var{result}
     = \resp{lived} }|\text{ \var{inoculated} = \resp{no}})
-    &= 0.8588 \\
-P(\text{\var{inoculated} = \resp{no}})
-    &= 0.9608
+    &= 0.8588 %\\
+&&P(\text{\var{inoculated} = \resp{no}})
+    = 0.9608
 \end{align*}
 Among the 96.08\% of people who were not inoculated, 85.88\% survived:
 \begin{align*}
@@ -1232,9 +1242,12 @@ Use $P($\var{inoculated} = \resp{yes}$) = 0.0392$ and $P($\var{result} = \resp{l
 \end{exercisewrap}
 \footnotetext{The answer is 0.0382, which can be verified using Figure~\ref{smallpoxProbabilityTable}.}
 
+%\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
-If 97.54\% of the people who were inoculated lived, what proportion of inoculated people must have died?\footnotemark
+If 97.54\% of the inoculated people lived,
+what proportion of inoculated people must have died?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{There were only two possible outcomes: \resp{lived} or \resp{died}. This means that 100\% - 97.54\% = 2.46\% of the people who were inoculated died.}
@@ -1259,7 +1272,7 @@ Based on the probabilities computed above, does it appear that inoculation is ef
 \footnotetext{The samples are large relative to the difference in death rates for the ``inoculated'' and ``not inoculated'' groups, so it seems there is an association between \var{inoculated} and \var{outcome}. However, as noted in the solution to Guided Practice~\ref{SmallpoxInoculationObsExpExercise}, this is an observational study and we cannot be sure if there is a causal connection. (Further research has shown that inoculation is effective at reducing death rates.)}
 
 
-\D{\newpage}
+%\D{\newpage}
 
 \subsection{Independence considerations in conditional probability}
 
@@ -1269,6 +1282,7 @@ If two events are independent, then knowing the outcome of one should provide no
 \begin{nexercise} \label{condProbOfRollingA1AfterOne1}
 Let $X$ and $Y$ represent the outcomes of rolling two dice.\footnotemark
 \begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
 \item What is the probability that the first die, $X$, is \resp{1}?
 \item What is the probability that both $X$ and $Y$ are \resp{1}?
 \item Use the formula for conditional probability to compute $P(Y =$ \resp{1}$\ |\ X = $ \resp{1}$)$.
@@ -1294,7 +1308,7 @@ P(Y=\text{\resp{1}}\ |\ X=\text{\resp{1}})
 Ron is watching a roulette table in a casino and notices that the last five outcomes were \resp{black}. He figures that the chances of getting \resp{black} six times in a row is very small (about $1/64$) and puts his paycheck on red. What is wrong with his reasoning?\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{He has forgotten that the next roulette spin is independent of the previous spins. Casinos do employ this practice; they post the last several outcomes of many betting games to trick unsuspecting gamblers into believing the odds are in their favor. This is called the \term{gambler's fallacy}.}
+\footnotetext{He has forgotten that the next roulette spin is independent of the previous spins. Casinos do employ this practice, posting the last several outcomes of many betting games to trick unsuspecting gamblers into believing the odds are in their favor. This is called the \term{gambler's fallacy}.}
 
 
 \D{\newpage}
@@ -1371,13 +1385,17 @@ The probability the student also earned an A on the midterm is about 0.39.
 After an introductory statistics course, 78\% of students can successfully construct tree diagrams. Of those who can construct tree diagrams, 97\% passed, while only 57\% of those students who could not construct tree diagrams passed. (a)~Organize this information into a tree diagram. (b)~What is the probability that a randomly selected student passed? (c)~Compute the probability a student is able to construct a tree diagram if it is known that she passed.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{\begin{minipage}[t]{0.27\linewidth}
-(a) The tree diagram is shown to the right.
-(b)~Identify which two joint probabilities represent students who passed, and add them: $P($passed$) = 0.7566+0.1254= 0.8820$. (c)~$P($construct tree diagram $|$ passed$) = \frac{0.7566}{0.8820} = 0.8578$. \vspace{15mm} \\\ 
-\end{minipage}
-\begin{minipage}[c]{0.7\linewidth}
-\includegraphics[width=\textwidth]{ch_probability/figures/treeDiagramAndPass/treeDiagramAndPass} \vspace{-25mm}
-\end{minipage}}
+\footnotetext{%\begin{minipage}[t]{0.27\linewidth}
+(a) The tree diagram is shown to the right. \\
+(b)~Identify which two joint probabilities represent
+    students who passed, and add them:
+    $P($passed$) = 0.7566+0.1254= 0.8820$. \\
+(c)~$P($construct tree diagram $|$ passed$)
+   = \frac{0.7566}{0.8820} = 0.8578$. \\ %\vspace{15mm} \\
+%\end{minipage}
+%\begin{minipage}[c]{0.7\linewidth}
+\includegraphics[width=0.7\textwidth]{ch_probability/figures/treeDiagramAndPass/treeDiagramAndPass}}% \vspace{-25mm}
+%\end{minipage}}
 
 
 \subsection{Bayes' Theorem}
@@ -1536,8 +1554,8 @@ Jose visits campus every Thursday evening. However, some days the parking garage
 \footnotetext{\begin{minipage}[t]{0.27\linewidth}
 The tree diagram, with three primary branches, is shown to the right. Next, we identify two probabilities from the tree diagram. (1) The probability that there is a sporting event and the garage is full: 0.14. (2) The probability the garage is full: $0.0875 + 0.14 + 0.0225 = 0.25$. Then the solution is the ratio of these probabilities: $\frac{0.14}{0.25} = 0.56$. If the garage is full, there is a 56\% probability that there is a sporting event. \vspace{0.1mm} \\\ 
 \end{minipage}
-\begin{minipage}[c]{0.55\linewidth}
-\Figure{}{treeDiagramGarage}\vspace{-30mm}
+\begin{minipage}[c]{0.65\linewidth}
+\Figure{}{treeDiagramGarage}\vspace{-45mm}
 \end{minipage}}
 
 \begin{examplewrap}
@@ -1557,7 +1575,7 @@ Based on the information that the garage is full, there is a 56\% probability th
 \end{nexample}
 \end{examplewrap}
 
-%\D{\newpage}
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsAnAcademicEvent}
