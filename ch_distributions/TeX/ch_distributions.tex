@@ -79,7 +79,7 @@ on the same axis.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.75}{twoSampleNormals}
+  \Figure{0.7}{twoSampleNormals}
   \caption{Both curves represent the normal distribution.
       However, they differ in their center and spread.}
   \label{twoSampleNormals}
@@ -114,7 +114,7 @@ standard deviation $\sigma = 1$ is called the
 \begin{exercisewrap}
 \begin{nexercise}
 Write down the short-hand for a normal distribution
-with\footnotemark{}
+with\footnotemark{} \\
 %\begin{enumerate}[(a)]
 %\setlength{\itemsep}{0mm}
 %\item
@@ -185,9 +185,9 @@ which can make comparisons more reasonable.
 
 \begin{figure}
   \centering
-  \Figure{0.58}{satActNormals}
-  \caption{Ann's and Tom's scores shown with the distributions
-      of SAT and ACT scores.}
+  \Figure{0.6}{satActNormals}
+  \caption{Ann's and Tom's scores shown against
+      the SAT and ACT distributions.}
   \label{satActNormals}
 \end{figure}
 
@@ -294,6 +294,8 @@ than the absolute value of the other observation's Z-score:
 $|Z_1| > |Z_2|$.
 This technique is especially insightful when a distribution
 is symmetric.
+
+%\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -461,10 +463,11 @@ Draw the normal curve representing this exercise,
 shading the lower region instead of the upper one.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{We found the probability in
+\footnotetext{We found this probability in
   Example~\ref{satAbove1190Exam}: 0.6736. \\
   \Figures{0.35}{subtractingArea}{subtracted}}
 
+\D{\newpage}
 
 \newcommand{\edwardsat}{1030}
 \newcommand{\edwardsatz}{-0.35}
@@ -1212,6 +1215,8 @@ Show that you get the same result.\footnotemark{}
       = 1 - \insureCDistCComplement{}
       = \insureCDistC{}$.}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{Suppose a car insurer has determined
     that 88\% of its drivers will not exceed their deductible
@@ -1399,6 +1404,8 @@ to arrange the $k=3$ successes among the $n=4$ trials.
 The second component is the probability of any of the four
 (equally probable) scenarios.
 
+\D{\newpage}
+
 Consider $P($single scenario$)$ under the general case of
 $k$ successes and $n-k$ failures in the $n$ trials.
 In any such scenario, we apply the Multiplication Rule
@@ -1470,6 +1477,8 @@ yields the general binomial formula.
   (4) The probability of a success, $p$, is the same for
       each trial.
 \end{onebox}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{What is the probability that 3 of 8 randomly
@@ -1566,6 +1575,8 @@ binomial model satisfied?\footnotemark{}
   assumption is probably not satisfied.
   For example, acquaintances may have similar smoking habits,
   or those friends might make a pact to quit together.}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1795,6 +1806,8 @@ the range of many possible successes.
 For instance, we may apply the normal distribution to
 the setting of Example~\ref{exactBinomSmokerExSetup}.
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{How can we use the normal approximation
     to estimate the probability of observing \smokex{} or
@@ -1975,8 +1988,11 @@ Each sequence in Figure~\ref{successFailureOrdersForBriansFieldGoals} has exactl
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{The first sequence:
-    $0.2 \times 0.2 \times 0.8 \times 0.8 \times 0.8 \times 0.8
-        = 0.0164$.}
+  $0.2 \times 0.2 \times 0.8 \times
+      0.8 \times 0.8 \times 0.8
+    = 0.0164$.}
+
+\D{\newpage}
 
 If the probability Brian kicks a 35 yard field goal is $p=0.8$, what is the probability it takes Brian exactly six tries to get his fourth successful kick? We can write this as
 {\small\begin{align*}
@@ -2004,6 +2020,8 @@ We first identify the probability of a single sequence. One particular case is t
 &= P(\text{$n-k$ failures and then $k$ successes}) \\
 &= (1-p)^{n-k} p^{k}
 \end{align*}
+
+\D{\newpage}
 
 We must also identify the number of sequences for the general case. Above, ten sequences were identified where the fourth success came on the sixth attempt. These sequences were identified by fixing the last observation as a success and looking for all the ways to arrange the other observations. In other words, how many ways could we arrange $k-1$ successes in $n-1$ trials? This can be found using the $n$ choose $k$ coefficient but for $n-1$ and $k-1$ instead:
 \begin{align*}
@@ -2053,6 +2071,8 @@ Assume Brian's kick attempts are independent. What is the probability that Brian
 &\quad = {4-1 \choose 4-1} 0.8^4 + {5-1 \choose 4-1} (0.8)^4(1-0.8) = 1\times 0.41 + 4\times 0.082 = 0.41 + 0.33 = 0.74
 \end{align*}}
 
+\D{\newpage}
+
 \begin{onebox}{Binomial versus negative binomial}
   In the binomial case, we typically have a fixed number
   of trials and instead consider the number of successes.
@@ -2065,6 +2085,7 @@ Assume Brian's kick attempts are independent. What is the probability that Brian
 \begin{nexercise}
 On 70\% of days, a hospital admits at least one heart attack patient. On 30\% of the days, no heart attack patients are admitted. Identify each case below as a binomial or negative binomial case, and compute the probability.\footnotemark
 \begin{enumerate}[(a)]
+\setlength{\itemsep}{0mm}
 \item What is the probability the hospital will admit
     a heart attack patient on exactly three days this week?
 
@@ -2138,6 +2159,8 @@ The Poisson distribution helps us describe the number of such events that will o
 
 The histogram in Figure~\ref{amiIncidencesOver100Days} approximates a Poisson distribution with rate equal to 4.4. The \term{rate} for a Poisson distribution is the average number of occurrences in a mostly-fixed population per unit of time. In Example~\ref{amiIncidencesEachDayOver1YearInNYCExample}, the time unit is a day, the population is all New York City residents, and the historical rate is 4.4. The parameter in the Poisson distribution is the rate -- or how many events we expect to observe -- and it is typically denoted by $\lambda$\index{Greek!lambda@lambda ($\lambda$)}
 (the Greek letter \emph{lambda})  or $\mu$. Using the rate, we can describe the probability of observing exactly $k$ events in a single unit of time.
+
+\D{\newpage}
 
 \begin{onebox}{Poisson distribution}
   Suppose we are watching for events and the number

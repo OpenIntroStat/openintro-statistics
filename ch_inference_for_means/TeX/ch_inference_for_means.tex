@@ -948,6 +948,8 @@ Then we finding the p-value using the same ideas we used
 previously: find the one-tail area under the sampling
 distribution, and double it.
 
+\D{\newpage}
+
 %\begin{exampleewrap}
 %\begin{nexample}{With independence satisfied and normality
 %    not a concern, we can proceed with performing a hypothesis
@@ -1098,7 +1100,7 @@ where prices are in US dollars.
   \uclabookN{} & Jewish Studies & M10 & 35.96 & 32.40 & 3.56 \\
   \hline
 \end{tabular}
-\caption{Five cases of the \data{textbooks} data set.%
+\caption{Four cases of the \data{textbooks} data set.%
     \vspace{-3mm}}
 \label{textbooksDF}
 \end{figure}
@@ -1132,33 +1134,25 @@ Here the differences are taken as
 It is important that we always subtract using
 a consistent order;
 here Amazon prices are always subtracted from UCLA prices.
-A histogram of these differences is shown in
+The first difference shown in Figure~\ref{textbooksDF}
+is computed as $47.97 - 47.45 = 0.52$.
+Similarly, the second difference is computed as
+$14.26 - 13.55 = 0.71$,
+ and the third is $13.50 - 12.53 = 0.97$.
+A histogram of the differences is shown in
 Figure~\ref{diffInTextbookPricesF18}.
 Using differences between paired observations
 is a common and useful way to analyze paired data.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.45}{textbooksF18}{diffInTextbookPricesF18}
+  \Figures{0.63}{textbooksF18}{diffInTextbookPricesF18}
   \caption{Histogram of the difference in price for
       each book sampled.}
   \label{diffInTextbookPricesF18}
 \end{figure}
 
-\begin{exercisewrap}
-\begin{nexercise}
-The first difference shown in Figure~\ref{textbooksDF}
-is computed as $47.97 - 47.45 = 0.52$.
-Verify the differences are calculated correctly for
-observations~2 and~3.\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{Observation~2:
-  $14.26 - 13.55 = 0.71$.
-  Observation~3: $13.50 - 12.53 = 0.97$.}
 
-
-\D{\newpage}
 \subsection{Inference for paired data}
 
 To analyze a paired data set,
@@ -1735,6 +1729,8 @@ samp. size & 50 & 100 \\
 \label{SumStatsBirthWeightNewbornsSmoke}
 \end{figure}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{Complete the
     hypothesis test started in
@@ -1903,7 +1899,9 @@ T
 \end{align*}
 If we have a computer handy, we can identify the degrees
 of freedom as 45.97.
-Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$. 
+Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$.
+
+\D{\newpage}
 
 \begin{figure}[h]
   \centering
@@ -2832,6 +2830,8 @@ Sample SD ($s_i$) & 0.043 & 0.038 & 0.038 \\
       this outlier is not a concern.}
   \label{mlbANOVABoxPlot}
 \end{figure}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{The largest difference between the sample means

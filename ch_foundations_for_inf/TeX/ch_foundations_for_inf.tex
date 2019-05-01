@@ -404,14 +404,15 @@ of the population proportion.
 We also have the interesting observation
 that the histogram resembles a normal distribution.
 
-\begin{figure}
+\begin{figure}[h]
    \centering
    \Figure{0.8}{sampling_10k_prop_88p}
    %\Figure{0.8}{sampling_10k_prop_887p}
-   \caption{A histogram of 10,000 sample proportions, where each
-       sample is taken from a population where the population
-       proportion is \pewsolarparprop{} and the sample size is
-       $n = \pewsolarpollsize{}$.}
+   \caption{A histogram of 10,000 sample proportions,
+       where each sample is taken from a population
+       where the population proportion is
+       \pewsolarparprop{} and the sample size
+       is $n = \pewsolarpollsize{}$.}
    \label{sampling_10k_prop_88p}
    %\label{sampling_10k_prop_887p}
 \end{figure}
@@ -461,7 +462,7 @@ of a general principle called the
   When observations are independent and the sample size is
   sufficiently large, the sample proportion $\hat{p}$ will tend
   to follow a normal distribution with the following mean and
-  standard error:\footnotemark{}
+  standard error:%\footnotemark{}
   \begin{align*}
     \mu_{\hat{p}} &= p
     &SE_{\hat{p}} &= \sqrt{\frac{p (1 - p)}{n}}
@@ -471,12 +472,16 @@ of a general principle called the
   when $np \geq 10$ and $n(1-p) \geq 10$, which is called the
   \term{success-failure condition}.
 \end{onebox}
-\footnotetext{Technically this formula is the
-  standard deviation of $\hat{p}$, and the standard error
-  is the estimated version using $\hat{p}$.
-  However, to keep terminology simpler --
-  since in every case of inference we do not know the value of $p$
-  -- we use the same name.}
+%\footnotetext{Some statisticians will say what we
+%  have written for $SE_{\hat{p}}$ should be called
+%  the \emph{standard deviation of $\hat{p}$}
+%  and the standard error is a term for
+%  an estimated version (that we'll first encounter
+%  in Section~\ref{apply_clt_real_world_setting}).
+%  We adhere to simpler terminology in this book
+%  that is also accepted,
+%  where the listed formula also can be called the
+%  \emph{standard error}.}
 
 The Central Limit Theorem is incredibly important, and it provides
 a foundation for much of statistics.
@@ -589,7 +594,7 @@ this normal distribution example will hopefully feel familiar!
 We would like to understand the fraction of $\hat{p}$'s
 between 0.86 and 0.90:
 \begin{center}
-\Figure{0.3}{p-hat_from_867_and_907}
+\Figure{0.35}{p-hat_from_867_and_907}
 \end{center}
 With $\mu_{\hat{p}} = \pewsolarpollprop{}$ and
 $SE_{\hat{p}} = \pewsolarpollse{}$,
@@ -612,6 +617,8 @@ of the population proportion, $p = \pewsolarparprop{}$.
 \end{nexample}
 \end{examplewrap}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 In Example~\ref{smallerSampleWhatHappensToPropErrorExercise}
@@ -630,7 +637,9 @@ $SE_{\hat{p}} = \sqrt{\frac{p (1 - p)}{n}}$.\footnotemark
   a smaller standard error.}
 
 
-\subsection{Applying the Central Limit Theorem to a real-world setting}
+\subsection{Applying the Central Limit Theorem to
+    a real-world setting}
+\label{apply_clt_real_world_setting}
 
 We do not actually know the population proportion
 unless we conduct an expensive poll of all individuals
@@ -689,6 +698,8 @@ The computed standard error tends to be reasonably stable
 even when observing slightly different proportions in one
 sample or another.
 
+
+\D{\newpage}
 
 \subsection{More details regarding the Central Limit Theorem}
 
@@ -791,8 +802,8 @@ identify that a normal distribution might not be appropriate.
 We can complete several additional simulations,
 shown in
 Figures~\ref{clt_prop_grid_1}
-and~\ref{clt_prop_grid_2}.
-We can see some trends:
+and~\ref{clt_prop_grid_2},
+and we can see some trends:
 \begin{enumerate}
 \item When either $np$ or $n(1 - p)$ is small, the
     distribution is more \term{discrete},
@@ -809,6 +820,8 @@ We can see some trends:
     and the distribution looks much more
     like a normal distribution.
 \end{enumerate}
+
+\D{\newpage}
 
 So far we've only focused on the skew and discreteness
 of the distributions.
@@ -966,6 +979,8 @@ Section~\ref{simulationForUnderstandingVariabilitySection},
 where 24 of the resulting confidence intervals contain
 the simulation's population proportion of
 $p = \pewsolarparprop{}$, and one interval does not.
+
+\D{\newpage}
 
 \begin{figure}
    \centering
@@ -1322,6 +1337,8 @@ from Example~\ref{ex_ci_ny_ebola_quarantine}:\footnotemark{}
   estimate of the current proportion of New York adults who
   would support such a quarantine period.}
 
+\D{\newpage}
+
 \index{data!wind turbine survey|(}
 
 \newcommand{\pewwindpollsize}{\pewsolarpollsize}
@@ -1597,6 +1614,8 @@ which would suggest people believe
 incorrect information about world health.
 
 The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if~there is sufficient evidence that supports the claim, we set aside our skepticism and reject the null hypothesis in favor of the alternative. The hallmarks of hypothesis testing are also found in the US~court system. 
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise} \label{hypTestCourtExample}
@@ -1931,6 +1950,7 @@ the Roslings' book,
 \emph{\oiRedirect{amazon_factfulness}{Factfulness}}.
 
 
+\D{\newpage}
 
 \subsection{Decision errors}
 
@@ -2050,6 +2070,8 @@ We often write the significance level using $\alpha$
 $\alpha = 0.05$.
 We discuss the appropriateness of different significance
 levels in Section~\ref{significanceLevel}.
+
+\D{\newpage}
 
 If we use a 95\% confidence interval to evaluate a
 hypothesis test and the null hypothesis happens to be true,
@@ -2523,6 +2545,8 @@ question.\footnotemark
 \end{examplewrap}
 
 \index{data!nuclear arms reduction|)}
+
+\D{\newpage}
 
 \newcommand{\oneprophtsummary}{
 \begin{onebox}{Hypothesis testing for a single proportion}

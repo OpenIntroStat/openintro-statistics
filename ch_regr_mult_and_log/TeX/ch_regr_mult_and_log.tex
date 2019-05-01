@@ -364,6 +364,8 @@ listed for the other levels are all considered relative
 to this reference level.
 \end{onebox}
 
+\D{\newpage}
+
 \begin{exercisewrap}
 \begin{nexercise}
 Interpret the coefficients in the \var{income\us{}ver}
@@ -580,6 +582,8 @@ What is the point estimate of~$\beta_4$?\footnotemark
    all other factors held even.
    The point estimate is $b_4 = 4.90\%$.}
 
+\D{\newpage}
+
 \begin{examplewrap}
 \begin{nexample}{Compute the residual of the first observation
     in Figure~\ref{loansDataMatrix} on
@@ -665,6 +669,8 @@ interpretation?\footnotemark
   Ultimately, the interpretation of the intercept in
   this setting is not insightful.}
 
+
+\D{\newpage}
 
 \subsection[Adjusted $R^2$ as a better tool
     for multiple regression]
@@ -1309,7 +1315,7 @@ there are any notable concerns:
     There is more evident variability for fitted values that are
     larger, which we'll discuss further.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \Figures{0.7}
       {loansDiagnostics}
@@ -1382,6 +1388,8 @@ The second option is to try to improve the model,
 which is what we'll try to do with this particular model fit.
 
 
+
+\D{\newpage}
 
 \subsection{Options for improving the model fit}
 
@@ -1480,6 +1488,8 @@ isn't dramatically impacted.
       where extreme skew is evident.}
   \label{loansDiagEvsTransformDebtToIncome}
 \end{figure}
+
+\D{\newpage}
 
 As a next step, we'd evaluate the new model using
 the truncated version of \var{debt\us{}to\us{}income},
@@ -1587,7 +1597,7 @@ Multiple regression will help us answer these and other questions.
 
 \subsection{Data set and the full model}
 
-The \data{mario\us{}kart} data set includes results
+The \data{mariokart} data set includes results
 from \mknum{}~auctions.
 Four observations from this data set are shown in
 Figure~\ref{marioKartDataMatrix},
@@ -1611,7 +1621,7 @@ similar to \var{bankruptcy} in the \data{loan} data set.
   141 & 54.51 &  1 &  1 & 1 &   2 \\ 
   \hline
 \end{tabular}
-\caption{Four observations from the \data{mario\us{}kart}
+\caption{Four observations from the \data{mariokart}
     data set.}
 \label{marioKartDataMatrix}
 \end{figure}
@@ -1639,7 +1649,7 @@ similar to \var{bankruptcy} in the \data{loan} data set.
 \hline
 \end{tabular}
 \caption{Variables and their descriptions for the
-    \data{mario\us{}kart} data set.}
+    \data{mariokart} data set.}
 \label{marioKartVariables}
 \end{figure}
 
@@ -1653,6 +1663,8 @@ similar to \var{bankruptcy} in the \data{loan} data set.
 %      The least squares line is also shown.}
 %  \label{marioKartSingle}
 %\end{figure}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1815,7 +1827,7 @@ Recall that the full model took the following form:
 
 \begin{examplewrap}
 \begin{nexample}{Results corresponding to the full model
-    for the \data{mario\us{}kart} data were shown
+    for the \data{mariokart} data were shown
     in Figure~\vref{MarioKartFullModelOutput}.
     For this model, we consider what would happen if dropping
     each of the variables in the model:
@@ -1871,6 +1883,8 @@ which variable should we eliminate?\footnotemark{}
   would lead to a decrease in $R_{adj}^2$, so we should not
   remove any additional variables from the model after we
   removed \var{duration}.}
+
+\D{\newpage}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -1991,15 +2005,19 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}
   \centering
-  \Figures{0.7}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
-  \caption{For the condition and stock photo variables, we check
-      for differences in the distribution shape or variability of
+  \Figures{0.9}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
+  \caption{For the condition and stock photo variables,
+      we check
+      for differences in the distribution shape
+      or variability of
       the residuals.
-      In the case of the stock photos variable, we see a little
-      less variability in the unique photo group than the stock
+      In the case of the stock photos variable,
+      we see a little
+      less variability in the unique photo group
+      than the stock
       photo group.
-      For numerical predictors, we also check for trends or other
-      structure.
+      For numerical predictors, we also check for
+      trends or other structure.
       We see some slight bowing in the residuals against the
       \var{wheels} variable in the bottom plot.}
   \label{mkDiagnosticEvsVariables}
@@ -2177,6 +2195,8 @@ United States, meaning they are not legally permitted
 factors for hiring or employment decisions.
 The full set of attributes considered is provided in
 Figure~\ref{resumeVariables}.
+
+\D{\newpage}
 
 \begin{figure}[h]
 \centering\small
@@ -2379,6 +2399,8 @@ interpretation of the coefficients is more complex.
   the value.
 \end{nexample}
 \end{examplewrap}
+
+\D{\newpage}
 
 To convert from values on the logistic regression scale
 (e.g. \resHonorsInt{} and \resHonorsIntPlusCoef{} in
@@ -2710,6 +2732,8 @@ Figure~\ref{logisticModelPredict}.
   \label{logisticModelPredict}
 \end{figure}
 
+\D{\newpage}
+
 %The probabilities predicted by the model fall between
 %4.3\% and 29.9\%.
 We'd like to assess the quality of the model.
@@ -2791,7 +2815,7 @@ to better understand the deviations.
 \index{regression|)}
 
 
-\newpage
+\D{\newpage}
 
 \subsection{Exploring discrimination between groups
     of different sizes}
