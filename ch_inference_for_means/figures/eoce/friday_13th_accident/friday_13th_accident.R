@@ -18,19 +18,12 @@ H <- function(x, xlab) {
   return(tmp)
 }
 
-myPDF("friday_13th_accident_hist.pdf", 6, 1.9,
+myPDF("friday_13th_accident_hist.pdf", 7, 1.9 * 7.5 / 9,
     mar = c(3.2, 2.5, 0.5, 2.5),
     mgp = c(2, 0.7, 0),
-    mfrow = c(1,2),
+    mfrow = c(1,3),
     cex.lab = 1.25)
 H(friday_acc$sixth, "Friday the 6th")
 H(friday_acc$thirteenth, "Friday the 13th")
-dev.off()
-
-myPDF("friday_13th_accident_hist_diff.pdf", 3, 1.9,
-    mar = c(3.2, 2.5, 0.5, 2.5),
-    mgp = c(2, 0.7, 0),
-    mfrow = c(1,1),
-    cex.lab = 1.25)
 H(friday_acc$sixth - friday_acc$thirteenth, "Difference")
 dev.off()

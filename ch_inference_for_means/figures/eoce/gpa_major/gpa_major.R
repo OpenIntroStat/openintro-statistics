@@ -16,7 +16,7 @@ levels(survey$major) <- c(
     "Social Sciences")
 
 # boxplot -----------------------------------------------------------
-myPDF("gpa_major.pdf", 8, 3,
+myPDF("gpa_major.pdf", 7.2, 2.7,
     mar = c(2.2,4.7,0.5,1),
     mgp = c(3.5,0.7,0),
     cex.lab = 1.25,

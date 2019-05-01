@@ -12,17 +12,19 @@
 
 \index{probability|(}
 
-\chapterintro{Probability forms a foundation for statistics.
-  and you're probably already familiar with many of the ideas.
+\chapterintro{Probability forms a foundation of statistics,
+  and you're probably \mbox{already}
+  aware of many of the ideas.
   However, formalization of the concepts is new for most.
-  This chapter aims to introduce probability concepts using
-  many examples that will be familiar to most people. \\
+  This chapter aims to introduce probability concepts
+  through examples that will be familiar to most people. \\
 
   \noindent%
   While this chapter provides a theoretical foundation
-  for the ideas introduced in later chapters,
-  mastery of all concepts introduced in this chapter
-  is not strictly required to understand or apply the
+  for the ideas in later chapters and provides a path
+  to a deeper understanding,
+  mastery of the concepts introduced in this chapter
+  is not required for applying the
   methods introduced in the rest of this book.}
 
 %  This chapter provides a theoretical foundation for
@@ -1085,10 +1087,10 @@ Table~\vref{photoClassifyProbTable} may be helpful.\footnotemark
       \ \text{\var{truth} is \resp{fashion}})
   \end{align*}
   (b)~The equation for conditional probability indicates we
-  should first find
+  should first find \\
   $P(\text{\var{mach\us{}learn} is \resp{pred\us{}fashion}
     and \var{truth} is \resp{fashion}}) = 0.1081$
-  and $P(\text{\var{truth} is \resp{not}}) = 0.1696$.
+  and $P(\text{\var{truth} is \resp{not}}) = 0.1696$. \\
   Then the ratio represents the conditional probability:
   $0.1081 / 0.1696 = 0.6374$.}
 
@@ -1614,6 +1616,22 @@ The last several exercises offered a way to update our belief about whether ther
 \section{Sampling from a small population}
 \label{smallPop}
 
+\noindent%
+When we sample observations from a population,
+usually we're only sampling a small fraction of
+the possible individuals or cases.
+However, sometimes our sample size is large enough
+or the population is small enough that we
+sample more than 10\% of a population\footnote{The 10\%
+  guideline is a rule of thumb cutoff for when these
+  considerations become more important.}
+\emph{without
+replacement} (meaning we do not have a chance of
+sampling the same cases twice).
+Sampling such a notable fraction of a population
+can be important for how we analyze the
+sample.
+
 \begin{examplewrap}
 \begin{nexample}{Professors sometimes select a student at random to answer a question. If each student has an equal chance of being selected and there are 15 people in your class, what is the chance that she will pick you for the next question?}
 If there are 15 people to ask and none are skipping class, then the probability is $1/15$, or about $0.067$.
@@ -1645,6 +1663,8 @@ What rule permitted us to multiply the probabilities in Example~\ref{3woRep}?\fo
     \text{\var{Q2}} = \text{\resp{not\us{}picked}})
 \end{align*}
 Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{Suppose the professor randomly picks without regard to who she already selected, i.e. students can be picked more than once. What is the probability that you will not be picked for any of the three questions?}\label{3wRep}
@@ -1696,6 +1716,14 @@ Had we repeated Guided Practice~\ref{raffleOf30TicketsWWOReplacement} with 300 t
 
 \index{random variable|(}
 
+\noindent%
+It's often useful to model a process using what's
+called a \term{random variable}.
+Such a model allows us to apply a mathematical
+framework and statistical principles for
+better understanding and predicting outcomes
+in the real world.
+
 \begin{examplewrap}
 \begin{nexample}{Two books are assigned for a statistics class: a textbook and its corresponding study guide. The university bookstore determined 20\% of enrolled students do not buy either book, 55\% buy the textbook only, and 25\% buy both books, and these percentages are relatively constant from one term to another. If~there are 100 students enrolled, how many books should the bookstore expect to sell to this class?}\label{bookStoreSales}
 Around 20 students will not buy either book (0 books total), about 55 will buy one book (55 books total), and approximately 25 will buy two books (totaling 50 books for these 25 students). The bookstore should expect to sell about 105 books for this class.
@@ -1725,13 +1753,15 @@ Thus, the bookstore should expect to generate about $\$7,535 + \$4,250 = \$11,78
 
 \begin{figure}[h]
   \centering
-  \Figure{0.65}{bookCostDist}
+  \Figure{0.6}{bookCostDist}
   \caption{Probability distribution for the bookstore's
-      revenue from a single student.
-      The distribution balances on a triangle representing
+      revenue from one student.
+      The triangle represents
       the average revenue per student.}
   \label{bookCostDist}
 \end{figure}
+
+\D{\newpage}
 
 \begin{examplewrap}
 \begin{nexample}{What is the average revenue per student for this course?}\label{revFromStudent}
@@ -2168,6 +2198,12 @@ Consider again Guided Practice~\ref{elenaIsSellingATVAndBuyingAToasterOvenAtAnAu
 %_________________
 \section{Continuous distributions}
 \label{contDist}
+
+\noindent%
+So far in this chapter we've discussed cases
+where the outcome of a variable is discrete.
+In this section, we consider a context where
+the outcome is a continuous numerical variable.
 
 \index{data!US adult heights|(}
 \index{hollow histogram|(}
