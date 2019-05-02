@@ -129,10 +129,12 @@ for $p$ takes the form
   of $p$ when computing a confidence interval:
   \begin{align*}
   \text{Support: }
-      n p & \approx \paydayN{} * \paydayRegProp{}
+      n p &
+          \approx \paydayN{} \times \paydayRegProp{}
       = 578
   &\text{Not: }
-      n (1 - p) & \approx \paydayN{} * (1 - \paydayRegProp{})
+      n (1 - p) &
+        \approx \paydayN{} \times (1 - \paydayRegProp{})
       = 248
   \end{align*}
   Since both values are at least 10, we can use the normal
@@ -344,8 +346,9 @@ and an online section outlines this strategy:
 For a confidence interval when the success-failure condition
 isn't met, we can use what's called
 the \term{Clopper-Pearson interval}.
-While the details are beyond the scope of this book,
-there are many internet resources covering this topic.
+The details are beyond the scope of this book.
+However, there are many internet resources covering
+this topic.
 
 The independence condition is a more nuanced requirement.
 When it isn't met, it is important to understand how and why
@@ -678,7 +681,8 @@ Think about these steps when you apply statistical methods.
 
 \begin{examplewrap}
 \begin{nexample}{We consider an experiment for patients
-    who underwent CPR for a heart attack and were
+    who underwent cardiopulmonary resuscitation (CPR)
+    for a heart attack and were
     subsequently admitted to a
     hospital.
     These patients were randomly divided into a treatment
@@ -806,10 +810,10 @@ We'll consider heart attack outcomes in these patients:
 \begin{center}
 \begin{tabular}{l ccc}
   \hline
-  & heart\_\hspace{0.3mm}attack &
-      no\_\hspace{0.3mm}event & Total \\
+  & heart attack &
+      no event & Total \\
   \hline
-  fish\_\hspace{0.3mm}oil & 145 & 12788 & 12933 \\
+  fish oil & 145 & 12788 & 12933 \\
   placebo & 200 & 12738 & 12938 \\
   \hline
 \end{tabular}
@@ -859,8 +863,8 @@ study.\footnotemark
   in patients like those in the~study.}
 
 
-\subsection[Hypothesis tests for $p_1 - p_2$]
-    {Hypothesis tests for $\pmb{p_1 - p_2}$}
+\subsection%[Hypothesis tests for $p_1 - p_2$]
+    {Hypothesis tests for the difference of two proportions}
 
 \index{data!mammography|(}
 \index{data!breast cancer|(}

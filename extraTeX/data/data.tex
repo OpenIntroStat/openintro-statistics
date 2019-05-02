@@ -16,19 +16,16 @@ used for honing your skills.
 Each data set has its own page with the following information:
 \begin{itemize}
 \item
-    Description of each data set.
-\item
-    Detailed overview of each data set's variables.
+    List of the data set's variables.
 \item
     CSV download.
 \item
     R object file download.
 \end{itemize}
-Over time we will also expand the information available
-on these pages.
 
 %\vspace{10mm}
 
+\newcommand{\datawrap}[1]{#1 $\to$}
 
 
 \section{\nameref{ch_intro_to_data}}
@@ -36,9 +33,10 @@ on these pages.
 
 \begin{itemize}
 \item[\ref{basicExampleOfStentsAndStrokes}]
-    [\datalink{stent30}, \datalink{stent365}]
+    \datawrap{\datalink{stent30}, \datalink{stent365}}
     The stent data is split across two data sets,
-    one for the 0-30 day and one for the 0-365 day results. \\
+    one for days 0-30 results and one for days 0-365
+    results. \\
     Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011.
     Stenting versus Aggressive Medical Therapy for
     Intracranial Arterial Stenosis.
@@ -50,7 +48,8 @@ on these pages.
         {www.nytimes.com/2011/09/08/health/research/08stent.html}.
 
 \item[\ref{dataBasics}]
-    [\datalink{loan50}, \datalink{loans\_full\_schema}]
+    \datawrap{\datalink{loan50},
+        \datalink{loans\_full\_schema}}
     This data comes from Lending Club
     (\href{https://www.lendingclub.com/info/download-data.action}
         {lendingclub.com}),
@@ -59,7 +58,7 @@ on these pages.
     The data used in the textbook comes from a sample
     of the loans made in Q1 (Jan, Feb, March) 2018.
 \item[\ref{dataBasics}]
-    [\datalink{county}, \datalink{county\_complete}]
+    \datawrap{\datalink{county}, \datalink{county\_complete}}
     These data come from several government sources.
     For those variables included in the
     county data set, only the most recent data is reported,
@@ -108,17 +107,17 @@ on these pages.
 
 \begin{itemize}
 \item[\ref{numericalData}]
-    [\datalink{loan50}, \datalink{county}]
+    \datawrap{\datalink{loan50}, \datalink{county}}
     These data sets are described in
     Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{categoricalData}]
-    [\datalink{loan50}, \datalink{county}]
+    \datawrap{\datalink{loan50}, \datalink{county}}
     These data sets are described in
     Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{caseStudyMalariaVaccine}]
-    [\datalink{malaria}]
+    \datawrap{\datalink{malaria}}
     Lyke et al. 2017.
     PfSPZ vaccine induces strain-transcending T cells
     and durable protection against heterologous controlled
@@ -140,20 +139,20 @@ on these pages.
 
 \begin{itemize}
 \item[\ref{basicsOfProbability}]
-    [\datalink{loan50}, \datalink{county}]
+    \datawrap{\datalink{loan50}, \datalink{county}}
     These data sets are described in
     Data Appendix~\ref{ch_intro_to_data_data}.
 \item[\ref{basicsOfProbability}]
-    [\datalink{playing\_cards}]
+    \datawrap{\datalink{playing\_cards}}
     A table describing the 52 cards in a standard deck.
 
 \item[\ref{conditionalProbabilitySection}]
-    [\datalink{family\_college}]
+    \datawrap{\datalink{family\_college}}
     A simulated data set based on real population summaries at
     \oiRedirect{textbook-student_parent_college_2001}
         {nces.ed.gov/pubs2001/2001126.pdf}.
 \item[\ref{conditionalProbabilitySection}]
-    [\datalink{smallpox}]
+    \datawrap{\datalink{smallpox}}
     Fenner F. 1988.
     Smallpox and Its Eradication
     (History of International Public Health, No. 6).
@@ -187,12 +186,12 @@ on these pages.
     \Comment{Should this even be mentioned?}
 
 \item[\ref{randomVariablesSection}]
-    [\datalink{stocks\_18}]
+    \datawrap{\datalink{stocks\_18}}
     Monthly returns for Caterpillar, Exxon Mobil Corp,
     and Google for November 2015 to October 2018.
 
 \item[\ref{contDist}]
-    [\datalink{fcid}]
+    \datawrap{\datalink{fcid}}
     This sample can be considered a simple random sample
     from the US population.
     It relies on the USDA Food Commodity Intake Database.
@@ -226,7 +225,7 @@ on these pages.
     The distribution is based on the
     USDA Food Commodity Intake Database.
 \item[\ref{normalDist}]
-    [\datalink{possum}]
+    \datawrap{\datalink{possum}}
     The distribution parameters are based on a sample
     of possums from Australia and New Guinea.
     The original source of this data is as follows.
@@ -237,28 +236,28 @@ on these pages.
     Australian Journal of Zoology 43: 449-458.
 
 %\item[\ref{assessingNormal}]
-%    [\datalink{male\_heights\_fcid}]
+%    \datawrap{\datalink{male\_heights\_fcid}}
 %    This sample can be considered a simple random sample
 %    from the US population.
 %    It relies on the USDA Food Commodity Intake Database.
 %\item[\ref{assessingNormal}]
-%    [\datalink{simulated\_normal}]
+%    \datawrap{\datalink{simulated\_normal}}
 %    These data were simulated from a standard normal distribution.
 %    This data set includes three different data sets.
 %\item[\ref{assessingNormal}]
-%    [\datalink{nba\_players\_19}]
+%    \datawrap{\datalink{nba\_players\_19}}
 %    Summary information from the NBA players for the
 %    2018-2019 season.
 %    Data were retrieved from
 %    \oiRedirect{data-nba_players_19}{www.nba.com/players}.
 %\item[\ref{assessingNormal}]
-%    [\datalink{poker}]
+%    \datawrap{\datalink{poker}}
 %    Poker winnings (and losses) for 50 days by a professional
 %    poker player, which represents their first 50 days trying
 %    to play for a living.
 %    Anonymity has been requested by the player.
 %\item[\ref{assessingNormal}]
-%    [\datalink{simulated\_dist}]
+%    \datawrap{\datalink{simulated\_dist}}
 %    Simulated data sets,
 %    not necessarily drawn from a normal distribution.
 %    This data set includes six different data sets.
@@ -295,7 +294,7 @@ on these pages.
     admissions are realistic for some hospitals.
 
 \item[\ref{poisson}]
-    [\datalink{ami\_occurrences}]
+    \datawrap{\datalink{ami\_occurrences}}
     This is a simulated data set but resembles actual
     AMI data for New York City based on typical AMI
     incidence rates.
@@ -313,7 +312,7 @@ on these pages.
 
 \begin{itemize}
 \item[\ref{pointEstimates}]
-    [\datalink{pew\_energy\_2018}]
+    \datawrap{\datalink{pew\_energy\_2018}}
     The actual data has more observations than were referenced
     in this chapter.
     That is, we used a subsample since it helped smooth some
@@ -330,11 +329,11 @@ on these pages.
     \end{center}
     
 \item[\ref{confidenceIntervals}]
-    [\datalink{pew\_energy\_2018}]
+    \datawrap{\datalink{pew\_energy\_2018}}
     See the details for this data set above
     in the Section~\ref{pointEstimates} data section.
 \item[\ref{confidenceIntervals}]
-    [\datalink{ebola\_survey}]
+    \datawrap{\datalink{ebola\_survey}}
     In New York City on October 23rd, 2014, a doctor who had
     recently been treating Ebola patients in Guinea went to
     the hospital with a slight fever and was subsequently
@@ -350,7 +349,7 @@ on these pages.
         {Poll ID NY141026 on maristpoll.marist.edu}.
 
 \item[\ref{hypothesisTesting}]
-    [\datalink{pew\_energy\_2018}]
+    \datawrap{\datalink{pew\_energy\_2018}}
     See the details for this data set above
     in the Section~\ref{pointEstimates} data section.
 \item[\ref{hypothesisTesting}]
@@ -419,13 +418,13 @@ on these pages.
     For more information, check out the book,
     \oiRedirect{amazon_factfulness}{Factfulness}.
 \item[\ref{hypothesisTesting}]
-    [\datalink{nuclear\_survey}]
+    \datawrap{\datalink{nuclear\_survey}}
     A simple random sample of 1,028 US adults in March 2013
     found that 56\% of US adults support nuclear arms reduction.
     \oiRedirect{textbook-nuclear_arms_reduction_201303}
         {www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}
 \item[\ref{hypothesisTesting}]
-    [\datalink{stent30}, \datalink{stent365}]
+    \datawrap{\datalink{stent30}, \datalink{stent365}}
     This data is described in
     Data Appendix~\ref{ch_intro_to_data_data}.
 
@@ -452,19 +451,19 @@ on these pages.
     of performing sample size calculations.
 
 \item[\ref{differenceOfTwoProportions}]
-    [\datalink{cpr}]
+    \datawrap{\datalink{cpr}}
     B$\ddot{\text{o}}$ttiger et al.
     \emph{Efficacy and safety of thrombolytic therapy after
         initially unsuccessful cardiopulmonary resuscitation:
         a prospective clinical trial}.
         The Lancet, 2001.
 \item[\ref{differenceOfTwoProportions}]
-    [\datalink{fish\_oil\_18}]
+    \datawrap{\datalink{fish\_oil\_18}}
     Manson JE, et al. 2018.
     Marine n-3 Fatty Acids and Prevention of
     Cardiovascular Disease and Cancer. NEJMoa1811403.
 \item[\ref{differenceOfTwoProportions}]
-    [\datalink{mammogram}]
+    \datawrap{\datalink{mammogram}}
     \oiRedirect{textbook-90k_mammogram_study_2014}
         {Miller AB. 2014.
             \emph{Twenty five year follow-up for breast cancer
@@ -472,25 +471,25 @@ on these pages.
             Breast Screening Study: randomised screening trial}.
             BMJ 2014;348:g366.}
 \item[\ref{differenceOfTwoProportions}]
-    [\datalink{drone\_blades}]
+    \datawrap{\datalink{drone\_blades}}
     The quality control data set for quadcopter drone blades
     is a made-up data set for an example.
     We provide the simulated data in the
     \data{drone\us{}blades} data set.
 
 \item[\ref{oneWayChiSquare}]
-    [\datalink{jury}]
+    \datawrap{\datalink{jury}}
     The jury data set for examining discrimination
     is a made-up data set an example.
     We provide the simulated data in the \data{jury} data set.
 \item[\ref{oneWayChiSquare}]
-    [\datalink{sp500\_1950\_2018}]
+    \datawrap{\datalink{sp500\_1950\_2018}}
     Data is sourced from
     \oiRedirect{yahoo_finance}
         {finance.yahoo.com}.
 
 \item[\ref{twoWayTablesAndChiSquare}]
-    [\datalink{ask}]
+    \datawrap{\datalink{ask}}
     Minson JA, Ruedy NE, Schweitzer ME.
     \emph{There is such a thing as a stupid question:
     Question disclosure in strategic communication}. \\
@@ -500,7 +499,7 @@ on these pages.
         {Minson\_working\_Ask\%20(the\%20Right\%20Way)\%20and\%20You\%20Shall\%20Receive.pdf}}
 
 \item[\ref{twoWayTablesAndChiSquare}]
-    [\datalink{diabetes2}]
+    \datawrap{\datalink{diabetes2}}
     Zeitler P, et al. 2012.
     A Clinical Trial to Maintain Glycemic Control in Youth
     with Type~2 Diabetes.
@@ -535,11 +534,12 @@ on these pages.
     \oiRedirect{textbook-fda_mercury_in_fish_2010}
         {www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}
 \item[\ref{oneSampleMeansWithTDistribution}]
-    [\datalink{run17}]
+    \datawrap{\datalink{run17}}
     \oiRedirect{textbook-cherryblossom_org}{www.cherryblossom.org}
 
 \item[\ref{pairedData}]
-    [\datalink{textbooks}, \datalink{ucla\_textbooks\_f18}]
+    \datawrap{\datalink{textbooks},
+        \datalink{ucla\_textbooks\_f18}}
     Data were collected by OpenIntro staff in 2010 and again
     in 2018.
     For the 2018 sample, we sampled 201 UCLA courses.
@@ -552,7 +552,7 @@ on these pages.
     and \oiRedirect{amazon}{amazon.com}.
 
 \item[\ref{differenceOfTwoMeans}]
-    [\datalink{stem\_cells}]
+    \datawrap{\datalink{stem\_cells}}
     \oiRedirect{textbook-menard_stem_cells_2005}
         {Menard C, et al. 2005.
             Transplantation of cardiac-committed mouse
@@ -561,7 +561,7 @@ on these pages.
             a preclinical study.
             The Lancet: 366:9490, p1005-1012.}
 \item[\ref{differenceOfTwoMeans}]
-    [\datalink{ncbirths}]
+    \datawrap{\datalink{ncbirths}}
     Birth records released by North Carolina in 2004.
     Unfortunately, we don't currently have additional
     information on the source for this data set.
@@ -579,16 +579,16 @@ on these pages.
     imprecise from what we'd observe in actual data.
 
 \item[\ref{anovaAndRegrWithCategoricalVariables}]
-    [\datalink{toy\_anova}]
+    \datawrap{\datalink{toy\_anova}}
     Data used for Figure~\ref{toyANOVA}, which was fake data.
 \item[\ref{anovaAndRegrWithCategoricalVariables}]
-    [\datalink{mlb\_players\_18}]
+    \datawrap{\datalink{mlb\_players\_18}}
     Data were retrieved from
     \oiRedirect{mlb-stats}{mlb.mlb.com/stats}.
     Only players with at least 100 at bats were considered
     during the analysis.
 \item[\ref{anovaAndRegrWithCategoricalVariables}]
-    [\datalink{classdata}]
+    \datawrap{\datalink{classdata}}
     These data are simulated.
 
 \end{itemize}
@@ -603,7 +603,7 @@ on these pages.
 
 \begin{itemize}
 \item[\ref{fitting_line_to_data_section}]
-    [\datalink{simulated\_scatter}]
+    \datawrap{\datalink{simulated\_scatter}}
     Fake data used for the first three plots.
     The perfect linear plot uses group~4 data,
     where \var{group} variable in the data set
@@ -617,12 +617,12 @@ on these pages.
     The correlation plots uses groups~9-19 data
     (Figures~\ref{posNegCorPlots} and~\ref{corForNonLinearPlots}).
 \item[\ref{fitting_line_to_data_section}]
-    [\datalink{possum}]
+    \datawrap{\datalink{possum}}
     This data is described in
     Data Appendix~\ref{ch_distributions_data}.
 
 \item[\ref{fittingALineByLSR}]
-    [\datalink{elmhurst}]
+    \datawrap{\datalink{elmhurst}}
     These data were sampled from a table of data for all
     freshman from the 2011 class at Elmhurst College that
     accompanied an article titled
@@ -631,23 +631,23 @@ on these pages.
     \oiRedirect{textbook-chronicle_elmhurst_article}
         {chronicle.com/article/What-Students-Really-Pay-to-Go/131435}.
 \item[\ref{fittingALineByLSR}]
-    [\datalink{simulated\_scatter}]
+    \datawrap{\datalink{simulated\_scatter}}
     The plots for things that can go wrong uses groups 20-23
     (Figure~\ref{whatCanGoWrongWithLinearModel}).
 \item[\ref{fittingALineByLSR}]
-    [\datalink{mariokart}]
+    \datawrap{\datalink{mariokart}}
     \Comment{Confirm data set name change.}
     Auction data from Ebay (ebay.com) for the game Mario Kart
     for the Nintendo Wii.
     This data set was collected in early October, 2009.
 
 \item[\ref{typesOfOutliersInLinearRegression}]
-    [\datalink{simulated\_scatter}]
+    \datawrap{\datalink{simulated\_scatter}}
     The plots for types of outliers uses groups 24-29
     (Figure~\ref{outlierPlots}).
 
 \item[\ref{inferenceForLinearRegression}]
-    [\datalink{midterms\_house}]
+    \datawrap{\datalink{midterms\_house}}
     Data was retrieved from Wikipedia.
 
 \end{itemize}
@@ -663,27 +663,27 @@ on these pages.
 
 \begin{itemize}
 \item[\ref{introductionToMultipleRegression}]
-    [\datalink{loans\_full\_schema}]
+    \datawrap{\datalink{loans\_full\_schema}}
     This data is described in
     Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{model_selection_section}]
-    [\datalink{loans\_full\_schema}]
+    \datawrap{\datalink{loans\_full\_schema}}
     This data is described in
     Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{multipleRegressionModelAssumptions}]
-    [\datalink{loans\_full\_schema}]
+    \datawrap{\datalink{loans\_full\_schema}}
     This data is described in
     Data Appendix~\ref{ch_intro_to_data_data}.
 
 \item[\ref{mario_kart_case_study}]
-    [\datalink{mariokart}]
+    \datawrap{\datalink{mariokart}}
     This data is describe in
     Data Appendix~\ref{ch_regr_simple_linear_data}.
 
 \item[\ref{logisticRegression}]
-    [\datalink{resume}]
+    \datawrap{\datalink{resume}}
     Bertrand M, Mullainathan S. 2004.
     \emph{Are Emily and Greg More Employable than Lakisha and Jamal?
     A Field Experiment on Labor Market Discrimination}.
@@ -708,7 +708,7 @@ on these pages.
     sophisticated analysis.
 
 %\item[\ref{logisticRegression}]
-%    [\datalink{research\_reply}]
+%    \datawrap{\datalink{research\_reply}}
 %    Milkman KL, Akinola M, Chugh D. 2015.
 %    What Happens Before?
 %    A Field Experiment Exploring How Pay and

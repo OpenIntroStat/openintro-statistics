@@ -1607,7 +1607,7 @@ but this general approach remain the same.
 
 %\D{\newpage}
 
-\subsection{Hypothesis tests based on a difference in means}
+\subsection{Hypothesis tests for the difference of two means}
 
 \index{data!baby\_smoke|(}
 
@@ -1618,7 +1618,7 @@ A data set called \data{ncbirths} represents a random sample of 150 cases of mot
 \centering
 \begin{tabular}{rrrrrll}
   \hline
- & fAge & mAge & weeks & weight & sexBaby & smoke \\ 
+ & fage & mage & weeks & weight & sex & smoke \\ 
   \hline
 1 & NA & 13 &  37 & 5.00 & female & nonsmoker \\ 
   2 & NA & 14 &  36 & 5.88 & female & nonsmoker \\ 
@@ -3292,7 +3292,7 @@ This issue is resolved by using a modified significance level.
   stringent significance level is more appropriate for
   these tests:
   \begin{align*}
-  \alpha^* = \alpha / K
+  \alpha^{\star} = \alpha / K
   \end{align*}
   where $K$ is the number of comparisons being considered
   (formally or informally).
@@ -3309,7 +3309,7 @@ This issue is resolved by using a modified significance level.
     the Bonferroni correction and report any differences.}
   \label{multipleComparisonsOfThreeStatClasses}%
   We use a modified significance level of
-  $\alpha^* = 0.05 / 3 = 0.0167$.
+  $\alpha^{\star} = 0.05 / 3 = 0.0167$.
   Additionally, we use the pooled estimate of the standard
   deviation:
   $s_{pooled}=13.61$ on $df=161$,
@@ -3371,7 +3371,7 @@ sufficient evidence to reject the null hypothesis.
 Recall that failing to reject $H_0$ does not imply $H_0$ is true.
 
 \begin{onebox}{Reject $\pmb{H_0}$ with ANOVA
-    but find no group differences}
+    but find no differences in group means}
   It is possible to reject the null hypothesis using ANOVA
   and then to not subsequently identify differences in the
   pairwise comparisons.

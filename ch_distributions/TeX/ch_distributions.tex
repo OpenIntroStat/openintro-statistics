@@ -1520,7 +1520,7 @@ yields the general binomial formula.
   Using $(\insureSprob{})^5(\insureFprob{})^3
     \approx \insureBinomEinHSingleScenario{}$,
   the final probability is about
-  $56 * \insureBinomEinHSingleScenario{}
+  $56 \times \insureBinomEinHSingleScenario{}
     \approx \insureBinomEinH{}$.
 \end{nexample}
 \end{examplewrap}
@@ -2184,7 +2184,22 @@ We will leave a rigorous set of conditions for the Poisson distribution to a lat
 
 A random variable may follow a Poisson distribution if we are looking for the number of events, the population that generates such events is large, and the events occur independently of each other.
 
-Even when events are not really independent -- for instance, Saturdays and Sundays are especially popular for weddings -- a Poisson model may sometimes still be reasonable if we allow it to have a different rate for different times. In the wedding example, the rate would be modeled as higher on weekends than on weekdays. The idea of modeling rates for a Poisson distribution against a second variable such as \var{dayOfTheWeek} forms the foundation of some more advanced methods that fall in the realm of \termsub{generalized linear models}{generalized linear model}. In Chapters~\ref{linRegrForTwoVar} and~\ref{multipleAndLogisticRegression}, we will discuss a foundation of linear models.
+Even when events are not really independent --
+for instance, Saturdays and Sundays are especially
+popular for weddings --
+a Poisson model may sometimes still be reasonable
+if we allow it to have a different rate for different
+times.
+In the wedding example, the rate would be modeled as
+higher on weekends than on weekdays.
+The idea of modeling rates for a Poisson distribution
+against a second variable such as the day of week forms
+the foundation of some more advanced methods that fall
+in the realm of \termsub{generalized linear models}
+    {generalized linear model}.
+In Chapters~\ref{linRegrForTwoVar}
+and~\ref{multipleAndLogisticRegression},
+we will discuss a foundation of linear models.
 
 \index{distribution!Poisson|)}
 

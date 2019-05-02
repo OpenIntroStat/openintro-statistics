@@ -8,8 +8,9 @@
 \end{chapterpage}
 \renewcommand{\chapterfolder}{ch_foundations_for_inf}
 
-\chapterintro{Statistical inference is primarily concerned
-  with understanding the uncertainty of parameter estimates.
+\chapterintro{Statistical inference is primarily
+  concerned with understanding and quantifying the
+  uncertainty of parameter estimates.
   While the equations and details change
   depending on the setting, the foundations for inference
   are the same throughout all of statistics. \\
@@ -114,8 +115,8 @@ entire population.
 %  which is why we often instead take a sample.}
 This entire-population response proportion is
 generally referred to as the \term{parameter}
-of interest,
-and when the parameter is a proportion,
+of interest.
+When the parameter is a proportion,
 it is often denoted by $p$,
 %We typically estimate the parameter by collecting
 %information from a sample of the population;
@@ -284,10 +285,13 @@ but how close might we expect the sample proportion
 in the poll would be to \pewsolarparpercent{}?
 We want to understand, \emph{how does the
 sample proportion $\hat{p}$ behave when the true population
-proportion is \pewsolarparprop{}}.\footnote{Note:
-  \pewsolarparpercent{} written as a proportion would be
+proportion is
+\pewsolarparprop{}}.\footnote{\pewsolarparpercent{}
+  written as a proportion would be
   \pewsolarparprop{}.
-  It is common to switch between proportion and percent.}
+  It is common to switch between proportion and percent.
+  However, formulas presented in this book always refer
+  to the proportion, not the percent.}
 Let's find out!
 We can simulate responses we would get from a simple
 random sample of 1000 American adults,
@@ -348,11 +352,14 @@ then divide by \\
 sum(sampled\_entries == "support") / \pewsolarpollsize{}}
 \caption{For those curious, this is code for
     a single $\hat{p}$ simulation using the
-    statistical software called \R\index{R}.
+    statistical software called \R{}\index{R}.
     Each line that starts with \texttt{\#} is a
     \term{code comment},
     which is used to describe in regular language what the
-    code is doing.}
+    code is doing.
+    We've provided software labs in \R{} at
+    \oiRedirect{openintroorg_labs}{openintro.org/stat/labs}
+    for anyone interested in learning more.}
 \label{solarPollSimulationCodeR}
 \end{figure}
 % \setlength\textwidth{\officialtextwidth}
