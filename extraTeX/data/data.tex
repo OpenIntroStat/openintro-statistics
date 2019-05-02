@@ -15,6 +15,7 @@ This page also includes additional data sets that can be
 used for honing your skills.
 Each data set has its own page with the following information:
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item
     List of the data set's variables.
 \item
@@ -26,12 +27,19 @@ Each data set has its own page with the following information:
 %\vspace{10mm}
 
 \newcommand{\datawrap}[1]{#1 $\to$}
+\newcommand{\seedataappendix}[1]{This data set
+    is described in Data Appendix~\ref{#1}.}
+\newcommand{\seedataappendixplural}[1]{These data sets
+    are described in Data Appendix~\ref{#1}.}
+\newcommand{\madeup}{This example was made up.}
+
 
 
 \section{\nameref{ch_intro_to_data}}
 \label{ch_intro_to_data_data}
 
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item[\ref{basicExampleOfStentsAndStrokes}]
     \datawrap{\datalink{stent30}, \datalink{stent365}}
     The stent data is split across two data sets,
@@ -51,7 +59,7 @@ Each data set has its own page with the following information:
     \datawrap{\datalink{loan50},
         \datalink{loans\_full\_schema}}
     This data comes from Lending Club
-    (\href{https://www.lendingclub.com/info/download-data.action}
+    (\oiRedirect{lendingclub-info-download-data}
         {lendingclub.com}),
     which provides a large set of data on the people who
     received loans through their platform.
@@ -64,26 +72,27 @@ Each data set has its own page with the following information:
     county data set, only the most recent data is reported,
     as of what was available in late 2018.
     Data prior to 2011 is all from
-    \href{http://census.gov}{census.gov},
+    \oiRedirect{census_gov}{census.gov},
     where the specific Quick Facts page providing the data
     is no longer available.
     The more recent data comes from
-    \href{https://www.ers.usda.gov/data-products/county-level-data-sets/download-data/}
+    \oiRedirect
+        {ers_usda_gov-data_products-county_level_data_sets}
         {USDA (ers.usda.gov)},
-    \href{https://www.bls.gov/lau/}
+    \oiRedirect
+        {bls_gov-lau}
         {Bureau of Labor Statistics (bls.gov/lau)},
-    \href{https://www.census.gov/did/www/saipe/}
+    \oiRedirect
+        {census_gov-did-www-saipe}
         {SAIPE (census.gov/did/www/saipe)},
     and
-    \href{https://www.census.gov/programs-surveys/acs/}
+    \oiRedirect
+        {census_gov-programs_surveys-acs}
         {American Community Survey
             (census.gov/programs-surveys/acs)}.
 
-\item[\ref{overviewOfDataCollectionPrinciples}]
-    No data sets were described in this section.
-
 \item[\ref{section_obs_data_sampling}]
-    The Nurses' Health Study was mentioned.
+    \datawrap{Nurses' Health Study}
     For more information on this data set, see \\
     \oiRedirect{textbook-channing_nurse_study}
         {www.channing.harvard.edu/nhs}
@@ -106,15 +115,14 @@ Each data set has its own page with the following information:
 \label{ch_summarizing_data_data}
 
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item[\ref{numericalData}]
     \datawrap{\datalink{loan50}, \datalink{county}}
-    These data sets are described in
-    Data Appendix~\ref{ch_intro_to_data_data}.
+    \seedataappendixplural{ch_intro_to_data_data}
 
 \item[\ref{categoricalData}]
     \datawrap{\datalink{loan50}, \datalink{county}}
-    These data sets are described in
-    Data Appendix~\ref{ch_intro_to_data_data}.
+    \seedataappendixplural{ch_intro_to_data_data}
 
 \item[\ref{caseStudyMalariaVaccine}]
     \datawrap{\datalink{malaria}}
@@ -123,7 +131,8 @@ Each data set has its own page with the following information:
     and durable protection against heterologous controlled
     human malaria infection.
     PNAS 114(10):2711-2716.
-    \url{http://www.pnas.org/content/114/10/2711}
+    \oiRedirect{lyke-ishizuka-2017}
+        {www.pnas.org/content/114/10/2711}
 \end{itemize}
 
 
@@ -138,17 +147,17 @@ Each data set has its own page with the following information:
 \label{ch_probability_data}
 
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item[\ref{basicsOfProbability}]
     \datawrap{\datalink{loan50}, \datalink{county}}
-    These data sets are described in
-    Data Appendix~\ref{ch_intro_to_data_data}.
+    \seedataappendixplural{ch_intro_to_data_data}
 \item[\ref{basicsOfProbability}]
     \datawrap{\datalink{playing\_cards}}
-    A table describing the 52 cards in a standard deck.
+    Data set describing the 52 cards in a standard deck.
 
 \item[\ref{conditionalProbabilitySection}]
     \datawrap{\datalink{family\_college}}
-    A simulated data set based on real population summaries at
+    Simulated data based on real population summaries at \\
     \oiRedirect{textbook-student_parent_college_2001}
         {nces.ed.gov/pubs2001/2001126.pdf}.
 \item[\ref{conditionalProbabilitySection}]
@@ -159,7 +168,7 @@ Each data set has its own page with the following information:
     Geneva: World Health Organization. ISBN 92-4-156110-6.
 
 \item[\ref{conditionalProbabilitySection}]
-    [Mammogram screening, probabilities.]
+    \datawrap{Mammogram screening, probabilities}
     The probabilities reported were obtained using studies
     reported at
     \oiRedirect{textbook-breastCancerDotOrg_20090831b}
@@ -168,22 +177,19 @@ Each data set has its own page with the following information:
         {www.ncbi.nlm.nih.gov/pmc/articles/PMC1173421}. 
 
 \item[\ref{conditionalProbabilitySection}]
-    [Jose campus visits, probabilities, no data link]
-    This example was entirely made up.
+    \datawrap{Jose campus visits, probabilities}
+    \madeup{}
 
 \item[\ref{smallPop}]
     No data sets were described in this section.
 
 \item[\ref{randomVariablesSection}]
-    [Course material purchases, probabilities, no data link]
-    The probabilities for course materials purchases were
-    created as hypotheticals.
-    \Comment{Should this even be mentioned?}
+    \datawrap{Course material purchases and probabilities}
+    \madeup{}
 
 \item[\ref{randomVariablesSection}]
-    [Auctions for TV and toaster, no data link]
-    The statistics used were created as hypotheticals.
-    \Comment{Should this even be mentioned?}
+    \datawrap{Auctions for TV and toaster}
+    \madeup{}
 
 \item[\ref{randomVariablesSection}]
     \datawrap{\datalink{stocks\_18}}
@@ -205,8 +211,9 @@ Each data set has its own page with the following information:
 \label{ch_distributions_data}
 
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item[\ref{normalDist}]
-    [SAT and ACT score distributions]
+    \datawrap{SAT and ACT score distributions}
     The SAT score data comes from the 2018 distribution,
     which is provided at \\
     {\small
@@ -221,7 +228,7 @@ Each data set has its own page with the following information:
     However, since the topic is very accessible,
     we decided to keep the context and examples.
 \item[\ref{normalDist}]
-    [Male heights]
+    \datawrap{Male heights}
     The distribution is based on the
     USDA Food Commodity Intake Database.
 \item[\ref{normalDist}]
@@ -263,33 +270,34 @@ Each data set has its own page with the following information:
 %    This data set includes six different data sets.
 
 \item[\ref{geomDist}]
-    [Exceeding insurance deductible]
+    \datawrap{Exceeding insurance deductible}
     These statistics were made up but are possible
     values one might observe for low-deductible plans.
 
 \item[\ref{binomialModel}]
-    [Exceeding insurance deductible]
+    \datawrap{Exceeding insurance deductible}
     These statistics were made up but are possible
     values one might observe for low-deductible plans.
 \item[\ref{binomialModel}]
-    [Smoking friends]
+    \datawrap{Smoking friends}
     Unfortunately, we don't currently have additional
     information on the source for the 30\% statistic,
     so don't consider this one as fact since we cannot
     verify it was from a reputable source.    
 \item[\ref{binomialModel}]
-    [US smoking rate]
+    \datawrap{US smoking rate}
     The 15\% smoking rate in the US figure is close to
     the value from the Centers for Disease Control and
     Prevention website, which reports a value of 14\%
     as of the 2017 estimate: \\
-    \href{https://www.cdc.gov/tobacco/data_statistics/fact_sheets/adult_data/cig_smoking/index.htm}{cdc.gov/tobacco/data\_statistics/fact\_sheets/adult\_data/cig\_smoking/index.htm}
+    \oiRedirect{cdc_gov-tobacco-data_statistics}
+        {cdc.gov/tobacco/data\_statistics/fact\_sheets/adult\_data/cig\_smoking/index.htm}
 
 \item[\ref{negativeBinomial}]
-    [Football kicker]
-    This example was made up.
+    \datawrap{Football kicker}
+    \madeup{}
 \item[\ref{negativeBinomial}]
-    [Heart attack admissions]
+    \datawrap{Heart attack admissions}
     This example was made up, though the heart attack
     admissions are realistic for some hospitals.
 
@@ -353,7 +361,7 @@ Each data set has its own page with the following information:
     See the details for this data set above
     in the Section~\ref{pointEstimates} data section.
 \item[\ref{hypothesisTesting}]
-    [Rosling questions]
+    \datawrap{Rosling questions}
     We noted much smaller samples than the Roslings'
     describe in their book,
     \oiRedirect{amazon_factfulness}{Factfulness},
@@ -418,15 +426,23 @@ Each data set has its own page with the following information:
     For more information, check out the book,
     \oiRedirect{amazon_factfulness}{Factfulness}.
 \item[\ref{hypothesisTesting}]
+    \datawrap{\datalink{pew\_energy\_2018}}
+    See the details for this data set above
+    in the Section~\ref{pointEstimates} data section.
+\item[\ref{hypothesisTesting}]
     \datawrap{\datalink{nuclear\_survey}}
+    \Comment{I think this was replaced.}
     A simple random sample of 1,028 US adults in March 2013
-    found that 56\% of US adults support nuclear arms reduction.
+    found that 56\% of US adults support nuclear arms
+    reduction. \\
     \oiRedirect{textbook-nuclear_arms_reduction_201303}
         {www.gallup.com/poll/161198/favor-russian-nuclear-arms-reductions.aspx}
 \item[\ref{hypothesisTesting}]
+    \datawrap{Car manufacturing}
+    \madeup{}
+\item[\ref{hypothesisTesting}]
     \datawrap{\datalink{stent30}, \datalink{stent365}}
-    This data is described in
-    Data Appendix~\ref{ch_intro_to_data_data}.
+    \seedataappendixplural{ch_intro_to_data_data}
 
 \end{itemize}
 
@@ -434,21 +450,21 @@ Each data set has its own page with the following information:
 
 
 
-
+\D{\newpage}
 
 \section{\nameref{ch_inference_for_props}}
 \label{ch_inference_for_props_data}
 
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item[\ref{singleProportion}]
-    [Payday loans]
+    \datawrap{Payday loans}
     The statistics come from the following source: \\
-    {\small\oiRedirect{pew-payday-loans-2017}
+    {\footnotesize\oiRedirect{pew-payday-loans-2017}
         {pewtrusts.org/-/media/assets/2017/04/payday-loan-customers-want-more-protections-methodology.pdf}}
 \item[\ref{singleProportion}]
-    [Tire factory]
-    The statistics were created for the purposes
-    of performing sample size calculations.
+    \datawrap{Tire factory}
+    \madeup{}
 
 \item[\ref{differenceOfTwoProportions}]
     \datawrap{\datalink{cpr}}
@@ -460,8 +476,9 @@ Each data set has its own page with the following information:
 \item[\ref{differenceOfTwoProportions}]
     \datawrap{\datalink{fish\_oil\_18}}
     Manson JE, et al. 2018.
-    Marine n-3 Fatty Acids and Prevention of
-    Cardiovascular Disease and Cancer. NEJMoa1811403.
+    \emph{Marine n-3 Fatty Acids and Prevention of
+    Cardiovascular Disease and Cancer.}
+    NEJMoa1811403.
 \item[\ref{differenceOfTwoProportions}]
     \datawrap{\datalink{mammogram}}
     \oiRedirect{textbook-90k_mammogram_study_2014}
@@ -501,8 +518,8 @@ Each data set has its own page with the following information:
 \item[\ref{twoWayTablesAndChiSquare}]
     \datawrap{\datalink{diabetes2}}
     Zeitler P, et al. 2012.
-    A Clinical Trial to Maintain Glycemic Control in Youth
-    with Type~2 Diabetes.
+    \emph{A Clinical Trial to Maintain Glycemic Control
+    in Youth with Type~2 Diabetes}.
     N Engl J Med.
 
 \end{itemize}
@@ -516,23 +533,24 @@ Each data set has its own page with the following information:
 \label{ch_inference_for_means_data}
 
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item[\ref{oneSampleMeansWithTDistribution}]
-    [Risso's dolphins]
+    \datawrap{Risso's dolphins}
     Endo T and Haraguchi K. 2009.
-    High mercury levels in hair samples from residents of Taiji,
-    a Japanese whaling town.
+    \emph{High mercury levels in hair samples from
+    residents of Taiji, a Japanese whaling town}.
     Marine Pollution Bulletin 60(5):743-747.
 
     Taiji was featured in the movie
     \emph{The Cove}, and it is a significant source of dolphin
     and whale meat in Japan.
     Thousands of dolphins pass through the Taiji area annually,
-    and we will assume these 19 dolphins represent a simple
-    random sample from those dolphins.
+    and we assumes these 19 dolphins reasonably represent
+    a simple random sample from those dolphins.
 \item[\ref{oneSampleMeansWithTDistribution}]
-    [Croaker white fish]
+    \datawrap{Croaker white fish}
     \oiRedirect{textbook-fda_mercury_in_fish_2010}
-        {www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}
+        {fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm}
 \item[\ref{oneSampleMeansWithTDistribution}]
     \datawrap{\datalink{run17}}
     \oiRedirect{textbook-cherryblossom_org}{www.cherryblossom.org}
@@ -566,21 +584,21 @@ Each data set has its own page with the following information:
     Unfortunately, we don't currently have additional
     information on the source for this data set.
 \item[\ref{differenceOfTwoMeans}]
-    [Exam versions]
-    This is a made-up data set for an example.
-    There isn't any explicit data set to analyze,
-    only summary statistics.
+    \datawrap{Exam versions}
+    \madeup{}
 
 \item[\ref{PowerForDifferenceOfTwoMeans}]
-    [Blood pressure statistics]
+    \datawrap{Blood pressure statistics}
     The blood pressure standard deviation for patients
     with blood pressure ranging from 140 to 180 mmHg
-    is guessed and may be a little (but likely not dramatically)
+    is guessed and may be a little
+    (but likely not dramatically)
     imprecise from what we'd observe in actual data.
 
 \item[\ref{anovaAndRegrWithCategoricalVariables}]
     \datawrap{\datalink{toy\_anova}}
-    Data used for Figure~\ref{toyANOVA}, which was fake data.
+    Data used for Figure~\ref{toyANOVA},
+    where this data was made up.
 \item[\ref{anovaAndRegrWithCategoricalVariables}]
     \datawrap{\datalink{mlb\_players\_18}}
     Data were retrieved from
@@ -589,7 +607,7 @@ Each data set has its own page with the following information:
     during the analysis.
 \item[\ref{anovaAndRegrWithCategoricalVariables}]
     \datawrap{\datalink{classdata}}
-    These data are simulated.
+    \madeup{}
 
 \end{itemize}
 
@@ -602,6 +620,7 @@ Each data set has its own page with the following information:
 \label{ch_regr_simple_linear_data}
 
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item[\ref{fitting_line_to_data_section}]
     \datawrap{\datalink{simulated\_scatter}}
     Fake data used for the first three plots.
@@ -618,8 +637,7 @@ Each data set has its own page with the following information:
     (Figures~\ref{posNegCorPlots} and~\ref{corForNonLinearPlots}).
 \item[\ref{fitting_line_to_data_section}]
     \datawrap{\datalink{possum}}
-    This data is described in
-    Data Appendix~\ref{ch_distributions_data}.
+    \seedataappendix{ch_distributions_data}
 
 \item[\ref{fittingALineByLSR}]
     \datawrap{\datalink{elmhurst}}
@@ -636,7 +654,6 @@ Each data set has its own page with the following information:
     (Figure~\ref{whatCanGoWrongWithLinearModel}).
 \item[\ref{fittingALineByLSR}]
     \datawrap{\datalink{mariokart}}
-    \Comment{Confirm data set name change.}
     Auction data from Ebay (ebay.com) for the game Mario Kart
     for the Nintendo Wii.
     This data set was collected in early October, 2009.
@@ -662,25 +679,22 @@ Each data set has its own page with the following information:
 \label{ch_regr_mult_and_log_data}
 
 \begin{itemize}
+\setlength{\itemsep}{0mm}
 \item[\ref{introductionToMultipleRegression}]
     \datawrap{\datalink{loans\_full\_schema}}
-    This data is described in
-    Data Appendix~\ref{ch_intro_to_data_data}.
+    \seedataappendix{ch_intro_to_data_data}
 
 \item[\ref{model_selection_section}]
     \datawrap{\datalink{loans\_full\_schema}}
-    This data is described in
-    Data Appendix~\ref{ch_intro_to_data_data}.
+    \seedataappendix{ch_intro_to_data_data}
 
 \item[\ref{multipleRegressionModelAssumptions}]
     \datawrap{\datalink{loans\_full\_schema}}
-    This data is described in
-    Data Appendix~\ref{ch_intro_to_data_data}.
+    \seedataappendix{ch_intro_to_data_data}
 
 \item[\ref{mario_kart_case_study}]
     \datawrap{\datalink{mariokart}}
-    This data is describe in
-    Data Appendix~\ref{ch_regr_simple_linear_data}.
+    \seedataappendix{ch_regr_simple_linear_data}
 
 \item[\ref{logisticRegression}]
     \datawrap{\datalink{resume}}
@@ -704,7 +718,7 @@ Each data set has its own page with the following information:
     \var{race} and \var{sex} variables
     versus the analysis performed in the section.
     That is, the most interesting conclusions in the
-    study would be unaffected even with a more
+    study are unaffected even when completing a more
     sophisticated analysis.
 
 %\item[\ref{logisticRegression}]
