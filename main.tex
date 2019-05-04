@@ -1,6 +1,6 @@
 \documentclass[10pt,openany]%,oneside]
 {book}
-\newcommand{\versiondate}[0]{April 30th, 2019}
+\newcommand{\versiondate}[0]{May 1st, 2019}
 
 \usepackage{
   amsmath, calc,
@@ -77,7 +77,7 @@
 \includechapter{9}{ch_regr_mult_and_log}
 \endgroup
 
-
+\begingroup
 \include{extraTeX/style/style_appendices}
 \appendix{}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}\include{extraTeX/eoceSolutions/eoceSolutions}
@@ -85,6 +85,7 @@
 \include{extraTeX/tables/TeX/zTable}
 \include{extraTeX/tables/TeX/tTable}
 \include{extraTeX/tables/TeX/chiSquareTable}
+\endgroup
 
 \include{extraTeX/index/index}
 \printindex
