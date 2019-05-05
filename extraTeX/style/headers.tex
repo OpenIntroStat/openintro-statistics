@@ -3,9 +3,6 @@
 
 % 5.0 Spacings
 \newcommand{\chapterpagepadding}[0]{7mm}
-\newcommand{\chapterpagepaddingtopinner}[0]{35mm} % 45mm
-\newcommand{\chapterpagepaddingrightinner}[0]{30mm}
-\newcommand{\chapterpagepaddinginner}[0]{25mm}
 \newcommand{\sectionheaderspaceA}{1mm}
 \newcommand{\sectionheaderspaceB}{4mm}
 \newcommand{\sectionheaderspaceC}{2mm}
@@ -18,8 +15,8 @@
 
 % 5.1 Chapter
 \newcommand{\titlebreak}[1][5mm]{\\[#1]}
-\newcommand{\chaptertitle}[2][30]{{\color{white}\titlerule[1.5mm]}\addvspace{\sectionheaderspaceB}
-    {\setupfont{}\color{gray}\setfontsize{#1}#2} \\[2mm]
+\newcommand{\chaptertitle}[2][\chaptertitlefontsize]{{\color{white}\titlerule[1.5mm]}\addvspace{\sectionheaderspaceB}
+    {\setupfont{}\color{chaptertitlegray}\setfontsize{#1}#2} \\[2mm]
         {\color{white}\titlerule[1.5mm]}
 
 ~\vspace{15mm}
@@ -51,7 +48,7 @@
 \end{fullminipage}}
 \titleformat{\chapter}
     {}
-    {\setupfont{}\setfontsize{92}\color{oiB}Chapter~\thechapter}% \quad #1}
+    {\setupfont{}\setfontsize{\chapterXfontsize}\color{oiB}Chapter~\thechapter}% \quad #1}
     {1em}
     {}
     []
