@@ -11,7 +11,7 @@
 \renewcommand{\chapterfolder}{ch_inference_for_means}
 
 
-\chapterintro{Chapters~\ref{ch_foundations_for_inf}
+\chapterintro{Chapter~\ref{ch_foundations_for_inf}
   introduced a framework for statistical inference based
   on confidence intervals and hypotheses using the
   normal distribution for sample proportions.
@@ -904,14 +904,14 @@ have mercury levels between 0.256 and 0.318 ppm?\footnotemark{}
 \noindent%
 Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each~spring.
 
-The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from \cherryblossomn{} participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
+The average time for all runners who finished the Cherry Blossom Race in 2006 was \cherryblossomnull{} minutes (93 minutes and about 17 seconds). We want to determine using data from \cherryblossomn{} participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
 
 \begin{exercisewrap}
 \begin{nexercise}
 What are appropriate hypotheses for this context?\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{$H_0$: The average 10-mile run time was the same for 2006 and 2017. $\mu = 93.29$ minutes. $H_A$: The average 10-mile run time for 2017 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.}
+\footnotetext{$H_0$: The average 10-mile run time was the same for 2006 and 2017. $\mu = \cherryblossomnull{}$ minutes. $H_A$: The average 10-mile run time for 2017 was \emph{different} than that of 2006. $\mu \neq \cherryblossomnull{}$ minutes.}
 
 \begin{exercisewrap}
 \begin{nexercise}
@@ -976,7 +976,8 @@ distribution, and double it.
     are \cherryblossommean{} and \cherryblossomsd{} minutes,
     respectively.
     Recall that the sample size is 100
-    and the average run time in 2006 was 93.29 minutes.
+    and the average run time in 2006 was
+    \cherryblossomnull{} minutes.
     Find the test statistic and p-value.
     What is your conclusion?}
 
@@ -989,10 +990,11 @@ distribution, and double it.
   \end{align*}
   Now we can compute the \emph{T-score}
   using the sample mean (\cherryblossommean{}),
-  null value (98.29), and $SE$:
+  null value (\cherryblossomnull{}), and $SE$:
   \begin{align*}
   T
-    = \frac{\cherryblossommean{} - 93.29}{\cherryblossomse{}}
+    = \frac{\cherryblossommean{} - \cherryblossomnull{}}
+        {\cherryblossomse{}}
     = \cherryblossomz{}
   \end{align*}
   For $df = \cherryblossomn{} - 1 = 99$,
