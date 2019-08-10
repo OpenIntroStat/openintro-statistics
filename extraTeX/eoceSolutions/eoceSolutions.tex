@@ -283,7 +283,7 @@ the mean than in Dist~1.}
 (c)~Q1: between 15 and 20, Q3: between 35 and 40, IQR: about 20.
 (d)~Values that are considered to be unusually low or high lie more than 1.5$\times$IQR 
 away from the quartiles. Upper fence: Q3 + 1.5 $\times$ IQR =  $37.5 + 1.5 \times 20 = 67.5$; 
-Lower fence: Q1 - 1.5 $\times$ IQR =  $17.5 + 1.5 \times 20 =  -12.5$; The lowest AQI 
+Lower fence: Q1 - 1.5 $\times$ IQR =  $17.5 - 1.5 \times 20 =  -12.5$; The lowest AQI 
 recorded is not lower than 5 and the highest AQI recorded is not higher than 65, which 
 are both within the fences. Therefore none of the days in this sample would be considered 
 to have an unusually low or high AQI.}
@@ -980,7 +980,7 @@ the initial sample.}
 \eocesol{(a)~The visitors are from a simple random sample,
     so independence is satisfied.
     The success-failure condition is also satisfied,
-    with both 64 and $752 - 64 = 688$ both above 10.
+    with both 64 and $752 - 64 = 688$ above 10.
     Therefore, we can use a normal distribution to
     model $\hat{p}$ and construct a confidence interval.
 (b)~The sample proportion is $\hat{p} = \frac{64}{752} = 0.085$.
@@ -1047,8 +1047,7 @@ $H_A: p \neq 0.6$.}
   We will use a significance level of $\alpha = 0.05$.
 (ii)~Check conditions: simple random sample gets us independence,
   and the success-failure conditions is satisfied since
-  $0.42 \times 1000 = 420$ and $(1 - 0.42) \times 1000 = 580$
-  are both at least~10.
+  $0.5 \times 1000 = 500$ for each group is at least~10.
 (iii)~Next, we calculate:
   $SE = \sqrt{0.5 (1 - 0.5) / 1000} = 0.016$.
   $Z = \frac{0.42 - 0.5}{0.016} = -5$,
@@ -1806,11 +1805,11 @@ Normality: With fewer than 10 observations,
 we would need to see clear outliers to be concerned.
 There is a borderline outlier on the right of the histogram of the differences,
 so we would want to report this in formal analysis results. \\
-(d)~$T = 4.94$ for $df = 10 - 1 = 9$ $\to$ p-value = 0.001. \\
+(d)~$T = 4.93$ for $df = 10 - 1 = 9$ $\to$ p-value = 0.001. \\
 (e)~Since p-value $<$ 0.05, reject $H_0$. The data provide strong evidence that 
 the average number of cars at the intersection is higher on Friday the 
 6$^{\text{th}}$ than on Friday the 13$^{\text{th}}$. (We should exercise caution
-about generalizing the interpetation to all intersections or roads.) \\
+about generalizing the interpretation to all intersections or roads.) \\
 (f)~If the average number of cars passing the intersection actually was the 
 same on Friday the 6$^{\text{th}}$ and $13^{th}$, then the probability that we 
 would observe a test statistic so far from zero is less than 0.01. \\
@@ -1995,7 +1994,7 @@ The p-value is larger than $0.05 / 3 = 1.67$,
 so we do not have strong evidence to conclude that
 it is this particular pair of groups that are different.
 That is, we cannot identify if which particular pair of
-groupsare actually different, even though we've rejected
+groups are actually different, even though we've rejected
 the notion that they are all the same!}
 
 % 47
