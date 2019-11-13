@@ -1395,7 +1395,7 @@ which is what we'll try to do with this particular model fit.
 
 \subsection{Options for improving the model fit}
 
-There are several options for improvement a model,
+There are several options for improvement of a model,
 including transforming variables,
 seeking out additional variables to fill model gaps,
 or using more advanced methods that would account for
@@ -2364,7 +2364,7 @@ interpretation of the coefficients is more complex.
     The following logistic regression model was fit using
     statistical software:
     \begin{align*}
-    \log\left( \frac{p_i}{1-p_i} \right)
+    \log_e \left( \frac{p_i}{1-p_i} \right)
       = \resHonorsInt{} +
           \resHonorsCoef{} \times\text{\var{honors}}
     \end{align*}
@@ -2611,7 +2611,7 @@ variables are included in the model.
   add in the corresponding values of each variable for this
   individual:
   \begin{align*}
-  &log\left(\frac{p}{1 - p}\right) \\
+  &log_e \left(\frac{p}{1 - p}\right) \\
     &\quad= - 2.7162
         - 0.4364 \times \indfunc{job\us{}city}{Chicago}
         + 0.0206 \times \var{years\us{}experience}
