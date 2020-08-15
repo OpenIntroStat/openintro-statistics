@@ -944,7 +944,7 @@ First, we find the Z-score using the observed value,
 null value, and standard error;
 however, we call it a \term{T-score} since we use
 a $t$-distribution for calculating the tail area.
-Then we finding the p-value using the same ideas we used
+Then we find the p-value using the same ideas we used
 previously: find the one-tail area under the sampling
 distribution, and double it.
 
@@ -1676,9 +1676,9 @@ in sample means may be modeled using a $t$-distribution.
 \begin{figure}[hhh]
   \centering
   \Figure{}{babySmokePlotOfTwoGroupsToExamineSkew}
-  \caption{The top panel represents birth weights for infants
+  \caption{The left panel represents birth weights for infants
       whose mothers smoked.
-      The bottom panel represents the birth weights for
+      The right panel represents the birth weights for
       infants whose mothers who did not smoke.}
   \label{babySmokePlotOfTwoGroupsToExamineSkew}
 \end{figure}
@@ -2788,13 +2788,13 @@ in plain language.\footnotemark{}
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{$H_0$: The average on-base percentage is equal
-  across the four positions.
+  across the three positions.
   $H_A$: The average on-base percentage varies across some
   (or all) groups.}
 
 \begin{examplewrap}
 \begin{nexample}{The player positions have been divided
-    into four groups: outfield (\resp{OF}), infield (\resp{IF}),
+    into three groups: outfield (\resp{OF}), infield (\resp{IF}),
     %designated hitter (\resp{DH}),
     and catcher~(\resp{C}).
     What would be an appropriate point estimate of the on-base
@@ -2826,10 +2826,9 @@ Sample SD ($s_i$) & 0.043 & 0.038 & 0.038 \\
   \centering
   \Figures{0.6}{mlbANOVA}{mlbANOVABoxPlot}
   \caption{Side-by-side box plot of the on-base percentage
-      for \mlbN{} players across four groups.
-      There is one prominent outlier visible in the infield
-      group, but with 154 observations in the infield group,
-      this outlier is not a concern.}
+      for \mlbN{} players across three groups.
+      With over a hundred players in both the infield and
+      outfield groups, the apparent outliers are not a concern.}
   \label{mlbANOVABoxPlot}
 \end{figure}
 
@@ -2889,7 +2888,7 @@ Example~\ref{multCompExIncDiscOfClassrooms}, we recommend
 reading about the
 \term{prosecutor's fallacy}.\footnote{See, for example,
   \oiRedirect{textbook-prosecutors_fallacy}
-      {andrewgelman.com/2007/05/18/the\_prosecutors}.}
+      {statmodeling.stat.columbia.edu/2007/05/18/the\_prosecutors}.}
 
 In the next section we will learn how to use the $F$~statistic
 and ANOVA to test whether observed differences in sample means
@@ -3017,7 +3016,7 @@ Figure~\ref{fDist2And423Shaded}.
   \centering
   %\Figure{0.5}{fDist2And423}
   \Figures{0.6}{fDist2And423}{fDist2And423Shaded}
-  \caption{An $F$ distribution with $df_1=3$ and $df_2=323$.}
+  \caption{An $F$ distribution with $df_1=2$ and $df_2=426$.}
   \label{fDist2And423Shaded}
 \end{figure}
 
