@@ -1381,10 +1381,10 @@ In these problems, we would like to examine all bins simultaneously, not simply 
 \subsection{Creating a test statistic for one-way tables}
 
 \begin{examplewrap}
-\begin{nexample}{Of the people in the city, 275 served on a jury. If the individuals are randomly selected to serve on a jury, about how many of the 275 people would we expect to be white? How many would we expect to be black?}
-About 72\% of the population is white, so we would expect about 72\% of the jurors to be white: $0.72\times 275 = 198$.
+\begin{nexample}{Of the people in the city, 275 served on a jury. If the individuals are randomly selected to serve on a jury, about how many of the 275 people would we expect to be White? How many would we expect to be Black?}
+About 72\% of the population is White, so we would expect about 72\% of the jurors to be White: $0.72\times 275 = 198$.
 
-Similarly, we would expect about 7\% of the jurors to be black, which would correspond to about $0.07\times 275 = 19.25$ black jurors.
+Similarly, we would expect about 7\% of the jurors to be Black, which would correspond to about $0.07\times 275 = 19.25$ Black jurors.
 \end{nexample}
 \end{examplewrap}
 
@@ -1429,14 +1429,14 @@ This construction was based on (1) identifying the difference between a point es
 
 Our strategy will be to first compute the difference between the observed counts and the counts we would expect if the null hypothesis was true, then we will standardize the difference:
 \begin{align*}
-Z_{1} = \frac{\text{observed white count} - \text{null white count}}
-				{\text{SE of observed white count}}
+Z_{1} = \frac{\text{observed White count} - \text{null White count}}
+				{\text{SE of observed White count}}
 \end{align*}
 The standard error for the point estimate of the count in binned data is the square root of the count under the null.\footnote{Using some of the rules learned in earlier chapters, we might think that the standard error would be $np(1-p)$, where $n$ is the sample size and $p$ is the proportion in the population. This would be correct if we were looking only at one count. However, we are computing many standardized differences and adding them together. It can be shown -- though not here -- that the square root of the count is a better way to standardize the count differences.} Therefore:
 \begin{align*}
 Z_1 = \frac{205 - 198}{\sqrt{198}} = 0.50
 \end{align*}
-The fraction is very similar to previous test statistics: first compute a difference, then standardize it. These computations should also be completed for the black, Hispanic, and other groups:
+The fraction is very similar to previous test statistics: first compute a difference, then standardize it. These computations should also be completed for the Black, Hispanic, and other groups:
 \begin{align*}
 &Black && Hispanic	&&Other \\
 & Z_2 = \frac{26-19.25}{\sqrt{19.25}}=1.54\ \ \ \ 
@@ -1642,7 +1642,7 @@ We determined that a large $X^2$ value would suggest strong evidence favoring th
 
 \begin{examplewrap}
 \begin{nexample}{How many categories were there in the juror example? How many degrees of freedom should be associated with the chi-square distribution used for $X^2$?}
-In the jurors example, there were $k=4$ categories: white, black, Hispanic, and other. According to the rule above, the test statistic $X^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
+In the jurors example, there were $k=4$ categories: White, Black, Hispanic, and other. According to the rule above, the test statistic $X^2$ should then follow a chi-square distribution with $k-1 = 3$ degrees of freedom if $H_0$ is true.
 \end{nexample}
 \end{examplewrap}
 
