@@ -30,17 +30,27 @@
 %\usepackage[usenames,dvipsnames]{color}  
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
 \include{extraTeX/style/colorsV1}
-
-% _____ Online Version _____ %
-\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
 \newcommand{\printlocation}[0]{}
 
-% _____ Print Version _____ %
+% _____ PDF _____ %
+\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
+
+% _____ Paperback _____ %
 %\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
 
 
-% _____ COLOR PRINT Version _____ %
-%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref} %\renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
+% _____ Hardcover _____ %
+%\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+% !!!!!
+%
+% Also must \include{extraTeX/style/hardcover} below.
+%
+% !!!!!
+
+
+% _____ Color Paperback _____ %
+%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+%\renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
 
 \usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
 \bibliography{eoce.bib}
@@ -49,6 +59,8 @@
 \include{extraTeX/style/style}
 \include{extraTeX/style/tablet}
 %\include{extraTeX/style/video}
+% The following style file supports an 8.25 x 11 paper size.
+%\include{extraTeX/style/hardcover}
 \include{extraTeX/preamble/title}%_derivative}
 \date{}
 \renewcommand\contentsname{Table of Contents}
