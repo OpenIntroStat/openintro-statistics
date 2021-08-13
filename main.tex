@@ -1,6 +1,9 @@
-\documentclass[10pt,openany]%,oneside]
+\documentclass[10pt,openany,croatian]%,oneside]
 {book}
-\newcommand{\versiondate}[0]{November 13th, 2019}
+\newcommand{\versiondate}[0]{13. studeni 2019}
+
+\usepackage[T1]{fontenc}
+\usepackage{babel}
 
 \usepackage{
   amsmath, calc,
@@ -61,7 +64,7 @@
 %\include{extraTeX/style/video}
 % The following style file supports an 8.25 x 11 paper size.
 %\include{extraTeX/style/hardcover}
-\include{extraTeX/preamble/title}%_derivative}
+\include{extraTeX/preamble/title_derivative}
 \date{}
 \renewcommand\contentsname{Sadržaj}
 \setcounter{tocdepth}{1}
@@ -72,23 +75,23 @@
 %\include{extraTeX/preamble/review_copy}
 \renewcommand{\thepage}{}
 \maketitle
-\include{extraTeX/preamble/copyright}%_derivative}
+\include{extraTeX/preamble/copyright_derivative}
 \renewcommand{\thepage}{\arabic{page}}
 \tableofcontents
 \include{extraTeX/preamble/preface}
 \normalsize
 
 \begingroup
-\include{extraTeX/style/headers}
-\includechapter{1}{ch_intro_to_data}
-\includechapter{2}{ch_summarizing_data}
-\includechapter{3}{ch_probability}
-\includechapter{4}{ch_distributions}
-\includechapter{5}{ch_foundations_for_inf}
-\includechapter{6}{ch_inference_for_props}
-\includechapter{7}{ch_inference_for_means}
-\includechapter{8}{ch_regr_simple_linear}
-\includechapter{9}{ch_regr_mult_and_log}
+%\include{extraTeX/style/headers}
+%\includechapter{1}{ch_intro_to_data}
+%\includechapter{2}{ch_summarizing_data}
+%\includechapter{3}{ch_probability}
+%\includechapter{4}{ch_distributions}
+%\includechapter{5}{ch_foundations_for_inf}
+%\includechapter{6}{ch_inference_for_props}
+%\includechapter{7}{ch_inference_for_means}
+%\includechapter{8}{ch_regr_simple_linear}
+%\includechapter{9}{ch_regr_mult_and_log}
 \endgroup
 
 \begingroup
@@ -96,12 +99,12 @@
 \appendix{}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}\include{extraTeX/eoceSolutions/eoceSolutions}
 \include{extraTeX/data/data}
-\include{extraTeX/tables/TeX/zTable}
-\include{extraTeX/tables/TeX/tTable}
-\include{extraTeX/tables/TeX/chiSquareTable}
+%\include{extraTeX/tables/TeX/zTable}
+%\include{extraTeX/tables/TeX/tTable}
+%\include{extraTeX/tables/TeX/chiSquareTable}
 \endgroup
 
-\include{extraTeX/index/index}
-\printindex
+%\include{extraTeX/index/index}
+%\printindex
 
 \end{document}

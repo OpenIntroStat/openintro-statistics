@@ -1,37 +1,35 @@
-\chapter{Data sets within the text}
+\chapter{Skupovi podataka u ovom tekstu}
 \label{appendix_data}
 \label{data_appendix}
 
-%A foundational principle that supports quality statistical
-%analysis is well-organized data.
+%Temeljno načelo koje omogućava kvalitetnu statističku
+%analizu je dobra organizacija podataka.
 
-\index{data|(}
+\index{podaci|(}
 
-Each data set within the text is described in this appendix,
-and there is a corresponding page for each of these data sets at
+Svaki skup podataka korišten u ovom udžbeniku opisan je u ovom prilogu,
+a za svaki skup podataka postoji odgovarajuća stranica na
 \oiRedirect{data}
     {\color{black}\textbf{openintro.org/data}}.
-This page also includes additional data sets that can be
-used for honing your skills.
-Each data set has its own page with the following information:
+Na toj stranici nalaze se i dodatni skupovi podataka koje možete koristiti
+da usavršite svoje vještine.
+Svaki skup podataka ima vlastitu stranicu sa sljedećim informacijama:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item
-    List of the data set's variables.
+    Popis varijabli u skupu podataka.
 \item
-    CSV download.
+    datoteka za preuzimanje u CSV formatu.
 \item
-    R object file download.
+    datoteka za preuzimanje u nativnom formatu R objekta.
 \end{itemize}
 
 %\vspace{10mm}
 
 \newcommand{\datawrap}[1]{#1 $\to$}
-\newcommand{\seedataappendix}[1]{This data set
-    is described in Data Appendix~\ref{#1}.}
-\newcommand{\seedataappendixplural}[1]{These data sets
-    are described in Data Appendix~\ref{#1}.}
-\newcommand{\madeup}{This example was made up.}
+\newcommand{\seedataappendix}[1]{Ovaj skup podataka opisan je u prilogu~\ref{#1}.}
+\newcommand{\seedataappendixplural}[1]{Ovi skupovi podataka opisani su u prilogu~\ref{#1}.}
+\newcommand{\madeup}{Ovaj primjer je izmišljen.}% made up
 
 
 
@@ -42,40 +40,39 @@ Each data set has its own page with the following information:
 \setlength{\itemsep}{0mm}
 \item[\ref{basicExampleOfStentsAndStrokes}]
     \datawrap{\datalink{stent30}, \datalink{stent365}}
-    The stent data is split across two data sets,
-    one for days 0-30 results and one for days 0-365
-    results. \\
+    Podaci o stentovima podijeljeni su u dva skupa podataka,
+    jedan o rezultatima u danima 0-30 i jedan o rezultatima u danima 0-365. \\
     Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011.
     Stenting versus Aggressive Medical Therapy for
     Intracranial Arterial Stenosis.
     New England Journal of Medicine 365:993-1003.
     \oiRedirect{textbook-nejm_stent_study}
         {www.nejm.org/doi/full/10.1056/NEJMoa1105335}. \\
-    NY Times article:
+    Članak u NY Times:
     \oiRedirect{textbook-nytimes_stent_study}
         {www.nytimes.com/2011/09/08/health/research/08stent.html}.
 
 \item[\ref{dataBasics}]
     \datawrap{\datalink{loan50},
         \datalink{loans\_full\_schema}}
-    This data comes from Lending Club
+    Ovi podaci skupljeni u okviru kase uzajamne pomoći Lending Club
     (\oiRedirect{lendingclub-info-download-data}
         {lendingclub.com}),
-    which provides a large set of data on the people who
-    received loans through their platform.
-    The data used in the textbook comes from a sample
-    of the loans made in Q1 (Jan, Feb, March) 2018.
+    pružaju veliki skup podataka o ljudima koji su
+    dobili kredit putem njihove platforme.
+    Podaci koji su korišteni u udžbeniku su uzorak kredita 
+    iz prvog kvartala Q1 (siječanj, veljača, ožujak) 2018.
 \item[\ref{dataBasics}]
     \datawrap{\datalink{county}, \datalink{county\_complete}}
-    These data come from several government sources.
-    For those variables included in the
-    county data set, only the most recent data is reported,
-    as of what was available in late 2018.
-    Data prior to 2011 is all from
+    Ovi su podaci prikupljeni iz nekoliko izvora Vlade SAD-a.
+    Za varijable uključene u skup podataka o općinama (eng. 
+    county), sadržani su samo najnoviji podaci,
+    koji su bili dostupni krajem 2018. godine.
+    Podaci iz razdoblja prije 2011. godine su sa stranice
     \oiRedirect{census_gov}{census.gov},
-    where the specific Quick Facts page providing the data
-    is no longer available.
-    The more recent data comes from
+    na kojoj specifična stranica Quick Facts sa koje su preuzeti podaci
+    više nije dostupna.
+    Noviji podaci su sa stranica
     \oiRedirect
         {ers_usda_gov-data_products-county_level_data_sets}
         {USDA (ers.usda.gov)},
@@ -85,7 +82,7 @@ Each data set has its own page with the following information:
     \oiRedirect
         {census_gov-did-www-saipe}
         {SAIPE (census.gov/did/www/saipe)},
-    and
+    i
     \oiRedirect
         {census_gov-programs_surveys-acs}
         {American Community Survey
@@ -93,20 +90,20 @@ Each data set has its own page with the following information:
 
 \item[\ref{section_obs_data_sampling}]
     \datawrap{Nurses' Health Study}
-    For more information on this data set, see \\
+    Više informacija o ovom skupu podataka možete naći na stranici \\
     \oiRedirect{textbook-channing_nurse_study}
         {www.channing.harvard.edu/nhs}
 
 \item[\ref{experimentsSection}]
-    The study we had in mind when discussing the
-    simple randomization (no blocking) study was \\
+    Studija na koju smo mislili kad smo raspravljali
+    jednostavnu randomizaciju (bez blokova) je \\
     Anturane Reinfarction Trial Research Group. 1980.
     \emph{Sulfinpyrazone in the prevention of sudden
     death after myocardial infarction.}
     New England Journal of Medicine 302(5):250-256.
 \end{itemize}
 
-
+% tu sam stala
 
 
 

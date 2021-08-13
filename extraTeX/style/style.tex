@@ -252,7 +252,7 @@
 \newcommand{\excolor}[1]{{\color{excolor}#1}}
 \newenvironment{exercise}
 {
-\begin{itemize}\item[\color{oiB}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{oiB}Guided Practice \theexercise}%\hspace{3mm}
+\begin{itemize}\item[\color{oiB}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{oiB}Vođena vježba \theexercise}%\hspace{3mm}
 
 }
 {\normalsize
@@ -266,7 +266,7 @@
 \newcommand\theexample{\thechapter.\arabic{equation}}
 \newenvironment{example}[1]
 {\begin{itemize}
-\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Example \theexample}
+\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Primjer \theexample}
 
 #1\vspace{\exampleAboveBar}
 
@@ -305,9 +305,9 @@
     {\end{gpewrapper}}
 % 9.2.3 Example Title
 \newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
-\selectfont{\MakeUppercase{Example~#1}}} \\[1mm]}
+\selectfont{\MakeUppercase{Primjer~#1}}} \\[1mm]}
 \newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
-\selectfont{\MakeUppercase{Guided Practice~#1}}} \\[1mm]}
+\selectfont{\MakeUppercase{Vođena vježba~#1}}} \\[1mm]}
 % 9.2.4 NEW Example and Guided Practice Environment
 \newcommand{\exspace}{\stdvspace{}}
 \newenvironment{nexample}[1]{\addvspace{6mm}
@@ -448,7 +448,7 @@
 			\hspace{2mm}
 		\end{minipage}
 		\begin{minipage}[b]{\textwidth-8mm}
-			\textbf{\color{oiB}Caution: #1} \\[1mm]
+			\textbf{\color{oiB}Oprez: #1} \\[1mm]
 			\color{black}#2
 		\end{minipage}
 	\end{minipage}}}

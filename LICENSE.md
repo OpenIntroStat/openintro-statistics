@@ -1,24 +1,24 @@
 
-OpenIntro Statistics, Second Edition is available at http://www.openintro.org under a Creative Commons Attribution-ShareAlike 3.0 Unported license (CC BY-SA):
+OpenIntro Statistics, je dostupan na http://www.openintro.org pod licencom Creative Commons Attribution-ShareAlike 3.0 Unported license (CC BY-SA):
 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-This file describes guidelines when the textbook's source files are modified and / or shared. The CC BY-SA license guidelines supersede any guidelines put forth here; follow the CC BY-SA license if there is any discrepancy between that license and these guidelines.
+Ova datoteka opisuje smjernice za mijenjanje i/ili dijeljenje izvornih datoteka udžbenika. Smjernice licence CC BY-SA nadređene su smjernicama u ovom dokumentu; ako postoji neusklađenost između licence CC BY-SA i ovih smjernica, primijenite smjernice licence CC BY-SA.
 
-You may contact us if you would like to request an alternative licensing option at
+Ako želite podnijeti zahtjev za alternativnu licencu, kontaktirajte nas na:
 
 https://www.openintro.org/contact
 
-1. Communication obligation. Any derivative work must communicate that it is licensed under a CC BY-SA license.
+1. Obveza komunikacije. Svaki izvedeni rad mora komunicirati da se na njega primjenjuje licenca CC BY-SA.
 
-2. Figure attribution. Some photographs may be owned by other creators who made the images available under a Creative Commons license and were used in this work. If you use a photograph, please check in the textbook whether the figure is a work of another party. If you use any such images, provide appropriate attribution to the original photographer (e.g. see OpenIntro Statistics for what we believe to be appropriate attribution in these instances).
+2. Atribucija slika. Neke fotografije korištene u ovom radu mogu biti vlasništvo drugih stvaratelja koji su rad učinili dostupnim pod nekom od licenci Creative Commons. Ako koristite fotografiju, molimo vas da provjerite u udžbeniku da li je slika rad nekog drugog stvaratelja. Ako koristite takve fotografije, uključite atribuciju na originalnog fotografa (npr. pogledajte u udžbeniku OpenIntro Statistics što mi mislimo da je prikladan način atribucije u takvim slučajevima).
 
-3. Derivative title. No derivative may include "OpenIntro" in the title, unless it is included in text of the form "Derivative of OpenIntro".
+3. Izvedeni naslov. Izvedeni rad ne smije sadržavati "OpenIntro", osim ako je uključen u tekst u obliku "Izvedeni rad iz OpenIntro".
 
-Use of the OpenIntro logo is strictly prohibited and is not licensed for use.
+Upotreba logoa OpenIntro strogo je zabranjena i nije licencirana za upotrebu.
 
-4. Below are other suggested guidelines for attribution.
+4. U nastavku su dodatne predložene smjernice za atribuciju.
 
-- The first two pages of any derivative work should be the title page and the copyright page. We encourage contributors to use the following two files provided in the textbook's source: file, extraTeX > preamble > title_derivative.tex, copyright_derivative.tex.
+- Prve dvije stranice svakog izvedenog rada trebaju biti naslovna stranica i stranica o autorskom pravu (eng. copyright). Potičemo suradnike da koriste sljedeće dvije datoteke u izvornom tekstu udžbenika: file, extraTeX > preamble > title_derivative.tex, copyright_derivative.tex.
 
-- We advise that contributing authors' names be listed in chronological order corresponding to their contribution. We also encourage contributing authors to provide a brief description of their contribution.
+- Savjetujemo da se suradnike navodi kronološkim redoslijedom njihovog doprinosa. Također savjetujemo da se autori navedu kratki opis svog doprinosa.
