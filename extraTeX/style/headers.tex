@@ -48,7 +48,7 @@
 \end{fullminipage}}
 \titleformat{\chapter}
     {}
-    {\setupfont{}\setfontsize{\chapterXfontsize}\color{oiB}Chapter~\thechapter}% \quad #1}
+    {\setupfont{}\setfontsize{\chapterXfontsize}\color{oiB}Glava~\thechapter}% \quad #1}
     {1em}
     {}
     []
@@ -88,7 +88,8 @@
   ~\vspace{5mm}
   
   {\Large\noindent%
-  For videos, slides, and other resources, please visit \\[2mm]
+  Video zapise, prezentacije i druge resurse na engleskom jeziku možete naći na 
+  internetskim stranicama \\[2mm]
   \oiRedirect{os}{\textbf{\color{oiB}www.openintro.org/os}}}%
       \vspace{5mm}
 
@@ -104,9 +105,10 @@
 \renewcommand\section{\clearpageforsection\oldsection}
 \titleformat{\section}
     {{\color{oiR}\titlerule[1mm]}\addvspace{\sectionheaderspaceA}\color{oiB}\setupfont{}}
-    {\color{oiB}\thesection \quad #1}
+    {\color{oiB}\thesection \quad %#1} ovdje je originalno bilo #1
+    }
     {1em}
-    {}
+    {#1} % premjestila #1 ovdje da prelama dugi naslov u novi red - radi
     [{\color{oiR}\titlerule[1mm]}\addvspace{4mm}]
 \titlespacing{\section}
    {0pt}% left
@@ -133,7 +135,7 @@
 
 
 % 5.5 Review Exercises
-\newcommand{\reviewexercisesheader}[1][Chapter exercises]
+\newcommand{\reviewexercisesheader}[1][Vježbe]
   {
     \clearpageforsection
     {{\color{oiR}\titlerule[1mm]}%
@@ -142,7 +144,7 @@
     {\color{oiR}\titlerule[1mm]} \\[2mm]
     }
 }
-\newcommand{\exercisesheader}[1][Exercises]
+\newcommand{\exercisesheader}[1][Vježbe]
   {
     \clearpageforsection
     {{\color{oiR}\titlerule[1.0mm]}%

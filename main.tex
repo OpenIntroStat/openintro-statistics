@@ -1,21 +1,26 @@
-\documentclass[10pt,openany,croatian]%,oneside]
+\documentclass[10pt,openany]%,oneside]
 {book}
 \newcommand{\versiondate}[0]{13. studeni 2019}
 
 \usepackage[T1]{fontenc}
-\usepackage{babel}
+\usepackage[croatian, safe=none]{babel}
+\addto{\captionscroatian}{\renewcommand*{\appendixname}{Prilog}}
+\addto{\captionscroatian}{\renewcommand*{\chaptername}{Glava}}
+
+%\usepackage{csquotes}
 
 \usepackage{
   amsmath, calc,
   caption, changepage,
   endnotes, enumerate,
+  graphicx,
   epstopdf,
   fancyhdr,
   fix-cm,
   fncychap,
   footmisc,
   fullminipage,
-  geometry, graphicx,
+  geometry, 
   ifthen, lscape,
   makeidx, manfnt,
   marginnote,
@@ -36,7 +41,7 @@
 \newcommand{\printlocation}[0]{}
 
 % _____ PDF _____ %
-\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
+\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {{0 0 0}}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
 
 % _____ Paperback _____ %
 %\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
@@ -82,8 +87,8 @@
 \normalsize
 
 \begingroup
-%\include{extraTeX/style/headers}
-%\includechapter{1}{ch_intro_to_data}
+\include{extraTeX/style/headers}
+\includechapter{1}{ch_intro_to_data}
 %\includechapter{2}{ch_summarizing_data}
 %\includechapter{3}{ch_probability}
 %\includechapter{4}{ch_distributions}
