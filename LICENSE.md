@@ -13,9 +13,9 @@ https://www.openintro.org/contact
 
 2. Figure attribution. Some photographs may be owned by other creators who made the images available under a Creative Commons license and were used in this work. If you use a photograph, please check in the textbook whether the figure is a work of another party. If you use any such images, provide appropriate attribution to the original photographer (e.g. see OpenIntro Statistics for what we believe to be appropriate attribution in these instances).
 
-3. Derivative title. No derivative may include "OpenIntro" in the title, unless it is included in text of the form "Derivative of OpenIntro". Additionally, the title may not match any OpenIntro textbook (or be a translated equivalent). That is, a novel title is required to avoid product confusion or the appearance that your new resource is associated with OpenIntro.
+3. Derivative title. No derivative may include "OpenIntro" in the title, unless it is included in text of the form "Derivative of OpenIntro". Additionally, the title may not match any OpenIntro textbook (or be a translated equivalent) and also not imply a connection (e.g. "[Introductory Statistics with Randomization and Simulation](https://openintro.org/book/isrs/) for Biology" is not be permitted). A novel title is required to avoid product confusion or the appearance that your new resource is associated with OpenIntro.
 
-Use of the OpenIntro trademarke and logo are strictly prohibited and are not licensed for use. The only appropriate use is when indicating the original resource that has been modified. Example: "This book was built using 'OpenIntro Statistics', and that original book may be found at openintro.org/book/os."
+Use of the OpenIntro trademark and logo are strictly prohibited and are not licensed for use. The only appropriate use is when indicating the original resource that has been modified. Example: "This book was built using 'OpenIntro Statistics', and that original book may be found at openintro.org/book/os."
 
 4. Below are other suggested guidelines for attribution.
 
