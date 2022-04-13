@@ -463,25 +463,25 @@ Perform the sample size computation for each separately,
 and identify three sample sizes to consider.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{For a 90\% confidence interval, $z^{\star} = 1.65$,
+\footnotetext{For a 90\% confidence interval, $z^{\star} = 1.6449$,
   and since an estimate of the proportion 0.017 is available,
   we'll use it in the margin of error formula:
   \begin{align*}
-  1.65\times \sqrt{\frac{0.017(1-0.017)}{n}} &\ < \ 0.01
+  1.6449\times \sqrt{\frac{0.017(1-0.017)}{n}} &\ < \ 0.01
     \qquad\to\qquad
       \frac{0.017(1-0.017)}{n} \ < \ 
-          \left(\frac{0.01}{1.65}\right)^2
+          \left(\frac{0.01}{1.6449}\right)^2
     \qquad\to\qquad
-      454.96 \ < \ n
+      452.15 \ < \ n
   \end{align*}
   For sample size calculations, we always round up,
-  so the first tire model suggests 455 tires would
+  so the first tire model suggests 453 tires would
   be sufficient.
 
   A similar computation can be accomplished using 0.062
   and 0.013 for $p$, and you should verify that using these
-  proportions results in minimum sample sizes of 1584
-  and~350 tires, respectively.}
+  proportions results in minimum sample sizes of 1574
+  and~348 tires, respectively.}
 
 \begin{examplewrap}
 \begin{nexample}{The sample sizes vary widely in
@@ -756,14 +756,14 @@ Total			&& 25		& 65		&& 90 \\
       \frac{0.22 (1 - 0.22)}{50}}
     = 0.095
   \end{align*}
-  For a 90\% confidence interval, we use $z^{\star} = 1.65$:
+  For a 90\% confidence interval, we use $z^{\star} = 1.6449$:
   \begin{align*}
   \text{point estimate} \ \pm\ z^{\star} \times SE
-    \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.095
-    \quad \to \quad (-0.027, 0.287)
+    \quad \to \quad 0.13 \ \pm\ 1.6449 \times  0.095
+    \quad \to \quad (-0.026, 0.286)
   \end{align*}
   We are 90\% confident that blood thinners have
-  a difference of -2.7\% to +28.7\% percentage point
+  a difference of -2.6\% to +28.6\% percentage point
   impact on survival rate for patients who are like
   those in the study.
   Because 0\% is contained in the interval,
@@ -1063,7 +1063,7 @@ the mammogram study as well as any other medical study:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item
-    We do not accept the null hypothesis, which means
+    We do not reject the null hypothesis, which means
     we don't have sufficient evidence to conclude that
     mammograms reduce or increase breast cancer deaths.
 \item

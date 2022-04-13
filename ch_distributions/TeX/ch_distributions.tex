@@ -618,7 +618,7 @@ The SAT scores follow $N(\satmean{}, \satsd{})$.\footnotemark{} \\
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Short answers:
-  (a) $Z_{95} = 1.65 \to 1430$ SAT score.
+  (a) $Z_{95} = 1.6449 \to 1429$ SAT score.
   (b) $Z_{97.5} = 1.96 \to 1492$ SAT score.}
 
 \D{\newpage}
@@ -1099,9 +1099,9 @@ Let's first look at an example.
   The probability the second person is the first to hit
   her deductible is
   \begin{align*}
-  &P(\text{second person is the first to hit deductible}) \\
+  &P(\text{second person is the first to not hit deductible}) \\
   &\quad
-    = P(\text{the first won't, the second will})
+    = P(\text{the first will, the second won't})
     = (\insureFprob{})(\insureSprob{})
     = \insureDistB{}
   \end{align*}
@@ -1496,7 +1496,7 @@ yields the general binomial formula.
 
   In the outcome of interest, there are $k = 5$ successes
   in $n = 8$ trials (recall that a success is an individual
-  who does \emph{not} exceed the deductible, and the
+  who does \emph{not} exceed the deductible), and the
   probability of a success is $p = \insureSprob{}$.
   So the probability that 5 of 8 will not exceed the
   deductible and 3 will exceed the deductible is given by

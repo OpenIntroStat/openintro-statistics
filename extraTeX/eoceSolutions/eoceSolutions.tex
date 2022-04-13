@@ -690,7 +690,7 @@ Additionally, there are many possible categories, which would need to be
 simplified.
 (b)~No. There are six events under consideration. The Bernoulli distribution 
 allows for only two events or categories. Note that rolling a die could be a 
-Bernoulli trial if we simply to two events, e.g. rolling a 6 and not rolling 
+Bernoulli trial if we simplify to two events, e.g. rolling a 6 and not rolling 
 a 6, though specifying such details would be necessary.}
 
 % 13
@@ -749,9 +749,9 @@ observation. Therefore yes, we would be surprised.
 
 % 27
 
-\eocesol{(a)~0.0804.
-(b)~0.0322.
-(c)~0.0193.}
+\eocesol{(a)~Geometric, 0.0804.
+(b)~Binomial, 0.0322.
+(c)~Negative binomial, 0.0193.}
 
 % 29
 
@@ -994,11 +994,11 @@ the initial sample.}
       = 0.010
     \end{align*}}%
 (c)~For a 90\% confidence interval,
-    use $z^{\star} = 1.65$.
+    use $z^{\star} = 1.6449$.
     The confidence interval is
-    $0.085 \pm 1.65 \times 0.010 \to
-    (0.0685, 0.1015)$.
-    We are 90\% confident that 6.85\% to 10.15\%
+    $0.085 \pm 1.6449 \times 0.010 \to
+    (0.0683, 0.1017)$.
+    We are 90\% confident that 6.83\% to 10.17\%
     of first-time site visitors will register using
     the new design.}
 
@@ -1346,17 +1346,17 @@ would be 0.0036.}
 
 % 15
 
-\eocesol{Since a sample proportion ($\hat{p} = 0.55$) is available,
+\eocesol{Because a sample proportion ($\hat{p} = 0.55$) is available,
 we use this for the sample size calculations.
 The margin of error for a 90\% confidence interval is
-$1.65 \times SE = 1.65 \times \sqrt{\frac{p(1 - p)}{n}}$.
+$1.6449 \times SE = 1.6449 \times \sqrt{\frac{p(1 - p)}{n}}$.
 We want this to be less than 0.01, where we use
 $\hat{p}$ in place of $p$:
 \begin{align*}
-1.65 \times \sqrt{\frac{0.55(1 - 0.55)}{n}} \leq 0.01 \\
-1.65^2 \frac{0.55(1 - 0.55)}{0.01^2} \leq n
+1.6449 \times \sqrt{\frac{0.55(1 - 0.55)}{n}} \leq 0.01 \\
+1.6449^2 \frac{0.55(1 - 0.55)}{0.01^2} \leq n
 \end{align*}
-From this, we get that $n$ must be at least 6739.}
+From this, we get that $n$ must be at least 6697.}
 
 % 17
 
