@@ -1,6 +1,6 @@
 \documentclass[10pt,openany]%,oneside]
 {book}
-\newcommand{\versiondate}[0]{April 12th, 2022}
+\newcommand{\versiondate}[0]{May 1st, 2022}
 
 \usepackage{
   amsmath, calc,
@@ -56,8 +56,9 @@
 \bibliography{eoce.bib}
 
 \makeindex
-\include{extraTeX/style/style}
-\include{extraTeX/style/tablet}
+%\include{extraTeX/style/style}
+\include{extraTeX/style/style_simple}
+%\include{extraTeX/style/tablet}
 %\include{extraTeX/style/video}
 % The following style file supports an 8.25 x 11 paper size.
 %\include{extraTeX/style/hardcover}
@@ -79,7 +80,8 @@
 \normalsize
 
 \begingroup
-\include{extraTeX/style/headers}
+%\include{extraTeX/style/headers}
+\include{extraTeX/style/headers_simple}
 \includechapter{1}{ch_intro_to_data}
 \includechapter{2}{ch_summarizing_data}
 \includechapter{3}{ch_probability}
