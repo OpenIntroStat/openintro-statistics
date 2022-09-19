@@ -93,7 +93,9 @@ there are \loanN{} points in Figure~\ref{loan50_amt_vs_income}.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.8}{loan50_amt_vs_income}
+  \Figure
+    [A scatterplot is shown with "Total Income" along the horizontal axis (range from \$0 to \$325,000) and "Loan Amount" along the vertical axis (range from \$0 to \$40,000). The points lie in a range from \$2,000 to \$33,000 in loan amount when total income is smaller than \$150,000 (representing most of the points). The range of loan amounts is higher when total income is greater than \$175,000, with the range of observations being about \$15,000 to \$40,000.]
+    {0.8}{loan50_amt_vs_income}
   \caption{A scatterplot of \var{total\us{}income}
       versus \var{loan\us{}amount} for the
       \data{loan50} data set.}
@@ -121,7 +123,9 @@ while there are a handful of borrowers with income above~\$250,000.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.8}{medianHHIncomePoverty}
+  \Figure
+    [A scatterplot of a few thousand points is shown with "Poverty Rate" along the horizontal axis (range from 0\% to 55\%) and "Median Household Income" along the vertical axis (range from \$0 to \$130,000). A curved trend line is overlaid on the points starting higher on the left and decreasing as it moves right, but it starts flattening the further right it goes. Below 10\% poverty rate, points range from about \$40,000 to \$130,000. Between 10\% to 20\%, the range is lower at about \$25,000 to close to \$100,000. For 20\% to 30\%, the points ranges from about \$22,000 to just over \$60,000. For 30\% to 50\%, the trend is mostly flat with values ranging from about \$20,000 to \$50,000.]
+    {0.8}{medianHHIncomePoverty}
   \caption{A scatterplot of the median household income
       against the poverty rate for the
       \data{county} data set.
@@ -174,7 +178,9 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.76}{loan_int_rate_dot_plot}
+  \Figure
+    [A dot plot is shown for the variable "Interest Rate". There is a horizontal axis ranging from about 5\% to a bit over 25\%, and then several points are shown horizontally above the axis, scattered over the range. There is a higher density of points between 5\% to 11\%, with a moderate density of points from 12\% to about 20\%, and then a few more observations at about 22\%, 25\%, and 26\%. A red triangle is also shown at approximately 12\%.]
+    {0.76}{loan_int_rate_dot_plot}
   \caption{A dot plot of \var{interest\us{}rate}
       for the \data{loan50} data set.
       The distribution's mean is shown as a red triangle.}
@@ -183,9 +189,11 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.76}
-      {loan_int_rate_dot_plot}
-      {loan_int_rate_dot_plot_stacked}
+  \Figures
+    [A stacked dot plot is shown for the variable "Interest Rate". There is a horizontal axis ranging from about 5\% to a bit over 25\%, and then several stacks of points are shown at values 5\%, 6\%, 7\%, and so on. There are 3 points stacked at 5\%, 3 points stacked at 6\%, 5 at 7\%, 4 at 8\%, 5 at 9\%, 8 at 10\%, 5 at 11\%, 1 at 11\%, 3 at 12\%, then 1 each at 14\%, 15\%, and 16\%, 3 at 17\%, 2 at 18\%, and then 1 each at 19\%, 20\%, 21\%, 25\%, and 26\%. A red triangle is also shown at approximately 12\%.]
+    {0.76}
+    {loan_int_rate_dot_plot}
+    {loan_int_rate_dot_plot_stacked}
   \caption{A stacked dot plot of
       \var{interest\us{}rate}
       for the \data{loan50} data set.
@@ -469,7 +477,9 @@ Figure~\ref{loan_int_rate_dot_plot_stacked}.
 
 \begin{figure}[bth]
   \centering
-  \Figure{0.76}{loan50IntRateHist}
+  \Figure
+    [A histogram with a horizontal axis of "Interest Rate" and a vertical axis showing the frequency of occurrence of different bins of interest rate. The first bin is from 5\%-7.5\% with a frequency (count) of 11 observations, 7.5\%-10\% has a frequency of 15, 10\%-12.5\% has 8, 12.5\%-15\% has 4, 15\%-17.5\% has 5, 17.5\%-20\% has 4, and then the 20\%-22.5\%, 22.5\%-25\%, and 25\%-27.5\% bins each have a frequency of 1.]
+    {0.76}{loan50IntRateHist}
   \caption{A histogram of \var{interest\us{}rate}.
       This distribution is strongly skewed to the right.
       \index{skew!strong}}
@@ -567,7 +577,9 @@ bins by a few observations.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.9}{singleBiMultiModalPlots}
+  \Figure
+    [Three histograms are shown. The first histogram shows bins of width 2 between 0 to 18 (this is along the horizontal axis), and the frequencies are 3, 16, 16, 7, 11, 6, 4, 1, and 1. The second histogram, representing a different data set, shows bins of width 2 with values ranging from 0 to 20, where the bin counts in order are 2, 9, 5, 2, 2, 2, 2, 10, 19, and 9. The third histogram, representing yet another data set, shows bins of width 2 with values ranging from 0 to 22, where the bin counts in order are 10, 8, 4, 3, 1, 20, 15, 3, 15, 18, and 5.]
+    {0.9}{singleBiMultiModalPlots}
   \caption{Counting only prominent peaks, the
       distributions are (left to right) unimodal,
       bimodal, and multimodal.
@@ -713,7 +725,9 @@ is the Greek letter \emph{sigma}.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.73}{sdRuleForIntRate}
+  \Figure
+    [A dot plot of 50 observations is shown with values ranging from about 5\% to 26\%. The data set is the same as that shown in the dot plot in Figure~\ref{loan_int_rate_dot_plot}, where the data is more dense from 5\% to about 11\%, has medium density from about 12\% to 20\%, and then there are a few more values scattered in the 20\% to 27\% range. Shading is shown to represent the regions within 1, 2, and 3 standard deviations. The region within 1 standard deviation is from 6.5\% to 16.7\%, representing 34 of the 50 data points. The region within 2 standard deviation runs left off of the chart (but would be from about 1.4\%) to 21.8\% and contains 48 of the 50 data points. The third standard deviation is shown to extend out to 26.9\%, and all 50 observations are contained within the 3 standard deviations.]
+    {0.73}{sdRuleForIntRate}
   \caption{For the \var{interest\us{}rate} variable,
       34 of the 50 loans (68\%) had interest rates within
       1~standard deviation of the mean,
@@ -738,7 +752,9 @@ is the Greek letter \emph{sigma}.
 
 \begin{figure}
   \centering
-  \Figure{0.6}{severalDiffDistWithSdOf1}
+  \Figure
+    [Three histograms are shown (upper, middle, lower). Each distribution also shows shading -- dark gray between -1 to 1, lighter gray between -2 and 2, and light gray between -3 and 3, and then very light gray further out. The upper plot shows only two bins with non-zero values and of equal height at -1 and 1. middle plot shows a bell-shaped curve, where most of the higher bin values are between -1 and 1, middling heights are between -2 to -1 and 1 to 2, and the data trails off in each direction with ever-smaller values further out. The lower histogram shows no data below about -1.6, a quick increase to a peak at about -0.7 and then a slow decline of values to about half the max height at 1 and further trails off to ever smaller values to a horizontal location of 3 and beyond.]
+    {0.6}{severalDiffDistWithSdOf1}
   \caption{Three very different population distributions
       with the same mean $\mu=0$ and standard deviation
       $\sigma=1$.}
@@ -811,7 +827,9 @@ the \data{loan50} data set.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.86}{loan_int_rate_box_plot_layout}
+  \Figure
+    [What is shown in a a dot plot adjacent to what is called a "box plot". The data values are the same ones used in past dot plots, where the data shows greatest density from 5\% to 11\%, moderate density from 12\% to 20\%, and then a few more values at about 22\%, 25\%, and 26\%. The box plot adjacent to the data shows a box that would encapsulate the middle 50\% of the data, from about 8\% to 13\%. The median is also annotated with a line through the center of the box. From here, the data extend out with "whiskers" up to a distance up to $1.5 \times IQR$ below and above the box to capture as much data as possible. There are two observations that extend beyond this range at 25\% and 26\%.]
+    {0.86}{loan_int_rate_box_plot_layout}
   \caption{A vertical dot plot, where points have been
       horizontally stacked, next to a labeled box plot
       for the interest rates of the \loanN{} loans.}
@@ -982,7 +1000,9 @@ Figure~\ref{robustOrNotTable}.
 
 \begin{figure}[ht]
   \centering
-  \Figure{1}{loan_int_rate_robust_ex}
+  \Figure
+    [Three dot plots are shown in the same plot. The largest observation from the original data set (discussed in previous dot plots) at about 26\% is moved to 15\% in the second dot plot and instead to 35\% in the third dot plot.]
+    {1}{loan_int_rate_robust_ex}
   \caption{Dot plots of the original interest rate data
       and two modified data sets.}
   \label{loan_int_rate_robust_ex}
@@ -1082,13 +1102,15 @@ them so they are easier to model.
 \begin{figure}[ht]
   \centering
   \subfigure[]{
-    \Figures{0.46}
+    \Figures[A histogram with a horizontal axis of Population with possible data ranging from 0 to about 10 million. The first bar representing 0 to 400,000 shows a frequency (bar height) of about 3000, the second bar for 400,000 to 800,000 shows about frequency of about 100. All other bars are sufficiently small that they are virtually indistinguishable from 0.]
+        {0.46}
         {county_pop_transformed}
         {county_pop_transformed_i}
     \label{county_pop_transformed_i}
   }
   \subfigure[]{
-    \Figures{0.46}
+    \Figures[A histogram is shown where the horizontal axis represents log-base-10 of the population. The horizontal axis runs from about 2 to 7, and frequency (bin/box height) peaks at a little over 1000. The data show an approximate bell shape, peaking in the middle between 4 to 4.5, then showing lower frequencies the further out from 4-4.5 with frequencies being close to zero outside of 2.5 to 6.5.]
+        {0.46}
         {county_pop_transformed}
         {county_pop_transformed_log}
   \label{county_pop_transformed_log}
@@ -1146,13 +1168,15 @@ lines in Chapter~\ref{linRegrForTwoVar}.
 \begin{figure}
   \centering
   \subfigure[]{
-    \Figures{0.47}
+    \Figures[A scatterplot of the population on the horizontal axis (ranging from 0 to 10 million) and population change as a percent on the vertical axis (ranging from -35\% to positive 40\%). The data is particularly concentrated on the left of the graph below 1 million, where the data with populations below 1 million have populations changes that are mostly clustered between about -10\% and positive 15\%. There are a relatively small number of observations with population greater than 1 million, and these all have population changes between roughly -3\% and positive 10\%. There is no discernible trend in the data.]
+        {0.47}
         {county_pop_change_v_pop_transform}
         {county_pop_change_v_pop_transform_i}
     \label{county_pop_change_v_pop_transform_i}
   }
   \subfigure[]{
-    \Figures{0.47}
+    \Figures[A scatterplot of the log-base-10 of the population on the horizontal axis (ranging from 2 to 7) and population change as a percent on the vertical axis (-35\% to positive 40\%). The data well distributed between about 3 and 6 on the horizontal axis and shows a cloud of points with a slight upward trend. Between 3 and 4 on the horizontal, nearly all points take values between -10\% and positive 10\%. Between 4 and 5 on the horizontal, nearly all points take vertical values between -8\% and positive 15\%. Between 5 and 6 on the horizontal, nearly all points take vertical values between -5\% and positive 18\%.]
+        {0.47}
         {county_pop_change_v_pop_transform}
         {county_pop_change_v_pop_transform_log}
     \label{county_pop_change_v_pop_transform_log}
@@ -1207,7 +1231,7 @@ and generating interesting research questions or hypotheses.
 \begin{examplewrap}
 \begin{nexample}{What interesting features are evident in the
     \var{poverty} and \var{unemployment\us{}rate}
-    intensity maps?}
+    intensity maps?}\label{map_example_poverty_and_unemployment}
   Poverty rates are evidently higher in a few locations.
   Notably, the deep south shows higher poverty rates,
   as does much of Arizona and New Mexico.
@@ -1244,13 +1268,15 @@ Figure~\ref{countyMedIncomeMap}?\footnotemark{}
 \begin{figure}
   \centering
   \subfigure[]{
-    \Figures{1.00}
+    \Figures[An intensity map of the United States is shown for poverty, where each county is colored a shade representing a value between 2\% and over 25\% for the poverty rate. See Example~\ref{map_example_poverty_and_unemployment} for an additional summary of this graph.]
+        {1.00}
         {countyIntensityMaps}
         {countyPovertyMap}
     \label{countyPovertyMap}
   }
   \subfigure[]{
-    \Figures{1.00}
+    \Figures[An intensity map of the United States is shown for unemployment rate, where each county is colored a shade representing a value between 2\% and over 7\% for the unemployment rate. See Example~\ref{map_example_poverty_and_unemployment} for an additional summary of this graph.]
+        {1.00}
         {countyIntensityMaps}
         {countyUnemploymentRateMap}
     \label{countyUnemploymentRateMap}
@@ -1265,13 +1291,15 @@ Figure~\ref{countyMedIncomeMap}?\footnotemark{}
 \begin{figure}
   \centering
   \subfigure[]{
-    \Figures{1.00}
+    \Figures[An intensity map of the United States is shown for homeownership rate, where each county is colored a shade representing a value between below 55\% and over 91\% for the homeownership rate. The data look mostly random but may be slightly lower in the west, especially along the California coast, and shading representing slightly higher values in the upper midwest as well as in Florida.]
+        {1.00}
         {countyIntensityMaps}
         {countyHomeownershipMap}
     \label{countyHomeownershipMap}
   }
   \subfigure[]{
-    \Figures{1.00}
+    \Figures[An intensity map of the United States is shown for median household income, where each county is colored a shade representing a value between below \$19,000 and over \$75,000. The shading appears quite random in any particular region. However, some metro areas in California and near New York City and Boston appear to have higher median household incomes. The Mississippi Delta leading down into Louisiana and Mississippi show evidently lower median household income values.]
+        {1.00}
         {countyIntensityMaps}
         {countyMedIncomeMap}
     \label{countyMedIncomeMap}

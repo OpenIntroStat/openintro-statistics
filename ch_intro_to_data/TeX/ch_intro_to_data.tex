@@ -437,7 +437,9 @@ be treated as a nominal (unordered) categorical variable.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.57}{variables}
+  \Figure
+    [Breakdown of variables into their respective types, showing "all variables" breaking down into "numeric" and "categorical". Then "numeric" is divided into "continuous" and "discrete", and "categorical" is broken down into "nominal (unordered categorical)" and "ordinal (ordered categorical)'' variables.]
+    {0.57}{variables}
   \caption{Breakdown of variables into their respective types.}
   \label{variables}
 \end{figure}
@@ -541,7 +543,9 @@ reasonable explanations.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.79}{multiunitsVsOwnership}
+  \Figure
+    [Scatterplot of thousands of counties with the percent of multiunit structures in each county shown on the horizontal axis and homeownership rate shown on the vertical axis. The data range from 0\% to almost 100\% for both variables. In general, the points are much more concentrated in the upper left corner of the graph and then trend downward for observations further to the right while also becoming more sparse. One point is annotated at the location (39.4\%, 31.3.\%).]
+    {0.79}{multiunitsVsOwnership}
   \caption{A scatterplot of homeownership versus the percent
       of units that are in multi-unit structures for US counties.
       The highlighted dot represents Chattahoochee County, Georgia,
@@ -622,7 +626,9 @@ to~you.\footnotemark
 
 \begin{figure}
   \centering
-  \Figure{0.9}{pop_change_v_med_income}
+  \Figure
+    [Scatterplot of thousands of counties with the median household income along the horizontal axis (data ranging from \$0 to \$120,000) and population change over 7 years (data ranging from about -15\% to 25\%). There is a cloud of points centered around (\$45,000, -1\%), and the points show a slight trend upwards while also becoming more sparse and volatile for observations corresponding to higher median incomes. One point is annotated at the location (\$22,736, -3.63\%).]
+    {0.9}{pop_change_v_med_income}
   \caption{A scatterplot showing
       \var{pop\us{}change}
       against \var{median\us{}hh\us{}income}.
@@ -693,7 +699,9 @@ we label the first variable the explanatory variable and the
 second the response variable.
 \vspace{1mm}
 
-\hspace{10mm}\includegraphics[height=0.34in]{ch_intro_to_data/figures/expResp/expResp}
+\hspace{10mm}\Figure
+    [Simple graphic shown the words "explanatory variable" pointing to "response variable", where the words "might affect" appear above the arrow.]
+    {0.53}{expResp}
 
 For many pairs of variables, there is no hypothesized
 relationship, and these labels would not be applied to
@@ -875,7 +883,9 @@ Data collected in this haphazard fashion are called
 \setlength{\captionwidth}{\textwidth-75mm}
 \begin{figure}[h]
   \centering
-  \hspace{8mm}\Figuress{55mm}{mnWinter}{mnWinter}\hspace{4mm}
+  \hspace{8mm}\Figuress
+    [A wintery scene, where the trees are covered in snow, and there are large piles of snow on the sides of the roads. This particular photo was taken at the University of Minnesota campus following a storm after which tree branches were a particularly vibrant white color after the storm.]
+    {55mm}{mnWinter}{mnWinter}\hspace{4mm}
   \begin{minipage}[b]{\textwidth-75mm}
     \caption[anecdotal evidence]{In February 2010,
         some media pundits cited one large snow storm
@@ -920,7 +930,9 @@ We pick samples randomly to reduce the chance we introduce biases.
 
 \begin{figure}[ht]
   \centering
-  \Figures{0.5}{popToSample}{popToSampleGraduates}
+  \Figures
+    [Graphic showing a larger circle on the left for "all graduate" and a smaller circle on the right for "sample". There are a large number of dots randomly scattered around inside the left circle, and five of those dots have arrows originating from them and pointing to 5 dots inside the right circle. Besides those 5 dots, there are no other dots in the right circle.]
+    {0.5}{popToSample}{popToSampleGraduates}
   \caption{In this graphic, five graduates are randomly
       selected from the population to be included in the
       sample.}
@@ -946,7 +958,9 @@ We pick samples randomly to reduce the chance we introduce biases.
 
 \begin{figure}
   \centering
-  \Figures{0.5}{popToSample}{popToSubSampleGraduates}
+  \Figures
+    [Graphic showing a larger circle on the left for "all graduate" and a smaller circle on the right for "sample". There are a large number of dots randomly scattered around inside the left circle. A smaller circle annotated as "graduates from health-related fields" is inside this circle and contains a subset of those dots, among which five have arrows originating from them and pointing to 5 dots inside the right circle. Besides those 5 dots, there are no other dots in the right circle.]
+    {0.5}{popToSample}{popToSubSampleGraduates}
   \caption{Asked to pick a sample of graduates,
       a nutrition major might inadvertently pick a
       disproportionate number of graduates from
@@ -983,7 +997,9 @@ This \term{non-response bias}
 
 \begin{figure}[h]
   \centering
-  \Figures{0.5}{popToSample}{surveySample}
+  \Figures
+    [Graphic showing a larger circle on the left for "population of interest" and a smaller circle on the right for "sample". There are a large number of dots randomly scattered around inside the left circle. A smaller circle annotated as "population actually sampled" is inside this circle and contains a subset of those dots, among which five have arrows originating from them and pointing to 5 dots inside the right circle. Besides those 5 dots, there are no other dots in the right circle.]
+    {0.5}{popToSample}{surveySample}
   \caption{Due to the possibility of non-response,
       surveys studies may only reach a certain group
       within the population.
@@ -1054,7 +1070,9 @@ Suppose an observational study tracked sunscreen use and skin cancer, and it was
 
 Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. One important piece of information that is absent is sun exposure. If someone is out in the sun all day, she is more likely to use sunscreen \emph{and} more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.
 \begin{center}
-  \Figures{0.55}{variables}{sunCausesCancer}
+  \Figures
+    [There are three boxes with words positioned in a triangle. One box has "sun exposure" written in it, and that box has two arrows pointing from it to the two other boxes, which are labeled "use sunscreen" and "skin cancer". There is a third arrow more lightly colored and pointing from the "use sunscreen" box to the "skin cancer" box, where a question mark has been placed above that lightly-colored arrow.]
+    {0.55}{variables}{sunCausesCancer}
 \end{center}
 % Some studies:
 % http://www.sciencedirect.com/science/article/pii/S0140673698121682
@@ -1111,10 +1129,19 @@ retrospectively-collected variables.
 Almost all statistical methods are based on the notion of implied randomness. If observational data are not collected in a random framework from a population, these statistical methods -- the estimates and errors associated with the estimates -- are not reliable. Here we consider four random sampling techniques: simple, stratified, cluster, and multistage sampling. Figures~\ref{simple_stratified} and~\ref{cluster_multistage} provide graphical representations of these techniques.
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{ch_intro_to_data/figures/samplingMethodsFigure/simple_stratified}
-\caption{Examples of simple random\index{sample!simple random sampling} and stratified sampling\index{sample!stratified sampling}. In the top panel, simple random sampling was used to randomly select the 18 cases. In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed within \mbox{each stratum}.}
-\label{simple_stratified}
+  \centering
+  \Figures
+    [Two figures are shown, one positioned above the other. The first is a large rectangle containing many points, where 18 of those points are circled and are a different color than the other points. The lower figure is also a large rectangle, but this rectangle contains 6 larger circles that are labeled "Stratum 1" through "Stratum 6". In each of these circles are many points, and 3 points have been circled and are in a different color within each of the six circles, specially calling out those 3 points in each of the stratum circles in a similar way to how the 18 points were being called out in the upper figure.]
+    {}{samplingMethodsFigure}{simple_stratified}
+  \caption{
+      Examples of simple random\index{sample!simple random sampling}
+      and stratified sampling\index{sample!stratified sampling}.
+      In the top panel, simple random sampling was used to randomly
+      select the 18 cases.
+      In the bottom panel, stratified sampling was used:
+      cases were grouped into strata, then simple random sampling
+      was employed within \mbox{each stratum}.}
+  \label{simple_stratified}
 \end{figure}
 
 \termsub{Simple random sampling}{sample!simple random sampling} is probably the most intuitive form of random sampling. Consider the salaries of Major League Baseball (MLB) players, where each player is a member of one of the league's 30 teams. To take a simple random sample of 120 baseball players and their salaries, we could write the names of that season's several hundreds of players onto slips of paper, drop the slips into a bucket, shake the bucket around until we are sure the names are all mixed up, then draw out slips until we have the sample of 120 players. In general, a sample is referred to as ``simple random'' if each case in the population has an equal chance of being included in the final sample \emph{and} knowing that a case is included in a sample does not provide useful information about which other cases are included.
@@ -1151,7 +1178,9 @@ In a \termsub{cluster sample}{sample!cluster sample}, we break up the population
 
 \begin{figure}
   \centering
-  \Figures{}{samplingMethodsFigure}{cluster_multistage}
+  \Figures
+    [Two figures are shown, one positioned above the other. The first is a large rectangle containing 8 large circles with labels "Cluster 1" through "Cluster 8". All of these large circles contain points. However, three of the large circles (Cluster 3, Cluster 4, and Cluster 8) are colored differently than the other large circles and their contained points are also colored differently. The lower figure is the same as the upper figure, except that only 5 of the points are colored differently in each of the 3 large circles that have been colored differently.]
+    {}{samplingMethodsFigure}{cluster_multistage}
   \caption{Examples of cluster\index{sample!cluster sampling}
   and multistage sampling\index{sample!multistage sampling}.
   In the top panel, cluster sampling was used:
@@ -1247,7 +1276,9 @@ Studies where the researchers assign treatments to cases are called \termsub{exp
 
 \begin{figure}
   \centering
-  \Figure{0.82}{figureShowingBlocking}
+  \Figure
+    [There are three main stages shown in this figure, from top to bottom. The upper stage shows the numbering of patients as a rectangle containing 54 dots in a grid that are labeled with numbers 1 through 54. The dots are one of two colors: blue (high risk) and red (low risk). The second stage shows the two colored dots broken into two blocks. On the left are the low-risk patients (red) and on the right are the high-risk patients (blue). Going into the bottom third stage, are two boxes labeled "control" and "treatment", where half of the low-risk (red) and half of the blue (high risk) points have been randomly placed into each of these two experiment groups.]
+    {0.82}{figureShowingBlocking}
   \caption{Blocking using a variable depicting patient risk.
       Patients are first divided into low-risk and high-risk
       blocks, then each block is evenly separated into the
