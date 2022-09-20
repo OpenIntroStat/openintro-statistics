@@ -1447,7 +1447,8 @@ showing the proportion of observations that are in each level
 
 \begin{figure}[h]
   \centering
-  \Figure{0.9}{loan_homeownership_bar_plot}
+  \Figure[Two bar plots, which are described as the left bar plot and the right bar plot. The left bar plot has Homeownership on the horizontal axis and Frequency (count) on the Vertical axis. Each level of homeownership has its own "bar" (which looks like a tall rectangle resting on the horizontal axis) with a height corresponding the frequency of that bar in the data set. For example, the "Rent" bar extends from the horizontal axis up to a frequency of about 3900. The "Mortgage" bar extends from the horizontal axis up to about 4700, and the bar for "Own" extends up to at about 1300. Moving to the next plot, the right bar plot, it looks very similar to the left bar plot except that it reports the proportion of cases on the vertical axes instead of the frequency (count). The values in this bar plot are: about 0.39 for Rent, about 0.47 for Mortgage, and about 0.13 for Own.]
+    {0.9}{loan_homeownership_bar_plot}
   \caption{Two bar plots of \var{number}.
       The left panel shows the counts, and the right panel
       shows the proportions in each group.}
@@ -1737,19 +1738,22 @@ we can conclude that the two variables are associated.
 \begin{figure}[h]
   \centering
   \subfigure[]{
-    \Figuress{\loanapptypehomesegbarplotwidth}
+    \Figuress[A stacked bar plot with Homeownership on the horizontal axis and Frequency (count) on the Vertical axis, where "app\_type" is used to break each bar into two categories: "joint" application type and "individual" application type. The first bar is for "Rent" and extends up to about 3900 total for the two application types together. This "Rent" bar is also broken into two categories, blue for "individual" and yellow for "joint". The bottom portion of the bar, running up to about 3500, is blue to represent the "joint" applications where the application had a "rent" value for homeownership, and the rest (about vertical height representing about 400) of the bar is yellow to represent the "individual" applications. The second bar is for "Mortgage" at about 4700 total, the bottom 3900 of which are shown as blue for individual applications and the top of which is yellow for "joint" applications and appears to have a height of about 800. The third bar is for "Own" at about 1300, of which about 1100 is for the individual (blue) application type and about 200 of which is joint (yellow) application type. Again, each homeownership bar is broken into a lower (blue) and upper portion (yellow) portion to express the breakdown of a homeownership level into the application types, allowing us to express a breakdown along two categorical variables in a single plot.]
+        {\loanapptypehomesegbarplotwidth}
         {loan_app_type_home_seg_bar}
         {loan_app_type_home_seg_bar}
     \label{loan_app_type_home_seg_bar}
   }
   \subfigure[]{
-    \Figuress{\loanapptypehomesegbarplotwidth}
+    \Figuress[A side-by-side bar plot is shown. In this side-by-side plot, instead of having the blue and yellow portions of a single bar for a homeownership level, such as rent, the bar has been slimmed down and the blue and yellow portions are now side-by-side, each resting on the horizontal axis. Reading across, we see a blue and yellow bar side-by-side and touching. These are shown over a homeownership category of "rent". The first of these two bars is blue for "individual" application type (having a height of about 3500) and the second is yellow for the "joint" application type (having a height of about 400). After this first group of two bars, there is a small horizontal gap before the next pair of bars that represent the mortgage homeownership category. Here again, there is first a blue bar for individual application type, where this blue bar stretches up to a value of about 3900, and next to it is a yellow bar for the joint application type, which stretches up to about 800. After this second pair of bars, there is a little more space as we move right along the plot before we reach the "own" homeownership category, which shows another pair of bars: blue (with a bar reaching a frequency or count of about 1100) and yellow (with a bar reaching a value of about 200).]
+        {\loanapptypehomesegbarplotwidth}
         {loan_app_type_home_seg_bar}
         {loan_app_type_home_sbs_bar}
     \label{loan_app_type_home_sbs_bar}
   }
   \subfigure[]{
-    \Figuress{\loanapptypehomesegbarplotwidth}
+    \Figuress[The last plot is a standardized version of the stacked bar plot, where each bar has been standardized to add up to 1. This bar plot shows the homeownership variable and its three levels -- from left to right: rent, mortgage, and own -- as their own bars, where each bar runs from the horizontal axis at 0 up to a value of 1. This standardization where all total bars span the same vertical distance allows for an easier comparison of the proportional breakdown of the coloring in each stacked bar. The coloring breakdown of each bar represents the application type: individual (blue) and joint (yellow). For the first bar, rent, the blue runs up to about 0.9 on the vertical, and the yellow portion of the bar runs from 0.9 to 1.0. In the second bar, mortgage, the blue runs from horizontal axis up to about 0.8, and the yellow portion of the bar runs from 0.8 to 1.0. The third bar, own, has its blue portion run from the horizontal axis up to about 0.87, and the yellow portion runs from 0.87 to 1.0.]
+        {\loanapptypehomesegbarplotwidth}
         {loan_app_type_home_seg_bar}
         {loan_app_type_home_seg_bar_standardized}
     \label{loan_app_type_home_seg_bar_standardized}
@@ -1889,13 +1893,15 @@ to represent the number of cases in each category.
 \begin{figure}[h]
   \centering
   \subfigure[]{
-    \Figures{0.36}
+    \Figures[A one-variable mosaic plot is shown for the homeownership variable, which has levels rent, mortgage, and own. A one-variable mosaic plot can first be pictured as a square that has partitions running vertically, breaking that square up into three pieces, one piece per level. The portion of the square assigned to each piece is proportional to the number of cases for each level. In this particular mosaic plot, we see a "rent" piece on the left portion of the square that has been colored green -- this tall rectangle represents about 40\% of the square. Now considering the middle tall rectangle, which is blue and has been labeled as "mortgage", its width is close to half of the total width of the square. The rightmost tall rectangle is red and is labeled "own", and it appears to represent a little more than 10\% of the total width of the rectangle.]
+        {0.36}
         {loan_app_type_home_mosaic_plot}
         {loan_home_mosaic}
     \label{loan_home_mosaic}
   }
   \subfigure[]{
-    \Figures{0.44}
+    \Figures[A two-variable mosaic plot is shown, partitioned with vertical slices first for the homeownership variable in the same way as a one-variable mosaic plot, and then each of the tall rectangle from that one-variable mosaic plot has been sliced horizontally to represent the application types individual (shown as the upper portion of each tall rectangle) and joint (shown as the lower portion of each tall rectangle). Taking the first tall rectangle on the left of the mosaic plot, which is green and labeled as "rent", it is divided into a small "joint" rectangle at the bottom of the "rent" rectangle and a much larger upper portion that represents the "individual" application types of the rent homeownership cases. This same partitioning is repeated for the tall middle rectangle representing the blue mortgage homeownership cases, where a small portion of those applications are broken off into a smaller rectangle on the bottom for "joint" and a larger rectangle for the cases that are "individual". Similarly, the rightmost tall rectangle that is red and represents "own" has been divided into a lower rectangle for "joint" and an upper portion for "individual" application types. The benefit of this plot is that we can now get a sense of the proportional makeup of each homeownership category by looking at the relative widths of the three different colored tall rectangles, and we can also look at where each of these tall rectangles is broken into joint and individual applications. In this case, the tall rectangle for rent is broken lower than the mortgage and own levels, indicating it has fewer of the "joint" application types (which if you recall, was the lower sub-divided rectangles). The "own" category also has its horizontal break a bit lower than the "mortgage" rectangle's break, implying the mortgage category has the highest proportion of joint applications of the rent, mortgage, and own homeownership categories.]
+        {0.44}
         {loan_app_type_home_mosaic_plot}
         {loan_app_type_home_mosaic}
     \label{loan_app_type_home_mosaic}
@@ -1947,7 +1953,8 @@ the variables under consideration.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.37}
+  \Figures[A two-variable mosaic plot that has been first divided vertically using the mortgage application type (individual on the left and joint on the right), and then each of those rectangles subdivided horizontally ("own" in red on the bottom, "mortgage" in blue in the middle, and "rent" in green on the top). The "individual" category as the left main rectangle spans about 85\% of the square, while the right main rectangle for "joint" spans about 15\% of the square. The homeownership breakdown within each of the main rectangles shows "own" represents roughly the same proportion in each, running up about 10\% of the way up from the bottom. The next subdivided portion of each rectangle is "mortgage", and here we see that the left "individual" rectangle has only about 45\% of its rectangle as "mortgage" while it represents about 60\%  in the right "joint" rectangle. The "rent" subdivided portions at the top of each rectangle represents about 40\% of the left "individual" rectangle and about 25\% of the "joint" rectangle.]
+      {0.37}
       {loan_app_type_home_mosaic_plot}
       {loan_app_type_home_mosaic_rev}
   \caption{Mosaic plot where loans are grouped by
@@ -1982,7 +1989,8 @@ for their ease in comparing groups.
 
 \begin{figure}[h]
   \centering
-  \Figure{}{loan_homeownership_pie_chart}
+  \Figure[There are two plots, each providing a visualization of the homeownership variable. The left plot is a pie chart, which is a circle that has three lines drawn from the center of the circle to its edge, dividing the circle into "slices". The lower left slice is large, representing close to 50\% of the total circle, it is colored blue, and it is labeled "mortgage". The upper slice is also quite large, representing almost 40\% of the circle, is colored green, and it is labeled "rent". The lower right slice is much smaller, representing about 15\% of the circle, it is colored red, and it is labeled "own". Next, moving to the right plot, is shown a bar plot. This bar plot has homeownership categories along the horizontal axis and frequency along the vertical axis. The leftmost bar is green, is labeled "rent", and has a frequency of about 3900. The middle bar is blue, is labeled "mortgage", and has a frequency of about 4700. The rightmost bar is red, is labeled "own", and has a frequency of about 1300.]
+      {}{loan_homeownership_pie_chart}
   \caption{A pie chart and bar plot of \var{homeownership}.}
   \label{loan_homeownership_pie_chart}
 \end{figure}
@@ -2079,7 +2087,8 @@ placed into one plotting window and drawn on the same scale.
 
 \begin{figure}
   \centering
-  \Figure{1.00}{countyIncomeSplitByPopGain}
+  \Figure[There are two figures shown: a side-by-side box plot on the left, and a two overlaid hollow histograms on the right. These two plots describe the same data for the "county" data set: a numerical variable for median household income and a categorical variable with levels of "gain" and "no gain" for the population change in the county. First, the side-by-side box plots shown as the left plot are described. This plot shows two box plots side-by-side, enclosed in the same general plot so they are close and so easier to compare. The left box plot represents "gain", and the right plot represents "no gain". The vertical axis runs from about \$20,000 to about \$130,000. Starting at the lower levels, the "no gain" lower whisker is at about \$20,000, while the "gain" lower whisker starts at about \$25,000. Each whisker runs upwards to the box, where the "no gain" box is reached first at about \$40,000 and the "gain" box at about \$47,000. The median line in each box is shown, where the "no gain" median is shown to at about \$45,000, even lower than the start of the "gain" box". The "gain" box's median is at about \$53,000 and is above the top of the "no gain box" at about \$52,000. The left "gain" box finally ends at about \$62,000. Above each box is the upper whisker. The upper whisker in the "gain" box plot extends far above that of the "no gain" box, reaching about \$87,000 vs \$70,000. Each box plot has many individual observations shown above the upper whisker. The largest outlier for "gain" is about \$130,000, and the largest outlier for "no gain" is about \$112,000. Next, moving onto the right plot of the two hollow histograms for the "gain" (in blue) and "no gain" (in red) categories. The hollow histograms are overlaid, making it easier to compare their shapes more directly. The histograms share a horizontal axis that runs from about \$20,000 up to about \$130,000. In each case, the histograms do not show the bins explicitly and instead only show the top portion of each histogram (hence the term "hollow histogram"), meaning each hollow histogram is described by a line outlining the top of each bin in each histogram. It is these lines that will be described. Starting at the left of the histograms, the "no gain" histogram line rises up slightly at \$20,000 before the "gain" histogram line starts rising starting at about \$25,000. The "no gain" line then ascends rapidly starting at about \$30,000, followed by the "gain" line ascending rapidly at about \$40,000, which is also about where the "no gain" category reaches a peak and holds steady until about \$50,000, which is also where the "gain" line has now peaked. It is at this \$50,000 point that the "no gain" line falls rapidly from what had been a relatively steady peak between about \$35,000 to \$50,000, with the "gain" group also much more slowly starting to descend at about \$50,000. At close to \$70,000, the "no gain" group is nearly touching the horizontal axis, while the "gain" group has only descended about 70\% of the way. The "no gain" group hovers close to horizontal axis until appearing indistinguishable from the horizontal axis a bit above \$90,000. On the other hand, the "gain" group shows a slow but steady decline from about 30\% of its peak at \$70,000 down to close to the horizontal axis at \$100,000. The "gain" category bumps up just a tiny amount between \$100,000 and \$130,000 before becoming indistinguishable from the horizontal axis.]
+      {1.00}{countyIncomeSplitByPopGain}
   \caption{Side-by-side box plot (left panel)
       and hollow histograms (right panel) for
       \var{med\us{}hh\us{}income},
