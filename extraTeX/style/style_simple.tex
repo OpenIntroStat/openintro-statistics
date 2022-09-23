@@ -283,12 +283,12 @@
 %\reversemarginpar
 \def\warningsymbol{\protect\marginsymbolhelper}
 \def\marginsymbolhelper{\tabto*{0mm} {\dbend} \tabto*{0mm}}
-\newcommand{\exampleicon}[1]{\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example.png}\hspace{2mm}\ }
+\newcommand{\exampleicon}[1]{}%\vspace{#1} \raggedleft\includegraphics[width=5mm]{extraTeX/icons/example.png}\hspace{2mm}\ }
 \newenvironment{gpewrapper}[1]{\addvspace{4mm}
 
 \noindent\hspace{-12.45mm}\begin{minipage}[c]{\textwidth+8mm}
 \begin{minipage}[c]{8.4mm}
-\hspace{0.5mm}\includegraphics[width=5mm]{extraTeX/icons/#1.png}
+\hspace{0.5mm}%\includegraphics[width=5mm]{extraTeX/icons/#1.png}
 \end{minipage}\begin{minipage}[c]{\textwidth-0.45mm}\begin{mdframed}[%
     topline=false,
     rightline=false,
