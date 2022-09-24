@@ -251,7 +251,7 @@ well.
 \eocesol{The graph below shows a ramp up period.
 There may also be a period of exponential growth at the start
 before the size of the petri dish becomes a factor in slowing growth. \\
-\includegraphics[width = 40mm]{ch_summarizing_data/figures/eoce/reproducing_bacteria/reproducing_bacteria_sketch.pdf}}
+\FigureFullPath[A graph is shown with a horizontal axis of "time" and a vertical axis labeled "number of bacteria cells". A curve is shown rising steeply on the left, and as it moves right, it rises more slow until it nearly stops rising as it reaches right side of the graph.]{0.25}{ch_summarizing_data/figures/eoce/reproducing_bacteria/reproducing_bacteria_sketch}}
 
 % 5
 
@@ -400,7 +400,7 @@ potential outliers on the higher end of both of the distributions. }
 
 % 33
 
-\eocesol{\includegraphics[width = 40mm]{ch_summarizing_data/figures/eoce/stats_scores_box/stats_scores_boxplot.pdf}}
+\eocesol{\FigureFullPath[A box plot is shown for "Scores" with the box spanning from about 72 to 82 and the median at about 78. The whiskers extend down to 66 and up to 94. A single point is shown below the lower whisker at about 57.]{0.25}{ch_summarizing_data/figures/eoce/stats_scores_box/stats_scores_boxplot}}
 
 
 
@@ -444,7 +444,7 @@ that are heads.}
 
 \eocesol{(a)~No, there are voters who are both independent and swing voters. \\
 (b)\\
-\includegraphics[width=40mm]{ch_probability/figures/eoce/swing_voters/swing_voters.pdf} \\
+\FigureFullPath[A Venn diagram is shown for variables "Independent" and "Swing", where the two circles representing the variable are partially overlapping. The region of the "Independent" circle not overlapping the other circle is labeled with "24". The region of the "Swing" circle not overlapping the other circle is labeled with "12". The region where the two circles overlap is labeled with "11".]{0.25}{ch_probability/figures/eoce/swing_voters/swing_voters.pdf} \\
 (c)~Each Independent voter is either a swing voter or not. Since 35\% of voters 
 are Independents and 11\% are both Independent and swing voters, the other 24\% 
 must not be swing voters.
@@ -512,7 +512,8 @@ $0.65 \times 0.72 = 0.468$.
 % 19
 
 \eocesol{(a) \\
-\includegraphics[width=60mm]{ch_probability/figures/eoce/tree_drawing_box_plots/tree_drawing_box_plots}
+
+\FigureFullPath[A tree diagram with a primary branch "Can construct box plots?" and a secondary branch "Passed?". The primary "Can construct box plots" branching has two possibilities of "Yes" with probability 0.8 and "No" with probability 0.2. Each of these branches has two secondary branches. The "Yes" primary branch breaks into branches for "Yes" (for Passed) that has a conditional probability of 0.86 with a Yes-and-Yes final probability of 0.688, and a "No" secondary branch with a conditional probability of 0.14 with a Yes-and-No final probability of 0.112. The "No" primary branch from "Can construct box plots" has a branch of "Yes" that has a conditional probability of 0.65 with a No-and-Yes final probability of 0.13, and a "No" secondary branch with a conditional probability of 0.35 with a No-and-No final probability of 0.07.]{0.375}{ch_probability/figures/eoce/tree_drawing_box_plots/tree_drawing_box_plots}
 (b)~0.84}
 
 % 21
@@ -520,7 +521,7 @@ $0.65 \times 0.72 = 0.468$.
 \eocesol{0.0714. Even when a patient tests positive for lupus, there is only a 7.14\% 
 chance that he actually has lupus. House may be right. \\
 
-\includegraphics[width=60mm]{ch_probability/figures/eoce/tree_lupus/tree_lupus.pdf}}
+\FigureFullPath[A tree diagram with a primary branch "Lupus" and a secondary branch "Result" for the test of Lupus. The primary "Lupus" branching has two possibilities of "Yes" with probability 0.02 and "No" with probability 0.98. Each of these branches has two secondary branches. The "Yes" primary branch breaks into branches for "Yes" (for Result) that has a conditional probability of 0.98 with a Yes-and-Yes final probability of 0.0196, and a "No" secondary branch with a conditional probability of 0.02 with a Yes-and-No final probability of 0.0004. The "No" primary branch from "Lupus" has a secondary branch of "Yes" that has a conditional probability of 0.26 with a No-and-Yes final probability of 0.2548, and a "No" secondary branch with a conditional probability of 0.74 with a No-and-No final probability of 0.7252.]{0.375}{ch_probability/figures/eoce/tree_lupus/tree_lupus.pdf}}
 
 % 23
 
@@ -586,7 +587,7 @@ every student gets a~C.
 % 41
 
 \eocesol{0.8247. \\
-\includegraphics[width=60mm]{ch_probability/figures/eoce/tree_hiv_swaziland/tree_hiv_swaziland.pdf}}
+\FigureFullPath[A tree diagram with a primary branch "HIV" and a secondary branch "Result" for the test of HIV. The primary "HIV" branching has two possibilities of "Yes" with probability 0.259 and "No" with probability 0.741. Each of these branches has two secondary branches. The "Yes" primary branch breaks into secondary branches for "Yes" (for Result) that has a conditional probability of 0.997 with a Yes-and-Yes final probability of 0.2582, and a "No" secondary branch with a conditional probability of 0.003 with a Yes-and-No final probability of 0.0008. The "No" primary branch from "HIV" has a secondary branch of "Yes" for "Result" that has a conditional probability of 0.074 with a No-and-Yes final probability of 0.0548, and a "No" secondary branch with a conditional probability of 0.926 with a No-and-No final probability of 0.6862.]{0.42}{ch_probability/figures/eoce/tree_hiv_swaziland/tree_hiv_swaziland.pdf}}
 
 % 43
 
@@ -634,16 +635,16 @@ every student gets a~C.
 (b)~6.94\%.
 (c)~58.86\%.
 (d)~4.56\%. \\
-\includegraphics[width=0.23\textwidth]{ch_distributions/figures/eoce/area_under_curve_1/zltNeg}
-\includegraphics[width=0.23\textwidth]{ch_distributions/figures/eoce/area_under_curve_1/zgtPos}
-\includegraphics[width=0.23\textwidth]{ch_distributions/figures/eoce/area_under_curve_1/zBet}
-\includegraphics[width=0.23\textwidth]{ch_distributions/figures/eoce/area_under_curve_1/zgtAbs}}
+\FigureFullPath[A normal distribution centered at 0 where a smaller left tail of the distribution has been shaded at and below a location labeled -1.35.]{0.23}{ch_distributions/figures/eoce/area_under_curve_1/zltNeg}
+\FigureFullPath[A normal distribution centered at 0 where a smaller right tail of the distribution has been shaded at and above a location labeled 1.48.]{0.23}{ch_distributions/figures/eoce/area_under_curve_1/zgtPos}
+\FigureFullPath[A normal distribution centered at 0 where a central region has been shaded. The region that remains unshaded is a large left tail up to just below the mean and a small right tail also remains unshaded.]{0.23}{ch_distributions/figures/eoce/area_under_curve_1/zBet}
+\FigureFullPath[A normal distribution centered at zero where the two tails below a value of -2 and above a value of 2 have been shaded.]{0.23}{ch_distributions/figures/eoce/area_under_curve_1/zgtAbs}}
 
 % 3
 
 \eocesol{(a)~Verbal: $N(\mu = 151, \sigma = 7)$, Quant: $N(\mu = 153, \sigma = 7.67)$.
 (b)~$Z_{VR} = 1.29$, $Z_{QR} = 0.52$. \\
-\includegraphics[width=0.3\textwidth]{ch_distributions/figures/eoce/GRE_intro/GRE_intro.pdf} \\
+\FigureFullPath[A normal distribution is shown along with 2 vertical lines specially marked. One is a little above the mean of the normal distribution at Z equals 0.52 and is labeled "QR". The second is a bit further above the mean at Z equals 1.29 and is labeled "VR"]{0.3}{ch_distributions/figures/eoce/GRE_intro/GRE_intro.pdf} \\
 (c)~She scored 1.29 standard deviations above the mean on the Verbal 
 Reasoning section and 0.52 standard deviations above the mean on the 
 Quantitative Reasoning section.
