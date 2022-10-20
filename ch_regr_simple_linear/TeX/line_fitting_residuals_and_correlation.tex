@@ -8,8 +8,8 @@ superimposed regression line. If we were to construct a residual plot
 (residuals versus $x$) for each, describe what those plots would look 
 like.
 \begin{center}
-\includegraphics[width=0.42\textwidth]{ch_regr_simple_linear/figures/eoce/visualize_residuals/visualize_residuals_linear.pdf} 
-\includegraphics[width=0.42\textwidth]{ch_regr_simple_linear/figures/eoce/visualize_residuals/visualize_residuals_fan_back.pdf}
+\FigureFullPath[A scatterplot is shown, where the data have a steady upward trend throughout. The observations above and below the line appear random and have stable variability moving from left to right.]{0.42}{ch_regr_simple_linear/figures/eoce/visualize_residuals/visualize_residuals_linear}
+\FigureFullPath[A scatterplot is shown, where the data have a steady upward trend throughout. The observations above and below the line appear random. If looking at the leftmost region of data, the observations are more broadly scattered around the line, while when moving further right the variability of the points around the line gets notably smaller by a factor of at least 5 (if using standard deviation).]{0.42}{ch_regr_simple_linear/figures/eoce/visualize_residuals/visualize_residuals_fan_back}
 \end{center}
 }{}
 
@@ -21,8 +21,8 @@ remaining after fitting a linear model to two different sets of data.
 Describe important features and determine if a linear model would be 
 appropriate for these data. Explain your reasoning.
 \begin{center}
-\includegraphics[width=0.42\textwidth]{ch_regr_simple_linear/figures/eoce/trends_in_residuals/trends_in_residuals_fan.pdf} 
-\includegraphics[width=0.42\textwidth]{ch_regr_simple_linear/figures/eoce/trends_in_residuals/trends_in_residuals_log.pdf}
+\FigureFullPath[A scatterplot of the residuals is shown. When looking at any horizontal region of the plot, the observations are consistently scattered around the "y equals 0" line. On the left, the points tend to be very close to this horizontal 0 line. The further moving to the right, the more variability that is evident in the observations around "y equals 0".]{0.42}{ch_regr_simple_linear/figures/eoce/trends_in_residuals/trends_in_residuals_fan} 
+\FigureFullPath[A scatterplot of the residuals is shown. The points on the very left tend to be below the "y equals 0" line for the first 5\% of the horizontal region, where the trend is sharply upwards to the "y equals 0" line. The points then tend to be stably clustered around "y equals 0", if not slightly above, with a slight downward trend evident in the observations on the right half of the plot. The vertical variability of observations is about stable throughout.]{0.42}{ch_regr_simple_linear/figures/eoce/trends_in_residuals/trends_in_residuals_log}
 \end{center}
 }{}
 
@@ -34,12 +34,13 @@ identify the strength of the relationship (e.g. weak, moderate, or
 strong) in the data and whether fitting a linear model would be 
 reasonable.
 \begin{center}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_u.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_lin_pos_strong.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_lin_pos_weak.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_n.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_lin_neg_strong.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_none.pdf}
+\FigureFullPath[A scatterplot is shown. The observations start in the upper left corner of the plot, trend sharply downwards before tapering off and stabilizing at about the middle of the plot, before steadily and then faster rising again to the upper right corner of the plot. The trend is approximately symmetric from left-to-right.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_u}
+\FigureFullPath[A scatterplot is shown. The start on the lower left corner, only spanning about 20\% of the vertical region of the plot, and have a steady upwards trend to the upper right corner of the plot. The vertical variability of the points around the trend is relatively stable across the plot.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_lin_pos_strong}
+\FigureFullPath[A scatterplot is shown. On the left side of the plot, the points are appear randomly scattered across the full range of the plot, and this property holds across the entire plot. No trend is evident.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_lin_pos_weak}
+%
+\FigureFullPath[A scatterplot is shown. On the left side of the plot, the observations are in concentrated in the bottom half of the plot but rise steadily. The trend peaks near the center of the plot, where nearly all the points in the (horizontal) center region of the scatterplot are concentrated in the upper half of the scatterplot. On the right side of the plot, the points show a trend downwards, with points concentrated in the lower quarter of the scatterplot for the rightmost handful of points.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_n}
+\FigureFullPath[A scatterplot is shown. The start on the upper left corner, only spanning about 20\% of the vertical region of the plot, and have a steady downwards trend to the bottom right corner of the plot. The vertical variability of the points around the trend is relatively stable across the plot.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_lin_neg_strong}
+\FigureFullPath[A scatterplot is shown. On the left side of the plot, the points are appear randomly scattered across the full range of the plot, and this property holds across the entire plot. No trend is evident or at least obvious.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_1/identify_relationships_none}
 \end{center}
 }{}
 
@@ -53,12 +54,13 @@ identify the strength of the relationship (e.g. weak, moderate, or
 strong) in the data and whether fitting a linear model would be 
 reasonable.
 \begin{center}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_s.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_hockey_stick.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_pos_lin_strong.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_pos_weak.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_pos_weaker.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_neg_lin_weak.pdf}
+\FigureFullPath[A scatterplot is shown. On the left side of the plot, the observations are in concentrated in the upper corner of the plot, with a sharp trend downwards, before stabilizing, then rising slightly at halfway through the plot, reaching a peak, and then declining again, with a sharp decline on the right-most portion of the plot to the bottom-right corner of the plot.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_s}
+\FigureFullPath[A scatterplot is shown. On the left side of the plot, the observations are concentrated around a region about 30\% of the way up from the bottom-left corner of the plot, there is a slight downward trend that reaches the bottom area of the plot for about the center half of the plot, then the points rise gradually and then sharply in the last 25-30\% of the plot.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_hockey_stick}
+\FigureFullPath[A scatterplot is shown. Pointers in the leftmost region of the plot are concentrated in the lower-left corner, ranging from the bottom up to about 25\% of the way up the plot. The points follow a steady upward trend to the top-right corner of the plot and show consistent vertical variability around the trend throughout.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_pos_lin_strong}
+%
+\FigureFullPath[A scatterplot is shown. The points appear randomly scattered across the left, middle, and right portion of the plot. There might be a very slight upward trend.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_pos_weak}
+\FigureFullPath[A scatterplot is shown. The points appear randomly scattered across the left, middle, and right portion of the plot. There is a very slight downward trend.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_pos_weaker}
+\FigureFullPath[A scatterplot is shown. The points on the leftmost side are concentrated in the upper half of the plot, and the data trend steadily downwards and with consistent variability to the bottom right portion of the plot.]{0.32}{ch_regr_simple_linear/figures/eoce/identify_relationships_2/identify_relationships_neg_lin_weak}
 \end{center}
 }{}
 
@@ -75,9 +77,9 @@ correlation with the final exam grade? Explain.
 you chose in part (a) and the final exam is higher?
 \end{parts}
 \begin{center}
-\includegraphics[width=0.485\textwidth]{ch_regr_simple_linear/figures/eoce/exams_grades_correlation/exam_grades_1.pdf}
+\FigureFullPath[A scatter plot with 100 points is shown with an upward trending line fit to the data. Exam 1 scores are on the horizontal axis and range from 40 to 100. Final Exam scores are on the vertical axis and also range from 40 to 100. Only about ten Exam 1 scores are below 60, and these have Final Exam scores between about 55 and 85. Exam 1 scores between 60 and 80 represent about 50\% of the points shown and have Final Exam scores mostly between 50 and 85. For the points where Midterm 1 scores are larger than 80, Final Exam scores mostly lie between 65 and 90, where a slightly upward trend is evident.]{0.485}{ch_regr_simple_linear/figures/eoce/exams_grades_correlation/exam_grades_1}
 \hspace{0.02\textwidth}%
-\includegraphics[width=0.485\textwidth]{ch_regr_simple_linear/figures/eoce/exams_grades_correlation/exam_grades_2.pdf}
+\FigureFullPath[A scatter plot with 100 points is shown with an upward trending line fit to the data. Exam 2 scores are on the horizontal axis and range from 40 to 100. Final Exam scores are on the vertical axis and also range from 40 to 100. Midterm 2 scores are roughly uniformly distributed across the full range. For Exam 2 scores below 60, these mostly have Final Exam scores between about 45 and 70. Exam 2 scores between 60 and 80 have Final Exam scores mostly between 55 and 80. For the points where Midterm 2 scores are larger than 80, Final Exam scores mostly lie between 70 and 90.]{0.485}{ch_regr_simple_linear/figures/eoce/exams_grades_correlation/exam_grades_2}
 \end{center}
 }{}
 
@@ -94,9 +96,9 @@ The scatterplot on the left shows the wife's age plotted against her
 husband's age, and the plot on the right shows wife's height 
 plotted against husband's height.
 \begin{center}
-\includegraphics[width=0.35\textwidth]{ch_regr_simple_linear/figures/eoce/husbands_wives_correlation/husbands_wives_age.pdf} 
+\FigureFullPath[A scatterplot is shown. The horizontal axis represents "Husband's Age (in years)" with values ranging from about 20 to 65. The vertical axis represents "Wife's Age (in years)" with values ranging from about 18 to 65. When husband age is between 20 and 30, wife age mostly ranges from 18 to about 30. When husband age is between 30 and 40, wife age mostly ranges from 23 to about 40. When husband age is between 40 and 50, wife age mostly ranges from 35 to about 50. When husband age is between 50 and 60, wife age mostly ranges from 45 to about 60. When husband age is larger than 60, wife age mostly ranges from 55 to about 65.]{0.35}{ch_regr_simple_linear/figures/eoce/husbands_wives_correlation/husbands_wives_age} 
 \hspace{5mm}
-\includegraphics[width=0.35\textwidth]{ch_regr_simple_linear/figures/eoce/husbands_wives_correlation/husbands_wives_height.pdf}
+\FigureFullPath[A scatterplot is shown. The horizontal axis represents "Husband's Height (in inches)" with values ranging from about 60 to 75. The vertical axis represents "Wife's Height (in inches)" with values ranging from about 55 to 70. When husband height is between 60 and 65, wife height mostly ranges from about 58 to 65 inches, though there are only about 10 points in this range, which is about 5\% of the data. When husband height is between 65 and 70, wife height mostly ranges from 57 to 68 inches. When husband height is larger than 70 inches, wife height mostly ranges from 61 to about 74 inches.]{0.35}{ch_regr_simple_linear/figures/eoce/husbands_wives_correlation/husbands_wives_height}
 \end{center}
 \begin{parts}
 \item Describe the relationship between husbands' and wives' ages.
@@ -123,10 +125,10 @@ Match each correlation to the corresponding scatterplot.
 \end{parts}\vspace{3mm}
 \end{minipage}%
 \begin{minipage}[c]{0.83\textwidth}
-\includegraphics[width=0.245\textwidth]{ch_regr_simple_linear/figures/eoce/match_corr_1/match_corr_1_u}
-\includegraphics[width=0.245\textwidth]{ch_regr_simple_linear/figures/eoce/match_corr_1/match_corr_2_strong_pos}
-\includegraphics[width=0.245\textwidth]{ch_regr_simple_linear/figures/eoce/match_corr_1/match_corr_3_weak_pos}
-\includegraphics[width=0.245\textwidth]{ch_regr_simple_linear/figures/eoce/match_corr_1/match_corr_4_weak_neg}
+\FigureFullPath[A scatterplot is shown. The observations start in the upper left corner of the plot, trend sharply downwards before tapering off and stabilizing at about the middle of the plot, before steadily and then faster rising again to the upper right corner of the plot. The trend is approximately symmetric from left-to-right.]{0.245}{ch_regr_simple_linear/figures/eoce/match_corr_1/match_corr_1_u}
+\FigureFullPath[A scatterplot is shown. The start on the lower left corner, only spanning about 20\% of the vertical region of the plot, and have a steady upwards trend to the upper right corner of the plot. The vertical variability of the points around the trend is relatively stable across the plot.]{0.245}{ch_regr_simple_linear/figures/eoce/match_corr_1/match_corr_2_strong_pos}
+\FigureFullPath[A scatterplot is shown. The points appear randomly scattered across the left, middle, and right portion of the plot. There is a very slight upward trend.]{0.245}{ch_regr_simple_linear/figures/eoce/match_corr_1/match_corr_3_weak_pos}
+\FigureFullPath[A scatterplot is shown. The points appear randomly scattered across the left, middle, and right portion of the plot. There is a very slight downward trend.]{0.245}{ch_regr_simple_linear/figures/eoce/match_corr_1/match_corr_4_weak_neg}
 \end{minipage}
 }{}
 
@@ -145,10 +147,10 @@ Match each correlation to the corresponding scatterplot.
 \end{parts}\vspace{3mm}
 \end{minipage}%
 \begin{minipage}[c]{0.83\textwidth}
-\includegraphics[width=0.245\textwidth]{ch_regr_simple_linear/figures/eoce/match_corr_2/match_corr_1_strong_neg_curved}
-\includegraphics[width=0.245\textwidth]{ch_regr_simple_linear/figures/eoce/match_corr_2/match_corr_2_weak_pos}
-\includegraphics[width=0.245\textwidth]{ch_regr_simple_linear/figures/eoce/match_corr_2/match_corr_3_n}
-\includegraphics[width=0.245\textwidth]{ch_regr_simple_linear/figures/eoce/match_corr_2/match_corr_4_weak_neg}
+\FigureFullPath[A scatterplot is shown. For the left half of the plot, the points are scattered around the upper half of the plot. On the right portion of the plot, the data show a clear downward trend, and for the points on the far right, they are concentrated in the lower 25\% of the plot.]{0.245}{ch_regr_simple_linear/figures/eoce/match_corr_2/match_corr_1_strong_neg_curved}
+\FigureFullPath[A scatterplot is shown. The points appear randomly scattered across the left, middle, and right portion of the plot. There is a very slight upward trend.]{0.245}{ch_regr_simple_linear/figures/eoce/match_corr_2/match_corr_2_weak_pos}
+\FigureFullPath[A scatterplot is shown. The observations start in the lower left corner of the plot, trend sharply upwards before tapering off and stabilizing at about the middle of the plot, before steadily and then faster dropping to the lower right corner of the plot. The trend is approximately symmetric from left-to-right.]{0.245}{ch_regr_simple_linear/figures/eoce/match_corr_2/match_corr_3_n}
+\FigureFullPath[A scatterplot is shown. The points appear randomly scattered across the left, middle, and right portion of the plot. There is a very slight downward trend.]{0.245}{ch_regr_simple_linear/figures/eoce/match_corr_2/match_corr_4_weak_neg}
 \end{minipage}
 }{}
 
@@ -161,9 +163,9 @@ left displays the relationship between height and fastest speed, and
 the scatterplot on the right displays the breakdown by gender in 
 this relationship.
 \begin{center}
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/speed_height_gender/speed_height.pdf}
+\FigureFullPath[A scatterplot is shown. The horizontal axis represents "Height (in inches)" with values ranging from about 50 to 80. The vertical axis represents "Fastest Speed (in mph)" and has values ranging from 0 to 150. First, it is worth noting that there several points along the bottom of the plot with a fastest speed of 0 mph. The remainder of the description will concentrate on the other points. A small portion of the points are shown with heights below 60 inches, and these have fastest speeds mostly ranging from about 70 to 110 mph. For points shown with heights between 60 and 70, fastest speeds mostly ranged from about 30 to 120 mph. For points shown with heights of 70 or more, fastest speeds mostly ranged from about 50 to 140 mph. There were no points corresponding to heights greater than 75 that had fastest speeds slower than about 75 mph, which left a sort of gap in the lower right portion of the scatterplot.]{0.4}{ch_regr_simple_linear/figures/eoce/speed_height_gender/speed_height}
 \hspace{0.02\textwidth}%
-\includegraphics[width=0.4\textwidth]{ch_regr_simple_linear/figures/eoce/speed_height_gender/speed_height_gender.pdf}
+\FigureFullPath[A scatterplot is shown, where points are colored to differentiate between males and females. The horizontal axis represents "Height (in inches)" with values ranging from about 50 to 80. The vertical axis represents "Fastest Speed (in mph)" and has values ranging from 0 to 150. Female heights are largely 70 inches or smaller, while Male heights are largely 65 inches and taller. When focusing exclusively on Females, no upward trend is evident, with about 95\% of observations having Fastest Speed between about 30 mph and 120 mph. When focusing exclusively on Males, no upward trend is evident there either, with about 95\% of observations having Fastest Speed between about 50 mph and 140 mph. In contrast, if we ignore the male/female differentiation, there is a slight upward trend in the points.]{0.4}{ch_regr_simple_linear/figures/eoce/speed_height_gender/speed_height_gender.pdf}
 \end{center}
 \begin{parts}
 \item Describe the relationship between height and fastest speed.
@@ -203,7 +205,7 @@ and distance (in hours)?
 $\:$\\
 \end{minipage}
 \begin{minipage}[c]{0.485\textwidth}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/coast_starlight_corr_units/coast_starlight.pdf}
+\FigureFullPath[A scatterplot is shown with about 15 points. The horizontal axis represents "Distance (miles)" with values ranging from just over 0 to about 350. The vertical axis represents "Travel Time (in minutes)" and has values ranging from about 20 to 380. The point with the smallest distance -- about 10 miles -- shows a travel time of about 40 minutes. Next, there is a cluster of 6 points with distances between 40 and 60 miles and travel times ranging from about 20 to 60 minutes. The remainder of the points are scattered pretty broadly but may show a slightly upward trend. A few points that highlight the widely varying nature of the data are located at the following approximate locations: (190 miles, 60 minutes), (240 miles, 250 minutes), (250 miles, 380 minutes), and (350 miles, 200 minutes).]{}{ch_regr_simple_linear/figures/eoce/coast_starlight_corr_units/coast_starlight}
 \end{minipage}
 }{}
 
@@ -234,7 +236,7 @@ months, what would the correlation be?
 $\:$\\
 \end{minipage}
 \begin{minipage}[c]{0.485\textwidth}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/crawling_babies_corr_units/crawling_babies.pdf}
+\FigureFullPath[A scatterplot is shown with a dozen points. The horizontal axis is "Temperature (F)" with values ranging from 30 to 75. The vertical axis is "Average Crawling Age (weeks)" with values ranging from 28.5 to 34. For those points with temperatures from 30 to 40, average crawling ages range from 31.5 to 34. For the single point with temperatures between 40 to 50, average crawling age was about 33.5. For the two points with temperature between 50 and 60, average crawling age was 28.5 and 32.5. For the last 4 points with temperature above 60, average crawling ages were 32, 30, 30, and 30.5.]{}{ch_regr_simple_linear/figures/eoce/crawling_babies_corr_units/crawling_babies}
 \end{minipage}
 }{}
 
@@ -261,7 +263,7 @@ in inches while the units of height remained in centimeters?
 $\:$\\
 \end{minipage}
 \begin{minipage}[c]{0.485\textwidth}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/body_measurements_shoulder_height_corr_units/body_measurements_height_shoulder_girth.pdf}
+\FigureFullPath[A scatter plot with several hundred points is shown. The horizontal axis represents "Shoulder Girth (cm)" with values ranging from about 85 to 135. The vertical axis represents "Height (cm)" with values ranging from about 145 to 200. For points where Shoulder Girth is smaller than 100, 95\% of points have heights between 152 and 170. For points where Shoulder Girth is between 100 and 110, 95\% of points have heights between 155 and 180. For points where Shoulder Girth is between 110 and 120, 95\% of points have heights between 162 and 190. For points where Shoulder Girth larger than 120, 95\% of points have heights between 170 and 190.]{}{ch_regr_simple_linear/figures/eoce/body_measurements_shoulder_height_corr_units/body_measurements_height_shoulder_girth}
 \end{minipage}
 }{}
 
@@ -286,7 +288,7 @@ while the units for hip girth remained in centimeters?
 $\:$\\
 \end{minipage}
 \begin{minipage}[c]{0.485\textwidth}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/body_measurements_hip_weight_corr_units/body_measurements_weight_hip_girth.pdf}
+\FigureFullPath[A scatter plot with several hundred points is shown. The horizontal axis represents "Hip Girth (cm)" with values ranging from about 80 to 115, with about 4 observations with larger hip girth up to about 130 cm. The vertical axis represents "Weight (kg)" with values ranging from about 40 to 105, with a few observations with larger weights up to 120. For points where Hip Girth is smaller than 90, 95\% of points have weight between roughly 45 and 60. For points where Hip Girth is between 90 and 100, 95\% of points have heights between roughly 50 and 80. For points where Hip Girth is between 100 and 110, 95\% of points have heights between roughly 65 and 90. For points where Hip Girth is between 110 and 115, points have heights between roughly 70 and 105. There are four additional points located at about (115, 120), (115, 90), (118, 90), and (128, 105).]{}{ch_regr_simple_linear/figures/eoce/body_measurements_hip_weight_corr_units/body_measurements_weight_hip_girth.pdf}
 \end{minipage}
 }{}
 

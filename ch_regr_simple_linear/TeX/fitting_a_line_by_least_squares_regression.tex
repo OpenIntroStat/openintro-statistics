@@ -49,9 +49,9 @@ scatterplot showing the relationship between these two variables
 along with the least squares fit, residuals plot, and histogram of 
 residuals.
 \begin{center}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/tourism_spending_reg_conds/tourism_spending_count.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/tourism_spending_reg_conds/tourism_spending_count_residuals.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/tourism_spending_reg_conds/tourism_spending_count_residuals_hist.pdf}
+\FigureFullPath[A scatterplot with a least squares regression line is fit based on about 50 points. The horizontal axis represents "Number of tourists" and has values ranging from about 0 to about 27 million. The vertical axis represents "Spending, in US dollars", with values ranging from about \$0 to about \$17 billion. There are many points shown with the number of tourists between 0 and 5 million, which has spending between about \$0 and \$3 billion, where even on this small scale a roughly linear trend is evident. The linear trend continues on across the plot and is quite strong -- where residuals generally do not deviate from the least square line by more than very roughly \$1 billion. The data are also more sparse for larger values in the plot. There is one region in the center of the plot where about 10 points in a row lie above the regression line. Also consider the next two plots before answering any questions for this exercise.]{0.32}{ch_regr_simple_linear/figures/eoce/tourism_spending_reg_conds/tourism_spending_count}
+\FigureFullPath[A residual plot is shown. The horizontal axis represents "Number of tourists" and has values ranging from about 0 to about 27 million. Residuals are shown on the vertical axis and have values ranging from about -\$1.5 billion to about \$1.2 billion. The points on the far left between 0 and 3 million tourists shows a "v" pattern. There are about 15 points with number of tourists between 3 million and 10 million, which shows an slight upward trend from about -\$700 million to \$1.2 billion. There about 10 points with number of tourists greater than 10 million up to about 27 million, and these show a slight downward trend from about \$1 billion to -\$1.5 billion.]{0.32}{ch_regr_simple_linear/figures/eoce/tourism_spending_reg_conds/tourism_spending_count_residuals}
+\FigureFullPath[A histogram is shown for the residuals, which shows a roughly bell-shaped distribution centered at 0 and a standard deviation of about \$500 million.]{0.32}{ch_regr_simple_linear/figures/eoce/tourism_spending_reg_conds/tourism_spending_count_residuals_hist}
 \end{center}
 \begin{parts}
 \item Describe the relationship between number of tourists and spending.
@@ -75,9 +75,9 @@ lists the number of calories on the display items, we are interested
 in predicting the amount of carbs a menu item has based on its 
 calorie content.
 \begin{center}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/starbucks_cals_carbos/starbucks_cals_carbos.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/starbucks_cals_carbos/starbucks_cals_carbos_residuals.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/starbucks_cals_carbos/starbucks_cals_carbos_residuals_hist.pdf}
+\FigureFullPath[A scatterplot is shown with about 75 points and an overlaid regression line that trends upward. The horizontal axis represents "Calories" and has values ranging from about 100 to 500. The vertical axis represents "Carbs, in grams" and has values ranging from about 20 to 80. About 15 points are shown with fewer than 200 calories, and these have between about 18 and 25 grams of carbs. About 30 points are shown with 200 to 400 calories, and these mostly have between 30 and 60 grams of carbs. About 20 points are shown with more than 400 calories, and these mostly have between 35 and 80 grams of carbs.]{0.32}{ch_regr_simple_linear/figures/eoce/starbucks_cals_carbos/starbucks_cals_carbos}
+\FigureFullPath[A residual plot is shown with about 75 points. The horizontal axis represents "Calories" and has values ranging from about 100 to 500. The vertical axis represents "Residuals" and has values ranging from about -30 to 30. About 15 points are shown with fewer than 200 calories, and these have residuals roughly between -7 and positive 2. About 30 points are shown with 200 to 400 calories, and these residuals largely range from about -15 to positive 15. About 20 points are shown with more than 400 calories, and the residuals for these points mostly range between -20 and positive 20.]{0.32}{ch_regr_simple_linear/figures/eoce/starbucks_cals_carbos/starbucks_cals_carbos_residuals}
+\FigureFullPath[A histogram is shown for the residuals, which shows a roughly bell-shaped distribution centered at 0 and a standard deviation of about 10.]{0.32}{ch_regr_simple_linear/figures/eoce/starbucks_cals_carbos/starbucks_cals_carbos_residuals_hist}
 \end{center}
 \begin{parts}
 \item Describe the relationship between number of calories and amount 
@@ -175,7 +175,7 @@ $s = 5.512 \hfill R^2 = 70.52\% \hfill R^2_{adj} = 68.89\%$
 $\:$\\
 \end{minipage}
 \begin{minipage}[c]{0.41\textwidth}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/murders_poverty_reg/murders_poverty.pdf}
+\FigureFullPath[A scatterplot is shown with 20 points. The horizontal axis is "Percent in Poverty" and has values ranging from 14\% to 26\%. The vertical axis is "Annual Murders per Million" with values ranging from about 5 to 40. There are 6 points with poverty below 18\%, and the Murder Rate for these values ranges from 5 to 13, with one exception of a point at about 17\% with a murder rate of about 25. There are 9 points with a poverty rate of 18\% to 22\%, and the murder rate for these points largely range from 14 to 25, with one exception of a point at about 21\% poverty and a murder rate of 35. There are 5 points where poverty is larger than 22\%, and these have murder rates ranging from 25 to 40.]{}{ch_regr_simple_linear/figures/eoce/murders_poverty_reg/murders_poverty.pdf}
 \end{minipage}
 }{}
 
@@ -209,6 +209,6 @@ $s = 1.452 \hfill R^2 = 64.66\% \hfill R^2_{adj} = 64.41\%$
 $\:$\\
 \end{minipage}
 \begin{minipage}[c]{0.41\textwidth}
-\includegraphics[width=\textwidth]{ch_regr_simple_linear/figures/eoce/cat_body_heart_reg/cat_body_heart.pdf}
+\FigureFullPath[A scatterplot is shown with about 150 points. The horizontal axis is "Body weight, in kilograms" and has values ranging from 2 to 4. The vertical axis is "Heart weight, in grams" with values ranging from about 5 to 20. About 25\% of the data has a body weight below 2.5 kilograms, and these have heart weights mostly ranging from 7  to 11 grams. About 35\% of the data has body weights between 2.5 and 3 kilograms, and the heart weight for these values mostly ranges from 8 to 12 grams. About 30\% of the data has body weights between 3 and 3.5 kilograms, and the heart weight for these values mostly ranges from 11 to 15 grams. About 10\% of the data has body weights above 3.5 kilograms, and the heart weight for these values mostly ranges from 12 to 17 grams.]{}{ch_regr_simple_linear/figures/eoce/cat_body_heart_reg/cat_body_heart.pdf}
 \end{minipage}
 }{}
