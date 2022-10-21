@@ -7,16 +7,15 @@ Exercise~\ref{baby_weights_mlr} presents a regression model for predicting the
 average birth weight of babies based on length of gestation, parity, height, 
 weight, and smoking status of the mother. Determine if the model assumptions are 
 met using the plots below. If not, describe how to proceed with the analysis.
-\newcommand{\babyplot}[1]{\includegraphics[width=0.4\textwidth]{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/#1}\hspace{5mm}}
 \begin{center}
-\babyplot{baby_weights_conds_normal_hist}
-\babyplot{baby_weights_conds_abs_res_fitted}
-\babyplot{baby_weights_conds_res_order}
-\babyplot{baby_weights_conds_res_gestation}
-\babyplot{baby_weights_conds_res_parity}
-\babyplot{baby_weights_conds_res_height}
-\babyplot{baby_weights_conds_res_weight}
-\babyplot{baby_weights_conds_res_smoke}
+\FigureFullPath[A histogram of residuals is shown, which has a bell-shaped distribution, is centered at 0, and has a standard deviation of about 12.]{0.4}{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_normal_hist}\hspace{5mm}
+\FigureFullPath[A scatterplot of "residuals" (vertical axis) against "fitted values". The residuals does not show any pattern for different fitted values.]{0.4}{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_abs_res_fitted}\hspace{5mm}
+\FigureFullPath[A scatterplot of "residuals" (vertical axis) against "order of collection". The residuals does not show any pattern across the order of collection variable.]{0.4}{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_order}\hspace{5mm}
+\FigureFullPath[A scatterplot of "residuals" (vertical axis) against "length of gestation". The residuals does not show any pattern for different lengths of gestation.]{0.4}{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_gestation}\hspace{5mm}
+\FigureFullPath[A scatterplot of "residuals" (vertical axis) against "parity", which only takes values 0 and 1. The residuals does not show any apparent patterns across the values 0 and 1 of parity.]{0.4}{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_parity}\hspace{5mm}
+\FigureFullPath[A scatterplot of "residuals" (vertical axis) against "height of mother". The residuals does not show any pattern for different values of "height of mother".]{0.4}{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_height}\hspace{5mm}
+\FigureFullPath[A scatterplot of "residuals" (vertical axis) against "weight of mother". The residuals does not show any pattern for different values of "weight of mother".]{0.4}{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_weight}\hspace{5mm}
+\FigureFullPath[A scatterplot of "residuals" (vertical axis) against "smoke", which only takes values 0 and 1. The residuals does not show any pattern for the 0 and 1 values of smoke.]{0.4}{ch_regr_mult_and_log/figures/eoce/baby_weights_conds/baby_weights_conds_res_smoke}\hspace{5mm}
 \end{center}
 }{}
 
@@ -42,10 +41,10 @@ Using the plots given below, determine if this regression
 model is appropriate for these
 data.\footfullcite{webpage:horrormovies}
 \begin{center}
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_hist_res.pdf}\hspace{3mm}
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_genre_fitted.pdf}\\[5mm]
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_genre.pdf}\hspace{3mm}
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_order.pdf}\\[5mm]
-\includegraphics[width=0.47\textwidth]{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_year.pdf} 
+\FigureFullPath[A histogram is shown for "Residuals", which take values from about -15 to 100. The shape of the distribution is extremely right-skewed but centered at 0. The bin -15 to -10 represents about 1\% of the values. The bin -10 to -5 represents about 1\% of the values. The bin -5 to 0 represents about 65\% of the values. The bin 0 to 5 represents about 25\% of the values. The bin 5 to 10 represents about 2\% of the values. The bin 10 to 15 represents about 1\% of the values. The remaining bins above 15 have far less than 1\% of the data.]{0.47}{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_hist_res}\hspace{3mm}
+\FigureFullPath[A scatterplot is shown. The horizontal axis is for "Fitted Values", which takes values between 2.5 and 12. The vertical axis is for "Residuals" and takes values from -15 to about 90, though only about a dozen values have residuals larger than 25. The points are also colored for different genres: Action, Adventure, Comedy, Drama, and Horror. The points for Action, Adventure, Comedy, and Drama are clustered on the left with Fitted Values between 2.5 and 3.5, and the residuals for these points are largely between -5 and 12. The Horror points have Fitted Values between about 11 and 12, with residuals for these points largely between -10 and 25.]{0.47}{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_genre_fitted}\\[5mm]
+\FigureFullPath[A dot plot is shown for "residuals", where points are broken up into different genres: Action, Adventure, Comedy, Drama, and Horror. The residuals for Action, Adventure, Comedy, and Drama groups have residuals for these points largely between -5 and 12. The Horror genre residuals are largely between -10 and 25.]{0.47}{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_genre}\hspace{3mm}
+\FigureFullPath[A scatterplot is shown for "residuals" (vertical axis) against "order of collection" (horizontal axis) from 1 to about 1100. The variability of residuals for the order of collection values from 0 to 600 largely range between -3 and positive 5. The variability of residuals for the order of collection values from 600 to 800 largely range between -5 and positive 10. The variability of residuals for the order of collection values above 800 largely range between -8 and positive 15.]{0.47}{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_order}\\[5mm]
+\FigureFullPath[A scatterplot is shown for "residuals" (vertical axis) against "release year" (horizontal axis) from 2010 to 2018. For each year in the range, the residuals largely range between roughly -10 and positive 12.]{0.47}{ch_regr_mult_and_log/figures/eoce/movie_returns_altogether/horror_movies_conds_res_year}
 \end{center}
 }{}
