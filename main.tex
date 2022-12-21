@@ -1,13 +1,7 @@
 \documentclass[10pt,openany]%,oneside]
 {book}
-\newcommand{\versiondate}[0]{13. studeni 2019}
 
-\usepackage[T1]{fontenc}
-\usepackage[croatian, safe=none]{babel}
-\addto{\captionscroatian}{\renewcommand*{\appendixname}{Prilog}}
-\addto{\captionscroatian}{\renewcommand*{\chaptername}{Glava}}
-
-%\usepackage{csquotes}
+\usepackage{csquotes}
 
 \usepackage{
   amsmath, calc,
@@ -20,7 +14,7 @@
   fncychap,
   footmisc,
   fullminipage,
-  geometry, 
+  geometry,
   ifthen, lscape,
   makeidx, manfnt,
   marginnote,
@@ -29,15 +23,37 @@
   setspace, soul,
   tabto,
   textcomp,
-  %tocloft,
   varioref, verbatim,
   wasysym, wrapfig
 }
+\usepackage[subfigure]{tocloft}
+
 \usepackage{subfigure}
 \usepackage[explicit]{titlesec}
-%\usepackage[usenames,dvipsnames]{color}  
+
+\newboolean{croatian}
+\setboolean{croatian}{TRUE}
+
+
+\ifthenelse{\boolean{croatian}}{%
+\newcommand{\versiondate}[0]{13. studeni 2019}
+
+\usepackage[T1]{fontenc}
+\usepackage[croatian, safe=none]{babel}%
+}{%
+\newcommand{\versiondate}[0]{13 November 2019}
+
+\usepackage[T1]{fontenc}
+}
+
+\ifthenelse{\boolean{croatian}}{%
+	\addto{\captionscroatian}{\renewcommand*{\appendixname}{Prilog}}
+	\addto{\captionscroatian}{\renewcommand*{\chaptername}{Glava}}%
+}
+
+%\usepackage[usenames,dvipsnames]{color}
 %\newcommand{\href}[2]{#2} \newcommand{\url}[1]{#1} \newcommand{\urlstyle}[1]{}
-\include{extraTeX/style/colorsV1}
+\input{extraTeX/style/colorsV1}
 \newcommand{\printlocation}[0]{}
 
 % _____ PDF _____ %
@@ -64,14 +80,21 @@
 \bibliography{eoce.bib}
 
 \makeindex
-\include{extraTeX/style/style}
-\include{extraTeX/style/tablet}
+\newlength{\captionwidth}   % dodano jer style.tex kaže da ne postoji ta komanda
+\input{extraTeX/style/style}
+\input{extraTeX/style/tablet}
 %\include{extraTeX/style/video}
 % The following style file supports an 8.25 x 11 paper size.
 %\include{extraTeX/style/hardcover}
-\include{extraTeX/preamble/title_derivative}
+\ifthenelse{\boolean{croatian}}{%
+\input{extraTeX/preamble/title_derivative}
+}{%
+\input{extraTeX/preamble/title}
+}
+
 \date{}
-\renewcommand\contentsname{Sadržaj}
+\ifthenelse{\boolean{croatian}}{\renewcommand\contentsname{Sadržaj}}
+
 \setcounter{tocdepth}{1}
 %\renewcommand{\cftchapfont}{\scshape}
 %\renewcommand{\cftsecfont}{\bfseries}
@@ -80,23 +103,28 @@
 %\include{extraTeX/preamble/review_copy}
 \renewcommand{\thepage}{}
 \maketitle
-\include{extraTeX/preamble/copyright_derivative}
+\ifthenelse{\boolean{croatian}}{%
+\include{extraTeX/preamble/copyright_derivative}%
+}{%
+\include{extraTeX/preamble/copyright}%
+}
+
 \renewcommand{\thepage}{\arabic{page}}
 \tableofcontents
 \include{extraTeX/preamble/preface}
 \normalsize
 
 \begingroup
-\include{extraTeX/style/headers}
+\input{extraTeX/style/headers}
 \includechapter{1}{ch_intro_to_data}
-%\includechapter{2}{ch_summarizing_data}
-%\includechapter{3}{ch_probability}
-%\includechapter{4}{ch_distributions}
-%\includechapter{5}{ch_foundations_for_inf}
-%\includechapter{6}{ch_inference_for_props}
-%\includechapter{7}{ch_inference_for_means}
-%\includechapter{8}{ch_regr_simple_linear}
-%\includechapter{9}{ch_regr_mult_and_log}
+\includechapter{2}{ch_summarizing_data}
+\includechapter{3}{ch_probability}
+\includechapter{4}{ch_distributions}
+\includechapter{5}{ch_foundations_for_inf}
+\includechapter{6}{ch_inference_for_props}
+\includechapter{7}{ch_inference_for_means}
+\includechapter{8}{ch_regr_simple_linear}
+\includechapter{9}{ch_regr_mult_and_log}
 \endgroup
 
 \begingroup

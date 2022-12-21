@@ -4,7 +4,7 @@
 % 4 Counters and Parameters
 % 5 Section Coloring
 % 6 Utilities
-% 7 
+% 7
 % 8 Figures and Captions
 % 9 Examples and Exercises
 % 10 Special Boxes
@@ -221,7 +221,7 @@
 
 
 %-------------------------------------------------------------
-% 7 
+% 7
 
 
 
@@ -304,10 +304,22 @@
     {\begin{gpewrapper}{guided_practice}}
     {\end{gpewrapper}}
 % 9.2.3 Example Title
+\ifthenelse{\boolean{croatian}}{%
 \newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
-\selectfont{\MakeUppercase{Primjer~#1}}} \\[1mm]}
+		\selectfont{\MakeUppercase{Primjer~#1}}} \\[1mm]}
+}{%
+\newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
+		\selectfont{\MakeUppercase{Example~#1}}} \\[1mm]}
+}
+
+\ifthenelse{\boolean{croatian}}{%
 \newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
-\selectfont{\MakeUppercase{Vođena vježba~#1}}} \\[1mm]}
+		\selectfont{\MakeUppercase{Vođena vježba~#1}}} \\[1mm]}
+}{%
+\newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
+		\selectfont{\MakeUppercase{Guided Practice~#1}}} \\[1mm]}
+}
+
 % 9.2.4 NEW Example and Guided Practice Environment
 \newcommand{\exspace}{\stdvspace{}}
 \newenvironment{nexample}[1]{\addvspace{6mm}
@@ -411,7 +423,7 @@
 		\begin{minipage}[b]{\textwidth-10mm}
 			\color{black}\ \\[-0.7mm]
 			#1
-			
+
 			\vspace{1mm}
 		\end{minipage}
 	\end{minipage}}}}
@@ -431,7 +443,7 @@
 		\begin{minipage}[b]{\textwidth-8mm}
 			\color{black}\ \\[-0.7mm]
 			#1
-			
+
 			\vspace{1mm}
 		\end{minipage}
 	\end{minipage}}}
