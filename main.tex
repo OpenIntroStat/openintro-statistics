@@ -1,6 +1,6 @@
 \documentclass[10pt,openany]%,oneside]
 {book}
-\newcommand{\versiondate}[0]{Oct 21st, 2022}
+\newcommand{\versiondate}[0]{May 27th, 2023}
 
 \usepackage{
   amsmath, calc,
@@ -32,29 +32,35 @@
 \include{extraTeX/style/colorsV1}
 \newcommand{\printlocation}[0]{}
 
-% _____ PDF _____ %
-%\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
+\newcommand{\chapterpagepadding}[0]{7mm}
+\newcommand{\chapterpagepaddingleftright}[0]{\chapterpagepadding{}}
+\newcommand{\chapterpagepaddingleftinner}[0]{25mm}
+\newcommand{\chapterpagepaddingrightinner}[0]{30mm}
 
-% _____ PDF -- screenreader _____ %
-\usepackage{pdfcomment}
+% _____ (1) PDF _____ %
+\usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
+
+% _____ (2) PDF -- screenreader _____ %
+%\usepackage{pdfcomment}
 % !!!!!
 % 1. Use the `style_simple` instead of `style`.
 % 2. Use the `headers_simple` instead of `headers`.
 % 3. Adjust the TOC depth to 3.
 % !!!!!
 
-% _____ Paperback _____ %
+% _____ (3) B&W Paperback _____ %
 %\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\PassOptionsToPackage{hyperref}{colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true}
 
-% _____ Hardcover _____ %
+% _____ (4) Hardcover _____ %
 %\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\PassOptionsToPackage{hyperref}{colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true}
 % !!!!!
 % Also must \include{extraTeX/style/hardcover} below.
 % !!!!!
+% \renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
 
-% _____ Color Paperback _____ %
-%\PassOptionsToPackage{hyperref}{colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true}
-%\renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
+% _____ (5) Color Paperback _____ %
+%\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[bookmarksnumbered, pdfborder = {0 0 0}, urlcolor = black, colorlinks=true, linkcolor = black, citecolor = black, backref = true]{hyperref}\renewcommand{\chapterpagepaddingleftright}[0]{15mm} \renewcommand{\chapterpagepaddingleftinner}[0]{17mm}\renewcommand{\chapterpagepaddingrightinner}[0]{22mm}
+
 
 
 %\usepackage{pdfcomment}
@@ -63,8 +69,8 @@
 \bibliography{eoce.bib}
 
 \makeindex
-%\include{extraTeX/style/style}
-\include{extraTeX/style/style_simple}
+\include{extraTeX/style/style}
+%\include{extraTeX/style/style_simple}
 %\include{extraTeX/style/tablet}
 %\include{extraTeX/style/video}
 % The following style file supports an 8.25 x 11 paper size.
@@ -72,7 +78,8 @@
 \include{extraTeX/preamble/title}%_derivative}
 \date{}
 \renewcommand\contentsname{Table of Contents}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{1} % standard version
+%\setcounter{tocdepth}{3} % screen reader version
 %\renewcommand{\cftchapfont}{\scshape}
 %\renewcommand{\cftsecfont}{\bfseries}
 
@@ -87,8 +94,8 @@
 \normalsize
 
 \begingroup
-%\include{extraTeX/style/headers}
-\include{extraTeX/style/headers_simple}
+\include{extraTeX/style/headers}
+%\include{extraTeX/style/headers_simple}
 \includechapter{1}{ch_intro_to_data}
 \includechapter{2}{ch_summarizing_data}
 \includechapter{3}{ch_probability}
