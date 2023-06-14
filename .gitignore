@@ -11,6 +11,7 @@ main.pdf
 main.run.xml
 main.synctex.gz
 main.toc
+main.upa
 *.DS_Store
 *gitignore~
 *.Rapp.history
