@@ -358,7 +358,7 @@ sum(sampled\_entries == "support") / \pewsolarpollsize{}}
     which is used to describe in regular language what the
     code is doing.
     We've provided software labs in \R{} at
-    \oiRedirect{openintroorg_labs}{openintro.org/stat/labs}
+    \oiRedirect{os}{openintro.org/book/os}
     for anyone interested in learning more.}
 \label{solarPollSimulationCodeR}
 \end{figure}
@@ -416,7 +416,7 @@ that the histogram resembles a normal distribution.
 
 \begin{figure}[h]
    \centering
-   \Figure{0.8}{sampling_10k_prop_88p}
+   \Figure[A histogram is shown for 10,000 sample proportions where each sample is taken from a population where the population proportion is \pewsolarparprop{} and the sample size is $n = \pewsolarpollsize{}$. The distribution is bell-shaped (appears nearly normal), is centered at 0.88 and has a standard deviation of about 0.01.]{0.8}{sampling_10k_prop_88p}
    %\Figure{0.8}{sampling_10k_prop_887p}
    \caption{A histogram of 10,000 sample proportions,
        where each sample is taken from a population
@@ -559,7 +559,7 @@ slightly versus what we would get using more advanced
 methods.\footnote{For example, we could use what's called the
   \term{finite population correction factor}:
   if the sample is of size $n$ and the population size is $N$,
-  then we can multiple the typical standard error formula by
+  then we can multiply the typical standard error formula by
   $\sqrt{\frac{N-n}{N-1}}$
   to obtain a smaller, more precise estimate of the
   actual standard error.
@@ -604,7 +604,7 @@ this normal distribution example will hopefully feel familiar!
 We would like to understand the fraction of $\hat{p}$'s
 between 0.86 and 0.90:
 \begin{center}
-\Figure{0.35}{p-hat_from_86_and_90}
+\Figure[A normal distribution centered at 0.88 with a standard deviation of 0.01 is shown, where the region between 0.86 and 0.90 has been shaded.]{0.35}{p-hat_from_86_and_90}
 \end{center}
 With $\mu_{\hat{p}} = \pewsolarparprop{}$ and
 $SE_{\hat{p}} = \pewsolarpollse{}$,
@@ -752,7 +752,7 @@ These distributions have a number of important differences.
 
 \begin{figure}[h]
    \centering
-   \Figure{0.97}{sampling_10_prop_25p}
+   \Figure[There are two plots. The first plot is a histogram of 10,000 simulations of p-hat when the sample size is n equals 10 and the population proportion is p equals 0.25. The possible values are 0.0, 0.1, 0.2, and so on up to 1.0, though the graph only shows values up to 0.8. The distribution is centered at about 0.25, and is slightly right-skewed. The frequencies are about 500 for 0.0, 1900 for 0.1, 2800 for 0.2, 2400 for 0.3, 1500 for 0.4, 500 for 0.5, 100 for 0.6, and the bin heights for the remaining values have bin heights that are not visually distinguishable from zero. The second plot shows a normal distribution centered at 0.25 with a standard deviation of 0.137. The plot has a vertical line located at 0.0, which makes it more visually evident that a portion of the area under the normal distribution -- about 5\% of this area -- represents values below 0.0.]{0.97}{sampling_10_prop_25p}
    \caption{Left: simulations of $\hat{p}$ when the sample size
        is $n = 10$ and the population proportion is $p = 0.25$.
        Right: a normal distribution with the same mean (0.25)
@@ -761,25 +761,25 @@ These distributions have a number of important differences.
 \end{figure}
 
 \begin{figure}
-   \centering
-   \includegraphics[width=\textwidth]{ch_foundations_for_inf/figures/clt_prop_grid/clt_prop_grid_1}
-   \caption{Sampling distributions for several scenarios
-       of $p$ and $n$. \\
-       Rows: $p = 0.10$, $p = 0.20$, $p = 0.50$,
-       $p = 0.80$, and $p = 0.90$. \\
-       Columns: $n = 10$ and $n = 25$.}
-   \label{clt_prop_grid_1}
+  \centering
+  \Figures[Sampling distributions are shown for several scenarios for parameters p and n. The graphs are arranged in a grid of 5 rows representing proportions 0.1, 0.2, 0.5, 0.8, and 0.9 and 2 columns of sample sizes n equals 10 and 25. In each graph, the distribution is centered at the proportion. Given that these are proportions based on relatively small sample sizes, the bins do look relatively discrete (jumpy from one to the next), though less so for the distributions based on n equals 25. In cases where the true underlying proportion is near the lower bound of 0 or the upper bound of 1, the distribution tends to skew away from that boundary. This is most noticeable for both the distributions representing proportions closer to either boundary and for the smaller sample size. One distribution stands out among the 10 shown: the sample with p equals 0.5 and n equals 25, which shows a bell-shaped distribution resembling the normal distribution, though the data are still somewhat discrete.]{}{clt_prop_grid}{clt_prop_grid_1}
+  \caption{Sampling distributions for several scenarios
+      of $p$ and $n$. \\
+      Rows: $p = 0.10$, $p = 0.20$, $p = 0.50$,
+      $p = 0.80$, and $p = 0.90$. \\
+      Columns: $n = 10$ and $n = 25$.}
+  \label{clt_prop_grid_1}
 \end{figure}
 
 \begin{figure}
-   \centering
-   \includegraphics[width=\textwidth]{ch_foundations_for_inf/figures/clt_prop_grid/clt_prop_grid_2}
-   \caption{Sampling distributions for several scenarios
-       of $p$ and $n$. \\
-       Rows: $p = 0.10$, $p = 0.20$, $p = 0.50$,
-       $p = 0.80$, and $p = 0.90$. \\
-       Columns: $n = 50$, $n = 100$, and $n = 250$.}
-   \label{clt_prop_grid_2}
+  \centering
+  \Figures[Sampling distributions are shown for several scenarios for parameters p and n. The graphs are arranged in a grid of 5 rows representing proportions 0.1, 0.2, 0.5, 0.8, and 0.9 and 3 columns of sample sizes n equals 50, 100, and 250. Relative to the previous figure, which considered similar proportion scenarios but with n equals 10 and 25, the data in these graphs looks less discrete -- that is, they appear to almost be continuous. This is most evident for the largest sample sizes. Nearly all of the graphs shown also closely resemble the normal distribution, in some cases with the larger sample sizes that it resembles it so closely that there are not substantial visual differences. One aspect less evident -- but still present -- in the last figure but that continues into and becomes much more obvious in this figure, is that the distributions of the sample proportions tend to have a much smaller standard deviation with the larger sample sizes. That is, the sample proportion distributions for larger sample sizes tend to be smaller than they were for smaller sample sizes. Also, the variability within a graph also appears to be largest for the proportion p equals 0.5 than it is for the other proportions when considering a single proportion -- and this property is apparent upon inspection of a distribution based on any of the considered sample sizes.]{}{clt_prop_grid}{clt_prop_grid_2}
+  \caption{Sampling distributions for several scenarios
+      of $p$ and $n$. \\
+      Rows: $p = 0.10$, $p = 0.20$, $p = 0.50$,
+      $p = 0.80$, and $p = 0.90$. \\
+      Columns: $n = 50$, $n = 100$, and $n = 250$.}
+  \label{clt_prop_grid_2}
 \end{figure}
 
 \begin{center}
@@ -865,7 +865,7 @@ and pay attention to three things:
 
 At no point will the distribution of $\hat{p}$ look
 \emph{perfectly} normal, since $\hat{p}$ will always
-be take discrete values ($x / n$).
+take discrete values ($x / n$).
 It is always a matter of degree, and we will use
 the standard success-failure condition with minimums
 of 10 for $np$ and $n (1 - p)$ as our guideline
@@ -886,11 +886,11 @@ As another example, if we want to estimate the
 difference in product prices for two websites,
 we might take a random sample of products available
 on both sites, check the prices on each,
-and use then compute the average difference;
+and then compute the average difference;
 this strategy certainly would give us some idea
 of the actual difference through a point estimate.
 
-While this chapter emphases a single proportion
+While this chapter emphasizes a single proportion
 context, we'll encounter many different contexts
 throughout this book where these methods will be
 applied.
@@ -993,17 +993,17 @@ $p = \pewsolarparprop{}$, and one interval does not.
 \D{\newpage}
 
 \begin{figure}
-   \centering
-   \includegraphics[width=0.75\textwidth]{ch_foundations_for_inf/figures/95PercentConfidenceInterval/95PercentConfidenceInterval}
-   \caption{Twenty-five point estimates and confidence
-       intervals from the simulations in
-       Section~\ref{simulationForUnderstandingVariabilitySection}.
-       These intervals are shown relative to the population
-       proportion $p = \pewsolarparprop{}$.
-       Only~1 of these~25
-       intervals did not capture the population
-       proportion, and this interval has been bolded.}
-   \label{95PercentConfidenceInterval}
+  \centering
+  \Figure[Twenty-five point estimates and confidence intervals from the simulations in Section~\ref{simulationForUnderstandingVariabilitySection} are shown. These intervals are shown relative to the population proportion p equals \pewsolarparprop{}. The point estimates vary around the true population proportion of 0.88, but most of their confidence intervals overlap the value p equals 0.88. One of the 25 intervals does not have a confidence interval that overlaps the population proportion, and this interval has been bolded. We might say that this confidence interval did not "capture" the parameter p equals 0.88.]{0.75}{95PercentConfidenceInterval}
+  \caption{Twenty-five point estimates and confidence
+      intervals from the simulations in
+      Section~\ref{simulationForUnderstandingVariabilitySection}.
+      These intervals are shown relative to the population
+      proportion $p = \pewsolarparprop{}$.
+      Only~1 of these~25
+      intervals did not capture the population
+      proportion, and this interval has been bolded.}
+  \label{95PercentConfidenceInterval}
 \end{figure}
 
 \begin{examplewrap}
@@ -1128,7 +1128,7 @@ for a 99\% confidence interval is
 
 \begin{figure}[h]
   \centering
-  \Figure{1}{choosingZForCI}
+  \Figure[A standard normal distribution is shown, where "standard" is the term used to indicate that the normal distribution is centered at 0 and has a standard deviation of 1. Portions of the normal distribution have been shaded. First, the central 95\% portion of the distribution has been shaded in a dark blue, and this region has an annotation stating "95\%, extends from -1.96 to 1.96". Recall that the value of 1.96 closely matches our 68-95-99.7 rule for the normal distribution, which had stated that about 95\% of the area under the normal distribution lied within 2 standard deviations of the mean. Second, a slightly broader region of the normal distribution is shaded, in this case from about -2.5 to positive 2.5, and this has an annotation stating, "99\%, extends -2.58 to 2.58". The values described here -- 1.96 and 2.58 -- are the z-star values that we would use for 95\% and 99\% confidence intervals, respectively.]{}{choosingZForCI}
   \caption{The area between -$z^{\star}$ and $z^{\star}$ increases as
       $z^{\star}$ becomes larger. If the confidence level is 99\%,
       we choose $z^{\star}$ such that 99\% of a normal
@@ -1195,11 +1195,11 @@ $N(0, 1)$, corresponds to the confidence level.
   $z^{\star}=1.65$.
   The 90\% confidence interval can then be computed as
   \begin{align*}
-  \hat{p}\ \pm\ 1.65 \times SE_{\hat{p}}
+  \hat{p}\ \pm\ 1.6449 \times SE_{\hat{p}}
       \quad\to\quad 0.887\ \pm\ 1.65 \times 0.0100
-      \quad\to\quad (0.8705, 0.9035)
+      \quad\to\quad (0.8705, 0.9034)
   \end{align*}
-  That is, we are 90\% confident that 87.1\% to 90.4\% of American
+  That is, we are 90\% confident that 87.1\% to 90.3\% of American
   adults supported the expansion of solar power in 2018.
 \end{nexample}
 \end{examplewrap}
@@ -2323,7 +2323,7 @@ to how we use the null value, $p_0$.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.7}{normal_dist_mean_500_se_016}
+  \Figure[A normal distribution centered at 0.5 with a standard deviation of 0.016 is shown. Additionally, an annotation is located at 0.37 that states, "Observed p-hat equals 0.37".]{0.7}{normal_dist_mean_500_se_016}
   \caption{
       If the null hypothesis were true,
       this normal distribution describes the
@@ -2409,7 +2409,7 @@ to our point estimate.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.7}{normal_dist_mean_500_se_016}
+  \Figures[A normal distribution centered at 0.5 with a standard deviation of 0.016 is shown. Additionally, the tail areas below 0.37 and above 0.63 are emphasized -- the regions under the normal distribution are nearly zero. Two annotations also appear. First, an annotation located at 0.37 states, "Tail area for p-hat". Second, an annotation located at 0.68 states, "Equally unlikely if H-sub-zero (the null hypothesis) is true".]{0.7}{normal_dist_mean_500_se_016}
       {normal_dist_mean_500_se_016_with_upper}
   \caption{
       If $H_0$ were true, then the values above
@@ -2545,7 +2545,7 @@ question.\footnotemark
   It's generally helpful to draw null distribution and
   the tail areas of interest for computing the p-value:
   \begin{center}
-  \includegraphics[width=0.48\textwidth]{ch_foundations_for_inf/figures/nuclearArmsReduction/nuclearArmsReductionPValue}
+  \Figures[A normal distribution centered at 0.5 is shown, which has a standard deviation of about 0.0156. Two tails several standard deviations away from the center are emphasized. The first, at and above 0.56, is annotated with the text "upper tail". The second, which appears to be at and below 0.44, is annotated with the text "lower tail".]{0.48}{nuclearArmsReduction}{nuclearArmsReductionPValue}
   \end{center}
   The upper tail area is about 0.0001,
   and we double this tail area to get the p-value: 0.0002.

@@ -163,8 +163,7 @@
 %
 % See headers.tex file for main chapters.
 \newcommand{\chapterpagepaddingtopinner}[0]{35mm} % 45mm
-\newcommand{\chapterpagepaddingrightinner}[0]{30mm}
-\newcommand{\chapterpagepaddinginner}[0]{25mm}
+\newcommand{\chapterpagepaddingbottominner}[0]{25mm}
 \newcommand{\chapterXfontsize}[0]{92}
 \newcommand{\chaptertitlefontsize}[0]{30}
 
@@ -237,9 +236,10 @@
 \newlength{\mycaptionwidth}
 \setlength{\mycaptionwidth}{0.825\textwidth}
 \setlength{\captionwidth}{\mycaptionwidth}
-\newcommand{\Figure}[2]{\includegraphics[width=#1\textwidth]{\chapterfolder/figures/#2/#2}}
-\newcommand{\Figures}[3]{\includegraphics[width=#1\textwidth]{\chapterfolder/figures/#2/#3}}
-\newcommand{\Figuress}[3]{\includegraphics[width=#1]{\chapterfolder/figures/#2/#3}}
+\newcommand{\Figure}[3][]{\includegraphics[width=#2\textwidth]{\chapterfolder/figures/#3/#3}}
+\newcommand{\Figures}[4][]{\includegraphics[width=#2\textwidth]{\chapterfolder/figures/#3/#4}}
+\newcommand{\Figuress}[4][]{\includegraphics[width=#2]{\chapterfolder/figures/#3/#4}}
+\newcommand{\FigureFullPath}[3][]{\includegraphics[width=#2\textwidth]{#3}}
 \newcommand{\chapterfolder}{}
 
 

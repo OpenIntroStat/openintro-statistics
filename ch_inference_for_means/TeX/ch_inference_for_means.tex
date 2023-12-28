@@ -200,7 +200,7 @@ clear cut cases based on the rules of thumb.\footnote{More
     different populations.
     Their sample sizes are $n_1 = 15$ and $n_2 = 50$.
     \begin{center}
-    \Figure{0.85}{outliers_and_ss_condition}
+    \Figure[Two histograms are shown, one for "Sample 1 Observations" and one for "Sample 2 Observations". The histogram for Sample 1 Observations has values ranging from 0 to 7 with a bin width of 1 for a total of 7 bins with frequencies of 2, 1, 4, 3, 2, 0, and 3. The histogram for Sample 2 Observations has values ranging from 0 to 22, with a bin width of 1. Most of the data is located near zero, with half of the observations located in the bin from 0 to 1. There is only non-zero bin beyond 5, which appears to have a height of 1 and is the bin from 21 to 22.]{0.85}{outliers_and_ss_condition}
     \end{center}
     Are the independence and normality conditions met
     in each case?}
@@ -455,7 +455,7 @@ in place of $\sigma$ in the $SE$ calculation.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.7}{tDistCompareToNormalDist}
+  \Figure[A standard normal distribution and a t-distribution are shown. The t-distribution also has a bell-shape, but it is more sharply peaked than the normal distribution and also has thicker tails than the normal distribution. For example, the is a sizable fraction of the distribution -- perhaps 5\% for this particular t-distribution -- that extends below -3 and above positive 3, while the normal distribution is very close to zero when looking below -3 or above positive 3.]{0.7}{tDistCompareToNormalDist}
   \caption{Comparison of a $t$-distribution
       and a normal distribution.}
   \label{tDistCompareToNormalDist}
@@ -483,7 +483,7 @@ from the normal distribution.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.75}{tDistConvergeToNormalDist}
+  \Figure[Four t-distributions with degrees of freedom of 1, 2, 4, and 8 are shown along with a normal distribution on the same plot. The larger the degrees of freedom, the more closely the t-distribution aligns with the normal distribution, meaning that the shape of the peak becomes less sharp and the less "thick" the distributions tails appear.]{0.75}{tDistConvergeToNormalDist}
   \caption{The larger the degrees of freedom, the more
       closely the $t$-distribution resembles the standard
       normal distribution.}
@@ -539,7 +539,7 @@ understanding of the $t$-distribution.
 
 \begin{figure}
   \centering
-  \Figure{0.42}{tDistDF18LeftTail2Point10}
+  \Figure[A t-distribution with 18 degrees of freedom is shown, where the region below -2.10 is shaded and appears to represent very roughly 2\% to 5\% of the distribution. For the most part, when the degrees of freedom are larger than about 10, like in this case, the differences between the t-distribution and the normal distribution are visually subtle, even if the distinction remains important for our calculations.]{0.42}{tDistDF18LeftTail2Point10}
   \caption{The $t$-distribution with 18 degrees of freedom.
       The area below -2.10 has been shaded.}
   \label{tDistDF18LeftTail2Point10}
@@ -560,7 +560,7 @@ understanding of the $t$-distribution.
 
 \begin{figure}
   \centering
-  \Figure{0.72}{tDistDF20RightTail1Point65}
+  \Figure[Two t-distributions are shown on two separate plots. The first plot shows a t-distribution with 20 degrees of freedom with the region above positive 1.65 is shaded, which appears to be very roughly 5\% of the total distribution area. The second plot shows a t-distribution with 2 degrees of freedom with the region below -3 and above positive 3 shaded. Because the degrees of freedom are so small, the tails are much thicker in this distribution, and its center is also more sharply peaked. Each of these tails appears to represent very roughly 2\% to 5\% of the area under this distribution.]{0.72}{tDistDF20RightTail1Point65}
   \caption{Left: The $t$-distribution with 20 degrees
       of freedom, with the area above 1.65 shaded.
       Right:~The $t$-distribution with 2 degrees of freedom,
@@ -652,7 +652,7 @@ and other animals, like humans, who occasionally eat them.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{ch_inference_for_means/figures/rissosDolphin/rissosDolphin.jpg}  \\
+\Figures[A Risso's dolphin is shown surfacing in water. The area forward of its face is mostly white, and then its body is gray and white streaked together.]{0.8}{rissosDolphin}{rissosDolphin.jpg}  \\
 \addvspace{2mm}
 \begin{minipage}{\textwidth}
    \caption[rissosDolphinPic]{A Risso's dolphin.\vspace{-1mm} \\
@@ -931,7 +931,7 @@ forward.\footnotemark{}
 
 \begin{figure}[h]
   \centering
-  \Figures{0.65}{run10SampTimeHistogram}{run17SampTimeHistogram} 
+  \Figures[A histogram of "time" for the sample Cherry Blossom Race data is shown. The data are nearly symmetric with a center at about 100 minutes and a standard deviation of roughly 15 to 20 minutes. All times lie between 50 and 140 minutes.]{0.65}{run10SampTimeHistogram}{run17SampTimeHistogram} 
   \caption{A histogram of \var{time} for the sample
       Cherry Blossom Race data.}
   \label{run10SampTimeHistogram}
@@ -1148,7 +1148,7 @@ is a common and useful way to analyze paired data.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.63}{textbooksF18}{diffInTextbookPricesF18}
+  \Figures[A histogram is shown for "UCLA bookstore Price minus Amazon Price, in US dollars", where values range from -\$20 to positive \$80. The distribution has a prominent peak at or slightly above \$0, with the wide majority of data lying between \$20 and positive \$20. There are also 4 bins above \$20 that have non-zero heights: bin \$20 to \$30 has a height of 2, bin \$30 to \$40 has a height of 2, bin \$50 to \$60 has a height of 1, and bin \$70 to \$80 has a height of 1.]{0.63}{textbooksF18}{diffInTextbookPricesF18}
   \caption{Histogram of the difference in price for
       each book sampled.}
   \label{diffInTextbookPricesF18}
@@ -1239,7 +1239,7 @@ $n_{_{\text{\emph{diff}}}}$	&\hspace{3mm}& $\bar{x}_{_{\text{\emph{diff}}}}$	&\h
   $H_0$ is true,
   and the p-value is represented by the two shaded tails:
   \begin{center}
-  \Figures{0.53}{textbooksF18}{textbooksF18HTTails}
+  \Figures[A bell-shaped distribution is shown, with a center of mu-sub-0, which has a value of 0. The area under the distribution above x-bar-sub-diff equals 3.98 is shaded, as is the corresponding tail below -3.98.]{0.53}{textbooksF18}{textbooksF18HTTails}
   \end{center}
   The degrees of freedom is
   $df = \uclabookN{} - 1 = \uclabookDF{}$.
@@ -1486,7 +1486,7 @@ for outliers.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.63}{stemCellTherapyForHearts}
+  \Figure[Two histograms are shown, one for "Embryonic stem cell transplant" and one for "Control (no treatment)". The data for the first histogram for the treatment group are roughly centered at about 3\%, with values ranging from about -5\% to positive 15\%. The data for the second histogram, which represents the control group, is approximately centered at -3\%, with values ranging from -10\% to about positive 2\%.]{0.63}{stemCellTherapyForHearts}
   \caption{Histograms for both the embryonic stem cell
       and control group.}
   \label{stemCellTherapyForHearts}
@@ -1675,7 +1675,7 @@ in sample means may be modeled using a $t$-distribution.
 
 \begin{figure}[hhh]
   \centering
-  \Figure{}{babySmokePlotOfTwoGroupsToExamineSkew}
+  \Figure[Two histograms are shown for "Newborn Weights, in pounds", one for "Mothers Who Smoked" and one for "Mothers Who Did Not Smoke". The histogram for "Mothers Who Smoked" is centered at about 7 and is left-skewed, with values ranging from about 1 pound to 10 pounds. The histogram for "Mothers Who Did Not Smoke" is centered at about 7.5 and is left-skewed, with values ranging from about 1 pound to 11 pounds.]{}{babySmokePlotOfTwoGroupsToExamineSkew}
   \caption{The left panel represents birth weights for infants
       whose mothers smoked.
       The right panel represents the birth weights for
@@ -1752,7 +1752,7 @@ samp. size & 50 & 100 \\
   The p-value is represented by the two shaded tails
   in the following plot:
   \begin{center}
-    \Figure{0.5}{distOfDiffOfSampleMeansForBWOfBabySmokeData}
+    \Figure[A bell-shaped curve that resembles a normal distribution is shown centered at "mu-sub-n minus mu-sub-s equals 0". The upper tail is shaded above a value marked as "observed difference", and the corresponding lower tail is also shaded. These tails together appear to represent about 10\% to 15\% of the area under the distribution.]{0.5}{distOfDiffOfSampleMeansForBWOfBabySmokeData}
   \end{center}
   We find the single tail area using software
   (or the $t$-table in Appendix~\ref{tDistributionTable}).
@@ -1907,7 +1907,7 @@ Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.63}{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+  \Figure[A t-distribution with 26 degrees of freedom is shown along with the p-value from the exam example represented as shaded area. The t-distribution shown is centered at zero, and the upper tail area above T equals 1.15 is shaded along with the area below about -1.15. These shaded tail areas appear to represent roughly 25\% of the distribution.]{0.63}{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
   \caption{The $t$-distribution with 26 degrees of freedom
       and the p-value from exam example represented
       as the shaded areas.}
@@ -2171,7 +2171,7 @@ an appropriate sample size for the study.
   (the standard error) would be about 1.70, and under
   the null hypothesis, its mean would be 0.
   \begin{center}
-  \Figures{0.93}{power_null_0_1-7}{power_null_A_0_1-7}
+  \Figures[A normal distribution is shown for "x-bar-sub-treatment minus x-bar-sub-control", where the distribution is centered at zero and has a standard deviation of about 1.6. The distribution is labeled as "Null distribution".]{0.93}{power_null_0_1-7}{power_null_A_0_1-7}
   \end{center}
 \end{nexample}
 \end{examplewrap}
@@ -2195,8 +2195,7 @@ an appropriate sample size for the study.
   \end{description}
   The boundaries of these \term{rejection regions} are shown below:
   \begin{center}
-  \Figures{0.93}{power_null_0_1-7}
-      {power_null_B_0_1-7_with_rejection_region}
+  \Figures[A normal distribution is shown for "x-bar-sub-treatment minus x-bar-sub-control", where the distribution is centered at zero and has a standard deviation of about 1.6. The distribution is labeled as "Null distribution". Three regions are labeled: the region between about -3.3 and positive 3.3 is labeled as "Do not reject H-sub-0", while the two regions on either side of this central region are labeled with "Reject H-sub-zero".]{0.93}{power_null_0_1-7}{power_null_B_0_1-7_with_rejection_region}
   \end{center}
 \end{nexample}
 \end{examplewrap}
@@ -2249,7 +2248,7 @@ of an effect in the study.
       This is the same as the null distribution,
       except it is shifted to the left by~3:
       \begin{center}
-      \Figures{0.87}{power_null_0_1-7}
+      \Figures[A normal distribution is shown for "x-bar-sub-treatment minus x-bar-sub-control", where the distribution is centered at zero and has a standard deviation of about 1.6. The distribution is labeled as "Null distribution". A second normal distribution is also shown centered at -3 with a standard deviation of about 1.6, and this distribution is labeled "Distribution with mu-sub-treatment minus mu-sub-control equals -3". The lines demarking the "reject" regions and the "do-not-reject" regions from an earlier plot are also shown.]{0.87}{power_null_0_1-7}
           {power_null_C_0_1-7_with_alt_at_3}
       \end{center}
   \item
@@ -2264,7 +2263,7 @@ of an effect in the study.
   and standard deviation~1.7.
   To do so, we first shade the area we want to calculate:
   \begin{center}
-    \Figures{0.93}{power_null_0_1-7}
+    \Figures[A normal distribution is shown for "x-bar-sub-treatment minus x-bar-sub-control", where the distribution is centered at zero and has a standard deviation of about 1.6. The distribution is labeled as "Null distribution". A second normal distribution is also shown centered at -3 with a standard deviation of about 1.6, and this distribution is labeled "Distribution with mu-sub-treatment minus mu-sub-control equals -3". The lines demarking the "reject" regions and the "do-not-reject" regions from an earlier plot are also shown, and the region of the second distribution centered at -3 that is below the lower demarkation line at about -3.2 is shaded, representing just under half of that distribution.]{0.93}{power_null_0_1-7}
         {power_null_D_0_1-7_with_alt_at_3_and_shaded}
   \end{center}
   We'll use a normal approximation, which is good approximation
@@ -2364,7 +2363,7 @@ a sample size of 500 per group.\footnotemark{}
   (b)~\&~(c)~The null distribution, rejection boundaries,
   and alternative distribution are shown below: \\
   \indent%
-  \Figures{0.7}{power_null_0_0-76}
+  \Figures[A normal distribution is shown for "x-bar-sub-treatment minus x-bar-sub-control", where the distribution is centered at zero and has a standard deviation of about 0.76 (note that this is a much smaller than in earlier plots). The distribution is labeled as "Null distribution". A second normal distribution is also shown centered at -3 with a standard deviation of about 0.76, and this distribution is labeled "Distribution with mu-sub-treatment minus mu-sub-control equals -3". The overlap of these two normal distributions is much smaller than in the last plot. Lines are shown demarking "reject" regions for the null distribution are shown at about -1.5 and positive 1.5, and the region of the second distribution centered at -3 that is below the lower demarkation line at about -1.5 is shaded, representing a bit over 95\% of the distribution.]{0.7}{power_null_0_0-76}
       {power_null_0_0-76_with_alt_at_3_and_shaded} \\
   The rejection regions are the areas on the outside of the
   two dotted lines and are at $\pm 0.76 \times 1.96 = \pm 1.49$. \\
@@ -2403,7 +2402,7 @@ but there's a better way.
 We should solve the problem backwards.
 
 \begin{examplewrap}
-\begin{nexample}{What sample size will lead to a power of 80\%?}
+\begin{nexample}{What sample size will lead to a power of 80\%? Use $\alpha = 0.05$.}
   \label{sample_size_for_80_percent_power}%  This is referenced in EOCE.
   We'll assume we have a large enough sample that the normal
   distribution is a good approximation for the test statistic,
@@ -2421,7 +2420,7 @@ We should solve the problem backwards.
 %  we should recalculate this part and basically do the
 %  problem one more time.)
   \begin{center}
-    \Figure{0.93}{power_best_sample_size}
+    \Figure[A normal distribution is shown for "x-bar-sub-treatment minus x-bar-sub-control", where the distribution is centered at zero and has a standard deviation of about 1.1 (note that this is different than earlier plots). The distribution is labeled as "Null distribution". A second normal distribution is also shown centered at -3 with a standard deviation of about 1.1, and this distribution is labeled "Distribution with mu-sub-treatment minus mu-sub-control equals -3". Lines are shown demarking "reject" regions for the null distribution are shown at about -2.2 and positive 2.2, and the region of the second distribution centered at -3 that is below the lower demarkation line at about -1.5 is shaded, representing a bit over 80\% of the distribution. The distance from 0 to the rejection region line at 2.2 is labeled "1.96 times SE", and the distance between the rejection region line and -3 is labeled "0.84 times SE".]{0.93}{power_best_sample_size}
   \end{center}
   Additionally, the rejection region extends
   $1.96\times SE$ from the center of the null distribution
@@ -2540,7 +2539,7 @@ the power for many different sample sizes.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.9}{power_curve}{power_curve_neg-3}
+  \Figures[A line plot is shown with "Sample Size Per Group" on the horizontal axis and "Power" on the vertical axis. The horizontal axis values grow exponentially and has values going from 20 to 50 to 100 to 200 to 500 to 1,000 to 2,000 and finally to 5,000. The line starts t about (20, 0.1) and slowly climbs up to about (50, 0.25), then climbs more quickly up to (100, 0.4), then (200, 0.7), where its growth starts tapering off as nearly flattens at about (500, 0.98). The height of the line is indistinguishable from 1 for sample sizes per group of 1,000 and higher.]{0.9}{power_curve}{power_curve_neg-3}
   \caption{The curve shows the power for different sample
       sizes in the context of the blood pressure example when
       the true difference is~-3.
@@ -2684,7 +2683,7 @@ within each group is key to ANOVA's success.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.68}{toyANOVA}
+  \Figure[Side-by-side dot plots are shown for groups I, II, III, IV, V, and VI. The means for I and IV are the same, the means of II and V and are the same, and the means of III and VI are also the same. However, the variability of the data shown in groups I, II, and III are larger than the variability of the groups IV, V, and VI.]{0.68}{toyANOVA}
   \caption{Side-by-side dot plot for the outcomes for six groups.}
   \label{toyANOVA}
 \end{figure}
@@ -2824,7 +2823,7 @@ Sample SD ($s_i$) & 0.043 & 0.038 & 0.038 \\
 
 \begin{figure}[h]
   \centering
-  \Figures{0.6}{mlbANOVA}{mlbANOVABoxPlot}
+  \Figures[Side-by-side box plot of the on-base percentage for \mlbN{} players across three groups. The boxes for outfield (OF) and infield (IF) groups are about 0.30 to 0.34 with a median of about 0.32, while the catcher (C) box is 0.28 to 0.33 with a median of 0.30. The whiskers for outfield and infield extend down to about 0.25 and up to 0.42, while the catcher box plot whiskers extend down to 0.23 and up to 0.38. With over a hundred players in both the infield and outfield groups, a few individual points are shown but are not concerning.]{0.6}{mlbANOVA}{mlbANOVABoxPlot}
   \caption{Side-by-side box plot of the on-base percentage
       for \mlbN{} players across three groups.
       With over a hundred players in both the infield and
@@ -3014,8 +3013,7 @@ Figure~\ref{fDist2And423Shaded}.
 
 \begin{figure}[h]
   \centering
-  %\Figure{0.5}{fDist2And423}
-  \Figures{0.6}{fDist2And423}{fDist2And423Shaded}
+  \Figures[An F distribution with df-sub-1 equals 2 and df-sub-2 equals 426 is shown. This distribution starts at zero and runs up (and past) a value of 8. The distribution is strongly right skewed. The distribution peaks right at 0 and tapers off quickly, with about 5\% to 10\% of the distribution lying above a value of 2. The distribution is indistinguishable from the horizontal axis by about 5. The figure also annotates a small tail area at and above values of 5.]{0.6}{fDist2And423}{fDist2And423Shaded}
   \caption{An $F$ distribution with $df_1=2$ and $df_2=426$.}
   \label{fDist2And423Shaded}
 \end{figure}
@@ -3137,7 +3135,7 @@ and the variance within each group must be approximately equal.
     None are apparent, so this conditions is reasonably met.
     \begin{figure}[h]
       \centering
-      \Figures{}{mlbANOVA}{mlbANOVADiagNormalityGroups}
+      \Figures[Three histograms are shown, one for Outfielders, one for Infielders, and one for Catchers. The Outfielders and Infielders are centered slightly above 0.3, while the Catchers distribution is centered at about 0.3. The variability in each group is about 0.03. Each of the distributions somewhat resemble normal distributions and do not have any major outliers.]{}{mlbANOVA}{mlbANOVADiagNormalityGroups}
       \caption{Histograms of OBP for each field position.}
       \label{mlbANOVADiagNormalityGroups}
     \end{figure}
@@ -3238,9 +3236,9 @@ $s_i$		& 13.9	& 13.8	& 13.1 \\
 
 \begin{figure}[h]
   \centering
-  \Figures{0.72}{classData}{classDataSBSBoxPlot}
+  \Figures[Side-by-side box plot for the first midterm scores in three different lectures of the same course. Lecture A has a box from about 65 to 85, a median of 73, and whiskers that extend down to 45 and up to 100. Lecture B has a box from about 62 to 82, a median of 72, and whiskers that extend down to 40 and up to 100. Lecture A has a box from about 73 to 88, a median of 82, and whiskers that extend down to 45 and up to 100.]{0.72}{classData}{classDataSBSBoxPlot}
   \caption{Side-by-side box plot for the first midterm
-      scores in three different  lectures of the same course.}
+      scores in three different lectures of the same course.}
   \label{classDataSBSBoxPlot}
 \end{figure}
 

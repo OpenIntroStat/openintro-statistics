@@ -59,21 +59,21 @@ sum(by(x, g, length) * (by(x, g, mean) - mean(x))^2) / 2
 anova(lm(x ~ as.factor(g)))
 
 
-uTeams <- unique(mlbBat10$team)
-nTeams <- length(uTeams)
-myPDF("mlbANOVADiagIndepOfTeam.pdf", 5, 4)
-dotPlot(mod$res, mlbBat10$team,
-        key = uTeams,
-        ylim = c(0, nTeams),
-        axes = FALSE,
-        ylab = "Teams",
-        xlab = "Residuals",
-        col = COL[1])
-axis(1)
-axis(2, 1:nTeams, uTeams, cex.axis = 0.5)
-abline(h = 1:nTeams, col = COL[7], lwd = 0.5)
-abline(h = seq(1, nTeams, 5), col = COL[6], lwd = 1.5)
-dev.off()
+# uTeams <- unique(mlb_players_18$team)
+# nTeams <- length(uTeams)
+# myPDF("mlbANOVADiagIndepOfTeam.pdf", 5, 4)
+# dotPlot(mod$res, mlbBat10$team,
+        # key = uTeams,
+        # ylim = c(0, nTeams),
+        # axes = FALSE,
+        # ylab = "Teams",
+        # xlab = "Residuals",
+        # col = COL[1])
+# axis(1)
+# axis(2, 1:nTeams, uTeams, cex.axis = 0.5)
+# abline(h = 1:nTeams, col = COL[7], lwd = 0.5)
+# abline(h = seq(1, nTeams, 5), col = COL[6], lwd = 1.5)
+# dev.off()
 
 
 myPDF("mlbANOVADiagNormality.pdf", 5, 4,
@@ -111,7 +111,7 @@ HistOfOBP <- function(x, main) {
   axis(2)
 }
 HistOfOBP(d$OBP[d$position == "OF"], "Outfielders")
-HistOfOBP(d$OBP[d$position == "IF"], "In-fielders")
+HistOfOBP(d$OBP[d$position == "IF"], "Infielders")
 HistOfOBP(d$OBP[d$position == "C"], "Catchers")
 dev.off()
 

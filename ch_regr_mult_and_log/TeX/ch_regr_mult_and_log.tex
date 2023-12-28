@@ -434,7 +434,7 @@ on observational data,
 such models are a common first step in gaining insights
 or providing some evidence of a causal connection.
 
-We want to construct a model that accounts for not only
+We want to construct a model that accounts not only
 for any past bankruptcy or whether the borrower had
 their income source or amount verified,
 but simultaneously accounts for all the variables
@@ -1299,7 +1299,8 @@ there are any notable concerns:
 
 \begin{figure}[h]
   \centering
-  \Figures{0.75}
+  \Figures[A histogram is shown for "Debt to Income" ratio, where values range from 0 to over 400. The data is extremely right skewed, where about 60\% of the data is in the 0 to 20 bin, about 38\% is in the 20 to 40 bin, 2\% in the 40 to 60 bin, about half a percent in the 60 to 80 bin. All other bins are sufficiently small as to be indecipherable from a height of 0.]
+      {0.75}
       {loansDiagnostics}
       {loansDiagNormalHistogram}
   \caption{A histogram of the residuals.}
@@ -1484,7 +1485,9 @@ isn't dramatically impacted.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.9}{loansDiagnostics}
+  \Figures[Two residual plots are shown, each with a flexible trend line overlaid. The first residual plot is against the variable "Square root of Debt to Income", which shows relative stability of the trend line with some deviation downwards on the right where there are almost no values and so is less relevant. The second residual plot is against the variable "Debt to Income, truncated at 50", which shows general stability in the trend line throughout the plot.]
+      {0.9}
+      {loansDiagnostics}
       {loansDiagEvsTransformDebtToIncome}
   \caption{Histogram of \var{debt\us{}to\us{}income},
       where extreme skew is evident.}
@@ -1949,7 +1952,9 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.6}{marioKartDiagnostics}
+  \Figures[A histogram is shown for "Residuals". The distribution is centered at 0, is slightly right skewed, and has a standard deviation of about 4.]
+      {0.6}
+      {marioKartDiagnostics}
       {mkDiagResHist}
   \caption{Histogram of the residuals.
       No clear outliers are evident.}
@@ -1965,7 +1970,8 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}
   \centering
-  \Figures{0.6}{marioKartDiagnostics}{mkDiagnosticEvsAbsF}
+  \Figures[Scatterplot of "Absolute Value of Residuals" (vertical axis) against "Fitted Values" (horizontal axis). The fitted values range from \$35 to \$65, and the absolute value of the residuals range from \$0 to about \$10, with no apparent pattern across the range of fitted values.]
+      {0.6}{marioKartDiagnostics}{mkDiagnosticEvsAbsF}
   \caption{Absolute value of the residuals against
       the fitted values.
       No patterns are evident.}
@@ -1980,7 +1986,8 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.55}{marioKartDiagnostics}{mkDiagnosticInOrder}
+  \Figures[Scatterplot of "Residuals" (vertical axis) against "Order of Collection" (horizontal axis). The order of collection runs from 1 to about 140, and the residuals range from -\$10 to about positive \$10, with no apparent pattern across the range of fitted values.]
+      {0.55}{marioKartDiagnostics}{mkDiagnosticInOrder}
   \caption{Residuals in the order that their
       corresponding observations were collected.
       There are no evident patterns.}
@@ -2007,7 +2014,8 @@ model to check if the model we have identified is reasonable.
 
 \begin{figure}
   \centering
-  \Figures{0.9}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
+  \Figures[Three plots are shown for "Residuals" against different predictor variables "Condition", "Photo Type", and "Number of Wheels". Condition plot: A side-by-side box plot is shown for the condition levels of "Used" and "New". The median of "Used" is at \$0 while the median of "New" is at about -\$2. The boxes in each box plot ranges from about -\$3 to positive \$3, and the whiskers of each box plot runs from about -\$10 to positive \$10. There are a couple of points slightly beyond the whiskers. Photo Type plot: A side-by-side box plot is shown for the photo type levels of "Unique Photo" and "Stock Photo". The median of "Unique Photos" is at \$0 while the median of "Stock Photo" is at about -\$1. The boxes in each box plot ranges from about -\$3 to positive \$3. The whiskers of "Unique Photo" box plot ranges from about -\$8 to positive \$7, and the whiskers of "Stock Photo" box plot ranges from about -\$11 to positive \$11. There are a couple of points slightly beyond the whiskers. Number of Wheels plot: A scatterplot is shown for "Residuals" (vertical axis) against "Number of Wheels" (horizontal axis) with values from 0 to 4. For 0 wheels, the residuals largely range from -\$8 to positive \$10. For 1 wheel, the residuals largely range from -\$10 to positive \$5. For 2 wheels, the residuals largely range from -\$8 to positive \$10. There are two points with 3 wheels that have residuals of \$6 and \$11, and one point with 4 wheels that has a residual of about \$0.]
+      {0.9}{marioKartDiagnostics}{mkDiagnosticEvsVariables}
   \caption{For the condition and stock photo variables,
       we check
       for differences in the distribution shape
@@ -2350,7 +2358,8 @@ interpretation of the coefficients is more complex.
 
 \begin{figure}
   \centering
-  \Figure{}{logitTransformationFigureHoriz}
+  \Figure[The plot is shown showing the values of "logit(p-sub-i)" on the horizontal axis with values ranging from -6 to positive 6, and "p-sub-i" on the vertical axis with values ranging from 0 to 1. The shape of the curve is a sort of "swoop". It starts flat near 0, and curves upwards reaching a maximum slope as it crosses logit of 0 and a proportion of 0.5, at which point the slope starts tapering off again and flattening out as it approaches a value of 1. The following points are annotated on the curve, where the first value of each pair is for the logit value and the second is for the corresponding probability: (-5, 0.007), (-4, 0.018), (-3, 0.05), (-2, 0.12), (-1, 0.27), (0, 0.5), (1, 0.73), (2, 0.88), (3, 0.95), (4, 0.982), (5, 0.993), (6, 0.998).]
+      {}{logitTransformationFigureHoriz}
   \caption{Values of $p_i$ against values of $logit(p_i)$.}
   \label{logitTransformationFigureHoriz}
 \end{figure}
@@ -2724,7 +2733,8 @@ Figure~\ref{logisticModelPredict}.
 
 \begin{figure}[h]
   \centering
-  \Figures{0.95}{logisticModel}{logisticModelPredict}
+  \Figures[Side-by-side dot plot of "Predicted Probability" for two levels of "1 (Callback)" and "0 (No Callback)". The points for each level has predicted probabilities concentrated between 0 and 0.2 with a small fraction of points taking larger values (with non above about 0.3 predicted probability). There is little evident difference between the two groups due to the very large number of points overlaying each other.]
+      {0.95}{logisticModel}{logisticModelPredict}
   \caption{The predicted probability that each of the
       \resN{} resumes results in a callback.
       \hiddenterm{Noise}
@@ -2786,8 +2796,8 @@ Such a plot is shown in Figure~\ref{logisticModelBucketDiag}.
 
 \begin{figure}
   \centering
-  \Figures{0.95}{logisticModel}{logisticModelBucketDiag}
-      %{logisticModelSpline}
+  \Figures[A side-by-side dot plot of "Predicted Probability" for two levels of "1 (Callback)" and "0 (No Callback)" with some additional annotations. The data are bucketed into 10 groups based on their predicted probabilities. Each bucket has a 95\% confidence interval plotted at the average value of the predicted probability in the buckets. The plot has an annotation explaining: "Observations are bucketed, then we compute the observed probability in each bucket (y) against the average predicted probability (x) for each of the buckets with 95\% confidence intervals." A "y equals x" line is plotted as well, and each of the ten confidence intervals overlaps this line.]
+      {0.95}{logisticModel}{logisticModelBucketDiag}
   \caption{The dashed line is within the confidence bound
        of the 95\% confidence intervals of each of the buckets,
        suggesting the logistic fit is reasonable.}

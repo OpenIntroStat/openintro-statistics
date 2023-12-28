@@ -1,15 +1,12 @@
 # load packages -----------------------------------------------------
 library(openintro)
 
-# load data ---------------------------------------------------------
-cle_sac <- read.table("cleveland_sacramento.txt", h = T, sep = "\t")
-
 # take a sample -----------------------------------------------------
-cle_sac = cle_sac[!is.na(cle_sac$Total_personal_income),]
+cle_sac = cle_sac[!is.na(cle_sac$personal_income),]
 
 set.seed(8957)
-sac = sample(cle_sac$Total_personal_income[cle_sac$Metropolitan_area_Detailed == "Sacramento_ CA"], 17)
-cle = sample(cle_sac$Total_personal_income[cle_sac$Metropolitan_area_Detailed == "Cleveland_ OH"], 21)
+sac = sample(cle_sac$personal_income[cle_sac$city == "Sacramento"], 17)
+cle = sample(cle_sac$personal_income[cle_sac$city == "Cleveland"], 21)
 
 # plot of total personal income in Cle and Sac ----------------------
 pdf("cleveland_sacramento_hist.pdf", height = 5, width = 7)

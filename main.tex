@@ -33,7 +33,7 @@
 
 
 % Croatian
-\newcommand{\versiondate}[0]{13. studeni 2019}
+\newcommand{\versiondate}[0]{27. svibnja 2023}
 
 \usepackage[T1]{fontenc}
 \usepackage[croatian, safe=none]{babel}
@@ -42,7 +42,7 @@
 \addto{\captionscroatian}{\renewcommand*{\chaptername}{Glava}}
 
 % English
-%\newcommand{\versiondate}[0]{13 November 2019}
+%\newcommand{\versiondate}[0]{May 27th, 2023}
 %
 %\usepackage[T1]{fontenc}
 
@@ -55,30 +55,40 @@
 % _____ PDF _____ %
 \usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {{0 0 0}}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = false]{hyperref}
 
-% _____ Paperback _____ %
-%\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
-
-
-% _____ Hardcover _____ %
-%\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
+% _____ (2) PDF -- screenreader _____ %
+%\usepackage{pdfcomment}
 % !!!!!
-%
+% 1. Use the `style_simple` instead of `style`.
+% 2. Use the `headers_simple` instead of `headers`.
+% 3. Adjust the TOC depth to 3.
+% !!!!!
+
+% _____ (3) B&W Paperback _____ %
+%\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\PassOptionsToPackage{hyperref}{colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true}
+
+% _____ (4) Hardcover _____ %
+%\definecolor{oiB}{rgb}{0,0,0}\definecolor{chaptertitlegray}{rgb}{0,0,0}\PassOptionsToPackage{hyperref}{colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true}
+% !!!!!
 % Also must \include{extraTeX/style/hardcover} below.
-%
 % !!!!!
+% \renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
+
+% _____ (5) Color Paperback _____ %
+%\definecolor{chaptertitlegray}{rgb}{0,0,0}\usepackage[bookmarksnumbered, pdfborder = {0 0 0}, urlcolor = black, colorlinks=true, linkcolor = black, citecolor = black, backref = true]{hyperref}\renewcommand{\chapterpagepaddingleftright}[0]{15mm} \renewcommand{\chapterpagepaddingleftinner}[0]{17mm}\renewcommand{\chapterpagepaddingrightinner}[0]{22mm}
 
 
-% _____ Color Paperback _____ %
-%\usepackage[colorlinks=false,pdfborder={0 0 0},urlcolor= black,colorlinks=black,linkcolor=black, citecolor=black,backref=true]{hyperref}
-%\renewcommand{\printlocation}[0]{\noindent Printed in China. \\}
+
+%\usepackage{pdfcomment}
 
 \usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
 \bibliography{eoce.bib}
 
 \makeindex
 \newlength{\captionwidth}   % dodano jer style.tex kaže da ne postoji ta komanda
-\input{extraTeX/style/style}
-%\input{extraTeX/style/tablet}
+\include{extraTeX/style/style}
+%\include{extraTeX/style/style_simple}
+%\include{extraTeX/style/tablet}
+
 %\include{extraTeX/style/video}
 % The following style file supports an 8.25 x 11 paper size.
 %\include{extraTeX/style/hardcover}
@@ -89,9 +99,14 @@
 %\input{extraTeX/preamble/title}
 
 \date{}
+
 %Croatian
 \renewcommand\contentsname{Sadržaj}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{1}% standard version
+%\setcounter{tocdepth}{3} % screen reader version
+
+% English
+%\renewcommand\contentsname{Table of Contents}
 
 \renewcommand{\cftchapfont}{\scshape}
 \renewcommand{\cftsecfont}{\bfseries}
@@ -113,7 +128,8 @@
 \normalsize
 
 \begingroup
-\input{extraTeX/style/headers}
+\include{extraTeX/style/headers}
+%\include{extraTeX/style/headers_simple}
 \includechapter{1}{ch_intro_to_data}
 %\includechapter{2}{ch_summarizing_data}
 %\includechapter{3}{ch_probability}

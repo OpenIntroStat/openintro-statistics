@@ -45,7 +45,7 @@ closely follow the normal distribution.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.5}{simpleNormal}
+  \Figure[A bell-shaped curve that is symmetric about its center is shown. This is the normal distribution. From the left, the curve starts low, grad lifting off the horizontal axis before more steeply rising, before it starts to rise more slowly and flattens at its peak. From the peak, it starts to decrease slowly and then more steeply, before gradually flattening out as it approaches the horizontal axis. This is the bell-shaped normal distribution, an it is the shape of many distributions we will encounter throughout this book. In general, going forward, this bell-shaped distribution shape should be remembered whenever the normal distribution is discussed.]{0.5}{simpleNormal}
   \caption{A normal curve.}
   \label{simpleNormal}
 \end{figure}
@@ -79,7 +79,7 @@ on the same axis.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.7}{twoSampleNormals}
+  \Figure[Two normal distributions are shown. The first has a center of 0 and a standard deviation of 1, where the two tails of the normal distribution curve are essentially indistinguishable from a height of 0 for values less than -3 or larger than positive 3. The second normal distribution is centered at 19 and has a standard deviation of 4, where the height of the distribution is indistinguishable from 0 when it is more than 3 standard deviations from the mean.]{0.7}{twoSampleNormals}
   \caption{Both curves represent the normal distribution.
       However, they differ in their center and spread.}
   \label{twoSampleNormals}
@@ -87,7 +87,7 @@ on the same axis.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.6}{twoSampleNormalsStacked}
+  \Figure[Two normal distributions are shown on the same plot. The first has a mean of 0 and a standard deviation of 1. The second has a mean of 19 and a standard deviation of 4. One important property visible in the plot is, because distributions are required to have an area of 1, the normal distribution with a standard deviation of 1 appears much narrower and but also much taller than the second distribution that has a standard deviation of 4.]{0.6}{twoSampleNormalsStacked}
   \caption{The normal distributions shown in
       Figure~\ref{twoSampleNormals} but plotted together
       and on the same scale.}
@@ -185,7 +185,7 @@ which can make comparisons more reasonable.
 
 \begin{figure}
   \centering
-  \Figure{0.6}{satActNormals}
+  \Figure[Ann's and Tom's scores shown against the SAT and ACT distributions, which are each shown as normal distributions. The SAT distribution has a mean of 1100 and a standard deviation of 200, while the ACT distribution has a mean of 21 and standard deviation of 6. Ann's score is 1300 for the SAT, and Tom's score is 24 for the ACT. Based on their positioning in their respective plots, it is evident that Ann has a higher relative value for her SAT distribution than Tom has for his ACT score.]{0.6}{satActNormals}
   \caption{Ann's and Tom's scores shown against
       the SAT and ACT distributions.}
   \label{satActNormals}
@@ -321,7 +321,7 @@ shown in Figure~\ref{satBelow1300}.
 
 \begin{figure}[h]
   \centering
-  \Figure{0.45}{satBelow1300}
+  \Figure[A normal distribution is shown with a mean of 1100 and a standard deviation of 200. The distribution is shaded to the left of the value 1300, meaning the area bound by the horizontal axis, the bell-shaped curve (up to the horizontal value of 1300) and a vertical line at 1300 is shaded.]{0.45}{satBelow1300}
   \caption{The area to the left of $Z$ represents the
       fraction of people who scored lower than Ann.}
   \label{satBelow1300}
@@ -413,7 +413,7 @@ $N(\mu = \satmean{}, \sigma = \satsd{})$.
   We are interested in the chance she scores above
   \shannonsat{}, so we shade this upper tail:
   \begin{center}
-  \Figure{0.4}{satAbove1190}
+  \Figure[A normal distribution with a mean of 1100 and standard deviation of 200 has the area below the distribution shaded for horizontal values larger than 1300.]{0.4}{satAbove1190}
   \end{center}
   The picture shows the mean and the values at
   2~standard deviations above and below the mean.
@@ -436,7 +436,7 @@ $N(\mu = \satmean{}, \sigma = \satsd{})$.
   To find the area \emph{above} $Z = \shannonsatz{}$,
   we compute one minus the area of the lower tail:
   \begin{center}
-  \Figure{0.4}{subtractingArea}
+  \Figure[A full shaded normal distribution is shown, then a "minus" sign, then a normal distribution with most of its region shaded up to a little above the mean, then an equals sign, and then a normal distribution with an area in the upper tail shaded. Above those images is the text "1.0000 minus 0.6736 equals 0.3264". This visualization is intended to show how we can think of finding an upper tail of the normal distribution as taking the entire area below the distribution (which has a value of 1) and subtracting a portion of the area to the left to get an area to the right.]{0.4}{subtractingArea}
   \end{center}
   The probability Shannon scores at least 1190 on the SAT
   is 0.3264.
@@ -464,7 +464,7 @@ shading the lower region instead of the upper one.\footnotemark{}
 \end{exercisewrap}
 \footnotetext{We found this probability in
   Example~\ref{satAbove1190Exam}: 0.6736. \\
-  \Figures{0.35}{subtractingArea}{subtracted}}
+  \Figures[A normal distribution with mean 1100 and standard deviation 200 is shaded from the left up to a vertical line a little above the distribution mean.]{0.35}{subtractingArea}{subtracted}}
 
 \D{\newpage}
 
@@ -480,7 +480,7 @@ shading the lower region instead of the upper one.\footnotemark{}
   who do not get as high as a \edwardsat{}.
   These are the scores to the left of \edwardsat{}.
 \begin{center}
-\Figure{0.3}{satBelow1030}
+\Figure[A normal distribution with mean 1100 and standard deviation 200 is shaded from the left up to a vertical line a little below the distribution mean. This area is labeled as "40\% (0.40)".]{0.3}{satBelow1030}
 \end{center}
 Identifying the mean $\mu=\satmean{}$, the standard
 deviation $\sigma=\satsd{}$, and the cutoff for the tail
@@ -550,7 +550,7 @@ Also draw one picture for each~part.\footnotemark{}
   (a) $Z_{\text{Mike}} = \frac{67 - 70}{3.3} = -0.91\ \to\ 0.1814$.
   (b) $Z_{\text{Jose}} = \frac{76 - 70}{3.3} = 1.82\ \to\ 0.9656$.
   \\
-  \Figure{0.45}{mikeAndJosePercentiles}}
+  \Figure[Two plots are shown. The first plot is labeled "Mike" and shows a normal distribution with a mean of 70 and the left tail below 67 is shaded. The second plot is labeled "Jose" and shows a normal distribution with a mean of 70 and a large portion of the normal distribution up to the value 76 shaded.]{0.45}{mikeAndJosePercentiles}}
 
 \D{\newpage}
 
@@ -594,7 +594,7 @@ to a particular percentile?
     $82^{nd}$ percentile?}
   Again, we draw the figure first.\vspace{-3mm}
   \begin{center}
-  \Figure{0.28}{height82Perc}\vspace{-1mm}
+  \Figure[A normal distribution with mean 70 and standard deviation 3.3 is shaded from the left up to a vertical line a bit above the distribution mean. The shaded area to the left of the vertical line is labeled as "82\% (0.82)" and the upper, unshaded tail is labeled "18\% (0.18)".]{0.28}{height82Perc}\vspace{-1mm}
   \end{center}
   Next, we want to find the Z-score at the $82^{nd}$ percentile,
   which will be a positive value and can be found using software
@@ -618,7 +618,7 @@ The SAT scores follow $N(\satmean{}, \satsd{})$.\footnotemark{} \\
 \end{nexercise}
 \end{exercisewrap}
 \footnotetext{Short answers:
-  (a) $Z_{95} = 1.65 \to 1430$ SAT score.
+  (a) $Z_{95} = 1.6449 \to 1429$ SAT score.
   (b) $Z_{97.5} = 1.96 \to 1492$ SAT score.}
 
 \D{\newpage}
@@ -645,7 +645,7 @@ Adult male heights follow $N(70.0$''$, 3.3$''$)$.\footnotemark{} \\
   The area of interest is no longer an upper or lower
   tail.\vspace{-2mm}
   \begin{center}
-  \Figure{0.35}{between59And62}\vspace{-2mm}
+  \Figure[A normal distribution is shown with mean 70 and standard deviation 3.3. An area from just below the mean (69) up to a value further into the right tail (74) is shaded.]{0.35}{between59And62}\vspace{-2mm}
   \end{center}
   The total area under the curve is~1.
   If we find the area of the two tails that are not shaded
@@ -653,7 +653,7 @@ Adult male heights follow $N(70.0$''$, 3.3$''$)$.\footnotemark{} \\
   $0.3821$ and $0.1131$), then we can find the middle
   area:\vspace{-2mm}
   \begin{center}
-  \Figure{0.55}{subtracting2Areas}\vspace{-2mm}
+  \Figure[A plot is shown where we take the full distribution (1.0000), subtract off a lower tail (0.3821) and a small upper tail (0.1131), leaving a normal distribution with just a segment shaded, from just below the mean to a modest amount above the mean, and this last shaded area is labeled 0.5048.]{0.55}{subtracting2Areas}\vspace{-2mm}
   \end{center}
   That is, the probability of being between 5'9'' and 6'2''
   is 0.5048.
@@ -696,7 +696,7 @@ Here, we present a useful rule of thumb for the probability of falling within 1,
 
 \begin{figure}[hht]
 \centering
-\includegraphics[height=1.9in]{ch_distributions/figures/6895997/6895997}
+\Figure[A normal distribution is shown. The central region, from one standard deviation below the mean to one standard deviation above the mean, is shaded blue and is labeled with a value of 68\%. The region further out to two standard deviations below the mean to two standard deviations above the mean is shaded green (besides the portion shaded blue) and is labeled with a value of 95\%. The region further out to three standard deviations below the mean to three standard deviations above the mean is shaded yellow (besides the portions shaded green or blue) and is labeled with a value of 99.7\%. Those percentages -- 68\%, 95\%, and 99.7\% -- represent the portions of the area below a normal distribution within 1, 2, and 3 standard deviations of the mean.]{0.63}{6895997}
 \caption{Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution.}
 \label{6895997}
 \end{figure}
@@ -1099,9 +1099,9 @@ Let's first look at an example.
   The probability the second person is the first to hit
   her deductible is
   \begin{align*}
-  &P(\text{second person is the first to hit deductible}) \\
+  &P(\text{second person is the first to not hit deductible}) \\
   &\quad
-    = P(\text{the first won't, the second will})
+    = P(\text{the first will, the second won't})
     = (\insureFprob{})(\insureSprob{})
     = \insureDistB{}
   \end{align*}
@@ -1133,7 +1133,7 @@ The geometric distribution from Example~\ref{waitForDeductible} is shown in Figu
 
 \begin{figure}[h]
   \centering
-  \Figure{0.8}{geometricDist70}
+  \Figure[The probability distribution of "Number of Trials Until a Success for p = 0.7" is shown, which appears as a bar plot. The possible values shown are 1, 2, 3, 4, 5, 6, 7, and 8. The probabilities for these are about 0.7, 0.21, 0.07, 0.02, 0.01, and then the values are nearly indistinguishable for the values of 6, 7, and 8.]{0.8}{geometricDist70}
   \caption{The geometric distribution when the probability
       of success is $p = \insureSprob{}$.}
   \label{geometricDist70}
@@ -1496,7 +1496,7 @@ yields the general binomial formula.
 
   In the outcome of interest, there are $k = 5$ successes
   in $n = 8$ trials (recall that a success is an individual
-  who does \emph{not} exceed the deductible, and the
+  who does \emph{not} exceed the deductible), and the
   probability of a success is $p = \insureSprob{}$.
   So the probability that 5 of 8 will not exceed the
   deductible and 3 will exceed the deductible is given by
@@ -1778,7 +1778,7 @@ resemble?\footnotemark{}
 
 \begin{figure}[h]
   \centering
-  \Figure{0.92}{fourBinomialModelsShowingApproxToNormal}
+  \Figure[Four hollow histograms are shown, each in their own plot, based on a probability of p equals 0.10 and sample sizes of n equals 10, 30, 100, and 300. The first plot for n = 10 shows a distribution centered at 1 and is notably right skewed. The second plot for n = 30 shows a distribution centered at about 3, is just a bit right skewed, and is starting to look a little bit like a bell-shaped distribution. The third plot for n = 100 shows a distribution centered at about 10 and that is almost entirely symmetric with just the slightest indication it is right skewed. This third distribution also looks very bell-shaped. The fourth plot for n = 300 shows a distribution centered at about 30 and that is symmetric. This last plot looks very bell-shaped and resembles a normal distribution.]{0.92}{fourBinomialModelsShowingApproxToNormal}
   \caption{Hollow histograms of samples from the binomial
       model when $p = 0.10$.
       The sample sizes for the four plots are
@@ -1885,7 +1885,7 @@ the interval.
 
 \begin{figure}[h]
   \centering
-  \Figure{1.0}{normApproxToBinomFail}
+  \Figure[A normal distribution centered at 60 with a standard deviation of about 7 is shown. (The determination that the standard deviation is about 7 was based on the normal distribution being very close to 0 a distance of about 20 from the mean, and this happens about 3 standard deviations from the mean.) A region of this distribution is shaded from 49 to 51. Additionally, a red outlined area is boxed out between 48.5 and 51.5 that represents the exact binomial distribution.]{1.0}{normApproxToBinomFail}
   \caption{A normal curve with the area between
       \smokeA{} and \smokeC{} shaded.
       The outlined area represents the exact binomial
@@ -2141,7 +2141,7 @@ On 70\% of days, a hospital admits at least one heart attack patient. On 30\% of
 
 \begin{figure}[h]
   \centering
-  \Figure{0.6}{amiIncidencesOver100Days}
+  \Figure[A histogram is shown for "AMI Events (by Day)". There are 11 non-zero values shown: a frequency of about 15 at a value of 1, a frequency of 50 at 2, 70 at 3, 85 at 4, 55 at 5, 45 at 6, 25 at 7, 20 at 8, 5 at 9, 5 at 10, and a frequency of about 2 at 11.]{0.6}{amiIncidencesOver100Days}
   \caption{A histogram of the number of occurrences
       of AMI on 365 separate days in NYC.}
   \label{amiIncidencesOver100Days}

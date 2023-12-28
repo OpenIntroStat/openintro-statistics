@@ -285,7 +285,7 @@ for a hypothesis test here?\footnotemark
   A picture of the normal model is shown below
   with the p-value represented by the shaded region.
   \begin{center}
-  \Figure{0.5}{paydayCC_norm_pvalue}
+  \Figure[A normal distribution is shown with a center of 0.5 and a standard deviation of 0.017. Two tails are shaded: The region above 0.51 and a region in the corresponding lower tail. Visually, it looks like a little over half of the area under the normal curve is shaded.]{0.5}{paydayCC_norm_pvalue}
   \end{center}
   Based on the normal model, the test statistic can be
   computed as the Z-score of the point estimate:
@@ -463,25 +463,25 @@ Perform the sample size computation for each separately,
 and identify three sample sizes to consider.\footnotemark
 \end{nexercise}
 \end{exercisewrap}
-\footnotetext{For a 90\% confidence interval, $z^{\star} = 1.65$,
+\footnotetext{For a 90\% confidence interval, $z^{\star} = 1.6449$,
   and since an estimate of the proportion 0.017 is available,
   we'll use it in the margin of error formula:
   \begin{align*}
-  1.65\times \sqrt{\frac{0.017(1-0.017)}{n}} &\ < \ 0.01
+  1.6449\times \sqrt{\frac{0.017(1-0.017)}{n}} &\ < \ 0.01
     \qquad\to\qquad
       \frac{0.017(1-0.017)}{n} \ < \ 
-          \left(\frac{0.01}{1.65}\right)^2
+          \left(\frac{0.01}{1.6449}\right)^2
     \qquad\to\qquad
-      454.96 \ < \ n
+      452.15 \ < \ n
   \end{align*}
   For sample size calculations, we always round up,
-  so the first tire model suggests 455 tires would
+  so the first tire model suggests 453 tires would
   be sufficient.
 
   A similar computation can be accomplished using 0.062
   and 0.013 for $p$, and you should verify that using these
-  proportions results in minimum sample sizes of 1584
-  and~350 tires, respectively.}
+  proportions results in minimum sample sizes of 1574
+  and~348 tires, respectively.}
 
 \begin{examplewrap}
 \begin{nexample}{The sample sizes vary widely in
@@ -756,14 +756,14 @@ Total			&& 25		& 65		&& 90 \\
       \frac{0.22 (1 - 0.22)}{50}}
     = 0.095
   \end{align*}
-  For a 90\% confidence interval, we use $z^{\star} = 1.65$:
+  For a 90\% confidence interval, we use $z^{\star} = 1.6449$:
   \begin{align*}
   \text{point estimate} \ \pm\ z^{\star} \times SE
-    \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.095
-    \quad \to \quad (-0.027, 0.287)
+    \quad \to \quad 0.13 \ \pm\ 1.6449 \times  0.095
+    \quad \to \quad (-0.026, 0.286)
   \end{align*}
   We are 90\% confident that blood thinners have
-  a difference of -2.7\% to +28.7\% percentage point
+  a difference of -2.6\% to +28.6\% percentage point
   impact on survival rate for patients who are like
   those in the study.
   Because 0\% is contained in the interval,
@@ -1051,7 +1051,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 	= -0.17
 \end{align*}
 \begin{center}
-\Figures{0.45}{mammograms}{mammogramPValue}
+\Figures[A normal distribution is shown centered at 0 with a standard deviation of 0.0007. The lower tail is shaded below -0.00012 and the upper tail is shaded above 0.00012. Visually, it looks like very roughly 90\% of the area under the normal distribution is shaded.]{0.45}{mammograms}{mammogramPValue}
 \end{center}
 The lower tail area is 0.4325, which we double to get the p-value:~0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.
 \end{nexample}
@@ -1063,7 +1063,7 @@ the mammogram study as well as any other medical study:
 \begin{itemize}
 \setlength{\itemsep}{0mm}
 \item
-    We do not accept the null hypothesis, which means
+    We do not reject the null hypothesis, which means
     we don't have sufficient evidence to conclude that
     mammograms reduce or increase breast cancer deaths.
 \item
@@ -1172,7 +1172,7 @@ Set up appropriate hypotheses for the test.\footnotemark
 
 \begin{figure}[h]
 \centering
-\Figures{0.6}{quadcopter}{quadcopter_david_j}
+\Figures[A photo of a Phantom quadcopter drone.]{0.6}{quadcopter}{quadcopter_david_j}
 \caption{A Phantom quadcopter.\vspace{-1mm} \\
    -----------------------------\vspace{-2mm}\\
    {\footnotesize Photo by David J
@@ -1246,7 +1246,7 @@ Set up appropriate hypotheses for the test.\footnotemark
 
 \begin{figure}[h]
   \centering
-  \Figure{0.45}{bladesTwoSampleHTPValueQC}
+  \Figure[A normal distribution is shown that is centered at 0.03 with a standard deviation of 0.0114. Small tail areas on each side are shaded. On the upper end, the tail area above 0.059 is shaded, and this area is annotated with a value signifying the area of that upper tail as 0.006. The corresponding lower tail is also shaded.]{0.45}{bladesTwoSampleHTPValueQC}
   \caption{Distribution of the test statistic if the null
       hypothesis was true.
       The p-value is represented by the shaded areas.}
@@ -1494,7 +1494,8 @@ Figure~\ref{chiSquareDistributionWithInceasingDF} shows three chi-square distrib
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{ch_inference_for_props/figures/chiSquareDistributionWithInceasingDF/chiSquareDistributionWithInceasingDF}
+\Figure[Three chi-square distributions are shown with degrees of freedom 2, 4, and 9 on the same plot. The horizontal axis ranges from 0 to 25 -- recall that the chi-square distributions never take values smaller than 0. The chi-square distribution with 2 degrees of freedom starts at a peak at zero and then quickly declines more than halfway by the value of 2 and trails off after a value of about 5. The chi-square distribution with 4 degrees of freedom starts at 0 and quickly rises to a peak at about 2, before gradually declining and then more steeply declining starting at 3, before starting to flatten at about 5 or 6. The distribution has fallen very close to the horizontal axis by a value of 10. The chi-square distribution with 9 degrees of freedom starts at zero before gradually rising up to a peak at about 7 before declining again and trailing off between at around 15.]{0.8}{chiSquareDistributionWithInceasingDF}
+%\includegraphics[width=0.8\textwidth]{ch_inference_for_props/figures/chiSquareDistributionWithInceasingDF/chiSquareDistributionWithInceasingDF}
 \caption{Three chi-square distributions with varying degrees of freedom.}
 \label{chiSquareDistributionWithInceasingDF}
 \end{figure}
@@ -1536,27 +1537,27 @@ to confirm you get the same answers.
 \begin{figure}
 \centering
 \subfigure[]{
-\includegraphics[width=0.475\textwidth]{ch_inference_for_props/figures/arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove6Point25WithDF3/chiSquareAreaAbove6Point25WithDF3}
+\Figures[A chi-square distribution with 3 degrees of freedom is shown, with the area above 6.25 shaded. This region appears to be about 10\% of the area under the curve.]{0.475}{arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove6Point25WithDF3}{chiSquareAreaAbove6Point25WithDF3}
 \label{chiSquareAreaAbove6Point25WithDF3}
 }
 \subfigure[]{
-\includegraphics[width=0.475\textwidth]{ch_inference_for_props/figures/arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove4Point3WithDF2/chiSquareAreaAbove4Point3WithDF2}
+\Figures[A chi-square distribution with 2 degrees of freedom is shown, with the area above 4.3 shaded. This region appears to be about 10\% of the area under the curve.]{0.475}{arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove4Point3WithDF2}{chiSquareAreaAbove4Point3WithDF2}
 \label{chiSquareAreaAbove4Point3WithDF2}
 }
 \subfigure[]{
-\includegraphics[width=0.475\textwidth]{ch_inference_for_props/figures/arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove5Point1WithDF5/chiSquareAreaAbove5Point1WithDF5}
+\Figures[A chi-square distribution with 5 degrees of freedom is shown, with the area above 5.1 shaded. This region appears to be very roughly 50\% of the area under the curve.]{0.475}{arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove5Point1WithDF5}{chiSquareAreaAbove5Point1WithDF5}
 \label{chiSquareAreaAbove5Point1WithDF5}
 }
 \subfigure[]{
-\includegraphics[width=0.475\textwidth]{ch_inference_for_props/figures/arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove11Point7WithDF7/chiSquareAreaAbove11Point7WithDF7}
+\Figures[A chi-square distribution with 7 degrees of freedom is shown, with the area above 11.7 shaded. This region appears to be about 15\% of the area under the curve.]{0.475}{arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove11Point7WithDF7}{chiSquareAreaAbove11Point7WithDF7}
 \label{chiSquareAreaAbove11Point7WithDF7}
 }
 \subfigure[]{
-\includegraphics[width=0.475\textwidth]{ch_inference_for_props/figures/arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove10WithDF4/chiSquareAreaAbove10WithDF4}
+\Figures[A chi-square distribution with 4 degrees of freedom is shown, with the area above 10 shaded. This region appears to be about 5\% of the area under the curve.]{0.475}{arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove10WithDF4}{chiSquareAreaAbove10WithDF4}
 \label{chiSquareAreaAbove10WithDF4}
 }
 \subfigure[]{
-\includegraphics[width=0.475\textwidth]{ch_inference_for_props/figures/arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove9Point21WithDF3/chiSquareAreaAbove9Point21WithDF3}
+\Figures[A chi-square distribution with 3 degrees of freedom is shown, with the area above 9.21 shaded. This region appears to be about 3\% of the area under the curve.]{0.475}{arrayOfFigureAreasForChiSquareDistribution/chiSquareAreaAbove9Point21WithDF3}{chiSquareAreaAbove9Point21WithDF3}
 \label{chiSquareAreaAbove9Point21WithDF3}
 }
 \caption{
@@ -1679,7 +1680,7 @@ statistic, $X^2=5.89$.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.55\textwidth]{ch_inference_for_props/figures/jurorHTPValueShown/jurorHTPValueShown}
+\Figure[A chi-square distribution with 3 degrees of freedom is shown, with the area above 5.89 shaded. This region appears to be about 10\% of the area under the curve.]{0.55}{jurorHTPValueShown}
 \caption{The p-value for the juror hypothesis test is shaded in the chi-square distribution with $df=3$.}
 \label{jurorHTPValueShown}
 \end{figure}
@@ -1878,7 +1879,7 @@ We consider data for the S\&P500 and summarize the waiting times in Figure~\ref{
 
 \begin{figure}
   \centering
-  \Figure{0.85}{geomFitEvaluationForSP500}
+  \Figure[A side-by-side bar plot is shown for the variable "Wait Until Positive Day", where the two groups shown for the bars are "Observed counts" and "Expected counts". The horizontal axis shows values 1, 2, 3, 4, 5, 6, and "7+". The bar heights highest for "1" at roughly 715 for Observed and 740 for Expected. The bar heights for "2" are about half as high as at "1", with values of about 370 for Observed and 340 for Expected. The bar heights for "3" are about another half has high at about 150 for each for observed and expected. The values at 5, 6, and 7+ are all relatively small, at or below about 30.]{0.85}{geomFitEvaluationForSP500}
   \caption{Side-by-side bar plot of the observed
       and expected counts for each waiting time.}
   \label{geomFitEvaluationForSP500}
@@ -1968,7 +1969,7 @@ we~use?\footnotemark{}
 
 \begin{figure}[h]
   \centering
-  \Figure{0.74}{geomFitPValueForSP500}
+  \Figure[A chi-square distribution with 6 degrees of freedom is shown, with the area above 4.61 shaded. This region appears to be about 60\% of the area under the curve.]{0.74}{geomFitPValueForSP500}
   \caption{Chi-square distribution with \spdaysDF{}
       degrees of freedom.
       The p-value for the stock analysis is shaded.}

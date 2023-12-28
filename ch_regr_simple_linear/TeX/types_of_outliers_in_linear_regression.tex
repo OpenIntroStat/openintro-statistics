@@ -6,9 +6,9 @@
 scatterplots shown below, and determine what type of outliers they are. 
 Explain your reasoning.
 \begin{center}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/outliers_1/outliers_1_influential.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/outliers_1/outliers_2_leverage.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/outliers_1/outliers_3_outlier.pdf}
+\FigureFullPath[Most of the data is shown in the left third of the plot with a clear downward, linear trend extending from from the upper-left corner of the plot and to the bottom of the plot only a third of the way from the left side of the plot. A single point is shown on the bottom-right of the plot. A regression line is fit to the data, but it does not fit the bulk of the data well: On the furthest left portion, the line is below the points, crosses over the trend of the bulk of the data, then lies above the remainder of the bulk of the data. If it were shown fully, it would extend well below the single point on the bottom-right.]{0.32}{ch_regr_simple_linear/figures/eoce/outliers_1/outliers_1_influential}
+\FigureFullPath[A clear downward trend is evident in the points on the left third of the plot with a regression line overlaying these points and extending to a single point on the far bottom right of the plot that is also almost exactly on the regression line.]{0.32}{ch_regr_simple_linear/figures/eoce/outliers_1/outliers_2_leverage}
+\FigureFullPath[A downward trend is evident in the bulk of the points with an overlaid regression line. A single point is shown far above the regression line at the center-top of the plot.]{0.32}{ch_regr_simple_linear/figures/eoce/outliers_1/outliers_3_outlier}
 \end{center}
 }{}
 
@@ -18,9 +18,9 @@ Explain your reasoning.
 shown below and determine what type of outliers they are. Explain 
 your reasoning.
 \begin{center}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/outliers_2/outliers_1_influential.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/outliers_2/outliers_2_influential.pdf}
-\includegraphics[width=0.32\textwidth]{ch_regr_simple_linear/figures/eoce/outliers_2/outliers_3_outlier.pdf}
+\FigureFullPath[Most of the data is shown in the right half of the plot with a clear upward, linear trend extending from from the bottom-center and extending to the upper-right corner of the plot. A single point is shown on the upper-left of the plot. A regression line is fit to the data, but it does not fit the bulk of the data well: Focusing first on the bulk of points at the bottom center of the plot, the regression line is well above these points, crosses over the trend of the bulk of the data about 25\% from the right of the plot, then lies below the remainder of the bulk of the data in the upper-right. If it were shown fully, the regression line would extend well below the single point on the upper-left.]{0.32}{ch_regr_simple_linear/figures/eoce/outliers_2/outliers_1_influential}
+\FigureFullPath[A clear upward trend is evident in the points on the right half of the plot with a regression line approximately overlaying these points and extending towards a single point on the far bottom left of the plot, but the regression line is notably higher than this single point, which would have by far the largest residual (in absolute value) of all other points shown in the plot. Close inspection of the regression line fit over the bulk of points, it appears to be partially misfitting that data, "pulled" down on the left side.]{0.32}{ch_regr_simple_linear/figures/eoce/outliers_2/outliers_2_influential}
+\FigureFullPath[An upper trend is evident in the bulk of the points with an overlaid regression line. A single point is shown far above the regression line at the center-top of the plot.]{0.32}{ch_regr_simple_linear/figures/eoce/outliers_2/outliers_3_outlier}
 \end{center}
 }{}
 
@@ -46,7 +46,7 @@ is this observation?
 $\:$\\
 \end{minipage}
 \begin{minipage}[c]{0.4\textwidth}
-\includegraphics[width=0.95\textwidth]{ch_regr_simple_linear/figures/eoce/urban_homeowners_outlier/urban_homeowners_outlier.pdf} \vspace{-3mm}
+\FigureFullPath[A scatterplot is shown with about 50 points. The horizontal axis is for "Percent Urban Population" and has values ranging from 40\% to 100\%. The vertical axis is for "Percent Own Their Home" with values ranging from about 40\% to about 75\%. About 10 points have Urban Population with values smaller than 60\%, and these have Homeownership rates between 65\% and 75\%, with most of those points above 70\%. About 20 points have Urban Population with values between 60\% and 70\%, and these have Homeownership rates between 62\% and 75\%. About 20 points have Urban Population with values greater than 70\%, and these have Homeownership rates between 55\% and 73\%, with one exception of a point with 100\% urban population that has a homeownership rate of about 43\%.]{0.95}{ch_regr_simple_linear/figures/eoce/urban_homeowners_outlier/urban_homeowners_outlier} \vspace{-3mm}
 \end{minipage}
 }{}
 

@@ -21,7 +21,7 @@ at <- -1:2
 labels <- c("", "0\n(used)", "1\n(new)", "")
 axis(1, at, labels)
 par(mgp = c(1.9, 0.6, 0))
-axis(2)
+AxisInDollars(2, at = seq(30, 70, 10))
 par(las = 0)
 mtext("Total Price", 2, line = 2.5)
 g <- lm(mk$total_pr ~ cond)

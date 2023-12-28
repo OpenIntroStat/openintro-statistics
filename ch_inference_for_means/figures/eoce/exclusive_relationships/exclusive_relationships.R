@@ -3,7 +3,7 @@ library(openintro)
 library(dplyr)
 
 # load data ---------------------------------------------------------
-survey <- read.csv("survey.csv")
+survey <- exclusive_relationship
 
 # sample size -------------------------------------------------------
 n <- survey %>%

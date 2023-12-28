@@ -17,7 +17,7 @@ plot(d$unemp[th], d$house_change[th],
      xlab = '',
      ylab = paste0("Percent Change in Seats of\n",
                   "President's Party in House of Rep."))
-mtext('Percent Unemployment', 1, 2)
+mtext('Unemployment Rate', 1, 2)
 abline(h = seq(-100, 100, 10), col = COL[7, 3], lwd = 2)
 abline(h = seq(-105, 100, 10), col = COL[7, 3], lwd = 0.7)
 abline(v = seq(-100, 100, 4), col = COL[7, 3], lwd = 2)

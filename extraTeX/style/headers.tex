@@ -2,7 +2,6 @@
 % 5 Section Headers
 
 % 5.0 Spacings
-\newcommand{\chapterpagepadding}[0]{7mm}
 \newcommand{\sectionheaderspaceA}{1mm}
 \newcommand{\sectionheaderspaceB}{4mm}
 \newcommand{\sectionheaderspaceC}{2mm}
@@ -27,17 +26,17 @@
 \thechapter}{20pt}{{\setupfont{}\Huge #1}}
 \newenvironment{chapterpage}[1]{
 %\newpage
-\noindent\begin{fullminipage}[left=\chapterpagepadding{},right=\chapterpagepadding{},top=\chapterpagepadding{},bottom=\chapterpagepadding{},bgcolor=seaBackground]
+\noindent\begin{fullminipage}[left=\chapterpagepaddingleftright{},right=\chapterpagepaddingleftright{},top=\chapterpagepadding{},bottom=\chapterpagepadding{},bgcolor=seaBackground]
 %\noindent\rule{\textwidth}{0.3pt}\vspace{-6mm}
 \begin{mdframed}[%
     topline=false,
     rightline=false,
     leftline=false,
     bottomline=false,
-    innerleftmargin=\chapterpagepaddinginner{},
+    innerleftmargin=\chapterpagepaddingleftinner{},
     innerrightmargin=\chapterpagepaddingrightinner{},
     innertopmargin=\chapterpagepaddingtopinner{},
-    innerbottommargin=\chapterpagepaddinginner{},
+    innerbottommargin=\chapterpagepaddingbottominner{},
     backgroundcolor=seaBackground]
 \chapter{#1}%{\pagewidth-10mm}
 %\textbf{\color{oiB}\small\fontfamily{phv}%
@@ -92,7 +91,7 @@
   \vfill
 
   \noindent%
-  \oiRedirect{stat}{\includegraphics[height=10mm]{extraTeX/icons/video_and_slides.png}}
+  \oiRedirect{os}{\includegraphics[height=10mm]{extraTeX/icons/video_and_slides.png}}
   \vspace{5mm}
 
   {\color{oiB}\titlerule[0.5mm]}

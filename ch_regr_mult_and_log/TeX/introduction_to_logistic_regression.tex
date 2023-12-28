@@ -19,7 +19,7 @@ width}, \var{total\_\hspace{0.3mm}length}, and \var{tail\_\hspace{0.3mm}length}.
 Each variable is summarized in a histogram. The full logistic regression model 
 and a reduced model after variable selection are summarized in the table.
 \begin{center}
-\includegraphics[width=\textwidth]{ch_regr_mult_and_log/figures/eoce/possum_classification_model_select/possum_variables.pdf} 
+\FigureFullPath[Six plots are shown for the distributions of each predictor variable. For the "sex\_male" categorical variable, about 42 observations are "0 (female)" and 65 are "1 (male)". For the "head\_length (in mm)" variable, a histogram is shown that is approximately bell-shaped, centered at about 93, and has a standard deviation of about 3. For the "skull\_width (in mm)" variable, a histogram is shown for a slightly right-skewed distribution is shown with its peak at about 56 and a standard deviation of about 3. For the "total\_length (in cm)" variable, a histogram is shown with most values ranging from about 80 to 95, with no major outliers. For the "tail\_length (in cm)" variable, a histogram is shown with most data between about 33 and 42, with no major outliers. For the "population" categorical variable, about 58 observations are "0 (Not Victoria)" and 45 are "1 (Victoria)".]{}{ch_regr_mult_and_log/figures/eoce/possum_classification_model_select/possum_variables}
 \end{center}
 \begin{center}\footnotesize
 \begin{tabular}{r rrrr r rrrr}
@@ -166,7 +166,7 @@ ambient temperature at the time of the shuttle launch was closely related to the
 damage of O-rings, which are a critical component of the shuttle. See this 
 earlier exercise if you would like to browse the original data.
 \begin{center}
-\includegraphics[width=0.6\textwidth]{ch_regr_mult_and_log/figures/eoce/challenger_disaster_predict/challenger_disaster_damage_temp.pdf} 
+\FigureFullPath[A scatterplot is shown. The horizontal axis is "Temperature (Fahrenheit)" with values ranging from about 53 to 82. The vertical axis is "Probability of damage" with values ranging from about 0 to 0.8. Only one point has a temperature below 55, which has a probability of damage at about 0.8. Three points have temperature between 55 and 65, and these have probabilities of about 0.2. For the couple dozen points with temperature between 65 and 82, probabilities are almost all 0 with only a few values at 0.2.]{0.6}{ch_regr_mult_and_log/figures/eoce/challenger_disaster_predict/challenger_disaster_damage_temp.pdf} 
 \end{center}
 \begin{parts}
 \item The data provided in the previous exercise are shown in the plot. The logistic 
