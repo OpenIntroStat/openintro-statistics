@@ -1,14 +1,14 @@
-\ifthenelse{\boolean{croatian}}{%
+% Croatian
 \chapter{Skupovi podataka u ovom tekstu}
-}{%
-\chapter{Data sets within the text}
-}
+% English
+%\chapter{Data sets within the text}
+
 \label{appendix_data}
 \label{data_appendix}
 
-\ifthenelse{\boolean{croatian}}{%
-%Temeljno načelo koje omogućava kvalitetnu statističku
-%analizu je dobra organizacija podataka.
+% Croatian
+% Temeljno načelo koje omogućava kvalitetnu statističku
+% analizu je dobra organizacija podataka.
 
 \index{podaci|(}
 
@@ -28,50 +28,50 @@ Svaki skup podataka ima vlastitu stranicu sa sljedećim informacijama:
 	\item
 	datoteka za preuzimanje u nativnom formatu R objekta.
 \end{itemize}%
-}{%
+
+% English
 %A foundational principle that supports quality statistical
 %analysis is well-organized data.
 
-\index{data|(}
-
-Each data set within the text is described in this appendix,
-and there is a corresponding page for each of these data sets at
-\oiRedirect{data}
-{\color{black}\textbf{openintro.org/data}}.
-This page also includes additional data sets that can be
-used for honing your skills.
-Each data set has its own page with the following information:
-\begin{itemize}
-	\setlength{\itemsep}{0mm}
-	\item
-	List of the data set's variables.
-	\item
-	CSV download.
-	\item
-	R object file download.
-\end{itemize}%
-}
+%\index{data|(}
+%
+%Each data set within the text is described in this appendix,
+%and there is a corresponding page for each of these data sets at
+%\oiRedirect{data}
+%{\color{black}\textbf{openintro.org/data}}.
+%This page also includes additional data sets that can be
+%used for honing your skills.
+%Each data set has its own page with the following information:
+%\begin{itemize}
+%	\setlength{\itemsep}{0mm}
+%	\item
+%	List of the data set's variables.
+%	\item
+%	CSV download.
+%	\item
+%	R object file download.
+%\end{itemize}
 
 %\vspace{10mm}
 
 \newcommand{\datawrap}[1]{#1 $\to$}
 
-\ifthenelse{\boolean{croatian}}{%
+% Croatian
 \newcommand{\seedataappendix}[1]{Ovaj skup podataka opisan je u prilogu~\ref{#1}.}
 \newcommand{\seedataappendixplural}[1]{Ovi skupovi podataka opisani su u prilogu~\ref{#1}.}
 \newcommand{\madeup}{Ovaj primjer je izmišljen.}% made up
-}{%
-\newcommand{\seedataappendix}[1]{This data set
-	is described in Data Appendix~\ref{#1}.}
-\newcommand{\seedataappendixplural}[1]{These data sets
-	are described in Data Appendix~\ref{#1}.}
-\newcommand{\madeup}{This example was made up.}
-}
+% English
+%\newcommand{\seedataappendix}[1]{This data set
+%	is described in Data Appendix~\ref{#1}.}
+%\newcommand{\seedataappendixplural}[1]{These data sets
+%	are described in Data Appendix~\ref{#1}.}
+%\newcommand{\madeup}{This example was made up.}
+
 
 \section{\nameref{ch_intro_to_data}}
 \label{ch_intro_to_data_data}
 
-\ifthenelse{\boolean{croatian}}{%
+% Croatian
 \begin{itemize}
 	\setlength{\itemsep}{0mm}
 	\item[\ref{basicExampleOfStentsAndStrokes}]
@@ -138,75 +138,75 @@ Each data set has its own page with the following information:
 		death after myocardial infarction.}
 	New England Journal of Medicine 302(5):250-256.
 \end{itemize}
-}{%
-\begin{itemize}
-	\setlength{\itemsep}{0mm}
-	\item[\ref{basicExampleOfStentsAndStrokes}]
-	\datawrap{\datalink{stent30}, \datalink{stent365}}
-	The stent data is split across two data sets,
-	one for days 0-30 results and one for days 0-365
-	results. \\
-	Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011.
-	Stenting versus Aggressive Medical Therapy for
-	Intracranial Arterial Stenosis.
-	New England Journal of Medicine 365:993-1003.
-	\oiRedirect{textbook-nejm_stent_study}
-	{www.nejm.org/doi/full/10.1056/NEJMoa1105335}. \\
-	NY Times article:
-	\oiRedirect{textbook-nytimes_stent_study}
-	{www.nytimes.com/2011/09/08/health/research/08stent.html}.
-
-	\item[\ref{dataBasics}]
-	\datawrap{\datalink{loan50},
-		\datalink{loans\_full\_schema}}
-	This data comes from Lending Club
-	(\oiRedirect{lendingclub-info-download-data}
-	{lendingclub.com}),
-	which provides a large set of data on the people who
-	received loans through their platform.
-	The data used in the textbook comes from a sample
-	of the loans made in Q1 (Jan, Feb, March) 2018.
-	\item[\ref{dataBasics}]
-	\datawrap{\datalink{county}, \datalink{county\_complete}}
-	These data come from several government sources.
-	For those variables included in the
-	county data set, only the most recent data is reported,
-	as of what was available in late 2018.
-	Data prior to 2011 is all from
-	\oiRedirect{census_gov}{census.gov},
-	where the specific Quick Facts page providing the data
-	is no longer available.
-	The more recent data comes from
-	\oiRedirect
-	{ers_usda_gov-data_products-county_level_data_sets}
-	{USDA (ers.usda.gov)},
-	\oiRedirect
-	{bls_gov-lau}
-	{Bureau of Labor Statistics (bls.gov/lau)},
-	\oiRedirect
-	{census_gov-did-www-saipe}
-	{SAIPE (census.gov/did/www/saipe)},
-	and
-	\oiRedirect
-	{census_gov-programs_surveys-acs}
-	{American Community Survey
-		(census.gov/programs-surveys/acs)}.
-
-	\item[\ref{section_obs_data_sampling}]
-	\datawrap{Nurses' Health Study}
-	For more information on this data set, see \\
-	\oiRedirect{textbook-channing_nurse_study}
-	{www.channing.harvard.edu/nhs}
-
-	\item[\ref{experimentsSection}]
-	The study we had in mind when discussing the
-	simple randomization (no blocking) study was \\
-	Anturane Reinfarction Trial Research Group. 1980.
-	\emph{Sulfinpyrazone in the prevention of sudden
-		death after myocardial infarction.}
-	New England Journal of Medicine 302(5):250-256.
-\end{itemize}
-}
+% English
+%\begin{itemize}
+%	\setlength{\itemsep}{0mm}
+%	\item[\ref{basicExampleOfStentsAndStrokes}]
+%	\datawrap{\datalink{stent30}, \datalink{stent365}}
+%	The stent data is split across two data sets,
+%	one for days 0-30 results and one for days 0-365
+%	results. \\
+%	Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011.
+%	Stenting versus Aggressive Medical Therapy for
+%	Intracranial Arterial Stenosis.
+%	New England Journal of Medicine 365:993-1003.
+%	\oiRedirect{textbook-nejm_stent_study}
+%	{www.nejm.org/doi/full/10.1056/NEJMoa1105335}. \\
+%	NY Times article:
+%	\oiRedirect{textbook-nytimes_stent_study}
+%	{www.nytimes.com/2011/09/08/health/research/08stent.html}.
+%
+%	\item[\ref{dataBasics}]
+%	\datawrap{\datalink{loan50},
+%		\datalink{loans\_full\_schema}}
+%	This data comes from Lending Club
+%	(\oiRedirect{lendingclub-info-download-data}
+%	{lendingclub.com}),
+%	which provides a large set of data on the people who
+%	received loans through their platform.
+%	The data used in the textbook comes from a sample
+%	of the loans made in Q1 (Jan, Feb, March) 2018.
+%	\item[\ref{dataBasics}]
+%	\datawrap{\datalink{county}, \datalink{county\_complete}}
+%	These data come from several government sources.
+%	For those variables included in the
+%	county data set, only the most recent data is reported,
+%	as of what was available in late 2018.
+%	Data prior to 2011 is all from
+%	\oiRedirect{census_gov}{census.gov},
+%	where the specific Quick Facts page providing the data
+%	is no longer available.
+%	The more recent data comes from
+%	\oiRedirect
+%	{ers_usda_gov-data_products-county_level_data_sets}
+%	{USDA (ers.usda.gov)},
+%	\oiRedirect
+%	{bls_gov-lau}
+%	{Bureau of Labor Statistics (bls.gov/lau)},
+%	\oiRedirect
+%	{census_gov-did-www-saipe}
+%	{SAIPE (census.gov/did/www/saipe)},
+%	and
+%	\oiRedirect
+%	{census_gov-programs_surveys-acs}
+%	{American Community Survey
+%		(census.gov/programs-surveys/acs)}.
+%
+%	\item[\ref{section_obs_data_sampling}]
+%	\datawrap{Nurses' Health Study}
+%	For more information on this data set, see \\
+%	\oiRedirect{textbook-channing_nurse_study}
+%	{www.channing.harvard.edu/nhs}
+%
+%	\item[\ref{experimentsSection}]
+%	The study we had in mind when discussing the
+%	simple randomization (no blocking) study was \\
+%	Anturane Reinfarction Trial Research Group. 1980.
+%	\emph{Sulfinpyrazone in the prevention of sudden
+%		death after myocardial infarction.}
+%	New England Journal of Medicine 302(5):250-256.
+%\end{itemize}
+% end English
 
 
 % tu sam stala
@@ -235,14 +235,6 @@ Each data set has its own page with the following information:
     \oiRedirect{lyke-ishizuka-2017}
         {www.pnas.org/content/114/10/2711}
 \end{itemize}
-
-
-
-
-
-
-
-
 
 \section{\nameref{ch_probability}}
 \label{ch_probability_data}

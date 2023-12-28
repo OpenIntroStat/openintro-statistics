@@ -1,0 +1,42 @@
+bib2gls 3.2 (2022-11-24)
+Detected package glossaries-extra 2022/11/08
+Detected package glossaries 2022/11/03
+Detected package mfirstuc 2022/10/14
+No sentence case protection required now
+Default setting --no-mfirstuc-protection now applied, use --mfirstuc-protection to revert
+Default setting --no-mfirstuc-math-protection now applied, use --mfirstuc-math-protection to revert
+Reading Glossary.aux
+TeX character encoding: UTF-8
+Initialising resource Glossary.glstex.
+Parsing bib files for resource Glossary.glstex.
+Default encoding: not set
+Detected encoding: UTF-8
+Reading Glossary.bib
+Encoding: UTF-8
+Cross-resource references allowed.
+Processing resource Glossary.glstex.
+Selecting entries for resource Glossary.glstex.
+Identical sort values for 'stat-ind' and 'stat-sci'
+Falling back on ID
+Identical sort values for 'stat-ind' and 'stat-sci'
+Falling back on ID
+Writing D:\Data\openintro-statistics\Glossary.glstex
+Encoding: UTF-8
+aov
+anova
+deskr-stat
+experiment
+izlozena-grupa
+kontrolna-grupa
+matrica-podataka
+opazanje
+opit
+podaci
+pokus
+skup-podataka
+sluc-raspored
+stat-ind
+stat-sci
+tablica-podataka
+varijabla
+17 entries written to D:\Data\openintro-statistics\Glossary.glstex.

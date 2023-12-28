@@ -174,7 +174,7 @@
 % 6.1 Helpful Editing Commands
 \newcommand\Add[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\Huge\color{oiR}$\bullet$}{\color{oiB}#1}}
 \newcommand\Cut[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\Huge\color{oiR}$\bullet$}{\color{oiGC}#1}}
-%\newcommand\Comment[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\Huge\color{oiR}$\bullet$} {\color{oiG}{[#1]}}}
+\newcommand\Comment[1]{\marginpar[{\Huge\color{oiR}$\bullet$}]{\Huge\color{oiR}$\bullet$} {\color{oiG}{[#1]}}}
 \newcommand{\note}[1]{\Comment{#1}}
 % 6.2 Special Symbols
 \newcommand{\degree}{\ensuremath{^\circ}}
@@ -250,12 +250,9 @@
 % 9.1 Exercises, within the text
 % 9.1.1 Exercise Environment
 \newcommand{\excolor}[1]{{\color{excolor}#1}}
-\newenvironment{exercise}
-{
+\newenvironment{exercise}{%
 \begin{itemize}\item[\color{oiB}$\bigodot$]\refstepcounter{equation}\noindent\normalsize\textbf{\color{oiB}Vođena vježba \theexercise}%\hspace{3mm}
-
-}
-{\normalsize
+}{\normalsize
 
 \stdaddvspace{}
 \end{itemize}}
@@ -264,9 +261,9 @@
 % 9.2 Examples
 % 9.2.1 Example Environment
 \newcommand\theexample{\thechapter.\arabic{equation}}
-\newenvironment{example}[1]
-{\begin{itemize}
-\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Primjer \theexample}
+\newenvironment{example}[1]{%
+\begin{itemize}
+\item[\color{oiB}\Large$\CIRCLE$]\refstepcounter{equation}\noindent\textbf{\color{oiB}Primjer \theexample }
 
 #1\vspace{\exampleAboveBar}
 
@@ -275,10 +272,10 @@
 \vspace{\exampleBelowBar}
 
 \normalsize}{
-
 \end{itemize}
 \stdaddvspace{}
 }
+
 % 9.2.2 Wrappers
 %\reversemarginpar
 \def\warningsymbol{\protect\marginsymbolhelper}
@@ -304,21 +301,19 @@
     {\begin{gpewrapper}{guided_practice}}
     {\end{gpewrapper}}
 % 9.2.3 Example Title
-\ifthenelse{\boolean{croatian}}{%
+
+% Croatian
 \newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
 		\selectfont{\MakeUppercase{Primjer~#1}}} \\[1mm]}
-}{%
-\newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
-		\selectfont{\MakeUppercase{Example~#1}}} \\[1mm]}
-}
-
-\ifthenelse{\boolean{croatian}}{%
 \newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
 		\selectfont{\MakeUppercase{Vođena vježba~#1}}} \\[1mm]}
-}{%
-\newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
-		\selectfont{\MakeUppercase{Guided Practice~#1}}} \\[1mm]}
-}
+
+% English
+%\newcommand{\exampletitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
+%		\selectfont{\MakeUppercase{Example~#1}}} \\[1mm]}
+%\newcommand{\exercisetitle}[1]{\textbf{\color{oiB}\small\fontfamily{phv}%
+%		\selectfont{\MakeUppercase{Guided Practice~#1}}} \\[1mm]}
+
 
 % 9.2.4 NEW Example and Guided Practice Environment
 \newcommand{\exspace}{\stdvspace{}}
@@ -432,6 +427,7 @@
 \addvspace{1mm}}
 % 10.2 Tip Box
 \newenvironment{tipBoxTitle}[2][TIP:\ ]{\textbf{\color{oiB}#1#2}\\[0.3mm]}{}
+
 \newenvironment{tipBox}[1]{
 \addvspace{4mm}
 \noindent{\color{oiB}\framebox[\textwidth][l]{ \\
@@ -448,8 +444,8 @@
 		\end{minipage}
 	\end{minipage}}}
 }{
-
 \addvspace{1mm}}
+
 % 10.3 Caution Box
 \newenvironment{caution}[2]{
 \addvspace{4mm}
