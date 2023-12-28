@@ -1,251 +1,528 @@
-\begin{chapterpage}{Introduction to data}
-  \chaptertitle{Introduction to data}
-  \label{introductionToData}
-  \label{ch_intro_to_data}
-  \chaptersection{basicExampleOfStentsAndStrokes}
-  \chaptersection{dataBasics}
-  \chaptersection{overviewOfDataCollectionPrinciples}
-  % \chaptersection{section_obs_data_sampling}
-  \chaptersection{experimentsSection}
+% Croatian
+\begin{chapterpage}{Uvod u podatke}
+	\chaptertitle{Uvod u podatke}
+	\label{introductionToData}
+	\label{ch_intro_to_data}
+	\noindent
+	\chaptersection{basicExampleOfStentsAndStrokes}
+	\chaptersection{dataBasics}
+	\chaptersection{overviewOfDataCollectionPrinciples}
+	% \chaptersection{section_obs_data_sampling}
+	\chaptersection{experimentsSection}
 \end{chapterpage}
+
+% English
+%\begin{chapterpage}{Introduction to data}
+%	\chaptertitle{Introduction to data}
+%	\label{introductionToData}
+%	\label{ch_intro_to_data}
+%	\chaptersection{basicExampleOfStentsAndStrokes}
+%	\chaptersection{dataBasics}
+%	\chaptersection{overviewOfDataCollectionPrinciples}
+%	% \chaptersection{section_obs_data_sampling}
+%	\chaptersection{experimentsSection}
+%\end{chapterpage}
+% end English
+
 \renewcommand{\chapterfolder}{ch_intro_to_data}
 
+% Croatian
+\begin{tipBox}{%
+	\begin{tipBoxTitle}[Cilj: ]{%
+			Promišljati o podacima}
+	\end{tipBoxTitle}%
+Razumjeti osnovne pojmove vezane uz organizaciju podataka, vrste podataka, numeričke opise podataka, grafičke prikaze podataka i osnovne tehnike prikupljanja podataka. Poglavlje započinjemo i završavamo primjerima.}
+
+\end{tipBox}
+
+% English
 %\begin{tipBox}{\tipBoxTitle[Chapter Goal:]{Thinking about data}
 %Understand basics about data organization, data types, numerical summaries of data, graphical summaries of data, and foundational techniques for data collection. We begin and end the chapter with case studies.}
 %\end{tipBox}
+% end English
 
-\chapterintro{Scientists seek to answer questions
-  using rigorous methods and careful observations.
-  These observations -- collected from the likes of field notes,
-  surveys, and experiments -- form the backbone of a statistical
-  investigation and are called \term{data}.
-  Statistics is the study of how best to collect, analyze,
-  and draw conclusions from data, %It is helpful to put statistics in the context of a general process of investigation:
-%\begin{enumerate}
-%\setlength{\itemsep}{0mm}
-%\item Identify a question or problem.
-%\item Collect relevant data on the topic.
-%\item Analyze the data.
-%\item Form a conclusion.
-%%\item Make decisions based on the conclusion.
-%\end{enumerate}
-%Statistics as a subject focuses on making stages 2-4 objective, rigorous, and efficient. That~is, statistics has three primary components: How best can we collect data? How should it be analyzed? And what can we infer from the analysis?
-  and in this first chapter,
-  we focus on both the properties of data
-  and on the collection of data.}
+% Croatian
+\chapterintro{%
+	Znanstvenici traže odgovore na pitanja
+	koristeći rigorozne metode i pažljiva opažanja.
+	Ova opažanja -- prikupljena npr. u obliku bilješki s terenskih istraživanja,
+	popunjenih upitnika ili rezultata eksperimenata -- čine okosnicu
+	statističkih istraživanja i zovemo ih \term{podaci}.
+	Statistika je znanost koja se bavi proučavanjem kako najbolje prikupiti i analizirati podatke te na temelju njih izvoditi zaključke.
+	%Korisno je statistiku staviti u kontekst općeg procesa istraživanja:
+	%\begin{enumerate}
+	%\setlength{\itemsep}{0mm}
+	%\item Identificirajte pitanje ili problem.
+	%\item Prikupite relevantne podatke o temi.
+	%\item Analizirajte podatke.
+	%\item Donesite zaključak.
+	%%\item Donesite odluke temeljene na zaključku.
+	%\end{enumerate}
+	%Cilj statistike je učiniti korake 2-4 objektivnim, rigoroznim i učinkovitim. To znači da statistiku čine tri glavne cjeline: Kako najbolje prikupiti podatke? Kako treba analizirati podatke? Što možemo zaključiti na temelju analize podataka?
+	U ovoj prvoj glavi bavimo se svojstvima i načinima prikupljanja podataka.}
+% English
+%\chapterintro{Scientists seek to answer questions
+%	using rigorous methods and careful observations.
+%	These observations -- collected from the likes of field notes,
+%	surveys, and experiments -- form the backbone of a statistical
+%	investigation and are called \term{data}.
+%	Statistics is the study of how best to collect, analyze,
+%	and draw conclusions from data, %It is helpful to put statistics in the context of a general process of investigation:
+%	%\begin{enumerate}
+%	%\setlength{\itemsep}{0mm}
+%	%\item Identify a question or problem.
+%	%\item Collect relevant data on the topic.
+%	%\item Analyze the data.
+%	%\item Form a conclusion.
+%	%%\item Make decisions based on the conclusion.
+%	%\end{enumerate}
+%	%Statistics as a subject focuses on making stages 2-4 objective, rigorous, and efficient. That~is, statistics has three primary components: How best can we collect data? How should it be analyzed? And what can we infer from the analysis?
+%	and in this first chapter,
+%	we focus on both the properties of data
+%	and on the collection of data.}
+% end English
 
+% Croatian
+%Teme znanstvenih istraživanja jednako su raznolike kao i pitanja koja se mogu postaviti. Međutim, u mnogim od tih istraživanja odgovarajući odgovori mogu se naći primjenom malog broja tehnika prikupljanja podataka, analitičkih alata i temeljnih pojmova statističkog zaključivanja. Ovo poglavlje pruža kratki pregled ovih i nekih drugih tema kojima ćemo se baviti u ostatku knjige. Uz put ćemo uvoditi osnovna načela svake grane/cjeline?? i naučiti kako primijeniti neke alate. Govorit ćemo o primjeni u raznim područjima, koja neće uvijek biti povezana sa znanstvenim istraživanjima, ali će im ipak koristiti primijena statističkog istraživanja.
+
+% English
 %The topics scientists investigate are as diverse as the questions they ask. However, many of these investigations can be addressed with a small number of data collection techniques, analytic tools, and fundamental concepts in statistical inference. This chapter provides a glimpse into these and other themes we will encounter throughout the rest of the book. We introduce the basic principles of each branch and learn some tools along the way. We will encounter applications from other fields, some of which are not typically associated with science but nonetheless can benefit from statistical study.
+% end English
 
+% Croatian
+\section{Primjer: korištenje stenta za sprječavanje
+	srčanog udara}
 
+% English
+%\section{Case study: using stents to prevent strokes}
 
-\section{Case study: using stents to prevent strokes}
 \label{basicExampleOfStentsAndStrokes}
 
-\index{data!stroke|(}
+% Croatian
+\index{podaci!srčani udar|(}
+% English
+% \index{data!stroke|(}
 
-Section~\ref{basicExampleOfStentsAndStrokes} introduces a classic challenge in statistics: evaluating the efficacy of a medical treatment. Terms in this section, and indeed much of this chapter, will all be revisited later in the text. The plan for now is simply to get a sense of the role statistics can play in practice.
 
-In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.
-Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
+% Croatian
+Poglavlje~\ref{basicExampleOfStentsAndStrokes} upoznaje nas s klasičnim izazovom za statistiku: kako vrednovati učinkovitost medicinskog postupka. Pojmove koje spominjemo u ovom poglavlju i cijeloj glavi ćemo ponavljati i kasnije u tekstu. Za sada nam je cilj steći osjećaj za ulogu statistike u primjeni.
+
+% English
+%Section~\ref{basicExampleOfStentsAndStrokes} introduces a classic challenge in statistics: evaluating the efficacy of a medical treatment. Terms in this section, and indeed much of this chapter, will all be revisited later in the text. The plan for now is simply to get a sense of the role statistics can play in practice.
+% end English
+
+% Croatian
+U ovom poglavlju ćemo razmatrati eksperiment koji proučava učinkovitost stenta u liječenju pacijenata u riziku od srčanog udara.
+Stent je mrežica koja se stavlja u krvnu žilu kako bi pomogla u oporavku pacijenata nakon srčanog udara i smanjila rizik ponovljenog srčanog udara ili smrti. Mnogi se liječnici nadaju da bi sličnu dobrobit mogli imati i kod pacijenata u riziku za srčanu bolest. Započinjemo postavljanjem glavnog pitanja na koje istraživači žele odgovoriti:
 \begin{quote}
-Does the use of stents reduce the risk of stroke?
+	Da li primjena stenta smanjuje rizik srčanog udara?
 \end{quote}
+% English
+%In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.
+%Stents are devices put inside blood vessels that assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
+%\begin{quote}
+%	Does the use of stents reduce the risk of stroke?
+%\end{quote}
+% end English
 
-The researchers who asked this question conducted an experiment with 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:
+% Croatian
+Istraživači koji su postavili ovo pitanje proveli su eksperiment sa 451 pacijentom u riziku. Svaki pacijent dobrovoljac bio je slučajno raspoređen u jednu od dvije grupe:
 \begin{itemize}
-\item[]\termsub{Treatment group}{treatment group}. Patients in the treatment group received a stent and medical management. The medical management included medications, management of risk factors, and help in lifestyle modification.
-\item[]\termsub{Control group}{control group}. Patients in the control group received the same medical management as the treatment group, but they did not receive stents.
+	\item[]\termsub{Izložena grupa}{izložena grupa}. Pacijentima u izloženoj grupi ugrađen je stent i pružena medicinska obrada. Medicinska obrada uključivala je lijekove, upravljanje čimbenicima rizika i potporu za promjenu načina života.
+	\item[]\termsub{Kontrolna grupa}{kontrolna grupa}. Pacijentima u kontrolnoj grupi pružena je jednaka medicinska obrada, ali im nije ugrađen stent.
 \end{itemize}
-Researchers randomly assigned 224 patients to the treatment group and 227 to the control group. In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.
+Istraživači su slučajno rasporedili 224 pacijenta u izloženu grupu i 227 pacijenata u kontrolnu grupu. U ovom primjeru kontrolna grupa pruža referentnu točku s kojom uspoređujemo medicinski učinak stenta u izloženoj grupi.
+% English
+%The researchers who asked this question conducted an experiment with 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:
+%\begin{itemize}
+%	\item[]\termsub{Treatment group}{treatment group}. Patients in the treatment group received a stent and medical management. The medical management included medications, management of risk factors, and help in lifestyle modification.
+%	\item[]\termsub{Control group}{control group}. Patients in the control group received the same medical management as the treatment group, but they did not receive stents.
+%\end{itemize}
+%Researchers randomly assigned 224 patients to the treatment group and 227 to the control group. In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.
+% end English
 
-Researchers studied the effect of stents at two time points: 30~days after enrollment and 365~days after enrollment. The results of 5 patients are summarized in Figure~\ref{stentStudyResultsDF}. Patient outcomes are recorded as ``stroke'' or ``no event'', representing whether or not the patient had a stroke at the end of a time period.
+% Croatian
+Istraživači su proučavali učinak stenta u dvjema vremenskim točkama: 30~dana nakon uključenja u istraživanje i 365~dana nakon uključenja u istraživanje. Rezultati 5 pacijenata prikazani su na Slici~\ref{stentStudyResultsDF}. Ishodi pacijenata zabilježeni su kao ``udar'' ili ``bez udara'', što predstavlja informaciju da li je pacijent na kraju razdoblja promatranja imao srčani udar.
 
+% English
+%Researchers studied the effect of stents at two time points: 30~days after enrollment and 365~days after enrollment. The results of 5 patients are summarized in Figure~\ref{stentStudyResultsDF}. Patient outcomes are recorded as ``stroke'' or ``no event'', representing whether or not the patient had a stroke at the end of a time period.
+% end English
+
+% Croatian
 \begin{figure}[h]
-\centering
-\begin{tabular}{l ccc}
-\hline
-Patient	&	group	&	0-30 days 	&	0-365 days \\
-\hline
-1		&	treatment &	no event &	no event \\
-2		&	treatment &	stroke & stroke \\
-3		&	treatment &	no event & no event \\
-$\vdots$	&	$\vdots$	  &	$\vdots$ \\
-450	&	control &	no event &	no event \\
-451	&	control &	no event &	no event \\
-\hline
-\end{tabular}
-\caption{Results for five patients from the stent study.}
-\label{stentStudyResultsDF}
-% trmt <- c(rep('trmt', 224), rep('control', 227)); outcome30 <- c(rep(c('event', 'no_event'), c(33, 191)), rep(c('event', 'no_event'), c(13, 214))); outcome365 <- c(rep(c('event', 'no_event'), c(33, 191)), rep(c('event', 'no_event'), c(13, 214)))
+	\centering
+	\begin{tabular}{l ccc}
+		\hline
+		Pacijent	&	grupa	&	0-30 dana 	&	0-365 dana \\
+		\hline
+		1		&	izložena &	bez udara &	bez udara \\
+		2		&	izložena &	udar & udar \\
+		3		&	izložena &	bez udara & bez udara \\
+		$\vdots$	&	$\vdots$	  &	$\vdots$ \\
+		450	&	kontrolna &	bez udara &	bez udara \\
+		451	&	kontrolna &	bez udara &	bez udara \\
+		\hline
+	\end{tabular}
+	\caption{Rezultati pet pacijenata iz istraživanja stentova.}
+	\label{stentStudyResultsDF}
+	% trmt <- c(rep('trmt', 224), rep('control', 227)); outcome30 <- c(rep(c('event', 'no_event'), c(33, 191)), rep(c('event', 'no_event'), c(13, 214))); outcome365 <- c(rep(c('event', 'no_event'), c(33, 191)), rep(c('event', 'no_event'), c(13, 214)))
 \end{figure}
 
-Considering data from each patient individually would be a long, cumbersome path towards answering the original research question. Instead, performing a statistical data analysis allows us to consider all of the data at once. Figure~\ref{stentStudyResults} summarizes the raw data in a more helpful way. In this table, we can quickly see what happened over the entire study. For instance, to identify the number of patients in the treatment group who had a stroke within 30 days, we look on the left-side of the table at the intersection of the treatment and stroke: 33.
+% English
+%\begin{figure}[h]
+%	\centering
+%	\begin{tabular}{l ccc}
+%		\hline
+%		Patient	&	group	&	0-30 days 	&	0-365 days \\
+%		\hline
+%		1		&	treatment &	no event &	no event \\
+%		2		&	treatment &	stroke & stroke \\
+%		3		&	treatment &	no event & no event \\
+%		$\vdots$	&	$\vdots$	  &	$\vdots$ \\
+%		450	&	control &	no event &	no event \\
+%		451	&	control &	no event &	no event \\
+%		\hline
+%	\end{tabular}
+%	\caption{Results for five patients from the stent study.}
+%	\label{stentStudyResultsDF}
+%	% trmt <- c(rep('trmt', 224), rep('control', 227)); outcome30 <- c(rep(c('event', 'no_event'), c(33, 191)), rep(c('event', 'no_event'), c(13, 214))); outcome365 <- c(rep(c('event', 'no_event'), c(33, 191)), rep(c('event', 'no_event'), c(13, 214)))
+%\end{figure}
+% end English
 
+% Croatian
+Proučavanje podataka svakog pojedinog pacijenta bilo bi dugotrajan i težak način traženja odgovora na postavljeno istraživačko pitanje. Umjesto toga, statistička analiza omogućava proučavanje svih podataka odjednom. Slika~\ref{stentStudyResults} prikazuje izvorne podatke na korisniji način. Iz ove tablice možemo brzo vidjeti što se događalo tijekom cijelog istraživanja. Npr. da bismo odredili broj pacijenata u izloženoj grupi koji su imali srčani udar unutar 30 dana, pogledamo u lijevi dio tablice na križanju izložene grupe i srčanog udara: 33.
+
+% English
+%Considering data from each patient individually would be a long, cumbersome path towards answering the original research question. Instead, performing a statistical data analysis allows us to consider all of the data at once. Figure~\ref{stentStudyResults} summarizes the raw data in a more helpful way. In this table, we can quickly see what happened over the entire study. For instance, to identify the number of patients in the treatment group who had a stroke within 30 days, we look on the left-side of the table at the intersection of the treatment and stroke: 33.
+% end English
+
+% Croatian
 \begin{figure}[h]
-\centering
-\begin{tabular}{l cc c cc}
-& \multicolumn{2}{c}{0-30 days} &\hspace{5mm}\ & \multicolumn{2}{c}{0-365 days} \\
-  \cline{2-3} \cline{5-6}
-	& 	stroke 	& no event && 	stroke 	& no event \\
-  \hline
-treatment 	& 33		& 191	&&	45 	& 179 \\
-control 		& 13		& 214	&& 	28	& 199 \\
-  \hline
-Total				& 46		& 405	&&	73	& 378 \\
-  \hline
-\end{tabular}
-\caption{Descriptive statistics for the stent study.}
-\label{stentStudyResults}
+	\centering
+	\begin{tabular}{l cc c cc}
+		& \multicolumn{2}{c}{0-30 dana} &\hspace{5mm}\ & \multicolumn{2}{c}{0-365 dana} \\
+		\cline{2-3} \cline{5-6}
+		& 	udar 	& bez udara && 	udar 	& bez udara \\
+		\hline
+		izložena 	& 33		& 191	&&	45 	& 179 \\
+		kontrolna 	& 13		& 214	&& 	28	& 199 \\
+		\hline
+		Ukupno		& 46		& 405	&&	73	& 378 \\
+		\hline
+	\end{tabular}
+	\caption{Deskriptivna statistika za istraživanje stentova.}
+	\label{stentStudyResults}
 \end{figure}
 
+% English
+%\begin{figure}[h]
+%	\centering
+%	\begin{tabular}{l cc c cc}
+%		& \multicolumn{2}{c}{0-30 days} &\hspace{5mm}\ & \multicolumn{2}{c}{0-365 days} \\
+%		\cline{2-3} \cline{5-6}
+%		& 	stroke 	& no event && 	stroke 	& no event \\
+%		\hline
+%		treatment 	& 33		& 191	&&	45 	& 179 \\
+%		control 		& 13		& 214	&& 	28	& 199 \\
+%		\hline
+%		Total				& 46		& 405	&&	73	& 378 \\
+%		\hline
+%	\end{tabular}
+%	\caption{Descriptive statistics for the stent study.}
+%	\label{stentStudyResults}
+%\end{figure}
+% end English
+
+% Croatian
 \begin{exercisewrap}
-\begin{nexercise}
-Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year. (Please note: answers to all Guided Practice exercises are provided using footnotes.)\footnotemark
-\end{nexercise}
-\end{exercisewrap}\footnotetext{The proportion of the 224 patients who had a stroke within 365 days: $45/224 = 0.20$.}
+	\begin{nexercise}
+		Od 224 pacijenta u izloženoj grupi, 45 ih je imalo srčani udar do kraja prve godine. Koristeći ova dva broja, izračunajte proporciju pacijenata u izloženoj grupi koji su imali srčani udar do kraja prve godine. (Bilješka: odgovore na sve vođene vježbe možete naći u fusnotama.)\footnotemark
+	\end{nexercise}
+\end{exercisewrap}\footnotetext{Proporcija pacijenata koji su imali srčani udar unutar 365 dana među 224 pacijenta: $45/224 = 0.20$.}
 
-We can compute summary statistics from the table.
-A \term{summary statistic}%
-\index{statistic|seealso{summary statistic}}
-is a single number summarizing
-a large amount of data.
-For instance, the primary results of the study after 1~year
-could be described by two summary statistics:
-the proportion of people who had a stroke in the treatment
-and control groups.
+% English
+%\begin{exercisewrap}
+%	\begin{nexercise}
+%		Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year. (Please note: answers to all Guided Practice exercises are provided using footnotes.)\footnotemark
+%	\end{nexercise}
+%\end{exercisewrap}\footnotetext{The proportion of the 224 patients who had a stroke within 365 days: $45/224 = 0.20$.}
+% end English
+
+% Croatian
+Na temelju podataka u tablici možemo izračunati deskriptivne statistike.
+\term{Deskriptivna statistika}%
+\index{statistica|seealso{deskriptivna statistika}}
+je broj koji sažeto prikazuje veliku količinu podataka.
+Npr. primarni rezultati istraživanja nakon 1~godine mogu se opisati dvjema deskriptivnim statistikama:
+proporcijama osoba koje su doživjele srčani udar u izloženoj i kontrolnoj grupi.
+
+% English
+%We can compute summary statistics from the table.
+%A \term{summary statistic}%
+%\index{statistic|seealso{summary statistic}}
+%is a single number summarizing
+%a large amount of data.
+%For instance, the primary results of the study after 1~year
+%could be described by two summary statistics:
+%the proportion of people who had a stroke in the treatment
+%and control groups.
+% end English
+
+% Croatian
 \begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[] Proportion who had a stroke in the treatment (stent) group: $45/224 = 0.20 = 20\%$.
-\item[] Proportion who had a stroke in the control group: $28/227 = 0.12 = 12\%$.
+	\setlength{\itemsep}{0mm}
+	\item[] Proporcija osoba koje su doživjele srčani udar u izloženoj (stent) grupi: $45/224 = 0.20 = 20\%$.
+	\item[] Proporcija osoba koje su doživjele srčani udar u kontrolnoj grupi: $28/227 = 0.12 = 12\%$.
 \end{itemize}
-These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8\% of patients in the treatment group had a stroke! This is important for two reasons. First, it is contrary to what doctors expected, which was that stents would \emph{reduce} the rate of strokes. Second, it leads to a statistical question: do the data show a ``real'' difference between the groups?
 
-This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50\%, we probably won't observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 8\% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is the following: is the difference so large that we should reject the notion that it was due to chance?
+% English
+%\begin{itemize}
+%	\setlength{\itemsep}{0mm}
+%	\item[] Proportion who had a stroke in the treatment (stent) group: $45/224 = 0.20 = 20\%$.
+%	\item[] Proportion who had a stroke in the control group: $28/227 = 0.12 = 12\%$.
+%\end{itemize}
+%end English
 
-While we don't yet have our statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
+% Croatian
+Ove dvije deskriptivne statistike korisne su kada želimo opisati razliku između grupa i u ovom slučaju doživjeli smo iznenađenje: dodatnih 8\% pacijenata u izloženoj grupi je doživjelo srčani udar! Ovo je važno zbog dva razloga. Prvo, suprotno je od onoga što su liječnici očekivali, a to je da će stentovi \emph{smanjiti} stopu srčanih udara. Drugo: vodi nas do statističkog pitanja: da li podaci pokazuju ``stvarnu'' razliku između grupa?
 
-\textbf{Be careful:}
-Do not generalize the results of this study to all patients
-and all stents.
-This study looked at patients with very specific characteristics
-who volunteered to be a part of this study and who may not be
-representative of all stroke patients.
-In addition, there are many types of stents and this study only
-considered the self-expanding Wingspan stent (Boston Scientific).
-However, this study does leave us with an important lesson:
-we should keep our eyes open for surprises.
+% English
+%These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8\% of patients in the treatment group had a stroke! This is important for two reasons. First, it is contrary to what doctors expected, which was that stents would \emph{reduce} the rate of strokes. Second, it leads to a statistical question: do the data show a ``real'' difference between the groups?
+% end English
 
-\index{data!stroke|)}
+% Croatian
+Ovo drugo pitanje je istančano. Pretpostavimo da 100 puta bacamo novčić. Iako je šansa da će u bilo kojem bacanju pasti glava 50\%, vjerojatno neće točno 50 puta pasti glava. Ova vrsta odstupanja dio je gotovo svakog procesa stavaranja podataka. Možda je ovih 8\% razlike u istraživanju stentova rezultat takve prirodne varijacije. Međutim, što je veća opažena razlika (za istu veličinu uzorka), teže ćemo povjerovati da je razlika posljedica slučaja. To znači da je pravo pitanje da li je razlika dovoljno velika da možemo odbaciti ideju da je nastala slučajno?
 
+% English
+%This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50\%, we probably won't observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 8\% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is the following: is the difference so large that we should reject the notion that it was due to chance?
+%end English
+
+% Croatian
+Iako još nemamo na raspolaganju statističke alate da samostalno nađemo odgovor na postavljeno pitanje, možemo razumjeti zaključak objavljene analize: postoje uvjerljivi argumenti da su stentovi u ovom istraživanju štetni za pacijente u riziku za srčani udar.
+
+% English
+%While we don't yet have our statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
+%end English
+
+% Croatian
+\textbf{Oprez:}
+Nemojte generalizirati rezultate ovog istraživanja na sve pacijente
+i sve stentove.
+U ovo istraživanje uključeni su pacijenti vrlo specifičnih svojstava koji su se dobrovoljno javili da sudjeluju u istraživanju i koji ne moraju biti reprezentativni za sve pacijente u riziku za srčani udar.
+Dodatno, postoji više vrsta stentova, a u ovom istraživanju
+korišteni su samo samošireći stentovi tipa Wingspan (Boston Scientific).
+Iz ovog smo istraživanja, međutim, naučili vrlo važnu lekciju:
+treba biti na oprezu i očekivati iznenađenja.
+
+\index{podaci!srčani udar|)}
+
+% English
+%Do not generalize the results of this study to all patients
+%and all stents.
+%This study looked at patients with very specific characteristics
+%who volunteered to be a part of this study and who may not be
+%representative of all stroke patients.
+%In addition, there are many types of stents and this study only
+%considered the self-expanding Wingspan stent (Boston Scientific).
+%However, this study does leave us with an important lesson:
+%we should keep our eyes open for surprises.
+%
+%\index{data!stroke|)}
+% end English
 
 {\input{ch_intro_to_data/TeX/case_study_using_stents_to_prevent_strokes.tex}}
 
 
+% Croatian
+\section{Osnove organizacije podataka}
 
-\section{Data basics}
+% English
+%\section{Data basics}
+
 \label{dataBasics}
 
-Effective organization and description of data is a first
-step in most analyses.
-This section introduces the \emph{data matrix} for organizing
-data as well as some terminology about different forms of data
-that will be used throughout this book.
+% Croatian
+Učinkovita organizacija i opis podataka u pravilu su prvi korak analize podataka.
+U ovome poglavlju uvodimo pojam \emph{matrice podataka} za organizaciju podataka te nazive raznih vrsta podataka koje ćemo koristiti u ovoj knjizi.
 
-\subsection{Observations, variables, and data matrices}
+% English
+%Effective organization and description of data is a first
+%step in most analyses.
+%This section introduces the \emph{data matrix} for organizing
+%data as well as some terminology about different forms of data
+%that will be used throughout this book.
+%end English
+
+% Croatian
+\subsection{Opservacije, varijable, matrice podataka}
+
+% English
+%\subsection{Observations, variables, and data matrices}
 
 \index{data!loan50|(}
 
-Figure~\ref{loan50DF} displays rows 1, 2, 3, and 50 of a data set
-for 50 randomly sampled loans offered through Lending Club,
-which is a peer-to-peer lending company.
-These observations will be referred to as the
-\data{loan50} data set.
+% Croatian
+Slika~\ref{loan50DF} prikazuje prvi, drugi, treći i 50. redak skupa podataka za slučajni uzorak 50 kredita koje nudi Klub zajmova, tvrtka za osobno posuđivanje.
+Te ćemo opservacije zvati skup podataka \data{loan50}.
 
-Each row in the table represents a single loan.
-The formal name for a row is a \term{case}
-or \term{observational unit}\index{unit of observation}.
-The columns represent characteristics,
-called \termsub{variables}{variable},
-for each of the loans.
-For example, the first row represents a loan of \$7,500 with an interest rate of 7.34\%, where the borrower is based in Maryland (MD) and has an income of \$70,000.
+% English
+%Figure~\ref{loan50DF} displays rows 1, 2, 3, and 50 of a data set
+%for 50 randomly sampled loans offered through Lending Club,
+%which is a peer-to-peer lending company.
+%These observations will be referred to as the
+%\data{loan50} data set.
+% end English
 
+% Croatian
+Svaki redak u tablici predstavlja jedan kredit. Stručno ime za redak je \term{jedinica opažanja} ili \term{pokusna jedinica} ili \term{opservacija}. Stupci predstavljaju svojstva i nazivamo ih \termsub{varijablama}{varijabla} za svaki kredit.
+Na primjer, prvi redak predstavlja kredit u iznosu od US\$7.500 s kamatnom stopom 7,34\%, pri čemu zajmoprimac živi u državi Maryland (MD, SAD) i ima godišnje prihode  US\$70.000.
+
+% English
+%Each row in the table represents a single loan.
+%The formal name for a row is a \term{case}
+%or \term{observational unit}\index{unit of observation}.
+%The columns represent characteristics,
+%called \termsub{variables}{variable},
+%for each of the loans.
+%For example, the first row represents a loan of \$7,500 with an interest rate of 7.34\%, where the borrower is based in Maryland (MD) and has an income of \$70,000.
+% end English
+
+% Croatian
 \begin{exercisewrap}
-\begin{nexercise}
-What is the grade of the first loan in Figure~\ref{loan50DF}?
-And what is the home ownership status of the borrower
-for that first loan?
-For these Guided Practice questions, you can check your answer
-in the footnote.\footnotemark{}
-\end{nexercise}
+	\begin{nexercise}
+		Kakva je ocjena prvog kredita na Slici~\ref{loan50DF}?
+		Kakav je status vlasništva stana zajmoprimca prvog kredita?
+		Odgovore za ovu vođenu vježbu možete naći u fusnoti.\footnotemark{}
+	\end{nexercise}
 \end{exercisewrap}
-\footnotetext{The loan's grade is A,
-  and the borrower rents their residence.}
 
-In practice, it is especially important to ask clarifying
-questions to ensure important aspects of the data are understood.
-For instance, it is always important to be sure we know what
-each variable means and the units of measurement.
-Descriptions of the \data{loan50} variables are given
-in Figure~\ref{loan50Variables}.
+% English
+%\begin{exercisewrap}
+%\begin{nexercise}
+%What is the grade of the first loan in Figure~\ref{loan50DF}?
+%And what is the home ownership status of the borrower
+%for that first loan?
+%For these Guided Practice questions, you can check your answer
+%in the footnote.\footnotemark{}
+%\end{nexercise}
+%\end{exercisewrap}
+% end English
+
+% Croatian
+\footnotetext{Ocjena kredita je A, a zajmoprimac živi u iznajmljenom stanu.}
+
+% English
+%\footnotetext{The loan's grade is A, and the borrower rents their residence.}
+
+% Croatian
+U praksi je posebno važno postavljati pitanja kako bismo razjasnili i potpuno razumjeli važne aspekte podataka. Na primjer, uvijek je važno biti siguran u točno značenje svake varijable i u korištene mjerne jedinice. Opis varijabli u tablici podataka \data{loan50} prikazan je na Slici~\ref{loan50Variables}.
+
+% English
+%In practice, it is especially important to ask clarifying
+%questions to ensure important aspects of the data are understood.
+%For instance, it is always important to be sure we know what
+%each variable means and the units of measurement.
+%Descriptions of the \data{loan50} variables are given
+%in Figure~\ref{loan50Variables}.
+% end English
 
 \begin{figure}[h]
-\centering
-{\small
-\begin{tabular}{ccc ccc cc} %c}
-  \hline
-   & \var{loan\us{}amount}
-   & \var{interest\us{}rate}
-   & \var{term} & \var{grade} & \var{state}
-   & \var{total\us{}income}
-   & \var{homeownership} \\
-  \hline
-  1 & 22000 & 10.90 & 60.00 & B & NJ & 59000.00 & rent \\ 
-  2 & 6000 & 9.92 & 36.00 & B & CA & 60000.00 & rent \\ 
-  3 & 25000 & 26.30 & 36.00 & E & SC & 75000.00 & mortgage \\
-  %1 & 7500 & 7.34 & 36 & A & MD & 70000 & rent \\
-  %2 & 25000 & 9.43 & 60 & B & OH & 254000 & mortgage \\
-  %3 & 14500 & 6.08 & 36 & A & MO & 80000 & mortgage \\
+	\centering
+    {\small
+	\begin{tabular}{ccc ccc cc}
+		\hline
+		& \var{iznos\us{}kredita}
+		& \var{kamatna\us{}stopa}
+		& \var{rok} & \var{ocjena} & \var{drzava}
+		& \var{ukupni\us{}prihod}
+		& \var{vlasnistvo\us{}stana} \\
+		\hline
+  1 & 22000 & 10,90 & 60,00 & B & NJ & 59000,00 & najam \\ 
+  2 & 6000 & 9,92 & 36,00 & B & CA & 60000,00 & najam \\ 
+  3 & 25000 & 26,30 & 36,00 & E & SC & 75000,00 & hipoteka \\
   $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
       & $\vdots$ & $\vdots$ \\
-  50 & 15000 & 6.08 & 36.00 & A & TX & 77500.00 & mortgage \\
-  %50 & 3000 & 7.96 & 36 & A & CA & 34000 & rent \\
-   \hline
-\end{tabular}
+		50 & 15000 & 6,08 & 36,00 & A & TX & 77500,00 & hipoteka \\
+		\hline
+	\end{tabular}
 }
-\caption{Four rows from the \data{loan50} data matrix.}
-\label{loan50DF}
+\caption{Četiri retka matrice podataka \data{loan50}.}\label{loan50DF}
 \end{figure}
+
+% English
+%%\begin{tabular}{ccc ccc cc}
+%%	\hline
+%%	& \var{loan\us{}amount}
+%%	& \var{interest\us{}rate}
+%%	& \var{term} & \var{grade} & \var{state}
+%%	& \var{total\us{}income}
+%%	& \var{homeownership} \\
+%%	\hline
+%%	1 & 7500 & 7.34 & 36 & A & MD & 70000 & rent \\
+%%	2 & 25000 & 9.43 & 60 & B & OH & 254000 & mortgage \\
+%%	3 & 14500 & 6.08 & 36 & A & MO & 80000 & mortgage \\
+%%	\ensuremath{\vdots} & \ensuremath{\vdots} & \ensuremath{\vdots} & %\ensuremath{\vdots} & \ensuremath{\vdots} & \ensuremath{\vdots}
+%%	& \ensuremath{\vdots} & \ensuremath{\vdots} \\
+%%	50 & 3000 & 7.96 & 36 & A & CA & 34000 & rent \\
+%%	\hline
+%%\end{tabular}
+%
+%%\caption{Four rows from the \data{loan50} data matrix.}
+
 % Dropped: state, verified_income
 % library(openintro); vars <- c("loan_amount", "interest_rate", "term", "grade", "state", "total_income", "homeownership"); library(xtable); data(loan50); loan50[c(1,2,3,50), vars]; xtable(loan50[c(1,2,3,50), vars])
+% end English
 
+
+% Croatian
 \begin{figure}[h]
-\centering\small
-\begin{tabular}{lp{10.5cm}}
-\hline
-{\bf variable} & {\bf description} \\
-\hline
-\var{loan\us{}amount} & Amount of the loan received,
-    in US dollars.  \\
-\var{interest\us{}rate} & Interest rate on the loan,
-    in an annual percentage.  \\
-\var{term} & The length of the loan, which is always set
-    as a whole number of months. \\
-\var{grade} & Loan grade, which takes values A through G
-    and represents the quality of the loan and its likelihood
-    of being repaid.  \\
-\var{state} & US state where the borrower resides. \\
-\var{total\us{}income} & Borrower's total income,
-    including any second income, in US dollars.   \\
-\var{homeownership} & Indicates whether the
-    person owns, owns but has a mortgage, or rents.  \\
-%\var{verified\us{}income} & Indicates whether the
-%    income is verified, its source is verified but not the amount,
-%    or it is not verified.   \\
-\hline
-\end{tabular}
-\caption{Variables and their descriptions for the \data{loan50} data set.}
-\label{loan50Variables}
+	\centering\small
+	\begin{tabular}{lp{10.5cm}}
+		\hline
+		{\bf varijabla} & {\bf opis} \\
+		\hline
+		\var{iznos\us{}kredita} & Iznos primljenog zajma u američkim dolarima.  \\
+		\var{kamatna\us{}stopa} & Kamatna stopa na zajam, izražena kao godišnji postotak.  \\
+		\var{rok} & Rok za otplatu zajma izražen kao cijeli broj mjeseci. \\
+		\var{ocjena} & Ocjena zajma, koja može imati vrijednosti od LoanA do G, a predstavlja kvalitetu zajma i vjerojatnost da će zajam biti otplaćen.  \\
+		\var{drzava} & Država u SAD u kojoj živi zajmoprimac. \\
+		\var{ukupni\us{}prihod} & Ukupni prihod zajmoprimca, uključujući i sve sekundarne prihode, u američkim dolarima.   \\
+		\var{vlasnistvo\us{}stana} & Pokazuje da li je osoba vlasnik, vlasnik s hipotekom ili najmoprimac.  \\
+		\hline
+	\end{tabular}
+	\caption{Varijable u skupu podataka \data{loan50} i njihov opis.}
+	\label{loan50Variables}
 \end{figure}
+
+% English
+%\begin{figure}[h]
+%\centering\small
+%\begin{tabular}{lp{10.5cm}}
+%\hline
+%{\bf variable} & {\bf description} \\
+%\hline
+%\var{loan\us{}amount} & Amount of the loan received,
+%    in US dollars.  \\
+%\var{interest\us{}rate} & Interest rate on the loan,
+%    in an annual percentage.  \\
+%\var{term} & The length of the loan, which is always set
+%    as a whole number of months. \\
+%\var{grade} & Loan grade, which takes a values A through G
+%    and represents the quality of the loan and its likelihood
+%    of being repaid.  \\
+%\var{state} & US state where the borrower resides. \\
+%\var{total\us{}income} & Borrower's total income,
+%    including any second income, in US dollars.   \\
+%\var{homeownership} & Indicates whether the
+%    person owns, owns but has a mortgage, or rents.  \\
+%%\var{verified\us{}income} & Indicates whether the
+%%    income is verified, its source is verified but not the amount,
+%%    or it is not verified.   \\
+%\hline
+%\end{tabular}
+%\caption{Variables and their descriptions for the \data{loan50} data set.}
+%\label{loan50Variables}
+%\end{figure}
 
 \index{data!loan50|)}
 
@@ -261,7 +538,7 @@ and each column corresponds to a variable.
 %patients and three variables were recorded for each
 %patient.
 
-\D{\newpage}
+%\D{\newpage}
 
 When recording data, use a data matrix unless you have
 a very good reason to use a different structure.
@@ -318,20 +595,20 @@ The variables are summarized in Figure~\ref{countyVariables}.
 \centering\small
 \begin{tabular}{ccc ccc ccc ccc}
   \hline
- & \var{name} & \var{state} & \var{pop} & \var{pop\us{}change} & \var{poverty} & \var{homeownership} & \var{multi\us{}unit} & \var{unemp\us{}rate} & \var{metro} & \var{median\us{}edu} & \var{median\us{}hh\us{}income} \\ 
+ & \var{name} & \var{state} & \var{pop} & \var{pop\us{}change} & \var{poverty} & \var{homeownership} & \var{multi\us{}unit} & \var{unemp\us{}rate} & \var{metro} & \var{median\us{}edu} & \var{median\us{}hh\us{}income} \\
   \hline
-1 & Autauga  & Alabama &  55504 &  1.48 & 13.7 & 77.5 &  7.2 & 3.86 & yes & some\us{}college & 55317 \\ 
-  2 & Baldwin  & Alabama & 212628 &  9.19 & 11.8 & 76.7 & 22.6 & 3.99 & yes & some\us{}college & 52562 \\ 
-  3 & Barbour  & Alabama &  25270 & -6.22 & 27.2 & 68.0 & 11.1 & 5.90 & no  & hs\us{}diploma   & 33368 \\ 
-  4 & Bibb     & Alabama &  22668 &  0.73 & 15.2 & 82.9 &  6.6 & 4.39 & yes & hs\us{}diploma   & 43404 \\ 
-  5 & Blount   & Alabama &  58013 &  0.68 & 15.6 & 82.0 &  3.7 & 4.02 & yes & hs\us{}diploma   & 47412 \\ 
-  6 & Bullock  & Alabama &  10309 & -2.28 & 28.5 & 76.9 &  9.9 & 4.93 & no  & hs\us{}diploma   & 29655 \\ 
-  7 & Butler   & Alabama &  19825 & -2.69 & 24.4 & 69.0 & 13.7 & 5.49 & no  & hs\us{}diploma   & 36326 \\ 
-  8 & Calhoun  & Alabama & 114728 & -1.51 & 18.6 & 70.7 & 14.3 & 4.93 & yes & some\us{}college & 43686 \\ 
-  9 & Chambers & Alabama &  33713 & -1.20 & 18.8 & 71.4 &  8.7 & 4.08 & no  & hs\us{}diploma   & 37342 \\ 
-  10 & Cherokee & Alabama &  25857 & -0.60 & 16.1 & 77.5 &  4.3 & 4.05 & no  & hs\us{}diploma   & 40041 \\ 
+1 & Autauga  & Alabama &  55504 &  1.48 & 13.7 & 77.5 &  7.2 & 3.86 & yes & some\us{}college & 55317 \\
+  2 & Baldwin  & Alabama & 212628 &  9.19 & 11.8 & 76.7 & 22.6 & 3.99 & yes & some\us{}college & 52562 \\
+  3 & Barbour  & Alabama &  25270 & -6.22 & 27.2 & 68.0 & 11.1 & 5.90 & no  & hs\us{}diploma   & 33368 \\
+  4 & Bibb     & Alabama &  22668 &  0.73 & 15.2 & 82.9 &  6.6 & 4.39 & yes & hs\us{}diploma   & 43404 \\
+  5 & Blount   & Alabama &  58013 &  0.68 & 15.6 & 82.0 &  3.7 & 4.02 & yes & hs\us{}diploma   & 47412 \\
+  6 & Bullock  & Alabama &  10309 & -2.28 & 28.5 & 76.9 &  9.9 & 4.93 & no  & hs\us{}diploma   & 29655 \\
+  7 & Butler   & Alabama &  19825 & -2.69 & 24.4 & 69.0 & 13.7 & 5.49 & no  & hs\us{}diploma   & 36326 \\
+  8 & Calhoun  & Alabama & 114728 & -1.51 & 18.6 & 70.7 & 14.3 & 4.93 & yes & some\us{}college & 43686 \\
+  9 & Chambers & Alabama &  33713 & -1.20 & 18.8 & 71.4 &  8.7 & 4.08 & no  & hs\us{}diploma   & 37342 \\
+  10 & Cherokee & Alabama &  25857 & -0.60 & 16.1 & 77.5 &  4.3 & 4.05 & no  & hs\us{}diploma   & 40041 \\
   $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-  3142 & Weston   & Wyoming &   6927 & -2.93 & 14.4 & 77.9 &  6.5 & 3.98 & no  & some\us{}college & 59605 \\ 
+  3142 & Weston   & Wyoming &   6927 & -2.93 & 14.4 & 77.9 &  6.5 & 3.98 & no  & some\us{}college & 59605 \\
    \hline
 \end{tabular}
 \caption{Eleven rows from the \data{county} data set.}

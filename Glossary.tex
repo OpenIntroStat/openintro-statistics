@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[croatian]{babel}
+\usepackage[record, stylemods, style=indexgroup]{glossaries-extra}
+\GlsXtrLoadResources[src=Glossary,selection=all, field-aliases={english=user1}]
+
+\glsdefpostname{general}{% post-name hook
+	\space
+	\ifglshasfield{useri}{\glscurrententrylabel}{
+	(eng. \emph{\glsentryuseri{\glscurrententrylabel}})}{}%
+}
+
+\begin{document}
+\printunsrtglossary
+\end{document}
