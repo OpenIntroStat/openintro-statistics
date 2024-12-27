@@ -13,5 +13,5 @@ hist(cats$Bwt, breaks = seq(2, 4, 0.25), ylim = c(0, 35),
      xlab = "Body weight", col = COL[1], main = "", 
      axes = FALSE)
 axis(1)
-axis(2, at = seq(5,35,10))
+axis(2, at = seq(0,40,10))
 dev.off()
