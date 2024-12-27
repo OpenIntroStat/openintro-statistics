@@ -138,7 +138,7 @@ large since the sample is random.}
 \eocesol{(a)~Simple random sample. Non-response bias, if only those people who have 
 strong opinions about the survey responds his sample may not be representative 
 of the population.
-(b)~Convenience sample. Under coverage bias, his sample may not be 
+(b)~Convenience sample. His sample may not be 
 representative of the population since it consists only of his friends. It is 
 also possible that the study will have non-response bias if some choose to not 
 bring back the survey.
@@ -1723,8 +1723,8 @@ up for sample size calculations!).}
 
 \eocesol{Paired, data are recorded in the same cities at two
 different time points. 
-The temperature in a city at one point is not independent
-of the temperature in the same city at another time point.}
+The air quality in a city at one point is not independent
+of the air quality in the same city at another time point.}
 
 % 17
 
@@ -1988,16 +1988,13 @@ now conduct $K = 3\times2/2 = 3$ pairwise $t$-tests that each use $\alpha = 0.05
 pairwise test. $H_0$: The two means are equal. $H_A$: The two means are 
 different. The sample sizes are equal and we use the pooled SD, so we can 
 compute $SE = 3.7$ with the pooled $df = 39$.
-The p-value for Trmt 1 vs. Trmt 3 is the only one under 0.05:
-p-value = 0.035 (or 0.024 if using $s_{pooled}$
-in place of $s_1$ and $s_3$, though this won't
-affect the final conclusion).
-The p-value is larger than $0.05 / 3 = 1.67$,
-so we do not have strong evidence to conclude that
-it is this particular pair of groups that are different.
-That is, we cannot identify if which particular pair of
-groups are actually different, even though we've rejected
-the notion that they are all the same!}
+Looking at the largest difference, Trmt 1 vs Trmt 3:
+$Z = \frac{6.21 - (-3.21)}{3.7} = 2.52$ on $df = 39$ yields a p-value of 0.015.
+Because this is smaller than $0.05 / 3 = 1.67$,
+we have strong evidence to that this particular pair of groups are different.
+When doing similar calculations for Trmt 1 vs 2 or 2 vs 3, we do not
+find any statistically significant difference.
+(Note that we get a different result if not using the pooled result.)}
 
 % 47
 
