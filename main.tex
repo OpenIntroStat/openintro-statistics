@@ -1,6 +1,6 @@
 \documentclass[10pt,openany]%,oneside]
 {book}
-\newcommand{\versiondate}[0]{Dec 27th, 2024}
+\newcommand{\versiondate}[0]{Dec 30th, 2024}
 
 \usepackage{
   amsmath, calc,
@@ -41,8 +41,9 @@
 \usepackage[bookmarksnumbered, colorlinks = false, pdfborder = {0 0 0}, urlcolor = oiGB, colorlinks=true, linkcolor = oiGB, citecolor = oiGB, backref = true]{hyperref}
 
 % _____ (2) PDF -- screenreader _____ %
-%\usepackage{pdfcomment}
 % !!!!!
+% 0. Uncomment out the following package:
+%      \usepackage{pdfcomment}
 % 1. Use the `style_simple` instead of `style`.
 % 2. Use the `headers_simple` instead of `headers`.
 % 3. Adjust the TOC depth to 3.
@@ -63,7 +64,6 @@
 
 
 
-%\usepackage{pdfcomment}
 
 \usepackage[style=authortitle-ibid, maxnames=2,natbib=true,sortcites=true,block=space,backend=bibtex]{biblatex}
 \bibliography{eoce.bib}
