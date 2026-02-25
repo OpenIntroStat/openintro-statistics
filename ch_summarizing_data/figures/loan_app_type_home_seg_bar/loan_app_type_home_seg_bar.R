@@ -1,7 +1,11 @@
 library(openintro)
 
 tab <- table(loans_full_schema[, c("application_type", "homeownership")])
+tab <- tab[
+    c("individual", "joint"),
+    c("RENT", "MORTGAGE", "OWN")]
 tab <- t(tab)
+rownames(tab) <- tolower(rownames(tab))
 
 rp <- prop.table(tab, 1)
 cp <- prop.table(tab, 2)
