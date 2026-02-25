@@ -1,6 +1,24 @@
+if ("loans_full_schema" %in% ls()) {
+  rm(loans_full_schema)
+}
 library(openintro)
+
+# There are some levels for the factor variables below that don't
+# have any observations, so they create zeros and break the visuals.
+# The next lines address that while ensuring a consistent order of
+# the levels for the plots.
+application_type_order <- c("individual", "joint")
+loans_full_schema$application_type <- factor(
+  as.character(loans_full_schema$application_type),
+  levels = application_type_order
+)
+homeownership_order <- c("rent", "mortgage", "own")
+loans_full_schema$homeownership <- factor(
+  tolower(as.character(loans_full_schema$homeownership)),
+  levels = homeownership_order
+)
+
 tab <- table(loans_full_schema[,c('application_type', 'homeownership')])
-attr(tab, "dimnames")$homeownership <- tolower(attr(tab, "dimnames")$homeownership)
 tab  <- t(tab)
 
 rp <- prop.table(tab, 1)
